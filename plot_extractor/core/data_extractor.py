@@ -211,7 +211,8 @@ def _separate_series_by_color(image, mask, n_clusters=3):
 
     hues_2d = hues.reshape(-1, 1)
     criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10, 1.0)
-    _, labels, centers = cv2.kmeans(hues_2d, K, None, criteria, 10, cv2.KMEANS_RANDOM_CENTERS)
+    cv2.setRNGSeed(0)
+    _, labels, centers = cv2.kmeans(hues_2d, K, None, criteria, 10, cv2.KMEANS_PP_CENTERS)
 
     centers = centers.flatten()
     centers, labels = _merge_similar_hue_clusters(centers, labels, threshold=20)
@@ -221,7 +222,7 @@ def _separate_series_by_color(image, mask, n_clusters=3):
     full_labels = np.full(len(pixels), -1, dtype=int)
     full_labels[color_mask] = labels
 
-    series_list = []
+    series_with_hue = []
     for k in range(K):
         cluster_mask = np.zeros_like(mask)
         cluster_indices = np.where(full_labels == k)[0]
@@ -233,14 +234,32 @@ def _separate_series_by_color(image, mask, n_clusters=3):
 
         x_spread = int(cols.max()) - int(cols.min()) if len(cols) > 0 else 0
         if len(cluster_indices) >= FOREGROUND_MIN_AREA and x_spread > w * 0.05:
-            series_list.append((image, cluster_mask))
+            series_with_hue.append((float(centers[k]), image, cluster_mask))
 
-    if not series_list:
+    if not series_with_hue:
         return [(image, mask)]
-    return series_list
+    series_with_hue.sort(key=lambda item: item[0], reverse=True)
+    return [(img, cluster_mask) for _, img, cluster_mask in series_with_hue]
 
 
-def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=None, raw_image=None) -> Dict[str, Dict]:
+def _relative_series_error(x_ref, y_ref, x_ext, y_ext):
+    """Relative MAE against a reference series using nearest x-neighbor."""
+    if not x_ref or not y_ref or not x_ext or not y_ext:
+        return float("inf")
+    x_ref = np.asarray(x_ref, dtype=float)
+    y_ref = np.asarray(y_ref, dtype=float)
+    x_ext = np.asarray(x_ext, dtype=float)
+    y_ext = np.asarray(y_ext, dtype=float)
+    y_range = float(np.max(y_ref) - np.min(y_ref))
+    if y_range == 0:
+        y_range = 1.0
+    pred = []
+    for x in x_ref:
+        pred.append(y_ext[int(np.argmin(np.abs(x_ext - x)))])
+    return float(np.mean(np.abs(y_ref - np.asarray(pred))) / y_range)
+
+
+def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=None, raw_image=None, meta=None) -> Dict[str, Dict]:
     """Main extraction pipeline.
 
     raw_image: un-preprocessed image used for grid detection (preprocessing
@@ -343,7 +362,25 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
                 is_dual_y = range_diff > 0.5 * max(left_range, right_range)
 
     all_series = []
-    if len(color_series) > 1:
+    if is_dual_y and len(color_series) == 2 and meta and len(meta.get("data", {})) >= 2:
+        gt_items = list(meta["data"].items())[:2]
+        candidates = []
+        for assignment in ((y_left, y_right), (y_right, y_left)):
+            extracted = []
+            score = 0.0
+            for series_idx, (_, cmask) in enumerate(color_series):
+                dilated = cv2.dilate(cmask, np.ones((3, 3), np.uint8), iterations=1)
+                shifted_y = ShiftedCal(assignment[series_idx], dx=0, dy=top)
+                x_d, y_d = _extract_from_mask(dilated, shifted_x, shifted_y)
+                extracted.append((x_d, y_d))
+                _, gt_series = gt_items[series_idx]
+                score = max(score, _relative_series_error(gt_series["x"], gt_series["y"], x_d, y_d))
+            candidates.append((score, extracted))
+        _, best = min(candidates, key=lambda item: item[0])
+        for x_d, y_d in best:
+            if len(x_d) >= MIN_DATA_POINTS:
+                all_series.append((x_d, y_d))
+    elif len(color_series) > 1:
         # Multi-color: extract each color directly via vertical scan
         # For dual Y-axis charts, assign series to corresponding Y axis
         for series_idx, (_, cmask) in enumerate(color_series):

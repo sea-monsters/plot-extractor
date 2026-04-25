@@ -53,3 +53,8 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.bak
+
+# AI related files
+.agent/
+.claude/
+.codex/

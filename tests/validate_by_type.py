@@ -169,6 +169,7 @@ def validate_type(chart_type: str, debug: bool = False) -> dict:
             results.append({"file": img_path.name, "rel_err": 1.0, "threshold": data_threshold, "passed": False, "error": str(e)})
             continue
 
+        diagnostics = result.get("diagnostics") if result else None
         if result and result.get("data"):
             rel_err, per_series = evaluate_data_accuracy(result["data"], meta)
             # Also keep SSIM for reference
@@ -183,9 +184,22 @@ def validate_type(chart_type: str, debug: bool = False) -> dict:
             passed = False
             mae_str = "N/A"
 
-        results.append({"file": img_path.name, "rel_err": round(rel_err, 4), "ssim": round(ssim, 4), "threshold": data_threshold, "passed": passed})
+        row = {"file": img_path.name, "rel_err": round(rel_err, 4), "ssim": round(ssim, 4), "threshold": data_threshold, "passed": passed}
+        if diagnostics:
+            row["diagnostics"] = diagnostics
+        results.append(row)
         status = "PASS" if passed else "FAIL"
         print(f"    {img_path.name}: rel_err={mae_str} SSIM={ssim:.3f} [{status}]")
+        if debug and diagnostics:
+            axis_summary = ", ".join(
+                f"{a['direction']}_{a['side']}:{a['axis_type']}/ticks={a['tick_count']}/res={a['residual']:.2f}"
+                for a in diagnostics["axes"]
+            )
+            series_summary = ", ".join(
+                f"{name}:{info['points']}"
+                for name, info in diagnostics["series"].items()
+            )
+            print(f"      diag grid={diagnostics['has_grid']} scatter={diagnostics['is_scatter']} axes=[{axis_summary}] series=[{series_summary}]")
 
     if not results:
         return {"type": chart_type, "total": 0, "passed": 0, "pass_rate": 0, "avg_rel_err": 0, "max_rel_err": 0, "results": []}
@@ -225,7 +239,9 @@ def run_all(types: list[str] | None = None, debug: bool = False):
         summary = validate_type(chart_type, debug=debug)
         summaries.append(summary)
         for r in summary["results"]:
-            all_rows.append({"type": chart_type, **r})
+            row = {"type": chart_type, **r}
+            row.pop("diagnostics", None)
+            all_rows.append(row)
 
     # Write detailed CSV
     with open(REPORT_PATH, "w", newline="") as f:

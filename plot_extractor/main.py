@@ -13,6 +13,48 @@ from plot_extractor.core.ocr_reader import load_meta_labels
 from plot_extractor.utils.ssim_compare import compare_images
 
 
+def _build_diagnostics(calibrated_axes, data, plot_bounds, is_scatter, has_grid):
+    """Summarize extraction internals without affecting behavior."""
+    axes = []
+    for ca in calibrated_axes:
+        axis = ca.axis
+        values = [v for _, v in ca.tick_map if v is not None]
+        value_range = None
+        if values:
+            value_range = [float(min(values)), float(max(values))]
+        axes.append({
+            "direction": axis.direction,
+            "side": axis.side,
+            "position": int(axis.position),
+            "plot_start": int(axis.plot_start),
+            "plot_end": int(axis.plot_end),
+            "tick_count": len(axis.ticks or []),
+            "labeled_tick_count": len(values),
+            "axis_type": ca.axis_type,
+            "inverted": bool(ca.inverted),
+            "residual": float(ca.residual),
+            "value_range": value_range,
+        })
+
+    series = {}
+    for name, series_data in data.items():
+        xs = series_data.get("x", [])
+        ys = series_data.get("y", [])
+        series[name] = {
+            "points": len(xs),
+            "x_range": [float(min(xs)), float(max(xs))] if xs else None,
+            "y_range": [float(min(ys)), float(max(ys))] if ys else None,
+        }
+
+    return {
+        "axes": axes,
+        "plot_bounds": [int(v) for v in plot_bounds],
+        "is_scatter": bool(is_scatter),
+        "has_grid": bool(has_grid),
+        "series": series,
+    }
+
+
 def extract_from_image(image_path: Path, output_csv: Path = None, debug_dir: Path = None, meta=None):
     """Run full extraction pipeline on an image."""
     image_path = Path(image_path)
@@ -34,7 +76,7 @@ def extract_from_image(image_path: Path, output_csv: Path = None, debug_dir: Pat
 
     # Extract data (use raw image for grid detection, preprocessed for data extraction)
     raw_image = load_image(image_path)
-    data, is_scatter, has_grid = extract_all_data(image, calibrated, image_path=image_path, raw_image=raw_image)
+    data, is_scatter, has_grid = extract_all_data(image, calibrated, image_path=image_path, raw_image=raw_image, meta=meta)
     if not data:
         print(f"[{image_path.name}] No data extracted.")
         return None
@@ -74,6 +116,8 @@ def extract_from_image(image_path: Path, output_csv: Path = None, debug_dir: Pat
         ssim_cropped = compare_images(image_path, rebuilt_path, crop_box=plot_bounds)
         print(f"[{image_path.name}] SSIM full: {ssim_score:.4f}, SSIM crop: {ssim_cropped:.4f}")
 
+    diagnostics = _build_diagnostics(calibrated, data, plot_bounds, is_scatter, has_grid)
+
     return {
         "data": data,
         "calibrated_axes": calibrated,
@@ -83,6 +127,7 @@ def extract_from_image(image_path: Path, output_csv: Path = None, debug_dir: Pat
         "plot_bounds": plot_bounds,
         "is_scatter": is_scatter,
         "has_grid": has_grid,
+        "diagnostics": diagnostics,
     }
 
 

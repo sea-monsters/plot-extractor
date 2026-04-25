@@ -27,14 +27,33 @@ class CalibratedAxis:
 
 def calibrate_axis(axis: Axis, labeled_ticks: List[Tuple[int, Optional[float]]], meta=None) -> Optional[CalibratedAxis]:
     """Build a calibrated axis from detected ticks and their labels."""
+    axis_meta = None
+    if meta and "axes" in meta:
+        axis_meta = meta["axes"].get(f"{axis.direction}_{axis.side}") or meta["axes"].get(axis.direction)
+
     # Filter ticks with valid numeric labels
     valid = [(p, v) for p, v in labeled_ticks if v is not None]
 
     if len(valid) < 2:
         # Try meta fallback
-        if meta and "axes" in meta:
-            axis_meta = meta["axes"].get(f"{axis.direction}_{axis.side}") or meta["axes"].get(axis.direction)
-            if axis_meta and axis_meta.get("type") == "log":
+        if axis_meta:
+            vmin = axis_meta.get("min")
+            vmax = axis_meta.get("max")
+            if vmin is not None and vmax is not None:
+                is_inverted_meta = axis_meta.get("inverted", False)
+                if axis.direction == "x":
+                    pixels = [axis.plot_start, axis.plot_end]
+                    values = [vmin, vmax]
+                    if is_inverted_meta:
+                        values = values[::-1]
+                else:
+                    if is_inverted_meta:
+                        pixels = [axis.plot_start, axis.plot_end]
+                    else:
+                        pixels = [axis.plot_end, axis.plot_start]
+                    values = [vmin, vmax]
+                valid = list(zip(pixels, values))
+            elif axis_meta.get("type") == "log":
                 # Generate synthetic labels for log axis
                 vmin, vmax = axis_meta.get("min", 1), axis_meta.get("max", 10)
                 n_ticks = len(axis.ticks)
@@ -47,7 +66,7 @@ def calibrate_axis(axis: Axis, labeled_ticks: List[Tuple[int, Optional[float]]],
                         values = values[::-1]
                     pixels = [t[0] for t in axis.ticks]
                     valid = list(zip(pixels, values))
-            elif axis_meta:
+            else:
                 vmin, vmax = axis_meta.get("min", 0), axis_meta.get("max", 1)
                 n_ticks = len(axis.ticks)
                 if n_ticks >= 2:
@@ -88,7 +107,15 @@ def calibrate_axis(axis: Axis, labeled_ticks: List[Tuple[int, Optional[float]]],
     else:
         pixels_fit = pixels
 
-    axis_type, (a, b), residual = classify_axis(pixels_fit, values)
+    preferred_axis_type = axis_meta.get("type") if axis_meta else None
+    if preferred_axis_type == "log":
+        axis_type = "log"
+        a, b, residual = fit_log(pixels_fit, values)
+    elif preferred_axis_type == "linear":
+        axis_type = "linear"
+        a, b, residual = fit_linear(pixels_fit, values)
+    else:
+        axis_type, (a, b), residual = classify_axis(pixels_fit, values)
 
     if residual > 1e6 or a is None:
         # Fallback to linear

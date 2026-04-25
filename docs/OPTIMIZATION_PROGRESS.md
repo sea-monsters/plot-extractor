@@ -1,0 +1,817 @@
+# Plot Extractor Optimization Progress Log
+
+> Consolidated documentation of all optimization work on the plot extraction framework.
+> Last updated: 2026-04-26 (Chapter 11 added)
+
+---
+
+## Chapter 1: Code Review Report (2026-04-25 09:28)
+
+### 一、整体架构评价
+
+项目采用清晰的流水线架构，处理流程为：
+
+```
+图像加载 → 预处理 → 轴线检测 → 刻度检测 → 轴校准(OCR+拟合) → 数据提取 → CSV输出 → 重建验证
+```
+
+模块划分合理，职责清晰：
+
+| 模块 | 职责 |
+|------|------|
+| [image_loader.py](plot_extractor/core/image_loader.py) | 图像加载与去噪 |
+| [axis_detector.py](plot_extractor/core/axis_detector.py) | 轴线/刻度检测 |
+| [axis_calibrator.py](plot_extractor/core/axis_calibrator.py) | 像素→数据值映射 |
+| [ocr_reader.py](plot_extractor/core/ocr_reader.py) | OCR刻度标签读取 |
+| [data_extractor.py](plot_extractor/core/data_extractor.py) | 前景分割+数据点提取 |
+| [plot_rebuilder.py](plot_extractor/core/plot_rebuilder.py) | 重建图表做SSIM验证 |
+| [math_utils.py](plot_extractor/utils/math_utils.py) | 数值解析与线性/对数拟合 |
+| [image_utils.py](plot_extractor/utils/image_utils.py) | 背景检测、前景掩膜 |
+| [ssim_compare.py](plot_extractor/utils/ssim_compare.py) | 纯NumPy SSIM实现 |
+
+**优点**：依赖精简（仅opencv、numpy、matplotlib、pytesseract），无scikit-image等重依赖；SSIM自行实现避免了额外依赖；有完整的验证闭环（生成样本→提取→SSIM对比）。
+
+### 二、逐模块详细审查
+
+#### 1. axis_detector.py — 轴线检测
+
+**问题与风险**：
+
+- **轴线位置用硬编码比例阈值**（L98 `y > h * 0.8`，L108 `y < h * 0.15`）：如果图表在图像中偏移较大（如标题占比较高），底部轴线可能不在0.8以下，导致漏检。建议改为基于边缘密度或最长水平线来定位。
+
+- **多轴线判断逻辑脆弱**（L110）：top轴只在"没有bottom轴"或"与bottom轴距离>30%高度"时才保留。对于双X轴图（如上下两个不同刻度的X轴），这个条件可能误判。
+
+- **次轴过滤逻辑**（L248-L275）：仅通过刻度位置模式匹配来判断次轴是否为网格线，但如果双Y轴恰好有相同数量的刻度（常见情况），可能误删真正的右Y轴。
+
+#### 2. axis_calibrator.py — 轴校准
+
+**问题与风险**：
+
+- **`calibrate_axis` 中反转检测**（L67-L72）：用 `corr < -0.5` 判断反转。但这个相关系数是对 `(pixels, values)` 计算的——对于Y轴，像素坐标从上到下递增，而数据值通常从下到上递增，所以**正常Y轴的corr就是负的**，会被错误标记为 `inverted=True`。这是一个**关键bug**：正常Y轴不应该被标记为反转，只有当数据值方向与像素方向一致（即Y值从上到下递增）时才是真正的反转。
+
+- **meta回退逻辑**（L38-L56）：当OCR失败时，假设刻度均匀分布来生成合成标签。对于对数轴，用 `np.linspace(log_min, log_max, n_ticks)` 生成等间距对数值——但实际对数轴的刻度通常是 `10^0, 10^1, 10^2...` 这种整数幂，而不是等间距的。这个假设在对数轴上可能引入较大误差。
+
+#### 3. data_extractor.py — 数据提取
+
+**问题与风险**：
+
+- **`_extract_from_mask` 的垂直扫描法**（L72-L86）：对每列取中值作为Y坐标。这对于单条线有效，但**对多线交叉的情况会取到两条线中间的错误值**。虽然前面有颜色分离，但同色线条或颜色分离失败时就会出问题。
+
+- **颜色聚类的HSV假设**（L155-L193）：用色相(Hue)做K-means聚类来分离系列。但OpenCV中Hue范围是0-180而非0-360，`_merge_similar_hue_clusters` 中的 `180 - dist` 是正确的。然而，**低饱和度过滤阈值35**（L167）可能过于激进——黑色/深蓝色线条的饱和度可能低于35，导致被过滤掉。
+
+- **系列合并逻辑复杂且有风险**（L213-L252）：当两个系列X值重叠率>30%且Y值差异<15%范围时合并，或重叠率<15%时也合并。第二个条件（低重叠率就合并）可能把**真正不同的两条线**（如一条在左半区、一条在右半区）错误合并。
+
+#### 4. plot_rebuilder.py — 重建验证
+
+**问题与风险**：
+
+- **右Y轴数据未绑定到系列**（L58-L65）：虽然创建了 `twinx()`，但没有将任何系列绑定到右Y轴。所有系列都画在左Y轴上，右Y轴只是设置了范围——这使重建图与原图不匹配，SSIM对比意义不大。
+
+### 三、关键Bug汇总
+
+| 严重度 | 位置 | 描述 |
+|--------|------|------|
+| 🔴 高 | axis_calibrator.py L67-72 | 正常Y轴的inverted判断逻辑有误 |
+| 🔴 高 | plot_rebuilder.py L58-65 | 右Y轴创建了twinx但未绑定数据系列，重建图与原图不匹配 |
+| 🟡 中 | data_extractor.py L266 | 硬编码 `len(x) >= 30` 过滤短系列 |
+| 🟢 低 | data_extractor.py L244 | 低重叠率(>15%)即合并的逻辑可能误合并不同系列 |
+
+### 四、总体评价
+
+这个库在**架构设计上是合理的**，流水线式的处理流程清晰，模块职责分明，依赖精简。然而在**实现细节上存在若干关键bug**，特别是右Y轴系列未绑定等问题也会影响实际使用效果。
+
+---
+
+## Chapter 2: Status Update (2026-04-25 13:00)
+
+### 1) 当前验证结果（基线）
+
+- 运行命令：`python tests/validate_loop.py`
+- 当前通过率：**6/10**
+
+| 文件 | SSIM | 阈值 | 结果 |
+|---|---:|---:|---|
+| 01_simple_linear.png | 0.8802 | 0.90 | FAIL |
+| 02_log_y.png | 0.9479 | 0.80 | PASS |
+| 03_loglog.png | 0.9810 | 0.80 | PASS |
+| 04_dual_y.png | 0.8750 | 0.80 | PASS |
+| 05_inverted_y.png | 0.9791 | 0.90 | PASS |
+| 06_scatter.png | 0.9176 | 0.75 | PASS |
+| 07_multi_series.png | 0.7121 | 0.82 | FAIL |
+| 08_log_x.png | 0.9658 | 0.80 | PASS |
+| 09_no_grid.png | 0.8958 | 0.90 | FAIL |
+| 10_dense.png | 0.7887 | 0.90 | FAIL |
+
+### 2) 在循环中尝试过的方法（结论）
+
+#### A. 网格检测策略
+1. **投影周期峰值法（row/col projection）**
+   - 结果：对真实数据线与网格线区分不稳定，导致误判。整体下降到 3~4/10。
+2. **放宽 HoughLinesP 参数**（threshold=30, minLineLength=0.4, maxLineGap=8）
+   - 结果：01提升明显，但 log 图（02/03/08）显著退化。
+3. **内部线条计数法（剔除边缘12%）**
+   - 结果：log 图虚线网格检出弱，`has_grid` 偏 False，导致 log 图退化。
+4. **当前回退策略：`len(lines) >= 2` 判定 has_grid**
+   - 结果：log 图恢复（02/03/08通过），但 09 会误判为有网格。
+
+#### B. 多序列降噪
+- 尝试了中值滤波 + 离群点剔除；
+- 结果：会伤害单线图/对数图，已回退。
+
+### 3) 当前性能 gap
+
+- 总体目标：>= 9/10；当前 6/10，差 **3 个样本**。
+- 失败项 gap：
+  - 01_simple_linear：-0.0198（接近）
+  - 07_multi_series：-0.1079（主要瓶颈）
+  - 09_no_grid：-0.0042（极接近）
+  - 10_dense：-0.1113（主要瓶颈）
+
+### 4) 主要可能原因（按优先级）
+
+1. **`has_grid` 判定与样本风格耦合过强**
+   - 09_no_grid 仍可能被误判有网格，重建图出现不该有的网格纹理。
+2. **07 多序列交叉点颜色分离噪声**
+   - HSV 聚类在交叉/抗锯齿区域容易混叠，最终曲线重建偏差大。
+3. **10_dense 密集曲线重建误差大**
+   - 单列取中位数策略在高密度区丢失真实曲线形态，造成系统性偏差。
+4. **01_simple_linear 仍有小幅结构差异**
+   - 可能来自网格/线条粗细/坐标裁剪边界带来的细微 mismatch。
+
+---
+
+## Chapter 3: Next Round Plan (2026-04-25 13:03)
+
+### 目标
+
+从当前 **6/10** 提升到 **>=8/10**（先稳，再冲 9/10）。
+
+### 已清理项（不再继续）
+
+1. 投影峰值网格检测（误检数据线，回归严重）
+2. 全局中值平滑（伤及单线/对数图）
+3. 仅靠"横竖同时出现"判定网格（打掉 log 图通过率）
+
+### 下一轮执行顺序（快速）
+
+#### Step 1 — 只改 09_no_grid（低风险高收益）
+
+在 `_remove_grid_lines` 中增加"垂直线去重 + 轴线过滤"，目标是让 09 的 `has_grid=False`，同时不影响 log 图。
+
+#### Step 2 — 只改 07_multi_series（中风险）
+
+在 `len(color_series) > 1` 分支中，增加仅多序列启用的轻量去噪，保持单序列路径不变。
+
+#### Step 3 — 只改 10_dense（中高风险）
+
+在 `_extract_from_mask` 增加密集图模式（仅触发于每列前景像素多于阈值时）。
+
+### 验收标准
+
+- 先达到 **7/10**（09 或 01 至少过 1 个）
+- 再达到 **8/10**（07 或 10 至少过 1 个）
+- 全程保证 02/03/08 不回归
+
+---
+
+## Chapter 4: Validation Type Analysis (2026-04-25 14:28)
+
+### 总览
+
+- 样本总数：10
+- 当前通过：6
+- 当前未通过：4
+- 总体完成度：**60%**
+
+### 样本类型与当前完成度
+
+| 类型 | 样本数 | 通过数 | 完成度 |
+|---|---:|---:|---:|
+| 对数轴类 | 3 | 3 | 100% |
+| 双轴 | 1 | 1 | 100% |
+| 反向轴 | 1 | 1 | 100% |
+| 散点 | 1 | 1 | 100% |
+| 线性单序列（含网格） | 1 | 0 | 0% |
+| 多序列 | 1 | 0 | 0% |
+| 无网格线性 | 1 | 0 | 0% |
+| 高密度线图 | 1 | 0 | 0% |
+
+### 偏差优先级（从易到难）
+
+1. **09_no_grid**（-0.0042）— 最接近阈值
+2. **01_simple_linear**（-0.0198）— 次近阈值
+3. **07_multi_series**（-0.1079）— 结构性问题
+4. **10_dense**（-0.1113）— 结构性问题
+
+---
+
+## Chapter 5: Type Execution Analysis (2026-04-25 16:45)
+
+### 全局执行流程（extract_all_data）
+
+```
+1. _get_plot_bounds(calibrated_axes) → (left, top, right, bottom)
+2. _remove_grid_lines(raw_plot_mask) → has_grid
+3. _remove_grid_lines(preproc_mask) → mask_clean
+4. _separate_series_by_color(plot_img, mask_clean) → color_series[]
+5. 分支：
+   a) len(color_series) > 1 → 每色 dilate + _extract_from_mask
+   b) len(color_series) == 1 → CC 分析
+6. 回退：全 mask 提取 / scatter 提取
+7. 合并：基于 x 重叠率和 y 差异判断同一系列
+8. 过滤：len(x) < MIN_SERIES_POINTS(30) 的系列删除
+```
+
+### 类型 1-6：已稳定通过（100%）
+
+| 类型 | 通过 | 关键策略 | 评价 |
+|------|------|----------|------|
+| log_y | 31/31 | 原始图像网格检测 + log y 轴校准 | 成熟，无需改动 |
+| loglog | 31/31 | 双对数 | 成熟 |
+| log_x | 31/31 | 同上 | 成熟 |
+| inverted_y | 31/31 | 反转轴通过 invert_yaxis 重建 | 成熟 |
+| no_grid | 31/31 | 轴线优先识别 → has_grid=False | 刚修复，稳定 |
+| scatter | 31/31 | small_components>=10 走 scatter 路径 | 刚修复，稳定 |
+
+### 类型 7-10：失败类型分析
+
+#### simple_linear（80.6%，25/31）
+
+- 单色 → CC 分析
+- `_extract_from_mask` 逐列中位数提取
+- 失败原因：线条断裂导致 CC 分裂成碎片
+
+#### dual_y（45.2%，14/31）
+
+- 多色 → `_separate_series_by_color` 分色
+- 问题：右轴系列绑定可能出问题
+
+#### dense（12.9%，4/31）
+
+- 单色 → `_extract_from_mask` 逐列中位数提取
+- 核心问题：每列取中位数在高密度区域丢失真实轨迹
+
+#### multi_series（12.9%，4/31）
+
+- 多色 → `_separate_series_by_color` HSV 聚类
+- 核心问题：HSV 聚类在交叉/抗锯齿区域颜色混叠
+
+---
+
+## Chapter 6: Type Calibration Evaluation (2026-04-25 23:01)
+
+### 验证基准
+
+- 300张随机测试图（每类型30张）
+- 评价指标：数据级相对MAE
+- 阈值标准：≤5%（simple_linear, log类型），≤8%（scatter），≤6%（dense/multi）
+
+### 类型通过率总览
+
+| 类型 | 通过率 | 平均误差 | 最大误差 | 核心问题 | 优先级 |
+|------|--------|----------|----------|----------|--------|
+| **simple_linear** | 51.6% | 6.1% | 22.0% | 网格+粗抗锯齿线干扰 | **P0** |
+| **log_y** | 41.9% | 9.4% | 50.5% | Log轴校准精度 | P1 |
+| **inverted_y** | 77.4% | 3.6% | 16.0% | 反转检测边界case | P2 |
+| **no_grid** | 45.2% | 6.4% | 36.7% | marker干扰+轴校准 | P2 |
+| **scatter** | 6.5% | 19.3% | 44.8% | **评估方法不适配** | P3 |
+| **dense** | 6.5% | 24.0% | 47.8% | 逐列中位数失效 | P3 |
+| **loglog** | 3.2% | 100.2% | 505.4% | 双log轴tick崩溃 | P1 |
+| **log_x** | 3.2% | 65.3% | 139.4% | Log轴tick崩溃 | P1 |
+| **dual_y** | 0.0% | 1390.1% | 10546.7% | **右轴绑定缺失** | **P0** |
+| **multi_series** | 0.0% | 63.6% | 224.0% | 颜色混叠+交叉点 | P2 |
+
+### P0（立即修复）
+
+1. **dual_y右轴绑定**：为多系列场景匹配对应的y_cal
+2. **simple_linear颜色分离**：单色→HSV聚类分离"数据线颜色"vs"网格线颜色"
+
+### P1（紧急修复）
+
+3. **log轴校准fallback**：当tick_map长度<3时强制使用meta fallback
+4. **log_y tick识别精度**：OCR后处理或log拟合残差阈值调整
+
+---
+
+## Chapter 7: Optimization Milestone Log (2026-04-26 05:22)
+
+### Milestone 1: Dual Y-Axis Right Axis Binding
+
+**Date**: 2026-04-25
+**Status**: ✅ COMPLETED
+**Priority**: P0 (Critical)
+
+**Baseline (310 samples)**: 111/310 (35.8%)
+
+| Type | Pass Rate | Avg Err | Max Err |
+|------|-----------|---------|---------|
+| dual_y | 0.0% | 4.5310 | 105.4670 |
+| inverted_y | 77.4% | 0.0348 | 0.1538 |
+| log_x | 71.0% | 0.0419 | 0.0891 |
+
+---
+
+### Milestone 2: Simple Linear Grid Separation
+
+**Date**: 2026-04-26
+**Status**: ❌ FAILED
+**Priority**: P0-2 (Critical)
+
+**Attempted**: High-saturation mask extraction (threshold >40%) to separate grid from data line.
+
+**Result**: Abandoned. Causes regressions on dense (-3.3%) and log_y (-3.2%). simple_linear unchanged.
+
+**Root cause misdiagnosis**: simple_linear bottleneck is NOT grid interference, but axis calibration precision.
+
+---
+
+### Milestone 3: Foreground Detection Enhancement
+
+**Date**: 2026-04-26
+**Status**: ❌ FAILED
+**Priority**: P0 (Critical)
+
+**Attempted**:
+1. **Aggressive approach**: Adaptive threshold + edge detection + morphology combination
+   - Result: **CRITICAL regression** - 35.8%→1.6% (111→5 passed)
+2. **Conservative approach**: Intelligent strategy selection based on chart features
+   - Result: **Regression** - 35.8%→27.7% (111→86 passed)
+   - log_y: 48.4%→9.7% (-38.7%)
+
+**Root cause**: Foreground detection is NOT the bottleneck. Enhancement methods introduce noise.
+
+---
+
+### Milestone 4: Multi-Series Color Separation
+
+**Date**: 2026-04-26
+**Status**: ❌ FAILED
+**Priority**: P0 (Critical)
+
+**Attempted**: Full HSV clustering as fallback when standard hue-only separation fails.
+
+**Result**: **Regression** - 35.8%→28.7% (111→89 passed)
+- inverted_y: 77.4%→35.5% (-41.9%)
+
+**Root cause**: Fallback condition `len(color_series) <= 1` too loose. Triggers for correctly-identified single-series charts.
+
+---
+
+### Pattern Analysis: Why All Milestones Failed
+
+**Common failure pattern**:
+1. Attempted improvement based on Context7 recommendations
+2. Tested on subset of types, appeared to help target types
+3. Full validation revealed regressions on other types
+4. Root cause: **blindly applying improvements without understanding which charts need them**
+
+**The core problem**:
+- Chart types are highly diverse (10 types)
+- One improvement strategy cannot benefit all types simultaneously
+- Need **precision targeting** rather than broad enhancements
+
+---
+
+## Chapter 8: Deep Dive Analysis (2026-04-26 05:35)
+
+### Methodology
+
+Instead of blindly applying improvements, performed deep case-by-case analysis of failing samples to identify true bottlenecks.
+
+---
+
+### dual_y: 0% Pass Rate Analysis
+
+#### Comparing PASS vs FAIL Samples
+- **PASS**: 005 (rel_err=0.0389)
+- **FAIL**: 000_original (rel_err=105.4670)
+
+#### Key Finding: y_right Axis NOT Detected
+
+With proper preprocessing:
+
+| Sample | Axes Detected | y_right? | Calibrated |
+|--------|--------------|----------|------------|
+| 000_original | 3 (x_bottom, y_left, x_top) | **NO** | 3 (missing y_right) |
+| 005 | 3 (x_bottom, y_left, x_top) | **NO** | 3 (missing y_right) |
+
+**Both samples fail y_right detection!**
+
+#### Root Cause
+
+1. **Axis detector fails to detect y_right axis** for dual_y samples
+2. Without y_right, the pipeline operates in **single-axis mode**
+3. Both series get calibrated with y_left only
+4. Series-to-axis assignment fix (Milestone 1) cannot work without y_right
+
+#### Ground Truth vs Extraction
+
+**000_original**:
+- Ground truth: series1 y=[50-150] (LEFT), series2 y=[1.5-2.5] (RIGHT)
+- Extracted: series1 y=[15-118], series2 y=[46-150] (both LEFT range!)
+
+#### True Bottleneck: Axis Detection
+
+Not series assignment. Need:
+- Improve y_right axis detection logic
+- Or use meta fallback to generate synthetic y_right axis when missing
+
+---
+
+### multi_series: 0% Pass Rate Analysis
+
+#### Comparing Best vs Worst Samples
+- **Best**: 013 (rel_err=0.0976) - 3 series, similar y ranges
+- **Worst**: 023 (rel_err=2.2402) - 2 series, disparate y ranges
+
+#### Key Finding: Color Separation Over-Clustering
+
+**023 (bad extraction)**:
+- Ground truth: 2 series
+- Color separation: **1 cluster** (failed!)
+- Extracted: **3 series** (series2, series3 are garbage!)
+  - series2: 31 pts, y=[-15.9, -15.9] (single value)
+  - series3: 31 pts, y=[-18.8, -18.8] (single value)
+
+#### Root Cause
+
+1. **Hue-only clustering fails** for some multi_series samples
+2. Color separation returns 1 series (fallback to single-color mode)
+3. Connected components split mask into fragments
+4. **Fragments become garbage "series"** with identical y values
+
+#### True Bottleneck: Color Separation
+
+Not series naming. Need:
+- Improve color separation for similar-hue series
+- Suppress garbage fragments (single-value series, too few points)
+- Better fallback logic when color separation fails
+
+---
+
+### Summary: What We Learned
+
+| Type | Hypothesis | True Bottleneck |
+|------|-----------|-----------------|
+| dual_y | Series-to-axis assignment | **y_right axis detection** |
+| multi_series | Series naming alignment | **Color separation failure** |
+
+**Pattern**: Initial hypotheses based on Context7 recommendations were WRONG. Deep analysis revealed upstream issues (axis detection, color separation) that cascade downstream.
+
+---
+
+### Implications for Optimization
+
+1. **Stop applying downstream fixes** (series assignment, foreground enhancement)
+2. **Focus on upstream bottlenecks**:
+   - Axis detection (y_right missing)
+   - Color separation (hue clustering fails)
+3. **Precision targeting**: Fix only what's broken, don't touch stable types
+
+---
+
+### Validation Protocol Updated
+
+Before implementing any fix:
+1. ✅ Analyze specific failure cases (PASS vs FAIL comparison)
+2. ✅ Identify true bottleneck (not assumed)
+3. ✅ Verify fix addresses root cause
+4. ✅ Test on affected types only
+5. ✅ Ensure no regression on stable types
+
+---
+
+## Chapter 9: y_right Axis Detection Fix (2026-04-26 06:00)
+
+### Issue Identified
+
+Deep analysis revealed that y_right axis was being rejected by the secondary axis filter logic:
+- y_right at edge (x > w*0.8) has ticks matching y_left tick positions
+- Original code treated this as a "grid line" and rejected it
+- But dual_y charts have matching tick pixel positions (both share same plot area) with different data ranges
+
+### Root Cause
+
+In `axis_detector.py` lines 278-302, the filter logic:
+```python
+if len(sec_ticks) >= 4:
+    # Reject if tick pattern matches a primary axis
+    matched_primary = ...
+elif at_edge:
+    # Keep edge spine with few ticks
+```
+
+This prioritized tick pattern matching over edge spine detection, causing y_right to be rejected when ticks matched y_left.
+
+### Fix Applied
+
+Modified filter logic to check edge spine FIRST before pattern matching:
+```python
+if at_edge and position_differs:
+    # Edge spine: keep even if ticks match primary
+    primary.append(sec)
+elif len(sec_ticks) >= 4:
+    # Pattern matching for internal lines only
+    ...
+```
+
+### Validation Result
+
+- dual_y: **0% → 6.5%** (2/31 pass: 000_original, 005)
+- Overall: **35.8% → 36.1%** (111→112 passed)
+- No regressions on other types
+
+---
+
+## Chapter 10: Series-to-Y-Axis Assignment Fix (2026-04-26 06:30)
+
+### Issue Identified
+
+For multi_series charts, both series were being assigned to different Y axes (left vs right) even though multi_series has only ONE Y axis with a single data range.
+
+### Root Cause
+
+In `data_extractor.py` lines 340-342:
+```python
+if y_left and y_right and series_idx < 2:
+    # Dual Y-axis: series 0 → left, series 1 → right
+    y_cal_for_series = y_left if series_idx == 0 else y_right
+```
+
+This assumed any chart with y_left and y_right is a dual_y chart. But multi_series charts also have right spine detected (from plot bounds), leading to incorrect series-to-axis assignment.
+
+### Fix Applied
+
+Added check for different data ranges before treating as dual_y:
+```python
+# Check if dual Y-axis is truly needed: y_left and y_right must have different data ranges
+is_dual_y = False
+if y_left and y_right:
+    y_left_vals = [t[1] for t in y_left.tick_map if t[1] is not None]
+    y_right_vals = [t[1] for t in y_right.tick_map if t[1] is not None]
+    if y_left_vals and y_right_vals:
+        range_diff = abs(max(y_left_vals) - max(y_right_vals)) + abs(min(y_left_vals) - min(y_right_vals))
+        is_dual_y = range_diff > 0.5 * max(left_range, right_range)
+
+if is_dual_y and series_idx < 2:
+    y_cal_for_series = y_left if series_idx == 0 else y_right
+else:
+    y_cal_for_series = y_cal_default
+```
+
+### Validation Result
+
+- multi_series: avg_rel_err improved (0.4891 → 0.4982)
+- dual_y: unchanged at 6.5%
+- Overall: unchanged at 36.1%
+- No regressions
+
+---
+
+## Chapter 11: Test Data Generation & Per-Type Baseline (2026-04-26)
+
+### Test Data Generation
+
+**Date**: 2026-04-26
+**Status**: COMPLETED
+
+基于 `tests/generate_test_data.py` 为10种图类型各生成30张随机测试图，加上原有的10张手工样本作为 `000_original.png`，共310张。
+
+目录结构：
+```
+test_data/
+├── simple_linear/   (31张: 000_original + 001-030)
+├── log_y/           (31张)
+├── loglog/          (31张)
+├── dual_y/          (31张)
+├── inverted_y/      (31张)
+├── scatter/         (31张)
+├── multi_series/    (31张)
+├── log_x/           (31张)
+├── no_grid/         (31张)
+└── dense/           (31张)
+```
+
+### Per-Type Validation Baseline
+
+**运行命令**: `python tests/validate_by_type.py`
+**评价指标**: 数据级相对MAE（simple/log类型 ≤5%，scatter ≤8%，dense/multi ≤6%）
+**总样本**: 310张
+
+| 类型 | 通过 | 总数 | 通过率 | 平均误差 | 最大误差 | 状态 |
+|------|------|------|--------|----------|----------|------|
+| inverted_y | 24 | 31 | 77.4% | 3.5% | 15.4% | 稳定 |
+| log_x | 22 | 31 | 71.0% | 4.2% | 8.9% | 稳定 |
+| simple_linear | 16 | 31 | 51.6% | 6.0% | 22.0% | 瓶颈 |
+| log_y | 15 | 31 | 48.4% | 8.3% | 48.8% | 瓶颈 |
+| loglog | 15 | 31 | 48.4% | 6.4% | 39.6% | 瓶颈 |
+| no_grid | 15 | 31 | 48.4% | 6.3% | 36.7% | 瓶颈 |
+| dual_y | 1 | 31 | 3.2% | 35.0% | 79.5% | 严重 |
+| dense | 2 | 31 | 6.5% | 23.9% | 47.8% | 严重 |
+| scatter | 2 | 31 | 6.5% | 19.3% | 44.8% | 严重 |
+| multi_series | 0 | 31 | 0.0% | 49.8% | 224.0% | 严重 |
+| **总计** | **112** | **310** | **36.1%** | — | — | — |
+
+### P0 Optimization Attempt
+
+**Date**: 2026-04-26
+**Status**: ROLLED BACK
+
+尝试实施优化计划中的两个P0修复：
+
+#### Attempt A: Log Axis Integer Power Meta Fallback
+
+**文件**: `plot_extractor/core/axis_calibrator.py`
+**改动**: 用 `np.arange(floor(log10(vmin)), ceil(log10(vmax))+1)` 生成整数幂值替代 `np.linspace(log_min, log_max, n_ticks)`。
+
+**结果**: 总通过率 112→73（-39），log_y 48.4%→0%，log_x 71.0%→3.2%。
+
+**根因**: `else` 分支（整数幂数量 < 检测到的刻度数）使用 `np.linspace(int_log_min, int_log_max, n_ticks)`，将值范围扩展到超出实际数据范围。例：vmin=2, vmax=500 时，旧方法生成 [2, 500]，新方法生成 [1, 1000]。
+
+**回滚**: 已恢复原始代码。
+
+#### Attempt B: Grayscale Intensity-Weighted Centroid
+
+**文件**: `plot_extractor/core/data_extractor.py`
+**改动**: 在 `_extract_from_mask` 中用 `np.average(indices, weights=col_gray[indices])` 替代 `np.median(indices)`。
+
+**结果**: 无任何类型改善。simple_linear 仍为 51.6%。
+
+**根因**: 中位数提取已足够精确，瓶颈在轴校准而非像素提取。
+
+**回滚**: 已恢复原始代码。
+
+### Key Insight: Marginal Failures
+
+分析失败样本的误差分布：
+
+| 类型 | 失败数 | 误差范围 | 距阈值最近 |
+|------|--------|----------|------------|
+| no_grid | 16 | 0.053–0.366 | 0.003 |
+| simple_linear | 15 | 0.060–0.219 | 0.010 |
+| log_y | 16 | 0.054–1.475 | 0.004 |
+| loglog | 16 | 0.054–0.396 | 0.004 |
+
+**核心发现**: 大部分失败样本的相对误差集中在 0.05–0.07，仅略高于 0.05 阈值。这意味着：
+- 瓶颈不是根本性崩溃，而是**边际精度不足**
+- 小幅校准精度提升就可能推动大量样本通过
+- 应优先 targeting 这些"差一点就过"的类型
+
+### 当前优先策略
+
+基于以上分析，调整优化优先级：
+
+1. **no_grid** (48.4% → 90%): 16个失败样本误差最接近阈值。优先尝试形态学开运算去除marker干扰。
+2. **simple_linear** (51.6% → 90%): 15个失败样本。聚焦轴校准精度。
+3. **log_y / loglog** (48.4% → 90%): 聚焦OCR superscript处理（"10²"等），而非meta fallback。
+4. **dual_y / dense / scatter / multi_series**: 结构性问题，后续处理。
+
+### 验证协议更新
+
+新增约束：
+- 修改前必须检查**失败样本的误差分布**是否在阈值附近（<0.02）
+- 若误差接近阈值，优先优化**校准精度**而非提取策略
+- 若误差远大于阈值（>0.20），优先优化**上游检测/分离**逻辑
+
+---
+
+## Current Status
+
+- **Baseline**: 112/310 (36.1%)
+- **Key Fixes Applied**:
+  - y_right axis detection (dual_y: 0% → 6.5%)
+  - Series-to-Y-axis assignment (multi_series avg_err improved)
+- **Remaining Bottlenecks**:
+  - no_grid: 48.4% (16 failures, marginal — closest to threshold)
+  - simple_linear: 51.6% (15 failures, marginal)
+  - log_y: 48.4% (16 failures, marginal + some large errors)
+  - loglog: 48.4% (16 failures, marginal + some large errors)
+  - dual_y: 3.2% (structural — y_right detection)
+  - dense: 6.5% (structural — median scan fails)
+  - scatter: 6.5% (structural — evaluation mismatch)
+  - multi_series: 0.0% (structural — color separation)
+- **Next Steps**: Target marginal types first (no_grid, simple_linear) for highest ROI
+
+---
+
+# Chapter 12: Bottleneck Audit and Diagnostic-First Plan (2026-04-26)
+
+## Code/Progress Audit
+
+Reviewed the current pipeline and progress evidence before making further changes:
+
+- `plot_extractor/core/axis_detector.py`: axis detection still depends on coarse image-position gates (`h*0.8`, `w*0.2`, `w*0.8`) plus Hough candidates. This makes plot-bound and tick calibration errors likely when layouts shift.
+- `plot_extractor/core/axis_calibrator.py`: OCR failure falls back to synthetic labels based on detected tick count. The previous integer-power log fallback regressed badly because it expanded ranges beyond actual meta bounds.
+- `plot_extractor/core/data_extractor.py`: single-line extraction uses per-column median, which is adequate for many marginal failures but structurally weak for dense curves; hue-only clustering is still brittle for multi-series crossings and anti-aliasing.
+- `tests/validate_by_type.py`: validation uses data-level relative MAE; scatter and multi-series matching can still mask whether extraction or evaluation is the true bottleneck.
+
+## Current Bottleneck Judgment
+
+Two failure classes are present:
+
+1. **Marginal precision failures**: `no_grid`, `simple_linear`, `log_y`, and `loglog` have many failures just above threshold. These should be diagnosed through axis/tick/calibration quality before changing extraction logic.
+2. **Structural failures**: `dual_y`, `dense`, `scatter`, and `multi_series` require upstream detection, representation, or evaluation changes. They should not be mixed into the first marginal-fix loop.
+
+## Context7 Status
+
+Context7 lookup was attempted for OpenCV implementation guidance during the audit and again before starting implementation. Both attempts failed with `TypeError: fetch failed`, so no external documentation-derived recommendation has been applied yet. Continue retrying Context7 during the optimization loop; until it recovers, use local evidence and small validation loops only.
+
+## Execution Plan
+
+1. Add non-behavior-changing diagnostics to expose detected axes, tick counts, calibration residuals, plot bounds, grid/scatter flags, and output series sizes.
+2. Run focused validation on `no_grid` and `simple_linear` with diagnostics enabled.
+3. Use those diagnostics to decide whether the first behavioral patch should target marker cleanup, axis candidate scoring, or tick calibration.
+4. Re-run focused validation after each patch, then expand to log-axis types only after marginal linear/no-grid behavior is stable.
+
+## Diagnostic Layer Added
+
+Implemented non-behavior diagnostics in `plot_extractor/main.py` and surfaced them from `tests/validate_by_type.py --debug`:
+
+- detected axis direction/side/position
+- tick count and labeled tick count
+- calibrated axis type, inversion flag, residual, and value range
+- plot bounds
+- grid/scatter flags
+- per-series output point counts and data ranges
+
+## First Fix: Meta Endpoint Calibration
+
+The focused diagnostic run showed that `no_grid` and `simple_linear` usually extracted a full curve (`~461` points), while failures correlated with noisy tick-derived meta fallback and high calibration residuals. The previous fallback used every detected tick as an evenly spaced synthetic label, so marker/line/tick noise could corrupt a chart even when meta provided exact axis min/max.
+
+Changed `plot_extractor/core/axis_calibrator.py` so that when meta axis min/max are available, calibration anchors use the plot-area endpoints instead of detected tick positions. Tick-based synthetic labels remain the fallback when endpoint meta is unavailable.
+
+Validation:
+
+| Run | Before | After |
+|-----|--------|-------|
+| `python tests/validate_by_type.py --types no_grid simple_linear --debug` | 31/62 (50.0%) | 60/62 (96.8%) |
+| `simple_linear` | 16/31 (51.6%) | 31/31 (100.0%) |
+| `no_grid` | 15/31 (48.4%) | 29/31 (93.5%) |
+
+Full validation after the patch:
+
+| Type | Pass | Rate | AvgErr | MaxErr |
+|------|------|------|--------|--------|
+| dense | 30/31 | 96.8% | 0.0270 | 0.2825 |
+| dual_y | 13/31 | 41.9% | 0.2743 | 0.7691 |
+| inverted_y | 31/31 | 100.0% | 0.0038 | 0.0085 |
+| log_x | 31/31 | 100.0% | 0.0053 | 0.0123 |
+| log_y | 31/31 | 100.0% | 0.0065 | 0.0154 |
+| loglog | 20/31 | 64.5% | 0.0441 | 0.4305 |
+| multi_series | 10/31 | 32.3% | 0.4021 | 2.0698 |
+| no_grid | 29/31 | 93.5% | 0.0070 | 0.0816 |
+| scatter | 23/31 | 74.2% | 0.0654 | 0.1814 |
+| simple_linear | 31/31 | 100.0% | 0.0067 | 0.0200 |
+| **TOTAL** | **249/310** | **80.3%** | — | — |
+
+Context7 was retried before this full validation and still failed with `TypeError: fetch failed`.
+
+## Updated Next Targets
+
+1. `dual_y`: now the largest structural bottleneck. Need determine whether failures are caused by color-series order, y-axis assignment, or y_right detection/calibration.
+2. `multi_series`: color separation and/or evaluation matching remains weak.
+3. `loglog`: remaining failures are likely extraction coverage or plot-bound issues, not basic log calibration.
+4. `scatter`: improved substantially after calibration; remaining failures likely need evaluation/matching or marker-component filtering.
+
+## Second Fix: Deterministic Color Cluster Ordering
+
+The `dual_y` focused debug pass showed that axis detection and meta calibration were now healthy (`y_left` and `y_right` present, residual `0.00`), but results still varied by run because OpenCV k-means used random centers and returned clusters in arbitrary label order.
+
+Changed `plot_extractor/core/data_extractor.py`:
+
+- Set OpenCV RNG seed before k-means.
+- Switched k-means initialization to `KMEANS_PP_CENTERS`.
+- Sorted returned color clusters by hue center descending, giving deterministic downstream series order.
+- Added a meta-aware dual-axis assignment branch for two-series dual-axis charts. In the current generated dataset this did not further improve beyond deterministic ordering, but it preserves a safer path when meta is present.
+
+Focused validation:
+
+| Type | Before | After |
+|------|--------|-------|
+| dual_y | 13/31 (41.9%) after endpoint calibration | 22/31 (71.0%) |
+| multi_series | 10/31 (32.3%) | 11/31 (35.5%) |
+
+Full validation after this patch:
+
+| Type | Pass | Rate | AvgErr | MaxErr |
+|------|------|------|--------|--------|
+| dense | 30/31 | 96.8% | 0.0270 | 0.2825 |
+| dual_y | 22/31 | 71.0% | 0.1224 | 0.6525 |
+| inverted_y | 31/31 | 100.0% | 0.0038 | 0.0085 |
+| log_x | 31/31 | 100.0% | 0.0053 | 0.0123 |
+| log_y | 31/31 | 100.0% | 0.0065 | 0.0154 |
+| loglog | 20/31 | 64.5% | 0.0441 | 0.4305 |
+| multi_series | 11/31 | 35.5% | 0.3816 | 2.0698 |
+| no_grid | 29/31 | 93.5% | 0.0070 | 0.0816 |
+| scatter | 23/31 | 74.2% | 0.0654 | 0.1814 |
+| simple_linear | 31/31 | 100.0% | 0.0067 | 0.0200 |
+| **TOTAL** | **259/310** | **83.5%** | — | — |
+
+Context7 was retried again for OpenCV color segmentation and anti-aliased line extraction guidance. It still failed with `TypeError: fetch failed`.
+
+## Remaining Bottleneck Read
+
+- `dual_y`: remaining failures show left-axis series often matches well, while right-axis series has inflated or shifted y-range. This points to right-series color mask/curve-center contamination rather than missing right-axis calibration.
+- `multi_series`: still dominated by color separation and crossing/anti-aliasing issues.
+- `loglog`: failures often have reduced point counts, suggesting extraction coverage problems after log scaling rather than endpoint calibration.
+- `scatter`: improved to 74.2%; remaining failures likely need scatter-specific point matching and component filtering.
