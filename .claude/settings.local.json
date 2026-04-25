@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip install *)",
+      "Bash(.venv/Scripts/python.exe -c ' *)",
+      "Bash(.venv/Scripts/python.exe tests/validate_loop.py)",
+      "Bash(python *)",
+      "Bash(pip list *)"
+    ]
+  }
+}

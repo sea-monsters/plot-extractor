@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+
+# Test data and outputs
+test_data/
+debug/
+debug_tmp/
+debug_type/
+samples/*.csv
+samples/*_rebuilt.png
+
+# Reports and temporary outputs
+report.csv
+report_by_type.csv
+*.csv
+debug_*.png
+
+# Development documentation
+docs/
+*.md
+!README.md
+!CLAUDE.md
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
