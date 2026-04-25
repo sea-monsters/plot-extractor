@@ -293,6 +293,7 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
         return {}
 
     x_cal = next((ca for ca in x_cals if ca.axis.side == "bottom"), x_cals[0])
+    has_log_axis = any(ca.axis_type == "log" for ca in calibrated_axes)
 
     # Detect if there are both left and right Y axes (dual_y scenario)
     y_left = next((ca for ca in y_cals if ca.axis.side == "left"), None)
@@ -413,7 +414,7 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
             if area >= FOREGROUND_MIN_AREA and x_span < w * 0.05:
                 small_components.append(i)
 
-        if len(small_components) >= 10:
+        if len(small_components) >= 10 and not has_log_axis:
             # Scatter-like: extract via connected-component centroids directly
             x_data, y_data = _extract_scatter_from_mask(dilated, shifted_x, shifted_y_default)
             if len(x_data) >= MIN_DATA_POINTS:
@@ -502,7 +503,7 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
 
     # Detect scatter vs line chart — only override single-series results
     is_scatter = False
-    if len(merged) <= 1:
+    if len(merged) <= 1 and not has_log_axis:
         x_scatter, y_scatter = _extract_scatter_from_mask(mask, shifted_x, shifted_y_default)
         if len(x_scatter) >= MIN_DATA_POINTS:
             total_line_pts = sum(len(x) for x, y in merged) if merged else 0

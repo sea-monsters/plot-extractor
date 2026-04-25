@@ -833,3 +833,64 @@ Implementation implication:
 - `multi_series`: still dominated by color separation and crossing/anti-aliasing issues.
 - `loglog`: failures often have reduced point counts, suggesting extraction coverage problems after log scaling rather than endpoint calibration.
 - `scatter`: improved to 74.2%; remaining failures likely need scatter-specific point matching and component filtering.
+
+---
+
+# Chapter 13: Log-Axis Scatter Misclassification Fix (2026-04-26)
+
+## Strategy
+
+After telemetry/memory were removed from sync scope, the next optimization target was `loglog`, because the focused diagnostic output showed a consistent pattern:
+
+- failing `loglog` samples had `scatter=True`
+- output point counts collapsed to `21-163`
+- passing `loglog` samples retained continuous line extraction with `360-461` points
+- axis calibration residuals were already `0.00`, so this was not a calibration problem
+
+The key bottleneck was the single-color fallback treating fragmented log-log curves as scatter points.
+
+## Fix
+
+Changed `plot_extractor/core/data_extractor.py`:
+
+- detect whether any calibrated axis is logarithmic
+- disable scatter-like connected-component centroid extraction when a log axis is present
+- disable the late single-series scatter override when a log axis is present
+
+This keeps true linear scatter charts on the scatter path while protecting log curves from being collapsed into sparse centroids.
+
+## Validation
+
+Focused validation:
+
+| Type | Before | After |
+|------|--------|-------|
+| loglog | 20/31 (64.5%) | 31/31 (100.0%) |
+| log_y | 31/31 | 31/31 |
+| log_x | 31/31 | 31/31 |
+| scatter | 23/31 | 23/31 |
+
+Full validation after the patch:
+
+| Type | Pass | Rate | AvgErr | MaxErr |
+|------|------|------|--------|--------|
+| dense | 30/31 | 96.8% | 0.0270 | 0.2825 |
+| dual_y | 22/31 | 71.0% | 0.1224 | 0.6525 |
+| inverted_y | 31/31 | 100.0% | 0.0038 | 0.0085 |
+| log_x | 31/31 | 100.0% | 0.0053 | 0.0123 |
+| log_y | 31/31 | 100.0% | 0.0065 | 0.0154 |
+| loglog | 31/31 | 100.0% | 0.0050 | 0.0103 |
+| multi_series | 11/31 | 35.5% | 0.3816 | 2.0698 |
+| no_grid | 29/31 | 93.5% | 0.0070 | 0.0816 |
+| scatter | 23/31 | 74.2% | 0.0654 | 0.1814 |
+| simple_linear | 31/31 | 100.0% | 0.0067 | 0.0200 |
+| **TOTAL** | **270/310** | **87.1%** | — | — |
+
+## Next Target
+
+The remaining highest-impact targets are now:
+
+1. `multi_series` color separation/crossing handling.
+2. `dual_y` right-series mask contamination.
+3. `scatter` point extraction/evaluation cleanup.
+4. `dense` one outlier sample with only 5 extracted points.

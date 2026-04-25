@@ -23,6 +23,7 @@ debug_tmp/
 debug_type/
 samples/*.csv
 samples/*_rebuilt.png
+telemetry/
 
 # Reports and temporary outputs
 report.csv
@@ -58,3 +59,6 @@ Thumbs.db
 .agent/
 .claude/
 .codex/
+
+# Memory
+memory/
