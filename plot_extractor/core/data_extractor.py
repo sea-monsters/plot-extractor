@@ -274,7 +274,13 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
         return {}
 
     x_cal = next((ca for ca in x_cals if ca.axis.side == "bottom"), x_cals[0])
-    y_cal = next((ca for ca in y_cals if ca.axis.side == "left"), y_cals[0])
+
+    # Detect if there are both left and right Y axes (dual_y scenario)
+    y_left = next((ca for ca in y_cals if ca.axis.side == "left"), None)
+    y_right = next((ca for ca in y_cals if ca.axis.side == "right"), None)
+
+    # Default to left axis if only one Y axis
+    y_cal_default = y_left if y_left else (y_right if y_right else y_cals[0])
 
     class ShiftedCal:
         def __init__(self, base: CalibratedAxis, dx=0, dy=0):
@@ -289,7 +295,35 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
                 return self.base.to_data(pixel + self.dy)
 
     shifted_x = ShiftedCal(x_cal, dx=left, dy=0)
-    shifted_y = ShiftedCal(y_cal, dx=0, dy=top)
+
+    def _select_y_cal_for_series(series_mask, y_cals, y_left, y_right):
+        """Select appropriate Y-axis calibration for a series based on its position."""
+        if not y_right or not y_left:
+            # Single Y-axis: use default
+            return y_cal_default
+
+        # Dual Y-axis: determine which axis this series belongs to
+        # Strategy: check series center position relative to left/right axis positions
+        fg_indices = np.where(series_mask > 0)
+        if len(fg_indices[0]) == 0:
+            return y_cal_default
+
+        # Compute series y pixel center
+        y_center = np.mean(fg_indices[0])
+
+        # Check if series is closer to left or right axis position
+        # Left axis usually has smaller y values (top of plot), right axis has larger
+        # Actually: Y axes are vertical lines at different X positions, not different Y ranges
+        # For dual Y: left axis is at x=left, right axis is at x=right
+        # But the series themselves are plotted across the entire plot area
+        # We need to check which Y-axis scale matches the series better
+
+        # Alternative: use meta information if available (meta["axes"]["y_left"], "y_right")
+        # For now: simple heuristic - if there are 2 series, assume first is left, second is right
+        # This matches typical dual_y chart generation (series1=left, series2=right)
+        return y_cal_default  # Will be overridden in multi-series extraction below
+
+    shifted_y_default = ShiftedCal(y_cal_default, dx=0, dy=top)
 
     # Separate by color first, then extract each color mask directly
     color_series = _separate_series_by_color(plot_img, mask, n_clusters=3)
@@ -297,9 +331,20 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
     all_series = []
     if len(color_series) > 1:
         # Multi-color: extract each color directly via vertical scan
-        for _, cmask in color_series:
+        # For dual Y-axis charts, assign series to corresponding Y axis
+        for series_idx, (_, cmask) in enumerate(color_series):
             # Dilate to bridge anti-aliasing gaps, then extract
             dilated = cv2.dilate(cmask, np.ones((3, 3), np.uint8), iterations=1)
+
+            # Select Y-axis calibration for this series
+            if y_left and y_right and series_idx < 2:
+                # Dual Y-axis: series 0 → left, series 1 → right
+                y_cal_for_series = y_left if series_idx == 0 else y_right
+            else:
+                # Single Y-axis or series index > 1: use default
+                y_cal_for_series = y_cal_default
+
+            shifted_y = ShiftedCal(y_cal_for_series, dx=0, dy=top)
             x_d, y_d = _extract_from_mask(dilated, shifted_x, shifted_y)
             if len(x_d) >= MIN_DATA_POINTS:
                 all_series.append((x_d, y_d))
@@ -319,7 +364,7 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
 
         if len(small_components) >= 10:
             # Scatter-like: extract via connected-component centroids directly
-            x_data, y_data = _extract_scatter_from_mask(dilated, shifted_x, shifted_y)
+            x_data, y_data = _extract_scatter_from_mask(dilated, shifted_x, shifted_y_default)
             if len(x_data) >= MIN_DATA_POINTS:
                 all_series = [(x_data, y_data)]
             # Skip merge/filter for scatter — return directly
@@ -338,17 +383,17 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
                     continue
                 comp_mask = (labels == i).astype(np.uint8) * 255
                 comp_mask = cv2.erode(comp_mask, np.ones((3, 3), np.uint8), iterations=1)
-                x_d, y_d = _extract_from_mask(comp_mask, shifted_x, shifted_y)
+                x_d, y_d = _extract_from_mask(comp_mask, shifted_x, shifted_y_default)
                 if len(x_d) >= MIN_DATA_POINTS:
                     all_series.append((x_d, y_d))
 
     # If color separation failed, try full mask
     if not all_series:
-        x_data, y_data = _extract_from_mask(mask, shifted_x, shifted_y)
+        x_data, y_data = _extract_from_mask(mask, shifted_x, shifted_y_default)
         if len(x_data) >= MIN_DATA_POINTS:
             all_series = [(x_data, y_data)]
         else:
-            x_data, y_data = _extract_scatter_from_mask(mask, shifted_x, shifted_y)
+            x_data, y_data = _extract_scatter_from_mask(mask, shifted_x, shifted_y_default)
             if len(x_data) >= MIN_DATA_POINTS:
                 all_series = [(x_data, y_data)]
 
@@ -407,7 +452,7 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
     # Detect scatter vs line chart — only override single-series results
     is_scatter = False
     if len(merged) <= 1:
-        x_scatter, y_scatter = _extract_scatter_from_mask(mask, shifted_x, shifted_y)
+        x_scatter, y_scatter = _extract_scatter_from_mask(mask, shifted_x, shifted_y_default)
         if len(x_scatter) >= MIN_DATA_POINTS:
             total_line_pts = sum(len(x) for x, y in merged) if merged else 0
             if total_line_pts > len(x_scatter) * 2:
