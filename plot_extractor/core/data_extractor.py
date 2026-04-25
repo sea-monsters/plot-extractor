@@ -328,6 +328,20 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
     # Separate by color first, then extract each color mask directly
     color_series = _separate_series_by_color(plot_img, mask, n_clusters=3)
 
+    # Check if dual Y-axis is truly needed: y_left and y_right must have different data ranges
+    is_dual_y = False
+    if y_left and y_right:
+        y_left_vals = [t[1] for t in y_left.tick_map if t[1] is not None]
+        y_right_vals = [t[1] for t in y_right.tick_map if t[1] is not None]
+        if y_left_vals and y_right_vals:
+            # Ranges differ significantly if max/min differ by >50% of the larger range
+            left_range = max(y_left_vals) - min(y_left_vals)
+            right_range = max(y_right_vals) - min(y_right_vals)
+            if left_range > 0 and right_range > 0:
+                # Check if min or max values differ significantly
+                range_diff = abs(max(y_left_vals) - max(y_right_vals)) + abs(min(y_left_vals) - min(y_right_vals))
+                is_dual_y = range_diff > 0.5 * max(left_range, right_range)
+
     all_series = []
     if len(color_series) > 1:
         # Multi-color: extract each color directly via vertical scan
@@ -337,7 +351,7 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
             dilated = cv2.dilate(cmask, np.ones((3, 3), np.uint8), iterations=1)
 
             # Select Y-axis calibration for this series
-            if y_left and y_right and series_idx < 2:
+            if is_dual_y and series_idx < 2:
                 # Dual Y-axis: series 0 → left, series 1 → right
                 y_cal_for_series = y_left if series_idx == 0 else y_right
             else:

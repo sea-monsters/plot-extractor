@@ -288,7 +288,19 @@ def detect_all_axes(image_gray):
         elif sec.direction == "y" and sec.side == "right" and sec.position > w * 0.8:
             at_edge = True
 
-        if len(sec_ticks) >= 4:
+        # Check if this secondary axis is at a different position from primary axes
+        # (i.e., it's a real secondary axis, not a duplicate line)
+        position_differs = True
+        for pri in primary:
+            if pri.direction == sec.direction and abs(sec.position - pri.position) < 20:
+                position_differs = False
+                break
+
+        if at_edge and position_differs:
+            # Edge spine: keep it for plot bounds even if ticks match primary
+            # (dual Y-axis charts have matching tick positions but different positions)
+            primary.append(sec)
+        elif len(sec_ticks) >= 4:
             # Reject if tick pattern matches a primary axis (likely grid lines)
             matched_primary = False
             for pri in primary:
@@ -297,7 +309,4 @@ def detect_all_axes(image_gray):
                     break
             if not matched_primary:
                 primary.append(sec)
-        elif at_edge:
-            # Spine at the image edge with few/no ticks: keep it for plot bounds
-            primary.append(sec)
     return primary
