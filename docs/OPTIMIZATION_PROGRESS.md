@@ -809,6 +809,24 @@ Full validation after this patch:
 
 Context7 was retried again for OpenCV color segmentation and anti-aliased line extraction guidance. It still failed with `TypeError: fetch failed`.
 
+## Web Search Fallback for Context7 (2026-04-26)
+
+The user requested trying the web search tool against `context7.com` directly.
+
+Results:
+
+- `site:context7.com OpenCV Python HoughLinesP connectedComponentsWithStats kmeans HSV` did not find a Context7 page for the main OpenCV library.
+- Context7 is reachable through search results; examples found include `https://context7.com/scikit-image/scikit-image` and `https://context7.com/opencv/opencv_zoo`.
+- No directly useful Context7 OpenCV implementation page was found for this chart-extraction task.
+- Official OpenCV documentation was reachable and relevant:
+  - `cv.kmeans()` requires `np.float32` samples and supports multiple attempts plus `KMEANS_PP_CENTERS` / `KMEANS_RANDOM_CENTERS`.
+  - Hough line detection should operate on edge/binary images; `HoughLinesP` returns line segment endpoints and is the relevant API for axis/grid segments.
+
+Implementation implication:
+
+- The deterministic color-cluster patch is aligned with official OpenCV k-means guidance: use explicit criteria, attempts, and a stable center initialization strategy.
+- For future axis/grid work, keep the Hough path constrained to clean edge/binary masks and score probabilistic Hough line segments rather than using raw position gates alone.
+
 ## Remaining Bottleneck Read
 
 - `dual_y`: remaining failures show left-axis series often matches well, while right-axis series has inflated or shifted y-range. This points to right-series color mask/curve-center contamination rather than missing right-axis calibration.
