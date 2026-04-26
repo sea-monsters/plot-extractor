@@ -1122,3 +1122,59 @@ The remaining bottleneck is no longer scatter. The best remaining targets are:
 - `dual_y` contamination in the 5 remaining failures
 - `no_grid` two calibration/extraction outliers
 - `dense` one sparse fallback outlier
+
+---
+
+# Chapter 18: V2 Baseline on 500 New Charts (2026-04-26)
+
+## Scope
+
+The second-version test set adds 500 new charts under `test_data_v2/`, with 50 samples per chart type. This run establishes a new baseline before further multi-series work.
+
+The v2 dataset and generator are currently untracked local artifacts:
+
+- `test_data_v2/`
+- `tests/generate_test_data_v2.py`
+
+## Validation
+
+Command:
+
+```powershell
+python tests\validate_by_type.py --data-dir test_data_v2
+```
+
+Result:
+
+| Type | Pass | Rate | AvgErr | MaxErr |
+|------|------|------|--------|--------|
+| dense | 20/50 | 40.0% | 0.1730 | 1.0000 |
+| dual_y | 25/50 | 50.0% | 4.6117 | 85.2034 |
+| inverted_y | 40/50 | 80.0% | 0.0742 | 1.0000 |
+| log_x | 47/50 | 94.0% | 0.0281 | 0.8657 |
+| log_y | 50/50 | 100.0% | 0.0065 | 0.0286 |
+| loglog | 46/50 | 92.0% | 0.1689 | 4.1160 |
+| multi_series | 11/50 | 22.0% | 0.2356 | 1.4667 |
+| no_grid | 43/50 | 86.0% | 0.0652 | 1.0000 |
+| scatter | 47/50 | 94.0% | 0.0187 | 0.2215 |
+| simple_linear | 36/50 | 72.0% | 0.1028 | 1.0000 |
+| **TOTAL** | **365/500** | **73.0%** | — | — |
+
+## Initial Judgment
+
+The v2 baseline exposes a wider generalization gap than the v1 set:
+
+- `multi_series` is the weakest category at 11/50 and remains the primary target.
+- `dense` and `dual_y` also regress heavily, but the user-requested next lane is multi-series.
+- `scatter` remains mostly healthy after the 2D evaluation fix.
+- log-axis single-series handling is comparatively stable.
+
+## Next Target
+
+Run v2 `multi_series` in debug mode and classify failures by:
+
+- too few extracted series
+- same-color merged curves
+- excessive split fragments
+- axis/calibration mismatch
+- evaluation-only ordering or matching defects
