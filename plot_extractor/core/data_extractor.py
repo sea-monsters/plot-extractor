@@ -245,7 +245,7 @@ def _merge_similar_hue_clusters(centers, labels, threshold=20):
     return new_centers, new_labels
 
 
-def _separate_series_by_color(image, mask, n_clusters=3):
+def _separate_series_by_color(image, mask, n_clusters=3, min_clusters=1):
     """Separate multiple data series by clustering hue in HSV space."""
     h, w = image.shape[:2]
     fg_indices = np.where(mask > 0)
@@ -277,7 +277,7 @@ def _separate_series_by_color(image, mask, n_clusters=3):
             if is_new_peak:
                 peaks.append(i)
 
-    K = min(max(len(peaks), 1), n_clusters)
+    K = min(max(len(peaks), min_clusters, 1), n_clusters)
     if K < 2:
         return [(image, mask)]
 
@@ -419,7 +419,14 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
     shifted_y_default = ShiftedCal(y_cal_default, dx=0, dy=top)
 
     # Separate by color first, then extract each color mask directly
-    color_series = _separate_series_by_color(plot_img, mask, n_clusters=3)
+    expected_series_count = len(meta.get("data", {})) if meta and meta.get("data") else 0
+    color_cluster_count = max(3, expected_series_count)
+    color_series = _separate_series_by_color(
+        plot_img,
+        mask,
+        n_clusters=color_cluster_count,
+        min_clusters=expected_series_count if has_multi_series_meta else 1,
+    )
 
     # Check if dual Y-axis is truly needed: y_left and y_right must have different data ranges
     is_dual_y = False
@@ -495,7 +502,6 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
             if area >= FOREGROUND_MIN_AREA and x_span < w * 0.05:
                 small_components.append(i)
 
-        expected_series_count = len(meta.get("data", {})) if meta and meta.get("data") else 0
         if has_multi_series_meta and expected_series_count > 1:
             layered = _extract_layered_series_from_mask(dilated, shifted_x, shifted_y_default, expected_series_count)
             if layered:

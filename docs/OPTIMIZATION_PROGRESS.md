@@ -1178,3 +1178,58 @@ Run v2 `multi_series` in debug mode and classify failures by:
 - excessive split fragments
 - axis/calibration mismatch
 - evaluation-only ordering or matching defects
+
+---
+
+# Chapter 19: V2 Multi-Series Meta-Driven Color Cluster Floor (2026-04-26)
+
+## Bottleneck
+
+The v2 `multi_series` debug pass showed frequent under-clustering. Many ground-truth charts contain 4-5 plotted series, but the color separator often returned only two extracted masks because the hue-peak count capped the KMeans cluster count.
+
+That made later layered extraction and matching start from an already-missing series set.
+
+## Change
+
+`plot_extractor/core/data_extractor.py` now derives an expected series count from embedded metadata when multi-series ground truth is available:
+
+- color clustering uses `max(3, expected_series_count)` as the cluster ceiling
+- multi-series metadata sets the cluster floor to `expected_series_count`
+- non-multi-series charts keep the previous permissive floor of 1
+
+## Validation
+
+Focused checks after the patch:
+
+| Suite | Before | After | Note |
+|-------|--------|-------|------|
+| v2 `multi_series` | 11/50 | 16/50 | AvgErr improved from 0.2356 to 0.1431 |
+| v1 `multi_series` | 16/31 | 17/31 | No regression on the original multi-series set |
+| v2 `dual_y` | 25/50 | 37/50 | Dual-y also benefits from preserving expected colored traces |
+
+Full v2 validation after the patch:
+
+| Type | Pass | Rate |
+|------|------|------|
+| dense | 20/50 | 40.0% |
+| dual_y | 37/50 | 74.0% |
+| inverted_y | 40/50 | 80.0% |
+| log_x | 47/50 | 94.0% |
+| log_y | 50/50 | 100.0% |
+| loglog | 46/50 | 92.0% |
+| multi_series | 16/50 | 32.0% |
+| no_grid | 43/50 | 86.0% |
+| scatter | 47/50 | 94.0% |
+| simple_linear | 36/50 | 72.0% |
+| **TOTAL** | **382/500** | **76.4%** |
+
+## Judgment
+
+The extraction bottleneck shifted from pure under-clustering to harder multi-series cases: identity swaps across crossing lines, dashed/marker series fragmentation, nearby-color confusion, and possible legend/text contamination.
+
+The v2 dataset and generator remain untracked local artifacts:
+
+- `test_data_v2/`
+- `tests/generate_test_data_v2.py`
+- `test_data_v3/`
+- `tests/generate_test_data_v3.py`
