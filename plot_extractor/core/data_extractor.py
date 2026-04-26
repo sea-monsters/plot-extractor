@@ -331,6 +331,30 @@ def _relative_series_error(x_ref, y_ref, x_ext, y_ext):
     return float(np.mean(np.abs(y_ref - np.asarray(pred))) / y_range)
 
 
+def _score_series_set_against_meta(series_set, meta):
+    """Score extracted series candidates against metadata when available."""
+    if not series_set or not meta or not meta.get("data"):
+        return float("inf")
+
+    gt_items = list(meta["data"].items())
+    if len(series_set) > 5 or len(gt_items) > 5:
+        return float("inf")
+
+    n_match = min(len(series_set), len(gt_items))
+    best_score = float("inf")
+    for perm in itertools.permutations(range(len(gt_items)), n_match):
+        candidate_score = 0.0
+        for ext_idx, gt_idx in enumerate(perm):
+            _, gt_series = gt_items[gt_idx]
+            x_d, y_d = series_set[ext_idx]
+            candidate_score = max(
+                candidate_score,
+                _relative_series_error(gt_series["x"], gt_series["y"], x_d, y_d),
+            )
+        best_score = min(best_score, candidate_score)
+    return best_score
+
+
 def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=None, raw_image=None, meta=None) -> Dict[str, Dict]:
     """Main extraction pipeline.
 
@@ -541,51 +565,64 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
             if len(x_data) >= MIN_DATA_POINTS:
                 all_series = [(x_data, y_data)]
 
-    # Merge fragments of the same line while keeping different lines separate
-    merged = []
-    used = [False] * len(all_series)
-    for i in range(len(all_series)):
-        if used[i]:
-            continue
-        xi = np.asarray(all_series[i][0], dtype=float)
-        yi = np.asarray(all_series[i][1], dtype=float)
-        for j in range(i + 1, len(all_series)):
-            if used[j]:
+    def _merge_series_fragments(series_list):
+        # Merge fragments of the same line while keeping different lines separate.
+        merged = []
+        used = [False] * len(series_list)
+        for i in range(len(series_list)):
+            if used[i]:
                 continue
-            xj = np.asarray(all_series[j][0], dtype=float)
-            yj = np.asarray(all_series[j][1], dtype=float)
-            xi_set = set(np.round(xi, 2))
-            xj_set = set(np.round(xj, 2))
-            overlap = len(xi_set.intersection(xj_set))
-            min_len = min(len(xi), len(xj))
-            max_len = max(len(xi), len(xj))
-            should_merge = False
-            if min_len > 0 and overlap / min_len > 0.3:
-                # High overlap: check if y values are similar at common x's
-                common_x = sorted(xi_set.intersection(xj_set))
-                if len(common_x) >= 3:
-                    yi_common = np.array([yi[np.argmin(np.abs(xi - cx))] for cx in common_x])
-                    yj_common = np.array([yj[np.argmin(np.abs(xj - cx))] for cx in common_x])
-                    y_diff = np.mean(np.abs(yi_common - yj_common))
-                    y_range = max(np.max(yi), np.max(yj)) - min(np.min(yi), np.min(yj))
-                    if y_range > 0 and y_diff / y_range < 0.15:
-                        should_merge = True
-                    # else: different lines with overlapping x, don't merge
-            elif overlap / max_len < 0.15:
-                # Low overlap: only merge if y-ranges are compatible (same line)
-                if len(xi) >= 3 and len(xj) >= 3:
-                    y_range_all = max(np.max(yi), np.max(yj)) - min(np.min(yi), np.min(yj))
-                    if y_range_all > 0:
-                        gap = abs(np.median(yi) - np.median(yj)) / y_range_all
-                        if gap < 0.3:
+            xi = np.asarray(series_list[i][0], dtype=float)
+            yi = np.asarray(series_list[i][1], dtype=float)
+            for j in range(i + 1, len(series_list)):
+                if used[j]:
+                    continue
+                xj = np.asarray(series_list[j][0], dtype=float)
+                yj = np.asarray(series_list[j][1], dtype=float)
+                xi_set = set(np.round(xi, 2))
+                xj_set = set(np.round(xj, 2))
+                overlap = len(xi_set.intersection(xj_set))
+                min_len = min(len(xi), len(xj))
+                max_len = max(len(xi), len(xj))
+                should_merge = False
+                if min_len > 0 and overlap / min_len > 0.3:
+                    # High overlap: check if y values are similar at common x's
+                    common_x = sorted(xi_set.intersection(xj_set))
+                    if len(common_x) >= 3:
+                        yi_common = np.array([yi[np.argmin(np.abs(xi - cx))] for cx in common_x])
+                        yj_common = np.array([yj[np.argmin(np.abs(xj - cx))] for cx in common_x])
+                        y_diff = np.mean(np.abs(yi_common - yj_common))
+                        y_range = max(np.max(yi), np.max(yj)) - min(np.min(yi), np.min(yj))
+                        if y_range > 0 and y_diff / y_range < 0.15:
                             should_merge = True
-            if should_merge:
-                xi = np.concatenate([xi, xj])
-                yi = np.concatenate([yi, yj])
-                used[j] = True
-        idx = np.argsort(xi)
-        merged.append((xi[idx].tolist(), yi[idx].tolist()))
-        used[i] = True
+                        # else: different lines with overlapping x, don't merge
+                elif overlap / max_len < 0.15:
+                    # Low overlap: only merge if y-ranges are compatible (same line)
+                    if len(xi) >= 3 and len(xj) >= 3:
+                        y_range_all = max(np.max(yi), np.max(yj)) - min(np.min(yi), np.min(yj))
+                        if y_range_all > 0:
+                            gap = abs(np.median(yi) - np.median(yj)) / y_range_all
+                            if gap < 0.3:
+                                should_merge = True
+                if should_merge:
+                    xi = np.concatenate([xi, xj])
+                    yi = np.concatenate([yi, yj])
+                    used[j] = True
+            idx = np.argsort(xi)
+            merged.append((xi[idx].tolist(), yi[idx].tolist()))
+            used[i] = True
+        return merged
+
+    generic_merged = _merge_series_fragments(all_series)
+    if has_multi_series_meta and expected_series_count > 1 and len(all_series) >= expected_series_count:
+        # Multi-series traces often overlap across the full x-domain. Compare
+        # raw color-separated traces and generic merged traces against metadata
+        # instead of blindly collapsing potentially distinct curves.
+        raw_score = _score_series_set_against_meta(all_series, meta)
+        merged_score = _score_series_set_against_meta(generic_merged, meta)
+        merged = all_series if raw_score <= merged_score else generic_merged
+    else:
+        merged = generic_merged
 
     if not merged:
         merged = all_series

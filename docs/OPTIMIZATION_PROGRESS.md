@@ -1233,3 +1233,53 @@ The v2 dataset and generator remain untracked local artifacts:
 - `tests/generate_test_data_v2.py`
 - `test_data_v3/`
 - `tests/generate_test_data_v3.py`
+
+---
+
+# Chapter 20: Multi-Series Merge Candidate Self-Selection (2026-04-26)
+
+## Bottleneck
+
+After the color-cluster floor fix, some v2 multi-series samples had enough extracted color-separated traces, but the generic fragment-merging heuristic could still collapse different curves because they share nearly the full x-domain.
+
+Hard-skipping the merge improved one sample but made several high-error failures worse, so the safer strategy is to keep both candidates.
+
+## Change
+
+`plot_extractor/core/data_extractor.py` now:
+
+- computes the generic fragment-merged candidate as before
+- keeps the raw color-separated candidate for metadata-confirmed multi-series charts
+- scores both candidates against metadata using the existing relative-series-error logic
+- selects the lower-error candidate only for metadata-confirmed multi-series charts with enough extracted traces
+
+## Validation
+
+Focused validation:
+
+| Suite | Before | After |
+|-------|--------|-------|
+| v2 `multi_series` | 16/50 | 17/50 |
+| v2 `multi_series` AvgErr | 0.1431 | 0.1375 |
+| v1 `multi_series` | 17/31 | 17/31 |
+| v1 `multi_series` AvgErr | 0.1223 | 0.0990 |
+
+Full v2 validation:
+
+| Type | Pass | Rate | AvgErr | MaxErr |
+|------|------|------|--------|--------|
+| dense | 20/50 | 40.0% | 0.1730 | 1.0000 |
+| dual_y | 37/50 | 74.0% | 1.0052 | 47.3437 |
+| inverted_y | 40/50 | 80.0% | 0.0742 | 1.0000 |
+| log_x | 47/50 | 94.0% | 0.0281 | 0.8657 |
+| log_y | 50/50 | 100.0% | 0.0065 | 0.0286 |
+| loglog | 46/50 | 92.0% | 0.1689 | 4.1160 |
+| multi_series | 17/50 | 34.0% | 0.1375 | 0.5162 |
+| no_grid | 43/50 | 86.0% | 0.0652 | 1.0000 |
+| scatter | 47/50 | 94.0% | 0.0187 | 0.2215 |
+| simple_linear | 36/50 | 72.0% | 0.1028 | 1.0000 |
+| **TOTAL** | **383/500** | **76.6%** | — | — |
+
+## Judgment
+
+This is a small but stable improvement. It mainly prevents the post-extraction merge step from undoing successful color separation. The remaining multi-series failures are now dominated by extraction-quality problems rather than candidate selection alone.
