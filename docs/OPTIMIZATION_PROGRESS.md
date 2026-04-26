@@ -1283,3 +1283,87 @@ Full v2 validation:
 ## Judgment
 
 This is a small but stable improvement. It mainly prevents the post-extraction merge step from undoing successful color separation. The remaining multi-series failures are now dominated by extraction-quality problems rather than candidate selection alone.
+
+---
+
+# Chapter 21: V4 Special Evaluator With Supported-Domain Accounting (2026-04-26)
+
+## Bottleneck
+
+The existing evaluator was built for v1-v3 style datasets: one directory per chart type, one supported chart per image. v4 is different:
+
+- single, combo, and multi-subplot images are mixed together
+- new chart types such as `bar`, `histogram`, `area`, `step`, and `pie` are outside the current extractor scope
+- metadata can contain multiple chart panels, e.g. `sub1_series1`
+- `partial_crop` can remove axes or plot areas and should be tracked as a separate real-world boundary case
+
+Running the standard per-type evaluator directly on v4 would mix supported extraction failures with out-of-scope samples, making the score hard to interpret.
+
+## Change
+
+`tests/validate_by_type.py` now has a v4-specific mode:
+
+```powershell
+python tests\validate_by_type.py --data-dir test_data_v4 --v4-special
+```
+
+The special evaluator:
+
+- recursively scans `test_data_v4/*/*.png`
+- reads `meta["tags"]`
+- marks images as in-scope only when `dataset == "v4"`, `chart_count == 1`, exactly one chart type is present, the chart type is supported by the current extractor, and `partial_crop` is absent
+- records all other images as out-of-scope with an explicit reason
+- writes `report_test_data_v4_special.csv` for evaluated in-scope samples
+- writes `report_test_data_v4_scope.csv` for all 500 samples, including skipped/out-of-scope images
+
+The existing v1-v3 evaluator path remains unchanged.
+
+## Validation
+
+Syntax check:
+
+```powershell
+python -m py_compile tests\validate_by_type.py
+```
+
+Small filtered smoke:
+
+```powershell
+python tests\validate_by_type.py --data-dir test_data_v4 --v4-special --types simple_linear scatter
+```
+
+Result: 38 in-scope filtered samples, 23/38 passed.
+
+Full v4 special validation:
+
+```powershell
+python tests\validate_by_type.py --data-dir test_data_v4 --v4-special
+```
+
+Scope accounting:
+
+| Scope | Count |
+|-------|------:|
+| supported / in-scope | 204 |
+| out-of-scope | 296 |
+| total | 500 |
+
+Supported-domain results:
+
+| Type | Pass | Rate | AvgErr | MaxErr |
+|------|------|------|--------|--------|
+| dense | 5/18 | 27.8% | 0.4646 | 1.3198 |
+| dual_y | 8/23 | 34.8% | 0.2823 | 1.0000 |
+| inverted_y | 8/18 | 44.4% | 0.2658 | 1.0000 |
+| log_x | 12/18 | 66.7% | 0.9575 | 14.4071 |
+| log_y | 10/24 | 41.7% | 0.6410 | 4.4666 |
+| loglog | 9/20 | 45.0% | 0.9671 | 4.0887 |
+| multi_series | 6/28 | 21.4% | 0.3114 | 1.0000 |
+| no_grid | 10/17 | 58.8% | 0.1816 | 1.0000 |
+| scatter | 17/20 | 85.0% | 0.0958 | 1.0000 |
+| simple_linear | 6/18 | 33.3% | 0.4625 | 1.0000 |
+| **SUPPORTED TOTAL** | **91/204** | **44.6%** | — | — |
+
+## Judgment
+
+v4 is now usable as a real-world stress benchmark without pretending every sample is in the current extractor's supported domain. The first supported-domain baseline shows that the main v4 bottleneck is no longer only multi-series; axis detection/calibration under severe degradation is now a broad cross-type failure mode.
