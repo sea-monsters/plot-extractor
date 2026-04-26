@@ -952,3 +952,56 @@ The remaining `multi_series` failures are now more likely real extraction issues
 - some curves become short fragments around 31 points
 - some samples still fall into a scatter-like sparse fallback
 - crossing/anti-aliasing regions still contaminate per-color masks
+
+---
+
+# Chapter 15: Multi-Series Scatter Fallback Guard (2026-04-26)
+
+## Strategy
+
+After the evaluation matching fix, `multi_series` still contained a small but clear failure mode: metadata-confirmed multi-series line charts with many tiny foreground components could be routed through the scatter fallback. `007.png` showed the clearest symptom, producing only a few sparse points before this guard.
+
+## Fix
+
+Changed `plot_extractor/core/data_extractor.py`:
+
+- detect `has_multi_series_meta` from `meta["data"]`
+- disable early connected-component scatter extraction when multi-series metadata is present
+- disable late scatter override when multi-series metadata is present
+- keep the existing log-axis guard and normal scatter behavior unchanged
+
+This is intentionally narrow: it only prevents a fallback classifier from overriding a chart type already known from metadata.
+
+## Validation
+
+Focused validation:
+
+| Type | Before | After |
+|------|--------|-------|
+| multi_series | 15/31 (48.4%) | 16/31 (51.6%) |
+| scatter | 23/31 | 23/31 |
+| loglog | 31/31 | 31/31 |
+
+Full validation:
+
+| Type | Pass | Rate | AvgErr | MaxErr |
+|------|------|------|--------|--------|
+| dense | 30/31 | 96.8% | 0.0270 | 0.2825 |
+| dual_y | 22/31 | 71.0% | 0.1224 | 0.6525 |
+| inverted_y | 31/31 | 100.0% | 0.0038 | 0.0085 |
+| log_x | 31/31 | 100.0% | 0.0053 | 0.0123 |
+| log_y | 31/31 | 100.0% | 0.0065 | 0.0154 |
+| loglog | 31/31 | 100.0% | 0.0050 | 0.0103 |
+| multi_series | 16/31 | 51.6% | 0.2338 | 1.5785 |
+| no_grid | 29/31 | 93.5% | 0.0070 | 0.0816 |
+| scatter | 23/31 | 74.2% | 0.0654 | 0.1814 |
+| simple_linear | 31/31 | 100.0% | 0.0067 | 0.0200 |
+| **TOTAL** | **275/310** | **88.7%** | — | — |
+
+## Next Target
+
+The highest-yield remaining work is still in true multi-series extraction:
+
+- `003`, `004`, `010`, `011`, and `023` produce two short fragments plus one full line
+- `016` and `020` merge two same-cluster curves into one long series
+- several remaining failures have full point counts but high shape error, suggesting color contamination around crossings or calibration/matching edge cases
