@@ -1060,3 +1060,65 @@ Remaining failures are now concentrated in:
 - `scatter`: point-set matching/extraction still fails 8/31
 - `dual_y`: remaining 5 failures appear to be extraction contamination rather than simple axis assignment
 - `dense`: one outlier still falls through to a sparse scatter-like result
+
+---
+
+# Chapter 17: Scatter Evaluation Uses 2D Nearest-Neighbor Matching (2026-04-26)
+
+## Strategy
+
+The `scatter` failures all had reasonable extracted point counts and high visual SSIM. The previous data-level evaluator compared each ground-truth point to the extracted point with the nearest x-value only. That is appropriate for line charts, but wrong for scatter charts because nearby or repeated x-values are normal and point identity is two-dimensional.
+
+Manual checks on the eight failing scatter samples showed that normalized 2D nearest-neighbor matching reduced their relative errors from `0.0824-0.1814` to `0.0043-0.0221`.
+
+Context7 status for this loop:
+
+- MCP Context7 retry for OpenCV still failed with `TypeError: fetch failed`
+- web search could reach OpenCV documentation for `connectedComponentsWithStats`
+- the OpenCV docs confirm the current centroid/statistics output model for connected components; no code-level replacement was indicated by the search result
+
+## Fix
+
+Changed `tests/validate_by_type.py`:
+
+- keep x-nearest matching for line-like charts
+- use normalized `(x, y)` nearest-neighbor matching for `scatter`
+- pass `chart_type` into the evaluator so the match mode is explicit
+- preserve the existing per-type thresholds
+
+This is an evaluation-layer fix only; extraction behavior is unchanged.
+
+## Validation
+
+Focused validation:
+
+| Type | Before | After |
+|------|--------|-------|
+| scatter | 23/31 (74.2%) | 31/31 (100.0%) |
+| dual_y | 26/31 | 26/31 |
+| multi_series | 16/31 | 16/31 |
+
+Full validation:
+
+| Type | Pass | Rate | AvgErr | MaxErr |
+|------|------|------|--------|--------|
+| dense | 30/31 | 96.8% | 0.0270 | 0.2825 |
+| dual_y | 26/31 | 83.9% | 0.0512 | 0.3273 |
+| inverted_y | 31/31 | 100.0% | 0.0038 | 0.0085 |
+| log_x | 31/31 | 100.0% | 0.0053 | 0.0123 |
+| log_y | 31/31 | 100.0% | 0.0065 | 0.0154 |
+| loglog | 31/31 | 100.0% | 0.0050 | 0.0103 |
+| multi_series | 16/31 | 51.6% | 0.1283 | 0.6566 |
+| no_grid | 29/31 | 93.5% | 0.0070 | 0.0816 |
+| scatter | 31/31 | 100.0% | 0.0092 | 0.0231 |
+| simple_linear | 31/31 | 100.0% | 0.0067 | 0.0200 |
+| **TOTAL** | **287/310** | **92.6%** | — | — |
+
+## Next Target
+
+The remaining bottleneck is no longer scatter. The best remaining targets are:
+
+- `multi_series` same-color/crossing identity tracking
+- `dual_y` contamination in the 5 remaining failures
+- `no_grid` two calibration/extraction outliers
+- `dense` one sparse fallback outlier

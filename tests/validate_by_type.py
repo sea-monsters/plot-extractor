@@ -49,7 +49,7 @@ DATA_ACCURACY_THRESHOLDS = {
 }
 
 
-def compare_series_accuracy(x_gt, y_gt, x_ext, y_ext):
+def compare_series_accuracy(x_gt, y_gt, x_ext, y_ext, match_mode: str = "x"):
     """Compare extracted series to ground truth."""
     if not x_ext or not y_ext or len(x_ext) < 3:
         return {
@@ -68,10 +68,19 @@ def compare_series_accuracy(x_gt, y_gt, x_ext, y_ext):
     if y_range == 0:
         y_range = 1.0
 
-    # For each ground truth point, find nearest extracted point by x
+    x_range = float(np.max(x_gt) - np.min(x_gt))
+    if x_range == 0:
+        x_range = 1.0
+
+    # For line charts, each x maps to one y. For scatter charts, repeated or
+    # nearby x values are normal, so use normalized 2D nearest-neighbor matching.
     y_pred = []
-    for xg in x_gt:
-        idx = int(np.argmin(np.abs(x_ext - xg)))
+    for xg, yg in zip(x_gt, y_gt):
+        if match_mode == "xy":
+            dist = ((x_ext - xg) / x_range) ** 2 + ((y_ext - yg) / y_range) ** 2
+            idx = int(np.argmin(dist))
+        else:
+            idx = int(np.argmin(np.abs(x_ext - xg)))
         y_pred.append(y_ext[idx])
     y_pred = np.array(y_pred)
 
@@ -92,7 +101,7 @@ def compare_series_accuracy(x_gt, y_gt, x_ext, y_ext):
     }
 
 
-def evaluate_data_accuracy(data, meta):
+def evaluate_data_accuracy(data, meta, chart_type: str | None = None):
     """Evaluate extracted data against meta ground truth.
 
     Returns (best_rel_err, per_series_errors) where best_rel_err is the
@@ -110,6 +119,7 @@ def evaluate_data_accuracy(data, meta):
     # generation order, especially for multi-series charts with similar ranges.
     extracted_items = list(data.items())
     gt_items = list(gt.items())
+    match_mode = "xy" if chart_type == "scatter" else "x"
 
     if len(extracted_items) <= 5 and len(gt_items) <= 5:
         n_match = min(len(extracted_items), len(gt_items))
@@ -124,6 +134,7 @@ def evaluate_data_accuracy(data, meta):
                 acc = compare_series_accuracy(
                     gt_series["x"], gt_series["y"],
                     ext_series["x"], ext_series["y"],
+                    match_mode=match_mode,
                 )
                 candidate_errors[f"{ext_name}→{gt_name}"] = acc
                 candidate_score = max(candidate_score, acc["rel_err"])
@@ -145,6 +156,7 @@ def evaluate_data_accuracy(data, meta):
                 acc = compare_series_accuracy(
                     gt[gt_name]["x"], gt[gt_name]["y"],
                     data[ext_name]["x"], data[ext_name]["y"],
+                    match_mode=match_mode,
                 )
                 errors[f"{ext_name}→{gt_name}"] = acc
                 max_rel_err = max(max_rel_err, acc["rel_err"])
@@ -152,9 +164,10 @@ def evaluate_data_accuracy(data, meta):
     return max_rel_err, errors
 
 
-def validate_type(chart_type: str, debug: bool = False) -> dict:
+def validate_type(chart_type: str, debug: bool = False, data_dir: Path | None = None) -> dict:
     """Run validation on all images of one type, return aggregate stats."""
-    type_dir = TEST_DATA_DIR / chart_type
+    base_dir = data_dir or TEST_DATA_DIR
+    type_dir = base_dir / chart_type
     if not type_dir.exists():
         print(f"  SKIP {chart_type}: directory not found")
         return {"type": chart_type, "total": 0, "passed": 0, "pass_rate": 0, "avg_rel_err": 0, "max_rel_err": 0, "results": []}
@@ -186,7 +199,7 @@ def validate_type(chart_type: str, debug: bool = False) -> dict:
 
         diagnostics = result.get("diagnostics") if result else None
         if result and result.get("data"):
-            rel_err, per_series = evaluate_data_accuracy(result["data"], meta)
+            rel_err, per_series = evaluate_data_accuracy(result["data"], meta, chart_type=chart_type)
             # Also keep SSIM for reference
             ssim_full = result.get("ssim") or 0.0
             ssim_crop = result.get("ssim_crop") or 0.0
@@ -241,17 +254,21 @@ def validate_type(chart_type: str, debug: bool = False) -> dict:
     return summary
 
 
-def run_all(types: list[str] | None = None, debug: bool = False):
+def run_all(types: list[str] | None = None, debug: bool = False, data_dir: Path | None = None):
     """Run validation across specified types (or all)."""
     if types is None:
         types = sorted(TYPE_THRESHOLDS.keys())
+
+    base_dir = data_dir or TEST_DATA_DIR
+    report_dir = base_dir
+    report_path = report_dir.parent / f"report_{base_dir.name}.csv"
 
     all_rows = []
     summaries = []
 
     for chart_type in types:
         print(f"\n--- {chart_type} ---")
-        summary = validate_type(chart_type, debug=debug)
+        summary = validate_type(chart_type, debug=debug, data_dir=data_dir)
         summaries.append(summary)
         for r in summary["results"]:
             row = {"type": chart_type, **r}
@@ -259,7 +276,7 @@ def run_all(types: list[str] | None = None, debug: bool = False):
             all_rows.append(row)
 
     # Write detailed CSV
-    with open(REPORT_PATH, "w", newline="") as f:
+    with open(report_path, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=["type", "file", "rel_err", "ssim", "threshold", "passed"])
         writer.writeheader()
         writer.writerows(all_rows)
@@ -276,7 +293,7 @@ def run_all(types: list[str] | None = None, debug: bool = False):
         total_count += s["total"]
     print("-" * 70)
     print(f"{'TOTAL':<18} {total_pass:>3}/{total_count:<3} {total_pass / max(total_count, 1):>6.1%}")
-    print(f"\nReport saved to {REPORT_PATH}")
+    print(f"\nReport saved to {report_path}")
 
     return summaries
 
@@ -286,5 +303,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--types", nargs="*", default=None, help="Chart types to validate")
     parser.add_argument("--debug", action="store_true", help="Save debug outputs")
+    parser.add_argument("--data-dir", default=None, help="Data directory (default: test_data/)")
     args = parser.parse_args()
-    run_all(types=args.types, debug=args.debug)
+    data_dir = Path(args.data_dir) if args.data_dir else None
+    run_all(types=args.types, debug=args.debug, data_dir=data_dir)
