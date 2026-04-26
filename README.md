@@ -154,7 +154,7 @@ Run the v4 supported-domain evaluator:
 python tests/validate_by_type.py --data-dir test_data_v4 --v4-special
 ```
 
-Current baseline details are maintained in [docs/BASELINE_EVALUATION.md](docs/BASELINE_EVALUATION.md). Bottleneck analysis and lightweight skill candidates are tracked in [docs/EXTRACTION_BOTTLENECKS_SKILL_PLAN.md](docs/EXTRACTION_BOTTLENECKS_SKILL_PLAN.md).
+Current baseline details are maintained in [docs/BASELINE_EVALUATION.md](docs/BASELINE_EVALUATION.md). Bottleneck analysis and lightweight skill candidates are tracked in [docs/EXTRACTION_BOTTLENECKS_SKILL_PLAN.md](docs/EXTRACTION_BOTTLENECKS_SKILL_PLAN.md). Shared-role commit rules are tracked in [docs/COLLABORATION_GUIDELINES.md](docs/COLLABORATION_GUIDELINES.md).
 
 ## Current Baseline
 
