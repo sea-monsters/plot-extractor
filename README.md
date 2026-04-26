@@ -109,6 +109,35 @@ You can also invoke it explicitly:
 - Tesseract OCR must be on PATH for tick label reading.
 - If Tesseract is unavailable, provide axis metadata via `--meta metadata.json` as a fallback.
 
+## Release Workflow
+
+Every push triggers the Pylint CI check (`.github/workflows/pylint.yml`). Before submitting or merging a PR, ensure the lint gate passes locally.
+
+### Pre-Release Checklist
+
+1. **Lint** — must score ≥ 9.0 with no errors or warnings:
+
+   ```bash
+   pip install pylint
+   pylint --fail-under=9 $(git ls-files '*.py')
+   ```
+
+   Configuration is in `pyproject.toml` under `[tool.pylint]`. The CI matrix tests Python 3.8 through 3.14.
+
+2. **Validation** — run the evaluator against supported datasets (see below).
+
+3. **Review** — reference the baseline in `docs/BASELINE_EVALUATION.md` for expected pass rates.
+
+Failures in the lint gate block merge. Fix issues locally before pushing:
+
+```bash
+# Run the exact command the CI uses
+pylint --fail-under=9 $(git ls-files '*.py')
+
+# Check only the core package
+pylint plot_extractor/
+```
+
 ## Validation
 
 Run the standard evaluator:
