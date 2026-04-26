@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 *.so
+*.egg-info/
 .Python
 .venv/
 venv/
@@ -36,6 +37,7 @@ docs/
 *.md
 !README.md
 !CLAUDE.md
+!SKILL.md
 
 # IDE
 .vscode/
@@ -58,6 +60,7 @@ Thumbs.db
 # AI related files
 .agent/
 .claude/
+!.claude/skills/
 .codex/
 
 # Memory

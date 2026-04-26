@@ -23,6 +23,8 @@ Plot Extractor detects chart axes, calibrates pixel-to-data coordinates, extract
 
 ## Installation
 
+### Standard (pip)
+
 ```bash
 git clone https://github.com/sea-monsters/plot-extractor.git
 cd plot-extractor
@@ -30,30 +32,82 @@ cd plot-extractor
 python -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
 
-pip install -r requirements.txt
+pip install -e .
 ```
 
-Dependencies include Python 3.8+, OpenCV, NumPy, Matplotlib, and pytesseract for optional OCR.
+Dependencies include Python 3.10+, OpenCV, NumPy, Matplotlib, and pytesseract for OCR.
+
+### Tesseract OCR (required for tick label reading)
+
+```bash
+# Windows: download from https://github.com/UB-Mannheim/tesseract/wiki
+# macOS
+brew install tesseract
+# Linux
+apt install tesseract-ocr
+```
 
 ## Usage
 
-Extract data from a chart image:
+### CLI
 
 ```bash
-python plot_extractor/main.py input_chart.png --output extracted_data.csv
+plot-extractor input_chart.png -o output.csv -d debug_output/
 ```
 
-Run with debug outputs:
+Or via module:
 
 ```bash
-python plot_extractor/main.py input_chart.png --debug debug_output/
+python -m plot_extractor.main input_chart.png --output output.csv --debug debug_output/
 ```
 
-Use metadata when ground-truth axes or labels are available:
+### Python API
 
-```bash
-python plot_extractor/main.py input_chart.png --meta metadata.json
+```python
+from pathlib import Path
+from plot_extractor.main import extract_from_image
+
+result = extract_from_image(
+    Path("chart.png"),
+    output_csv=Path("output.csv"),
+    debug_dir=Path("debug/"),
+)
+print(result["data"])         # dict of series_name → {x: [...], y: [...]}
+print(result["ssim"])         # SSIM score (when debug_dir is set)
 ```
+
+## Claude Code Plugin
+
+This project includes a Claude Code skill that lets Claude Code directly extract data from chart images.
+
+### Setup
+
+1. Clone and install the repo as above.
+2. The skill at `.claude/skills/plot-extractor/SKILL.md` is auto-discovered by Claude Code.
+3. In a Claude Code session, the skill activates automatically when you ask Claude to extract data from a chart image.
+
+### Example in Claude Code
+
+```
+User: extract data from this chart and save as CSV
+[attach: chart.png]
+
+Claude: [invokes plot-extractor skill, runs extraction]
+        Extracted 2 series with 245 points. CSV saved to chart.csv.
+        SSIM: 0.9324
+```
+
+You can also invoke it explicitly:
+
+```
+/plot-extractor  # triggers the skill directly
+```
+
+### Requirements in Claude Code
+
+- The Python environment used by Claude Code must have the package installed (`pip install -e /path/to/plot-extractor`).
+- Tesseract OCR must be on PATH for tick label reading.
+- If Tesseract is unavailable, provide axis metadata via `--meta metadata.json` as a fallback.
 
 ## Validation
 
@@ -108,6 +162,7 @@ plot_extractor/
 - Scan/photo degradation can break axis detection and calibration.
 - Dense curves can be over-fragmented or confused with grid/text artifacts.
 - v4 mixed charts are evaluated only within the currently supported single-chart domain.
+- Tesseract OCR must be installed separately for tick label reading.
 
 ## License
 
