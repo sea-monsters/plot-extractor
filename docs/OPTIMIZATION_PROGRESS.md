@@ -1005,3 +1005,58 @@ The highest-yield remaining work is still in true multi-series extraction:
 - `003`, `004`, `010`, `011`, and `023` produce two short fragments plus one full line
 - `016` and `020` merge two same-cluster curves into one long series
 - several remaining failures have full point counts but high shape error, suggesting color contamination around crossings or calibration/matching edge cases
+
+---
+
+# Chapter 16: Dual-Y Assignment Permutation and Same-Color Tracking Probe (2026-04-26)
+
+## Strategy
+
+The next high-impact bottleneck was `dual_y`: several failures had correct axes and full point counts, but one series was evaluated on the wrong Y-axis scale. The existing dual-Y candidate selection tried left/right axis assignments, but scored each extracted color series against the same-position metadata series. That made the choice sensitive to color-cluster ordering.
+
+The same pass also tested the `multi_series` same-color failure cluster. Hue inspection showed examples such as `003`, `010`, and `023` had only one dominant hue despite two metadata series, so color clustering cannot separate them. A guarded same-color layered tracker was added for metadata-confirmed multi-series charts. It improves error magnitude, but does not yet add pass-count wins.
+
+## Fix
+
+Changed `plot_extractor/core/data_extractor.py`:
+
+- score dual-Y candidate assignments against all metadata-series permutations
+- select the assignment with the lowest worst-series error
+- add a same-color layered extraction helper for metadata-confirmed multi-series charts when color separation collapses to one mask
+- keep normal scatter behavior unchanged after a dense-line fallback probe failed to improve pass count
+
+## Validation
+
+Focused validation:
+
+| Type | Before | After |
+|------|--------|-------|
+| dual_y | 22/31 (71.0%) | 26/31 (83.9%) |
+| multi_series | 16/31 | 16/31 |
+| scatter | 23/31 | 23/31 |
+| dense | 30/31 | 30/31 |
+
+Full validation:
+
+| Type | Pass | Rate | AvgErr | MaxErr |
+|------|------|------|--------|--------|
+| dense | 30/31 | 96.8% | 0.0270 | 0.2825 |
+| dual_y | 26/31 | 83.9% | 0.0512 | 0.3273 |
+| inverted_y | 31/31 | 100.0% | 0.0038 | 0.0085 |
+| log_x | 31/31 | 100.0% | 0.0053 | 0.0123 |
+| log_y | 31/31 | 100.0% | 0.0065 | 0.0154 |
+| loglog | 31/31 | 100.0% | 0.0050 | 0.0103 |
+| multi_series | 16/31 | 51.6% | 0.1283 | 0.6566 |
+| no_grid | 29/31 | 93.5% | 0.0070 | 0.0816 |
+| scatter | 23/31 | 74.2% | 0.0654 | 0.1814 |
+| simple_linear | 31/31 | 100.0% | 0.0067 | 0.0200 |
+| **TOTAL** | **279/310** | **90.0%** | — | — |
+
+## Next Target
+
+Remaining failures are now concentrated in:
+
+- `multi_series`: same-color crossing recovery still needs better curve identity tracking
+- `scatter`: point-set matching/extraction still fails 8/31
+- `dual_y`: remaining 5 failures appear to be extraction contamination rather than simple axis assignment
+- `dense`: one outlier still falls through to a sparse scatter-like result

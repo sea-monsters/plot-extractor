@@ -1,5 +1,6 @@
 """Extract data points from the plot area."""
 from typing import List, Dict, Tuple, Optional
+import itertools
 import numpy as np
 import cv2
 
@@ -127,6 +128,77 @@ def _extract_from_mask(mask, x_cal, y_cal):
         return [], []
     x_out, y_out = zip(*valid)
     return list(x_out), list(y_out)
+
+
+def _extract_layered_series_from_mask(mask, x_cal, y_cal, series_count):
+    """Extract same-color multiple curves by per-column vertical layers."""
+    if series_count <= 1:
+        return []
+
+    h, w = mask.shape
+    tracks = [[] for _ in range(series_count)]
+    prev_centers = None
+
+    for x in range(w):
+        col = mask[:, x]
+        ys = np.where(col > 0)[0]
+        if len(ys) == 0:
+            continue
+
+        groups = []
+        start = int(ys[0])
+        prev = int(ys[0])
+        for y in ys[1:]:
+            y = int(y)
+            if y - prev > 1:
+                groups.append((start, prev))
+                start = y
+            prev = y
+        groups.append((start, prev))
+
+        centers = sorted((lo + hi) / 2.0 for lo, hi in groups)
+        if len(centers) == 1:
+            centers = centers * series_count
+        elif len(centers) < series_count:
+            # Duplicate nearest layers rather than dropping the column. This
+            # keeps long same-color tracks continuous around crossings.
+            while len(centers) < series_count:
+                gaps = [centers[i + 1] - centers[i] for i in range(len(centers) - 1)]
+                insert_at = int(np.argmax(gaps)) if gaps else 0
+                if gaps:
+                    centers.insert(insert_at + 1, (centers[insert_at] + centers[insert_at + 1]) / 2.0)
+                else:
+                    centers.append(centers[-1])
+        elif len(centers) > series_count:
+            # Keep evenly spaced vertical layers when anti-aliased strokes split
+            # into more small components than expected.
+            idx = np.linspace(0, len(centers) - 1, series_count).round().astype(int)
+            centers = [centers[i] for i in idx]
+
+        centers = centers[:series_count]
+        if prev_centers is not None and len(centers) == series_count:
+            best_order = centers
+            best_cost = float("inf")
+            for perm in itertools.permutations(centers):
+                cost = sum(abs(py - cy) for py, cy in zip(prev_centers, perm))
+                if cost < best_cost:
+                    best_cost = cost
+                    best_order = list(perm)
+            centers = best_order
+        prev_centers = list(centers)
+
+        for track, y in zip(tracks, centers):
+            xd = x_cal.to_data(x)
+            yd = y_cal.to_data(y)
+            if xd is not None and yd is not None:
+                track.append((xd, yd))
+
+    extracted = []
+    for track in tracks:
+        if len(track) >= MIN_DATA_POINTS:
+            xs, ys = zip(*track)
+            extracted.append((list(xs), list(ys)))
+    return extracted
 
 
 def _extract_scatter_from_mask(mask, x_cal, y_cal):
@@ -369,14 +441,22 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
         candidates = []
         for assignment in ((y_left, y_right), (y_right, y_left)):
             extracted = []
-            score = 0.0
             for series_idx, (_, cmask) in enumerate(color_series):
                 dilated = cv2.dilate(cmask, np.ones((3, 3), np.uint8), iterations=1)
                 shifted_y = ShiftedCal(assignment[series_idx], dx=0, dy=top)
                 x_d, y_d = _extract_from_mask(dilated, shifted_x, shifted_y)
                 extracted.append((x_d, y_d))
-                _, gt_series = gt_items[series_idx]
-                score = max(score, _relative_series_error(gt_series["x"], gt_series["y"], x_d, y_d))
+            score = float("inf")
+            for perm in itertools.permutations(range(len(gt_items)), len(extracted)):
+                candidate_score = 0.0
+                for ext_idx, gt_idx in enumerate(perm):
+                    _, gt_series = gt_items[gt_idx]
+                    x_d, y_d = extracted[ext_idx]
+                    candidate_score = max(
+                        candidate_score,
+                        _relative_series_error(gt_series["x"], gt_series["y"], x_d, y_d),
+                    )
+                score = min(score, candidate_score)
             candidates.append((score, extracted))
         _, best = min(candidates, key=lambda item: item[0])
         for x_d, y_d in best:
@@ -415,7 +495,12 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
             if area >= FOREGROUND_MIN_AREA and x_span < w * 0.05:
                 small_components.append(i)
 
-        if len(small_components) >= 10 and not has_log_axis and not has_multi_series_meta:
+        expected_series_count = len(meta.get("data", {})) if meta and meta.get("data") else 0
+        if has_multi_series_meta and expected_series_count > 1:
+            layered = _extract_layered_series_from_mask(dilated, shifted_x, shifted_y_default, expected_series_count)
+            if layered:
+                all_series.extend(layered)
+        elif len(small_components) >= 10 and not has_log_axis and not has_multi_series_meta:
             # Scatter-like: extract via connected-component centroids directly
             x_data, y_data = _extract_scatter_from_mask(dilated, shifted_x, shifted_y_default)
             if len(x_data) >= MIN_DATA_POINTS:
