@@ -1,5 +1,6 @@
 """Per-type validation: run extraction on all images in test_data/<type>/."""
 import csv
+import itertools
 import json
 import sys
 from pathlib import Path
@@ -105,34 +106,48 @@ def evaluate_data_accuracy(data, meta):
     errors = {}
     max_rel_err = 0.0
 
-    # Match extracted series to ground truth by y-range similarity
-    # (color cluster order may not match ground truth series order)
+    # Match extracted series to ground truth. Color cluster order may not match
+    # generation order, especially for multi-series charts with similar ranges.
     extracted_items = list(data.items())
     gt_items = list(gt.items())
 
-    # Compute y ranges for both
-    ext_y_ranges = [(name, max(d["y"]) - min(d["y"])) for name, d in extracted_items]
-    gt_y_ranges = [(name, max(d["y"]) - min(d["y"])) for name, d in gt_items]
+    if len(extracted_items) <= 5 and len(gt_items) <= 5:
+        n_match = min(len(extracted_items), len(gt_items))
+        best_score = float("inf")
+        best_errors = {}
+        for perm in itertools.permutations(range(len(gt_items)), n_match):
+            candidate_errors = {}
+            candidate_score = 0.0
+            for ext_idx, gt_idx in enumerate(perm):
+                ext_name, ext_series = extracted_items[ext_idx]
+                gt_name, gt_series = gt_items[gt_idx]
+                acc = compare_series_accuracy(
+                    gt_series["x"], gt_series["y"],
+                    ext_series["x"], ext_series["y"],
+                )
+                candidate_errors[f"{ext_name}→{gt_name}"] = acc
+                candidate_score = max(candidate_score, acc["rel_err"])
+            if candidate_score < best_score:
+                best_score = candidate_score
+                best_errors = candidate_errors
+        errors = best_errors
+        max_rel_err = best_score if best_score != float("inf") else 1.0
+    else:
+        # Fallback for unexpectedly large series counts: match by y-range.
+        ext_y_ranges = [(name, max(d["y"]) - min(d["y"])) for name, d in extracted_items]
+        gt_y_ranges = [(name, max(d["y"]) - min(d["y"])) for name, d in gt_items]
+        ext_y_ranges.sort(key=lambda x: x[1], reverse=True)
+        gt_y_ranges.sort(key=lambda x: x[1], reverse=True)
 
-    # Sort both by y range (descending)
-    ext_y_ranges.sort(key=lambda x: x[1], reverse=True)
-    gt_y_ranges.sort(key=lambda x: x[1], reverse=True)
-
-    # Match by position in sorted list
-    matched = {}
-    for i, (ext_name, ext_range) in enumerate(ext_y_ranges):
-        if i < len(gt_y_ranges):
-            gt_name = gt_y_ranges[i][0]
-            matched[ext_name] = gt_name
-
-    # Compare matched series
-    for ext_name, gt_name in matched.items():
-        acc = compare_series_accuracy(
-            gt[gt_name]["x"], gt[gt_name]["y"],
-            data[ext_name]["x"], data[ext_name]["y"],
-        )
-        errors[f"{ext_name}→{gt_name}"] = acc
-        max_rel_err = max(max_rel_err, acc["rel_err"])
+        for i, (ext_name, _) in enumerate(ext_y_ranges):
+            if i < len(gt_y_ranges):
+                gt_name = gt_y_ranges[i][0]
+                acc = compare_series_accuracy(
+                    gt[gt_name]["x"], gt[gt_name]["y"],
+                    data[ext_name]["x"], data[ext_name]["y"],
+                )
+                errors[f"{ext_name}→{gt_name}"] = acc
+                max_rel_err = max(max_rel_err, acc["rel_err"])
 
     return max_rel_err, errors
 

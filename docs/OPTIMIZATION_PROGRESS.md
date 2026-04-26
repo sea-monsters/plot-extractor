@@ -894,3 +894,61 @@ The remaining highest-impact targets are now:
 2. `dual_y` right-series mask contamination.
 3. `scatter` point extraction/evaluation cleanup.
 4. `dense` one outlier sample with only 5 extracted points.
+
+---
+
+# Chapter 14: Multi-Series Evaluation Matching Fix (2026-04-26)
+
+## Strategy
+
+The `multi_series` debug run showed two different failure classes:
+
+- true extraction failures: missing series, sparse 6-32 point fragments, or merged series
+- evaluation mismatch: 2-3 full extracted curves but arbitrary color-cluster order, while validation matched by y-range sorting
+
+For examples such as `001`, `002`, `012`, and `013`, exhaustive matching showed that the extracted curves were accurate but assigned to the wrong ground-truth series by the validator.
+
+## Fix
+
+Changed `tests/validate_by_type.py`:
+
+- for up to five extracted/ground-truth series, evaluate all ground-truth permutations
+- choose the assignment with the lowest worst-series relative error
+- keep y-range sorting only as a fallback for unexpectedly large series counts
+
+This is an evaluation-layer fix only; extraction behavior is unchanged.
+
+## Validation
+
+Focused validation:
+
+| Type | Before | After |
+|------|--------|-------|
+| multi_series | 11/31 (35.5%) | 15/31 (48.4%) |
+| dual_y | 22/31 | 22/31 |
+| simple_linear | 31/31 | 31/31 |
+
+Full validation:
+
+| Type | Pass | Rate | AvgErr | MaxErr |
+|------|------|------|--------|--------|
+| dense | 30/31 | 96.8% | 0.0270 | 0.2825 |
+| dual_y | 22/31 | 71.0% | 0.1224 | 0.6525 |
+| inverted_y | 31/31 | 100.0% | 0.0038 | 0.0085 |
+| log_x | 31/31 | 100.0% | 0.0053 | 0.0123 |
+| log_y | 31/31 | 100.0% | 0.0065 | 0.0154 |
+| loglog | 31/31 | 100.0% | 0.0050 | 0.0103 |
+| multi_series | 15/31 | 48.4% | 0.2562 | 1.5785 |
+| no_grid | 29/31 | 93.5% | 0.0070 | 0.0816 |
+| scatter | 23/31 | 74.2% | 0.0654 | 0.1814 |
+| simple_linear | 31/31 | 100.0% | 0.0067 | 0.0200 |
+| **TOTAL** | **274/310** | **88.4%** | — | — |
+
+## Remaining Multi-Series Work
+
+The remaining `multi_series` failures are now more likely real extraction issues:
+
+- color clusters merge two curves into one mask
+- some curves become short fragments around 31 points
+- some samples still fall into a scatter-like sparse fallback
+- crossing/anti-aliasing regions still contaminate per-color masks
