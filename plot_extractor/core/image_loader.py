@@ -1,6 +1,5 @@
 """Image loading and preprocessing."""
 import cv2
-import numpy as np
 from pathlib import Path
 
 

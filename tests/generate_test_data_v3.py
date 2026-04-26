@@ -76,7 +76,7 @@ COLOR_QUADS = [
 
 def _save_meta(out_dir: Path, name: str, data_dict: dict, axes: dict):
     meta = {"data": data_dict, "axes": axes}
-    with open(out_dir / f"{name}_meta.json", "w") as f:
+    with open(out_dir / f"{name}_meta.json", "w", encoding="utf-8") as f:
         json.dump(meta, f, indent=2)
 
 

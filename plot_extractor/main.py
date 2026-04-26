@@ -55,7 +55,12 @@ def _build_diagnostics(calibrated_axes, data, plot_bounds, is_scatter, has_grid)
     }
 
 
-def extract_from_image(image_path: Path, output_csv: Path = None, debug_dir: Path = None, meta=None):
+def extract_from_image(
+    image_path: Path,
+    output_csv: Path = None,
+    debug_dir: Path = None,
+    meta=None,
+):
     """Run full extraction pipeline on an image."""
     image_path = Path(image_path)
     image = load_image(image_path)
@@ -74,9 +79,11 @@ def extract_from_image(image_path: Path, output_csv: Path = None, debug_dir: Pat
         print(f"[{image_path.name}] Axis calibration failed.")
         return None
 
-    # Extract data (use raw image for grid detection, preprocessed for data extraction)
+    # Extract data (raw image for grid detection, preprocessed for data extraction)
     raw_image = load_image(image_path)
-    data, is_scatter, has_grid = extract_all_data(image, calibrated, image_path=image_path, raw_image=raw_image, meta=meta)
+    data, is_scatter, has_grid = extract_all_data(
+        image, calibrated, image_path=image_path, raw_image=raw_image, meta=meta,
+    )
     if not data:
         print(f"[{image_path.name}] No data extracted.")
         return None
@@ -85,22 +92,23 @@ def extract_from_image(image_path: Path, output_csv: Path = None, debug_dir: Pat
     if output_csv is None:
         output_csv = image_path.parent / f"{image_path.stem}.csv"
     output_csv = Path(output_csv)
-    with open(output_csv, "w", newline="") as f:
+    with open(output_csv, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(["series", "x", "y"])
         for series_name, series_data in data.items():
             for x, y in zip(series_data["x"], series_data["y"]):
                 writer.writerow([series_name, x, y])
-    print(f"[{image_path.name}] CSV saved: {output_csv} ({sum(len(s['x']) for s in data.values())} points)")
+    total_pts = sum(len(s["x"]) for s in data.values())
+    print(f"[{image_path.name}] CSV saved: {output_csv} ({total_pts} points)")
 
     # Compute plot bounds for crop comparison
     x_axes = [ca for ca in calibrated if ca.axis.direction == "x"]
     y_axes = [ca for ca in calibrated if ca.axis.direction == "y"]
     h, w = image.shape[:2]
-    left = max([ca.axis.position for ca in y_axes if ca.axis.side == "left"], default=0)
-    right = min([ca.axis.position for ca in y_axes if ca.axis.side == "right"], default=w)
-    top = min([ca.axis.position for ca in x_axes if ca.axis.side == "top"], default=0)
-    bottom = max([ca.axis.position for ca in x_axes if ca.axis.side == "bottom"], default=h)
+    left = max((ca.axis.position for ca in y_axes if ca.axis.side == "left"), default=0)
+    right = min((ca.axis.position for ca in y_axes if ca.axis.side == "right"), default=w)
+    top = min((ca.axis.position for ca in x_axes if ca.axis.side == "top"), default=0)
+    bottom = max((ca.axis.position for ca in x_axes if ca.axis.side == "bottom"), default=h)
     plot_bounds = (left, top, right, bottom)
 
     # Rebuild and compare
@@ -136,17 +144,21 @@ def main():
     parser.add_argument("input", type=Path, help="Input image path")
     parser.add_argument("--output", "-o", type=Path, default=None, help="Output CSV path")
     parser.add_argument("--debug", "-d", type=Path, default=None, help="Debug output directory")
-    parser.add_argument("--meta", type=Path, default=None, help="Optional meta JSON with ground truth")
+    parser.add_argument(
+        "--meta", type=Path, default=None, help="Optional meta JSON with ground truth",
+    )
     args = parser.parse_args()
 
     meta = None
     if args.meta:
-        with open(args.meta) as f:
+        with open(args.meta, encoding="utf-8") as f:
             meta = json.load(f)
     else:
         meta = load_meta_labels(args.input)
 
-    extract_from_image(args.input, output_csv=args.output, debug_dir=args.debug, meta=meta)
+    extract_from_image(
+        args.input, output_csv=args.output, debug_dir=args.debug, meta=meta,
+    )
 
 
 if __name__ == "__main__":

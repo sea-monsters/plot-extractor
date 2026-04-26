@@ -21,8 +21,6 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.ticker import ScalarFormatter, EngFormatter
-
 TEST_DATA_V2_DIR = Path(__file__).parent.parent / "test_data_v2"
 
 # ---------------------------------------------------------------------------
@@ -76,7 +74,7 @@ COLOR_QUADS = [
 
 def _save_meta(out_dir: Path, name: str, data_dict: dict, axes: dict):
     meta = {"data": data_dict, "axes": axes}
-    with open(out_dir / f"{name}_meta.json", "w") as f:
+    with open(out_dir / f"{name}_meta.json", "w", encoding="utf-8") as f:
         json.dump(meta, f, indent=2)
 
 

@@ -1,16 +1,15 @@
 """Detect chart axes, tick marks, and plot area."""
-import cv2
-import numpy as np
 from dataclasses import dataclass
 from typing import List, Tuple
+
+import cv2
+import numpy as np
 
 from plot_extractor.config import (
     HOUGH_THRESHOLD,
     MIN_LINE_LENGTH,
     MAX_LINE_GAP,
     AXIS_ANGLE_TOLERANCE,
-    TICK_LENGTH_THRESHOLD,
-    TICK_MAX_LENGTH,
 )
 
 

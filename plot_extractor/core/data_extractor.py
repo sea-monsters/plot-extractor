@@ -1,10 +1,9 @@
 """Extract data points from the plot area."""
-from typing import List, Dict, Tuple, Optional
+from typing import List, Dict
 import itertools
 import numpy as np
 import cv2
 
-from plot_extractor.core.axis_detector import Axis
 from plot_extractor.core.axis_calibrator import CalibratedAxis
 from plot_extractor.utils.image_utils import (
     detect_background_color,
@@ -106,7 +105,7 @@ def _median_filter(arr, window):
 
 def _extract_from_mask(mask, x_cal, y_cal):
     """Extract line points by vertical scanning of a mask."""
-    h, w = mask.shape
+    _, w = mask.shape
     ys = []
     xs = []
     for x in range(w):
@@ -135,7 +134,7 @@ def _extract_layered_series_from_mask(mask, x_cal, y_cal, series_count):
     if series_count <= 1:
         return []
 
-    h, w = mask.shape
+    _, w = mask.shape
     tracks = [[] for _ in range(series_count)]
     prev_centers = None
 
@@ -203,7 +202,8 @@ def _extract_layered_series_from_mask(mask, x_cal, y_cal, series_count):
 
 def _extract_scatter_from_mask(mask, x_cal, y_cal):
     """Extract scatter points by connected components."""
-    num_labels, labels, stats, centroids = cv2.connectedComponentsWithStats(mask, connectivity=8)
+    num_labels, labels, stats, centroids = \
+        cv2.connectedComponentsWithStats(mask, connectivity=8)
     xs = []
     ys = []
     for i in range(1, num_labels):
@@ -425,9 +425,6 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
         if len(fg_indices[0]) == 0:
             return y_cal_default
 
-        # Compute series y pixel center
-        y_center = np.mean(fg_indices[0])
-
         # Check if series is closer to left or right axis position
         # Left axis usually has smaller y values (top of plot), right axis has larger
         # Actually: Y axes are vertical lines at different X positions, not different Y ranges
@@ -516,7 +513,9 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
         # Single color: use CC to split multiple same-color lines
         _, cmask = color_series[0]
         dilated = cv2.dilate(cmask, np.ones((3, 3), np.uint8), iterations=1)
-        num_labels, labels, stats, centroids = cv2.connectedComponentsWithStats(dilated, connectivity=8)
+        num_labels, labels, stats, centroids = cv2.connectedComponentsWithStats(
+            dilated, connectivity=8,
+        )
 
         # Detect scatter-like pattern: many small disconnected components
         small_components = []

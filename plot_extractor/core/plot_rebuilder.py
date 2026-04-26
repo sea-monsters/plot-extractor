@@ -1,10 +1,11 @@
 """Rebuild a plot from extracted data for validation."""
+from pathlib import Path
+from typing import Dict, List
+
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from typing import Dict, List
-from pathlib import Path
 
 from plot_extractor.core.axis_calibrator import CalibratedAxis
 

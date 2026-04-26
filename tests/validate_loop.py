@@ -38,7 +38,7 @@ def run_validation():
         meta_path = img_path.parent / f"{img_path.stem}_meta.json"
         meta = None
         if meta_path.exists():
-            with open(meta_path) as f:
+            with open(meta_path, encoding="utf-8") as f:
                 meta = json.load(f)
 
         result = extract_from_image(img_path, output_csv=DEBUG_DIR / f"{img_path.stem}.csv",
@@ -69,7 +69,7 @@ def run_validation():
         })
         print(f"  Result: SSIM={ssim:.4f}, threshold={threshold}, passed={passed}\n")
 
-    with open(REPORT_PATH, "w", newline="") as f:
+    with open(REPORT_PATH, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=["file", "ssim", "threshold", "passed", "points", "axes"])
         writer.writeheader()
         writer.writerows(rows)

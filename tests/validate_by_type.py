@@ -170,7 +170,7 @@ def _load_meta(img_path: Path) -> dict | None:
     meta_path = img_path.parent / f"{img_path.stem}_meta.json"
     if not meta_path.exists():
         return None
-    with open(meta_path) as f:
+    with open(meta_path, encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -187,7 +187,7 @@ def _evaluate_image(img_path: Path, chart_type: str, debug: bool = False, debug_
 
     try:
         result = extract_from_image(img_path, output_csv=csv_path, debug_dir=dbg_dir, meta=meta)
-    except Exception as e:
+    except (OSError, ValueError, RuntimeError) as e:
         print(f"    ERROR {img_path.name}: {e}")
         return {"file": img_path.name, "rel_err": 1.0, "ssim": 0.0, "threshold": data_threshold, "passed": False, "error": str(e)}
 
@@ -258,7 +258,6 @@ def validate_type(chart_type: str, debug: bool = False, data_dir: Path | None = 
         print(f"  SKIP {chart_type}: directory not found")
         return {"type": chart_type, "total": 0, "passed": 0, "pass_rate": 0, "avg_rel_err": 0, "max_rel_err": 0, "results": []}
 
-    data_threshold = DATA_ACCURACY_THRESHOLDS.get(chart_type, 0.05)
     image_files = sorted(type_dir.glob("*.png"))
     results = []
 
@@ -347,7 +346,7 @@ def validate_v4_special(data_dir: Path, debug: bool = False, types: list[str] | 
         s["passed"] += 1 if row["passed"] else 0
         s["rel_errs"].append(row["rel_err"])
 
-    with open(report_path, "w", newline="") as f:
+    with open(report_path, "w", newline="", encoding="utf-8") as f:
         fieldnames = [
             "type", "file", "rel_err", "ssim", "threshold", "passed",
             "chart_type", "chart_types", "chart_count", "distortions", "scope", "reason",
@@ -356,7 +355,7 @@ def validate_v4_special(data_dir: Path, debug: bool = False, types: list[str] | 
         writer.writeheader()
         writer.writerows(in_scope_rows)
 
-    with open(scope_path, "w", newline="") as f:
+    with open(scope_path, "w", newline="", encoding="utf-8") as f:
         fieldnames = ["file", "chart_type", "chart_types", "chart_count", "distortions", "scope", "reason"]
         writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
         writer.writeheader()
@@ -412,7 +411,7 @@ def run_all(types: list[str] | None = None, debug: bool = False, data_dir: Path 
             all_rows.append(row)
 
     # Write detailed CSV
-    with open(report_path, "w", newline="") as f:
+    with open(report_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=["type", "file", "rel_err", "ssim", "threshold", "passed"])
         writer.writeheader()
         writer.writerows(all_rows)

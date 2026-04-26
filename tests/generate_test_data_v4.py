@@ -827,7 +827,7 @@ def _fig_to_array(fig) -> np.ndarray:
 
 def _save_meta(out_dir: Path, name: str, data_dict: dict, axes: dict, tags: dict):
     meta = {"data": data_dict, "axes": axes, "tags": tags}
-    with open(out_dir / f"{name}_meta.json", "w") as f:
+    with open(out_dir / f"{name}_meta.json", "w", encoding="utf-8") as f:
         json.dump(meta, f, indent=2)
 
 def _apply_distortions(img: np.ndarray, rng: np.random.Generator) -> tuple[np.ndarray, list[str]]:
@@ -983,7 +983,7 @@ def main():
             ct = _pick(rng, ALL_CHART_TYPES)
             chart_types = [ct]
             gen_fn = CHART_GENERATORS.get(ct, _gen_simple_linear)
-            fig, ax, dd, ad = gen_fn(rng)
+            fig, _, dd, ad = gen_fn(rng)
             img = _fig_to_array(fig)
             data_dict, axes_dict = dd, ad
 
@@ -993,7 +993,7 @@ def main():
         else:  # multi
             img, chart_types, data_dict, axes_dict = _generate_multi_plot(rng)
 
-        h_before = img.shape[0]
+        _h_before = img.shape[0]
         img, distortions_tags = _apply_distortions(img, rng)
 
         # Build tags

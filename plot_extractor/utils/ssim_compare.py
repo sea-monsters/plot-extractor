@@ -17,7 +17,7 @@ def _convolve2d(img, window):
     return cv2.filter2D(img, -1, window, borderType=cv2.BORDER_REFLECT)
 
 
-def ssim(img1, img2, window_size=11, sigma=1.5, K1=0.01, K2=0.03):
+def ssim(img1, img2, window_size=11, sigma=1.5, k1=0.01, k2=0.03):
     """Compute SSIM between two grayscale images (0-255 or 0-1)."""
     if img1.shape != img2.shape:
         raise ValueError("Images must have the same shape")
@@ -45,11 +45,13 @@ def ssim(img1, img2, window_size=11, sigma=1.5, K1=0.01, K2=0.03):
     sigma2_sq = _convolve2d(img2 ** 2, window) - mu2_sq
     sigma12 = _convolve2d(img1 * img2, window) - mu12
 
-    L = 1.0
-    C1 = (K1 * L) ** 2
-    C2 = (K2 * L) ** 2
+    data_range = 1.0
+    c1 = (k1 * data_range) ** 2
+    c2 = (k2 * data_range) ** 2
 
-    ssim_map = ((2 * mu12 + C1) * (2 * sigma12 + C2)) / ((mu1_sq + mu2_sq + C1) * (sigma1_sq + sigma2_sq + C2))
+    numerator = (2 * mu12 + c1) * (2 * sigma12 + c2)
+    denominator = (mu1_sq + mu2_sq + c1) * (sigma1_sq + sigma2_sq + c2)
+    ssim_map = numerator / denominator
 
     # Exclude border artifacts
     pad = window_size // 2
@@ -60,7 +62,10 @@ def ssim(img1, img2, window_size=11, sigma=1.5, K1=0.01, K2=0.03):
 
 
 def compare_images(path1, path2, crop_box=None):
-    """Load two images and compute SSIM. Optional crop_box=(x1,y1,x2,y2) to compare only plot area."""
+    """Compute SSIM between two image files.
+
+    Optional crop_box=(x1,y1,x2,y2) to compare only plot area.
+    """
     img1 = cv2.imread(str(path1))
     img2 = cv2.imread(str(path2))
     if img1 is None or img2 is None:

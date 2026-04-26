@@ -28,7 +28,7 @@ def parse_numeric(text: str) -> float | None:
         try:
             base, exp = text.split("^", 1)
             return float(base.strip()) ** float(exp.strip())
-        except Exception:
+        except (ValueError, IndexError):
             pass
     m = _RE_NUM.match(text)
     if not m:
@@ -102,9 +102,8 @@ def classify_axis(pixels, values):
     if r2_lin >= r2_log:
         _, _, res_lin = fit_linear(pixels, values)
         return "linear", (a_lin, b_lin), res_lin
-    else:
-        _, _, res_log = fit_log(pixels, values)
-        return "log", (a_log, b_log), res_log
+    _, _, res_log = fit_log(pixels, values)
+    return "log", (a_log, b_log), res_log
 
 
 def pixel_to_data(pixel, a, b, axis_type, inverted=False):
@@ -117,14 +116,11 @@ def pixel_to_data(pixel, a, b, axis_type, inverted=False):
         if inverted:
             return 10 ** ((-pixel - b) / a)
         return 10 ** ((pixel - b) / a)
-    else:
-        if a == 0:
-            return None
-        if inverted:
-            # Fit was done on -pixels: -pixel = a*value + b
-            # So pixel = -a*value - b, value = (-pixel - b) / a
-            return (-pixel - b) / a
-        return (pixel - b) / a
+    if a == 0:
+        return None
+    if inverted:
+        return (-pixel - b) / a
+    return (pixel - b) / a
 
 
 def data_to_pixel(value, a, b, axis_type):
@@ -135,5 +131,4 @@ def data_to_pixel(value, a, b, axis_type):
         if value <= 0:
             return None
         return a * np.log10(value) + b
-    else:
-        return a * value + b
+    return a * value + b

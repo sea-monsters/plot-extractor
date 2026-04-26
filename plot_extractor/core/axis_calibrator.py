@@ -1,6 +1,6 @@
 """Calibrate axes: map pixel coordinates to data values."""
 from dataclasses import dataclass
-from typing import Callable, Optional, List, Tuple
+from typing import Optional, List, Tuple
 import numpy as np
 
 from plot_extractor.core.axis_detector import Axis
@@ -21,15 +21,22 @@ class CalibratedAxis:
         return pixel_to_data(pixel, self.a, self.b, self.axis_type, inverted=self.inverted)
 
     def to_pixel(self, value: float) -> Optional[float]:
-        from plot_extractor.utils.math_utils import data_to_pixel
+        from plot_extractor.utils.math_utils import data_to_pixel  # pylint: disable=import-outside-toplevel
         return data_to_pixel(value, self.a, self.b, self.axis_type)
 
 
-def calibrate_axis(axis: Axis, labeled_ticks: List[Tuple[int, Optional[float]]], meta=None) -> Optional[CalibratedAxis]:
+def calibrate_axis(
+    axis: Axis,
+    labeled_ticks: List[Tuple[int, Optional[float]]],
+    meta=None,
+) -> Optional[CalibratedAxis]:
     """Build a calibrated axis from detected ticks and their labels."""
     axis_meta = None
     if meta and "axes" in meta:
-        axis_meta = meta["axes"].get(f"{axis.direction}_{axis.side}") or meta["axes"].get(axis.direction)
+        axis_meta = (
+            meta["axes"].get(f"{axis.direction}_{axis.side}")
+            or meta["axes"].get(axis.direction)
+        )
 
     # Filter ticks with valid numeric labels
     valid = [(p, v) for p, v in labeled_ticks if v is not None]
@@ -137,7 +144,7 @@ def calibrate_axis(axis: Axis, labeled_ticks: List[Tuple[int, Optional[float]]],
 
 def calibrate_all_axes(axes: List[Axis], image, meta=None) -> List[CalibratedAxis]:
     """Calibrate all detected axes."""
-    from plot_extractor.core.ocr_reader import read_all_tick_labels, load_meta_labels
+    from plot_extractor.core.ocr_reader import read_all_tick_labels  # pylint: disable=import-outside-toplevel
 
     if meta is None and hasattr(image, "shape"):
         # image is numpy array, no path available here

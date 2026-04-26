@@ -1,9 +1,7 @@
 """OCR and tick label reading with fallback mechanisms."""
 import json
-import re
 from pathlib import Path
 from typing import List, Tuple, Optional
-import numpy as np
 
 try:
     import pytesseract
@@ -38,7 +36,7 @@ def read_tick_label(image_crop) -> Optional[float]:
         text = _clean_ocr_text(text)
         val = parse_numeric(text)
         return val
-    except Exception:
+    except OSError:
         return None
 
 
@@ -75,6 +73,6 @@ def load_meta_labels(image_path: Path) -> Optional[dict]:
     """Load ground-truth tick labels from meta JSON if available."""
     meta_path = image_path.parent / f"{image_path.stem}_meta.json"
     if meta_path.exists():
-        with open(meta_path) as f:
+        with open(meta_path, encoding="utf-8") as f:
             return json.load(f)
     return None

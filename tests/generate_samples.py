@@ -14,7 +14,7 @@ SAMPLES_DIR.mkdir(exist_ok=True)
 
 def save_meta(name, data_dict, axis_info):
     meta = {"data": data_dict, "axes": axis_info}
-    with open(SAMPLES_DIR / f"{name}_meta.json", "w") as f:
+    with open(SAMPLES_DIR / f"{name}_meta.json", "w", encoding="utf-8") as f:
         json.dump(meta, f, indent=2)
 
 def sample_01_simple_linear():

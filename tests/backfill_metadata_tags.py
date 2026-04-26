@@ -7,7 +7,6 @@ deterministically (same seeds) to capture which distortions were applied per
 image, without re-saving images or meta files.
 """
 import json
-import sys
 from pathlib import Path
 
 import numpy as np
@@ -143,12 +142,12 @@ def _compute_v3_distortions(
 # ---------------------------------------------------------------------------
 
 def _read_meta(path: Path) -> dict:
-    with open(path, "r") as f:
+    with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
 
 def _write_meta(path: Path, data: dict) -> None:
-    with open(path, "w") as f:
+    with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
 
 
