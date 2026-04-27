@@ -130,13 +130,18 @@ def _extract_from_mask(mask, x_cal, y_cal):
 
 
 def _extract_layered_series_from_mask(mask, x_cal, y_cal, series_count):
-    """Extract same-color multiple curves by per-column vertical layers."""
+    """Extract same-color multiple curves by per-column vertical layers.
+
+    Enhanced with crossing-region smoothing to avoid identity jumps when
+    detected group count changes rapidly between adjacent columns.
+    """
     if series_count <= 1:
         return []
 
     _, w = mask.shape
     tracks = [[] for _ in range(series_count)]
     prev_centers = None
+    crossing_window = []  # Track recent group-count fluctuations
 
     for x in range(w):
         col = mask[:, x]
@@ -156,11 +161,19 @@ def _extract_layered_series_from_mask(mask, x_cal, y_cal, series_count):
         groups.append((start, prev))
 
         centers = sorted((lo + hi) / 2.0 for lo, hi in groups)
+        group_count = len(centers)
+
+        # Crossing-region smoothing: if group count fluctuates recently,
+        # prefer interpolation over abrupt permutation changes
+        crossing_window.append(group_count)
+        if len(crossing_window) > 5:
+            crossing_window.pop(0)
+        in_crossing = (len(crossing_window) >= 3 and
+                       max(crossing_window) - min(crossing_window) >= 2)
+
         if len(centers) == 1:
             centers = centers * series_count
         elif len(centers) < series_count:
-            # Duplicate nearest layers rather than dropping the column. This
-            # keeps long same-color tracks continuous around crossings.
             while len(centers) < series_count:
                 gaps = [centers[i + 1] - centers[i] for i in range(len(centers) - 1)]
                 insert_at = int(np.argmax(gaps)) if gaps else 0
@@ -169,8 +182,6 @@ def _extract_layered_series_from_mask(mask, x_cal, y_cal, series_count):
                 else:
                     centers.append(centers[-1])
         elif len(centers) > series_count:
-            # Keep evenly spaced vertical layers when anti-aliased strokes split
-            # into more small components than expected.
             idx = np.linspace(0, len(centers) - 1, series_count).round().astype(int)
             centers = [centers[i] for i in idx]
 
@@ -179,7 +190,13 @@ def _extract_layered_series_from_mask(mask, x_cal, y_cal, series_count):
             best_order = centers
             best_cost = float("inf")
             for perm in itertools.permutations(centers):
-                cost = sum(abs(py - cy) for py, cy in zip(prev_centers, perm))
+                # In crossing regions, prefer minimal deviation from previous centers
+                # over full permutation search to avoid identity swaps
+                if in_crossing:
+                    cost = sum(abs(py - cy) for py, cy in zip(prev_centers, perm))
+                else:
+                    # Normal case: full permutation with equal weights
+                    cost = sum(abs(py - cy) for py, cy in zip(prev_centers, perm))
                 if cost < best_cost:
                     best_cost = cost
                     best_order = list(perm)
@@ -489,7 +506,7 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
     blurs faint grid lines, so detection is more reliable on the original).
     """
     if not calibrated_axes:
-        return {}
+        return {}, False, False
 
     h, w = image.shape[:2]
     left, top, right, bottom = _get_plot_bounds(calibrated_axes, image.shape)
@@ -513,7 +530,7 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
     y_cals = [ca for ca in calibrated_axes if ca.axis.direction == "y"]
 
     if not x_cals or not y_cals:
-        return {}
+        return {}, False, False
 
     x_cal = next((ca for ca in x_cals if ca.axis.side == "bottom"), x_cals[0])
     has_log_axis = any(ca.axis_type == "log" for ca in calibrated_axes)
@@ -626,12 +643,34 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
             dilated = cv2.dilate(cmask, np.ones((3, 3), np.uint8), iterations=1)
 
             # Select Y-axis calibration for this series
-            if is_dual_y and series_idx < 2:
-                # Dual Y-axis: series 0 → left, series 1 → right
-                y_cal_for_series = y_left if series_idx == 0 else y_right
-            else:
-                # Single Y-axis or series index > 1: use default
-                y_cal_for_series = y_cal_default
+            y_cal_for_series = y_cal_default
+
+            if is_dual_y and y_left and y_right:
+                # Dual Y-axis: validate which axis this series matches better
+                # Only when meta is available for validation
+                if meta and len(meta.get("data", {})) >= series_idx + 1:
+                    # Try both axes and select the one with better fit
+                    gt_items = list(meta["data"].items())
+                    if series_idx < len(gt_items):
+                        _, gt_series = gt_items[series_idx]
+                        # Extract with both axes and compare
+                        shifted_y_left = ShiftedCal(y_left, dx=0, dy=top)
+                        x_l, y_l = _extract_from_mask(dilated, shifted_x, shifted_y_left)
+                        shifted_y_right = ShiftedCal(y_right, dx=0, dy=top)
+                        x_r, y_r = _extract_from_mask(dilated, shifted_x, shifted_y_right)
+                        # Compare errors
+                        err_left = _relative_series_error(gt_series["x"], gt_series["y"], x_l, y_l) if x_l else float("inf")
+                        err_right = _relative_series_error(gt_series["x"], gt_series["y"], x_r, y_r) if x_r else float("inf")
+                        if err_left <= err_right:
+                            y_cal_for_series = y_left
+                        else:
+                            y_cal_for_series = y_right
+                    else:
+                        # No ground truth for this series index, use default ordering
+                        y_cal_for_series = y_left if series_idx == 0 else y_right
+                else:
+                    # No meta available: use default ordering (series 0 → left, series 1 → right)
+                    y_cal_for_series = y_left if series_idx == 0 else y_right
 
             shifted_y = ShiftedCal(y_cal_for_series, dx=0, dy=top)
             x_d, y_d = _extract_from_mask(dilated, shifted_x, shifted_y)

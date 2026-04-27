@@ -55,6 +55,23 @@ def _build_diagnostics(calibrated_axes, data, plot_bounds, is_scatter, has_grid)
     }
 
 
+def _score_calibration_quality(calibrated_axes):
+    """Score axis calibration quality for rotation-path selection.
+
+    Higher score = better calibration. Uses labeled tick count and residual.
+    """
+    if not calibrated_axes:
+        return -1.0
+
+    score = 0.0
+    for ca in calibrated_axes:
+        labeled_count = len([v for _, v in ca.tick_map if v is not None])
+        score += labeled_count * 10.0  # Each labeled tick contributes significantly
+        # Penalize high residuals
+        score -= min(ca.residual * 0.01, 50.0)  # Cap penalty to avoid over-penalizing outliers
+    return score
+
+
 def extract_from_image(
     image_path: Path,
     output_csv: Path = None,
@@ -69,12 +86,55 @@ def extract_from_image(
 
     # Detect and correct rotation before axis detection
     rot_angle = estimate_rotation_angle(gray)
-    if abs(rot_angle) >= 0.5:
-        print(f"[{image_path.name}] Rotating by {-rot_angle:.2f}° (detected {rot_angle:.2f}°)")
-        image = rotate_image(image, -rot_angle)
-        gray = to_grayscale(image)
 
-    # Detect axes
+    # Rotation quality-gated selection for near-threshold angles
+    use_rotated = False
+    if abs(rot_angle) >= 0.5:
+        # For near-threshold cases, evaluate both paths and choose better calibration
+        if abs(rot_angle) < 2.0:  # Borderline zone: try both
+            # Path A: no rotation
+            gray_a = gray
+            axes_a = detect_all_axes(gray_a)
+            if axes_a:
+                calibrated_a = calibrate_all_axes(axes_a, image, meta=meta)
+                score_a = _score_calibration_quality(calibrated_a)
+            else:
+                score_a = -1.0
+
+            # Path B: rotation
+            image_b = rotate_image(image, -rot_angle)
+            gray_b = to_grayscale(image_b)
+            axes_b = detect_all_axes(gray_b)
+            if axes_b:
+                calibrated_b = calibrate_all_axes(axes_b, image_b, meta=meta)
+                score_b = _score_calibration_quality(calibrated_b)
+            else:
+                score_b = -1.0
+
+            # Choose better path
+            if score_b > score_a and calibrated_b:
+                print(f"[{image_path.name}] Rotating by {-rot_angle:.2f}° (detected {rot_angle:.2f}°, quality-gated: B={score_b:.1f} > A={score_a:.1f})")
+                image = image_b
+                gray = gray_b
+                use_rotated = True
+            elif calibrated_a:
+                print(f"[{image_path.name}] Skipping rotation (detected {rot_angle:.2f}°, quality-gated: A={score_a:.1f} >= B={score_b:.1f})")
+                # Keep original image
+                use_rotated = False
+            else:
+                # Neither path has axes, fallback to original behavior
+                print(f"[{image_path.name}] Rotating by {-rot_angle:.2f}° (detected {rot_angle:.2f}°, fallback: no axes in either path)")
+                image = image_b
+                gray = gray_b
+                use_rotated = True
+        else:
+            # Strong rotation: apply directly (not borderline)
+            print(f"[{image_path.name}] Rotating by {-rot_angle:.2f}° (detected {rot_angle:.2f}°, strong rotation)")
+            image = rotate_image(image, -rot_angle)
+            gray = to_grayscale(image)
+            use_rotated = True
+
+    # Detect axes on selected image
     axes = detect_all_axes(gray)
     if not axes:
         print(f"[{image_path.name}] No axes detected.")
@@ -88,7 +148,7 @@ def extract_from_image(
 
     # Extract data (raw image for grid detection, preprocessed for data extraction)
     raw_image = load_image(image_path)
-    if abs(rot_angle) >= 0.5:
+    if use_rotated:
         raw_image = rotate_image(raw_image, -rot_angle)
     data, is_scatter, has_grid = extract_all_data(
         image, calibrated, image_path=image_path, raw_image=raw_image, meta=meta,
