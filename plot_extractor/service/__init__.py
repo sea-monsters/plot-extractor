@@ -1,0 +1,1 @@
+"""Service layer: MCP server, schemas, debug overlay."""

@@ -1,10 +1,80 @@
 """Calibrate axes: map pixel coordinates to data values."""
+import os
 from dataclasses import dataclass
 from typing import Optional, List, Tuple
+
 import numpy as np
 
 from plot_extractor.core.axis_detector import Axis
-from plot_extractor.utils.math_utils import classify_axis, pixel_to_data, fit_linear, fit_log
+from plot_extractor.utils.math_utils import pixel_to_data, fit_linear, fit_log
+
+
+def _is_plausible_ocr_tick_sequence(
+    labeled_ticks: List[Tuple[int, Optional[float]]],
+    preferred_type: str | None = None,
+) -> bool:
+    """Quick sanity check for OCR-derived tick values.
+
+    Goal: reject obviously inconsistent OCR reads so calibration can
+    fall back to safer synthetic strategies.
+    """
+    from plot_extractor.utils.math_utils import _is_arithmetic_sequence, _is_geometric_sequence  # pylint: disable=import-outside-toplevel
+
+    valid = [(p, v) for p, v in labeled_ticks if v is not None]
+    if len(valid) < 3:
+        return True
+
+    pixels = np.array([p for p, _ in valid], dtype=float)
+    values = np.array([v for _, v in valid], dtype=float)
+
+    if not np.all(np.isfinite(values)):
+        return False
+    if np.ptp(values) < 1e-9:
+        return False
+
+    # Log-preferred axes cannot contain non-positive values.
+    if preferred_type == "log" and np.any(values <= 0):
+        return False
+
+    # OCR noise often creates many repeated values (e.g. 0,0,0,...).
+    unique_ratio = len(np.unique(np.round(values, 8))) / len(values)
+    if unique_ratio < 0.5:
+        return False
+
+    order = np.argsort(pixels)
+    ordered_values = values[order]
+    diffs = np.diff(ordered_values)
+    non_zero = diffs[np.abs(diffs) > 1e-9]
+    if len(non_zero) >= 2:
+        trend_consistency = max(np.mean(non_zero > 0), np.mean(non_zero < 0))
+        if trend_consistency < 0.7:  # Allow 30% outliers
+            return False
+
+    # Check for arithmetic/geometric sequence based on preferred_type
+    if preferred_type == "log":
+        if not _is_geometric_sequence(ordered_values, tol=0.3):
+            return False
+    elif preferred_type == "linear":
+        if not _is_arithmetic_sequence(ordered_values, tol=0.3):
+            return False
+    else:
+        # Unknown type: check if it matches either pattern
+        is_arith = _is_arithmetic_sequence(ordered_values, tol=0.3)
+        is_geom = _is_geometric_sequence(ordered_values, tol=0.3)
+        if not is_arith and not is_geom:
+            return False
+
+    # Value range sanity check
+    value_range = np.ptp(values)
+    value_mean = np.mean(np.abs(values))
+    if value_range > 1e6 and value_mean < 1000:
+        # Extreme range but small mean: likely OCR garbage
+        return False
+
+    corr = np.corrcoef(pixels, values)[0, 1]
+    if not np.isfinite(corr) or abs(corr) < 0.3:
+        return False
+    return True
 
 
 @dataclass
@@ -28,65 +98,27 @@ class CalibratedAxis:
 def calibrate_axis(
     axis: Axis,
     labeled_ticks: List[Tuple[int, Optional[float]]],
-    meta=None,
+    policy=None,
+    preferred_type: str | None = None,
 ) -> Optional[CalibratedAxis]:
     """Build a calibrated axis from detected ticks and their labels."""
-    axis_meta = None
-    if meta and "axes" in meta:
-        axis_meta = (
-            meta["axes"].get(f"{axis.direction}_{axis.side}")
-            or meta["axes"].get(axis.direction)
-        )
-
     # Filter ticks with valid numeric labels
     valid = [(p, v) for p, v in labeled_ticks if v is not None]
 
-    if len(valid) < 2:
-        # Try meta fallback
-        if axis_meta:
-            vmin = axis_meta.get("min")
-            vmax = axis_meta.get("max")
-            if vmin is not None and vmax is not None:
-                is_inverted_meta = axis_meta.get("inverted", False)
-                if axis.direction == "x":
-                    pixels = [axis.plot_start, axis.plot_end]
-                    values = [vmin, vmax]
-                    if is_inverted_meta:
-                        values = values[::-1]
-                else:
-                    if is_inverted_meta:
-                        pixels = [axis.plot_start, axis.plot_end]
-                    else:
-                        pixels = [axis.plot_end, axis.plot_start]
-                    values = [vmin, vmax]
-                valid = list(zip(pixels, values))
-            elif axis_meta.get("type") == "log":
-                # Generate synthetic labels for log axis
-                vmin, vmax = axis_meta.get("min", 1), axis_meta.get("max", 10)
-                n_ticks = len(axis.ticks)
-                if n_ticks >= 2:
-                    log_min, log_max = np.log10(vmin), np.log10(vmax)
-                    log_vals = np.linspace(log_min, log_max, n_ticks)
-                    values = 10 ** log_vals
-                    is_inverted_meta = axis_meta.get("inverted", False)
-                    if axis.direction == "y" and not is_inverted_meta:
-                        values = values[::-1]
-                    pixels = [t[0] for t in axis.ticks]
-                    valid = list(zip(pixels, values))
-            else:
-                vmin, vmax = axis_meta.get("min", 0), axis_meta.get("max", 1)
-                n_ticks = len(axis.ticks)
-                if n_ticks >= 2:
-                    values = np.linspace(vmin, vmax, n_ticks)
-                    # For y-axis, pixels usually increase downward while values increase upward
-                    is_inverted_meta = axis_meta.get("inverted", False)
-                    if axis.direction == "y" and not is_inverted_meta:
-                        values = values[::-1]
-                    pixels = [t[0] for t in axis.ticks]
-                    valid = list(zip(pixels, values))
+    # For log-preferred axes, discard non-positive values (they break log fit)
+    if preferred_type == "log":
+        valid = [(p, v) for p, v in valid if v > 0]
+
+    # Guardrail: if OCR values look internally inconsistent, ignore them
+    # and let heuristic fallback take over.
+    if len(valid) >= 3 and not _is_plausible_ocr_tick_sequence(valid, preferred_type):
+        valid = []
 
     if len(valid) < 2:
-        return None
+        # Heuristic fallback: generate synthetic values from tick spacing pattern
+        synthetic_valid = _build_heuristic_ticks(axis)
+        if len(synthetic_valid) >= 2:
+            valid = synthetic_valid
 
     pixels = np.array([p for p, _ in valid], dtype=float)
     values = np.array([v for _, v in valid], dtype=float)
@@ -102,11 +134,13 @@ def calibrate_axis(
             inverted = corr > 0.3
         else:
             inverted = corr < -0.3
-    else:
+    elif len(pixels) == 2:
         pixel_dir = pixels[-1] - pixels[0]
         value_dir = values[-1] - values[0]
         same_dir = pixel_dir * value_dir > 0
         inverted = same_dir if axis.direction == "y" else not same_dir
+    else:
+        return None
 
     if inverted:
         # Flip pixel coordinates for fitting
@@ -114,15 +148,20 @@ def calibrate_axis(
     else:
         pixels_fit = pixels
 
-    preferred_axis_type = axis_meta.get("type") if axis_meta else None
-    if preferred_axis_type == "log":
-        axis_type = "log"
-        a, b, residual = fit_log(pixels_fit, values)
-    elif preferred_axis_type == "linear":
-        axis_type = "linear"
-        a, b, residual = fit_linear(pixels_fit, values)
-    else:
-        axis_type, (a, b), residual = classify_axis(pixels_fit, values)
+    # Use multi-candidate solver for axis mapping
+    from plot_extractor.core.axis_candidates import solve_axis_multi_candidate  # pylint: disable=import-outside-toplevel
+
+    candidate_result = solve_axis_multi_candidate(
+        axis,
+        [(int(p), float(v)) for p, v in zip(pixels_fit, values)],
+        preferred_type=preferred_type,
+    )
+
+    best_candidate = candidate_result.best
+    axis_type = best_candidate.scale
+    a = best_candidate.a
+    b = best_candidate.b
+    residual = best_candidate.residual
 
     if residual > 1e6 or a is None:
         # Fallback to linear
@@ -142,22 +181,212 @@ def calibrate_axis(
     )
 
 
-def calibrate_all_axes(axes: List[Axis], image, meta=None) -> List[CalibratedAxis]:
-    """Calibrate all detected axes."""
+def _build_heuristic_ticks(axis):
+    """Generate synthetic (pixel, value) ticks from spacing pattern when OCR fails.
+
+    Uses tick spacing uniformity to guess linear vs log, then assigns
+    synthetic values.  Absolute scale is arbitrary, but preserves shape.
+    """
+    ticks = sorted([t[0] for t in (axis.ticks or [])])
+    if len(ticks) < 2:
+        return []
+
+    pixels = np.array(ticks, dtype=float)
+    spacings = np.diff(pixels)
+    if len(spacings) == 0 or np.mean(spacings) <= 0:
+        return []
+
+    # Coefficient of variation: low = uniform (linear), high = geometric (log)
+    cv = float(np.std(spacings) / (np.mean(spacings) + 1e-6))
+
+    # Geometric indicator: ratios of consecutive spacings
+    ratios = []
+    for i in range(1, len(spacings)):
+        if spacings[i - 1] > 1:
+            ratios.append(spacings[i] / spacings[i - 1])
+    mean_ratio = float(np.mean(ratios)) if ratios else 1.0
+
+    # Classify axis type from spacing pattern
+    is_log = cv > 0.3 and 0.5 < mean_ratio < 2.0 and not 0.9 < mean_ratio < 1.1
+
+    n = len(ticks)
+    if is_log:
+        # Synthetic log values: 1, 10, 100, ... or 1, 2, 5, 10, ...
+        # Use uniform log spacing as simplest fallback
+        values = np.logspace(0, 1, n)
+    else:
+        # Synthetic linear values: 0, 1, 2, ..., n-1
+        values = np.arange(n, dtype=float)
+
+    # Handle inversion: for y-axis, pixels usually increase downward while
+    # values increase upward.  Without external info, assume standard orientation.
+    if axis.direction == "y":
+        # Standard: top tick = largest value, bottom tick = smallest value
+        values = values[::-1]
+
+    return list(zip(ticks, values))
+
+
+def _crop_axis_region(image: np.ndarray, axis: Axis, padding: int = 20) -> np.ndarray:
+    """Crop a region around an axis for LLM vision input."""
+    h, w = image.shape[:2]
+    if axis.direction == "x":
+        # Horizontal axis: labels below
+        x1 = max(0, int(axis.plot_start) - padding)
+        x2 = min(w, int(axis.plot_end) + padding)
+        y1 = max(0, int(axis.position) - padding)
+        y2 = min(h, int(axis.position) + padding * 4)
+    else:
+        # Vertical axis: labels to the left or right
+        y1 = max(0, int(axis.plot_start) - padding)
+        y2 = min(h, int(axis.plot_end) + padding)
+        if axis.side == "right":
+            x1 = max(0, int(axis.position) - padding)
+            x2 = min(w, int(axis.position) + padding * 5)
+        else:
+            x1 = max(0, int(axis.position) - padding * 5)
+            x2 = min(w, int(axis.position) + padding)
+    if x2 <= x1:
+        x2 = min(w, x1 + 10)
+    if y2 <= y1:
+        y2 = min(h, y1 + 10)
+    return image[y1:y2, x1:x2]
+
+
+def _llm_enhance_axis_labels(
+    image: np.ndarray,
+    axis: Axis,
+    ocr_labeled: List[Tuple[int, Optional[float]]],
+) -> Optional[List[Tuple[int, Optional[float]]]]:
+    """Use LLM vision to read axis labels when OCR yields insufficient values."""
+    from plot_extractor.core.llm_policy_router import (  # pylint: disable=import-outside-toplevel
+        llm_available,
+        _detect_provider,
+        _image_array_to_data_url,
+        llm_read_axis_labels,
+    )
+
+    if not llm_available():
+        return None
+
+    provider, base_url, model = _detect_provider()
+    if not provider:
+        return None
+
+    tick_pixels = sorted([t[0] for t in axis.ticks])
+    crop = _crop_axis_region(image, axis)
+    image_data_url = _image_array_to_data_url(crop)
+
+    api_key = (
+        os.environ.get("ANTHROPIC_API_KEY")
+        or os.environ.get("OPENAI_API_KEY")
+        or os.environ.get("LLM_API_KEY")
+    )
+    if not api_key:
+        return None
+
+    parsed = llm_read_axis_labels(
+        image_data_url, provider, api_key, base_url, model,
+        axis.direction, len(tick_pixels),
+    )
+    if not parsed or "tick_values" not in parsed:
+        return None
+
+    tick_values = parsed["tick_values"]
+    if not isinstance(tick_values, list):
+        return None
+
+    # Normalize length to match detected ticks
+    n = len(tick_pixels)
+    if len(tick_values) < n:
+        tick_values = tick_values + [None] * (n - len(tick_values))
+    elif len(tick_values) > n:
+        tick_values = tick_values[:n]
+
+    # Convert to float where possible
+    llm_labeled = []
+    for pix, val in zip(tick_pixels, tick_values):
+        if val is None:
+            llm_labeled.append((pix, None))
+        else:
+            try:
+                llm_labeled.append((pix, float(val)))
+            except (ValueError, TypeError):
+                llm_labeled.append((pix, None))
+
+    # Merge: keep OCR values where available, fill gaps with LLM
+    merged = []
+    for (pix_ocr, val_ocr), (pix_llm, val_llm) in zip(ocr_labeled, llm_labeled):
+        if val_ocr is not None:
+            merged.append((pix_ocr, val_ocr))
+        else:
+            merged.append((pix_llm, val_llm))
+    return merged
+
+
+def calibrate_all_axes(
+    axes: List[Axis], image, policy=None,
+    use_ocr: bool = False, use_llm: bool = False,
+    type_probs: dict | None = None,
+) -> List[CalibratedAxis]:
+    """Calibrate all detected axes.
+
+    If *use_ocr* is True, tick labels are read via OCR (requires tesseract).
+    If False, calibration falls back to heuristic synthetic ticks.
+    """
     from plot_extractor.core.ocr_reader import read_all_tick_labels  # pylint: disable=import-outside-toplevel
 
-    if meta is None and hasattr(image, "shape"):
-        # image is numpy array, no path available here
-        pass
+    # Derive preferred axis type from chart-type probabilities.
+    # loglog is only applied to an axis when the specific log type for the
+    # OTHER axis is not also significant (prevents log_x charts from getting
+    # their y-axis forced to log, and vice versa).
+    if type_probs:
+        loglog_prob = type_probs.get("loglog", 0.0)
+        log_x_specific = type_probs.get("log_x", 0.0)
+        log_y_specific = type_probs.get("log_y", 0.0)
+
+        log_y_prob = log_y_specific
+        if loglog_prob > 0.25 and log_x_specific < 0.2:
+            log_y_prob = max(log_y_prob, loglog_prob)
+
+        log_x_prob = log_x_specific
+        if loglog_prob > 0.25 and log_y_specific < 0.2:
+            log_x_prob = max(log_x_prob, loglog_prob)
+    else:
+        log_y_prob = 0.0
+        log_x_prob = 0.0
 
     calibrated = []
     for axis in axes:
+        # Set per-axis preferred type
+        axis_preferred = None
+        if axis.direction == "y" and log_y_prob > 0.25:
+            axis_preferred = "log"
+        elif axis.direction == "x" and log_x_prob > 0.25:
+            axis_preferred = "log"
+
         tick_pixels = [t[0] for t in axis.ticks]
-        labeled = read_all_tick_labels(image, axis, tick_pixels)
-        cal = calibrate_axis(axis, labeled, meta=meta)
+        if use_ocr:
+            labeled = read_all_tick_labels(image, axis, tick_pixels, policy=policy)
+        else:
+            labeled = [(p, None) for p in tick_pixels]
+
+        # LLM fallback when OCR yields insufficient labels
+        if use_llm:
+            valid_count = sum(1 for _, v in labeled if v is not None)
+            n_ticks = len(tick_pixels)
+            # Trigger if too few labels for calibration, or sparse coverage on dense axis
+            if valid_count < 2 or (n_ticks >= 6 and valid_count < n_ticks * 0.4):
+                enhanced = _llm_enhance_axis_labels(image, axis, labeled)
+                if enhanced is not None:
+                    labeled = enhanced
+
+        cal = calibrate_axis(
+            axis, labeled, policy=policy, preferred_type=axis_preferred,
+        )
         if cal is None:
-            # Last resort: use meta-only if available
-            cal = calibrate_axis(axis, [], meta=meta)
+            # Last resort: use heuristic synthetic ticks
+            cal = calibrate_axis(axis, [], policy=policy, preferred_type=axis_preferred)
         if cal is not None:
             calibrated.append(cal)
     return calibrated

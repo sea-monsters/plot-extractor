@@ -1,8 +1,15 @@
 # Baseline Evaluation
 
+> **CRITICAL: Baselines recorded before 2026-04-28 are INVALID due to meta-information leakage.**
+>
+> The old pipeline passed `_meta.json` ground truth directly into `extract_from_image()`, which used meta-supplied axis ranges, series counts, and data values to artificially boost pass rates. See [META_ISOLATION_BOUNDARY.md](./META_ISOLATION_BOUNDARY.md) for the full audit and the hard boundary rule.
+>
+> **Old headline numbers (pre-2026-04-28):** v1 92.9%, v2 75.6%, v3 35.8%, v4 44.1% — all invalid.
+> **True headline numbers (meta-isolated, post-2026-04-28):** see True Baselines section below.
+
 Current project phase: beta.
 
-This document records the current v1-v4 validation baseline collected on 2026-04-26. The detailed CSV reports are generated locally and are not committed by default because repository rules ignore generated CSV outputs.
+This document records validation baselines. The detailed CSV reports are generated locally and are not committed by default because repository rules ignore generated CSV outputs.
 
 ## Evaluation Commands
 
@@ -15,16 +22,44 @@ python tests\validate_by_type.py --data-dir test_data_v4 --v4-special
 
 v4 uses a special supported-domain evaluator because the set contains single charts, combo charts, multi-subplot charts, unsupported chart types, and partial crops. The v4 headline score below is therefore the supported-domain score, not the full 500-image mixed-scope score.
 
-## Headline Baseline
+## True Baselines (Meta-Isolated, Post-2026-04-28)
+
+### V1 Result (2026-04-28)
+
+| Type | Pass | Rate | AvgErr | MaxErr | Top1 | Top2 |
+|------|------|------|--------|--------|------|------|
+| dense | 0/31 | 0.0% | 1.3816 | 2.6749 | 25.8% | 32.3% |
+| dual_y | 0/31 | 0.0% | 0.4680 | 1.0421 | 0.0% | 6.5% |
+| inverted_y | 0/31 | 0.0% | 0.5646 | 1.0579 | 0.0% | 0.0% |
+| log_x | 0/31 | 0.0% | 0.3015 | 0.8258 | 100.0% | 100.0% |
+| log_y | 0/31 | 0.0% | 0.2819 | 1.3135 | 96.8% | 96.8% |
+| loglog | 5/31 | 16.1% | 0.0961 | 0.2537 | 0.0% | 100.0% |
+| multi_series | 0/31 | 0.0% | 0.3531 | 0.5241 | 87.1% | 87.1% |
+| no_grid | 0/31 | 0.0% | 0.3508 | 0.7585 | 0.0% | 93.5% |
+| scatter | 0/31 | 0.0% | 0.5886 | 2.0883 | 61.3% | 77.4% |
+| simple_linear | 0/31 | 0.0% | 0.5317 | 0.9458 | 45.2% | 64.5% |
+| **TOTAL** | **5/310** | **1.6%** | — | — | **41.3%** | **64.8%** |
+
+### V2, V3, V4
+
+Pending. See task outputs below.
+
+> **Why is the true rate so low?** The extraction pipeline without ground-truth meta cannot reliably calibrate axes. Relative errors are 25%-135% because pixel-to-data mapping is arbitrary. Chart-type **routing** works well (41% top1, 65% top2), but the calibration and data-extraction stages need fundamental rebuilding. The old 92.9% was entirely fabricated by meta-supplied axis ranges and series counts.
+
+## Invalid Pre-Fix Baselines (Pre-2026-04-28)
+
+**The following data is preserved for historical reference only. These numbers are NOT valid baselines because the extraction pipeline received ground-truth meta.**
+
+### Headline
 
 | Dataset | Scope | Pass | Rate | Notes |
 |---------|-------|------|------|-------|
-| v1 | 10 supported chart types | 288/310 | 92.9% | Original controlled set |
-| v2 | 10 supported chart types | 378/500 | 75.6% | Wider style and data variation |
-| v3 | 10 supported chart types | 179/500 | 35.8% | Scanned/photographed degradation simulation |
-| v4 | supported single-chart subset | 90/204 | 44.1% | 296/500 samples are out of current extractor scope |
+| v1 | 10 supported chart types | 288/310 | 92.9% | **INVALID** — meta leakage |
+| v2 | 10 supported chart types | 378/500 | 75.6% | **INVALID** — meta leakage |
+| v3 | 10 supported chart types | 179/500 | 35.8% | **INVALID** — meta leakage |
+| v4 | supported single-chart subset | 90/204 | 44.1% | **INVALID** — meta leakage |
 
-## V1 Results
+### V1 Results (Invalid)
 
 | Type | Pass | Rate | AvgErr | MaxErr |
 |------|------|------|--------|--------|

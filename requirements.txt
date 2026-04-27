@@ -2,3 +2,7 @@ opencv-python-headless>=4.8.0
 numpy>=1.24.0
 matplotlib>=3.7.0
 pytesseract>=0.3.10
+
+# Optional: enables C++ optimized Zhang-Suen thinning for dense charts
+# If not installed, a pure NumPy fallback is used (slower but correct).
+# opencv-contrib-python-headless>=4.8.0

@@ -1,0 +1,1 @@
+"""Layout analysis: panel split, plot area, text ROI."""

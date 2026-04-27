@@ -1,4 +1,11 @@
-"""Per-type validation: run extraction on all images in test_data/<type>/."""
+"""Per-type validation: run extraction on all images in test_data/<type>/.
+
+Scoring discipline:
+- Meta JSON is NEVER passed to extract_from_image (no cheating).
+- Meta is loaded after extraction for ground-truth comparison only.
+- Chart-type guess accuracy and policy routing metrics are collected
+  per-image and summarized per-type.
+"""
 import csv
 import itertools
 import json
@@ -16,6 +23,9 @@ from plot_extractor.config import (
     SSIM_THRESHOLD_SCATTER,
     SSIM_THRESHOLD_MULTI,
 )
+from plot_extractor.core.chart_type_guesser import extract_all_features, guess_chart_type
+from plot_extractor.core.policy_router import compute_policy
+from plot_extractor.core.image_loader import load_image, to_grayscale
 
 TEST_DATA_DIR = Path(__file__).parent.parent / "test_data"
 DEBUG_DIR = Path(__file__).parent.parent / "debug_type"
@@ -35,6 +45,7 @@ TYPE_THRESHOLDS = {
 }
 
 SUPPORTED_V4_SINGLE_TYPES = set(TYPE_THRESHOLDS)
+SUPPORTED_V4_DATASETS = {"v4", "v4a"}
 
 # Data-level accuracy thresholds (relative MAE in y)
 DATA_ACCURACY_THRESHOLDS = {
@@ -174,9 +185,32 @@ def _load_meta(img_path: Path) -> dict | None:
         return json.load(f)
 
 
-def _evaluate_image(img_path: Path, chart_type: str, debug: bool = False, debug_subdir: Path | None = None) -> dict:
+def _guess_and_route(img_path: Path):
+    """Run feature extraction, chart type guess, and policy computation.
+
+    Returns (type_probs, top1_type, top2_types, policy)."""
+    raw = load_image(img_path)
+    gray = to_grayscale(raw)
+    features = extract_all_features(raw, gray)
+    type_probs = guess_chart_type(features)
+    policy = compute_policy(features, type_probs)
+
+    sorted_types = sorted(type_probs.items(), key=lambda x: x[1], reverse=True)
+    top1 = sorted_types[0][0]
+    top2 = [t for t, _ in sorted_types[:2]]
+
+    return type_probs, top1, top2, policy
+
+
+def _evaluate_image(img_path: Path, chart_type: str, debug: bool = False, debug_subdir: Path | None = None, use_llm: bool = False, use_ocr: bool = False) -> dict:
+    # --- Load meta for scoring ONLY; never pass to extraction ---
     meta = _load_meta(img_path)
     data_threshold = DATA_ACCURACY_THRESHOLDS.get(chart_type, 0.05)
+
+    # --- Routing metrics (independent of extraction) ---
+    type_probs, top1_guess, top2_guesses, policy = _guess_and_route(img_path)
+    top1_correct = top1_guess == chart_type
+    top2_correct = chart_type in top2_guesses
 
     csv_path = None
     dbg_dir = None
@@ -185,11 +219,29 @@ def _evaluate_image(img_path: Path, chart_type: str, debug: bool = False, debug_
         dbg_dir.mkdir(parents=True, exist_ok=True)
         csv_path = dbg_dir / f"{img_path.stem}.csv"
 
+    # --- Extract WITHOUT meta ---
     try:
-        result = extract_from_image(img_path, output_csv=csv_path, debug_dir=dbg_dir, meta=meta)
+        result = extract_from_image(
+            img_path, output_csv=csv_path, debug_dir=dbg_dir,
+            use_llm=use_llm, use_ocr=use_ocr,
+        )
     except (OSError, ValueError, RuntimeError) as e:
         print(f"    ERROR {img_path.name}: {e}")
-        return {"file": img_path.name, "rel_err": 1.0, "ssim": 0.0, "threshold": data_threshold, "passed": False, "error": str(e)}
+        return {
+            "file": img_path.name,
+            "rel_err": 1.0,
+            "ssim": 0.0,
+            "threshold": data_threshold,
+            "passed": False,
+            "error": str(e),
+            "guess_top1": top1_guess,
+            "guess_top1_correct": top1_correct,
+            "guess_top2_correct": top2_correct,
+            "guess_probs": type_probs,
+            "policy_density": policy.density_strategy,
+            "policy_color": policy.color_strategy,
+            "policy_noise": policy.noise_strategy,
+        }
 
     diagnostics = result.get("diagnostics") if result else None
     if result and result.get("data"):
@@ -205,12 +257,26 @@ def _evaluate_image(img_path: Path, chart_type: str, debug: bool = False, debug_
         passed = False
         mae_str = "N/A"
 
-    row = {"file": img_path.name, "rel_err": round(rel_err, 4), "ssim": round(ssim, 4), "threshold": data_threshold, "passed": passed}
+    row = {
+        "file": img_path.name,
+        "rel_err": round(rel_err, 4),
+        "ssim": round(ssim, 4),
+        "threshold": data_threshold,
+        "passed": passed,
+        "guess_top1": top1_guess,
+        "guess_top1_correct": top1_correct,
+        "guess_top2_correct": top2_correct,
+        "guess_probs": type_probs,
+        "policy_density": policy.density_strategy,
+        "policy_color": policy.color_strategy,
+        "policy_noise": policy.noise_strategy,
+    }
     if diagnostics:
         row["diagnostics"] = diagnostics
 
     status = "PASS" if passed else "FAIL"
-    print(f"    {img_path.name}: rel_err={mae_str} SSIM={ssim:.3f} [{status}]")
+    guess_flag = "+" if top1_correct else ("~" if top2_correct else "-")
+    print(f"    {img_path.name}: rel_err={mae_str} SSIM={ssim:.3f} [{status}] guess={top1_guess}{guess_flag}")
     if debug and diagnostics:
         axis_summary = ", ".join(
             f"{a['direction']}_{a['side']}:{a['axis_type']}/ticks={a['tick_count']}/res={a['residual']:.2f}"
@@ -234,8 +300,8 @@ def classify_v4_scope(meta: dict | None) -> tuple[bool, str, str | None]:
     chart_types = tags.get("chart_types") or []
     chart_count = int(tags.get("chart_count") or len(chart_types) or 0)
 
-    if tags.get("dataset") != "v4":
-        return False, "not_v4", None
+    if tags.get("dataset") not in SUPPORTED_V4_DATASETS:
+        return False, "not_v4_or_v4a", None
     if chart_count != 1 or len(chart_types) != 1:
         return False, "multi_or_combo_chart", chart_types[0] if chart_types else None
 
@@ -250,7 +316,34 @@ def classify_v4_scope(meta: dict | None) -> tuple[bool, str, str | None]:
     return True, "supported_single_chart", chart_type
 
 
-def validate_type(chart_type: str, debug: bool = False, data_dir: Path | None = None) -> dict:
+def _routing_summary(results: list[dict], chart_type: str) -> dict:
+    """Compute routing/guess accuracy metrics for a list of image results."""
+    total = len(results)
+    if total == 0:
+        return {}
+
+    top1_correct = sum(1 for r in results if r.get("guess_top1_correct"))
+    top2_correct = sum(1 for r in results if r.get("guess_top2_correct"))
+
+    # Strategy frequency counts
+    density_counts = {}
+    color_counts = {}
+    noise_counts = {}
+    for r in results:
+        density_counts[r.get("policy_density", "unknown")] = density_counts.get(r.get("policy_density"), 0) + 1
+        color_counts[r.get("policy_color", "unknown")] = color_counts.get(r.get("policy_color"), 0) + 1
+        noise_counts[r.get("policy_noise", "unknown")] = noise_counts.get(r.get("policy_noise"), 0) + 1
+
+    return {
+        "guess_top1_acc": round(top1_correct / total, 3),
+        "guess_top2_acc": round(top2_correct / total, 3),
+        "density_strategies": density_counts,
+        "color_strategies": color_counts,
+        "noise_strategies": noise_counts,
+    }
+
+
+def validate_type(chart_type: str, debug: bool = False, data_dir: Path | None = None, use_llm: bool = False, use_ocr: bool = False) -> dict:
     """Run validation on all images of one type, return aggregate stats."""
     base_dir = data_dir or TEST_DATA_DIR
     type_dir = base_dir / chart_type
@@ -266,7 +359,7 @@ def validate_type(chart_type: str, debug: bool = False, data_dir: Path | None = 
         type_debug.mkdir(parents=True, exist_ok=True)
 
     for img_path in image_files:
-        row = _evaluate_image(img_path, chart_type, debug=debug, debug_subdir=DEBUG_DIR / chart_type)
+        row = _evaluate_image(img_path, chart_type, debug=debug, debug_subdir=DEBUG_DIR / chart_type, use_llm=use_llm, use_ocr=use_ocr)
         results.append(row)
 
     if not results:
@@ -276,6 +369,8 @@ def validate_type(chart_type: str, debug: bool = False, data_dir: Path | None = 
     rel_err_values = [r["rel_err"] for r in results]
     failed = [r for r in results if not r["passed"]]
 
+    routing = _routing_summary(results, chart_type)
+
     summary = {
         "type": chart_type,
         "total": len(results),
@@ -284,18 +379,21 @@ def validate_type(chart_type: str, debug: bool = False, data_dir: Path | None = 
         "avg_rel_err": round(sum(rel_err_values) / len(rel_err_values), 4),
         "max_rel_err": round(max(rel_err_values), 4),
         "results": results,
+        "routing": routing,
     }
 
     print(f"  => {chart_type}: {passed_count}/{len(results)} passed ({summary['pass_rate']:.1%}), "
           f"avg_rel_err={summary['avg_rel_err']:.4f}, max_rel_err={summary['max_rel_err']:.4f}")
+    print(f"     Routing  top1={routing.get('guess_top1_acc', 0):.1%} top2={routing.get('guess_top2_acc', 0):.1%} "
+          f"density={routing.get('density_strategies', {})} color={routing.get('color_strategies', {})} noise={routing.get('noise_strategies', {})}")
     if failed:
         print(f"     Failed: {', '.join(r['file'] for r in failed)}")
 
     return summary
 
 
-def validate_v4_special(data_dir: Path, debug: bool = False, types: list[str] | None = None):
-    """Validate v4 with explicit supported-domain and out-of-scope accounting."""
+def validate_v4_special(data_dir: Path, debug: bool = False, types: list[str] | None = None, use_llm: bool = False, use_ocr: bool = False):
+    """Validate v4/v4a with explicit supported-domain and out-of-scope accounting."""
     image_files = sorted(data_dir.glob("*/*.png"))
     report_path = data_dir.parent / f"report_{data_dir.name}_special.csv"
     scope_path = data_dir.parent / f"report_{data_dir.name}_scope.csv"
@@ -305,7 +403,7 @@ def validate_v4_special(data_dir: Path, debug: bool = False, types: list[str] | 
     out_scope_rows = []
     summaries: dict[str, dict] = {}
 
-    print(f"\n--- v4 special validation: {data_dir} ---")
+    print(f"\n--- v4 special validation (v4/v4a): {data_dir} ---")
     for img_path in image_files:
         meta = _load_meta(img_path)
         in_scope, reason, chart_type = classify_v4_scope(meta)
@@ -336,20 +434,23 @@ def validate_v4_special(data_dir: Path, debug: bool = False, types: list[str] | 
 
         print(f"\n--- {rel_path} ({chart_type}) ---")
         debug_dir = DEBUG_DIR / "v4_special" / chart_type if debug else None
-        row = _evaluate_image(img_path, chart_type, debug=debug, debug_subdir=debug_dir)
+        row = _evaluate_image(img_path, chart_type, debug=debug, debug_subdir=debug_dir, use_llm=use_llm, use_ocr=use_ocr)
         row.update(scope_row)
         row["type"] = chart_type
         in_scope_rows.append(row)
 
-        s = summaries.setdefault(chart_type, {"type": chart_type, "total": 0, "passed": 0, "rel_errs": []})
+        s = summaries.setdefault(chart_type, {"type": chart_type, "total": 0, "passed": 0, "rel_errs": [], "routing_rows": []})
         s["total"] += 1
         s["passed"] += 1 if row["passed"] else 0
         s["rel_errs"].append(row["rel_err"])
+        s["routing_rows"].append(row)
 
     with open(report_path, "w", newline="", encoding="utf-8") as f:
         fieldnames = [
             "type", "file", "rel_err", "ssim", "threshold", "passed",
             "chart_type", "chart_types", "chart_count", "distortions", "scope", "reason",
+            "guess_top1", "guess_top1_correct", "guess_top2_correct",
+            "policy_density", "policy_color", "policy_noise",
         ]
         writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
         writer.writeheader()
@@ -370,7 +471,7 @@ def validate_v4_special(data_dir: Path, debug: bool = False, types: list[str] | 
     print(f"{'total':<22} {len(in_scope_rows) + len(out_scope_rows):>7}")
 
     print("\n" + "=" * 86)
-    print(f"{'Type':<18} {'Pass':>6} {'Rate':>7} {'AvgErr':>8} {'MaxErr':>8}")
+    print(f"{'Type':<18} {'Pass':>6} {'Rate':>7} {'AvgErr':>8} {'MaxErr':>8} {'Top1':>6} {'Top2':>6}")
     print("-" * 86)
     total_pass = 0
     total_count = 0
@@ -378,7 +479,9 @@ def validate_v4_special(data_dir: Path, debug: bool = False, types: list[str] | 
         s = summaries[chart_type]
         rel_errs = s["rel_errs"] or [0]
         pass_rate = s["passed"] / max(s["total"], 1)
-        print(f"{chart_type:<18} {s['passed']:>3}/{s['total']:<3} {pass_rate:>6.1%} {sum(rel_errs) / len(rel_errs):>8.4f} {max(rel_errs):>8.4f}")
+        routing = _routing_summary(s["routing_rows"], chart_type)
+        print(f"{chart_type:<18} {s['passed']:>3}/{s['total']:<3} {pass_rate:>6.1%} {sum(rel_errs) / len(rel_errs):>8.4f} {max(rel_errs):>8.4f} "
+              f"{routing.get('guess_top1_acc', 0):>5.1%} {routing.get('guess_top2_acc', 0):>5.1%}")
         total_pass += s["passed"]
         total_count += s["total"]
     print("-" * 86)
@@ -389,7 +492,7 @@ def validate_v4_special(data_dir: Path, debug: bool = False, types: list[str] | 
     return summaries, in_scope_rows, out_scope_rows
 
 
-def run_all(types: list[str] | None = None, debug: bool = False, data_dir: Path | None = None):
+def run_all(types: list[str] | None = None, debug: bool = False, data_dir: Path | None = None, use_llm: bool = False, use_ocr: bool = False):
     """Run validation across specified types (or all)."""
     if types is None:
         types = sorted(TYPE_THRESHOLDS.keys())
@@ -403,31 +506,46 @@ def run_all(types: list[str] | None = None, debug: bool = False, data_dir: Path 
 
     for chart_type in types:
         print(f"\n--- {chart_type} ---")
-        summary = validate_type(chart_type, debug=debug, data_dir=data_dir)
+        summary = validate_type(chart_type, debug=debug, data_dir=data_dir, use_llm=use_llm, use_ocr=use_ocr)
         summaries.append(summary)
         for r in summary["results"]:
             row = {"type": chart_type, **r}
             row.pop("diagnostics", None)
+            row.pop("guess_probs", None)
             all_rows.append(row)
 
     # Write detailed CSV
     with open(report_path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["type", "file", "rel_err", "ssim", "threshold", "passed"], extrasaction="ignore")
+        fieldnames = [
+            "type", "file", "rel_err", "ssim", "threshold", "passed",
+            "guess_top1", "guess_top1_correct", "guess_top2_correct",
+            "policy_density", "policy_color", "policy_noise",
+        ]
+        writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(all_rows)
 
     # Summary
-    print("\n" + "=" * 70)
-    print(f"{'Type':<18} {'Pass':>6} {'Rate':>7} {'AvgErr':>8} {'MaxErr':>8}")
-    print("-" * 70)
+    print("\n" + "=" * 86)
+    print(f"{'Type':<18} {'Pass':>6} {'Rate':>7} {'AvgErr':>8} {'MaxErr':>8} {'Top1':>6} {'Top2':>6}")
+    print("-" * 86)
     total_pass = 0
     total_count = 0
+    total_top1_correct = 0
+    total_top2_correct = 0
     for s in summaries:
-        print(f"{s['type']:<18} {s['passed']:>3}/{s['total']:<3} {s['pass_rate']:>6.1%} {s['avg_rel_err']:>8.4f} {s['max_rel_err']:>8.4f}")
+        routing = s.get("routing", {})
+        top1_acc = routing.get("guess_top1_acc", 0)
+        top2_acc = routing.get("guess_top2_acc", 0)
+        total_top1_correct += int(top1_acc * s["total"])
+        total_top2_correct += int(top2_acc * s["total"])
+        print(f"{s['type']:<18} {s['passed']:>3}/{s['total']:<3} {s['pass_rate']:>6.1%} {s['avg_rel_err']:>8.4f} {s['max_rel_err']:>8.4f} "
+              f"{top1_acc:>5.1%} {top2_acc:>5.1%}")
         total_pass += s["passed"]
         total_count += s["total"]
-    print("-" * 70)
-    print(f"{'TOTAL':<18} {total_pass:>3}/{total_count:<3} {total_pass / max(total_count, 1):>6.1%}")
+    print("-" * 86)
+    print(f"{'TOTAL':<18} {total_pass:>3}/{total_count:<3} {total_pass / max(total_count, 1):>6.1%} "
+          f"{'':>8} {'':>8} {total_top1_correct / max(total_count, 1):>5.1%} {total_top2_correct / max(total_count, 1):>5.1%}")
     print(f"\nReport saved to {report_path}")
 
     return summaries
@@ -440,9 +558,11 @@ if __name__ == "__main__":
     parser.add_argument("--debug", action="store_true", help="Save debug outputs")
     parser.add_argument("--data-dir", default=None, help="Data directory (default: test_data/)")
     parser.add_argument("--v4-special", action="store_true", help="Validate v4 using supported-domain filtering and scope accounting")
+    parser.add_argument("--use-llm", action="store_true", help="Enable LLM vision enhancement for ambiguous charts")
+    parser.add_argument("--use-ocr", action="store_true", help="Enable tesseract OCR for tick labels (requires tesseract)")
     args = parser.parse_args()
     data_dir = Path(args.data_dir) if args.data_dir else None
     if args.v4_special:
-        validate_v4_special(data_dir or (Path(__file__).parent.parent / "test_data_v4"), debug=args.debug, types=args.types)
+        validate_v4_special(data_dir or (Path(__file__).parent.parent / "test_data_v4"), debug=args.debug, types=args.types, use_llm=args.use_llm, use_ocr=args.use_ocr)
     else:
-        run_all(types=args.types, debug=args.debug, data_dir=data_dir)
+        run_all(types=args.types, debug=args.debug, data_dir=data_dir, use_llm=args.use_llm, use_ocr=args.use_ocr)

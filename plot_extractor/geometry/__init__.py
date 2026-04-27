@@ -1,0 +1,1 @@
+"""Geometry processing: grid suppression, legend binding."""

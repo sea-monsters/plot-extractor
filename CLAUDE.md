@@ -14,23 +14,44 @@ pip install -r requirements.txt
 
 ### Run extraction on a single image
 ```bash
+# Default extraction (Layer 1 rule-based only)
 python plot_extractor/main.py input_chart.png --output extracted_data.csv --debug debug_output/
+
+# Enable LLM enhancement for ambiguous charts (Layer 1 + Layer 2)
+python plot_extractor/main.py input_chart.png --use-llm --output extracted_data.csv
+
+# Enable OCR for tick label reading (Layer 3)
+python plot_extractor/main.py input_chart.png --use-ocr --output extracted_data.csv
+
+# Enable both LLM and OCR
+python plot_extractor/main.py input_chart.png --use-llm --use-ocr --output extracted_data.csv
 ```
 
 ### Validate accuracy against test data
 ```bash
-# Validate all 10 chart types
+# Validate all 10 chart types against v1 baseline
 python tests/validate_by_type.py --debug
+
+# Validate with LLM enhancement
+python tests/validate_by_type.py --use-llm --debug
+
+# Validate with OCR
+python tests/validate_by_type.py --use-ocr --debug
 
 # Validate specific types only
 python tests/validate_by_type.py --types simple_linear log_y inverted_y --debug
 
-# Validate against a custom dataset (e.g., test_data_v2, test_data_v3, test_data_v4)
+# Validate against different datasets
 python tests/validate_by_type.py --data-dir test_data_v2 --debug
+python tests/validate_by_type.py --data-dir test_data_v3 --debug
+python tests/validate_by_type.py --data-dir test_data_v4 --v4-special --debug
+
+# Validate v4a route profiles
+python tests/validate_v4a_routes.py --data-dir test_data_v4a
 ```
 
 Validation outputs:
-- Console: per-file relative error, SSIM, pass/fail status
+- Console: per-file relative error, SSIM, pass/fail status, routing metrics (density/color/noise strategies)
 - `report_by_type.csv` or `report_<data_dir>.csv`: detailed results
 - `debug_type/<type>/`: rebuilt plots and extracted CSVs when `--debug` is used
 
@@ -39,10 +60,11 @@ Validation outputs:
 # Default dataset (test_data/)
 python tests/generate_test_data.py
 
-# Additional variants exist for different test sets
+# Additional variants for different test sets
 python tests/generate_test_data_v2.py
 python tests/generate_test_data_v3.py
 python tests/generate_test_data_v4.py
+python tests/generate_test_data_v4a.py
 ```
 
 Each generator creates 30 PNGs per chart type plus `_meta.json` files with ground-truth axes and data points.
@@ -51,24 +73,119 @@ Each generator creates 30 PNGs per chart type plus `_meta.json` files with groun
 ```python
 from pathlib import Path
 from plot_extractor.main import extract_from_image
+
+# Default extraction (rule-based only)
 result = extract_from_image(Path("test_data/simple_linear/001.png"), debug_dir=Path("debug_single"))
-print(result["data"])        # extracted series
-print(result["ssim_crop"])   # SSIM against rebuilt plot
+
+# With LLM enhancement
+result = extract_from_image(Path("chart.png"), use_llm=True, use_ocr=True)
+
+print(result["data"])        # extracted series dict
+print(result["ssim_crop"])   # SSIM against rebuilt plot (when debug_dir is set)
+print(result["policy"])      # ExtractionPolicy used
+print(result["routing"])     # routing metrics if available
+```
+
+### Unit tests for routing components
+```bash
+# Test axis candidate generation
+python tests/test_axis_candidates.py
+
+# Test series candidate generation
+python tests/test_series_candidates.py
 ```
 
 ## Architecture
 
-### Pipeline Overview
+### Three-Layer Strategy Ensemble
 
-The extraction pipeline is a linear sequence of 5 stages in `plot_extractor/main.py::extract_from_image()`:
+The extraction pipeline uses a difficulty-stratified routing system:
 
-1. **Image loading** (`core/image_loader.py`) — loads PNG, denoises with `fastNlMeansDenoisingColored`, converts to grayscale
-2. **Axis detection** (`core/axis_detector.py`) — Canny + HoughLinesP to find horizontal/vertical axes, then detects tick marks via 1D edge projection and peak finding
-3. **Axis calibration** (`core/axis_calibrator.py`) — OCR tick labels via pytesseract, fits pixel-to-data mapping (linear or log), auto-detects inversion from correlation sign
-4. **Data extraction** (`core/data_extractor.py`) — foreground mask via background color subtraction, grid line removal, then extracts points by vertical median scan or connected-component centroids
+**Layer 1 (default) — Rule-based ChartTypeGuesser + PolicyRouter**
+- `core/chart_type_guesser.py`: lightweight image features → softmax type probabilities
+- `core/policy_router.py`: type probabilities → `ExtractionPolicy` via weighted ensemble
+- No external dependencies beyond OpenCV + NumPy
+- Always runs; produces extraction config based on visual features
+
+**Layer 2 (uncertain cases) — LLM Vision Enhancement**
+- `core/llm_policy_router.py`: triggers when `top1_prob - top2_prob < 0.15` (low confidence)
+- Calls vision-capable LLM to classify chart image
+- Environment variables: `ANTHROPIC_API_KEY` (Claude), `OPENAI_API_KEY` (GPT), or custom endpoint
+- Optional; activated via `--use-llm` flag
+
+**Layer 3 (opt-in) — OCR (tesseract)**
+- `core/ocr_reader.py`: reads tick label text for axis calibration
+- Requires system tesseract binary + pytesseract
+- Falls back to heuristic synthetic ticks when unavailable
+- **CRITICAL for accuracy**: Without OCR, relative error can approach 100% on real-world charts
+- Optional; activated via `--use-ocr` flag
+
+### Policy Router Architecture
+
+The `ExtractionPolicy` dataclass (in `core/policy_router.py`) controls these pipeline stages:
+
+| Field | Values | Affected Module |
+|-------|--------|----------------|
+| `noise_strategy` | `clean`, `salt_pepper`, `jpeg`, `blur`, `rotation_noise` | `image_loader.py` preprocessing |
+| `rotation_correct` | `True` / `False` | `main.py` rotation correction |
+| `color_strategy` | `hue_only`, `hsv3d`, `layered`, `none` | `data_extractor.py` series separation |
+| `density_strategy` | `standard`, `thinning`, `scatter` | `data_extractor.py` point extraction |
+| `ocr_block_size` | odd integer | `ocr_reader.py` adaptive threshold |
+| `hough_threshold` | integer | `axis_detector.py` HoughLinesP threshold |
+| `cal_residual_threshold_linear` | float | `axis_calibrator.py` residual gate |
+
+Policy is computed from chart-type probabilities via a weighted matrix (see `POLICY_WEIGHTS` in `policy_router.py`).
+
+### Extraction Pipeline (5 Stages)
+
+Once `ExtractionPolicy` is determined, `plot_extractor/main.py::extract_from_image()` executes:
+
+1. **Image loading** (`core/image_loader.py`) — loads PNG, applies policy-specified preprocessing (denoising, rotation correction if enabled), converts to grayscale
+
+2. **Axis detection** (`core/axis_detector.py`) — Canny + HoughLinesP with policy-specified thresholds, detects tick marks via 1D edge projection and peak finding; rotation detection runs on raw image
+
+3. **Axis calibration** (`core/axis_calibrator.py`) — OCR tick labels (if enabled) via pytesseract with policy-specified preprocessing, fits pixel-to-data mapping (linear or log), auto-detects inversion
+
+4. **Data extraction** (`core/data_extractor.py`) — foreground mask via background subtraction, policy-specified color separation (hue-only, HSV-3D, or layered), grid removal, policy-specified point extraction (standard vertical scan, thinning for dense, or connected components for scatter)
+
 5. **Plot rebuilding + SSIM** (`core/plot_rebuilder.py`, `utils/ssim_compare.py`) — reconstructs matplotlib plot from extracted data, compares to original with pure-NumPy SSIM
 
+### New Architecture Modules (v4a Phase)
+
+**Core routing and candidate generation**:
+- `core/chart_type_guesser.py` — lightweight feature extraction + softmax type classifier
+- `core/policy_router.py` — policy ensemble from type probabilities
+- `core/llm_policy_router.py` — LLM vision fallback for ambiguous cases
+- `core/confidence.py` — confidence scoring and quality gates
+- `core/axis_candidates.py` — axis candidate generation with ranking
+- `core/series_candidates.py` — series candidate generation with quality gates
+
+**Geometry and layout**:
+- `geometry/grid_suppress.py` — directional morphology for grid line removal
+- `geometry/legend_bind.py` — legend detection and binding to series
+- `layout/plot_area.py` — plot area detection within panels
+- `layout/text_roi.py` — text region-of-interest detection
+- `layout/panel_split.py` — multi-panel chart splitting
+
+**Service layer**:
+- `service/mcp_server.py` — MCP tool interface for Claude Code integration
+- `service/schemas.py` — structured extraction result schemas
+- `service/debug_overlay.py` — visual debug overlay generation
+
 ### Key Data Structures
+
+**`ImageFeatures`** (`core/chart_type_guesser.py`):
+- Geometric: Hough line counts (horiz/vert/diag), edge density, aspect ratio
+- Color: hue peak count, saturation mean, color dominance
+- Texture/noise: Laplacian variance, extreme pixel ratio, FFT high-frequency ratio, block variance ratio
+- Structural: foreground column density, connected component stats, axis count, tick regularity, rotation estimate
+
+**`ExtractionPolicy`** (`core/policy_router.py`):
+- Preprocessing: noise_strategy, rotation_correct, median/bilateral/unsharp params
+- Extraction: color_strategy, density_strategy, min_clusters, thinning_quality_gate
+- OCR: block_size, C constant, deskew flag
+- Axis detection: Hough thresholds
+- Calibration: residual thresholds, meta fallback
 
 **`Axis`** (`core/axis_detector.py`):
 - `direction`: "x" | "y"
@@ -81,8 +198,8 @@ The extraction pipeline is a linear sequence of 5 stages in `plot_extractor/main
 - `axis`: the underlying `Axis`
 - `axis_type`: "linear" | "log"
 - `a`, `b`: fit coefficients for `pixel = a * f(value) + b` where `f` is identity or log10
-- `inverted`: bool — Y-axis default has pixels increasing downward while values increase upward (corr < 0 = normal)
-- `tick_map`: list of `(pixel, data_value)` pairs actually used for fitting
+- `inverted`: bool — Y-axis default has pixels increasing downward while values increase upward
+- `tick_map`: list of `(pixel, data_value)` pairs used for fitting
 - `to_data(pixel)` / `to_pixel(value)`: conversion methods
 
 **Metadata JSON format** (used for ground truth and fallback calibration):
@@ -94,33 +211,25 @@ The extraction pipeline is a linear sequence of 5 stages in `plot_extractor/main
   },
   "axes": {
     "x": {"type": "linear", "min": 0, "max": 10},
-    "y": {"type": "log", "min": 1, "max": 1000},
-    "y_left": {"type": "linear", "min": 0, "max": 100},
-    "y_right": {"type": "linear", "min": 0, "max": 10}
+    "y": {"type": "log", "min": 1, "max": 1000}
   }
 }
 ```
 
-### Multi-Series and Dual-Y Logic
+### Algorithm-Level Changes (v4a)
 
-The most complex logic lives in `core/data_extractor.py::extract_all_data()`:
+Four algorithm-level optimizations were implemented after threshold-tuning failures:
 
-- **Color separation**: HSV hue k-means clustering separates series by color. Low-saturation pixels (grays, anti-aliasing) are filtered out before clustering.
-- **Dual-Y assignment**: When both left and right Y axes are detected with significantly different value ranges (`range_diff > 0.5 * max(range)`), the extractor tries both `(left, right)` and `(right, left)` assignments against ground-truth metadata and picks the lower-error one.
-- **Same-color multi-series**: If color clustering yields only 1 cluster but metadata expects multiple series, `_extract_layered_series_from_mask()` uses per-column vertical layering with permutation-based continuity tracking to separate overlapping lines.
-- **Series merging**: `_merge_series_fragments()` deduplicates overlapping traces. For multi-series metadata, the extractor scores raw color-separated traces vs merged traces against ground truth and keeps the better set.
+1. **HSV 3D clustering** — full H+S+V k-means fallback when hue-only fails (quality gates: compactness, min_hue_dist, x-coverage)
+2. **OCR preprocessing** — crop-level grayscale + upscale + median blur + adaptive thresholding before tesseract
+3. **Zhang-Suen thinning** — contrib-gated `cv2.ximgproc.thinning` with pure NumPy fallback for dense charts
+4. **Rotation correction** — strict rotation estimator (edge lines only, median aggregation, angle agreement gate) with coordinate-space rotation before axis detection
 
-### Grid Removal
-
-`_remove_grid_lines()` in `core/data_extractor.py` uses HoughLinesP on the foreground mask to find long horizontal/vertical lines. Outer-edge lines are treated as axis borders; interior lines are classified as grid and erased. Grid detection runs on the **raw** (un-preprocessed) image because denoising blurs faint grid lines.
-
-### Axis Classification
-
-`utils/math_utils.py::classify_axis()` compares R² of linear fit vs log fit on tick pixel/value pairs. It automatically chooses the better model. If residual is too high (> 1e6), calibration falls back to linear.
+See `docs/ARCHITECTURAL_CHANGES_IMPL.md` for detailed implementation notes.
 
 ### Validation Pass/Fail Criteria
 
-`tests/validate_by_type.py` uses **data-level relative MAE** (not SSIM) as the pass/fail criterion:
+`tests/validate_by_type.py` uses **data-level relative MAE** (not SSIM) as pass/fail:
 
 | Type | Threshold |
 |------|-----------|
@@ -128,31 +237,44 @@ The most complex logic lives in `core/data_extractor.py::extract_all_data()`:
 | scatter | 8% |
 | multi_series, dense | 6% |
 
-SSIM is computed for reference only. Series matching uses permutation search over ground-truth series when both extracted and expected counts are ≤ 5.
+SSIM is computed for reference only. Series matching uses permutation search when both extracted and expected counts are ≤ 5.
 
 ## Project Conventions
 
 - Config thresholds and constants live in `plot_extractor/config.py`
 - `print()` is used for CLI output (not logging)
 - Image arrays are RGB (OpenCV BGR loaded then converted)
-- Matplotlib is used with `Agg` backend for headless plot generation
-- Test data versions: `test_data/` (original), `test_data_v2/`, `test_data_v3/`, `test_data_v4/` — newer versions may have different generation parameters for validation robustness
+- Matplotlib uses `Agg` backend for headless plot generation
+- Test data versions: `test_data/` (v1), `test_data_v2/`, `test_data_v3/`, `test_data_v4/`, `test_data_v4a/`
+- OpenCV contrib features are gated by `hasattr(cv2, "ximgproc")` with fallbacks
 
 ## Key Files
 
 | File | Purpose |
 |------|---------|
-| `plot_extractor/main.py` | CLI entry point and pipeline orchestration |
+| `plot_extractor/main.py` | CLI entry point, pipeline orchestration, rotation correction |
 | `plot_extractor/config.py` | Thresholds and hyperparameters |
-| `plot_extractor/core/axis_detector.py` | Hough-based axis/tick detection |
-| `plot_extractor/core/axis_calibrator.py` | Pixel-to-data calibration (linear/log) |
-| `plot_extractor/core/data_extractor.py` | Foreground masking, grid removal, point extraction, series separation |
-| `plot_extractor/core/ocr_reader.py` | pytesseract tick label reading + meta JSON loader |
+| `plot_extractor/core/chart_type_guesser.py` | Lightweight feature extraction + type classifier |
+| `plot_extractor/core/policy_router.py` | Policy ensemble from type probabilities |
+| `plot_extractor/core/llm_policy_router.py` | LLM vision fallback for ambiguous charts |
+| `plot_extractor/core/axis_detector.py` | Hough-based axis/tick detection + rotation estimator |
+| `plot_extractor/core/axis_calibrator.py` | Pixel-to-data calibration (linear/log) with OCR preprocessing |
+| `plot_extractor/core/data_extractor.py` | Foreground masking, HSV clustering, thinning, point extraction |
+| `plot_extractor/core/ocr_reader.py` | pytesseract tick reading with crop-level preprocessing |
 | `plot_extractor/core/plot_rebuilder.py` | Matplotlib reconstruction for validation |
+| `plot_extractor/core/axis_candidates.py` | Axis candidate generation and ranking |
+| `plot_extractor/core/series_candidates.py` | Series candidate generation with quality gates |
+| `plot_extractor/geometry/grid_suppress.py` | Grid line removal via directional morphology |
+| `plot_extractor/geometry/legend_bind.py` | Legend detection and binding |
+| `plot_extractor/layout/plot_area.py` | Plot area detection within panels |
 | `plot_extractor/utils/math_utils.py` | Numeric parsing, linear/log fitting, axis classification |
-| `plot_extractor/utils/image_utils.py` | Background detection, foreground mask |
+| `plot_extractor/utils/image_utils.py` | Background detection, foreground mask, rotation |
 | `plot_extractor/utils/ssim_compare.py` | Pure NumPy SSIM implementation |
-| `tests/validate_by_type.py` | Per-type accuracy validation with CSV reporting |
+| `plot_extractor/service/mcp_server.py` | MCP tool interface |
+| `tests/validate_by_type.py` | Per-type accuracy validation with routing metrics |
+| `tests/validate_v4a_routes.py` | v4a route-profile validation |
+| `tests/test_axis_candidates.py` | Unit tests for axis candidates |
+| `tests/test_series_candidates.py` | Unit tests for series candidates |
 | `tests/generate_test_data.py` | Ground-truth test image generator (30 per type) |
 
 ## Release Workflow
@@ -168,7 +290,30 @@ This is the exact command executed by `.github/workflows/pylint.yml` on every pu
 **Pre-release checklist:**
 
 1. Lint passes with score ≥ 9.0 (`pylint --fail-under=9`)
-2. Validation passes against supported datasets (`python tests/validate_by_type.py`)
+2. Validation passes against v1-v4 datasets (`python tests/validate_by_type.py --data-dir test_data`)
 3. No regressions in baseline pass rates (reference `docs/BASELINE_EVALUATION.md`)
 
-Pylint configuration lives in `pyproject.toml` under `[tool.pylint]`. OpenCV (`cv2`) and PIL are in `ignored-modules` to suppress false-positive `no-member` errors. Refactoring hints (too-many-locals, too-many-branches, etc.) and docstring requirements are disabled — fix actual bugs, not noise.
+Pylint configuration lives in `pyproject.toml` under `[tool.pylint]`. OpenCV (`cv2`) and PIL are in `ignored-modules` to suppress false-positive `no-member` errors. Refactoring hints and docstring requirements are disabled.
+
+## Environment Variables
+
+### LLM Configuration (optional, for `--use-llm`)
+
+| Variable | Purpose | Default |
+|----------|---------|---------|
+| `ANTHROPIC_API_KEY` | Use Claude vision models | `claude-haiku-4-5` |
+| `OPENAI_API_KEY` | Use GPT vision models | `gpt-5.4-nano` |
+| `LLM_BASE_URL` | Custom OpenAI-compatible endpoint | — |
+| `LLM_API_KEY` | API key for custom endpoint | — |
+| `LLM_MODEL` | Model name override | Provider-specific default |
+
+Provider priority: Anthropic → OpenAI → Custom endpoint. When running in Claude Code, `ANTHROPIC_API_KEY` is typically already set.
+
+### OCR Configuration (optional, for `--use-ocr`)
+
+Tesseract must be installed on the system:
+- Ubuntu/Debian: `sudo apt-get install tesseract-ocr`
+- macOS: `brew install tesseract`
+- Windows: Download from https://github.com/UB-Mannheim/tesseract/wiki
+
+If missing, pipeline falls back to heuristic tick generation (accuracy degrades significantly).

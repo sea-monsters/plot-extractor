@@ -18,10 +18,9 @@ htmlcov/
 .hypothesis/
 
 # Test data and outputs
-test_data/
-debug/
-debug_tmp/
-debug_type/
+test_data*/
+debug*/
+debug_*.py
 samples/*.csv
 samples/*_rebuilt.png
 telemetry/
@@ -33,11 +32,16 @@ report_by_type.csv
 debug_*.png
 
 # Development documentation
-docs/
 *.md
 !README.md
 !CLAUDE.md
 !SKILL.md
+
+# Docs directory - ignore all except specific files
+docs/*
+!docs/META_ISOLATION_BOUNDARY.md
+!docs/BASELINE_EVALUATION.md
+!docs/ARCHITECTURAL_CHANGES_IMPL.md
 
 # IDE
 .vscode/
@@ -65,3 +69,9 @@ Thumbs.db
 
 # Memory
 memory/
+
+#workflow
+workflow/
+
+# Binaries
+tesseract.zip

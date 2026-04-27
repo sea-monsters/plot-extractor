@@ -5,6 +5,7 @@ import numpy as np
 import cv2
 
 from plot_extractor.core.axis_calibrator import CalibratedAxis
+from plot_extractor.core.series_candidates import extract_series_multi_candidate
 from plot_extractor.utils.image_utils import (
     detect_background_color,
     make_foreground_mask,
@@ -46,7 +47,9 @@ def _remove_grid_lines(mask):
     """Remove long horizontal/vertical lines and detect grid presence.
 
     Strategy: first identify the outermost lines as axis borders,
-    then any remaining interior lines indicate a grid.
+    then any remaining interior lines indicate a grid.  Grid removal
+    is data-safe: pixels near data curves (foreground above/below for
+    horizontal lines, left/right for vertical lines) are preserved.
     """
     h, w = mask.shape
     edges = cv2.Canny(mask, 50, 150)
@@ -57,23 +60,23 @@ def _remove_grid_lines(mask):
 
     has_grid = False
     if lines is not None:
-        horiz_centers = []
-        vert_centers = []
+        horiz_lines = []
+        vert_lines = []
         for line in lines:
             x1, y1, x2, y2 = line[0]
             angle = abs(np.degrees(np.arctan2(y2 - y1, x2 - x1)))
             if angle <= 5 or angle >= 175:
-                horiz_centers.append(int(round((y1 + y2) / 2)))
-                cv2.line(mask, (x1, y1), (x2, y2), 0, 2)
+                horiz_lines.append((x1, y1, x2, y2))
             elif 85 <= angle <= 95:
-                vert_centers.append(int(round((x1 + x2) / 2)))
-                cv2.line(mask, (x1, y1), (x2, y2), 0, 2)
+                vert_lines.append((x1, y1, x2, y2))
+
+        horiz_centers = [int(round((y1 + y2) / 2)) for x1, y1, x2, y2 in horiz_lines]
+        vert_centers = [int(round((x1 + x2) / 2)) for x1, y1, x2, y2 in vert_lines]
 
         horiz_unique = _dedup_sorted(sorted(horiz_centers))
         vert_unique = _dedup_sorted(sorted(vert_centers))
 
-        # Step 1: identify axis border lines (outermost clusters).
-        # Axis lines sit at the very edges — top/bottom for H, left/right for V.
+        # Identify axis border lines (outermost clusters).
         axis_h = []
         if horiz_unique:
             top_group = [y for y in horiz_unique if y - horiz_unique[0] <= 6]
@@ -85,13 +88,55 @@ def _remove_grid_lines(mask):
             right_group = [x for x in vert_unique if vert_unique[-1] - x <= 6]
             axis_v = left_group + right_group
 
-        # Step 2: remaining lines (not axis) are grid lines.
         interior_h = [y for y in horiz_unique if y not in axis_h]
         interior_v = [x for x in vert_unique if x not in axis_v]
-
         has_grid = len(interior_h) >= 1 or len(interior_v) >= 1
 
+        # Remove grid pixels with data-safe per-pixel check.
+        # For horizontal grid lines: skip pixels where foreground exists
+        # above and below (data curve crossing through).
+        for y_grid in interior_h:
+            for x in range(w):
+                if mask[y_grid, x] == 0:
+                    continue
+                # Data crossing check: foreground within ±3 pixels above/below
+                y_lo = max(0, y_grid - 3)
+                y_hi = min(h, y_grid + 4)
+                above = np.any(mask[y_lo:y_grid, x] > 0)
+                below = np.any(mask[y_grid + 1:y_hi, x] > 0)
+                if above and below:
+                    continue  # Data curve crossing — preserve
+                mask[y_grid, x] = 0
+
+        # For vertical grid lines: skip pixels where foreground exists
+        # left and right (data curve crossing through).
+        for x_grid in interior_v:
+            for y in range(h):
+                if mask[y, x_grid] == 0:
+                    continue
+                x_lo = max(0, x_grid - 3)
+                x_hi = min(w, x_grid + 4)
+                left_fg = np.any(mask[y, x_lo:x_grid] > 0)
+                right_fg = np.any(mask[y, x_grid + 1:x_hi] > 0)
+                if left_fg and right_fg:
+                    continue  # Data curve crossing — preserve
+                mask[y, x_grid] = 0
+
     return mask, has_grid
+
+
+class _ShiftedCal:
+    """Wraps CalibratedAxis with pixel offsets for plot-area-local coordinates."""
+
+    def __init__(self, base: CalibratedAxis, dx=0, dy=0):
+        self.base = base
+        self.dx = dx
+        self.dy = dy
+
+    def to_data(self, pixel):
+        if self.base.axis.direction == "x":
+            return self.base.to_data(pixel + self.dx)
+        return self.base.to_data(pixel + self.dy)
 
 
 def _median_filter(arr, window):
@@ -141,7 +186,6 @@ def _extract_layered_series_from_mask(mask, x_cal, y_cal, series_count):
     _, w = mask.shape
     tracks = [[] for _ in range(series_count)]
     prev_centers = None
-    crossing_window = []  # Track recent group-count fluctuations
 
     for x in range(w):
         col = mask[:, x]
@@ -161,15 +205,6 @@ def _extract_layered_series_from_mask(mask, x_cal, y_cal, series_count):
         groups.append((start, prev))
 
         centers = sorted((lo + hi) / 2.0 for lo, hi in groups)
-        group_count = len(centers)
-
-        # Crossing-region smoothing: if group count fluctuates recently,
-        # prefer interpolation over abrupt permutation changes
-        crossing_window.append(group_count)
-        if len(crossing_window) > 5:
-            crossing_window.pop(0)
-        in_crossing = (len(crossing_window) >= 3 and
-                       max(crossing_window) - min(crossing_window) >= 2)
 
         if len(centers) == 1:
             centers = centers * series_count
@@ -187,20 +222,32 @@ def _extract_layered_series_from_mask(mask, x_cal, y_cal, series_count):
 
         centers = centers[:series_count]
         if prev_centers is not None and len(centers) == series_count:
-            best_order = centers
-            best_cost = float("inf")
-            for perm in itertools.permutations(centers):
-                # In crossing regions, prefer minimal deviation from previous centers
-                # over full permutation search to avoid identity swaps
-                if in_crossing:
-                    cost = sum(abs(py - cy) for py, cy in zip(prev_centers, perm))
-                else:
-                    # Normal case: full permutation with equal weights
-                    cost = sum(abs(py - cy) for py, cy in zip(prev_centers, perm))
-                if cost < best_cost:
-                    best_cost = cost
-                    best_order = list(perm)
-            centers = best_order
+            # Greedy nearest-neighbor assignment: O(n²) instead of O(n!)
+            assigned = [False] * len(centers)
+            order = [None] * len(centers)
+            # Match each prev center to its closest available new center
+            for i, prev_y in sorted(enumerate(prev_centers),
+                                    key=lambda ip: min(abs(prev_y - c)
+                                                       for c in centers)):
+                best_j = None
+                best_dist = float("inf")
+                for j, c in enumerate(centers):
+                    if not assigned[j]:
+                        d = abs(prev_y - c)
+                        if d < best_dist:
+                            best_dist = d
+                            best_j = j
+                if best_j is not None:
+                    assigned[best_j] = True
+                    order[i] = centers[best_j]
+            # Fill any unmatched (shouldn't happen with equal lengths)
+            for j, c in enumerate(centers):
+                if not assigned[j]:
+                    for i in range(len(order)):
+                        if order[i] is None:
+                            order[i] = c
+                            break
+            centers = order
         prev_centers = list(centers)
 
         for track, y in zip(tracks, centers):
@@ -326,11 +373,78 @@ def _apply_thinning(mask: np.ndarray, max_iterations: int = 10) -> np.ndarray:
     return (img * 255).astype(np.uint8)
 
 
-def _separate_series_by_color(image, mask, n_clusters=3, min_clusters=1, meta=None):
+def _estimate_x_bands(mask, image, color_mask, fg_indices):
+    """Estimate number of series from x-axis color distribution."""
+    h, w = mask.shape
+    hues = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)[:, :, 0]
+    col_hues = []
+    for x in range(w):
+        col_mask = (mask[:, x] > 0) & (hues[:, x] > 0)
+        if np.sum(col_mask) > 0:
+            col_hues.append(np.median(hues[:, x][col_mask]))
+    if len(col_hues) < 10:
+        return 1
+    col_hues_arr = np.array(col_hues).reshape(-1, 1).astype(np.float32)
+    if len(col_hues_arr) < 3:
+        return 1
+    _, labels, _ = cv2.kmeans(
+        col_hues_arr,
+        min(5, len(col_hues_arr)),
+        None,
+        (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10, 1.0),
+        5,
+        cv2.KMEANS_PP_CENTERS,
+    )
+    return len(set(labels.flatten()))
+
+
+def _validate_color_clusters(series_list, image_width, min_x_coverage=0.05):
+    """Validate that color-separated clusters are plausible series."""
+    if len(series_list) < 2:
+        return False
+    valid_count = 0
+    for _, _, cmask in series_list:
+        cols = np.where(np.any(cmask > 0, axis=0))[0]
+        if len(cols) > 0:
+            coverage = (cols.max() - cols.min()) / image_width
+            if coverage >= min_x_coverage:
+                valid_count += 1
+    return valid_count >= 2
+
+
+def _merge_overlapping_clusters(series_list, overlap_threshold=0.5):
+    """Merge 3D clusters that overlap significantly in x-range."""
+    if len(series_list) < 2:
+        return series_list
+    merged = []
+    used = [False] * len(series_list)
+    for i in range(len(series_list)):
+        if used[i]:
+            continue
+        _, img_i, mask_i = series_list[i]
+        cols_i = set(np.where(np.any(mask_i > 0, axis=0))[0])
+        for j in range(i + 1, len(series_list)):
+            if used[j]:
+                continue
+            _, _, mask_j = series_list[j]
+            cols_j = set(np.where(np.any(mask_j > 0, axis=0))[0])
+            if not cols_i or not cols_j:
+                continue
+            overlap = len(cols_i & cols_j) / min(len(cols_i), len(cols_j))
+            if overlap > overlap_threshold:
+                # Merge j into i by OR-ing masks
+                mask_i = cv2.bitwise_or(mask_i, mask_j)
+                used[j] = True
+        merged.append((i, img_i, mask_i))
+        used[i] = True
+    return merged
+
+
+def _separate_series_by_color(image, mask, n_clusters=3, min_clusters=1):
     """Separate multiple data series by clustering hue in HSV space.
 
     Falls back to full H+S+V 3D clustering when hue-only separation quality
-    is insufficient and metadata indicates multiple series are expected.
+    is insufficient.
     """
     h, w = image.shape[:2]
     fg_indices = np.where(mask > 0)
@@ -362,7 +476,16 @@ def _separate_series_by_color(image, mask, n_clusters=3, min_clusters=1, meta=No
             if is_new_peak:
                 peaks.append(i)
 
-    K = min(max(len(peaks), min_clusters, 1), n_clusters)
+    # Data-driven series count estimation (image-based only)
+    x_bands = _estimate_x_bands(mask, image, color_mask, fg_indices)
+
+    K_hue = min(max(len(peaks), min_clusters, 1), n_clusters)
+    K_data = min(max(x_bands, min_clusters, 1), n_clusters)
+
+    K = max(K_hue, K_data)
+    if K < 2 and len(peaks) >= 2:
+        K = len(peaks)
+
     if K < 2:
         return [(image, mask)]
 
@@ -394,68 +517,85 @@ def _separate_series_by_color(image, mask, n_clusters=3, min_clusters=1, meta=No
         if len(cluster_indices) >= FOREGROUND_MIN_AREA and x_spread > w * 0.05:
             series_hue.append((float(centers[k]), image, cluster_mask))
 
-    # Quality gate: decide whether hue-only result is sufficient
-    expected_series_count = len(meta.get("data", {})) if meta and meta.get("data") else 0
-    needs_hsv_fallback = False
-    if expected_series_count > 1:
-        if K < expected_series_count:
-            needs_hsv_fallback = True
-        elif len(series_hue) < expected_series_count:
-            needs_hsv_fallback = True
-        elif len(centers) >= 2:
-            min_hue_dist = float("inf")
-            for i in range(len(centers)):
-                for j in range(i + 1, len(centers)):
-                    dist = abs(centers[i] - centers[j])
-                    dist = min(dist, 180 - dist)
-                    min_hue_dist = min(min_hue_dist, dist)
-            if min_hue_dist < 15:
-                needs_hsv_fallback = True
+    # Quality validation for hue-only result
+    quality_ok = _validate_color_clusters(series_hue, w, min_x_coverage=0.05)
 
-    if needs_hsv_fallback:
-        # Full H+S+V 3D clustering fallback
-        hsv_pixels = pixels[color_mask].astype(np.float32)
-        # Normalize channels for balanced weighting
-        hsv_norm = hsv_pixels.copy()
-        hsv_norm[:, 0] /= 179.0
-        hsv_norm[:, 1] /= 255.0
-        hsv_norm[:, 2] /= 255.0
+    if quality_ok and len(series_hue) >= 2:
+        return [(img, cmask) for _, img, cmask in series_hue]
 
-        criteria_hsv = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 100, 0.2)
-        cv2.setRNGSeed(0)
-        _, labels_3d, centers_3d = cv2.kmeans(
-            hsv_norm,
-            expected_series_count,
-            None,
-            criteria_hsv,
-            10,
-            cv2.KMEANS_PP_CENTERS,
-        )
+    # Fallback: Full H+S+V 3D clustering
+    hsv_pixels = pixels[color_mask].astype(np.float32)
+    hsv_norm = hsv_pixels.copy()
+    hsv_norm[:, 0] /= 179.0
+    hsv_norm[:, 1] /= 255.0
+    hsv_norm[:, 2] /= 255.0
 
-        full_labels_3d = np.full(len(pixels), -1, dtype=int)
-        full_labels_3d[color_mask] = labels_3d.flatten()
+    K_3d = max(K, 2)
 
-        series_hsv = []
-        for k in range(expected_series_count):
-            cluster_mask = np.zeros_like(mask)
-            cluster_indices = np.where(full_labels_3d == k)[0]
-            if len(cluster_indices) == 0:
-                continue
-            rows = fg_indices[0][cluster_indices]
-            cols = fg_indices[1][cluster_indices]
-            cluster_mask[rows, cols] = 255
+    criteria_hsv = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 100, 0.2)
+    cv2.setRNGSeed(0)
+    _, labels_3d, _ = cv2.kmeans(
+        hsv_norm,
+        K_3d,
+        None,
+        criteria_hsv,
+        10,
+        cv2.KMEANS_PP_CENTERS,
+    )
 
-            x_spread = int(cols.max()) - int(cols.min()) if len(cols) > 0 else 0
-            if len(cluster_indices) >= FOREGROUND_MIN_AREA and x_spread > w * 0.05:
-                series_hsv.append((k, image, cluster_mask))
+    full_labels_3d = np.full(len(pixels), -1, dtype=int)
+    full_labels_3d[color_mask] = labels_3d.flatten()
 
-        if len(series_hsv) >= expected_series_count:
-            return [(img, cmask) for _, img, cmask in series_hsv]
+    series_hsv = []
+    for k in range(K_3d):
+        cluster_mask = np.zeros_like(mask)
+        cluster_indices = np.where(full_labels_3d == k)[0]
+        if len(cluster_indices) == 0:
+            continue
+        rows = fg_indices[0][cluster_indices]
+        cols = fg_indices[1][cluster_indices]
+        cluster_mask[rows, cols] = 255
+
+        x_spread = int(cols.max()) - int(cols.min()) if len(cols) > 0 else 0
+        if len(cluster_indices) >= FOREGROUND_MIN_AREA and x_spread > w * 0.05:
+            series_hsv.append((k, image, cluster_mask))
+
+    # Post-merge over-segmented clusters
+    series_hsv = _merge_overlapping_clusters(series_hsv, overlap_threshold=0.5)
+
+    if len(series_hsv) >= 2:
+        return [(img, cmask) for _, img, cmask in series_hsv]
 
     if not series_hue:
         return [(image, mask)]
     series_hue.sort(key=lambda item: item[0], reverse=True)
     return [(img, cmask) for _, img, cmask in series_hue]
+
+
+def _is_dense_chart(mask, series_count=1):
+    """Detect dense oscillating curves independent of color/CC path."""
+    h, w = mask.shape
+
+    # Vectorized: compute all metrics in single column-wise passes
+    col_has_fg = np.any(mask > 0, axis=0)
+    col_density = np.mean(col_has_fg)
+
+    # Row spans: max row - min row per column (vectorized)
+    fg_rows = np.where(mask > 0)
+    if len(fg_rows[0]) == 0:
+        return False
+    # Build per-column min/max row index
+    row_min = np.full(w, h, dtype=int)
+    row_max = np.full(w, -1, dtype=int)
+    np.minimum.at(row_min, fg_rows[1], fg_rows[0])
+    np.maximum.at(row_max, fg_rows[1], fg_rows[0])
+    has_fg = col_has_fg
+    spans = np.where(has_fg, row_max - row_min, 0)
+    avg_span = np.mean(spans[has_fg]) if np.any(has_fg) else 0
+    span_ratio = avg_span / h
+
+    # Dense if: high column density AND significant vertical span.
+    return col_density > 0.6 and span_ratio > 0.15
 
 
 def _relative_series_error(x_ref, y_ref, x_ext, y_ext):
@@ -475,31 +615,7 @@ def _relative_series_error(x_ref, y_ref, x_ext, y_ext):
     return float(np.mean(np.abs(y_ref - np.asarray(pred))) / y_range)
 
 
-def _score_series_set_against_meta(series_set, meta):
-    """Score extracted series candidates against metadata when available."""
-    if not series_set or not meta or not meta.get("data"):
-        return float("inf")
-
-    gt_items = list(meta["data"].items())
-    if len(series_set) > 5 or len(gt_items) > 5:
-        return float("inf")
-
-    n_match = min(len(series_set), len(gt_items))
-    best_score = float("inf")
-    for perm in itertools.permutations(range(len(gt_items)), n_match):
-        candidate_score = 0.0
-        for ext_idx, gt_idx in enumerate(perm):
-            _, gt_series = gt_items[gt_idx]
-            x_d, y_d = series_set[ext_idx]
-            candidate_score = max(
-                candidate_score,
-                _relative_series_error(gt_series["x"], gt_series["y"], x_d, y_d),
-            )
-        best_score = min(best_score, candidate_score)
-    return best_score
-
-
-def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=None, raw_image=None, meta=None) -> Dict[str, Dict]:
+def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=None, raw_image=None, policy=None) -> Dict[str, Dict]:
     """Main extraction pipeline.
 
     raw_image: un-preprocessed image used for grid detection (preprocessing
@@ -534,7 +650,6 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
 
     x_cal = next((ca for ca in x_cals if ca.axis.side == "bottom"), x_cals[0])
     has_log_axis = any(ca.axis_type == "log" for ca in calibrated_axes)
-    has_multi_series_meta = bool(meta and len(meta.get("data", {})) > 1)
 
     # Detect if there are both left and right Y axes (dual_y scenario)
     y_left = next((ca for ca in y_cals if ca.axis.side == "left"), None)
@@ -543,55 +658,40 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
     # Default to left axis if only one Y axis
     y_cal_default = y_left if y_left else (y_right if y_right else y_cals[0])
 
-    class ShiftedCal:
-        def __init__(self, base: CalibratedAxis, dx=0, dy=0):
-            self.base = base
-            self.dx = dx
-            self.dy = dy
+    shifted_x = _ShiftedCal(x_cal, dx=left, dy=0)
+    shifted_y_default = _ShiftedCal(y_cal_default, dx=0, dy=top)
 
-        def to_data(self, pixel):
-            if self.base.axis.direction == "x":
-                return self.base.to_data(pixel + self.dx)
-            else:
-                return self.base.to_data(pixel + self.dy)
-
-    shifted_x = ShiftedCal(x_cal, dx=left, dy=0)
-
-    def _select_y_cal_for_series(series_mask, y_cals, y_left, y_right):
-        """Select appropriate Y-axis calibration for a series based on its position."""
-        if not y_right or not y_left:
-            # Single Y-axis: use default
-            return y_cal_default
-
-        # Dual Y-axis: determine which axis this series belongs to
-        # Strategy: check series center position relative to left/right axis positions
-        fg_indices = np.where(series_mask > 0)
-        if len(fg_indices[0]) == 0:
-            return y_cal_default
-
-        # Check if series is closer to left or right axis position
-        # Left axis usually has smaller y values (top of plot), right axis has larger
-        # Actually: Y axes are vertical lines at different X positions, not different Y ranges
-        # For dual Y: left axis is at x=left, right axis is at x=right
-        # But the series themselves are plotted across the entire plot area
-        # We need to check which Y-axis scale matches the series better
-
-        # Alternative: use meta information if available (meta["axes"]["y_left"], "y_right")
-        # For now: simple heuristic - if there are 2 series, assume first is left, second is right
-        # This matches typical dual_y chart generation (series1=left, series2=right)
-        return y_cal_default  # Will be overridden in multi-series extraction below
-
-    shifted_y_default = ShiftedCal(y_cal_default, dx=0, dy=top)
+    # --- UNIFIED DENSE DETECTION (runs on full mask before color separation) ---
+    is_dense = _is_dense_chart(mask)
+    # Policy override: if policy explicitly routes to thinning or scatter, respect it
+    density_strategy = policy.density_strategy if policy is not None else "standard"
+    if density_strategy == "thinning" or (is_dense and density_strategy != "scatter"):
+        thinned = _apply_thinning(mask)
+        # Quality gate: if thinning destroyed too much, fall back
+        gate = policy.thinning_quality_gate if policy is not None else 0.3
+        thinned_cols = np.sum(np.any(thinned > 0, axis=0))
+        if thinned_cols < w * gate:
+            thinned = mask
+        x_data, y_data = _extract_from_mask(thinned, shifted_x, shifted_y_default)
+        if len(x_data) >= MIN_DATA_POINTS:
+            results = {"series1": {"x": x_data, "y": y_data}}
+            return results, False, has_grid
 
     # Separate by color first, then extract each color mask directly
-    expected_series_count = len(meta.get("data", {})) if meta and meta.get("data") else 0
-    color_cluster_count = max(3, expected_series_count)
+    color_cluster_count = 3
+    color_min_clusters = 1
+    if policy is not None:
+        if policy.color_strategy == "hsv3d":
+            color_min_clusters = max(color_min_clusters, policy.min_clusters)
+        elif policy.color_strategy == "layered":
+            color_min_clusters = max(color_min_clusters, 2)
+        color_cluster_count = max(color_cluster_count, color_min_clusters)
+
     color_series = _separate_series_by_color(
         plot_img,
         mask,
         n_clusters=color_cluster_count,
-        min_clusters=expected_series_count if has_multi_series_meta else 1,
-        meta=meta,
+        min_clusters=color_min_clusters,
     )
 
     # Check if dual Y-axis is truly needed: y_left and y_right must have different data ranges
@@ -609,30 +709,13 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
                 is_dual_y = range_diff > 0.5 * max(left_range, right_range)
 
     all_series = []
-    if is_dual_y and len(color_series) == 2 and meta and len(meta.get("data", {})) >= 2:
-        gt_items = list(meta["data"].items())[:2]
-        candidates = []
-        for assignment in ((y_left, y_right), (y_right, y_left)):
-            extracted = []
-            for series_idx, (_, cmask) in enumerate(color_series):
-                dilated = cv2.dilate(cmask, np.ones((3, 3), np.uint8), iterations=1)
-                shifted_y = ShiftedCal(assignment[series_idx], dx=0, dy=top)
-                x_d, y_d = _extract_from_mask(dilated, shifted_x, shifted_y)
-                extracted.append((x_d, y_d))
-            score = float("inf")
-            for perm in itertools.permutations(range(len(gt_items)), len(extracted)):
-                candidate_score = 0.0
-                for ext_idx, gt_idx in enumerate(perm):
-                    _, gt_series = gt_items[gt_idx]
-                    x_d, y_d = extracted[ext_idx]
-                    candidate_score = max(
-                        candidate_score,
-                        _relative_series_error(gt_series["x"], gt_series["y"], x_d, y_d),
-                    )
-                score = min(score, candidate_score)
-            candidates.append((score, extracted))
-        _, best = min(candidates, key=lambda item: item[0])
-        for x_d, y_d in best:
+    if is_dual_y and len(color_series) == 2:
+        # Default ordering: series 0 -> left, series 1 -> right
+        for series_idx, (_, cmask) in enumerate(color_series):
+            dilated = cv2.dilate(cmask, np.ones((3, 3), np.uint8), iterations=1)
+            y_cal_for_series = y_left if series_idx == 0 else y_right
+            shifted_y = _ShiftedCal(y_cal_for_series, dx=0, dy=top)
+            x_d, y_d = _extract_from_mask(dilated, shifted_x, shifted_y)
             if len(x_d) >= MIN_DATA_POINTS:
                 all_series.append((x_d, y_d))
     elif len(color_series) > 1:
@@ -646,33 +729,10 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
             y_cal_for_series = y_cal_default
 
             if is_dual_y and y_left and y_right:
-                # Dual Y-axis: validate which axis this series matches better
-                # Only when meta is available for validation
-                if meta and len(meta.get("data", {})) >= series_idx + 1:
-                    # Try both axes and select the one with better fit
-                    gt_items = list(meta["data"].items())
-                    if series_idx < len(gt_items):
-                        _, gt_series = gt_items[series_idx]
-                        # Extract with both axes and compare
-                        shifted_y_left = ShiftedCal(y_left, dx=0, dy=top)
-                        x_l, y_l = _extract_from_mask(dilated, shifted_x, shifted_y_left)
-                        shifted_y_right = ShiftedCal(y_right, dx=0, dy=top)
-                        x_r, y_r = _extract_from_mask(dilated, shifted_x, shifted_y_right)
-                        # Compare errors
-                        err_left = _relative_series_error(gt_series["x"], gt_series["y"], x_l, y_l) if x_l else float("inf")
-                        err_right = _relative_series_error(gt_series["x"], gt_series["y"], x_r, y_r) if x_r else float("inf")
-                        if err_left <= err_right:
-                            y_cal_for_series = y_left
-                        else:
-                            y_cal_for_series = y_right
-                    else:
-                        # No ground truth for this series index, use default ordering
-                        y_cal_for_series = y_left if series_idx == 0 else y_right
-                else:
-                    # No meta available: use default ordering (series 0 → left, series 1 → right)
-                    y_cal_for_series = y_left if series_idx == 0 else y_right
+                # Default ordering (series 0 → left, series 1 → right)
+                y_cal_for_series = y_left if series_idx == 0 else y_right
 
-            shifted_y = ShiftedCal(y_cal_for_series, dx=0, dy=top)
+            shifted_y = _ShiftedCal(y_cal_for_series, dx=0, dy=top)
             x_d, y_d = _extract_from_mask(dilated, shifted_x, shifted_y)
             if len(x_d) >= MIN_DATA_POINTS:
                 all_series.append((x_d, y_d))
@@ -692,20 +752,21 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
             if area >= FOREGROUND_MIN_AREA and x_span < w * 0.05:
                 small_components.append(i)
 
-        if has_multi_series_meta and expected_series_count > 1:
-            layered = _extract_layered_series_from_mask(dilated, shifted_x, shifted_y_default, expected_series_count)
-            if layered:
-                all_series.extend(layered)
-        elif len(small_components) >= 10 and not has_log_axis and not has_multi_series_meta:
+        if len(small_components) >= 10 and not has_log_axis:
             # Could be dense oscillating curve or scatter
             fg_cols = int(np.sum(np.any(dilated > 0, axis=0)))
-            if fg_cols > w * 0.7:
+            # Policy override for density strategy
+            density_strategy = policy.density_strategy if policy is not None else "standard"
+            force_scatter = density_strategy == "scatter"
+            force_thinning = density_strategy == "thinning"
+
+            if force_thinning or (fg_cols > w * 0.7 and not force_scatter):
                 # Dense: thin to 1px skeleton then extract
                 thinned = _apply_thinning(dilated)
                 x_data, y_data = _extract_from_mask(thinned, shifted_x, shifted_y_default)
                 if len(x_data) >= MIN_DATA_POINTS:
                     all_series = [(x_data, y_data)]
-            else:
+            elif force_scatter or fg_cols <= w * 0.7:
                 # Scatter: extract via connected-component centroids
                 x_data, y_data = _extract_scatter_from_mask(dilated, shifted_x, shifted_y_default)
                 if len(x_data) >= MIN_DATA_POINTS:
@@ -716,8 +777,9 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
                 for idx, (x_d, y_d) in enumerate(all_series):
                     sorted_pts = sorted(zip(x_d, y_d))
                     x_sorted, y_sorted = zip(*sorted_pts)
-                    results["series1"] = {"x": list(x_sorted), "y": list(y_sorted)}
-                return results, (not (fg_cols > w * 0.7)), has_grid
+                    results[f"series{idx+1}"] = {"x": list(x_sorted), "y": list(y_sorted)}
+                is_scatter_out = force_scatter or (not force_thinning and fg_cols <= w * 0.7)
+                return results, is_scatter_out, has_grid
         else:
             for i in range(1, num_labels):
                 area = stats[i, cv2.CC_STAT_AREA]
@@ -730,15 +792,27 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
                 if len(x_d) >= MIN_DATA_POINTS:
                     all_series.append((x_d, y_d))
 
-    # If color separation failed, try full mask
+    # If color separation failed, try full mask then series_candidates
     if not all_series:
         x_data, y_data = _extract_from_mask(mask, shifted_x, shifted_y_default)
         if len(x_data) >= MIN_DATA_POINTS:
             all_series = [(x_data, y_data)]
-        else:
-            x_data, y_data = _extract_scatter_from_mask(mask, shifted_x, shifted_y_default)
-            if len(x_data) >= MIN_DATA_POINTS:
-                all_series = [(x_data, y_data)]
+
+    # Fallback: multi-candidate series extraction
+    if not all_series:
+        is_scatter_flag = density_strategy == "scatter"
+        cand_result = extract_series_multi_candidate(
+            plot_img, mask, shifted_x, shifted_y_default,
+            is_scatter=is_scatter_flag,
+        )
+        for cand in cand_result.best:
+            if len(cand.x_data) >= MIN_DATA_POINTS:
+                all_series.append((cand.x_data, cand.y_data))
+
+    if not all_series:
+        x_data, y_data = _extract_scatter_from_mask(mask, shifted_x, shifted_y_default)
+        if len(x_data) >= MIN_DATA_POINTS:
+            all_series = [(x_data, y_data)]
 
     def _merge_series_fragments(series_list):
         # Merge fragments of the same line while keeping different lines separate.
@@ -789,15 +863,7 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
         return merged
 
     generic_merged = _merge_series_fragments(all_series)
-    if has_multi_series_meta and expected_series_count > 1 and len(all_series) >= expected_series_count:
-        # Multi-series traces often overlap across the full x-domain. Compare
-        # raw color-separated traces and generic merged traces against metadata
-        # instead of blindly collapsing potentially distinct curves.
-        raw_score = _score_series_set_against_meta(all_series, meta)
-        merged_score = _score_series_set_against_meta(generic_merged, meta)
-        merged = all_series if raw_score <= merged_score else generic_merged
-    else:
-        merged = generic_merged
+    merged = generic_merged
 
     if not merged:
         merged = all_series
@@ -807,11 +873,29 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
 
     # Detect scatter vs line chart — only override single-series results
     is_scatter = False
-    if len(merged) <= 1 and not has_log_axis and not has_multi_series_meta:
+    density_strategy = policy.density_strategy if policy is not None else "standard"
+    if density_strategy == "scatter":
+        # Policy forces scatter extraction
         x_scatter, y_scatter = _extract_scatter_from_mask(mask, shifted_x, shifted_y_default)
         if len(x_scatter) >= MIN_DATA_POINTS:
-            total_line_pts = sum(len(x) for x, y in merged) if merged else 0
-            if total_line_pts > len(x_scatter) * 2:
+            is_scatter = True
+            merged = [(x_scatter, y_scatter)]
+    elif density_strategy != "thinning" and len(merged) <= 1 and not has_log_axis:
+        # Heuristic: scatter charts have many small CCs with moderate column density.
+        # Count small connected components (area < 50px²) as scatter point candidates.
+        num_labels, _, stats_scatter, _ = cv2.connectedComponentsWithStats(
+            mask, connectivity=8
+        )
+        small_cc = sum(
+            1 for i in range(1, num_labels)
+            if stats_scatter[i, cv2.CC_STAT_AREA] < 50
+            and stats_scatter[i, cv2.CC_STAT_AREA] >= 3
+        )
+        col_has_fg = np.any(mask > 0, axis=0)
+        col_dens = np.mean(col_has_fg)
+        if small_cc > 30 and col_dens < 0.7:
+            x_scatter, y_scatter = _extract_scatter_from_mask(mask, shifted_x, shifted_y_default)
+            if len(x_scatter) >= MIN_DATA_POINTS:
                 is_scatter = True
                 merged = [(x_scatter, y_scatter)]
 

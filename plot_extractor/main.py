@@ -5,12 +5,14 @@ import json
 from pathlib import Path
 
 from plot_extractor.core.image_loader import load_image, preprocess, to_grayscale, rotate_image
-from plot_extractor.core.axis_detector import detect_all_axes, estimate_rotation_angle
+from plot_extractor.core.axis_detector import detect_all_axes, refine_rotation_angle
 from plot_extractor.core.axis_calibrator import calibrate_all_axes
 from plot_extractor.core.data_extractor import extract_all_data
 from plot_extractor.core.plot_rebuilder import rebuild_plot
-from plot_extractor.core.ocr_reader import load_meta_labels
+from plot_extractor.core.chart_type_guesser import extract_all_features, guess_chart_type
+from plot_extractor.core.llm_policy_router import compute_llm_enhanced_policy
 from plot_extractor.utils.ssim_compare import compare_images
+from plot_extractor.layout.panel_split import detect_panel_boundaries, Panel
 
 
 def _build_diagnostics(calibrated_axes, data, plot_bounds, is_scatter, has_grid):
@@ -55,109 +57,142 @@ def _build_diagnostics(calibrated_axes, data, plot_bounds, is_scatter, has_grid)
     }
 
 
-def _score_calibration_quality(calibrated_axes):
-    """Score axis calibration quality for rotation-path selection.
+def _extract_from_panel(
+    panel: Panel,
+    image_path: Path,
+    debug_dir: Path = None,
+    use_llm: bool = False,
+    use_ocr: bool = False,
+    policy=None,
+    final_type_probs=None,
+):
+    """Run extraction pipeline on a single panel."""
+    raw_image = panel.image
 
-    Higher score = better calibration. Uses labeled tick count and residual.
-    """
-    if not calibrated_axes:
-        return -1.0
+    # Preprocess with policy-driven noise strategy
+    image = preprocess(raw_image, denoise=True, policy=policy)
+    gray = to_grayscale(image)
 
-    score = 0.0
-    for ca in calibrated_axes:
-        labeled_count = len([v for _, v in ca.tick_map if v is not None])
-        score += labeled_count * 10.0  # Each labeled tick contributes significantly
-        # Penalize high residuals
-        score -= min(ca.residual * 0.01, 50.0)  # Cap penalty to avoid over-penalizing outliers
-    return score
+    # Rotation correction from policy (if enabled)
+    use_rotated = False
+    rot_angle = policy.rotation_angle if policy and policy.rotation_correct else 0.0
+
+    if policy and policy.rotation_correct and abs(rot_angle) >= 0.3:
+        # Coarse axis detection for angle refinement
+        axes_coarse = detect_all_axes(gray, policy=policy)
+        if axes_coarse:
+            rot_angle = refine_rotation_angle(gray, axes_coarse, rot_angle)
+
+        if abs(rot_angle) >= 0.3:
+            print(
+                f"[{image_path.name} Panel {panel.panel_id}] "
+                f"Correcting rotation: {rot_angle:.2f} deg"
+            )
+            image = rotate_image(image, -rot_angle)
+            gray = to_grayscale(image)
+            raw_image = rotate_image(raw_image, -rot_angle)
+            use_rotated = True
+
+    # Detect axes on selected image
+    axes = detect_all_axes(gray, policy=policy)
+    if not axes:
+        print(f"[{image_path.name} Panel {panel.panel_id}] No axes detected.")
+        return None
+
+    # Calibrate axes
+    calibrated = calibrate_all_axes(
+        axes, image, policy=policy, use_ocr=use_ocr, use_llm=use_llm,
+        type_probs=final_type_probs,
+    )
+    if not calibrated:
+        print(f"[{image_path.name} Panel {panel.panel_id}] Axis calibration failed.")
+        return None
+
+    # Extract data
+    data, is_scatter, has_grid = extract_all_data(
+        image, calibrated, image_path=image_path, raw_image=raw_image, policy=policy,
+    )
+    if not data:
+        print(f"[{image_path.name} Panel {panel.panel_id}] No data extracted.")
+        return None
+
+    # Compute plot bounds from calibrated axes
+    from plot_extractor.core.data_extractor import _get_plot_bounds
+    plot_bounds = _get_plot_bounds(calibrated, panel.image.shape)
+
+    return {
+        "panel_id": panel.panel_id,
+        "data": data,
+        "calibrated_axes": calibrated,
+        "is_scatter": is_scatter,
+        "has_grid": has_grid,
+        "plot_bounds": plot_bounds,
+    }
 
 
 def extract_from_image(
     image_path: Path,
     output_csv: Path = None,
     debug_dir: Path = None,
-    meta=None,
+    use_llm: bool = False,
+    use_ocr: bool = False,
 ):
-    """Run full extraction pipeline on an image."""
+    """Run full extraction pipeline on an image with panel-wise workflow."""
     image_path = Path(image_path)
-    image = load_image(image_path)
-    image = preprocess(image, denoise=True)
-    gray = to_grayscale(image)
-
-    # Detect and correct rotation before axis detection
-    rot_angle = estimate_rotation_angle(gray)
-
-    # Rotation quality-gated selection for near-threshold angles
-    use_rotated = False
-    if abs(rot_angle) >= 0.5:
-        # For near-threshold cases, evaluate both paths and choose better calibration
-        if abs(rot_angle) < 2.0:  # Borderline zone: try both
-            # Path A: no rotation
-            gray_a = gray
-            axes_a = detect_all_axes(gray_a)
-            if axes_a:
-                calibrated_a = calibrate_all_axes(axes_a, image, meta=meta)
-                score_a = _score_calibration_quality(calibrated_a)
-            else:
-                score_a = -1.0
-
-            # Path B: rotation
-            image_b = rotate_image(image, -rot_angle)
-            gray_b = to_grayscale(image_b)
-            axes_b = detect_all_axes(gray_b)
-            if axes_b:
-                calibrated_b = calibrate_all_axes(axes_b, image_b, meta=meta)
-                score_b = _score_calibration_quality(calibrated_b)
-            else:
-                score_b = -1.0
-
-            # Choose better path
-            if score_b > score_a and calibrated_b:
-                print(f"[{image_path.name}] Rotating by {-rot_angle:.2f}° (detected {rot_angle:.2f}°, quality-gated: B={score_b:.1f} > A={score_a:.1f})")
-                image = image_b
-                gray = gray_b
-                use_rotated = True
-            elif calibrated_a:
-                print(f"[{image_path.name}] Skipping rotation (detected {rot_angle:.2f}°, quality-gated: A={score_a:.1f} >= B={score_b:.1f})")
-                # Keep original image
-                use_rotated = False
-            else:
-                # Neither path has axes, fallback to original behavior
-                print(f"[{image_path.name}] Rotating by {-rot_angle:.2f}° (detected {rot_angle:.2f}°, fallback: no axes in either path)")
-                image = image_b
-                gray = gray_b
-                use_rotated = True
-        else:
-            # Strong rotation: apply directly (not borderline)
-            print(f"[{image_path.name}] Rotating by {-rot_angle:.2f}° (detected {rot_angle:.2f}°, strong rotation)")
-            image = rotate_image(image, -rot_angle)
-            gray = to_grayscale(image)
-            use_rotated = True
-
-    # Detect axes on selected image
-    axes = detect_all_axes(gray)
-    if not axes:
-        print(f"[{image_path.name}] No axes detected.")
-        return None
-
-    # Calibrate axes
-    calibrated = calibrate_all_axes(axes, image, meta=meta)
-    if not calibrated:
-        print(f"[{image_path.name}] Axis calibration failed.")
-        return None
-
-    # Extract data (raw image for grid detection, preprocessed for data extraction)
     raw_image = load_image(image_path)
-    if use_rotated:
-        raw_image = rotate_image(raw_image, -rot_angle)
-    data, is_scatter, has_grid = extract_all_data(
-        image, calibrated, image_path=image_path, raw_image=raw_image, meta=meta,
+
+    # --- Policy routing: extract features and compute policy ---
+    gray = to_grayscale(raw_image)
+    features = extract_all_features(raw_image, gray)
+    type_probs = guess_chart_type(features)
+    policy, final_type_probs = compute_llm_enhanced_policy(
+        image_path, features, type_probs, use_llm=use_llm,
     )
-    if not data:
-        print(f"[{image_path.name}] No data extracted.")
+
+    # --- Panel detection ---
+    panels = detect_panel_boundaries(raw_image)
+    print(f"[{image_path.name}] Detected {len(panels)} panel(s)")
+
+    panel_results = []
+    for panel in panels:
+        # --- Extract from this panel ---
+        result = _extract_from_panel(
+            panel, image_path, debug_dir,
+            use_llm, use_ocr, policy, final_type_probs,
+        )
+
+        if result:
+            panel_results.append(result)
+
+    if not panel_results:
+        print(f"[{image_path.name}] No data extracted from any panel.")
         return None
 
-    # Write CSV
+    # --- Assemble results from all panels ---
+    # For single panel, keep original structure
+    if len(panel_results) == 1:
+        single_result = panel_results[0]
+        data = single_result["data"]
+        calibrated = single_result["calibrated_axes"]
+        plot_bounds = single_result["plot_bounds"]
+        is_scatter = single_result["is_scatter"]
+        has_grid = single_result["has_grid"]
+    else:
+        # Multi-panel: merge series with panel prefix
+        data = {}
+        calibrated = []
+        for pr in panel_results:
+            panel_id = pr["panel_id"]
+            for series_name, series_data in pr["data"].items():
+                merged_name = f"panel{panel_id}_{series_name}"
+                data[merged_name] = series_data
+            calibrated.extend(pr["calibrated_axes"])
+        # Use first panel bounds as overall plot bounds (approximate)
+        plot_bounds = panel_results[0]["plot_bounds"]
+        is_scatter = panel_results[0]["is_scatter"]
+        has_grid = panel_results[0]["has_grid"]
+
+    # --- Write CSV output ---
     if output_csv is None:
         output_csv = image_path.parent / f"{image_path.stem}.csv"
     output_csv = Path(output_csv)
@@ -170,17 +205,7 @@ def extract_from_image(
     total_pts = sum(len(s["x"]) for s in data.values())
     print(f"[{image_path.name}] CSV saved: {output_csv} ({total_pts} points)")
 
-    # Compute plot bounds for crop comparison
-    x_axes = [ca for ca in calibrated if ca.axis.direction == "x"]
-    y_axes = [ca for ca in calibrated if ca.axis.direction == "y"]
-    h, w = image.shape[:2]
-    left = max((ca.axis.position for ca in y_axes if ca.axis.side == "left"), default=0)
-    right = min((ca.axis.position for ca in y_axes if ca.axis.side == "right"), default=w)
-    top = min((ca.axis.position for ca in x_axes if ca.axis.side == "top"), default=0)
-    bottom = max((ca.axis.position for ca in x_axes if ca.axis.side == "bottom"), default=h)
-    plot_bounds = (left, top, right, bottom)
-
-    # Rebuild and compare
+    # --- Rebuild and compare ---
     ssim_score = None
     ssim_cropped = None
     if debug_dir:
@@ -205,6 +230,7 @@ def extract_from_image(
         "is_scatter": is_scatter,
         "has_grid": has_grid,
         "diagnostics": diagnostics,
+        "panel_count": len(panel_results),
     }
 
 
@@ -214,19 +240,18 @@ def main():
     parser.add_argument("--output", "-o", type=Path, default=None, help="Output CSV path")
     parser.add_argument("--debug", "-d", type=Path, default=None, help="Debug output directory")
     parser.add_argument(
-        "--meta", type=Path, default=None, help="Optional meta JSON with ground truth",
+        "--use-llm", action="store_true",
+        help="Enable LLM vision enhancement for ambiguous charts",
+    )
+    parser.add_argument(
+        "--use-ocr", action="store_true",
+        help="Enable tesseract OCR for tick labels (requires tesseract)",
     )
     args = parser.parse_args()
 
-    meta = None
-    if args.meta:
-        with open(args.meta, encoding="utf-8") as f:
-            meta = json.load(f)
-    else:
-        meta = load_meta_labels(args.input)
-
     extract_from_image(
-        args.input, output_csv=args.output, debug_dir=args.debug, meta=meta,
+        args.input, output_csv=args.output, debug_dir=args.debug,
+        use_llm=args.use_llm, use_ocr=args.use_ocr,
     )
 
 

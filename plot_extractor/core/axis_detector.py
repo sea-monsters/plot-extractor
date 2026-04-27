@@ -37,19 +37,24 @@ def _is_vertical(angle):
     return 90 - AXIS_ANGLE_TOLERANCE <= angle <= 90 + AXIS_ANGLE_TOLERANCE
 
 
-def detect_axes(image_gray, edges=None):
+def detect_axes(image_gray, edges=None, hough_threshold=None,
+                min_line_length=None, max_line_gap=None):
     """Detect main x and y axes from the image."""
     h, w = image_gray.shape
     if edges is None:
         edges = cv2.Canny(image_gray, 50, 150)
 
+    thr = hough_threshold if hough_threshold is not None else HOUGH_THRESHOLD
+    mll = min_line_length if min_line_length is not None else MIN_LINE_LENGTH
+    mlg = max_line_gap if max_line_gap is not None else MAX_LINE_GAP
+
     lines = cv2.HoughLinesP(
         edges,
         rho=1,
         theta=np.pi / 180,
-        threshold=HOUGH_THRESHOLD,
-        minLineLength=MIN_LINE_LENGTH,
-        maxLineGap=MAX_LINE_GAP,
+        threshold=thr,
+        minLineLength=mll,
+        maxLineGap=mlg,
     )
 
     horiz_lines = []
@@ -249,10 +254,52 @@ def refine_plot_area(axes, image_shape):
     return axes
 
 
-def detect_all_axes(image_gray):
-    """Full axis detection pipeline."""
+def detect_all_axes(image_gray, policy=None):
+    """Full axis detection pipeline.
+
+    If *policy* is provided, Hough threshold and line-length limits are
+    overridden by the policy values.
+    """
     edges = cv2.Canny(image_gray, 50, 150)
-    axes = detect_axes(image_gray, edges)
+
+    # Determine Hough parameters from policy or defaults
+    if policy is not None:
+        hough_thr = policy.hough_threshold
+        hough_mll = policy.hough_min_line_length
+        hough_mlg = policy.hough_max_line_gap
+    else:
+        hough_thr = HOUGH_THRESHOLD
+        hough_mll = MIN_LINE_LENGTH
+        hough_mlg = MAX_LINE_GAP
+
+    axes = detect_axes(image_gray, edges,
+                       hough_threshold=hough_thr,
+                       min_line_length=hough_mll,
+                       max_line_gap=hough_mlg)
+
+    # Fallback pass: if no axes are found, try a slightly more permissive
+    # edge/line configuration on contrast-equalized grayscale.
+    if not axes:
+        eq_gray = cv2.equalizeHist(image_gray)
+        relaxed_edges = cv2.Canny(eq_gray, 30, 100)
+        relaxed_edges = cv2.morphologyEx(
+            relaxed_edges,
+            cv2.MORPH_CLOSE,
+            np.ones((3, 3), dtype=np.uint8),
+            iterations=1,
+        )
+
+        fb_thr = max(40, int(hough_thr * 0.75))
+        fb_mll = max(30, int(hough_mll * 0.7))
+        fb_mlg = max(15, hough_mlg)
+
+        axes = detect_axes(eq_gray, relaxed_edges,
+                           hough_threshold=fb_thr,
+                           min_line_length=fb_mll,
+                           max_line_gap=fb_mlg)
+        if axes:
+            edges = relaxed_edges
+
     axes = refine_plot_area(axes, image_gray.shape)
     for axis in axes:
         detect_ticks(image_gray, axis, edges)
@@ -308,6 +355,7 @@ def detect_all_axes(image_gray):
                     break
             if not matched_primary:
                 primary.append(sec)
+
     return primary
 
 
@@ -382,3 +430,63 @@ def estimate_rotation_angle(image_gray: np.ndarray) -> float:
     if abs(avg) < 0.5:
         return 0.0
     return avg
+
+
+def refine_rotation_angle(image_gray, axes, initial_angle):
+    """Refine rotation angle by fitting lines to detected axis edge pixels.
+
+    initial_angle: coarse estimate from HoughLinesP (e.g., +1.2 deg)
+    Returns: refined angle (e.g., +1.05 deg), or initial_angle if refinement fails
+    """
+    if abs(initial_angle) < 0.3 or not axes:
+        return initial_angle
+
+    h, w = image_gray.shape
+    angles = []
+
+    for axis in axes:
+        # Extract edge pixels along the axis line
+        strip = 5
+        if axis.direction == "x":
+            y0 = max(0, axis.position - strip)
+            y1 = min(h, axis.position + strip)
+            if axis.plot_end <= axis.plot_start:
+                continue
+            region = image_gray[y0:y1, axis.plot_start:axis.plot_end]
+            if region.size == 0:
+                continue
+            edges = cv2.Canny(region, 50, 150)
+            ys, xs = np.where(edges > 0)
+            if len(xs) < 10:
+                continue
+            # Fit line to edge pixels
+            coeffs = np.polyfit(xs, ys, 1)
+            slope = coeffs[0]
+            angle_deg = np.degrees(np.arctan(slope))
+        else:  # y axis
+            x0 = max(0, axis.position - strip)
+            x1 = min(w, axis.position + strip)
+            if axis.plot_end <= axis.plot_start:
+                continue
+            region = image_gray[axis.plot_start:axis.plot_end, x0:x1]
+            if region.size == 0:
+                continue
+            edges = cv2.Canny(region, 50, 150)
+            ys, xs = np.where(edges > 0)
+            if len(xs) < 10:
+                continue
+            coeffs = np.polyfit(ys, xs, 1)
+            slope = coeffs[0]
+            angle_deg = np.degrees(np.arctan(slope)) - 90
+
+        angles.append(angle_deg)
+
+    if not angles:
+        return initial_angle
+
+    # Robust median of angles
+    refined = float(np.median(angles))
+    # Constrain to near initial estimate (avoid wild fits)
+    if abs(refined - initial_angle) > 1.0:
+        return initial_angle
+    return refined

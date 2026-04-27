@@ -1,6 +1,5 @@
 """Automatic validation loop over all sample charts."""
 import csv
-import json
 from pathlib import Path
 import sys
 
@@ -35,14 +34,8 @@ def run_validation():
 
     rows = []
     for img_path in image_files:
-        meta_path = img_path.parent / f"{img_path.stem}_meta.json"
-        meta = None
-        if meta_path.exists():
-            with open(meta_path, encoding="utf-8") as f:
-                meta = json.load(f)
-
         result = extract_from_image(img_path, output_csv=DEBUG_DIR / f"{img_path.stem}.csv",
-                                    debug_dir=DEBUG_DIR, meta=meta)
+                                    debug_dir=DEBUG_DIR)
 
         threshold = get_threshold(img_path.stem)
         if result:

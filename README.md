@@ -152,6 +152,13 @@ Run the v4 supported-domain evaluator:
 
 ```bash
 python tests/validate_by_type.py --data-dir test_data_v4 --v4-special
+python tests/validate_by_type.py --data-dir test_data_v4a --v4-special
+```
+
+Run the v4a route-profile evaluator:
+
+```bash
+python tests/validate_v4a_routes.py --data-dir test_data_v4a
 ```
 
 Current baseline details are maintained in [docs/BASELINE_EVALUATION.md](docs/BASELINE_EVALUATION.md). Bottleneck analysis and lightweight skill candidates are tracked in [docs/EXTRACTION_BOTTLENECKS_SKILL_PLAN.md](docs/EXTRACTION_BOTTLENECKS_SKILL_PLAN.md). Shared-role commit rules are tracked in [docs/COLLABORATION_GUIDELINES.md](docs/COLLABORATION_GUIDELINES.md).
@@ -200,6 +207,7 @@ plot_extractor/
 - Scan/photo degradation can break axis detection and calibration.
 - Dense curves can be over-fragmented or confused with grid/text artifacts.
 - v4 mixed charts are evaluated only within the currently supported single-chart domain.
+- v4a is a single-chart pressure set tuned to stress routing and preprocessing heuristics.
 - Tesseract OCR must be installed separately for tick label reading.
 
 ## License
