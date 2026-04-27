@@ -156,14 +156,23 @@ python tests/validate_by_type.py --data-dir test_data_v4 --v4-special
 
 Current baseline details are maintained in [docs/BASELINE_EVALUATION.md](docs/BASELINE_EVALUATION.md). Bottleneck analysis and lightweight skill candidates are tracked in [docs/EXTRACTION_BOTTLENECKS_SKILL_PLAN.md](docs/EXTRACTION_BOTTLENECKS_SKILL_PLAN.md). Shared-role commit rules are tracked in [docs/COLLABORATION_GUIDELINES.md](docs/COLLABORATION_GUIDELINES.md).
 
+## Development Documentation
+
+For contributors working on optimization and architectural improvements:
+
+- **[docs/BASELINE_EVALUATION.md](docs/BASELINE_EVALUATION.md)** — Current v1-v4 validation baseline, optimization history, and next-phase plans
+- **[docs/ARCHITECTURAL_CHANGES_IMPL.md](docs/ARCHITECTURAL_CHANGES_IMPL.md)** — Code-level implementation guide for algorithm changes: Zhang-Suen thinning, OCR preprocessing, HSV clustering, rotation correction. Includes interfaces, unit tests, validation criteria.
+
+**Key insight from optimization history**: Threshold tuning cannot fix root causes. Real bottlenecks require algorithm-level changes (new thinning, rotation correction pipeline stage, OCR-specific preprocessing, full HSV clustering).
+
 ## Current Baseline
 
 | Dataset | Scope | Pass | Rate |
 |---------|-------|------|------|
 | v1 | supported chart types | 288/310 | 92.9% |
-| v2 | wider generated variation | 383/500 | 76.6% |
-| v3 | scan/photo degradation simulation | 184/500 | 36.8% |
-| v4 | supported single-chart subset | 91/204 | 44.6% |
+| v2 | wider generated variation | 378/500 | 75.6% |
+| v3 | scan/photo degradation simulation | 179/500 | 35.8% |
+| v4 | supported single-chart subset | 90/204 | 44.1% |
 
 v4 contains 500 mixed-scope images; 296 are currently outside the extractor's supported domain, such as combo charts, multi-subplot charts, unsupported chart types, or partial crops.
 

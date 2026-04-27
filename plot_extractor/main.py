@@ -4,8 +4,8 @@ import csv
 import json
 from pathlib import Path
 
-from plot_extractor.core.image_loader import load_image, preprocess, to_grayscale
-from plot_extractor.core.axis_detector import detect_all_axes
+from plot_extractor.core.image_loader import load_image, preprocess, to_grayscale, rotate_image
+from plot_extractor.core.axis_detector import detect_all_axes, estimate_rotation_angle
 from plot_extractor.core.axis_calibrator import calibrate_all_axes
 from plot_extractor.core.data_extractor import extract_all_data
 from plot_extractor.core.plot_rebuilder import rebuild_plot
@@ -67,6 +67,13 @@ def extract_from_image(
     image = preprocess(image, denoise=True)
     gray = to_grayscale(image)
 
+    # Detect and correct rotation before axis detection
+    rot_angle = estimate_rotation_angle(gray)
+    if abs(rot_angle) >= 0.5:
+        print(f"[{image_path.name}] Rotating by {-rot_angle:.2f}° (detected {rot_angle:.2f}°)")
+        image = rotate_image(image, -rot_angle)
+        gray = to_grayscale(image)
+
     # Detect axes
     axes = detect_all_axes(gray)
     if not axes:
@@ -81,6 +88,8 @@ def extract_from_image(
 
     # Extract data (raw image for grid detection, preprocessed for data extraction)
     raw_image = load_image(image_path)
+    if abs(rot_angle) >= 0.5:
+        raw_image = rotate_image(raw_image, -rot_angle)
     data, is_scatter, has_grid = extract_all_data(
         image, calibrated, image_path=image_path, raw_image=raw_image, meta=meta,
     )

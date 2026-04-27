@@ -309,3 +309,76 @@ def detect_all_axes(image_gray):
             if not matched_primary:
                 primary.append(sec)
     return primary
+
+
+def estimate_rotation_angle(image_gray: np.ndarray) -> float:
+    """Estimate image rotation from near-horizontal and near-vertical lines.
+
+    Returns the rotation angle in degrees (positive = counter-clockwise
+    rotation present in the image).  A return value of +1.0 means the
+    image is tilted 1° CCW and should be rotated -1° to correct.
+
+    This function is intentionally strict:
+    - only very long lines (≥ 40 % of image dimension) are considered,
+    - lines must sit near image edges (where chart axes live),
+    - estimates must agree in both directions and exceed 0.5° to report.
+    """
+    h, w = image_gray.shape
+    edges = cv2.Canny(image_gray, 50, 150)
+    min_len = int(min(h, w) * 0.4)
+    lines = cv2.HoughLinesP(
+        edges,
+        rho=1,
+        theta=np.pi / 180,
+        threshold=80,
+        minLineLength=min_len,
+        maxLineGap=10,
+    )
+    if lines is None:
+        return 0.0
+
+    h_angles = []  # raw line angles for horizontal-ish candidates
+    v_angles = []  # raw line angles for vertical-ish candidates
+
+    for line in lines:
+        x1, y1, x2, y2 = line[0]
+        dx = x2 - x1
+        dy = y2 - y1
+        length = np.hypot(dx, dy)
+        if length < min_len:
+            continue
+
+        # Angle in [-180, 180]; we care about absolute deviation from axis
+        angle = np.degrees(np.arctan2(dy, dx))
+        abs_angle = abs(angle)
+
+        # Horizontal-ish: near 0° or 180°
+        if abs_angle <= 10 or abs_angle >= 170:
+            # Must sit near top or bottom edge (where axes live)
+            mid_y = (y1 + y2) / 2.0
+            if mid_y < h * 0.15 or mid_y > h * 0.85:
+                h_angles.append(float(angle))
+        # Vertical-ish: near 90°
+        elif 80 <= abs_angle <= 100:
+            # Must sit near left or right edge
+            mid_x = (x1 + x2) / 2.0
+            if mid_x < w * 0.15 or mid_x > w * 0.85:
+                v_angles.append(float(angle))
+
+    if not h_angles or not v_angles:
+        return 0.0
+
+    # Median of raw angles; for vertical lines convert to rotation estimate
+    h_angle = float(np.median(h_angles))
+    # Vertical lines should be ~90°; rotation estimate = 90° - angle
+    v_rot_estimates = [90.0 - a for a in v_angles]
+    v_angle = float(np.median(v_rot_estimates))
+
+    # Both estimates must be reasonably consistent
+    if abs(h_angle - v_angle) > 3.0:
+        return 0.0
+
+    avg = (h_angle + v_angle) / 2.0
+    if abs(avg) < 0.5:
+        return 0.0
+    return avg

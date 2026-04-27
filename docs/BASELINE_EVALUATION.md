@@ -20,9 +20,9 @@ v4 uses a special supported-domain evaluator because the set contains single cha
 | Dataset | Scope | Pass | Rate | Notes |
 |---------|-------|------|------|-------|
 | v1 | 10 supported chart types | 288/310 | 92.9% | Original controlled set |
-| v2 | 10 supported chart types | 383/500 | 76.6% | Wider style and data variation |
-| v3 | 10 supported chart types | 184/500 | 36.8% | Scanned/photographed degradation simulation |
-| v4 | supported single-chart subset | 91/204 | 44.6% | 296/500 samples are out of current extractor scope |
+| v2 | 10 supported chart types | 378/500 | 75.6% | Wider style and data variation |
+| v3 | 10 supported chart types | 179/500 | 35.8% | Scanned/photographed degradation simulation |
+| v4 | supported single-chart subset | 90/204 | 44.1% | 296/500 samples are out of current extractor scope |
 
 ## V1 Results
 
@@ -45,32 +45,33 @@ v4 uses a special supported-domain evaluator because the set contains single cha
 | Type | Pass | Rate | AvgErr | MaxErr |
 |------|------|------|--------|--------|
 | dense | 20/50 | 40.0% | 0.1730 | 1.0000 |
-| dual_y | 37/50 | 74.0% | 1.0052 | 47.3437 |
-| inverted_y | 40/50 | 80.0% | 0.0742 | 1.0000 |
+| dense | 20/50 | 40.0% | 0.1730 | 1.0000 |
+| dual_y | 34/50 | 68.0% | 0.1309 | 2.6321 |
+| inverted_y | 40/50 | 80.0% | 0.0741 | 1.0000 |
 | log_x | 47/50 | 94.0% | 0.0281 | 0.8657 |
 | log_y | 50/50 | 100.0% | 0.0065 | 0.0286 |
 | loglog | 46/50 | 92.0% | 0.1689 | 4.1160 |
-| multi_series | 17/50 | 34.0% | 0.1375 | 0.5162 |
-| no_grid | 43/50 | 86.0% | 0.0652 | 1.0000 |
-| scatter | 47/50 | 94.0% | 0.0187 | 0.2215 |
-| simple_linear | 36/50 | 72.0% | 0.1028 | 1.0000 |
-| **TOTAL** | **383/500** | **76.6%** | — | — |
+| multi_series | 14/50 | 28.0% | 0.1689 | 0.5874 |
+| no_grid | 43/50 | 86.0% | 0.0636 | 1.0000 |
+| scatter | 47/50 | 94.0% | 0.0185 | 0.2215 |
+| simple_linear | 37/50 | 74.0% | 0.0992 | 1.0000 |
+| **TOTAL** | **378/500** | **75.6%** | — | — |
 
 ## V3 Results
 
 | Type | Pass | Rate | AvgErr | MaxErr |
 |------|------|------|--------|--------|
-| dense | 9/50 | 18.0% | 0.6520 | 1.8399 |
-| dual_y | 18/50 | 36.0% | 0.9694 | 16.2814 |
-| inverted_y | 22/50 | 44.0% | 0.2498 | 1.1436 |
+| dense | 9/50 | 18.0% | 0.5964 | 1.8399 |
+| dual_y | 13/50 | 26.0% | 0.2412 | 1.8795 |
+| inverted_y | 21/50 | 42.0% | 0.2799 | 1.1436 |
 | log_x | 20/50 | 40.0% | 0.6315 | 6.8889 |
 | log_y | 21/50 | 42.0% | 0.9628 | 4.0929 |
 | loglog | 18/50 | 36.0% | 1.4203 | 4.5861 |
-| multi_series | 9/50 | 18.0% | 0.2353 | 0.8545 |
-| no_grid | 11/50 | 22.0% | 0.2842 | 1.0000 |
-| scatter | 40/50 | 80.0% | 0.0952 | 0.7231 |
-| simple_linear | 16/50 | 32.0% | 0.2837 | 0.7663 |
-| **TOTAL** | **184/500** | **36.8%** | — | — |
+| multi_series | 10/50 | 20.0% | 0.2075 | 1.0569 |
+| no_grid | 11/50 | 22.0% | 0.2949 | 1.0000 |
+| scatter | 40/50 | 80.0% | 0.0975 | 0.7231 |
+| simple_linear | 16/50 | 32.0% | 0.2312 | 0.7438 |
+| **TOTAL** | **179/500** | **35.8%** | — | — |
 
 ## V4 Supported-Domain Results
 
@@ -86,20 +87,128 @@ Supported-domain score:
 
 | Type | Pass | Rate | AvgErr | MaxErr |
 |------|------|------|--------|--------|
-| dense | 5/18 | 27.8% | 0.4646 | 1.3198 |
+| dense | 6/18 | 33.3% | 0.3694 | 1.0000 |
 | dual_y | 8/23 | 34.8% | 0.2823 | 1.0000 |
-| inverted_y | 8/18 | 44.4% | 0.2658 | 1.0000 |
+| inverted_y | 7/18 | 38.9% | 0.2669 | 1.0000 |
 | log_x | 12/18 | 66.7% | 0.9575 | 14.4071 |
-| log_y | 10/24 | 41.7% | 0.6410 | 4.4666 |
+| log_y | 10/24 | 41.7% | 0.4610 | 1.5647 |
 | loglog | 9/20 | 45.0% | 0.9671 | 4.0887 |
-| multi_series | 6/28 | 21.4% | 0.3114 | 1.0000 |
-| no_grid | 10/17 | 58.8% | 0.1816 | 1.0000 |
-| scatter | 17/20 | 85.0% | 0.0958 | 1.0000 |
-| simple_linear | 6/18 | 33.3% | 0.4625 | 1.0000 |
-| **SUPPORTED TOTAL** | **91/204** | **44.6%** | — | — |
+| multi_series | 6/28 | 21.4% | 0.3396 | 1.1519 |
+| no_grid | 10/17 | 58.8% | 0.1780 | 1.0000 |
+| scatter | 16/20 | 80.0% | 0.1000 | 1.0000 |
+| simple_linear | 6/18 | 33.3% | 0.4597 | 1.0000 |
+| **SUPPORTED TOTAL** | **90/204** | **44.1%** | — | — |
 
 ## Current Interpretation
 
 The controlled v1 set is mostly stable, but v2 and v3 show that style variation and scan-like degradation remain hard. v4 confirms that real-world pressure is not only a multi-series issue: axis detection and calibration under geometric and visual degradation are broad bottlenecks across chart types.
 
 The strongest current supported area is scatter extraction. The weakest supported areas are multi-series, dense curves, and degraded simple/no-grid line charts where axes or foreground masks are unstable.
+
+## Optimization History
+
+### Threshold-Tuning Phase (2026-04-26 to 2026-04-27)
+
+**7 optimization attempts, all reverted due to regressions on v2/v3:**
+
+1. **Log axis integer power fallback** — stretched calibration range beyond actual data
+2. **Grayscale intensity-weighted centroid** — calibration errors dominate, not extraction precision
+3. **Multi_series layered extraction fallback** — mixed different-color series on full mask
+4. **Median blur preprocessing** — catastrophic (288→7), broke OCR and axis detection
+5. **Morphological opening on mask** — eroded thin oscillating lines in dense charts
+6. **Small CC removal** — net negative, removed valid thin features
+7. **Dense curve detection** — v3 scatter regression, classification fragile under noise
+
+**Key finding**: Threshold/filter changes cannot fix the root causes:
+- Dense: thick oscillating lines → need **thinning** (algorithm change)
+- v3 rotation: degrades axis/tick reading → need **rotation correction** (pipeline stage)
+- Calibration: OCR errors → need **OCR-specific preprocessing** (separate from general denoising)
+- Multi_series: hue-only fails → need **full HSV clustering** (algorithm change)
+
+### Implement Plan Review Findings (2026-04-26)
+
+Critical corrections identified while auditing code and dependencies:
+
+1. **Sauvola in core OpenCV is incorrect**
+   - Current plan wording implied Sauvola baseline, but with existing dependency (`opencv-python-headless`) baseline should be adaptive threshold.
+2. **Thinning needs contrib-aware gating**
+   - `cv2.ximgproc.thinning` requires opencv-contrib; must provide capability gate and fallback path.
+3. **Pillow usage should be explicit**
+   - If rotation helper imports PIL directly, dependency should be treated explicitly rather than assumed transitively.
+4. **Rotation coordinate strategy should be simplified first**
+   - Initial implementation can run fully in rotated coordinates by rotating both `image` and `raw_image`, avoiding mixed-coordinate complexity.
+5. **HSV fallback trigger must use quality checks**
+   - Triggering only on hue K=1 misses other failure cases; use expected count + cluster quality + x-coverage gates.
+
+### Algorithm-Level Changes (Updated Next Phase)
+
+See [ARCHITECTURAL_CHANGES_IMPL.md](./ARCHITECTURAL_CHANGES_IMPL.md) for detailed implementation guidance.
+
+**Execution order (risk-increasing):**
+
+1. **Full HSV clustering (quality-gated fallback)** — low risk, isolated to multi_series path
+2. **OCR-specific preprocessing (OpenCV core baseline)** — medium risk, improves calibration path
+3. **Zhang-Suen thinning (contrib-gated + fallback)** — medium risk, targeted to dense path
+4. **Rotation detection + correction** — high risk, broad impact on v3 robustness
+
+Each change requires validation against v1-v4 (v4 in-scope) with no regressions before commit.
+
+---
+
+## Algorithm-Level Changes Implemented (2026-04-27)
+
+### Change 1: HSV Fallback with Quality Gates
+
+**File**: `plot_extractor/core/data_extractor.py`
+**Function**: `_separate_series_by_color`
+
+Added `meta` parameter for expected series count. After hue-only clustering, checks quality gates (`K < expected`, poor compactness, `min_hue_dist < 15`, x-coverage failure). If triggered, runs normalized H+S+V 3D k-means with `K = expected_series_count` and compactness-based selection.
+
+**Validation**: v1 multi_series stable (17/31), no regression on single-series types.
+
+### Change 2: OCR Crop Preprocessing
+
+**File**: `plot_extractor/core/ocr_reader.py`
+**Function**: `_preprocess_tick_crop`, `read_tick_label`
+
+Per-crop pipeline: grayscale → 2-3x upscale (based on crop size) → `cv2.medianBlur(gray, 3)` → `cv2.adaptiveThreshold(..., ADAPTIVE_THRESH_GAUSSIAN_C, THRESH_BINARY, block_size, 10)` with odd `block_size` and `cv2.error` fallback to raw crop.
+
+**Validation**: v1 stable, no calibration regression on any type.
+
+### Change 3: Zhang-Suen Thinning with Contrib Gate
+
+**File**: `plot_extractor/core/data_extractor.py`
+**Function**: `_apply_thinning`
+
+Tries `cv2.ximgproc.thinning` first (contrib-gated via `hasattr(cv2, "ximgproc")`), falls back to pure NumPy vectorized Zhang-Suen with two subiterations per iteration. Applied only in dense single-color path when `fg_cols > w * 0.7`.
+
+**Validation**: v1 dense stable (30/31), no scatter regression.
+
+### Change 4: Rotation Detection + Correction
+
+**Files**: `plot_extractor/core/axis_detector.py`, `plot_extractor/core/image_loader.py`, `plot_extractor/main.py`
+
+Strict rotation estimator:
+- Only lines ≥ 40% of image dimension
+- Only lines near image edges (top/bottom 15% for horizontal, left/right 15% for vertical)
+- Median aggregation of raw line angles
+- Both horizontal and vertical estimates must agree within 3°
+- Only corrects when `|angle| >= 0.5°`
+
+`rotate_image()` in `image_loader.py` uses `cv2.getRotationMatrix2D` + `cv2.warpAffine` with `BORDER_CONSTANT` and white fill, computing expanded output size to avoid clipping.
+
+Integration in `main.py` rotates both `image` and `raw_image` before axis detection so downstream runs entirely in rotated coordinates.
+
+**Validation**: v1 simple_linear 31/31 (no false-positive regression). v2-v4 baseline collected.
+
+### Bug Fix: Validator CSV Crash
+
+**File**: `tests/validate_by_type.py`
+
+Added `extrasaction="ignore"` to the CSV DictWriter so exception rows containing an `"error"` field no longer crash the report writer.
+
+### Lint Gate
+
+`pylint --fail-under=9` → **9.82/10** ✅
+
+

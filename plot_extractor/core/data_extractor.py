@@ -245,8 +245,76 @@ def _merge_similar_hue_clusters(centers, labels, threshold=20):
     return new_centers, new_labels
 
 
-def _separate_series_by_color(image, mask, n_clusters=3, min_clusters=1):
-    """Separate multiple data series by clustering hue in HSV space."""
+def _apply_thinning(mask: np.ndarray, max_iterations: int = 10) -> np.ndarray:
+    """Skeletonize a binary mask using Zhang-Suen thinning (NumPy fallback).
+
+    Falls back to returning the original mask if cv2.ximgproc.thinning is
+    unavailable.  Input is a uint8 mask; output is a uint8 skeleton mask.
+    """
+    # Prefer OpenCV contrib implementation if present
+    try:
+        if hasattr(cv2, "ximgproc") and hasattr(cv2.ximgproc, "thinning"):
+            binary = (mask > 0).astype(np.uint8) * 255
+            return cv2.ximgproc.thinning(
+                binary, None, cv2.ximgproc.THINNING_ZHANGSUEN
+            )
+    except cv2.error:
+        pass
+
+    # Pure NumPy Zhang-Suen fallback
+    img = (mask > 0).astype(np.uint8)
+    for _ in range(max_iterations):
+        changed = False
+        for subiter_idx in range(2):
+            padded = np.pad(img, 1, mode="constant")
+            p2 = padded[:-2, 1:-1]
+            p3 = padded[:-2, 2:]
+            p4 = padded[1:-1, 2:]
+            p5 = padded[2:, 2:]
+            p6 = padded[2:, 1:-1]
+            p7 = padded[2:, :-2]
+            p8 = padded[1:-1, :-2]
+            p9 = padded[:-2, :-2]
+
+            n = p2 + p3 + p4 + p5 + p6 + p7 + p8 + p9
+            neigh = np.stack([p2, p3, p4, p5, p6, p7, p8, p9, p2], axis=0)
+            s = np.sum((neigh[:-1] == 0) & (neigh[1:] == 1), axis=0)
+
+            if subiter_idx == 0:
+                to_del = (
+                    (img == 1)
+                    & (n >= 2)
+                    & (n <= 6)
+                    & (s == 1)
+                    & (p2 * p4 * p6 == 0)
+                    & (p4 * p6 * p8 == 0)
+                )
+            else:
+                to_del = (
+                    (img == 1)
+                    & (n >= 2)
+                    & (n <= 6)
+                    & (s == 1)
+                    & (p2 * p4 * p8 == 0)
+                    & (p2 * p6 * p8 == 0)
+                )
+
+            if np.any(to_del):
+                img[to_del] = 0
+                changed = True
+
+        if not changed:
+            break
+
+    return (img * 255).astype(np.uint8)
+
+
+def _separate_series_by_color(image, mask, n_clusters=3, min_clusters=1, meta=None):
+    """Separate multiple data series by clustering hue in HSV space.
+
+    Falls back to full H+S+V 3D clustering when hue-only separation quality
+    is insufficient and metadata indicates multiple series are expected.
+    """
     h, w = image.shape[:2]
     fg_indices = np.where(mask > 0)
     if len(fg_indices[0]) == 0:
@@ -281,6 +349,7 @@ def _separate_series_by_color(image, mask, n_clusters=3, min_clusters=1):
     if K < 2:
         return [(image, mask)]
 
+    # Hue-only kmeans
     hues_2d = hues.reshape(-1, 1)
     criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10, 1.0)
     cv2.setRNGSeed(0)
@@ -294,7 +363,7 @@ def _separate_series_by_color(image, mask, n_clusters=3, min_clusters=1):
     full_labels = np.full(len(pixels), -1, dtype=int)
     full_labels[color_mask] = labels
 
-    series_with_hue = []
+    series_hue = []
     for k in range(K):
         cluster_mask = np.zeros_like(mask)
         cluster_indices = np.where(full_labels == k)[0]
@@ -306,12 +375,70 @@ def _separate_series_by_color(image, mask, n_clusters=3, min_clusters=1):
 
         x_spread = int(cols.max()) - int(cols.min()) if len(cols) > 0 else 0
         if len(cluster_indices) >= FOREGROUND_MIN_AREA and x_spread > w * 0.05:
-            series_with_hue.append((float(centers[k]), image, cluster_mask))
+            series_hue.append((float(centers[k]), image, cluster_mask))
 
-    if not series_with_hue:
+    # Quality gate: decide whether hue-only result is sufficient
+    expected_series_count = len(meta.get("data", {})) if meta and meta.get("data") else 0
+    needs_hsv_fallback = False
+    if expected_series_count > 1:
+        if K < expected_series_count:
+            needs_hsv_fallback = True
+        elif len(series_hue) < expected_series_count:
+            needs_hsv_fallback = True
+        elif len(centers) >= 2:
+            min_hue_dist = float("inf")
+            for i in range(len(centers)):
+                for j in range(i + 1, len(centers)):
+                    dist = abs(centers[i] - centers[j])
+                    dist = min(dist, 180 - dist)
+                    min_hue_dist = min(min_hue_dist, dist)
+            if min_hue_dist < 15:
+                needs_hsv_fallback = True
+
+    if needs_hsv_fallback:
+        # Full H+S+V 3D clustering fallback
+        hsv_pixels = pixels[color_mask].astype(np.float32)
+        # Normalize channels for balanced weighting
+        hsv_norm = hsv_pixels.copy()
+        hsv_norm[:, 0] /= 179.0
+        hsv_norm[:, 1] /= 255.0
+        hsv_norm[:, 2] /= 255.0
+
+        criteria_hsv = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 100, 0.2)
+        cv2.setRNGSeed(0)
+        _, labels_3d, centers_3d = cv2.kmeans(
+            hsv_norm,
+            expected_series_count,
+            None,
+            criteria_hsv,
+            10,
+            cv2.KMEANS_PP_CENTERS,
+        )
+
+        full_labels_3d = np.full(len(pixels), -1, dtype=int)
+        full_labels_3d[color_mask] = labels_3d.flatten()
+
+        series_hsv = []
+        for k in range(expected_series_count):
+            cluster_mask = np.zeros_like(mask)
+            cluster_indices = np.where(full_labels_3d == k)[0]
+            if len(cluster_indices) == 0:
+                continue
+            rows = fg_indices[0][cluster_indices]
+            cols = fg_indices[1][cluster_indices]
+            cluster_mask[rows, cols] = 255
+
+            x_spread = int(cols.max()) - int(cols.min()) if len(cols) > 0 else 0
+            if len(cluster_indices) >= FOREGROUND_MIN_AREA and x_spread > w * 0.05:
+                series_hsv.append((k, image, cluster_mask))
+
+        if len(series_hsv) >= expected_series_count:
+            return [(img, cmask) for _, img, cmask in series_hsv]
+
+    if not series_hue:
         return [(image, mask)]
-    series_with_hue.sort(key=lambda item: item[0], reverse=True)
-    return [(img, cluster_mask) for _, img, cluster_mask in series_with_hue]
+    series_hue.sort(key=lambda item: item[0], reverse=True)
+    return [(img, cmask) for _, img, cmask in series_hue]
 
 
 def _relative_series_error(x_ref, y_ref, x_ext, y_ext):
@@ -447,6 +574,7 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
         mask,
         n_clusters=color_cluster_count,
         min_clusters=expected_series_count if has_multi_series_meta else 1,
+        meta=meta,
     )
 
     # Check if dual Y-axis is truly needed: y_left and y_right must have different data ranges
@@ -530,18 +658,27 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
             if layered:
                 all_series.extend(layered)
         elif len(small_components) >= 10 and not has_log_axis and not has_multi_series_meta:
-            # Scatter-like: extract via connected-component centroids directly
-            x_data, y_data = _extract_scatter_from_mask(dilated, shifted_x, shifted_y_default)
-            if len(x_data) >= MIN_DATA_POINTS:
-                all_series = [(x_data, y_data)]
-            # Skip merge/filter for scatter — return directly
+            # Could be dense oscillating curve or scatter
+            fg_cols = int(np.sum(np.any(dilated > 0, axis=0)))
+            if fg_cols > w * 0.7:
+                # Dense: thin to 1px skeleton then extract
+                thinned = _apply_thinning(dilated)
+                x_data, y_data = _extract_from_mask(thinned, shifted_x, shifted_y_default)
+                if len(x_data) >= MIN_DATA_POINTS:
+                    all_series = [(x_data, y_data)]
+            else:
+                # Scatter: extract via connected-component centroids
+                x_data, y_data = _extract_scatter_from_mask(dilated, shifted_x, shifted_y_default)
+                if len(x_data) >= MIN_DATA_POINTS:
+                    all_series = [(x_data, y_data)]
+            # Skip merge/filter for scatter/dense — return directly
             if all_series:
                 results = {}
                 for idx, (x_d, y_d) in enumerate(all_series):
                     sorted_pts = sorted(zip(x_d, y_d))
                     x_sorted, y_sorted = zip(*sorted_pts)
                     results["series1"] = {"x": list(x_sorted), "y": list(y_sorted)}
-                return results, True, has_grid
+                return results, (not (fg_cols > w * 0.7)), has_grid
         else:
             for i in range(1, num_labels):
                 area = stats[i, cv2.CC_STAT_AREA]

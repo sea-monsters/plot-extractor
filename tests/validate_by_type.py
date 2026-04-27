@@ -412,7 +412,7 @@ def run_all(types: list[str] | None = None, debug: bool = False, data_dir: Path 
 
     # Write detailed CSV
     with open(report_path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["type", "file", "rel_err", "ssim", "threshold", "passed"])
+        writer = csv.DictWriter(f, fieldnames=["type", "file", "rel_err", "ssim", "threshold", "passed"], extrasaction="ignore")
         writer.writeheader()
         writer.writerows(all_rows)
 
