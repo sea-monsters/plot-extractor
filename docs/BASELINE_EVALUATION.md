@@ -24,7 +24,7 @@ v4 uses a special supported-domain evaluator because the set contains single cha
 
 ## True Baselines (Meta-Isolated, Post-2026-04-28)
 
-### V1 Result (2026-04-28)
+### V1 Result (2026-04-28) — Pre-RANSAC
 
 | Type | Pass | Rate | AvgErr | MaxErr | Top1 | Top2 |
 |------|------|------|--------|--------|------|------|
@@ -39,6 +39,28 @@ v4 uses a special supported-domain evaluator because the set contains single cha
 | scatter | 0/31 | 0.0% | 0.5886 | 2.0883 | 61.3% | 77.4% |
 | simple_linear | 0/31 | 0.0% | 0.5317 | 0.9458 | 45.2% | 64.5% |
 | **TOTAL** | **5/310** | **1.6%** | — | — | **41.3%** | **64.8%** |
+
+### V1 Result (2026-04-28) — With RANSAC + Relaxed Plausibility + OCR
+
+Scatteract-style RANSAC robust regression implemented. See [ARCHITECTURAL_CHANGES_IMPL.md](./ARCHITECTURAL_CHANGES_IMPL.md) for implementation details.
+
+| Type | Pass | Rate | AvgErr | MaxErr | Top1 | Top2 | Delta |
+|------|------|------|--------|--------|------|------|-------|
+| dense | 5/31 | 16.1% | 165205439.3 | 556843147.2 | 25.8% | 32.3% | +16.1pp |
+| dual_y | 0/31 | 0.0% | 0.3061 | 1.1762 | 0.0% | 6.5% | 0.0pp |
+| inverted_y | 28/31 | 90.3% | 0.0460 | 0.8767 | 0.0% | 0.0% | **+90.3pp** |
+| log_x | 0/31 | 0.0% | 1.6135 | 20.7868 | 100.0% | 100.0% | 0.0pp |
+| log_y | 1/31 | 3.2% | 2.5170 | 44.9613 | 96.8% | 96.8% | +3.2pp |
+| loglog | 5/31 | 16.1% | 0.1030 | 0.3771 | 0.0% | 100.0% | 0.0pp |
+| multi_series | 0/31 | 0.0% | 0.3499 | 2.5093 | 87.1% | 87.1% | 0.0pp |
+| no_grid | 22/31 | 71.0% | 1.1334 | 12.5050 | 0.0% | 93.5% | **+71.0pp** |
+| scatter | 28/31 | 90.3% | 0.0468 | 0.5222 | 61.3% | 77.4% | **+90.3pp** |
+| simple_linear | 25/31 | 80.6% | 0.0953 | 0.8600 | 45.2% | 64.5% | **+80.6pp** |
+| **TOTAL** | **114/310** | **36.8%** | — | — | **41.3%** | **64.8%** | **+35.2pp** |
+
+**Key improvements**: simple_linear (+80.6pp), inverted_y (+90.3pp), scatter (+90.3pp), no_grid (+71.0pp).
+
+**Still failing**: log_x, log_y, dual_y, multi_series. These types have correct chart-type routing (high top1/top2) but fail in calibration or data extraction. Log axes may have a coordinate-transform bug; dual_y and multi_series need separate algorithmic fixes.
 
 ### V2, V3, V4
 

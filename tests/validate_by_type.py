@@ -10,6 +10,7 @@ import csv
 import itertools
 import json
 import sys
+from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 
 import numpy as np
@@ -202,7 +203,7 @@ def _guess_and_route(img_path: Path):
     return type_probs, top1, top2, policy
 
 
-def _evaluate_image(img_path: Path, chart_type: str, debug: bool = False, debug_subdir: Path | None = None, use_llm: bool = False, use_ocr: bool = False) -> dict:
+def _evaluate_image(img_path: Path, chart_type: str, debug: bool = False, debug_subdir: Path | None = None, use_llm: bool = False, use_ocr: bool = False, quiet: bool = False) -> dict:
     # --- Load meta for scoring ONLY; never pass to extraction ---
     meta = _load_meta(img_path)
     data_threshold = DATA_ACCURACY_THRESHOLDS.get(chart_type, 0.05)
@@ -226,7 +227,8 @@ def _evaluate_image(img_path: Path, chart_type: str, debug: bool = False, debug_
             use_llm=use_llm, use_ocr=use_ocr,
         )
     except (OSError, ValueError, RuntimeError) as e:
-        print(f"    ERROR {img_path.name}: {e}")
+        if not quiet:
+            print(f"    ERROR {img_path.name}: {e}")
         return {
             "file": img_path.name,
             "rel_err": 1.0,
@@ -276,17 +278,18 @@ def _evaluate_image(img_path: Path, chart_type: str, debug: bool = False, debug_
 
     status = "PASS" if passed else "FAIL"
     guess_flag = "+" if top1_correct else ("~" if top2_correct else "-")
-    print(f"    {img_path.name}: rel_err={mae_str} SSIM={ssim:.3f} [{status}] guess={top1_guess}{guess_flag}")
-    if debug and diagnostics:
-        axis_summary = ", ".join(
-            f"{a['direction']}_{a['side']}:{a['axis_type']}/ticks={a['tick_count']}/res={a['residual']:.2f}"
-            for a in diagnostics["axes"]
-        )
-        series_summary = ", ".join(
-            f"{name}:{info['points']}"
-            for name, info in diagnostics["series"].items()
-        )
-        print(f"      diag grid={diagnostics['has_grid']} scatter={diagnostics['is_scatter']} axes=[{axis_summary}] series=[{series_summary}]")
+    if not quiet:
+        print(f"    {img_path.name}: rel_err={mae_str} SSIM={ssim:.3f} [{status}] guess={top1_guess}{guess_flag}")
+        if debug and diagnostics:
+            axis_summary = ", ".join(
+                f"{a['direction']}_{a['side']}:{a['axis_type']}/ticks={a['tick_count']}/res={a['residual']:.2f}"
+                for a in diagnostics["axes"]
+            )
+            series_summary = ", ".join(
+                f"{name}:{info['points']}"
+                for name, info in diagnostics["series"].items()
+            )
+            print(f"      diag grid={diagnostics['has_grid']} scatter={diagnostics['is_scatter']} axes=[{axis_summary}] series=[{series_summary}]")
 
     return row
 
@@ -343,7 +346,16 @@ def _routing_summary(results: list[dict], chart_type: str) -> dict:
     }
 
 
-def validate_type(chart_type: str, debug: bool = False, data_dir: Path | None = None, use_llm: bool = False, use_ocr: bool = False) -> dict:
+def _evaluate_image_worker(args):
+    """Process-pool entry point for evaluating a single image."""
+    img_path, chart_type, debug, debug_subdir, use_llm, use_ocr = args
+    return _evaluate_image(
+        Path(img_path), chart_type, debug=debug, debug_subdir=Path(debug_subdir) if debug_subdir else None,
+        use_llm=use_llm, use_ocr=use_ocr, quiet=True,
+    )
+
+
+def validate_type(chart_type: str, debug: bool = False, data_dir: Path | None = None, use_llm: bool = False, use_ocr: bool = False, workers: int = 1) -> dict:
     """Run validation on all images of one type, return aggregate stats."""
     base_dir = data_dir or TEST_DATA_DIR
     type_dir = base_dir / chart_type
@@ -358,9 +370,52 @@ def validate_type(chart_type: str, debug: bool = False, data_dir: Path | None = 
         type_debug = DEBUG_DIR / chart_type
         type_debug.mkdir(parents=True, exist_ok=True)
 
-    for img_path in image_files:
-        row = _evaluate_image(img_path, chart_type, debug=debug, debug_subdir=DEBUG_DIR / chart_type, use_llm=use_llm, use_ocr=use_ocr)
-        results.append(row)
+    if workers > 1:
+        work_items = [
+            (str(p), chart_type, debug, str(DEBUG_DIR / chart_type) if debug else None, use_llm, use_ocr)
+            for p in image_files
+        ]
+        with ProcessPoolExecutor(max_workers=workers) as executor:
+            future_to_idx = {
+                executor.submit(_evaluate_image_worker, item): idx
+                for idx, item in enumerate(work_items)
+            }
+            for future in as_completed(future_to_idx):
+                idx = future_to_idx[future]
+                try:
+                    row = future.result()
+                except Exception as e:
+                    row = {
+                        "file": image_files[idx].name,
+                        "rel_err": 1.0,
+                        "ssim": 0.0,
+                        "threshold": DATA_ACCURACY_THRESHOLDS.get(chart_type, 0.05),
+                        "passed": False,
+                        "error": str(e),
+                        "guess_top1": "unknown",
+                        "guess_top1_correct": False,
+                        "guess_top2_correct": False,
+                        "policy_density": "unknown",
+                        "policy_color": "unknown",
+                        "policy_noise": "unknown",
+                    }
+                results.append((idx, row))
+        results.sort(key=lambda x: x[0])
+        results = [r for _, r in results]
+    else:
+        for img_path in image_files:
+            row = _evaluate_image(img_path, chart_type, debug=debug, debug_subdir=DEBUG_DIR / chart_type, use_llm=use_llm, use_ocr=use_ocr)
+            results.append(row)
+
+    # Print results (needed for parallel mode where workers were quiet)
+    for row in results:
+        if "error" in row:
+            print(f"    ERROR {row['file']}: {row['error']}")
+            continue
+        mae_str = "∞" if row['rel_err'] == float('inf') else f"{row['rel_err']:.4f}"
+        status = "PASS" if row['passed'] else "FAIL"
+        guess_flag = "+" if row['guess_top1_correct'] else ("~" if row['guess_top2_correct'] else "-")
+        print(f"    {row['file']}: rel_err={mae_str} SSIM={row['ssim']:.3f} [{status}] guess={row['guess_top1']}{guess_flag}")
 
     if not results:
         return {"type": chart_type, "total": 0, "passed": 0, "pass_rate": 0, "avg_rel_err": 0, "max_rel_err": 0, "results": []}
@@ -492,7 +547,7 @@ def validate_v4_special(data_dir: Path, debug: bool = False, types: list[str] | 
     return summaries, in_scope_rows, out_scope_rows
 
 
-def run_all(types: list[str] | None = None, debug: bool = False, data_dir: Path | None = None, use_llm: bool = False, use_ocr: bool = False):
+def run_all(types: list[str] | None = None, debug: bool = False, data_dir: Path | None = None, use_llm: bool = False, use_ocr: bool = False, workers: int = 1):
     """Run validation across specified types (or all)."""
     if types is None:
         types = sorted(TYPE_THRESHOLDS.keys())
@@ -506,7 +561,7 @@ def run_all(types: list[str] | None = None, debug: bool = False, data_dir: Path 
 
     for chart_type in types:
         print(f"\n--- {chart_type} ---")
-        summary = validate_type(chart_type, debug=debug, data_dir=data_dir, use_llm=use_llm, use_ocr=use_ocr)
+        summary = validate_type(chart_type, debug=debug, data_dir=data_dir, use_llm=use_llm, use_ocr=use_ocr, workers=workers)
         summaries.append(summary)
         for r in summary["results"]:
             row = {"type": chart_type, **r}
@@ -560,9 +615,10 @@ if __name__ == "__main__":
     parser.add_argument("--v4-special", action="store_true", help="Validate v4 using supported-domain filtering and scope accounting")
     parser.add_argument("--use-llm", action="store_true", help="Enable LLM vision enhancement for ambiguous charts")
     parser.add_argument("--use-ocr", action="store_true", help="Enable tesseract OCR for tick labels (requires tesseract)")
+    parser.add_argument("--workers", type=int, default=1, help="Number of parallel workers (processes) for image evaluation")
     args = parser.parse_args()
     data_dir = Path(args.data_dir) if args.data_dir else None
     if args.v4_special:
         validate_v4_special(data_dir or (Path(__file__).parent.parent / "test_data_v4"), debug=args.debug, types=args.types, use_llm=args.use_llm, use_ocr=args.use_ocr)
     else:
-        run_all(types=args.types, debug=args.debug, data_dir=data_dir, use_llm=args.use_llm, use_ocr=args.use_ocr)
+        run_all(types=args.types, debug=args.debug, data_dir=data_dir, use_llm=args.use_llm, use_ocr=args.use_ocr, workers=args.workers)

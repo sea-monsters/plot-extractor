@@ -6,22 +6,21 @@ from typing import Optional, List, Tuple
 import numpy as np
 
 from plot_extractor.core.axis_detector import Axis
-from plot_extractor.utils.math_utils import pixel_to_data, fit_linear, fit_log
+from plot_extractor.utils.math_utils import pixel_to_data, fit_linear
 
 
 def _is_plausible_ocr_tick_sequence(
     labeled_ticks: List[Tuple[int, Optional[float]]],
     preferred_type: str | None = None,
 ) -> bool:
-    """Quick sanity check for OCR-derived tick values.
+    """Lightweight sanity check for OCR-derived tick values.
 
-    Goal: reject obviously inconsistent OCR reads so calibration can
-    fall back to safer synthetic strategies.
+    Scatteract-style: only reject *obviously* broken reads.  RANSAC
+    handles outlier rejection during fitting, so we keep more ticks
+    than the previous strict validator.
     """
-    from plot_extractor.utils.math_utils import _is_arithmetic_sequence, _is_geometric_sequence  # pylint: disable=import-outside-toplevel
-
     valid = [(p, v) for p, v in labeled_ticks if v is not None]
-    if len(valid) < 3:
+    if len(valid) < 2:
         return True
 
     pixels = np.array([p for p, _ in valid], dtype=float)
@@ -32,36 +31,26 @@ def _is_plausible_ocr_tick_sequence(
     if np.ptp(values) < 1e-9:
         return False
 
-    # Log-preferred axes cannot contain non-positive values.
-    if preferred_type == "log" and np.any(values <= 0):
-        return False
+    # Log-preferred axes need at least 2 positive values; non-positive
+    # entries are filtered by fit_log_ransac rather than rejected here.
+    if preferred_type == "log":
+        positive_count = int(np.sum(values > 0))
+        if positive_count < 2:
+            return False
 
     # OCR noise often creates many repeated values (e.g. 0,0,0,...).
     unique_ratio = len(np.unique(np.round(values, 8))) / len(values)
     if unique_ratio < 0.5:
         return False
 
+    # Monotonic trend check (relaxed: allow 40% outliers)
     order = np.argsort(pixels)
     ordered_values = values[order]
     diffs = np.diff(ordered_values)
     non_zero = diffs[np.abs(diffs) > 1e-9]
     if len(non_zero) >= 2:
         trend_consistency = max(np.mean(non_zero > 0), np.mean(non_zero < 0))
-        if trend_consistency < 0.7:  # Allow 30% outliers
-            return False
-
-    # Check for arithmetic/geometric sequence based on preferred_type
-    if preferred_type == "log":
-        if not _is_geometric_sequence(ordered_values, tol=0.3):
-            return False
-    elif preferred_type == "linear":
-        if not _is_arithmetic_sequence(ordered_values, tol=0.3):
-            return False
-    else:
-        # Unknown type: check if it matches either pattern
-        is_arith = _is_arithmetic_sequence(ordered_values, tol=0.3)
-        is_geom = _is_geometric_sequence(ordered_values, tol=0.3)
-        if not is_arith and not is_geom:
+        if trend_consistency < 0.6:
             return False
 
     # Value range sanity check
@@ -71,10 +60,49 @@ def _is_plausible_ocr_tick_sequence(
         # Extreme range but small mean: likely OCR garbage
         return False
 
-    corr = np.corrcoef(pixels, values)[0, 1]
-    if not np.isfinite(corr) or abs(corr) < 0.3:
-        return False
     return True
+
+
+def _fix_log_superscript_ocr(
+    labeled_ticks: List[Tuple[int, Optional[float]]],
+) -> List[Tuple[int, Optional[float]]]:
+    """Fix Tesseract misreads of superscript log labels (e.g. 10² → 102).
+
+    Log axis labels like 10⁰, 10¹, 10² are often concatenated by OCR into
+    '100', '101', '102', etc.  When MOST valid values fall in [100, 110]
+    we convert 100+n → 10ⁿ.
+    """
+    valid = [(p, v) for p, v in labeled_ticks if v is not None]
+    if len(valid) < 2:
+        return labeled_ticks
+
+    values = [v for _, v in valid]
+
+    # Pattern 1: values like 100, 101, 102, 103... (superscript concatenation)
+    in_hundreds = [v for v in values if 100 <= v <= 110]
+    if len(in_hundreds) >= max(2, len(values) * 0.5):
+        fixed = []
+        for p, v in labeled_ticks:
+            if v is not None and 100 <= v <= 110:
+                exp = int(round(v - 100))
+                fixed.append((p, 10.0 ** exp))
+            else:
+                fixed.append((p, v))
+        return fixed
+
+    # Pattern 2: values like 10, 11, 12, 13... (missing superscript)
+    in_tens = [v for v in values if 10 <= v <= 19]
+    if len(in_tens) >= max(2, len(values) * 0.5):
+        fixed = []
+        for p, v in labeled_ticks:
+            if v is not None and 10 <= v <= 19:
+                exp = int(round(v - 10))
+                fixed.append((p, 10.0 ** exp))
+            else:
+                fixed.append((p, v))
+        return fixed
+
+    return labeled_ticks
 
 
 @dataclass

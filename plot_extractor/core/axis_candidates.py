@@ -11,6 +11,8 @@ from plot_extractor.core.axis_detector import Axis
 from plot_extractor.utils.math_utils import (
     fit_linear,
     fit_log,
+    fit_linear_ransac,
+    fit_log_ransac,
     _is_arithmetic_sequence,
     _is_geometric_sequence,
 )
@@ -90,33 +92,52 @@ def _solve_from_ocr(
     ticks: List[Tuple[int, float]],
     preferred_type: str | None = None,
 ) -> Optional[AxisMappingCandidate]:
-    """Solve axis mapping from OCR-derived ticks."""
+    """Solve axis mapping from OCR-derived ticks using RANSAC robust regression."""
     pixels = np.array([p for p, _ in ticks], dtype=float)
     values = np.array([v for _, v in ticks], dtype=float)
+    n = len(pixels)
 
-    # Try both linear and log fits
-    lin_a, lin_b, lin_res = fit_linear(pixels, values)
-    log_a, log_b, log_res = fit_log(pixels, values) if np.all(values > 0) else (None, None, np.inf)
+    # Use RANSAC when enough points to benefit from outlier rejection
+    use_ransac = n >= 3
+
+    if use_ransac:
+        lin_a, lin_b, lin_res, lin_inliers = fit_linear_ransac(pixels, values)
+        log_a, log_b, log_res, log_inliers = fit_log_ransac(pixels, values)
+    else:
+        lin_a, lin_b, lin_res = fit_linear(pixels, values)
+        lin_inliers = list(range(n))
+        log_a, log_b, log_res = fit_log(pixels, values)
+        log_inliers = list(range(n)) if log_a is not None else []
+
+    # Build inlier-only tick maps for scoring
+    lin_ticks = [ticks[i] for i in lin_inliers] if lin_inliers else ticks
+    log_ticks = [ticks[i] for i in log_inliers] if log_inliers else ticks
 
     # Score both candidates
-    lin_score = _score_axis_fit(ticks, lin_a, lin_b, lin_res, "linear")
-    log_score = _score_axis_fit(ticks, log_a, log_b, log_res, "log") if log_a is not None else 0.0
+    lin_score = _score_axis_fit(lin_ticks, lin_a, lin_b, lin_res, "linear")
+    if log_a is not None:
+        log_score = _score_axis_fit(log_ticks, log_a, log_b, log_res, "log")
+    else:
+        log_score = 0.0
 
     # Prefer log if preferred_type is "log" and score is reasonable
     if preferred_type == "log" and log_a is not None and log_score > 0:
         best_scale = "log"
         best_a, best_b, best_res = log_a, log_b, log_res
         best_score = log_score
+        best_ticks = log_ticks
     else:
         # Choose by score
         if lin_score >= log_score:
             best_scale = "linear"
             best_a, best_b, best_res = lin_a, lin_b, lin_res
             best_score = lin_score
+            best_ticks = lin_ticks
         else:
             best_scale = "log"
             best_a, best_b, best_res = log_a, log_b, log_res
             best_score = log_score
+            best_ticks = log_ticks
 
     if best_a is None:
         return None
@@ -128,7 +149,7 @@ def _solve_from_ocr(
         residual=best_res,
         confidence=best_score,
         source="ocr",
-        tick_map=ticks,
+        tick_map=best_ticks,
     )
 
 

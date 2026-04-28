@@ -38,6 +38,9 @@ python tests/validate_by_type.py --use-llm --debug
 # Validate with OCR
 python tests/validate_by_type.py --use-ocr --debug
 
+# Validate with OCR in parallel (4 workers, much faster)
+python tests/validate_by_type.py --use-ocr --workers 4 --debug
+
 # Validate specific types only
 python tests/validate_by_type.py --types simple_linear log_y inverted_y --debug
 
@@ -144,7 +147,7 @@ Once `ExtractionPolicy` is determined, `plot_extractor/main.py::extract_from_ima
 
 2. **Axis detection** (`core/axis_detector.py`) — Canny + HoughLinesP with policy-specified thresholds, detects tick marks via 1D edge projection and peak finding; rotation detection runs on raw image
 
-3. **Axis calibration** (`core/axis_calibrator.py`) — OCR tick labels (if enabled) via pytesseract with policy-specified preprocessing, fits pixel-to-data mapping (linear or log), auto-detects inversion
+3. **Axis calibration** (`core/axis_calibrator.py`) — OCR tick labels (if enabled) via pytesseract with policy-specified preprocessing, fits pixel-to-data mapping (linear or log) using RANSAC robust regression to reject outlier OCR misreads, auto-detects inversion
 
 4. **Data extraction** (`core/data_extractor.py`) — foreground mask via background subtraction, policy-specified color separation (hue-only, HSV-3D, or layered), grid removal, policy-specified point extraction (standard vertical scan, thinning for dense, or connected components for scatter)
 
@@ -218,12 +221,13 @@ Once `ExtractionPolicy` is determined, `plot_extractor/main.py::extract_from_ima
 
 ### Algorithm-Level Changes (v4a)
 
-Four algorithm-level optimizations were implemented after threshold-tuning failures:
+Five algorithm-level optimizations were implemented after threshold-tuning failures:
 
 1. **HSV 3D clustering** — full H+S+V k-means fallback when hue-only fails (quality gates: compactness, min_hue_dist, x-coverage)
 2. **OCR preprocessing** — crop-level grayscale + upscale + median blur + adaptive thresholding before tesseract
 3. **Zhang-Suen thinning** — contrib-gated `cv2.ximgproc.thinning` with pure NumPy fallback for dense charts
 4. **Rotation correction** — strict rotation estimator (edge lines only, median aggregation, angle agreement gate) with coordinate-space rotation before axis detection
+5. **RANSAC robust regression** — Scatteract-style RANSAC for axis calibration outlier rejection; custom pure-NumPy implementation with pixel-grounded threshold and fallback to ordinary least squares
 
 See `docs/ARCHITECTURAL_CHANGES_IMPL.md` for detailed implementation notes.
 
@@ -276,6 +280,9 @@ SSIM is computed for reference only. Series matching uses permutation search whe
 | `tests/test_axis_candidates.py` | Unit tests for axis candidates |
 | `tests/test_series_candidates.py` | Unit tests for series candidates |
 | `tests/generate_test_data.py` | Ground-truth test image generator (30 per type) |
+| `docs/BASELINE_EVALUATION.md` | Validation baselines and true pass rates (meta-isolated) |
+| `docs/ARCHITECTURAL_CHANGES_IMPL.md` | Implementation details for algorithm-level changes |
+| `docs/SCATTERACT_COMPARISON.md` | Workflow and design comparison with Scatteract (Bloomberg) |
 
 ## Release Workflow
 

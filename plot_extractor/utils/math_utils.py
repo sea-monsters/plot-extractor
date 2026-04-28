@@ -64,12 +64,153 @@ def fit_linear(pixels, values):
     return a, b, residuals
 
 
+def _compute_ransac_threshold(pixels):
+    """Auto-compute RANSAC residual threshold from tick spacing.
+
+    Uses 15% of median tick spacing, following Scatteract's robust
+    approach where inliers are points within a fraction of the
+    natural scale of the data.
+    """
+    pixels = np.asarray(pixels, dtype=float)
+    if len(pixels) < 2:
+        return 5.0
+    sorted_pixels = np.sort(pixels)
+    spacings = np.diff(sorted_pixels)
+    if len(spacings) == 0:
+        return 5.0
+    median_spacing = np.median(spacings)
+    return max(median_spacing * 0.15, 1.0)
+
+
+def fit_linear_ransac(
+    pixels, values, residual_threshold=None, max_trials=100, random_state=42
+):
+    """Fit pixel = a * value + b using RANSAC robust regression.
+
+    Scatteract-style: iteratively sample minimal subsets, fit model,
+    count inliers, then refit with best inlier set.
+
+    Returns (a, b, residual, inlier_indices).
+    """
+    pixels = np.asarray(pixels, dtype=float)
+    values = np.asarray(values, dtype=float)
+    n = len(pixels)
+    if n < 2:
+        return None, None, np.inf, []
+
+    if residual_threshold is None:
+        residual_threshold = _compute_ransac_threshold(pixels)
+
+    if n == 2:
+        a, b, res = fit_linear(pixels, values)
+        return a, b, res, [0, 1]
+
+    rng = np.random.default_rng(random_state)
+    best_inliers = []
+    best_a, best_b = None, None
+
+    for _ in range(max_trials):
+        idx = rng.choice(n, 2, replace=False)
+        sample_pixels = pixels[idx]
+        sample_values = values[idx]
+
+        a, b, _ = fit_linear(sample_pixels, sample_values)
+        if a is None:
+            continue
+
+        pred = a * values + b
+        residuals = np.abs(pixels - pred)
+        inliers = np.where(residuals < residual_threshold)[0]
+
+        if len(inliers) > len(best_inliers):
+            best_inliers = inliers
+            best_a, best_b = a, b
+
+    if len(best_inliers) < 2:
+        a, b, res = fit_linear(pixels, values)
+        return a, b, res, list(range(n))
+
+    inlier_pixels = pixels[best_inliers]
+    inlier_values = values[best_inliers]
+    a, b, res = fit_linear(inlier_pixels, inlier_values)
+    return a, b, res, list(best_inliers)
+
+
+def fit_log_ransac(
+    pixels, values, residual_threshold=None, max_trials=100, random_state=42
+):
+    """Fit pixel = a * log10(value) + b using RANSAC robust regression.
+
+    Non-positive values are filtered out before fitting rather than causing
+    total failure — this prevents a single OCR misread (e.g. "0") from
+    disabling log calibration entirely.
+
+    Returns (a, b, residual, inlier_indices) where inlier_indices refer to
+    the *filtered* positive subset, not the original array.
+    """
+    pixels = np.asarray(pixels, dtype=float)
+    values = np.asarray(values, dtype=float)
+
+    # Filter non-positive values (log domain requirement)
+    positive_mask = values > 0
+    if np.sum(positive_mask) < 2:
+        return None, None, np.inf, []
+    pixels = pixels[positive_mask]
+    values = values[positive_mask]
+
+    n = len(pixels)
+    if n < 2:
+        return None, None, np.inf, []
+
+    log_vals = np.log10(values)
+
+    if residual_threshold is None:
+        residual_threshold = _compute_ransac_threshold(pixels)
+
+    if n == 2:
+        a, b, res = fit_log(pixels, values)
+        return a, b, res, [0, 1]
+
+    rng = np.random.default_rng(random_state)
+    best_inliers = []
+    best_a, best_b = None, None
+
+    for _ in range(max_trials):
+        idx = rng.choice(n, 2, replace=False)
+        sample_pixels = pixels[idx]
+        sample_values = log_vals[idx]
+
+        a, b, _ = fit_linear(sample_pixels, sample_values)
+        if a is None:
+            continue
+
+        pred = a * log_vals + b
+        residuals = np.abs(pixels - pred)
+        inliers = np.where(residuals < residual_threshold)[0]
+
+        if len(inliers) > len(best_inliers):
+            best_inliers = inliers
+            best_a, best_b = a, b
+
+    if len(best_inliers) < 2:
+        a, b, res = fit_log(pixels, values)
+        return a, b, res, list(range(n))
+
+    inlier_pixels = pixels[best_inliers]
+    inlier_values = log_vals[best_inliers]
+    a, b, res = fit_linear(inlier_pixels, inlier_values)
+    return a, b, res, list(best_inliers)
+
+
 def fit_log(pixels, values):
     """Fit pixel = a * log10(value) + b. Returns (a, b, residuals)."""
     pixels = np.asarray(pixels, dtype=float)
     values = np.asarray(values, dtype=float)
-    if np.any(values <= 0):
+    positive_mask = values > 0
+    if np.sum(positive_mask) < 2:
         return None, None, np.inf
+    pixels = pixels[positive_mask]
+    values = values[positive_mask]
     log_vals = np.log10(values)
     if len(pixels) < 2:
         return None, None, np.inf
@@ -129,24 +270,38 @@ def _is_arithmetic_sequence(values, tol=0.25):
 
 
 def classify_axis(pixels, values, preferred_type=None):
-    """Classify axis as linear or log based on value sequence + R² comparison."""
+    """Classify axis as linear or log based on RANSAC robust regression.
+
+    Scatteract-style: use RANSAC to handle OCR outliers, then compare
+    fit quality between linear and log models.
+    """
     pixels = np.asarray(pixels, dtype=float)
     values = np.asarray(values, dtype=float)
 
-    a_lin, b_lin, res_lin = fit_linear(pixels, values)
-    a_log, b_log, res_log = fit_log(pixels, values)
+    # Use RANSAC when enough points to benefit from outlier rejection
+    if len(pixels) >= 3:
+        a_lin, b_lin, res_lin, inliers_lin = fit_linear_ransac(pixels, values)
+        a_log, b_log, res_log, inliers_log = fit_log_ransac(pixels, values)
+    else:
+        a_lin, b_lin, res_lin = fit_linear(pixels, values)
+        a_log, b_log, res_log = fit_log(pixels, values)
+        inliers_lin = inliers_log = list(range(len(pixels)))
 
-    # Determine fits for R² comparison
-    if a_lin is not None:
-        pred_lin = a_lin * values + b_lin
-        r2_lin = _r_squared(pixels, pred_lin)
+    # Compute R² on inliers for comparison
+    if a_lin is not None and inliers_lin:
+        inlier_pixels_lin = pixels[inliers_lin]
+        inlier_values_lin = values[inliers_lin]
+        pred_lin = a_lin * inlier_values_lin + b_lin
+        r2_lin = _r_squared(inlier_pixels_lin, pred_lin)
     else:
         r2_lin = -np.inf
 
-    if a_log is not None:
-        log_vals = np.log10(values)
+    if a_log is not None and inliers_log:
+        inlier_pixels_log = pixels[inliers_log]
+        inlier_values_log = values[inliers_log]
+        log_vals = np.log10(inlier_values_log)
         pred_log = a_log * log_vals + b_log
-        r2_log = _r_squared(pixels, pred_log)
+        r2_log = _r_squared(inlier_pixels_log, pred_log)
     else:
         r2_log = -np.inf
 
