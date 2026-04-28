@@ -31,17 +31,8 @@ report_by_type.csv
 *.csv
 debug_*.png
 
-# Development documentation
-*.md
-!README.md
-!CLAUDE.md
-!SKILL.md
-
-# Docs directory - ignore all except specific files
-docs/*
-!docs/META_ISOLATION_BOUNDARY.md
-!docs/BASELINE_EVALUATION.md
-!docs/ARCHITECTURAL_CHANGES_IMPL.md
+# Development documentation (local only, not synced)
+development/
 
 # IDE
 .vscode/
@@ -72,6 +63,9 @@ memory/
 
 #workflow
 workflow/
+
+# Secrets
+.env
 
 # Binaries
 tesseract.zip

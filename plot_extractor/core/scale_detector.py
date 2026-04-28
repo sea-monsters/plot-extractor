@@ -258,8 +258,165 @@ def _classify_spacing_from_spacings(spacings: np.ndarray) -> str:
     return "unknown"
 
 
+def _score_log_notation(text: str) -> float:
+    """Score OCR output for presence of log-scale notation patterns.
+
+    Three independent signal families (user-directed):
+
+    1. **Notation cues** — explicit exponential/scientific markup:
+       Unicode superscript (10¹), caret (10^2), scientific (1e2),
+       ×10 notation.
+
+    2. **Superscript-concatenation cues** — tesseract often concatenates
+       superscript digits: 10¹ → ``101``, 10² → ``102``.
+       A cluster of numbers in 100–109 or 10–19 is a strong log signal.
+
+    3. **Geometric-progression cues** — consecutive labels jump by
+       orders of magnitude (1, 10, 100, 1000) or follow log-minor
+       patterns (1, 2, 5, 10, 20, 50, 100).  Detected by checking
+       whether median ratio of consecutive sorted values is far from 1.
+
+    Returns 0.0–1.0 where higher values indicate stronger log-scale evidence.
+    """
+    import re
+
+    if not text or not text.strip():
+        return 0.0
+
+    score = 0.0
+
+    # ── Signal 1: Explicit notation cues ─────────────────────────────
+    # These are the only reliable OCR-based log signals because they
+    # detect notation glyphs directly rather than inferring from
+    # numeric patterns (which can also appear on linear axes).
+
+    # Unicode superscript digits AND common OCR approximations
+    superscript_chars = set("⁰¹²³⁴⁵⁶⁷⁸⁹⁻°")  # ° = common misread of ⁰
+    superscript_count = sum(1 for c in text if c in superscript_chars)
+    if superscript_count >= 2:
+        score += 0.35
+    elif superscript_count >= 1:
+        score += 0.15
+
+    # Caret notation: 10^2, 10^-3
+    if len(re.findall(r'10\^[-\d]+', text)) >= 1:
+        score += 0.30
+
+    # ×10 notation: ×10², x10^3
+    if len(re.findall(r'[×xX]\s*10', text)) >= 1:
+        score += 0.25
+
+    # Scientific notation: 1e2, 1E+3, 1.0e-1
+    sci_count = len(re.findall(r'\d+\.?\d*[eE][+-]?\d+', text))
+    if sci_count >= 2:
+        score += 0.25
+    elif sci_count >= 1:
+        score += 0.12
+
+    # ── Signal 2: Geometric-progression of readable values ───────────
+    # Detects log-scale labels that express powers of 10 as plain numbers
+    # (1, 10, 100, 1000) or log-minor ticks (1, 2, 5, 10, 20, 50, 100).
+    # This works even when tesseract fails on superscript glyphs, as long
+    # as the tick labels use plain-number formatting.
+    numbers = re.findall(r'\d+\.?\d*', text)
+    values = []
+    for ns in numbers:
+        try:
+            values.append(float(ns))
+        except (ValueError, OverflowError):
+            pass
+
+    sorted_vals = sorted(set(v for v in values if v > 0))
+    if len(sorted_vals) >= 3:
+        ratios = []
+        for i in range(1, len(sorted_vals)):
+            if sorted_vals[i - 1] > 0:
+                ratios.append(sorted_vals[i] / sorted_vals[i - 1])
+        if ratios:
+            median_ratio = float(np.median(ratios))
+            ratio_cv = float(np.std(ratios) / (np.mean(ratios) + 1e-6))
+            min_ratio = min(ratios)
+            max_ratio = max(ratios)
+            # True geometric: ratios are consistent (low cv) AND all far from 1.0.
+            # Arithmetic sequences (2,4,6,8,10) decay toward ratio=1 — gated by
+            # requiring min_ratio > 1.4 (or max_ratio < 0.7 for decreasing).
+            if ratio_cv < 0.5 and (min_ratio > 1.4 or max_ratio < 0.7):
+                score += 0.30
+            # One order-of-magnitude jump: e.g. labels span 1, 10, 100.
+            if max_ratio >= 5:
+                score += 0.20
+
+    return min(score, 1.0)
+
+
+def detect_log_notation_ocr(
+    image: np.ndarray, axis: Axis, policy=None,
+) -> float:
+    """Run lightweight OCR on axis tick-label region for log-notation patterns.
+
+    Crops the tick-label strip around *axis*, preprocesses, and runs
+    tesseract to detect exponential / scientific notation.  Returns a
+    score 0.0–1.0 used as a bonus signal in ``should_treat_as_log``.
+
+    Gracefully returns 0.0 when tesseract is unavailable.
+    """
+    try:
+        import pytesseract  # pylint: disable=import-outside-toplevel
+    except ImportError:
+        return 0.0
+
+    from plot_extractor.core.ocr_reader import init_tesseract  # pylint: disable=import-outside-toplevel
+    if not init_tesseract():
+        return 0.0
+
+    h, w = image.shape[:2]
+    padding = 15
+
+    if axis.direction == "x":
+        x1 = max(0, int(axis.plot_start) - padding)
+        x2 = min(w, int(axis.plot_end) + padding)
+        y1 = max(0, int(axis.position) - padding)
+        y2 = min(h, int(axis.position) + padding * 4)
+    else:
+        y1 = max(0, int(axis.plot_start) - padding)
+        y2 = min(h, int(axis.plot_end) + padding)
+        if axis.side == "right":
+            x1 = max(0, int(axis.position) - padding)
+            x2 = min(w, int(axis.position) + padding * 5)
+        else:
+            x1 = max(0, int(axis.position) - padding * 5)
+            x2 = min(w, int(axis.position) + padding)
+
+    if x2 <= x1 or y2 <= y1:
+        return 0.0
+
+    crop = image[y1:y2, x1:x2]
+    if crop.size == 0:
+        return 0.0
+
+    gray = cv2.cvtColor(crop, cv2.COLOR_RGB2GRAY) if len(crop.shape) == 3 else crop.copy()
+    gray = cv2.resize(gray, None, fx=2, fy=2, interpolation=cv2.INTER_CUBIC)
+
+    block_size = policy.ocr_block_size if policy else 25
+    binary = cv2.adaptiveThreshold(
+        gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
+        cv2.THRESH_BINARY, block_size, 10,
+    )
+
+    try:
+        text = pytesseract.image_to_string(
+            binary,
+            config='--psm 6 -c tessedit_char_whitelist=0123456789eE^×xX-+.(){}⁰¹²³⁴⁵⁶⁷⁸⁹⁻ ',
+        )
+    except Exception:
+        return 0.0
+
+    return _score_log_notation(text)
+
+
 def should_treat_as_log(
     image: np.ndarray, axis: Axis, cross_axis_log: bool = False,
+    log_notation_score: float = 0.0,
 ) -> bool:
     """Two-stage log detector: grid first, then ticks.
 
@@ -268,16 +425,29 @@ def should_treat_as_log(
     run on ambiguous axes — this catches loglog charts where dense minor
     grid/tick lines make each axis individually ambiguous.
 
-    Returns True only when visual evidence suggests a logarithmic scale,
+    *log_notation_score* (0.0–1.0) is an optional OCR-derived bonus from
+    ``detect_log_notation_ocr``.  A strong score (>0.7) can override a
+    false-linear grid classification on charts where dense minor grid
+    creates deceptively uniform spacing.  Moderate scores act as a
+    tiebreaker when spacing analysis is ambiguous.
+
+    Returns True only when evidence suggests a logarithmic scale,
     preventing the superscript fix from firing on linear axes.
     """
     grid_guess = infer_scale_from_grid(image, axis)
     if grid_guess == "log":
         return True
     if grid_guess == "linear":
-        return False  # grid is definitive — cross-axis cannot override
+        # OCR notation evidence can override false-linear from dense minor grid.
+        # High bar (0.7): requires clear superscript/caret/sci-notation signal.
+        if log_notation_score > 0.7:
+            return True
+        return False
     tick_guess = infer_scale_from_ticks(axis)
     if tick_guess == "log":
+        return True
+    # OCR notation as tiebreaker for ambiguous spacing
+    if tick_guess == "unknown" and log_notation_score > 0.4:
         return True
     # Cross-axis relaxed check: dense subsampling on ambiguous axes
     if cross_axis_log and tick_guess == "unknown":

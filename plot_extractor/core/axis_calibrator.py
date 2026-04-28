@@ -6,7 +6,7 @@ from typing import Optional, List, Tuple
 import numpy as np
 
 from plot_extractor.core.axis_detector import Axis
-from plot_extractor.core.scale_detector import should_treat_as_log
+from plot_extractor.core.scale_detector import should_treat_as_log, detect_log_notation_ocr
 from plot_extractor.utils.math_utils import pixel_to_data, fit_linear
 
 
@@ -402,13 +402,32 @@ def calibrate_all_axes(
     x_axes = [a for a in axes if a.direction == "x"]
     y_axes = [a for a in axes if a.direction == "y"]
 
+    # Pre-compute OCR log-notation scores for each axis.
+    # These are lightweight OCR passes that look for exponential /
+    # scientific notation patterns (10¹, 10^2, 1e3, ×10²) in the
+    # tick-label region.  Strong scores help override false-linear
+    # classifications on loglog charts where dense minor grid lines
+    # produce deceptively uniform spacing.
+    log_notation_scores: dict[int, float] = {}
+    if use_ocr:
+        for axis in axes:
+            if axis.ticks and len(axis.ticks) >= 3:
+                log_notation_scores[id(axis)] = detect_log_notation_ocr(
+                    image, axis, policy=policy,
+                )
+            else:
+                log_notation_scores[id(axis)] = 0.0
+
     # ---- Stage 1: X-axes ----
     x_log = {}  # id(axis) -> bool
     for axis in x_axes:
         if axis.ticks and len(axis.ticks) >= 3:
             # Cross-axis from earlier X-axes (within-group)
             prior_x_log = any(v for k, v in x_log.items())
-            x_log[id(axis)] = should_treat_as_log(image, axis, cross_axis_log=prior_x_log)
+            x_log[id(axis)] = should_treat_as_log(
+                image, axis, cross_axis_log=prior_x_log,
+                log_notation_score=log_notation_scores.get(id(axis), 0.0),
+            )
         else:
             x_log[id(axis)] = False
 
@@ -422,6 +441,7 @@ def calibrate_all_axes(
             prior_y_log = any(v for k, v in y_log.items())
             y_log[id(axis)] = should_treat_as_log(
                 image, axis, cross_axis_log=any_x_log or prior_y_log,
+                log_notation_score=log_notation_scores.get(id(axis), 0.0),
             )
         else:
             y_log[id(axis)] = False
