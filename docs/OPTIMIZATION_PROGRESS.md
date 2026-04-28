@@ -1888,3 +1888,140 @@ All three phases from Chapter 23 plan executed successfully:
 - Lint gate consistently passing (≥ 9.0)
 - No regressions detected in any phase
 
+---
+
+# Chapter 27: Hierarchical Log Scale Detection and Superscript OCR Gate (2026-04-28)
+
+## Motivation
+
+The `_fix_log_superscript_ocr` function (added in a prior session) converts OCR misreads of log-axis superscript labels (e.g., Tesseract reading "10²" as "102" → fix converts to 10² = 100). However, **this fix has no call site** — it was defined but never wired into `calibrate_axis`. Worse, applying it unconditionally would break linear axes: values like 105 could be mis-converted to 10⁵.
+
+The user directed a two-pronged architectural fix:
+1. Gate the superscript fix behind visual log-scale detection (grid spacing → tick spacing)
+2. Use a hierarchical classification strategy: uniformity gate → periodic geometric → continuous geometric
+
+## Strategy
+
+Three new components were built:
+
+### 1. `scale_detector.py` — New Module
+
+A standalone module that infers whether an axis is log or linear from visual spacing patterns:
+
+- **`_detect_grid_positions(image, axis)`**: Canny edge projection perpendicular to the axis direction within the plot area, followed by 1D peak finding.
+- **`_classify_spacing(positions)`**: Hierarchical 4-level classifier:
+  - **Level 0 — Uniformity gate**: equal spacing → "linear" (fast exit via `diff_cv < 0.35`).
+  - **Dense-grid subsampling**: when ≥ 20 positions with very low spacing CV (< 0.3), extract major intervals (≥ 1.3× median) and re-classify. Catches loglog charts where dense minor grid buries the decade pattern.
+  - **Level 1 — Periodic geometric**: sliding window test — within each window, consecutive spacing ratios must be consistent (CV < 0.35), monotonic (all on the same side of 1), and not centred on 1. Requires spacing range ≥ 1.2× median as a guardrail against noise.
+  - **Level 2 — Continuous geometric**: global ratio CV < 0.5, median ratio not near 1.
+  - **Level 3 — Ambiguous**: fall through to "unknown".
+- **`should_treat_as_log(image, axis, cross_axis_log)`**: two-stage detector (grid first, then ticks). Grid="linear" is definitive and cannot be overridden. When `cross_axis_log=True`, ambiguous axes get a relaxed re-check via `_relaxed_scale_check`.
+
+### 2. X→Y Staged Axis Evaluation (`axis_calibrator.py`)
+
+`calibrate_all_axes` was restructured from a flat loop into two ordered stages:
+
+```
+Stage 1: X-axes → each evaluated with 3-level check; later X-axes get cross-axis hint from earlier ones
+Stage 2: Y-axes → each evaluated with 3-level check; cross_axis_log = any confirmed X OR earlier Y
+```
+
+This ordering ensures that log_x charts (where X is log, Y is linear) don't contaminate Y-axis detection, while loglog charts (both axes log) benefit from cross-axis propagation.
+
+### 3. `_fix_log_superscript_ocr` Wiring
+
+`calibrate_axis` now accepts an `is_log` parameter. The superscript fix only activates when `is_log=True`, which is pre-computed by the two-pass X→Y staged detection.
+
+## Log Detection Accuracy (v1, per-axis)
+
+Evaluated on 310 v1 charts across 10 types (1180 total axes with ≥ 3 ticks):
+
+| Type | True Log Axes | Detected | Rate | Method |
+|------|--------------|----------|------|--------|
+| log_y | 60 | 60 | 100.0% | Grid (sparse major ticks) |
+| log_x | 62 | 26 | 41.9% | Grid (windowed geometric) |
+| loglog | 99 | 12 | 12.1% | Mixed (dense minor grid) |
+| **Log total** | **221** | **98** | **44.3%** | — |
+| **Linear total** | **959** | **7** | **0.7% FP** | — |
+
+**Key findings**:
+- Linear false positive rate held at 0.7% — the uniformity gate and grid="linear" hard constraint prevent the superscript fix from firing on linear axes.
+- log_y detection is perfect (100%) because sparse major grid lines produce clear geometric spacing.
+- log_x detection improved from 0% (original global-only check) to 41.9% via the windowed periodic geometric test.
+- loglog remains the hardest case (12.1%) because dense minor grid (46 grid lines in ~300px) produces spacings of 6px with decade boundaries at only 9px — the 1.3× major-interval filter barely catches 2-3 decade boundaries.
+
+## V1-V4 Validation with OCR (2026-04-28)
+
+All runs: `python tests/validate_by_type.py --data-dir <dir> --use-ocr --workers 4`
+
+### v1 (310 images, clean synthetic)
+
+| Type | Pass | Rate | AvgErr | MaxErr |
+|------|------|------|--------|--------|
+| dense | 14/31 | 45.2% | 0.6933 | 4.1139 |
+| dual_y | 0/31 | 0.0% | 0.3061 | 1.1762 |
+| inverted_y | 28/31 | 90.3% | 0.0460 | 0.8767 |
+| log_x | 0/31 | 0.0% | 1.6134 | 20.7868 |
+| log_y | 1/31 | 3.2% | 2.7e7 | 8.4e8 |
+| loglog | 5/31 | 16.1% | 0.1010 | 0.3771 |
+| multi_series | 0/31 | 0.0% | 0.3499 | 2.5093 |
+| no_grid | 22/31 | 71.0% | 1.1592 | 12.5050 |
+| scatter | 28/31 | 90.3% | 0.0468 | 0.5222 |
+| simple_linear | 25/31 | 80.6% | 0.0953 | 0.8600 |
+| **TOTAL** | **123/310** | **39.7%** | — | — |
+
+### v2 (500 images)
+
+| Type | Pass | Rate | AvgErr | MaxErr |
+|------|------|------|--------|--------|
+| loglog | 13/50 | 26.0% | 0.1076 | 1.2100 |
+| log_y | 5/50 | 10.0% | 0.2608 | 2.3499 |
+| All other types | 0/50 | 0.0% | — | — |
+| **TOTAL** | **18/500** | **3.6%** | — | — |
+
+### v3 (500 images, degraded: noise/blur/rotation/JPEG)
+
+| Type | Pass | Rate | AvgErr | MaxErr |
+|------|------|------|--------|--------|
+| log_y | 13/50 | 26.0% | 0.2837 | 3.5070 |
+| loglog | 12/50 | 24.0% | 0.0938 | 0.3875 |
+| scatter | 1/50 | 2.0% | 0.3284 | 0.8312 |
+| All other types | 0/50 | 0.0% | — | — |
+| **TOTAL** | **26/500** | **5.2%** | — | — |
+
+### v4 in-scope (204 images, real-world mix)
+
+| Type | Pass | Rate | AvgErr | MaxErr |
+|------|------|------|--------|--------|
+| loglog | 6/20 | 30.0% | 0.1482 | 1.0000 |
+| log_y | 3/24 | 12.5% | 0.3250 | 1.0000 |
+| All other types | 0/18-28 | 0.0% | — | — |
+| **TOTAL** | **9/204** | **4.4%** | — | — |
+
+### Key Observations
+
+1. **Scale detector improves log recall from 25.8% → 44.3% with 0.7% linear FP** — the hierarchical detection structure works as designed.
+2. **Overall extraction pass rates are dominated by OCR calibration quality**, not scale detection. log_y v1 has 3.2% pass despite 100% log detection because OCR reads wildly wrong tick values on some samples (avg err 27M).
+3. **v2/v3/v4 degradation is primarily an OCR/calibration issue** — simple_linear v2 at 0% with avg_err=56 indicates OCR reads wrong values, not a scale detection problem.
+4. **v4 in-scope filtering works** — 204/500 images are in the current extractor's supported domain; the rest are out-of-scope (bar, pie, histogram, multi-panel, partial_crop).
+
+## Test Policy Update
+
+**Effective 2026-04-28**: All baseline validation MUST use `--use-ocr`. Non-OCR mode produces synthetic tick values in arbitrary units that cannot be compared against ground truth absolute values (pass rates collapse to ~1-5%). Non-OCR runs are reserved for data collection / shape analysis only. Always use `--workers 4` for ~3x speedup.
+
+## Files Changed
+
+**New**:
+- `plot_extractor/core/scale_detector.py` — hierarchical log/linear classifier
+
+**Modified**:
+- `plot_extractor/core/axis_calibrator.py` — `calibrate_axis` accepts `is_log` parameter; `calibrate_all_axes` uses X→Y staged evaluation with cross-axis propagation
+
+## Lint Gate
+
+`pylint --fail-under=9` → **10.00/10** ✅
+
+## Test Requirement Update
+
+**All baseline validation now requires `--use-ocr`.** Non-OCR mode produces synthetic tick values in arbitrary units that cannot be compared against ground truth absolute values. Non-OCR runs are for data collection / shape analysis only.
+

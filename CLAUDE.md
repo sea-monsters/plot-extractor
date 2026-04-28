@@ -28,26 +28,30 @@ python plot_extractor/main.py input_chart.png --use-llm --use-ocr --output extra
 ```
 
 ### Validate accuracy against test data
+
+**CRITICAL: Baseline evaluation MUST use `--use-ocr`.** Without OCR, the calibration
+generates synthetic tick values in arbitrary units, making the absolute-value comparison
+against ground truth meaningless (pass rates collapse to near 0%). Non-OCR mode is for
+data collection / shape analysis only — do NOT use it to judge extraction quality.
+
 ```bash
-# Validate all 10 chart types against v1 baseline
-python tests/validate_by_type.py --debug
+# ⚡ Standard evaluation (OCR required for meaningful accuracy metric)
+python tests/validate_by_type.py --use-ocr --workers 4
 
-# Validate with LLM enhancement
-python tests/validate_by_type.py --use-llm --debug
+# Validate specific datasets
+python tests/validate_by_type.py --data-dir test_data --use-ocr --workers 4
+python tests/validate_by_type.py --data-dir test_data_v2 --use-ocr --workers 4
+python tests/validate_by_type.py --data-dir test_data_v3 --use-ocr --workers 4
+python tests/validate_by_type.py --data-dir test_data_v4 --v4-special --use-ocr --workers 4
 
-# Validate with OCR
-python tests/validate_by_type.py --use-ocr --debug
-
-# Validate with OCR in parallel (4 workers, much faster)
-python tests/validate_by_type.py --use-ocr --workers 4 --debug
+# With LLM enhancement
+python tests/validate_by_type.py --use-llm --use-ocr --workers 4
 
 # Validate specific types only
-python tests/validate_by_type.py --types simple_linear log_y inverted_y --debug
+python tests/validate_by_type.py --types simple_linear log_y inverted_y --use-ocr --workers 4
 
-# Validate against different datasets
-python tests/validate_by_type.py --data-dir test_data_v2 --debug
-python tests/validate_by_type.py --data-dir test_data_v3 --debug
-python tests/validate_by_type.py --data-dir test_data_v4 --v4-special --debug
+# Non-OCR mode (data collection only — do NOT use for quality judgment)
+python tests/validate_by_type.py --workers 4 --debug
 
 # Validate v4a route profiles
 python tests/validate_v4a_routes.py --data-dir test_data_v4a

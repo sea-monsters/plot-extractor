@@ -6,6 +6,7 @@ from typing import Optional, List, Tuple
 import numpy as np
 
 from plot_extractor.core.axis_detector import Axis
+from plot_extractor.core.scale_detector import should_treat_as_log
 from plot_extractor.utils.math_utils import pixel_to_data, fit_linear
 
 
@@ -126,10 +127,19 @@ class CalibratedAxis:
 def calibrate_axis(
     axis: Axis,
     labeled_ticks: List[Tuple[int, Optional[float]]],
+    image=None,
     policy=None,
     preferred_type: str | None = None,
+    is_log: bool | None = None,
 ) -> Optional[CalibratedAxis]:
     """Build a calibrated axis from detected ticks and their labels."""
+    # Gate log superscript fix behind visual log-scale detection.
+    # When is_log is pre-computed (cross-axis detection), skip internal check.
+    if is_log is None and image is not None:
+        is_log = should_treat_as_log(image, axis)
+    if is_log:
+        labeled_ticks = _fix_log_superscript_ocr(labeled_ticks)
+
     # Filter ticks with valid numeric labels
     valid = [(p, v) for p, v in labeled_ticks if v is not None]
 
@@ -384,8 +394,45 @@ def calibrate_all_axes(
         log_y_prob = 0.0
         log_x_prob = 0.0
 
+    # Staged axis evaluation: X-axes first, then Y-axes.
+    # Each axis is checked with the 3-level hierarchical detector.
+    # Cross-axis signal propagates in processing order: later axes
+    # (especially Y-axes) can reference earlier confirmed-log axes
+    # to break ties on ambiguous spacing (e.g. dense minor grid on loglog).
+    x_axes = [a for a in axes if a.direction == "x"]
+    y_axes = [a for a in axes if a.direction == "y"]
+
+    # ---- Stage 1: X-axes ----
+    x_log = {}  # id(axis) -> bool
+    for axis in x_axes:
+        if axis.ticks and len(axis.ticks) >= 3:
+            # Cross-axis from earlier X-axes (within-group)
+            prior_x_log = any(v for k, v in x_log.items())
+            x_log[id(axis)] = should_treat_as_log(image, axis, cross_axis_log=prior_x_log)
+        else:
+            x_log[id(axis)] = False
+
+    any_x_log = any(x_log.values())
+
+    # ---- Stage 2: Y-axes ----
+    y_log = {}
+    for axis in y_axes:
+        if axis.ticks and len(axis.ticks) >= 3:
+            # Cross-axis from X-stage results OR earlier Y-axes
+            prior_y_log = any(v for k, v in y_log.items())
+            y_log[id(axis)] = should_treat_as_log(
+                image, axis, cross_axis_log=any_x_log or prior_y_log,
+            )
+        else:
+            y_log[id(axis)] = False
+
+    # Merge results
+    axis_is_log = {**x_log, **y_log}
+
     calibrated = []
     for axis in axes:
+        is_log = axis_is_log.get(id(axis), False)
+
         # Set per-axis preferred type
         axis_preferred = None
         if axis.direction == "y" and log_y_prob > 0.25:
@@ -403,18 +450,20 @@ def calibrate_all_axes(
         if use_llm:
             valid_count = sum(1 for _, v in labeled if v is not None)
             n_ticks = len(tick_pixels)
-            # Trigger if too few labels for calibration, or sparse coverage on dense axis
             if valid_count < 2 or (n_ticks >= 6 and valid_count < n_ticks * 0.4):
                 enhanced = _llm_enhance_axis_labels(image, axis, labeled)
                 if enhanced is not None:
                     labeled = enhanced
 
         cal = calibrate_axis(
-            axis, labeled, policy=policy, preferred_type=axis_preferred,
+            axis, labeled, image=image, policy=policy, preferred_type=axis_preferred,
+            is_log=is_log,
         )
         if cal is None:
-            # Last resort: use heuristic synthetic ticks
-            cal = calibrate_axis(axis, [], policy=policy, preferred_type=axis_preferred)
+            cal = calibrate_axis(
+                axis, [], image=image, policy=policy, preferred_type=axis_preferred,
+                is_log=is_log,
+            )
         if cal is not None:
             calibrated.append(cal)
     return calibrated
