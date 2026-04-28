@@ -2,7 +2,7 @@
 
 Automated data extraction from chart images with axis calibration and validation.
 
-> Status: **Beta**. Core extraction paths are working for supported chart types, but robustness on diverse and degraded real-world images is still under active optimization.
+> Status: **Beta**. Core extraction paths are working for supported chart types. Active optimization targets OCR calibration robustness, log-scale detection, and multi-series color separation. Current milestone: `v1.5.0-scale-detector`.
 
 ## Overview
 
@@ -140,48 +140,40 @@ pylint plot_extractor/
 
 ## Validation
 
-Run the standard evaluator:
+**CRITICAL: Baseline evaluation requires `--use-ocr`.** Without OCR, calibration generates synthetic tick values in arbitrary units that cannot be compared against ground truth absolute values. Non-OCR runs are for data collection / shape analysis only. Always use `--workers 4` for ~3x speedup.
 
 ```bash
-python tests/validate_by_type.py
-python tests/validate_by_type.py --data-dir test_data_v2
-python tests/validate_by_type.py --data-dir test_data_v3
+# Standard evaluation (OCR + 4 workers)
+python tests/validate_by_type.py --use-ocr --workers 4
+python tests/validate_by_type.py --data-dir test_data_v2 --use-ocr --workers 4
+python tests/validate_by_type.py --data-dir test_data_v3 --use-ocr --workers 4
+python tests/validate_by_type.py --data-dir test_data_v4 --v4-special --use-ocr --workers 4
+
+# Non-OCR mode (data collection only — do NOT use for quality judgment)
+python tests/validate_by_type.py --workers 4
 ```
 
-Run the v4 supported-domain evaluator:
-
-```bash
-python tests/validate_by_type.py --data-dir test_data_v4 --v4-special
-python tests/validate_by_type.py --data-dir test_data_v4a --v4-special
-```
-
-Run the v4a route-profile evaluator:
-
-```bash
-python tests/validate_v4a_routes.py --data-dir test_data_v4a
-```
-
-Current baseline details are maintained in [docs/BASELINE_EVALUATION.md](docs/BASELINE_EVALUATION.md). Bottleneck analysis and lightweight skill candidates are tracked in [docs/EXTRACTION_BOTTLENECKS_SKILL_PLAN.md](docs/EXTRACTION_BOTTLENECKS_SKILL_PLAN.md). Shared-role commit rules are tracked in [docs/COLLABORATION_GUIDELINES.md](docs/COLLABORATION_GUIDELINES.md).
+Optimization history and bottleneck analysis are maintained in [docs/OPTIMIZATION_PROGRESS.md](docs/OPTIMIZATION_PROGRESS.md). Architecture-level change implementation details are in [docs/ARCHITECTURAL_CHANGES_IMPL.md](docs/ARCHITECTURAL_CHANGES_IMPL.md).
 
 ## Development Documentation
 
-For contributors working on optimization and architectural improvements:
+- **[docs/OPTIMIZATION_PROGRESS.md](docs/OPTIMIZATION_PROGRESS.md)** — Full optimization history, per-chapter change log, v1-v4 baselines
+- **[docs/ARCHITECTURAL_CHANGES_IMPL.md](docs/ARCHITECTURAL_CHANGES_IMPL.md)** — Code-level implementation guide for algorithm changes
 
-- **[docs/BASELINE_EVALUATION.md](docs/BASELINE_EVALUATION.md)** — Current v1-v4 validation baseline, optimization history, and next-phase plans
-- **[docs/ARCHITECTURAL_CHANGES_IMPL.md](docs/ARCHITECTURAL_CHANGES_IMPL.md)** — Code-level implementation guide for algorithm changes: Zhang-Suen thinning, OCR preprocessing, HSV clustering, rotation correction. Includes interfaces, unit tests, validation criteria.
+## Current Baseline (OCR, 2026-04-28)
 
-**Key insight from optimization history**: Threshold tuning cannot fix root causes. Real bottlenecks require algorithm-level changes (new thinning, rotation correction pipeline stage, OCR-specific preprocessing, full HSV clustering).
-
-## Current Baseline
+All numbers are with `--use-ocr --workers 4`.
 
 | Dataset | Scope | Pass | Rate |
 |---------|-------|------|------|
-| v1 | supported chart types | 288/310 | 92.9% |
-| v2 | wider generated variation | 378/500 | 75.6% |
-| v3 | scan/photo degradation simulation | 179/500 | 35.8% |
-| v4 | supported single-chart subset | 90/204 | 44.1% |
+| v1 (310) | clean synthetic, all types | 123/310 | 39.7% |
+| v2 (500) | wider generated variation | 18/500 | 3.6% |
+| v3 (500) | scan/photo degradation simulation | 26/500 | 5.2% |
+| v4 (204 in-scope) | supported single-chart subset | 9/204 | 4.4% |
 
-v4 contains 500 mixed-scope images; 296 are currently outside the extractor's supported domain, such as combo charts, multi-subplot charts, unsupported chart types, or partial crops.
+v4 contains 500 mixed-scope images; 296 are outside the extractor's supported domain.
+
+**Log scale detection** (per-axis on v1): recall 44.3%, linear false-positive 0.7%. log_y 100%, log_x 41.9%, loglog 12.1%.
 
 ## Architecture
 
@@ -191,6 +183,7 @@ plot_extractor/
 │   ├── image_loader.py
 │   ├── axis_detector.py
 │   ├── axis_calibrator.py
+│   ├── scale_detector.py
 │   ├── data_extractor.py
 │   ├── plot_rebuilder.py
 │   └── ocr_reader.py
