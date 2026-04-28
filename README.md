@@ -74,6 +74,8 @@ pylint --fail-under=9 $(git ls-files '*.py')
 # Accuracy evaluation (OCR required)
 python tests/validate_by_type.py --use-ocr --workers 4
 python tests/validate_by_type.py --data-dir test_data_v2 --use-ocr --workers 4
+python tests/validate_by_type.py --data-dir test_data_v3 --use-ocr --workers 4
+python tests/validate_by_type.py --data-dir test_data_v4 --v4-special --use-ocr --workers 4
 ```
 
 ## License
