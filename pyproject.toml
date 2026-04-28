@@ -33,6 +33,14 @@ dev = [
     "pytest>=7.0",
     "pytest-cov>=4.0",
 ]
+formula = [
+    "paddlex>=3.5",
+    "paddlepaddle>=3.3",
+    "pypdfium2>=5.7",
+    "opencv-contrib-python>=4.8",
+    "tokenizers>=0.20",
+    "ftfy>=6.0",
+]
 
 [project.scripts]
 plot-extractor = "plot_extractor.main:main"

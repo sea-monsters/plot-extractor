@@ -291,6 +291,109 @@ def _crop_axis_region(image: np.ndarray, axis: Axis, padding: int = 20) -> np.nd
     return image[y1:y2, x1:x2]
 
 
+def _crop_tick_labels(
+    image: np.ndarray, axis: Axis, max_crops: int = 4,
+) -> list:
+    """Crop individual tick-label regions around each tick position.
+
+    Returns up to *max_crops* small image patches suitable for per-tick
+    OCR with PP-FormulaNet.  Crops are sampled evenly across the axis.
+    """
+    h, w = image.shape[:2]
+    tick_pixels = sorted([t[0] for t in (axis.ticks or [])])
+    if not tick_pixels:
+        return []
+
+    # Sample evenly to cover the full range
+    n = len(tick_pixels)
+    if n <= max_crops:
+        indices = list(range(n))
+    else:
+        step = max(1, (n - 1) / (max_crops - 1))
+        indices = [int(i * step) for i in range(max_crops)]
+        indices[-1] = min(indices[-1], n - 1)
+
+    crops = []
+    for idx in indices:
+        tick_px = tick_pixels[idx]
+        strip = 35  # label patch half-size
+        if axis.direction == "x":
+            x1 = max(0, tick_px - strip)
+            x2 = min(w, tick_px + strip)
+            y1 = max(0, axis.position + 5)
+            y2 = min(h, axis.position + 55)
+        else:
+            y1 = max(0, tick_px - strip // 2)
+            y2 = min(h, tick_px + strip // 2)
+            if axis.side == "right":
+                x1 = max(0, axis.position + 5)
+                x2 = min(w, axis.position + 60)
+            else:
+                x1 = max(0, axis.position - 60)
+                x2 = max(x1 + 10, axis.position - 5)
+        crop = image[y1:y2, x1:x2]
+        if crop.size > 0:
+            crops.append(crop)
+    return crops
+
+
+def _align_formula_values_to_ticks(
+    tick_pixels: list,
+    formula_values: list,
+    descending: bool = False,
+) -> list:
+    """Map FormulaOCR values to tick pixel positions as anchor points.
+
+    FormulaOCR typically returns fewer values than there are tick positions.
+    Instead of spreading values across all ticks (which creates duplicates
+    that confuse RANSAC), we place each value at the tick whose position
+    is closest to an evenly-spaced anchor grid.  Remaining ticks get None
+    and are filled by the calibration fitter.
+    """
+    pixels = sorted(tick_pixels, reverse=descending)
+    values = list(formula_values)
+    n_pix = len(pixels)
+    n_val = len(values)
+
+    if n_val == 0:
+        return [(int(p), None) for p in tick_pixels]
+
+    if n_val >= n_pix:
+        step = max(1, n_val / n_pix)
+        return [(int(pixels[i]), float(values[int(i * step)])) for i in range(n_pix)]
+
+    # Place M values at M anchor positions evenly spaced across the pixel range
+    p_min, p_max = pixels[0], pixels[-1]
+    if descending:
+        p_min, p_max = p_max, p_min
+
+    anchors = []
+    for i in range(n_val):
+        if n_val == 1:
+            t = 0.5
+        else:
+            t = i / (n_val - 1)
+        anchors.append(p_min + t * (p_max - p_min))
+
+    # For each anchor, find the closest tick pixel
+    used_indices = set()
+    assignments = {}
+    for val, anchor in zip(values, anchors):
+        best_idx = min(range(n_pix), key=lambda j: abs(pixels[j] - anchor))
+        if best_idx not in used_indices:
+            used_indices.add(best_idx)
+            assignments[best_idx] = float(val)
+
+    # Build labeled list: assigned ticks get FormulaOCR values, rest get None
+    labeled = []
+    for i, p in enumerate(pixels):
+        if i in assignments:
+            labeled.append((int(p), assignments[i]))
+        else:
+            labeled.append((int(p), None))
+    return labeled
+
+
 def _llm_enhance_axis_labels(
     image: np.ndarray,
     axis: Axis,
@@ -402,21 +505,53 @@ def calibrate_all_axes(
     x_axes = [a for a in axes if a.direction == "x"]
     y_axes = [a for a in axes if a.direction == "y"]
 
-    # Pre-compute OCR log-notation scores for each axis.
-    # These are lightweight OCR passes that look for exponential /
-    # scientific notation patterns (10¹, 10^2, 1e3, ×10²) in the
-    # tick-label region.  Strong scores help override false-linear
-    # classifications on loglog charts where dense minor grid lines
-    # produce deceptively uniform spacing.
+    # Pre-compute log-notation scores for each axis.
+    # Two-tier, priority-ordered:
+    #   Tier 1 (FormulaOCR) — PP-FormulaNet_plus-S, reads superscripts.
+    #       One crop per axis.  Takes PRIORITY when available.
+    #   Tier 2 (tesseract) — lightweight fallback when FormulaOCR absent.
     log_notation_scores: dict[int, float] = {}
-    if use_ocr:
-        for axis in axes:
-            if axis.ticks and len(axis.ticks) >= 3:
-                log_notation_scores[id(axis)] = detect_log_notation_ocr(
-                    image, axis, policy=policy,
-                )
+    _formula_ocr = None
+    try:
+        from plot_extractor.core.formula_ocr import get_formula_ocr  # pylint: disable=import-outside-toplevel
+        _formula_ocr = get_formula_ocr()
+    except Exception:
+        _formula_ocr = None
+
+    # FormulaOCR axis results — stored for later use as tick labels
+    _formula_axis_results: dict[int, object] = {}
+
+    # Collect all axis crops for batch inference (one call total)
+    _batch_axes = []
+    _batch_crops = []
+    for axis in axes:
+        if axis.ticks and len(axis.ticks) >= 3:
+            _batch_axes.append(axis)
+            _batch_crops.append(_crop_axis_region(image, axis, padding=15))
+
+    if _formula_ocr is not None and _batch_crops:
+        # Tier 1: single batch call for all axes
+        batch_results = _formula_ocr.read_axes_batch(_batch_crops)
+        for axis, result in zip(_batch_axes, batch_results):
+            if result is not None:
+                log_notation_scores[id(axis)] = result.log_confidence
+                if result.count_10pow >= 2:
+                    _formula_axis_results[id(axis)] = result
             else:
                 log_notation_scores[id(axis)] = 0.0
+
+    # Fill remaining axes (those with <3 ticks) and tesseract fallback
+    for axis in axes:
+        if id(axis) in log_notation_scores:
+            continue  # Already processed by FormulaOCR batch
+        if not (axis.ticks and len(axis.ticks) >= 3):
+            log_notation_scores[id(axis)] = 0.0
+        elif use_ocr:
+            log_notation_scores[id(axis)] = detect_log_notation_ocr(
+                image, axis, policy=policy,
+            )
+        else:
+            log_notation_scores[id(axis)] = 0.0
 
     # ---- Stage 1: X-axes ----
     x_log = {}  # id(axis) -> bool
@@ -465,6 +600,26 @@ def calibrate_all_axes(
             labeled = read_all_tick_labels(image, axis, tick_pixels, policy=policy)
         else:
             labeled = [(p, None) for p in tick_pixels]
+
+        # FormulaOCR value injection: when FormulaOCR has high-confidence
+        # values AND tesseract OCR produced few valid labels, use FormulaOCR
+        # values as anchor points for calibration.
+        formula_result = _formula_axis_results.get(id(axis))
+        if formula_result is not None and formula_result.count_10pow >= 2:
+            valid_count = sum(1 for _, v in labeled if v is not None)
+            if valid_count < 3:
+                formula_labeled = _align_formula_values_to_ticks(
+                    tick_pixels, formula_result.values,
+                    descending=(axis.direction == "y"),
+                )
+                # Merge: FormulaOCR fills None slots
+                merged = []
+                for (p_ocr, v_ocr), (p_fm, v_fm) in zip(labeled, formula_labeled):
+                    if v_ocr is not None:
+                        merged.append((p_ocr, v_ocr))
+                    else:
+                        merged.append((p_fm, v_fm))
+                labeled = merged
 
         # LLM fallback when OCR yields insufficient labels
         if use_llm:
