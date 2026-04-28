@@ -203,7 +203,16 @@ def _guess_and_route(img_path: Path):
     return type_probs, top1, top2, policy
 
 
-def _evaluate_image(img_path: Path, chart_type: str, debug: bool = False, debug_subdir: Path | None = None, use_llm: bool = False, use_ocr: bool = False, quiet: bool = False) -> dict:
+def _evaluate_image(
+    img_path: Path,
+    chart_type: str,
+    debug: bool = False,
+    debug_subdir: Path | None = None,
+    use_llm: bool = False,
+    use_ocr: bool = False,
+    formula_batch_max_crops: int | None = None,
+    quiet: bool = False,
+) -> dict:
     # --- Load meta for scoring ONLY; never pass to extraction ---
     meta = _load_meta(img_path)
     data_threshold = DATA_ACCURACY_THRESHOLDS.get(chart_type, 0.05)
@@ -225,6 +234,7 @@ def _evaluate_image(img_path: Path, chart_type: str, debug: bool = False, debug_
         result = extract_from_image(
             img_path, output_csv=csv_path, debug_dir=dbg_dir,
             use_llm=use_llm, use_ocr=use_ocr,
+            formula_batch_max_crops=formula_batch_max_crops,
         )
     except (OSError, ValueError, RuntimeError) as e:
         if not quiet:
@@ -282,7 +292,12 @@ def _evaluate_image(img_path: Path, chart_type: str, debug: bool = False, debug_
         print(f"    {img_path.name}: rel_err={mae_str} SSIM={ssim:.3f} [{status}] guess={top1_guess}{guess_flag}")
         if debug and diagnostics:
             axis_summary = ", ".join(
-                f"{a['direction']}_{a['side']}:{a['axis_type']}/ticks={a['tick_count']}/res={a['residual']:.2f}"
+                f"{a['direction']}_{a['side']}:{a['axis_type']}/ticks={a['tick_count']}/"
+                f"src={a.get('tick_source', 'heuristic')}/res={a['residual']:.2f}/"
+                f"sel={a.get('formula_selected_count', 0)}/{a.get('formula_anchor_count', 0)}/"
+                f"batch={a.get('formula_batch_requested', 0)}@{a.get('formula_batch_ms', 0.0)}ms/"
+                f"keep={a.get('formula_batch_kept_count', 0)}/{a.get('formula_batch_candidate_count', 0)}/"
+                f"chunks={a.get('formula_batch_chunks', 0)}"
                 for a in diagnostics["axes"]
             )
             series_summary = ", ".join(
@@ -348,14 +363,22 @@ def _routing_summary(results: list[dict], chart_type: str) -> dict:
 
 def _evaluate_image_worker(args):
     """Process-pool entry point for evaluating a single image."""
-    img_path, chart_type, debug, debug_subdir, use_llm, use_ocr = args
+    img_path, chart_type, debug, debug_subdir, use_llm, use_ocr, formula_batch_max_crops = args
     return _evaluate_image(
         Path(img_path), chart_type, debug=debug, debug_subdir=Path(debug_subdir) if debug_subdir else None,
-        use_llm=use_llm, use_ocr=use_ocr, quiet=True,
+        use_llm=use_llm, use_ocr=use_ocr, formula_batch_max_crops=formula_batch_max_crops, quiet=True,
     )
 
 
-def validate_type(chart_type: str, debug: bool = False, data_dir: Path | None = None, use_llm: bool = False, use_ocr: bool = False, workers: int = 1) -> dict:
+def validate_type(
+    chart_type: str,
+    debug: bool = False,
+    data_dir: Path | None = None,
+    use_llm: bool = False,
+    use_ocr: bool = False,
+    workers: int = 1,
+    formula_batch_max_crops: int | None = None,
+) -> dict:
     """Run validation on all images of one type, return aggregate stats."""
     base_dir = data_dir or TEST_DATA_DIR
     type_dir = base_dir / chart_type
@@ -372,7 +395,7 @@ def validate_type(chart_type: str, debug: bool = False, data_dir: Path | None = 
 
     if workers > 1:
         work_items = [
-            (str(p), chart_type, debug, str(DEBUG_DIR / chart_type) if debug else None, use_llm, use_ocr)
+            (str(p), chart_type, debug, str(DEBUG_DIR / chart_type) if debug else None, use_llm, use_ocr, formula_batch_max_crops)
             for p in image_files
         ]
         with ProcessPoolExecutor(max_workers=workers) as executor:
@@ -404,7 +427,10 @@ def validate_type(chart_type: str, debug: bool = False, data_dir: Path | None = 
         results = [r for _, r in results]
     else:
         for img_path in image_files:
-            row = _evaluate_image(img_path, chart_type, debug=debug, debug_subdir=DEBUG_DIR / chart_type, use_llm=use_llm, use_ocr=use_ocr)
+            row = _evaluate_image(
+                img_path, chart_type, debug=debug, debug_subdir=DEBUG_DIR / chart_type,
+                use_llm=use_llm, use_ocr=use_ocr, formula_batch_max_crops=formula_batch_max_crops,
+            )
             results.append(row)
 
     # Print results (needed for parallel mode where workers were quiet)
@@ -447,7 +473,14 @@ def validate_type(chart_type: str, debug: bool = False, data_dir: Path | None = 
     return summary
 
 
-def validate_v4_special(data_dir: Path, debug: bool = False, types: list[str] | None = None, use_llm: bool = False, use_ocr: bool = False):
+def validate_v4_special(
+    data_dir: Path,
+    debug: bool = False,
+    types: list[str] | None = None,
+    use_llm: bool = False,
+    use_ocr: bool = False,
+    formula_batch_max_crops: int | None = None,
+):
     """Validate v4/v4a with explicit supported-domain and out-of-scope accounting."""
     image_files = sorted(data_dir.glob("*/*.png"))
     report_path = data_dir.parent / f"report_{data_dir.name}_special.csv"
@@ -489,7 +522,11 @@ def validate_v4_special(data_dir: Path, debug: bool = False, types: list[str] | 
 
         print(f"\n--- {rel_path} ({chart_type}) ---")
         debug_dir = DEBUG_DIR / "v4_special" / chart_type if debug else None
-        row = _evaluate_image(img_path, chart_type, debug=debug, debug_subdir=debug_dir, use_llm=use_llm, use_ocr=use_ocr)
+        row = _evaluate_image(
+            img_path, chart_type, debug=debug, debug_subdir=debug_dir,
+            use_llm=use_llm, use_ocr=use_ocr,
+            formula_batch_max_crops=formula_batch_max_crops,
+        )
         row.update(scope_row)
         row["type"] = chart_type
         in_scope_rows.append(row)
@@ -547,7 +584,15 @@ def validate_v4_special(data_dir: Path, debug: bool = False, types: list[str] | 
     return summaries, in_scope_rows, out_scope_rows
 
 
-def run_all(types: list[str] | None = None, debug: bool = False, data_dir: Path | None = None, use_llm: bool = False, use_ocr: bool = False, workers: int = 1):
+def run_all(
+    types: list[str] | None = None,
+    debug: bool = False,
+    data_dir: Path | None = None,
+    use_llm: bool = False,
+    use_ocr: bool = False,
+    workers: int = 1,
+    formula_batch_max_crops: int | None = None,
+):
     """Run validation across specified types (or all)."""
     if types is None:
         types = sorted(TYPE_THRESHOLDS.keys())
@@ -561,7 +606,11 @@ def run_all(types: list[str] | None = None, debug: bool = False, data_dir: Path 
 
     for chart_type in types:
         print(f"\n--- {chart_type} ---")
-        summary = validate_type(chart_type, debug=debug, data_dir=data_dir, use_llm=use_llm, use_ocr=use_ocr, workers=workers)
+        summary = validate_type(
+            chart_type, debug=debug, data_dir=data_dir, use_llm=use_llm,
+            use_ocr=use_ocr, workers=workers,
+            formula_batch_max_crops=formula_batch_max_crops,
+        )
         summaries.append(summary)
         for r in summary["results"]:
             row = {"type": chart_type, **r}
@@ -615,10 +664,26 @@ if __name__ == "__main__":
     parser.add_argument("--v4-special", action="store_true", help="Validate v4 using supported-domain filtering and scope accounting")
     parser.add_argument("--use-llm", action="store_true", help="Enable LLM vision enhancement for ambiguous charts")
     parser.add_argument("--use-ocr", action="store_true", help="Enable tesseract OCR for tick labels (requires tesseract)")
+    parser.add_argument("--formula-batch-max-crops", type=int, default=None, help="Override FormulaOCR batch crop cap for staged validation")
     parser.add_argument("--workers", type=int, default=1, help="Number of parallel workers (processes) for image evaluation")
     args = parser.parse_args()
     data_dir = Path(args.data_dir) if args.data_dir else None
     if args.v4_special:
-        validate_v4_special(data_dir or (Path(__file__).parent.parent / "test_data_v4"), debug=args.debug, types=args.types, use_llm=args.use_llm, use_ocr=args.use_ocr)
+        validate_v4_special(
+            data_dir or (Path(__file__).parent.parent / "test_data_v4"),
+            debug=args.debug,
+            types=args.types,
+            use_llm=args.use_llm,
+            use_ocr=args.use_ocr,
+            formula_batch_max_crops=args.formula_batch_max_crops,
+        )
     else:
-        run_all(types=args.types, debug=args.debug, data_dir=data_dir, use_llm=args.use_llm, use_ocr=args.use_ocr, workers=args.workers)
+        run_all(
+            types=args.types,
+            debug=args.debug,
+            data_dir=data_dir,
+            use_llm=args.use_llm,
+            use_ocr=args.use_ocr,
+            workers=args.workers,
+            formula_batch_max_crops=args.formula_batch_max_crops,
+        )

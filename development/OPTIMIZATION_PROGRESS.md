@@ -2357,3 +2357,272 @@ These formats would be readable by both tesseract and FormulaOCR.
 - **Calibration values**: Remaining bottleneck. Tesseract OCR reads wrong values on generated test images.
 - **Next**: Improve calibration value accuracy. Options: (a) better FormulaOCR value-to-tick alignment, or (b) improved OCR preprocessing for superscript fonts.
 
+---
+
+# Chapter 30: FormulaOCR Anchoring and Batch Pipeline Optimization Plan (2026-04-28)
+
+## Purpose
+
+Chapter 29 proved that PP-FormulaNet can read superscript notation that tesseract cannot, but it also exposed the next bottleneck: FormulaOCR returns recognized strings/LaTeX without coordinates. The current integration maps FormulaOCR values to ticks by evenly spreading them across detected tick positions, which is too weak when a full-axis crop returns only a subset of labels or when dense minor ticks outnumber major labels.
+
+This chapter records the next development plan:
+
+1. Use the existing tesseract / connected-component label localization path as the coordinate anchor.
+2. Use FormulaOCR as the value recognizer for superscripts, exponents, and special characters.
+3. Split the pipeline into lightweight localization and heavyweight FormulaOCR batch inference layers.
+4. Preserve quality by selecting among tesseract, FormulaOCR, fused, and heuristic calibration candidates using residual and monotonicity checks.
+
+## Current Code Reality
+
+| Area | Current state | Limitation |
+|------|---------------|------------|
+| FormulaOCR model wrapper | `plot_extractor/core/formula_ocr.py` has singleton loading, axis-level `read_axis_labels()`, and batch `read_axes_batch()` | Result contains LaTeX/value lists but no per-label coordinates |
+| Axis-level FormulaOCR call | `axis_calibrator.py` collects axis crops and calls `read_axes_batch()` once for all eligible axes | Good for log-scale detection, weak for tick-value calibration |
+| Formula value injection | `_align_formula_values_to_ticks()` maps values to evenly spaced tick anchors | Causes misalignment when FormulaOCR returns fewer values than tick count |
+| Tesseract localization | `ocr_reader.py` already detects label blobs and matches labels to ticks with bidirectional nearest-neighbor logic | Localization is hidden inside `read_all_tick_labels()` and only returns numeric values |
+| Validation reports | `report_test_data*.csv` capture pass/fail and relative error | Reports do not yet expose OCR anchor counts, FormulaOCR counts, calibration source, or batch timing |
+
+## Key Judgment
+
+FormulaOCR should not replace the existing OCR/layout stack. It should replace only the fragile text-value interpretation step.
+
+The correct division of labor is:
+
+- Connected components and tesseract preprocessing locate label blobs and provide tick-to-label anchors.
+- FormulaOCR reads the cropped label image when exponent/special-character recognition is needed.
+- Axis calibration consumes anchored values, not raw unpositioned strings.
+- Whole-axis FormulaOCR remains useful for log-scale detection, but label-level FormulaOCR should drive numeric tick calibration.
+
+## Problem 1: Coordinate Anchoring Plan
+
+### Target data structure
+
+Introduce an intermediate axis-label anchor record:
+
+```python
+@dataclass
+class AxisLabelAnchor:
+    tick_pixel: int
+    label_bbox: tuple[int, int, int, int]
+    label_center: int
+    crop: np.ndarray
+    tesseract_text: str | None
+    tesseract_value: float | None
+    formula_latex: str | None
+    formula_value: float | None
+    confidence: float
+    source: str  # tesseract | formula | fused | rejected
+```
+
+This structure makes the contract explicit: every recognized value must have a tick pixel and a label bbox before it can enter axis calibration.
+
+### Implementation steps
+
+1. Extract a localization-only API from `ocr_reader.py`.
+   - Add `detect_tick_label_anchors(image, axis, tick_pixels, policy=None)`.
+   - Reuse `_detect_label_blobs()` for candidate text blobs.
+   - Reuse `_match_ticks_labels_bidirectional()` or a bbox-aware equivalent to match label centers to ticks.
+   - Return anchors with bbox, crop, label center, tick pixel, and optional tesseract value.
+
+2. Keep `read_all_tick_labels()` as a compatibility wrapper.
+   - Existing callers should continue to receive `[(tick_pixel, value_or_none), ...]`.
+   - Internally it can call the new anchor API and project anchors back to the old tuple shape.
+   - This reduces blast radius and keeps the next patch reviewable.
+
+3. Add label-level FormulaOCR batch reading.
+   - Extend `FormulaOCR` with `read_label_batch(label_crops)` or reuse a generalized batch method.
+   - Parse each returned LaTeX string with `parse_latex_value()`.
+   - Write the parsed value back onto the corresponding `AxisLabelAnchor`.
+
+4. Fuse tesseract and FormulaOCR values per anchor.
+   - Prefer tesseract for plain numeric labels when the axis sequence is plausible.
+   - Prefer FormulaOCR when it returns explicit exponent notation such as `10^{n}`, `10^n`, scientific notation, or special characters.
+   - Prefer FormulaOCR when tesseract reads suspicious superscript concatenations such as `100`, `101`, `102`, `103`.
+   - Reject either source when it breaks axis-level monotonicity or creates large calibration residuals.
+
+5. Replace `_align_formula_values_to_ticks()` for calibration values.
+   - Keep it only as an emergency fallback for whole-axis FormulaOCR output.
+   - The main FormulaOCR value path should be label-crop anchored.
+
+### Acceptance criteria
+
+- Each FormulaOCR-derived calibration value is tied to a tick pixel and bbox.
+- A log axis with unicode superscript labels can produce at least 3 anchored positive values when labels are visible.
+- `log_x`, `log_y`, and `loglog` debug output shows final axis source as `formula` or `fused` rather than `heuristic` when FormulaOCR succeeds.
+- Whole-axis FormulaOCR is not used to evenly spread values across dense minor ticks unless no label anchors are available.
+
+## Problem 2: Batch Processing Plan
+
+FormulaOCR is heavy enough that process-level parallel validation can become counterproductive if every worker loads its own model. The next implementation should therefore split extraction into a staged pipeline.
+
+### Proposed layers
+
+| Layer | Work | Cost | Output |
+|-------|------|------|--------|
+| Fast layout layer | Load image, detect plot area, axes, ticks, label blobs, chart type, and policy | Lightweight CPU/OpenCV | `ChartWorkItem` with axis and label-anchor candidates |
+| OCR routing layer | Decide which anchors need FormulaOCR | Lightweight rules | FormulaOCR request list |
+| Formula batch layer | Run PP-FormulaNet on selected label crops in batches | Heavy CPU/GPU model inference | LaTeX/value results keyed by chart/axis/tick |
+| Calibration layer | Fuse values, solve calibration candidates, extract data | Medium CPU | Final calibrated axes and extracted data |
+
+### FormulaOCR routing triggers
+
+Call FormulaOCR only when at least one of these is true:
+
+- Axis is visually or statistically suspected to be log scale.
+- Chart type probabilities include meaningful `log_x`, `log_y`, or `loglog` mass.
+- Tesseract returns fewer than 3 valid labels.
+- Tesseract values are non-monotonic or fail the plausibility check.
+- Tesseract returns likely superscript concatenations such as `100`, `101`, `102`.
+- Connected-component geometry suggests superscript/subscript text inside the label crop.
+
+Skip FormulaOCR when:
+
+- Axis is confidently linear.
+- Tesseract has at least 3 plausible labels with low calibration residual.
+- No label anchors are detected and whole-axis FormulaOCR has low notation confidence.
+
+### Batch execution discipline
+
+- Keep one process-wide FormulaOCR model instance.
+- Use batch sizes of 8 or 16 as the first tuning point.
+- Bucket crops by rough orientation/size when possible, so tiny label crops are not mixed with very large whole-axis crops.
+- In `--workers > 1` validation, avoid loading PP-FormulaNet in every worker. Use `workers=1` for FormulaOCR validation until a central OCR service/queue exists.
+- Record timing per batch: batch size, crop count, model load time, inference time, parse time.
+
+### Acceptance criteria
+
+- FormulaOCR model loads once per process.
+- Per-image FormulaOCR calls are reduced from per-axis/per-label ad hoc calls to scheduled batches.
+- Validation reports include FormulaOCR call count and inference time.
+- A full log-focused validation run can report both quality and throughput, not just pass rate.
+
+## Calibration Candidate Selection
+
+Instead of merging OCR sources in-place and trusting the result, axis calibration should compare candidates:
+
+| Candidate | Source | Use case |
+|-----------|--------|----------|
+| `tesseract_map` | Existing tesseract numeric labels | Plain numeric linear axes |
+| `formula_map` | FormulaOCR label crops only | Unicode superscript / special-character axes |
+| `fused_map` | Per-anchor source selection | Mixed readable/unreadable label sets |
+| `heuristic_map` | Existing synthetic fallback | Last resort when OCR fails |
+
+Selection rule:
+
+1. Build each candidate tick map.
+2. Run the existing multi-candidate axis solver.
+3. Score by residual, monotonicity, log/linear consistency, valid-anchor count, and source confidence.
+4. Select the lowest-risk candidate.
+5. Preserve diagnostics for rejected candidates.
+
+This prevents a single FormulaOCR or tesseract error from poisoning the entire axis.
+
+## Diagnostics and Test Data Updates
+
+Before making behavior changes, add diagnostic fields so future validation can explain why a run passed or failed:
+
+- `label_blob_count`
+- `anchor_count`
+- `tesseract_valid_count`
+- `formula_requested_count`
+- `formula_valid_count`
+- `final_anchor_count`
+- `axis_calibration_source`
+- `axis_candidate_residuals`
+- `formula_batch_size`
+- `formula_inference_ms`
+
+Recommended first reports:
+
+```powershell
+uv run python tests/validate_by_type.py --data-dir test_data --types log_x log_y loglog --use-ocr --workers 1
+uv run python tests/validate_by_type.py --data-dir test_data_v2 --types log_x log_y loglog simple_linear --use-ocr --workers 1
+uv run python tests/validate_by_type.py --data-dir test_data_v4 --v4-special --types log_x log_y loglog --use-ocr
+```
+
+Use `workers=1` for FormulaOCR validation until the batch scheduler is centralized.
+
+## Execution Order
+
+| Phase | Scope | Primary files | Validation |
+|-------|-------|---------------|------------|
+| 1 | Add OCR/calibration diagnostics | `axis_calibrator.py`, `tests/validate_by_type.py` | Log-focused validation, no behavior change expected |
+| 2 | Add `AxisLabelAnchor` and localization API | `ocr_reader.py` | Unit tests for x/y-left/y-right anchor matching |
+| 3 | Add label-level FormulaOCR batch | `formula_ocr.py`, `axis_calibrator.py` | Small `log_x/log_y/loglog` sample run |
+| 4 | Add candidate fusion and residual-based selection | `axis_calibrator.py`, `axis_candidates.py` if needed | v1 log types, then v2 log types |
+| 5 | Add batch scheduler / throughput telemetry | `formula_ocr.py` or new `ocr_batch_scheduler.py` | Quality + timing report |
+| 6 | Expand to v4 in-scope pressure data | validation scripts and reports | v4-special log-focused run |
+
+## Risk Controls
+
+- Do not remove tesseract fallback.
+- Do not remove whole-axis FormulaOCR; keep it for scale detection.
+- Do not route all axes through FormulaOCR by default.
+- Do not use FormulaOCR in every process worker until model ownership is explicit.
+- Do not accept unanchored FormulaOCR values into calibration except as a clearly marked emergency fallback.
+- Keep `read_all_tick_labels()` compatible until all calibration call sites move to anchors.
+
+## Success Targets
+
+Short-term:
+
+- Eliminate the known value-to-tick misalignment failure from Chapter 29.
+- Improve log-axis calibration diagnostics enough to classify failures by localization, recognition, or solver.
+- Show measurable improvement on `test_data` log types without regressing simple linear axes.
+
+Medium-term:
+
+- Raise `log_x`, `log_y`, and `loglog` pass rates on degraded datasets through anchored FormulaOCR, not through meta leakage or heuristic range stretching.
+- Keep FormulaOCR usage sparse and explainable.
+- Produce throughput numbers that allow a deliberate quality/speed trade-off for large chart batches.
+
+## Current Next Action
+
+Start with Phase 1 and Phase 2:
+
+1. Add diagnostics around current tesseract/FormulaOCR calibration flow.
+2. Extract label-anchor localization from `ocr_reader.py`.
+3. Validate that anchor bboxes match tick pixels before introducing label-level FormulaOCR behavior changes.
+
+## Implementation Update
+
+As of 2026-04-28, the first Chapter 30 steps are now in code:
+
+- `ocr_reader.py` exposes `detect_tick_label_anchors()` and preserves `read_all_tick_labels()` as a compatibility wrapper.
+- `formula_ocr.py` now has a label-batch entrypoint and records the last batch's requested/returned counts and elapsed time.
+- `axis_calibrator.py` uses anchor-localized crops for small-batch FormulaOCR routing, filters out synthetic crops without text signal, and tags each calibrated axis with source/anchor/batch telemetry.
+- `axis_calibrator.py` now centralizes FormulaOCR crop selection in a shared batch planner with a global crop cap and a per-axis crop budget, so log axes stay prioritized while plain axes remain sparse.
+- Formula values only override tesseract labels when the axis has multiple anchored formula values; a single FormulaOCR hit is now treated as a hint, not as an axis-wide replacement.
+- `main.py` and `tests/validate_by_type.py` now surface the new diagnostics so small-batch runs can distinguish `tesseract`, `formula`, `fused`, and `heuristic` paths.
+- Smoke checks on `loglog/000_original.png`, `loglog/003.png`, `loglog/005.png`, `loglog/013.png`, and `loglog/030.png` show that FormulaOCR is now selectively useful rather than noisy: 013 still flips the left y-axis to `fused/log`, while 005 stays on the tesseract path when FormulaOCR would otherwise overreach.
+- `formula_batch_queue.py` adds a cross-image FormulaOCR queue so throughput work can merge selected crops from many charts into one model call.
+- `main.py` now exposes `extract_from_images_batched()`, which prepares panels, queues selected FormulaOCR crops across images, and then replays calibration with injected OCR results.
+- `tests/batch_pipeline_smoke.py` exercises the real batched extraction path on a small image set so pipeline wiring can be checked separately from accuracy scoring.
+- `tests/batch_pipeline_sweep.py` now sweeps the batched pipeline from small to larger image counts, which gives a direct throughput/stability curve for batch sizes 2 and 4.
+- Full `loglog` sweeps with `formula_batch_max_crops=1`, `2`, and `4` are now treated as a crop-routing/fusion signal, not as the batch-throughput benchmark. They show that more in-image crops can hurt label fusion quality, while true batch throughput must be measured by cross-image queue size, chunk count, model calls, and elapsed time.
+- `tests/test_formula_batch_planner.py` now guards the crop cap, the plain-axis skip rule, and the "multiple formula values required for override" rule.
+- `tests/test_formula_batch_queue.py` guards that queued crops from multiple charts are merged into one FormulaOCR call.
+- `tests/formula_batch_queue_smoke.py` provides the first throughput-only smoke path for growing the number of queued images.
+- `tests/batch_pipeline_sweep.py` now confirms the full pipeline stays stable while scaling from 1 image to 8 images on `loglog`, with `batch_size=2` and `batch_size=4` both completing and preserving single-model-call batching.
+- After merging axis-level FormulaOCR crops into the same queue, the 1/2/4/8 sweep still completed, but wall time increased sharply because the added full-axis crops are substantially heavier than the label crops. This suggests the next throughput win is more likely from lighter crop gating and tesseract reuse than from merging even more FormulaOCR work into one queue.
+- The axis-level FormulaOCR batch path was then rolled back to label crops only. That rollback restored the small-batch throughput curve: the next 1/2/4/8 sweep on `loglog` returned to second-scale timings again, with `batch_size=4` keeping `limit=8` around 2.35s instead of the much slower full-axis-crop run.
+- `ocr_reader.py` keeps the crop-level tesseract cache so anchor and fallback reads can reuse preprocessing/results when the same crop is seen twice.
+
+Remaining work:
+
+- tighten the fusion rule for the few remaining log-axis failures that are still dominated by tesseract noise
+- add a compact batch-report summary for validation CSVs
+- keep extending the batched extraction path only where it improves throughput or makes routing easier to observe
+- continue crop and OCR ownership work separately from throughput benchmarking
+- consider a narrower label-crop gate before FormulaOCR enqueue if future profiling shows the queue still carries too many low-value crops
+
+## Evaluation Split
+
+Batch throughput and extraction accuracy now have separate evaluation tracks:
+
+| Track | Question | Metric | Current tool |
+|-------|----------|--------|--------------|
+| Throughput | Can many chart crops share fewer FormulaOCR calls? | queued crops, chunks, model calls, elapsed ms | `tests/formula_batch_queue_smoke.py` |
+| Accuracy | Did the right crop/value source improve calibration? | pass rate, rel_err, axis source, residual | `tests/validate_by_type.py` |
+
+This split prevents a larger in-image crop budget from being mistaken for a better batch implementation. In-image crop routing is an accuracy problem; cross-image queuing is the batch/throughput problem.

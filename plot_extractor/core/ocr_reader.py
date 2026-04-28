@@ -1,8 +1,10 @@
 """OCR and tick label reading with fallback mechanisms."""
 import glob
+from functools import lru_cache
 import os
 import shutil
 import sys
+from dataclasses import dataclass
 from pathlib import Path
 from typing import List, Tuple, Optional
 
@@ -75,12 +77,117 @@ def init_tesseract() -> str | None:
 from plot_extractor.utils.math_utils import parse_numeric
 
 
+@dataclass
+class AxisLabelAnchor:
+    """Axis tick anchor plus the label crop used to read it."""
+
+    tick_pixel: int
+    label_bbox: tuple[int, int, int, int]
+    label_center: int
+    crop: np.ndarray
+    tesseract_text: Optional[str] = None
+    tesseract_value: Optional[float] = None
+    formula_latex: Optional[str] = None
+    formula_value: Optional[float] = None
+    confidence: float = 0.0
+    source: str = "missing"
+
+
 def _clean_ocr_text(text: str) -> str:
     """Clean OCR output to extract likely numeric text."""
     text = text.strip()
     # Remove common noise
     text = text.replace("|", "").replace("—", "-").replace("–", "-")
     return text
+
+
+def _ocr_tick_label_text_impl(
+    image_crop,
+    block_size: int | None = None,
+    c_val: int | None = None,
+) -> tuple[Optional[str], Optional[float], int]:
+    """Read raw OCR text and numeric value from a tick-label crop."""
+    init_tesseract()
+    if not TESSERACT_AVAILABLE:
+        return None, None, 0
+    try:
+        preprocessed, contours_len = _preprocess_tick_crop(
+            image_crop,
+            policy=None if block_size is None or c_val is None else type("OCRPolicy", (), {"ocr_block_size": block_size, "ocr_C": c_val})(),
+        )
+        from PIL import Image
+
+        img = Image.fromarray(preprocessed)
+
+        # Try multiple PSM modes; single-character/number modes work best for ticks
+        configs = [
+            "--psm 8 -c tessedit_char_whitelist=0123456789.,-eE+kKmMbB%",
+            "--psm 7 -c tessedit_char_whitelist=0123456789.,-eE+kKmMbB%",
+        ]
+        fallback_text = None
+        for cfg in configs:
+            text = pytesseract.image_to_string(img, config=cfg)
+            text = _clean_ocr_text(text)
+            if text and fallback_text is None:
+                fallback_text = text
+            val = parse_numeric(text)
+            # Keep negative labels (e.g. axes spanning below zero).
+            if val is not None:
+                return text, val, contours_len
+
+        # Scatteract negative-sign heuristic:
+        # If OTSU shows 2 top-level contours (minus + digit) but OCR only
+        # returned a single digit, prepend '-' and retry.
+        if contours_len == 2:
+            for cfg in configs:
+                text = pytesseract.image_to_string(img, config=cfg)
+                text = _clean_ocr_text(text)
+                if len(text) == 1 and text.isdigit():
+                    val = parse_numeric("-" + text)
+                    if val is not None:
+                        return "-" + text, val, contours_len
+
+        return fallback_text, None, contours_len
+    except OSError:
+        return None, None, 0
+
+
+def _ocr_tick_label_text(image_crop, policy=None) -> tuple[Optional[str], Optional[float], int]:
+    """Read raw OCR text and numeric value from a tick-label crop."""
+    block_size = None
+    c_val = None
+    if policy is not None:
+        block_size = int(policy.ocr_block_size) | 1
+        c_val = int(policy.ocr_C)
+    return _ocr_tick_label_text_impl(image_crop, block_size=block_size, c_val=c_val)
+
+
+@lru_cache(maxsize=4096)
+def _ocr_tick_label_text_cached(
+    crop_bytes: bytes,
+    shape: tuple[int, ...],
+    dtype_str: str,
+    block_size: int | None,
+    c_val: int | None,
+) -> tuple[Optional[str], Optional[float], int]:
+    crop = np.frombuffer(crop_bytes, dtype=np.dtype(dtype_str)).reshape(shape)
+    return _ocr_tick_label_text_impl(crop, block_size=block_size, c_val=c_val)
+
+
+def _ocr_tick_label_text_cached_for_crop(image_crop, policy=None) -> tuple[Optional[str], Optional[float], int]:
+    block_size = None
+    c_val = None
+    if policy is not None:
+        block_size = int(policy.ocr_block_size) | 1
+        c_val = int(policy.ocr_C)
+    crop = np.ascontiguousarray(image_crop)
+    return _ocr_tick_label_text_cached(
+        crop.tobytes(),
+        crop.shape,
+        crop.dtype.str,
+        block_size,
+        c_val,
+    )
 
 
 def _deskew_crop(crop, max_angle=10.0):
@@ -185,42 +292,8 @@ def _preprocess_tick_crop(crop: np.ndarray, policy=None) -> tuple[np.ndarray, in
 
 def read_tick_label(image_crop, policy=None) -> Optional[float]:
     """Attempt OCR on a small crop around a tick label."""
-    init_tesseract()
-    if not TESSERACT_AVAILABLE:
-        return None
-    try:
-        preprocessed, contours_len = _preprocess_tick_crop(image_crop, policy=policy)
-        from PIL import Image
-        img = Image.fromarray(preprocessed)
-
-        # Try multiple PSM modes; single-character/number modes work best for ticks
-        configs = [
-            "--psm 8 -c tessedit_char_whitelist=0123456789.,-eE+kKmMbB%",
-            "--psm 7 -c tessedit_char_whitelist=0123456789.,-eE+kKmMbB%",
-        ]
-        for cfg in configs:
-            text = pytesseract.image_to_string(img, config=cfg)
-            text = _clean_ocr_text(text)
-            val = parse_numeric(text)
-            # Keep negative labels (e.g. axes spanning below zero).
-            if val is not None:
-                return val
-
-        # Scatteract negative-sign heuristic:
-        # If OTSU shows 2 top-level contours (minus + digit) but OCR only
-        # returned a single digit, prepend '-' and retry.
-        if contours_len == 2:
-            for cfg in configs:
-                text = pytesseract.image_to_string(img, config=cfg)
-                text = _clean_ocr_text(text)
-                if len(text) == 1 and text.isdigit():
-                    val = parse_numeric("-" + text)
-                    if val is not None:
-                        return val
-
-        return None
-    except OSError:
-        return None
+    _, value, _ = _ocr_tick_label_text_cached_for_crop(image_crop, policy=policy)
+    return value
 
 
 def _detect_label_blobs(image: np.ndarray, axis) -> List[Tuple[int, int, int, int]]:
@@ -276,6 +349,16 @@ def _detect_label_blobs(image: np.ndarray, axis) -> List[Tuple[int, int, int, in
     return blobs
 
 
+@dataclass
+class _LabelCandidate:
+    bbox: tuple[int, int, int, int]
+    center: int
+    crop: np.ndarray
+    tesseract_text: Optional[str]
+    tesseract_value: Optional[float]
+    confidence: float
+
+
 def _match_ticks_labels_bidirectional(
     tick_pixels: List[int],
     labels: List[Tuple[int, float]],
@@ -327,6 +410,177 @@ def _match_ticks_labels_bidirectional(
     return [(p, matched.get(p)) for p in tick_pixels]
 
 
+def _match_tick_label_candidates(
+    tick_pixels: List[int],
+    candidates: List[_LabelCandidate],
+) -> List[tuple[int, Optional[_LabelCandidate]]]:
+    """Mutual nearest-neighbor match from ticks to label candidates."""
+    if not candidates or not tick_pixels:
+        return [(p, None) for p in tick_pixels]
+
+    tick_pixels = sorted(tick_pixels)
+    candidate_positions = [cand.center for cand in candidates]
+
+    candidate_to_tick = {}
+    for idx, cand in enumerate(candidates):
+        nearest = min(tick_pixels, key=lambda t, _cand=cand: abs(t - _cand.center))
+        candidate_to_tick[idx] = nearest
+
+    tick_to_candidate = {}
+    for tick in tick_pixels:
+        nearest_idx = min(
+            range(len(candidates)),
+            key=lambda i, _tick=tick: abs(candidate_positions[i] - _tick),
+        )
+        tick_to_candidate[tick] = nearest_idx
+
+    matched = {}
+    for idx, cand in enumerate(candidates):
+        nearest_tick = candidate_to_tick[idx]
+        if tick_to_candidate.get(nearest_tick) != idx:
+            continue
+        existing = matched.get(nearest_tick)
+        if existing is None:
+            matched[nearest_tick] = cand
+            continue
+        current_dist = abs(existing.center - nearest_tick)
+        new_dist = abs(cand.center - nearest_tick)
+        if new_dist < current_dist or (new_dist == current_dist and cand.confidence > existing.confidence):
+            matched[nearest_tick] = cand
+
+    return [(tick, matched.get(tick)) for tick in tick_pixels]
+
+
+def _crop_tick_label_region(
+    image: np.ndarray,
+    axis,
+    tick_pixel: int,
+    padding: int = 15,
+) -> tuple[np.ndarray, tuple[int, int, int, int]]:
+    """Crop the expected tick-label region around one tick position."""
+    h, w = image.shape[:2]
+    if axis.direction == "x":
+        y1 = min(h, int(axis.position) + 3)
+        y2 = min(h, int(axis.position) + padding * 2 + 5)
+        x1 = max(0, int(tick_pixel) - padding)
+        x2 = min(w, int(tick_pixel) + padding)
+    else:
+        prev_pix = int(tick_pixel) - padding * 2
+        next_pix = int(tick_pixel) + padding * 2
+        half_gap = min(abs(int(tick_pixel) - prev_pix), abs(next_pix - int(tick_pixel))) / 2.0
+        v_pad = int(min(max(half_gap - 1, 10), padding * 1.5))
+        y1 = max(0, int(tick_pixel) - v_pad)
+        y2 = min(h, int(tick_pixel) + v_pad)
+        h_pad = padding * 3
+        if axis.side == "right":
+            x1 = int(axis.position) + 3
+            x2 = min(w, int(axis.position) + h_pad)
+        else:
+            x1 = max(0, int(axis.position) - h_pad)
+            x2 = max(0, int(axis.position) - 3)
+            if x2 <= x1:
+                x1, x2 = int(axis.position) + 3, min(w, int(axis.position) + h_pad)
+
+    if x2 <= x1:
+        x2 = min(w, x1 + 10)
+    if y2 <= y1:
+        y2 = min(h, y1 + 10)
+    return image[y1:y2, x1:x2], (x1, y1, x2, y2)
+
+
+def detect_tick_label_anchors(
+    image: np.ndarray,
+    axis,
+    tick_pixels: List[int],
+    policy=None,
+) -> List[AxisLabelAnchor]:
+    """Detect tick anchors and preserve the label crop used to read them."""
+    init_tesseract()
+    tick_pixels = sorted(tick_pixels)
+    if not tick_pixels:
+        return []
+
+    blobs = _detect_label_blobs(image, axis)
+    candidates: List[_LabelCandidate] = []
+    h, w = image.shape[:2]
+    for bx, by, bw, bh in blobs:
+        cx1 = max(0, bx - 2)
+        cy1 = max(0, by - 2)
+        cx2 = min(w, bx + bw + 2)
+        cy2 = min(h, by + bh + 2)
+        crop = image[cy1:cy2, cx1:cx2]
+        if crop.size == 0:
+            continue
+        text, value, contours_len = _ocr_tick_label_text_cached_for_crop(crop, policy=policy)
+        if axis.direction == "x":
+            center = int((cx1 + cx2) / 2)
+        else:
+            center = int((cy1 + cy2) / 2)
+        label_area = max((cx2 - cx1) * (cy2 - cy1), 1)
+        confidence = 0.15
+        if value is not None:
+            confidence = 0.75
+        elif text:
+            confidence = 0.35
+        if contours_len == 2:
+            confidence = min(1.0, confidence + 0.05)
+        candidates.append(_LabelCandidate(
+            bbox=(cx1, cy1, cx2, cy2),
+            center=center,
+            crop=crop,
+            tesseract_text=text,
+            tesseract_value=value,
+            confidence=min(1.0, confidence + min(label_area / 4000.0, 0.2)),
+        ))
+
+    matched = _match_tick_label_candidates(tick_pixels, candidates)
+    anchors: List[AxisLabelAnchor] = []
+    empty_crop = np.empty((0, 0), dtype=image.dtype)
+    for tick_pixel, candidate in matched:
+        if candidate is None:
+            crop, bbox = _crop_tick_label_region(image, axis, tick_pixel, padding=15)
+            text, value, contours_len = _ocr_tick_label_text_cached_for_crop(crop, policy=policy) if crop.size > 0 else ("", None, 0)
+            confidence = 0.0
+            if value is not None:
+                confidence = 0.45
+            elif text:
+                confidence = 0.2
+            if contours_len == 2:
+                confidence = min(1.0, confidence + 0.05)
+            anchors.append(AxisLabelAnchor(
+                tick_pixel=int(tick_pixel),
+                label_bbox=bbox,
+                label_center=int(tick_pixel),
+                crop=crop if crop.size > 0 else empty_crop,
+                tesseract_text=text or None,
+                tesseract_value=value,
+                confidence=float(confidence),
+                source=(
+                    "synthetic_ocr"
+                    if (value is not None or text)
+                    else "synthetic"
+                ),
+            ))
+            continue
+        anchors.append(AxisLabelAnchor(
+            tick_pixel=int(tick_pixel),
+            label_bbox=candidate.bbox,
+            label_center=int(candidate.center),
+            crop=candidate.crop,
+            tesseract_text=candidate.tesseract_text,
+            tesseract_value=candidate.tesseract_value,
+            confidence=float(candidate.confidence),
+            source=(
+                "tesseract"
+                if candidate.tesseract_value is not None
+                else "ocr"
+                if candidate.tesseract_text
+                else "missing"
+            ),
+        ))
+    return anchors
+
+
 def read_all_tick_labels(
     image, axis, tick_pixels: List[int], padding=15, policy=None
 ) -> List[Tuple[int, Optional[float]]]:
@@ -343,48 +597,14 @@ def read_all_tick_labels(
     tick_pixels = sorted(tick_pixels)
     h, w = image.shape[:2]
 
-    # --- Phase 1: Bidirectional matching (Scatteract-style) ---
-    blobs = _detect_label_blobs(image, axis)
-    labels = []
-    for bx, by, bw, bh in blobs:
-        # Expand slightly for OCR
-        cx1 = max(0, bx - 2)
-        cy1 = max(0, by - 2)
-        cx2 = min(w, bx + bw + 2)
-        cy2 = min(h, by + bh + 2)
-        crop = image[cy1:cy2, cx1:cx2]
-        if crop.size == 0:
-            continue
-        val = read_tick_label(crop, policy=policy)
-        if val is not None:
-            # Label position = center along the axis direction
-            if axis.direction == "x":
-                label_pos = int((cx1 + cx2) / 2)
-            else:
-                label_pos = int((cy1 + cy2) / 2)
-            labels.append((label_pos, val))
-
-    # Remove duplicate positions (keep first / best)
-    seen_pos = set()
-    unique_labels = []
-    for pos, val in sorted(labels, key=lambda x: x[1] is not None, reverse=True):
-        # Allow small tolerance for duplicate detection
-        is_dup = any(abs(pos - sp) < 5 for sp in seen_pos)
-        if not is_dup:
-            seen_pos.add(pos)
-            unique_labels.append((pos, val))
-
-    bidirectional_results = _match_ticks_labels_bidirectional(tick_pixels, unique_labels)
-    bidirectional_valid = sum(1 for _, v in bidirectional_results if v is not None)
-
-    # --- Phase 2: Fallback to direct per-tick OCR if bidirectional too weak ---
-    # Only trust bidirectional if it matches a strong majority of ticks
-    # and has at least 3 valid labels.
+    anchors = detect_tick_label_anchors(image, axis, tick_pixels, policy=policy)
+    anchor_results = [(anchor.tick_pixel, anchor.tesseract_value) for anchor in anchors]
+    anchor_valid = sum(1 for _, v in anchor_results if v is not None)
     min_matches = max(3, len(tick_pixels) * 2 // 3)
-    if bidirectional_valid >= min_matches:
-        return bidirectional_results
+    if anchor_valid >= min_matches:
+        return anchor_results
 
-    # Direct OCR at each tick position (original method)
+    # Fallback to direct per-tick OCR if anchor matching is too weak.
     direct_results = []
     for idx, pix in enumerate(tick_pixels):
         if axis.direction == "x":
@@ -416,8 +636,7 @@ def read_all_tick_labels(
         val = read_tick_label(crop, policy=policy)
         direct_results.append((pix, val))
 
-    # Prefer whichever method yielded more valid labels
     direct_valid = sum(1 for _, v in direct_results if v is not None)
-    if direct_valid >= bidirectional_valid:
+    if direct_valid >= anchor_valid:
         return direct_results
-    return bidirectional_results
+    return anchor_results

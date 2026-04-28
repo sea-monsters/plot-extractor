@@ -16,6 +16,7 @@ Usage::
 import logging
 import re
 import threading
+import time
 from dataclasses import dataclass
 from typing import Optional, Tuple
 
@@ -165,6 +166,17 @@ class AxisLabelResult:
     count_10pow: int             # how many 10^{N} patterns were found
 
 
+@dataclass
+class FormulaBatchStats:
+    """Lightweight telemetry for the last FormulaOCR batch call."""
+
+    requested: int
+    returned: int
+    batch_size: int
+    chunks: int
+    elapsed_ms: float
+
+
 class FormulaOCR:
     """Singleton wrapper around PP-FormulaNet_plus-S for axis label reading.
 
@@ -176,6 +188,7 @@ class FormulaOCR:
     def __init__(self):
         self._model = None
         self._lock = threading.Lock()
+        self._last_batch_stats: Optional[FormulaBatchStats] = None
 
     # ------------------------------------------------------------------
     # Public API
@@ -215,41 +228,84 @@ class FormulaOCR:
         )
 
     def read_axes_batch(
-        self, axis_crops: list,
+        self, axis_crops: list, batch_size: int | None = None,
     ) -> list:
         """Send all axis crops to PP-FormulaNet in a single batch call.
 
         Returns a list of ``AxisLabelResult`` (or None per crop on failure),
         same length and order as *axis_crops*.
         """
-        if not axis_crops:
+        return self.read_label_batch(axis_crops, batch_size=batch_size)
+
+    def read_label_batch(self, label_crops: list, batch_size: int | None = None) -> list:
+        """Send cropped label images to PP-FormulaNet in one batch call."""
+        if not label_crops:
+            self._last_batch_stats = FormulaBatchStats(
+                requested=0,
+                returned=0,
+                batch_size=0,
+                chunks=0,
+                elapsed_ms=0.0,
+            )
             return []
         self._ensure_model()
         if self._model is None:
-            return [None] * len(axis_crops)
+            self._last_batch_stats = FormulaBatchStats(
+                requested=len(label_crops),
+                returned=0,
+                batch_size=0,
+                chunks=0,
+                elapsed_ms=0.0,
+            )
+            return [None] * len(label_crops)
 
+        started = time.perf_counter()
+        target_batch_size = len(label_crops) if not batch_size or batch_size <= 0 else min(batch_size, len(label_crops))
+        results = []
+        chunks = 0
         with self._lock:
             try:
-                latex_list = self._infer_batch(axis_crops)
+                for offset in range(0, len(label_crops), target_batch_size):
+                    chunk = label_crops[offset:offset + target_batch_size]
+                    chunks += 1
+                    latex_list = self._infer_batch(chunk)
+                    for latex in latex_list:
+                        if latex is None:
+                            results.append(None)
+                        else:
+                            exponents, values = _extract_all_10pow(latex)
+                            log_conf = _score_axis_latex(latex, len(exponents))
+                            results.append(AxisLabelResult(
+                                latex=latex,
+                                exponents=exponents,
+                                values=values,
+                                log_confidence=log_conf,
+                                count_10pow=len(exponents),
+                            ))
             except Exception:
                 _logger.debug("FormulaOCR batch inference failed", exc_info=True)
-                return [None] * len(axis_crops)
+                self._last_batch_stats = FormulaBatchStats(
+                    requested=len(label_crops),
+                    returned=0,
+                    batch_size=target_batch_size,
+                    chunks=chunks,
+                    elapsed_ms=(time.perf_counter() - started) * 1000.0,
+                )
+                return [None] * len(label_crops)
 
-        results = []
-        for latex in latex_list:
-            if latex is None:
-                results.append(None)
-            else:
-                exponents, values = _extract_all_10pow(latex)
-                log_conf = _score_axis_latex(latex, len(exponents))
-                results.append(AxisLabelResult(
-                    latex=latex,
-                    exponents=exponents,
-                    values=values,
-                    log_confidence=log_conf,
-                    count_10pow=len(exponents),
-                ))
+        elapsed_ms = (time.perf_counter() - started) * 1000.0
+        self._last_batch_stats = FormulaBatchStats(
+            requested=len(label_crops),
+            returned=sum(1 for item in results if item is not None),
+            batch_size=target_batch_size,
+            chunks=chunks,
+            elapsed_ms=elapsed_ms,
+        )
         return results
+
+    def last_batch_stats(self) -> Optional[FormulaBatchStats]:
+        """Return telemetry for the most recent batch call."""
+        return self._last_batch_stats
 
     def detect_log_notation(self, axis_crop: np.ndarray) -> float:
         """Return 0.0-1.0 log-scale confidence for an axis crop.
