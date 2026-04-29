@@ -1,0 +1,1812 @@
+{
+  "status": "success",
+  "total_count": 65,
+  "result": [
+    {
+      "arxiv_id": "2203.10244",
+      "score": 8.842899,
+      "title": "ChartQA: A Benchmark for Question Answering about Charts with Visual and Logical Reasoning",
+      "tldr": "This paper introduces ChartQA, a benchmark with 9.6K human-written and 23.1K generated questions on real-world charts, addressing complex visual and logical reasoning tasks through a dataset with diverse styles and topics, enabling evaluation of models that combine visual features and data tables for accurate answers.",
+      "abstract": "Charts are very popular for analyzing data. When exploring charts, people often ask a variety of complex reasoning questions that involve several logical and arithmetic operations. They also commonly refer to visual features of a chart in their questions. However, most existing datasets do not focus on such complex reasoning questions as their questions are template-based and answers come from a fixed-vocabulary. In this work, we present a large-scale benchmark covering 9.6K human-written questions as well as 23.1K questions generated from human-written chart summaries. To address the unique challenges in our benchmark involving visual and logical reasoning over charts, we present two transformer-based models that combine visual features and the data table of the chart in a unified way to answer questions. While our models achieve the state-of-the-art results on the previous datasets as well as on our benchmark, the evaluation also reveals several challenges in answering complex reasoning questions.",
+      "authors": [
+        {
+          "name": "Ahmed Masry",
+          "orgs": [
+            "York University, Canada"
+          ]
+        },
+        {
+          "name": "Do Xuan Long",
+          "orgs": [
+            "Nanyang Technological University, Singapore",
+            "Salesforce Research"
+          ]
+        },
+        {
+          "name": "Jia Qing Tan",
+          "orgs": [
+            "Nanyang Technological University, Singapore",
+            "Salesforce Research"
+          ]
+        },
+        {
+          "name": "Shafiq Joty",
+          "orgs": [
+            "Nanyang Technological University, Singapore",
+            "Salesforce Research"
+          ]
+        },
+        {
+          "name": "Enamul Hoque",
+          "orgs": [
+            "York University, Canada",
+            "Nanyang Technological University, Singapore",
+            "Salesforce Research"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2203.10244v1",
+      "date": "2022-03-19T05:00:30Z",
+      "citation_count": 1256,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2602.10138",
+      "score": 8.535046,
+      "title": "Multimodal Information Fusion for Chart Understanding: A Survey of MLLMs -- Evolution, Limitations, and Cognitive Enhancement",
+      "tldr": "This paper reviews MLLMs in chart understanding, addressing the challenge of integrating visual and textual data in charts and the limitations of existing models, contributing a structured taxonomy of datasets and methodologies, and highlighting advancements in alignment techniques and cognitive enhancement strategies.",
+      "abstract": "Chart understanding is a quintessential information fusion task, requiring the seamless integration of graphical and textual data to extract meaning. The advent of Multimodal Large Language Models (MLLMs) has revolutionized this domain, yet the landscape of MLLM-based chart analysis remains fragmented and lacks systematic organization. This survey provides a comprehensive roadmap of this nascent frontier by structuring the domain's core components. We begin by analyzing the fundamental challenges of fusing visual and linguistic information in charts. We then categorize downstream tasks and datasets, introducing a novel taxonomy of canonical and non-canonical benchmarks to highlight the field's expanding scope. Subsequently, we present a comprehensive evolution of methodologies, tracing the progression from classic deep learning techniques to state-of-the-art MLLM paradigms that leverage sophisticated fusion strategies. By critically examining the limitations of current models, particularly their perceptual and reasoning deficits, we identify promising future directions, including advanced alignment techniques and reinforcement learning for cognitive enhancement. This survey aims to equip researchers and practitioners with a structured understanding of how MLLMs are transforming chart information fusion and to catalyze progress toward more robust and reliable systems.",
+      "authors": [
+        {
+          "name": "Tao Wang",
+          "orgs": []
+        },
+        {
+          "name": "Jian Zhao",
+          "orgs": []
+        },
+        {
+          "name": "Jiancheng Lv",
+          "orgs": []
+        },
+        {
+          "name": "Zhihang Yi",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.10138v1",
+      "date": "2026-02-08",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2505.13444",
+      "score": 8.454087,
+      "title": "ChartMuseum: Testing Visual Reasoning Capabilities of Large Vision-Language Models",
+      "tldr": "This paper introduces ChartMuseum, a new benchmark for evaluating large vision-language models' visual and textual reasoning capabilities, addressing the gap in existing datasets that under-evaluate visual reasoning; it presents a dataset with 1,162 expert-annotated questions from real-world charts and shows that state-of-the-art models achieve 63.0% and 38.5% accuracy compared to human 93.0%, with a 35%-55% performance drop on visual-reasoning tasks.",
+      "abstract": "Chart understanding presents a unique challenge for large vision-language models (LVLMs), as it requires the integration of sophisticated textual and visual reasoning capabilities. However, current LVLMs exhibit a notable imbalance between these skills, falling short on visual reasoning that is difficult to perform in text. We conduct a case study using a synthetic dataset solvable only through visual reasoning and show that model performance degrades significantly with increasing visual complexity, while human performance remains robust. We then introduce ChartMuseum, a new Chart Question Answering (QA) benchmark containing 1,162 expert-annotated questions spanning multiple reasoning types, curated from real-world charts across 184 sources, specifically built to evaluate complex visual and textual reasoning. Unlike prior chart understanding benchmarks -- where frontier models perform similarly and near saturation -- our benchmark exposes a substantial gap between model and human performance, while effectively differentiating model capabilities: although humans achieve 93% accuracy, the best-performing model Gemini-2.5-Pro attains only 63.0%, and the leading open-source LVLM Qwen2.5-VL-72B-Instruct achieves only 38.5%. Moreover, on questions requiring primarily visual reasoning, all models experience a 35%-55% performance drop from text-reasoning-heavy question performance. Lastly, our qualitative error analysis reveals specific categories of visual reasoning that are challenging for current LVLMs.",
+      "authors": [
+        {
+          "name": "Xinyu Zhao",
+          "orgs": [
+            "The University of Texas at Austin"
+          ]
+        },
+        {
+          "name": "Greg Durrett",
+          "orgs": [
+            "The University of Texas at Austin"
+          ]
+        },
+        {
+          "name": "Puyuan Peng",
+          "orgs": [
+            "The University of Texas at Austin"
+          ]
+        },
+        {
+          "name": "Thom Lake",
+          "orgs": [
+            "The University of Texas at Austin"
+          ]
+        },
+        {
+          "name": "Juan Diego Rodriguez",
+          "orgs": [
+            "The University of Texas at Austin"
+          ]
+        },
+        {
+          "name": "Zayne Sprague",
+          "orgs": [
+            "The University of Texas at Austin"
+          ]
+        },
+        {
+          "name": "Manya Wadhwa",
+          "orgs": [
+            "The University of Texas at Austin"
+          ]
+        },
+        {
+          "name": "Zeyu Leo Liu",
+          "orgs": [
+            "The University of Texas at Austin"
+          ]
+        },
+        {
+          "name": "Bodun Hu",
+          "orgs": [
+            "The University of Texas at Austin"
+          ]
+        },
+        {
+          "name": "Ramya Namuduri",
+          "orgs": [
+            "The University of Texas at Austin"
+          ]
+        },
+        {
+          "name": "Prasann Singhal",
+          "orgs": [
+            "The University of Texas at Austin"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2505.13444v3",
+      "date": "2025-05-19",
+      "citation_count": 10,
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2508.04650",
+      "score": 8.396132,
+      "title": "EncQA: Benchmarking Vision-Language Models on Visual Encodings for Charts",
+      "tldr": "This paper introduces EncQA, a benchmark for evaluating vision-language models on visual encodings in charts, addressing the gap in systematically testing visual reasoning across six encoding channels and eight tasks, by generating 2,076 synthetic question-answer pairs and showing significant performance variation across encodings and tasks among nine models.",
+      "abstract": "Multimodal vision-language models (VLMs) continue to achieve ever-improving scores on chart understanding benchmarks. Yet, we find that this progress does not fully capture the breadth of visual reasoning capabilities essential for interpreting charts. We introduce EncQA, a novel benchmark informed by the visualization literature, designed to provide systematic coverage of visual encodings and analytic tasks that are crucial for chart understanding. EncQA provides 2,076 synthetic question-answer pairs, enabling balanced coverage of six visual encoding channels (position, length, area, color quantitative, color nominal, and shape) and eight tasks (find extrema, retrieve value, find anomaly, filter values, compute derived value exact, compute derived value relative, correlate values, and correlate values relative). Our evaluation of 9 state-of-the-art VLMs reveals that performance varies significantly across encodings within the same task, as well as across tasks. Contrary to expectations, we observe that performance does not improve with model size for many task-encoding pairs. Our results suggest that advancing chart understanding requires targeted strategies addressing specific visual reasoning gaps, rather than solely scaling up model or dataset size.",
+      "authors": [
+        {
+          "name": "Kushin Mukherjee",
+          "orgs": []
+        },
+        {
+          "name": "Donghao Ren",
+          "orgs": []
+        },
+        {
+          "name": "Dominik Moritz",
+          "orgs": []
+        },
+        {
+          "name": "Yannick Assogba",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2508.04650v1",
+      "date": "2025-08-06T17:17:46Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2410.13883",
+      "score": 8.391339,
+      "title": "Transformers Utilization in Chart Understanding: A Review of Recent Advances & Future Trends",
+      "tldr": "This paper reviews transformer utilization in Chart Understanding (CU), addressing the gap in automating multimodal chart tasks by integrating transformers into end-to-end solutions; it analyzes 32 studies, categorizing frameworks into single/multi-task and exploring pre-trained and prompt-based techniques; findings highlight challenges like OCR dependency and low-resolution handling, with implications for improving benchmarks, model efficiency, and explainability in CU.",
+      "abstract": "In recent years, interest in vision-language tasks has grown, especially those involving chart interactions. These tasks are inherently multimodal, requiring models to process chart images, accompanying text, underlying data tables, and often user queries. Traditionally, Chart Understanding (CU) relied on heuristics and rule-based systems. However, recent advancements that have integrated transformer architectures significantly improved performance. This paper reviews prominent research in CU, focusing on State-of-The-Art (SoTA) frameworks that employ transformers within End-to-End (E2E) solutions. Relevant benchmarking datasets and evaluation techniques are analyzed. Additionally, this article identifies key challenges and outlines promising future directions for advancing CU solutions. Following the PRISMA guidelines, a comprehensive literature search is conducted across Google Scholar, focusing on publications from Jan'20 to Jun'24. After rigorous screening and quality assessment, 32 studies are selected for in-depth analysis. The CU tasks are categorized into a three-layered paradigm based on the cognitive task required. Recent advancements in the frameworks addressing various CU tasks are also reviewed. Frameworks are categorized into single-task or multi-task based on the number of tasks solvable by the E2E solution. Within multi-task frameworks, pre-trained and prompt-engineering-based techniques are explored. This review overviews leading architectures, datasets, and pre-training tasks. Despite significant progress, challenges remain in OCR dependency, handling low-resolution images, and enhancing visual reasoning. Future directions include addressing these challenges, developing robust benchmarks, and optimizing model efficiency. Additionally, integrating explainable AI techniques and exploring the balance between real and synthetic data are crucial for advancing CU research.",
+      "authors": [
+        {
+          "name": "Mirna Al-Shetairy",
+          "orgs": [
+            "CIS, ASU",
+            "Arizona State University"
+          ]
+        },
+        {
+          "name": "Hanan Hindy",
+          "orgs": [
+            "CIS, ASU",
+            "Arizona State University"
+          ]
+        },
+        {
+          "name": "Dina Khattab",
+          "orgs": [
+            "CIS, ASU",
+            "Arizona State University"
+          ]
+        },
+        {
+          "name": "Mostafa M. Aref",
+          "orgs": [
+            "CIS, ASU",
+            "Arizona State University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2410.13883v1",
+      "date": "2024-10-05T16:26:44Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.HC",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2504.09764",
+      "score": 8.346763,
+      "title": "Socratic Chart: Cooperating Multiple Agents for Robust SVG Chart Understanding",
+      "tldr": "This paper addresses the challenge of true visual understanding in chart reasoning by proposing Socratic Chart, a framework that converts chart images into SVG representations using a multi-agent pipeline with specialized agents for attribute extraction and an agent-critic for validation, which outperforms existing models by improving accuracy in capturing chart primitives and reasoning performance, with results showing up to 30% performance drop in baseline models under label removal and perturbations.",
+      "abstract": "Multimodal Large Language Models (MLLMs) have shown remarkable versatility but face challenges in demonstrating true visual understanding, particularly in chart reasoning tasks. Existing benchmarks like ChartQA reveal significant reliance on text-based shortcuts and probabilistic pattern-matching rather than genuine visual reasoning. To rigorously evaluate visual reasoning, we introduce a more challenging test scenario by removing textual labels and introducing chart perturbations in the ChartQA dataset. Under these conditions, models like GPT-4o and Gemini-2.0 Pro experience up to a 30% performance drop, underscoring their limitations. To address these challenges, we propose Socratic Chart, a new framework that transforms chart images into Scalable Vector Graphics (SVG) representations, enabling MLLMs to integrate textual and visual modalities for enhanced chart understanding. Socratic Chart employs a multi-agent pipeline with specialized agent-generators to extract primitive chart attributes (e.g., bar heights, line coordinates) and an agent-critic to validate results, ensuring high-fidelity symbolic representations. Our framework surpasses state-of-the-art models in accurately capturing chart primitives and improving reasoning performance, establishing a robust pathway for advancing MLLM visual understanding.",
+      "authors": [
+        {
+          "name": "Yuyang Ji",
+          "orgs": [
+            "University of Illinois at Urbana-Champaign"
+          ]
+        },
+        {
+          "name": "Haohan Wang",
+          "orgs": [
+            "University of Illinois at Urbana-Champaign"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2504.09764v1",
+      "date": "2025-04-14T00:07:39Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2505.19028",
+      "score": 8.309497,
+      "title": "InfoChartQA: A Benchmark for Multimodal Question Answering on Infographic Charts",
+      "tldr": "This paper introduces InfoChartQA, a benchmark for evaluating MLLMs on infographic chart understanding, addressing the gap in existing benchmarks by providing 5,642 paired infographic and plain charts and visual-element-based questions; it reveals a significant performance decline on infographic charts, with MLLMs scoring 65.67% vs. 83.11% on plain charts and 55.33% on metaphor-based questions; these findings highlight the need for improved reasoning over visual elements and complexity in MLLMs.",
+      "abstract": "Understanding infographic charts with design-driven visual elements (e.g., pictograms, icons) requires both visual recognition and reasoning, posing challenges for multimodal large language models (MLLMs). However, existing visual-question answering benchmarks fall short in evaluating these capabilities of MLLMs due to the lack of paired plain charts and visual-element-based questions. To bridge this gap, we introduce InfoChartQA, a benchmark for evaluating MLLMs on infographic chart understanding. It includes 5,642 pairs of infographic and plain charts, each sharing the same underlying data but differing in visual presentations. We further design visual-element-based questions to capture their unique visual designs and communicative intent. Evaluation of 20 MLLMs reveals a substantial performance decline on infographic charts, particularly for visual-element-based questions related to metaphors. The paired infographic and plain charts enable fine-grained error analysis and ablation studies, which highlight new opportunities for advancing MLLMs in infographic chart understanding. We release InfoChartQA at https://github.com/CoolDawnAnt/InfoChartQA.",
+      "authors": [
+        {
+          "name": "Mengchen Liu",
+          "orgs": [
+            "Meta"
+          ]
+        },
+        {
+          "name": "Shixia Liu",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Changjian Chen",
+          "orgs": [
+            "Hunan University"
+          ]
+        },
+        {
+          "name": "Yilin Ye",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Tianchi Xie",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Minzhi Lin",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2505.19028v4",
+      "date": "2025-05-25",
+      "citation_count": 11,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2311.16483",
+      "score": 8.305717,
+      "title": "ChartLlama: A Multimodal LLM for Chart Understanding and Generation",
+      "tldr": "This paper introduces ChartLlama, a multimodal LLM trained on a novel dataset generated via GPT-4 for chart understanding and generation, addressing the lack of specialized datasets for chart interpretation; the proposed method enables diverse and high-quality data creation with flexibility and efficiency; ChartLlama outperforms prior methods on ChartQA, Chart-to-text, and Chart-extraction benchmarks with 160K instruction-tuning data and supports 10 chart types and 7 task types.",
+      "abstract": "Multi-modal large language models have demonstrated impressive performances on most vision-language tasks. However, the model generally lacks the understanding capabilities for specific domain data, particularly when it comes to interpreting chart figures. This is mainly due to the lack of relevant multi-modal instruction tuning datasets. In this article, we create a high-quality instruction-tuning dataset leveraging GPT-4. We develop a multi-step data generation process in which different steps are responsible for generating tabular data, creating chart figures, and designing instruction tuning data separately. Our method's flexibility enables us to generate diverse, high-quality instruction-tuning data consistently and efficiently while maintaining a low resource expenditure. Additionally, it allows us to incorporate a wider variety of chart and task types not yet featured in existing datasets. Next, we introduce ChartLlama, a multi-modal large language model that we've trained using our created dataset. ChartLlama outperforms all prior methods in ChartQA, Chart-to-text, and Chart-extraction evaluation benchmarks. Additionally, ChartLlama significantly improves upon the baseline in our specially compiled chart dataset, which includes new chart and task types. The results of ChartLlama confirm the value and huge potential of our proposed data generation method in enhancing chart comprehension.",
+      "authors": [
+        {
+          "name": "Yucheng Han",
+          "orgs": [
+            "Nanyang Technological University"
+          ]
+        },
+        {
+          "name": "Chi Zhang",
+          "orgs": [
+            "Tencent"
+          ]
+        },
+        {
+          "name": "Xin Chen",
+          "orgs": [
+            "Tencent"
+          ]
+        },
+        {
+          "name": "Xu Yang",
+          "orgs": [
+            "South",
+            "Southeast University"
+          ]
+        },
+        {
+          "name": "Zhibin Wang",
+          "orgs": [
+            "Tencent"
+          ]
+        },
+        {
+          "name": "Gang Yu",
+          "orgs": [
+            "Tencent"
+          ]
+        },
+        {
+          "name": "Bin Fu",
+          "orgs": [
+            "Tencent"
+          ]
+        },
+        {
+          "name": "Hanwang Zhang",
+          "orgs": [
+            "Nanyang Technological University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2311.16483v1",
+      "date": "2023-11-27T15:20:23Z",
+      "citation_count": 146,
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2504.05506",
+      "score": 8.3053055,
+      "title": "ChartQAPro: A More Diverse and Challenging Benchmark for Chart Question Answering",
+      "tldr": "This paper introduces ChartQAPro, a new benchmark for Chart Question Answering that addresses the lack of diversity and real-world complexity in existing datasets, by including 1,341 charts from 157 sources and 1,948 varied questions; it evaluates LVLMs showing a significant performance drop, such as Claude Sonnet 3.5's accuracy falling from 90.5% to 55.81%; the findings highlight the need for improved chart reasoning capabilities in models and suggest that prior benchmarks may have overestimated progress.",
+      "abstract": "Charts are ubiquitous, as people often use them to analyze data, answer questions, and discover critical insights. However, performing complex analytical tasks with charts requires significant perceptual and cognitive effort. Chart Question Answering (CQA) systems automate this process by enabling models to interpret and reason with visual representations of data. However, existing benchmarks like ChartQA lack real-world diversity and have recently shown performance saturation with modern large vision-language models (LVLMs). To address these limitations, we introduce ChartQAPro, a new benchmark that includes 1,341 charts from 157 diverse sources, spanning various chart types, including infographics and dashboards, and featuring 1,948 questions in various types, such as multiple-choice, conversational, hypothetical, and unanswerable questions, to better reflect real-world challenges. Our evaluations with 21 models show a substantial performance drop for LVLMs on ChartQAPro; e.g., Claude Sonnet 3.5 scores 90.5% on ChartQA but only 55.81% on ChartQAPro, underscoring the complexity of chart reasoning. We complement our findings with detailed error analyses and ablation studies, identifying key challenges and opportunities for advancing LVLMs in chart understanding and reasoning. We release ChartQAPro at https://github.com/vis-nlp/ChartQAPro.",
+      "authors": [
+        {
+          "name": "Ahmed Masry",
+          "orgs": [
+            "York University, Canada"
+          ]
+        },
+        {
+          "name": "Mohammed Saidul Islam",
+          "orgs": [
+            "York University, Canada"
+          ]
+        },
+        {
+          "name": "Mahir Ahmed",
+          "orgs": [
+            "York University, Canada"
+          ]
+        },
+        {
+          "name": "Aayush Bajaj",
+          "orgs": [
+            "MILA - Quebec AI Institute, Canada"
+          ]
+        },
+        {
+          "name": "Firoz Kabir",
+          "orgs": [
+            "York University, Canada",
+            "Dialpad Inc., Canada",
+            "RBC, Canada"
+          ]
+        },
+        {
+          "name": "Aaryaman Kartha",
+          "orgs": [
+            "York University, Canada",
+            "Dialpad Inc., Canada",
+            "RBC, Canada"
+          ]
+        },
+        {
+          "name": "Md Tahmid Rahman Laskar",
+          "orgs": [
+            "York University, Canada",
+            "Dialpad Inc., Canada",
+            "RBC, Canada"
+          ]
+        },
+        {
+          "name": "Mizanur Rahman",
+          "orgs": [
+            "York University, Canada",
+            "Dialpad Inc., Canada",
+            "RBC, Canada"
+          ]
+        },
+        {
+          "name": "Shadikur Rahman",
+          "orgs": [
+            "Nanyang Technological University, Singapore",
+            "Salesforce Research, USA"
+          ]
+        },
+        {
+          "name": "Mehrad Shahmohammadi",
+          "orgs": [
+            "York University, Canada"
+          ]
+        },
+        {
+          "name": "Megh Thakkar",
+          "orgs": [
+            "MILA - Quebec AI Institute, Canada"
+          ]
+        },
+        {
+          "name": "Md Rizwan Parvez",
+          "orgs": [
+            "Qatar Computing Research Institute (QCRI)"
+          ]
+        },
+        {
+          "name": "Enamul Hoque",
+          "orgs": [
+            "York University, Canada"
+          ]
+        },
+        {
+          "name": "Shafiq Joty",
+          "orgs": [
+            "Nanyang Technological University, Singapore",
+            "Salesforce Research, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2504.05506v2",
+      "date": "2025-04-07T21:05:06Z",
+      "citation_count": 48,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2408.14419",
+      "score": 8.303801,
+      "title": "CHARTOM: A Visual Theory-of-Mind Benchmark for LLMs on Misleading Charts",
+      "tldr": "This paper introduces CHARTOM, a visual theory-of-mind benchmark for evaluating LLMs' ability to understand both factual content and misleading intent in charts, addressing the gap in AI's comprehension of deceptive visualizations; it uses a dual-question framework (FACT and MIND) with human-derived misleadingness ground truth; results show leading LLMs perform poorly on both tasks, highlighting the need for improved chart understanding.",
+      "abstract": "We introduce CHARTOM, a visual theory-of-mind benchmark designed to evaluate multimodal large language models' capability to understand and reason about misleading data visualizations though charts. CHARTOM consists of carefully designed charts and associated questions that require a language model to not only correctly comprehend the factual content in the chart (the FACT question) but also judge whether the chart will be misleading to a human readers (the MIND question), a dual capability with significant societal benefits. We detail the construction of our benchmark including its calibration on human performance and estimation of MIND ground truth called the Human Misleadingness Index. We evaluated several leading LLMs -- including GPT, Claude, Gemini, Qwen, Llama, and Llava series models -- on the CHARTOM dataset and found that it was challenging to all models both on FACT and MIND questions. This highlights the limitations of current LLMs and presents significant opportunity for future LLMs to improve on understanding misleading charts.",
+      "authors": [
+        {
+          "name": "Shubham Bharti",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Shiyun Cheng",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Jihyun Rho",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Jianrui Zhang",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Mu Cai",
+          "orgs": [
+            "UW Madison"
+          ]
+        },
+        {
+          "name": "Yong Jae Lee",
+          "orgs": [
+            "UW Madison"
+          ]
+        },
+        {
+          "name": "Martina Rau",
+          "orgs": [
+            "UW Madison"
+          ]
+        },
+        {
+          "name": "Xiaojin Zhu",
+          "orgs": [
+            "UW Madison"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2408.14419v3",
+      "date": "2024-08-26T17:04:23Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2305.18641",
+      "score": 8.238744,
+      "title": "Enhanced Chart Understanding in Vision and Language Task via Cross-modal Pre-training on Plot Table Pairs",
+      "tldr": "This paper presents ChartT5, a V+L model that addresses the challenge of automatic chart understanding by learning to interpret table data from chart images through cross-modal pre-training on plot table pairs, introducing Masked Header Prediction and Masked Value Prediction as novel pre-training objectives; it outperforms non-pretraining and pre-training table-based methods by over 8% on ChartQA, demonstrating its effectiveness in extracting critical information from charts.",
+      "abstract": "Building cross-model intelligence that can understand charts and communicate the salient information hidden behind them is an appealing challenge in the vision and language(V+L) community. The capability to uncover the underlined table data of chart figures is a critical key to automatic chart understanding. We introduce ChartT5, a V+L model that learns how to interpret table information from chart images via cross-modal pre-training on plot table pairs. Specifically, we propose two novel pre-training objectives: Masked Header Prediction (MHP) and Masked Value Prediction (MVP) to facilitate the model with different skills to interpret the table information. We have conducted extensive experiments on chart question answering and chart summarization to verify the effectiveness of the proposed pre-training strategies. In particular, on the ChartQA benchmark, our ChartT5 outperforms the state-of-the-art non-pretraining methods by over 8% performance gains.",
+      "authors": [
+        {
+          "name": "Mingyang Zhou",
+          "orgs": [
+            "Columbia University"
+          ]
+        },
+        {
+          "name": "Yi R. Fung",
+          "orgs": [
+            "University of Illinois at Urbana-Champaign"
+          ]
+        },
+        {
+          "name": "Long Chen",
+          "orgs": [
+            "Columbia University"
+          ]
+        },
+        {
+          "name": "Christopher Thomas",
+          "orgs": [
+            "Virginia Tech"
+          ]
+        },
+        {
+          "name": "Heng Ji",
+          "orgs": [
+            "University of Illinois at Urbana-Champaign"
+          ]
+        },
+        {
+          "name": "Shih-Fu Chang",
+          "orgs": [
+            "Columbia University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2305.18641v1",
+      "date": "2023-05-29T22:29:03Z",
+      "citation_count": 20,
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2601.10462",
+      "score": 8.2244,
+      "title": "ChartComplete: A Taxonomy-based Inclusive Chart Dataset",
+      "tldr": "This paper introduces ChartComplete, a taxonomy-based chart dataset covering thirty chart types, addressing the limited diversity in existing datasets used to evaluate MLLMs; it provides a comprehensive resource for benchmarking without learning signals, enabling more robust and inclusive model training and evaluation.",
+      "abstract": "With advancements in deep learning (DL) and computer vision techniques, the field of chart understanding is evolving rapidly. In particular, multimodal large language models (MLLMs) are proving to be efficient and accurate in understanding charts. To accurately measure the performance of MLLMs, the research community has developed multiple datasets to serve as benchmarks. By examining these datasets, we found that they are all limited to a small set of chart types. To bridge this gap, we propose the ChartComplete dataset. The dataset is based on a chart taxonomy borrowed from the visualization community, and it covers thirty different chart types. The dataset is a collection of classified chart images and does not include a learning signal. We present the ChartComplete dataset as is to the community to build upon it.",
+      "authors": [
+        {
+          "name": "Charbel Toumieh",
+          "orgs": [
+            "Lebanese American University"
+          ]
+        },
+        {
+          "name": "Ahmad Mustapha",
+          "orgs": [
+            "University of Jordan"
+          ]
+        },
+        {
+          "name": "Mariette Awad",
+          "orgs": [
+            "American University of Beirut"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2601.10462v3",
+      "date": "2026-01-15",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2311.10774",
+      "score": 8.215903,
+      "title": "MMC: Advancing Multimodal Chart Understanding with Large-scale Instruction Tuning",
+      "tldr": "This paper introduces MMC-Instruction, a 600k chart understanding dataset with diverse tasks and chart types, and MMC-Benchmark, a comprehensive human-annotated benchmark evaluating LMMs' chart reasoning capabilities, revealing limitations even in GPT-4V.",
+      "abstract": "With the rapid development of large language models (LLMs) and their integration into large multimodal models (LMMs), there has been impressive progress in zero-shot completion of user-oriented vision-language tasks. However, a gap remains in the domain of chart image understanding due to the distinct abstract components in charts. To address this, we introduce a large-scale MultiModal Chart Instruction (\\textbf{MMC-Instruction}) dataset comprising 600k instances supporting diverse tasks and chart types. Leveraging this data, we develop MultiModal Chart Assistant (\\textbf{MMCA}), an LMM that achieves state-of-the-art performance on existing chart QA benchmarks. Recognizing the need for a comprehensive evaluation of LMM chart understanding, we also propose a MultiModal Chart Benchmark (\\textbf{MMC-Benchmark}), a comprehensive human-annotated benchmark with nine distinct tasks evaluating reasoning capabilities over charts. Extensive experiments on MMC-Benchmark reveal the limitations of existing LMMs on correctly interpreting charts, even for the most recent GPT-4V model. Our work provides an instruction-tuning methodology and benchmark to advance multimodal understanding of charts. Code and data are available at https://github.com/FuxiaoLiu/MMC.",
+      "authors": [
+        {
+          "name": "Fuxiao Liu",
+          "orgs": [
+            "University of Maryland, College Park",
+            "Tencent AI Lab, Bellevue, USA"
+          ]
+        },
+        {
+          "name": "Xiaoyang Wang",
+          "orgs": [
+            "Tencent AI Lab, Bellevue, USA"
+          ]
+        },
+        {
+          "name": "Wenlin Yao",
+          "orgs": [
+            "Tencent AI Lab, Bellevue, USA"
+          ]
+        },
+        {
+          "name": "Jianshu Chen",
+          "orgs": [
+            "Tencent AI Lab, Bellevue, USA"
+          ]
+        },
+        {
+          "name": "Kaiqiang Song",
+          "orgs": [
+            "Tencent AI Lab, Bellevue, USA"
+          ]
+        },
+        {
+          "name": "Sangwoo Cho",
+          "orgs": [
+            "Tencent AI Lab, Bellevue, USA"
+          ]
+        },
+        {
+          "name": "Yaser Yacoob",
+          "orgs": [
+            "University of Maryland, College Park"
+          ]
+        },
+        {
+          "name": "Dong Yu",
+          "orgs": [
+            "Tencent AI Lab, Bellevue, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2311.10774v2",
+      "date": "2023-11-15T23:36:42Z",
+      "citation_count": 171,
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2407.14506",
+      "score": 8.215073,
+      "title": "On Pre-training of Multimodal Language Models Customized for Chart Understanding",
+      "tldr": "This paper addresses the challenge of improving Multimodal Large Language Models' (MLLMs) comprehension of scientific charts by addressing the gap between image-caption pre-training and chart-QA data, introducing CHOPINLLM with three key contributions: (1) incorporating raw data values in pre-training, (2) replacing images with text during fine-tuning to enhance reasoning, and (3) requiring data extraction before answering questions, achieving strong performance across annotated and unannotated charts.",
+      "abstract": "Recent studies customizing Multimodal Large Language Models (MLLMs) for domain-specific tasks have yielded promising results, especially in the field of scientific chart comprehension. These studies generally utilize visual instruction tuning with specialized datasets to enhance question and answer (QA) accuracy within the chart domain. However, they often neglect the fundamental discrepancy between natural image-caption pre-training data and digital chart image-QA data, particularly in the models' capacity to extract underlying numeric values from charts. This paper tackles this oversight by exploring the training processes necessary to improve MLLMs' comprehension of charts. We present three key findings: (1) Incorporating raw data values in alignment pre-training markedly improves comprehension of chart data. (2) Replacing images with their textual representation randomly during end-to-end fine-tuning transfer the language reasoning capability to chart interpretation skills. (3) Requiring the model to first extract the underlying chart data and then answer the question in the fine-tuning can further improve the accuracy. Consequently, we introduce CHOPINLLM, an MLLM tailored for in-depth chart comprehension. CHOPINLLM effectively interprets various types of charts, including unannotated ones, while maintaining robust reasoning abilities. Furthermore, we establish a new benchmark to evaluate MLLMs' understanding of different chart types across various comprehension levels. Experimental results show that CHOPINLLM exhibits strong performance in understanding both annotated and unannotated charts across a wide range of types.",
+      "authors": [
+        {
+          "name": "Wan-Cyuan Fan",
+          "orgs": [
+            "UBC",
+            "Vector Institute for AI",
+            "CIFAR AI Chair"
+          ]
+        },
+        {
+          "name": "Yen-Chun Chen",
+          "orgs": [
+            "Microsoft"
+          ]
+        },
+        {
+          "name": "Mengchen Liu",
+          "orgs": [
+            "Microsoft"
+          ]
+        },
+        {
+          "name": "Lu Yuan",
+          "orgs": [
+            "Microsoft"
+          ]
+        },
+        {
+          "name": "Leonid Sigal",
+          "orgs": [
+            "UBC",
+            "Vector Institute for AI",
+            "CIFAR AI Chair"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2407.14506v3",
+      "date": "2024-07-19T17:58:36Z",
+      "citation_count": 14,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2507.14823",
+      "score": 8.214822,
+      "title": "FinChart-Bench: Benchmarking Financial Chart Comprehension in Vision-Language Models",
+      "tldr": "This paper introduces FinChart-Bench, a financial chart understanding benchmark addressing the gap in evaluating LVLMs on financial data, by providing a dataset of 1,200 real-world financial charts with 7,016 questions; it evaluates 25 LVLMs, revealing performance gaps, instruction following issues, and spatial reasoning limitations, highlighting the need for better financial chart comprehension models.",
+      "abstract": "Large vision-language models (LVLMs) have made significant progress in chart understanding. However, financial charts, characterized by complex temporal structures and domain-specific terminology, remain notably underexplored. We introduce FinChart-Bench, the first benchmark specifically focused on real-world financial charts. FinChart-Bench comprises 1,200 financial chart images collected from 2015 to 2024, each annotated with True/False (TF), Multiple Choice (MC), and Question Answering (QA) questions, totaling 7,016 questions. We conduct a comprehensive evaluation of 25 state-of-the-art LVLMs on FinChart-Bench. Our evaluation reveals critical insights: (1) the performance gap between open-source and closed-source models is narrowing, (2) performance degradation occurs in upgraded models within families, (3) many models struggle with instruction following, (4) both advanced models show significant limitations in spatial reasoning abilities, and (5) current LVLMs are not reliable enough to serve as automated evaluators. These findings highlight important limitations in current LVLM capabilities for financial chart understanding. The FinChart-Bench dataset is available at https://huggingface.co/datasets/Tizzzzy/FinChart-Bench.",
+      "authors": [
+        {
+          "name": "Dong Shu",
+          "orgs": [
+            "Northwestern University"
+          ]
+        },
+        {
+          "name": "Haoyang Yuan",
+          "orgs": [
+            "NewsBreak"
+          ]
+        },
+        {
+          "name": "Yuchen Wang",
+          "orgs": [
+            "Northwestern University"
+          ]
+        },
+        {
+          "name": "Yanguang Liu",
+          "orgs": [
+            "New Jersey Institute of Technology"
+          ]
+        },
+        {
+          "name": "Huopu Zhang",
+          "orgs": [
+            "Georgia Institute of Technology"
+          ]
+        },
+        {
+          "name": "Haiyan Zhao",
+          "orgs": [
+            "New Jersey Institute of Technology"
+          ]
+        },
+        {
+          "name": "Mengnan Du",
+          "orgs": [
+            "New Jersey Institute of Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2507.14823v1",
+      "date": "2025-07-20T05:00:42Z",
+      "citation_count": 5,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2503.18172",
+      "score": 8.213638,
+      "title": "Unmasking Deceptive Visuals: Benchmarking Multimodal Large Language Models on Misleading Chart Question Answering",
+      "tldr": "This paper addresses the challenge of detecting misleading visualizations in multimodal large language models (MLLMs), introducing the Misleading ChartQA benchmark with 3,026 examples across 21 misleader types and 10 chart types, and proposes a Region-Aware Misleader Reasoning pipeline to improve model accuracy in identifying deceptive chart features.",
+      "abstract": "Misleading visualizations, which manipulate chart representations to support specific claims, can distort perception and lead to incorrect conclusions. Despite decades of research, they remain a widespread issue, posing risks to public understanding and raising safety concerns for AI systems involved in data-driven communication. While recent multimodal large language models (MLLMs) show strong chart comprehension abilities, their capacity to detect and interpret misleading charts remains unexplored. We introduce Misleading ChartQA benchmark, a large-scale multimodal dataset designed to evaluate MLLMs on misleading chart reasoning. It contains 3,026 curated examples spanning 21 misleader types and 10 chart types, each with standardized chart code, CSV data, multiple-choice questions, and labeled explanations, validated through iterative MLLM checks and expert human review. We benchmark 24 state-of-the-art MLLMs, analyze their performance across misleader types and chart formats, and propose a novel region-aware reasoning pipeline that enhances model accuracy. Our work lays the foundation for developing MLLMs that are robust, trustworthy, and aligned with the demands of responsible visual communication.",
+      "authors": [
+        {
+          "name": "Zixin Chen",
+          "orgs": [
+            "The Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Sicheng Song",
+          "orgs": [
+            "The Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Kashun Shum",
+          "orgs": [
+            "The Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Yanna Lin",
+          "orgs": [
+            "The Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Rui Sheng",
+          "orgs": [
+            "The Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Weiqi Wang",
+          "orgs": [
+            "The Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Huamin Qu",
+          "orgs": [
+            "The Hong Kong University of Science and Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2503.18172v5",
+      "date": "2025-03-23T18:56:33Z",
+      "citation_count": 10,
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2506.04585",
+      "score": 8.191872,
+      "title": "MuSciClaims: Multimodal Scientific Claim Verification",
+      "tldr": "This paper introduces MuSciClaims, a multimodal benchmark for scientific claim verification over figures in physics, chemistry, and biology literature, addressing the gap of lacking benchmarks that test claim verification abilities; it uses manually perturbed claims and diagnostic tasks to evaluate model performance, finding most vision-language models achieve low F1 scores (~0.3-0.5) and struggle with evidence localization and cross-modal aggregation.",
+      "abstract": "Assessing scientific claims requires identifying, extracting, and reasoning with multimodal data expressed in information-rich figures in scientific literature. Despite the large body of work in scientific QA, figure captioning, and other multimodal reasoning tasks over chart-based data, there are no readily usable multimodal benchmarks that directly test claim verification abilities. To remedy this gap, we introduce a new benchmark MuSciClaims accompanied by diagnostics tasks. We automatically extract supported claims from scientific articles, which we manually perturb to produce contradicted claims. The perturbations are designed to test for a specific set of claim verification capabilities. We also introduce a suite of diagnostic tasks that help understand model failures. Our results show most vision-language models are poor (~0.3-0.5 F1), with even the best model only achieving 0.72 F1. They are also biased towards judging claims as supported, likely misunderstanding nuanced perturbations within the claims. Our diagnostics show models are bad at localizing correct evidence within figures, struggle with aggregating information across modalities, and often fail to understand basic components of the figure.",
+      "authors": [
+        {
+          "name": "Yash Kumar Lal",
+          "orgs": [
+            "Stony Brook University"
+          ]
+        },
+        {
+          "name": "Manikanta Bandham",
+          "orgs": [
+            "Stony Brook University"
+          ]
+        },
+        {
+          "name": "Mohammad Saqib Hasan",
+          "orgs": [
+            "Stony Brook University"
+          ]
+        },
+        {
+          "name": "Apoorva Kashi",
+          "orgs": [
+            "Stony Brook University"
+          ]
+        },
+        {
+          "name": "Mahnaz Koupaee",
+          "orgs": [
+            "Stony Brook University"
+          ]
+        },
+        {
+          "name": "Niranjan Balasubramanian",
+          "orgs": [
+            "Stony Brook University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2506.04585v2",
+      "date": "2025-06-05T02:59:51Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2503.19498",
+      "score": 8.190132,
+      "title": "DomainCQA: Crafting Knowledge-Intensive QA from Domain-Specific Charts",
+      "tldr": "This paper introduces DomainCQA, a framework addressing the gap in chart question answering by creating domain-specific benchmarks that emphasize visual comprehension and knowledge-intensive reasoning, using a 10-dimensional Chart Complexity Vector (CCV) and generating 1,690 QA pairs over 482 charts, revealing persistent weaknesses in 21 MLLMs and demonstrating the framework's generality across disciplines.",
+      "abstract": "Chart Question Answering (CQA) evaluates Multimodal Large Language Models (MLLMs) on visual understanding and reasoning over chart data. However, existing benchmarks mostly test surface-level parsing, such as reading labels and legends, while overlooking deeper scientific reasoning. We propose DomainCQA, a framework for constructing domain-specific CQA benchmarks that emphasize both visual comprehension and knowledge-intensive reasoning. It integrates complexity-aware chart selection, multitier QA generation, and expert validation. Applied to astronomy, DomainCQA yields AstroChart, a benchmark of 1,690 QA pairs over 482 charts, exposing persistent weaknesses in fine-grained perception, numerical reasoning, and domain knowledge integration across 21 MLLMs. Fine-tuning on AstroChart improves performance across fundamental and advanced tasks. Pilot QA sets in biochemistry, economics, medicine, and social science further demonstrate DomainCQA's generality. Together, our results establish DomainCQA as a unified pipeline for constructing and augmenting domain-specific chart reasoning benchmarks.",
+      "authors": [
+        {
+          "name": "Yujing Lu",
+          "orgs": []
+        },
+        {
+          "name": "Ling Zhong",
+          "orgs": []
+        },
+        {
+          "name": "Jing Yang",
+          "orgs": []
+        },
+        {
+          "name": "Weiming Li",
+          "orgs": []
+        },
+        {
+          "name": "Peng Wei",
+          "orgs": []
+        },
+        {
+          "name": "Yongheng Wang",
+          "orgs": []
+        },
+        {
+          "name": "Manni Duan",
+          "orgs": []
+        },
+        {
+          "name": "Qing Zhang",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2503.19498v4",
+      "date": "2025-03-25T09:44:41Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2404.09987",
+      "score": 8.137618,
+      "title": "OneChart: Purify the Chart Structural Extraction via One Auxiliary Token",
+      "tldr": "This paper addresses the challenge of chart structural extraction, where existing models struggle with numerical accuracy and diverse chart styles; it proposes OneChart, which introduces an auxiliary token and a specialized decoder to enhance numerical parsing and reliability; experiments show OneChart achieves 19.1%-29.4% improvement over existing methods and 11.2% accuracy gain on ChartQA with LLaVA-1.6.",
+      "abstract": "Chart parsing poses a significant challenge due to the diversity of styles, values, texts, and so forth. Even advanced large vision-language models (LVLMs) with billions of parameters struggle to handle such tasks satisfactorily. To address this, we propose OneChart: a reliable agent specifically devised for the structural extraction of chart information. Similar to popular LVLMs, OneChart incorporates an autoregressive main body. Uniquely, to enhance the reliability of the numerical parts of the output, we introduce an auxiliary token placed at the beginning of the total tokens along with an additional decoder. The numerically optimized (auxiliary) token allows subsequent tokens for chart parsing to capture enhanced numerical features through causal attention. Furthermore, with the aid of the auxiliary token, we have devised a self-evaluation mechanism that enables the model to gauge the reliability of its chart parsing results by providing confidence scores for the generated content. Compared to current state-of-the-art (SOTA) chart parsing models, e.g., DePlot, ChartVLM, ChartAst, OneChart significantly outperforms in Average Precision (AP) for chart structural extraction across multiple public benchmarks, despite enjoying only 0.2 billion parameters. Moreover, as a chart parsing agent, it also brings 10%+ accuracy gains for the popular LVLM (LLaVA-1.6) in the downstream ChartQA benchmark.",
+      "authors": [
+        {
+          "name": "Jinyue Chen",
+          "orgs": [
+            "MEGVII Technology"
+          ]
+        },
+        {
+          "name": "Lingyu Kong",
+          "orgs": [
+            "MEGVII Technology"
+          ]
+        },
+        {
+          "name": "Haoran Wei",
+          "orgs": [
+            "MEGVII Technology"
+          ]
+        },
+        {
+          "name": "Chenglong Liu",
+          "orgs": [
+            "MEGVII Technology"
+          ]
+        },
+        {
+          "name": "Zheng Ge",
+          "orgs": [
+            "MEGVII Technology"
+          ]
+        },
+        {
+          "name": "Liang Zhao",
+          "orgs": [
+            "MEGVII Technology"
+          ]
+        },
+        {
+          "name": "Jianjian Sun",
+          "orgs": [
+            "MEGVII Technology"
+          ]
+        },
+        {
+          "name": "Chunrui Han",
+          "orgs": [
+            "MEGVII Technology"
+          ]
+        },
+        {
+          "name": "Xiangyu Zhang",
+          "orgs": [
+            "MEGVII Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2404.09987v2",
+      "date": "2024-04-15T17:58:57Z",
+      "citation_count": 45,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2505.23242",
+      "score": 8.11798,
+      "title": "ChartMind: A Comprehensive Benchmark for Complex Real-world Multimodal Chart Question Answering",
+      "tldr": "This paper introduces ChartMind, a benchmark for complex real-world multilingual CQA tasks, addressing the gap between academic benchmarks and practical chart analysis by supporting diverse formats and open-ended outputs; it proposes ChartLLM, a context-aware framework enhancing reasoning accuracy through semantic element extraction; experiments show ChartLLM outperforms instruction-following, OCR-enhanced, and COT-based methods across seven task categories and two languages.",
+      "abstract": "Chart question answering (CQA) has become a critical multimodal task for evaluating the reasoning capabilities of vision-language models. While early approaches have shown promising performance by focusing on visual features or leveraging large-scale pre-training, most existing evaluations rely on rigid output formats and objective metrics, thus ignoring the complex, real-world demands of practical chart analysis. In this paper, we introduce ChartMind, a new benchmark designed for complex CQA tasks in real-world settings. ChartMind covers seven task categories, incorporates multilingual contexts, supports open-domain textual outputs, and accommodates diverse chart formats, bridging the gap between real-world applications and traditional academic benchmarks. Furthermore, we propose a context-aware yet model-agnostic framework, ChartLLM, that focuses on extracting key contextual elements, reducing noise, and enhancing the reasoning accuracy of multimodal large language models. Extensive evaluations on ChartMind and three representative public benchmarks with 14 mainstream multimodal models show our framework significantly outperforms the previous three common CQA paradigms: instruction-following, OCR-enhanced, and chain-of-thought, highlighting the importance of flexible chart understanding for real-world CQA. These findings suggest new directions for developing more robust chart reasoning in future research.",
+      "authors": [
+        {
+          "name": "Jingxuan Wei",
+          "orgs": [
+            "Beijing Wenge Technology Co., Ltd.",
+            "University of Chinese Academy of Sciences"
+          ]
+        },
+        {
+          "name": "Nan Xu",
+          "orgs": [
+            "Beijing Wenge Technology Co., Ltd.",
+            "MAIS, Institute of Automation, Chinese Academy of Sciences"
+          ]
+        },
+        {
+          "name": "Junnan Zhu",
+          "orgs": [
+            "Shenyang Institute of Computing Technology, Chinese Academy of Sciences",
+            "MAIS, Institute of Automation, Chinese Academy of Sciences"
+          ]
+        },
+        {
+          "name": "Yanni Hao",
+          "orgs": [
+            "Beijing Wenge Technology Co., Ltd.",
+            "MAIS, Institute of Automation, Chinese Academy of Sciences"
+          ]
+        },
+        {
+          "name": "Gaowei Wu",
+          "orgs": [
+            "Shenyang Institute of Computing Technology, Chinese Academy of Sciences",
+            "University of Chinese Academy of Sciences"
+          ]
+        },
+        {
+          "name": "Bihui Yu",
+          "orgs": [
+            "Shenyang Institute of Computing Technology, Chinese Academy of Sciences",
+            "University of Chinese Academy of Sciences"
+          ]
+        },
+        {
+          "name": "Lei Wang",
+          "orgs": [
+            "Beijing Wenge Technology Co., Ltd.",
+            "MAIS, Institute of Automation, Chinese Academy of Sciences",
+            "University of Chinese Academy of Sciences"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2505.23242v1",
+      "date": "2025-05-29T08:46:03Z",
+      "citation_count": 5,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2503.04983",
+      "score": 8.11481,
+      "title": "Leveraging Large Language Models For Scalable Vector Graphics Processing: A Review",
+      "tldr": "This paper reviews LLM-based approaches for SVG processing, addressing the gap in scalable and efficient vector graphics generation and editing; it evaluates models like IconShop and StrokeNUWA, and finds reasoning-enhanced LLMs outperform standard ones in generation and understanding tasks, highlighting the need for more diverse datasets to improve LLM capabilities in vector graphics.",
+      "abstract": "In recent years, rapid advances in computer vision have significantly improved the processing and generation of raster images. However, vector graphics, which is essential in digital design, due to its scalability and ease of editing, have been relatively understudied. Traditional vectorization techniques, which are often used in vector generation, suffer from long processing times and excessive output complexity, limiting their usability in practical applications. The advent of large language models (LLMs) has opened new possibilities for the generation, editing, and analysis of vector graphics, particularly in the SVG format, which is inherently text-based and well-suited for integration with LLMs.\n  This paper provides a systematic review of existing LLM-based approaches for SVG processing, categorizing them into three main tasks: generation, editing, and understanding. We observe notable models such as IconShop, StrokeNUWA, and StarVector, highlighting their strengths and limitations. Furthermore, we analyze benchmark datasets designed for assessing SVG-related tasks, including SVGEditBench, VGBench, and SGP-Bench, and conduct a series of experiments to evaluate various LLMs in these domains. Our results demonstrate that for vector graphics reasoning-enhanced models outperform standard LLMs, particularly in generation and understanding tasks. Furthermore, our findings underscore the need to develop more diverse and richly annotated datasets to further improve LLM capabilities in vector graphics tasks.",
+      "authors": [
+        {
+          "name": "Boris Malashenko",
+          "orgs": [
+            "ITMO University",
+            "Kronverksky Pr. 49, St. Petersburg, Russia"
+          ]
+        },
+        {
+          "name": "Ivan Jarsky",
+          "orgs": [
+            "ITMO University",
+            "Kronverksky Pr. 49, St. Petersburg, Russia"
+          ]
+        },
+        {
+          "name": "Valeria Efimova",
+          "orgs": [
+            "ITMO University",
+            "Kronverksky Pr. 49, St. Petersburg, Russia"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2503.04983v2",
+      "date": "2025-03-06T21:23:17Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2402.12185",
+      "score": 8.106203,
+      "title": "ChartX & ChartVLM: A Versatile Benchmark and Foundation Model for Complicated Chart Reasoning",
+      "tldr": "This paper addresses the gap in evaluating multi-modal Large Language Models' (MLLMs) ability to reason with visual charts by introducing ChartX, a comprehensive benchmark with 18 chart types, 7 tasks, and 22 topics, and ChartVLM, a model that outperforms existing models and achieves results comparable to GPT-4V, enhancing interpretability through integrated perception and reasoning tasks.",
+      "abstract": "Recently, many versatile Multi-modal Large Language Models (MLLMs) have emerged continuously. However, their capacity to query information depicted in visual charts and engage in reasoning based on the queried contents remains under-explored. In this paper, to comprehensively and rigorously benchmark the ability of the off-the-shelf MLLMs in the chart domain, we construct ChartX, a multi-modal evaluation set covering 18 chart types, 7 chart tasks, 22 disciplinary topics, and high-quality chart data. Besides, we develop ChartVLM to offer a new perspective on handling multi-modal tasks that strongly depend on interpretable patterns, such as reasoning tasks in the field of charts or geometric images. We evaluate the chart-related ability of mainstream MLLMs and our ChartVLM on the proposed ChartX evaluation set. Extensive experiments demonstrate that ChartVLM surpasses both versatile and chart-related large models, achieving results comparable to GPT-4V. We believe that our study can pave the way for further exploration in creating a more comprehensive chart evaluation set and developing more interpretable multi-modal models. Both ChartX and ChartVLM are available at: https://github.com/Alpha-Innovator/ChartVLM",
+      "authors": [
+        {
+          "name": "Renqiu Xia",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory",
+            "Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Bo Zhang",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory",
+            "Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Hancheng Ye",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory",
+            "Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Xiangchao Yan",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory"
+          ]
+        },
+        {
+          "name": "Qi Liu",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory",
+            "Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Hongbin Zhou",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory"
+          ]
+        },
+        {
+          "name": "Zijun Chen",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory",
+            "Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Peng Ye",
+          "orgs": []
+        },
+        {
+          "name": "Min Dou",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory",
+            "Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Botian Shi",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory",
+            "Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Junchi Yan",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory",
+            "Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Yu Qiao",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory",
+            "Shanghai Jiao Tong University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2402.12185v6",
+      "date": "2024-02-19T14:48:23Z",
+      "citation_count": 117,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2305.01837",
+      "score": 8.086986,
+      "title": "LineFormer: Rethinking Line Chart Data Extraction as Instance Segmentation",
+      "tldr": "This paper addresses the challenge of line chart data extraction, aiming to improve accuracy in handling visual and structural variations in multi-line graphs, which is critical for automated document understanding; it proposes LineFormer, a method that reformulates the task as instance segmentation, achieving state-of-the-art performance on benchmark datasets; empirical results show significant improvements over previous methods, particularly on real chart datasets.",
+      "abstract": "Data extraction from line-chart images is an essential component of the automated document understanding process, as line charts are a ubiquitous data visualization format. However, the amount of visual and structural variations in multi-line graphs makes them particularly challenging for automated parsing. Existing works, however, are not robust to all these variations, either taking an all-chart unified approach or relying on auxiliary information such as legends for line data extraction. In this work, we propose LineFormer, a robust approach to line data extraction using instance segmentation. We achieve state-of-the-art performance on several benchmark synthetic and real chart datasets. Our implementation is available at https://github.com/TheJaeLal/LineFormer .",
+      "authors": [
+        {
+          "name": "Jay Lal",
+          "orgs": []
+        },
+        {
+          "name": "Aditya Mitkari",
+          "orgs": []
+        },
+        {
+          "name": "Mahesh Bhosale",
+          "orgs": []
+        },
+        {
+          "name": "David Doermann",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2305.01837v1",
+      "date": "2023-05-03T00:38:24Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2403.01976",
+      "score": 8.07517,
+      "title": "SciAssess: Benchmarking LLM Proficiency in Scientific Literature Analysis",
+      "tldr": "This paper introduces SciAssess, a benchmark evaluating LLMs' proficiency in scientific literature analysis by addressing the gap in assessing higher-level abilities beyond memorization, and contributes a comprehensive framework with 27 tasks across 4 domains and 6,938 questions, revealing performance disparities among 11 LLMs and highlighting the need for improved reasoning and multimodal handling in scientific applications.",
+      "abstract": "Recent breakthroughs in Large Language Models (LLMs) have revolutionized scientific literature analysis. However, existing benchmarks fail to adequately evaluate the proficiency of LLMs in this domain, particularly in scenarios requiring higher-level abilities beyond mere memorization and the handling of multimodal data. In response to this gap, we introduce SciAssess, a benchmark specifically designed for the comprehensive evaluation of LLMs in scientific literature analysis. It aims to thoroughly assess the efficacy of LLMs by evaluating their capabilities in Memorization (L1), Comprehension (L2), and Analysis \\& Reasoning (L3). It encompasses a variety of tasks drawn from diverse scientific fields, including biology, chemistry, material, and medicine. To ensure the reliability of SciAssess, rigorous quality control measures have been implemented, ensuring accuracy, anonymization, and compliance with copyright standards. SciAssess evaluates 11 LLMs, highlighting their strengths and areas for improvement. We hope this evaluation supports the ongoing development of LLM applications in scientific literature analysis. SciAssess and its resources are available at \\url{https://github.com/sci-assess/SciAssess}.",
+      "authors": [
+        {
+          "name": "Hengxing Cai",
+          "orgs": [
+            "DP Technology",
+            "AI for Science Institute, Beijing"
+          ]
+        },
+        {
+          "name": "Xiaochen Cai",
+          "orgs": [
+            "DP Technology",
+            "AI for Science Institute, Beijing"
+          ]
+        },
+        {
+          "name": "Junhan Chang",
+          "orgs": [
+            "DP Technology",
+            "AI for Science Institute, Beijing"
+          ]
+        },
+        {
+          "name": "Sihang Li",
+          "orgs": [
+            "DP Technology",
+            "AI for Science Institute, Beijing"
+          ]
+        },
+        {
+          "name": "Lin Yao",
+          "orgs": [
+            "DP Technology",
+            "AI for Science Institute, Beijing"
+          ]
+        },
+        {
+          "name": "Changxin Wang",
+          "orgs": [
+            "DP Technology",
+            "AI for Science Institute, Beijing"
+          ]
+        },
+        {
+          "name": "Zhifeng Gao",
+          "orgs": [
+            "DP Technology",
+            "AI for Science Institute, Beijing"
+          ]
+        },
+        {
+          "name": "Hongshuai Wang",
+          "orgs": [
+            "DP Technology",
+            "AI for Science Institute, Beijing"
+          ]
+        },
+        {
+          "name": "Yongge Li",
+          "orgs": [
+            "DP Technology",
+            "AI for Science Institute, Beijing"
+          ]
+        },
+        {
+          "name": "Mujie Lin",
+          "orgs": [
+            "DP Technology",
+            "AI for Science Institute, Beijing"
+          ]
+        },
+        {
+          "name": "Shuwen Yang",
+          "orgs": [
+            "DP Technology",
+            "AI for Science Institute, Beijing"
+          ]
+        },
+        {
+          "name": "Jiankun Wang",
+          "orgs": [
+            "DP Technology",
+            "AI for Science Institute, Beijing"
+          ]
+        },
+        {
+          "name": "Mingjun Xu",
+          "orgs": [
+            "DP Technology",
+            "AI for Science Institute, Beijing"
+          ]
+        },
+        {
+          "name": "Jin Huang",
+          "orgs": [
+            "DP Technology",
+            "AI for Science Institute, Beijing"
+          ]
+        },
+        {
+          "name": "Xi Fang",
+          "orgs": [
+            "DP Technology",
+            "AI for Science Institute, Beijing"
+          ]
+        },
+        {
+          "name": "Jiaxi Zhuang",
+          "orgs": [
+            "DP Technology",
+            "AI for Science Institute, Beijing"
+          ]
+        },
+        {
+          "name": "Yuqi Yin",
+          "orgs": [
+            "DP Technology",
+            "AI for Science Institute, Beijing"
+          ]
+        },
+        {
+          "name": "Yaqi Li",
+          "orgs": [
+            "DP Technology",
+            "AI for Science Institute, Beijing"
+          ]
+        },
+        {
+          "name": "Changhong Chen",
+          "orgs": [
+            "DP Technology",
+            "AI for Science Institute, Beijing"
+          ]
+        },
+        {
+          "name": "Zheng Cheng",
+          "orgs": [
+            "DP Technology",
+            "AI for Science Institute, Beijing"
+          ]
+        },
+        {
+          "name": "Zifeng Zhao",
+          "orgs": [
+            "AI for Science Institute",
+            "Beijing"
+          ]
+        },
+        {
+          "name": "Linfeng Zhang",
+          "orgs": [
+            "AI for Science Institute",
+            "Beijing"
+          ]
+        },
+        {
+          "name": "Guolin Ke",
+          "orgs": [
+            "AI for Science Institute",
+            "Beijing"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2403.01976v5",
+      "date": "2024-03-04T12:19:28Z",
+      "citation_count": 47,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2507.14298",
+      "score": 8.066751,
+      "title": "In-Depth and In-Breadth: Pre-training Multimodal Language Models Customized for Comprehensive Chart Understanding",
+      "tldr": "This paper addresses the gap in chart comprehension by introducing ChartScope, a LVLM optimized for in-depth understanding across 20 chart types using a Dual-Path training strategy and synthetic data, significantly improving performance on diverse charts and underlying data; it introduces ChartDQA, a benchmark with 5.48k images, 13.5 QAs per image, and underlying data, enhancing evaluation of both chart and data understanding.",
+      "abstract": "Recent methods for customizing Large Vision Language Models (LVLMs) for domain-specific tasks have shown promising results in scientific chart comprehension. However, existing approaches face two major limitations: First, they rely on paired data from only a few chart types, limiting generalization to wide range of chart types. Secondly, they lack targeted pre-training for chart-data alignment, which hampers the model's understanding of underlying data. In this paper, we introduce ChartScope, an LVLM optimized for in-depth chart comprehension across diverse chart types. We propose an efficient data generation pipeline that synthesizes paired data for a wide range of chart types, along with a novel Dual-Path training strategy that enabling the model to succinctly capture essential data details while preserving robust reasoning capabilities by incorporating reasoning over the underlying data. Lastly, we establish ChartDQA, a new benchmark for evaluating not only question-answering at different levels but also underlying data understanding. Experimental results demonstrate that ChartScope significantly enhances comprehension on a wide range of chart types. The code and data are available at https://davidhalladay.github.io/chartscope_demo.",
+      "authors": [
+        {
+          "name": "Wan-Cyuan Fan",
+          "orgs": [
+            "UBC",
+            "Vector Institute for AI",
+            "CIFAR AI Chair"
+          ]
+        },
+        {
+          "name": "Yen-Chun Chen",
+          "orgs": [
+            "Microsoft"
+          ]
+        },
+        {
+          "name": "Mengchen Liu",
+          "orgs": [
+            "Microsoft"
+          ]
+        },
+        {
+          "name": "Alexander Jacobson",
+          "orgs": [
+            "UBC"
+          ]
+        },
+        {
+          "name": "Lu Yuan",
+          "orgs": [
+            "Microsoft",
+            "Vector Institute for AI",
+            "CIFAR AI Chair"
+          ]
+        },
+        {
+          "name": "Leonid Sigal",
+          "orgs": [
+            "UBC",
+            "Vector Institute for AI",
+            "CIFAR AI Chair"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2507.14298v1",
+      "date": "2025-07-18T18:15:09Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2505.10043",
+      "score": 8.062908,
+      "title": "Boosting Text-to-Chart Retrieval through Training with Synthesized Semantic Insights",
+      "tldr": "This paper addresses the challenge of text-to-chart retrieval in real-world business intelligence scenarios by introducing CRBench, a benchmark with 21,862 charts and 326 queries, and proposes a semantic insights synthesis pipeline generating 207,498 insights to enhance model performance, resulting in ChartFinder achieving up to 66.9% NDCG@10 and an average 5% improvement across metrics.",
+      "abstract": "Text-to-chart retrieval, enabling users to find relevant charts via natural language queries, has gained significant attention. However, evaluating models in real-world business intelligence (BI) scenarios is challenging, as current benchmarks fail to simulate realistic user queries or test for deep semantic understanding with static chart images.To address this gap, we introduce CRBench, the first real-world BI-sourced benchmark comprising 21,862 charts and 326 queries, utilizing a Target-and-Distractor paradigm to evaluate discriminative retrieval among highly similar candidates. Testing on CRBench reveals that existing methods, which rely primarily on visual features, perform poorly and fail to capture the rich analytical semantics of charts. To address this performance bottleneck, we propose a semantic insights synthesis pipeline that automatically generates three hierarchical levels of insights for charts: visual patterns, statistical properties, and practical applications. Using this pipeline, we produced 207,498 semantic insights for 69,166 charts as training data. By leveraging this data to bridge the gap between natural language query intent and latent visual representations via multi-level semantic supervision, we develop ChartFinder, a specialized model capable of deep cross-model reasoning. Experimental results show ChartFinder significantly outperforms state-of-the-art methods on CRBench, achieving up to 66.9% NDCG@10 for precise queries (an 11.58% improvement) and an average increase of 5% across nearly all metrics for fuzzy queries. This work provides the community with a much-needed benchmark for realistic evaluation and demonstrates a powerful data synthesis paradigm for enhancing a model's semantic understanding of charts.",
+      "authors": [
+        {
+          "name": "Yifan Wu",
+          "orgs": [
+            "HKUST(GZ), China"
+          ]
+        },
+        {
+          "name": "Lutao Yan",
+          "orgs": [
+            "HKUST(GZ), China"
+          ]
+        },
+        {
+          "name": "Yizhang Zhu",
+          "orgs": [
+            "HKUST(GZ), China"
+          ]
+        },
+        {
+          "name": "Yenchi Tseng",
+          "orgs": [
+            "HKUST(GZ), China"
+          ]
+        },
+        {
+          "name": "Yinan Mei",
+          "orgs": [
+            "Huawei Cloud BU, China"
+          ]
+        },
+        {
+          "name": "Yong Wang",
+          "orgs": [
+            "Huawei Cloud BU, China"
+          ]
+        },
+        {
+          "name": "Jiannan Wang",
+          "orgs": [
+            "Huawei Cloud BU, China",
+            "Simon Fraser University, Canada"
+          ]
+        },
+        {
+          "name": "Nan Tang",
+          "orgs": [
+            "HKUST(GZ), China"
+          ]
+        },
+        {
+          "name": "Yuyu Luo",
+          "orgs": [
+            "HKUST(GZ), China",
+            "Huawei Cloud BU, China",
+            "Simon Fraser University, Canada"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2505.10043v4",
+      "date": "2025-05-15",
+      "citation_count": 4,
+      "categories": [
+        "cs.AI",
+        "cs.IR"
+      ]
+    },
+    {
+      "arxiv_id": "2402.10986",
+      "score": 8.043691,
+      "title": "FinTral: A Family of GPT-4 Level Multimodal Financial Large Language Models",
+      "tldr": "This paper introduces FinTral, a multimodal financial LLM addressing challenges in financial document analysis through integration of textual, numerical, tabular, and visual data; it employs domain-specific pretraining, instruction fine-tuning, and DPO alignment, contributing a benchmark with nine tasks and 25 datasets; FinTral-DPO-T&R outperforms ChatGPT-3.5 in all tasks and GPT-4 in five of eight text-based tasks.",
+      "abstract": "We introduce FinTral, a suite of state-of-the-art multimodal large language models (LLMs) built upon the Mistral-7b model and tailored for financial analysis. FinTral integrates textual, numerical, tabular, and image data. We enhance FinTral with domain-specific pretraining, instruction fine-tuning, and RLAIF training by exploiting a large collection of textual and visual datasets we curate for this work. We also introduce an extensive benchmark featuring nine tasks and 25 datasets for evaluation, including hallucinations in the financial domain. Our FinTral model trained with direct preference optimization employing advanced Tools and Retrieval methods, dubbed FinTral-DPO-T&R, demonstrates an exceptional zero-shot performance. It outperforms ChatGPT-3.5 in all tasks and surpasses GPT-4 in five out of nine tasks, marking a significant advancement in AI-driven financial technology. We also demonstrate that FinTral has the potential to excel in real-time analysis and decision-making in diverse financial contexts. The GitHub repository for FinTral is available at \\url{https://github.com/UBC-NLP/fintral}.",
+      "authors": [
+        {
+          "name": "Gagan Bhatia",
+          "orgs": [
+            "The University of British Columbia",
+            "Invertible AI"
+          ]
+        },
+        {
+          "name": "El Moatez Billah Nagoudi",
+          "orgs": [
+            "The University of British Columbia",
+            "Invertible AI"
+          ]
+        },
+        {
+          "name": "Hasan Cavusoglu",
+          "orgs": [
+            "The University of British Columbia",
+            "Invertible AI"
+          ]
+        },
+        {
+          "name": "Muhammad Abdul-Mageed",
+          "orgs": [
+            "The University of British Columbia",
+            "Invertible AI"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2402.10986v3",
+      "date": "2024-02-16T05:05:12Z",
+      "citation_count": 51,
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "1909.00997",
+      "score": 7.940548,
+      "title": "PlotQA: Reasoning over Scientific Plots",
+      "tldr": "This paper addresses the gap in existing datasets for plot reasoning by introducing PlotQA, a dataset with 28.9 million question-answer pairs over 224,377 real-world plots, where 80.76% of questions have open-vocabulary answers; it proposes a hybrid model combining classification and structured table QA, achieving 22.52% accuracy on PlotQA and 58% on DVQA, significantly improving over previous methods.",
+      "abstract": "Existing synthetic datasets (FigureQA, DVQA) for reasoning over plots do not contain variability in data labels, real-valued data, or complex reasoning questions. Consequently, proposed models for these datasets do not fully address the challenge of reasoning over plots. In particular, they assume that the answer comes either from a small fixed size vocabulary or from a bounding box within the image. However, in practice, this is an unrealistic assumption because many questions require reasoning and thus have real-valued answers which appear neither in a small fixed size vocabulary nor in the image. In this work, we aim to bridge this gap between existing datasets and real-world plots. Specifically, we propose PlotQA with 28.9 million question-answer pairs over 224,377 plots on data from real-world sources and questions based on crowd-sourced question templates. Further, 80.76% of the out-of-vocabulary (OOV) questions in PlotQA have answers that are not in a fixed vocabulary. Analysis of existing models on PlotQA reveals that they cannot deal with OOV questions: their overall accuracy on our dataset is in single digits. This is not surprising given that these models were not designed for such questions. As a step towards a more holistic model which can address fixed vocabulary as well as OOV questions, we propose a hybrid approach: Specific questions are answered by choosing the answer from a fixed vocabulary or by extracting it from a predicted bounding box in the plot, while other questions are answered with a table question-answering engine which is fed with a structured table generated by detecting visual elements from the image. On the existing DVQA dataset, our model has an accuracy of 58%, significantly improving on the highest reported accuracy of 46%. On PlotQA, our model has an accuracy of 22.52%, which is significantly better than state of the art models.",
+      "authors": [
+        {
+          "name": "Nitesh Methani",
+          "orgs": [
+            "Department of Computer Science and Engineering",
+            "Robert Bosch Centre for Data Science and AI (RBC-DSAI)",
+            "Indian Institute of Technology Madras, Chennai, India"
+          ]
+        },
+        {
+          "name": "Pritha Ganguly",
+          "orgs": [
+            "Department of Computer Science and Engineering",
+            "Robert Bosch Centre for Data Science and AI (RBC-DSAI)",
+            "Indian Institute of Technology Madras, Chennai, India"
+          ]
+        },
+        {
+          "name": "Mitesh M. Khapra",
+          "orgs": [
+            "Department of Computer Science and Engineering",
+            "Robert Bosch Centre for Data Science and AI (RBC-DSAI)",
+            "Indian Institute of Technology Madras, Chennai, India"
+          ]
+        },
+        {
+          "name": "Pratyush Kumar",
+          "orgs": [
+            "Department of Computer Science and Engineering",
+            "Robert Bosch Centre for Data Science and AI (RBC-DSAI)",
+            "Indian Institute of Technology Madras, Chennai, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1909.00997v3",
+      "date": "2019-09-03T08:23:51Z",
+      "citation_count": 372,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1710.07300",
+      "score": 7.2787337,
+      "title": "FigureQA: An Annotated Figure Dataset for Visual Reasoning",
+      "tldr": "This paper introduces FigureQA, a synthetic dataset of over 100,000 scientific-style figures and one million question-answer pairs, designed to evaluate visual reasoning through 15 question types; it includes numerical data and bounding-box annotations for improved model training and comparison, with baseline models achieving 72.40% and 76.52% accuracy on the test set.",
+      "abstract": "We introduce FigureQA, a visual reasoning corpus of over one million question-answer pairs grounded in over 100,000 images. The images are synthetic, scientific-style figures from five classes: line plots, dot-line plots, vertical and horizontal bar graphs, and pie charts. We formulate our reasoning task by generating questions from 15 templates; questions concern various relationships between plot elements and examine characteristics like the maximum, the minimum, area-under-the-curve, smoothness, and intersection. To resolve, such questions often require reference to multiple plot elements and synthesis of information distributed spatially throughout a figure. To facilitate the training of machine learning systems, the corpus also includes side data that can be used to formulate auxiliary objectives. In particular, we provide the numerical data used to generate each figure as well as bounding-box annotations for all plot elements. We study the proposed visual reasoning task by training several models, including the recently proposed Relation Network as a strong baseline. Preliminary results indicate that the task poses a significant machine learning challenge. We envision FigureQA as a first step towards developing models that can intuitively recognize patterns from visual representations of data.",
+      "authors": [
+        {
+          "name": "Samira Ebrahimi Kahou",
+          "orgs": [
+            "Microsoft Research Montréal"
+          ]
+        },
+        {
+          "name": "Vincent Michalski",
+          "orgs": [
+            "Université de Montréal",
+            "MILA"
+          ]
+        },
+        {
+          "name": "Adam Atkinson",
+          "orgs": [
+            "Microsoft Research Montréal"
+          ]
+        },
+        {
+          "name": "Ákos Kádár",
+          "orgs": [
+            "Tilburg University"
+          ]
+        },
+        {
+          "name": "Adam Trischler",
+          "orgs": [
+            "Microsoft Research Montréal"
+          ]
+        },
+        {
+          "name": "Yoshua Bengio",
+          "orgs": [
+            "Tilburg University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1710.07300v2",
+      "date": "2017-10-19T18:01:38Z",
+      "citation_count": 426,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2212.10505",
+      "score": 7.1968565,
+      "title": "DePlot: One-shot visual language reasoning by plot-to-table translation",
+      "tldr": "This paper addresses the challenge of visual language reasoning by proposing DePlot, a modality conversion module that translates plots to tables for one-shot reasoning with LLMs, achieving a 24.0% improvement over SOTA on ChartQA with human-written queries.",
+      "abstract": "Visual language such as charts and plots is ubiquitous in the human world. Comprehending plots and charts requires strong reasoning skills. Prior state-of-the-art (SOTA) models require at least tens of thousands of training examples and their reasoning capabilities are still much limited, especially on complex human-written queries. This paper presents the first one-shot solution to visual language reasoning. We decompose the challenge of visual language reasoning into two steps: (1) plot-to-text translation, and (2) reasoning over the translated text. The key in this method is a modality conversion module, named as DePlot, which translates the image of a plot or chart to a linearized table. The output of DePlot can then be directly used to prompt a pretrained large language model (LLM), exploiting the few-shot reasoning capabilities of LLMs. To obtain DePlot, we standardize the plot-to-table task by establishing unified task formats and metrics, and train DePlot end-to-end on this task. DePlot can then be used off-the-shelf together with LLMs in a plug-and-play fashion. Compared with a SOTA model finetuned on more than >28k data points, DePlot+LLM with just one-shot prompting achieves a 24.0% improvement over finetuned SOTA on human-written queries from the task of chart QA.",
+      "authors": [
+        {
+          "name": "Fangyu Liu",
+          "orgs": [
+            "Google DeepMind",
+            "University of Cambridge"
+          ]
+        },
+        {
+          "name": "Julian Martin Eisenschlos",
+          "orgs": [
+            "Google DeepMind",
+            "University of Cambridge"
+          ]
+        },
+        {
+          "name": "Francesco Piccinno",
+          "orgs": [
+            "Google DeepMind",
+            "University of Cambridge"
+          ]
+        },
+        {
+          "name": "Syrine Krichene",
+          "orgs": [
+            "Google DeepMind",
+            "University of Cambridge"
+          ]
+        },
+        {
+          "name": "Chenxi Pang",
+          "orgs": [
+            "Google DeepMind"
+          ]
+        },
+        {
+          "name": "Kenton Lee",
+          "orgs": [
+            "Google DeepMind"
+          ]
+        },
+        {
+          "name": "Mandar Joshi",
+          "orgs": [
+            "Google DeepMind"
+          ]
+        },
+        {
+          "name": "Wenhu Chen",
+          "orgs": [
+            "Google DeepMind"
+          ]
+        },
+        {
+          "name": "Nigel Collier",
+          "orgs": [
+            "University of Cambridge"
+          ]
+        },
+        {
+          "name": "Yasemin Altun",
+          "orgs": [
+            "Google DeepMind"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2212.10505v2",
+      "date": "2022-12-20T18:20:50Z",
+      "citation_count": 163,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,979 @@
+{
+  "status": "success",
+  "total_count": 49,
+  "result": [
+    {
+      "arxiv_id": "2008.10843",
+      "score": 14.465754,
+      "title": "Graphical Object Detection in Document Images",
+      "tldr": "This paper addresses the challenge of detecting graphical objects like tables, figures, and equations in document images, which is crucial for automated information extraction; it introduces a data-driven deep learning framework called GOD that leverages transfer learning and domain adaptation to overcome limited labeled data; experiments on ICDAR-2013, ICDAR-POD2017, and UNLV datasets show GOD outperforms state-of-the-art methods in localizing graphical objects.",
+      "abstract": "Graphical elements: particularly tables and figures contain a visual summary of the most valuable information contained in a document. Therefore, localization of such graphical objects in the document images is the initial step to understand the content of such graphical objects or document images. In this paper, we present a novel end-to-end trainable deep learning based framework to localize graphical objects in the document images called as Graphical Object Detection (GOD). Our framework is data-driven and does not require any heuristics or meta-data to locate graphical objects in the document images. The GOD explores the concept of transfer learning and domain adaptation to handle scarcity of labeled training images for graphical object detection task in the document images. Performance analysis carried out on the various public benchmark data sets: ICDAR-2013, ICDAR-POD2017,and UNLV shows that our model yields promising results as compared to state-of-the-art techniques.",
+      "authors": [
+        {
+          "name": "Ranajit Saha",
+          "orgs": [
+            "Centre for Visual Information Technology",
+            "International Institute of Information Technology, Hyderabad, India"
+          ]
+        },
+        {
+          "name": "Ajoy Mondal",
+          "orgs": [
+            "Centre for Visual Information Technology",
+            "International Institute of Information Technology, Hyderabad, India"
+          ]
+        },
+        {
+          "name": "C. V. Jawahar",
+          "orgs": [
+            "Centre for Visual Information Technology",
+            "International Institute of Information Technology, Hyderabad, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2008.10843v1",
+      "date": "2020-08-25T06:35:57Z",
+      "citation_count": 63,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2307.02065",
+      "score": 13.998592,
+      "title": "Line Graphics Digitization: A Step Towards Full Automation",
+      "tldr": "This paper addresses the under-explored task of fine-grained visual understanding of mathematical graphics, introducing the Line Graphics (LG) dataset with 520 images from 450 documents, annotated for 10 categories, and benchmarks 7 models achieving 67.56% mIoU, highlighting challenges in spine and title recognition, with implications for automated document digitization and accessibility.",
+      "abstract": "The digitization of documents allows for wider accessibility and reproducibility. While automatic digitization of document layout and text content has been a long-standing focus of research, this problem in regard to graphical elements, such as statistical plots, has been under-explored. In this paper, we introduce the task of fine-grained visual understanding of mathematical graphics and present the Line Graphics (LG) dataset, which includes pixel-wise annotations of 5 coarse and 10 fine-grained categories. Our dataset covers 520 images of mathematical graphics collected from 450 documents from different disciplines. Our proposed dataset can support two different computer vision tasks, i.e., semantic segmentation and object detection. To benchmark our LG dataset, we explore 7 state-of-the-art models. To foster further research on the digitization of statistical graphs, we will make the dataset, code, and models publicly available to the community.",
+      "authors": [
+        {
+          "name": "Omar Moured",
+          "orgs": []
+        },
+        {
+          "name": "Jiaming Zhang",
+          "orgs": []
+        },
+        {
+          "name": "Alina Roitberg",
+          "orgs": []
+        },
+        {
+          "name": "Thorsten Schwarz",
+          "orgs": []
+        },
+        {
+          "name": "Rainer Stiefelhagen",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2307.02065v1",
+      "date": "2023-07-05T07:08:58Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2308.11788",
+      "score": 13.807516,
+      "title": "An extensible point-based method for data chart value detection",
+      "tldr": "This paper addresses the challenge of extracting values from scientific bar charts by proposing an extensible point-based method using a point proposal network, achieving 0.8705 F1 accuracy on real charts and 0.9810 F1 on synthetic ones, with implications for scalable data extraction from visualized scientific literature.",
+      "abstract": "We present an extensible method for identifying semantic points to reverse engineer (i.e. extract the values of) data charts, particularly those in scientific articles. Our method uses a point proposal network (akin to region proposal networks for object detection) to directly predict the position of points of interest in a chart, and it is readily extensible to multiple chart types and chart elements. We focus on complex bar charts in the scientific literature, on which our model is able to detect salient points with an accuracy of 0.8705 F1 (@1.5-cell max deviation); it achieves 0.9810 F1 on synthetically-generated charts similar to those used in prior works. We also explore training exclusively on synthetic data with novel augmentations, reaching surprisingly competent performance in this way (0.6621 F1) on real charts with widely varying appearance, and we further demonstrate our unchanged method applied directly to synthetic pie charts (0.8343 F1). Datasets, trained models, and evaluation code are available at https://github.com/BNLNLP/PPN_model.",
+      "authors": [
+        {
+          "name": "Carlos Soto",
+          "orgs": []
+        },
+        {
+          "name": "Shinjae Yoo",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2308.11788v1",
+      "date": "2023-08-22T21:03:58Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2602.23061",
+      "score": 13.652781,
+      "title": "MoDora: Tree-Based Semi-Structured Document Analysis System",
+      "tldr": "This paper presents MoDora, a system for semi-structured document analysis addressing challenges in OCR fragmentation, hierarchical structure representation, and cross-component evidence alignment; it introduces a local-alignment aggregation strategy, the Component-Correlation Tree (CCTree), and a question-type-aware retrieval mechanism, achieving 5.97%-61.07% accuracy improvements over baselines.",
+      "abstract": "Semi-structured documents integrate diverse interleaved data elements (e.g., tables, charts, hierarchical paragraphs) arranged in various and often irregular layouts. These documents are widely observed across domains and account for a large portion of real-world data. However, existing methods struggle to support natural language question answering over these documents due to three main technical challenges: (1) The elements extracted by techniques like OCR are often fragmented and stripped of their original semantic context, making them inadequate for analysis. (2) Existing approaches lack effective representations to capture hierarchical structures within documents (e.g., associating tables with nested chapter titles) and to preserve layout-specific distinctions (e.g., differentiating sidebars from main content). (3) Answering questions often requires retrieving and aligning relevant information scattered across multiple regions or pages, such as linking a descriptive paragraph to table cells located elsewhere in the document.\n  To address these issues, we propose MoDora, an LLM-powered system for semi-structured document analysis. First, we adopt a local-alignment aggregation strategy to convert OCR-parsed elements into layout-aware components, and conduct type-specific information extraction for components with hierarchical titles or non-text elements. Second, we design the Component-Correlation Tree (CCTree) to hierarchically organize components, explicitly modeling inter-component relations and layout distinctions through a bottom-up cascade summarization process. Finally, we propose a question-type-aware retrieval strategy that supports (1) layout-based grid partitioning for location-based retrieval and (2) LLM-guided pruning for semantic-based retrieval. Experiments show MoDora outperforms baselines by 5.97%-61.07% in accuracy. The code is at https://github.com/weAIDB/MoDora.",
+      "authors": [
+        {
+          "name": "Bangrui Xu",
+          "orgs": [
+            "Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Qihang Yao",
+          "orgs": [
+            "Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Zirui Tang",
+          "orgs": [
+            "Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Xuanhe Zhou",
+          "orgs": [
+            "Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Yeye He",
+          "orgs": [
+            "Microsoft Research"
+          ]
+        },
+        {
+          "name": "Shihan Yu",
+          "orgs": [
+            "Beihang University"
+          ]
+        },
+        {
+          "name": "Qianqian Xu",
+          "orgs": [
+            "Beihang University"
+          ]
+        },
+        {
+          "name": "Bin Wang",
+          "orgs": [
+            "Shanghai AI Lab"
+          ]
+        },
+        {
+          "name": "Guoliang Li",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Conghui He",
+          "orgs": [
+            "Shanghai AI Lab"
+          ]
+        },
+        {
+          "name": "Fan Wu",
+          "orgs": [
+            "Shanghai Jiao Tong University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.23061v3",
+      "date": "2026-02-26",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.DB",
+        "cs.IR",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2602.04101",
+      "score": 13.640256,
+      "title": "Interfaze: The Future of AI is built on Task-Specific Small Models",
+      "tldr": "This paper presents a context-centric architecture for AI applications, addressing the gap in general-purpose LLMs by integrating small models and tools for perception, context construction, and action; it introduces Interfaze-Beta achieving 83.6% on MMLU-Pro and 90.0% on AIME-2025 while shifting computation to small models; the findings highlight efficiency gains and identify controller limitations for future improvements.",
+      "abstract": "We present Interfaze, a system that treats modern LLM applications as a problem of building and acting over context, not just picking the right monolithic model. Instead of a single transformer, we combine (i) a stack of heterogeneous DNNs paired with small language models as perception modules for OCR involving complex PDFs, charts and diagrams, and multilingual ASR with (ii) a context-construction layer that crawls, indexes, and parses external sources (web pages, code, PDFs) into compact structured state, and (iii) an action layer that can browse, retrieve, execute code in a sandbox, and drive a headless browser for dynamic web pages. A thin controller sits on top of this stack and exposes a single, OpenAI-style endpoint: it decides which small models and actions to run and always forwards the distilled context to a user-selected LLM that produces the final response.\n  On this architecture, Interfaze-Beta achieves 83.6% on MMLU-Pro, 91.4% on MMLU, 81.3% on GPQA-Diamond, 57.8% on LiveCodeBench v5, and 90.0% on AIME-2025, along with strong multimodal scores on MMMU (val) (77.3%), AI2D (91.5%), ChartQA (90.9%), and Common Voice v16 (90.8%). We show that most queries are handled primarily by the small-model and tool stack, with the large LLM operating only on distilled context, yielding competitive accuracy while shifting the bulk of computation away from the most expensive and monolithic models.",
+      "authors": [
+        {
+          "name": "Vineet Agarwal",
+          "orgs": []
+        },
+        {
+          "name": "Harsha Vardhan Khurdula",
+          "orgs": []
+        },
+        {
+          "name": "Yoeven D Khemlani",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.04101v1",
+      "date": "2026-02-04",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI"
+      ]
+    },
+    {
+      "arxiv_id": "2410.21169",
+      "score": 13.600741,
+      "title": "Document Parsing Unveiled: Techniques, Challenges, and Prospects for Structured Information Extraction",
+      "tldr": "This paper addresses the challenges and advancements in document parsing, a critical technique for converting unstructured documents into structured data, essential for knowledge base construction and training data generation; it reviews modular pipeline systems and end-to-end vision-language models, offering a comprehensive overview and consolidating datasets and metrics; it identifies key methodologies and highlights future directions for improving parsing accuracy and handling complex layouts.",
+      "abstract": "Document parsing is essential for converting unstructured and semi-structured documents such as contracts, academic papers, and invoices into structured, machine-readable data. Document parsing reliable structured data from unstructured inputs, providing huge convenience for numerous applications. Especially with recent achievements in Large Language Models, document parsing plays an indispensable role in both knowledge base construction and training data generation. This survey presents a comprehensive review of the current state of document parsing, covering key methodologies, from modular pipeline systems to end-to-end models driven by large vision-language models. Core components such as layout detection, content extraction (including text, tables, and mathematical expressions), and multi-modal data integration are examined in detail. Additionally, this paper discusses the challenges faced by modular document parsing systems and vision-language models in handling complex layouts, integrating multiple modules, and recognizing high-density text. It outlines future research directions and emphasizes the importance of developing larger and more diverse datasets.",
+      "authors": [
+        {
+          "name": "Qintong Zhang",
+          "orgs": [
+            "Peking University",
+            "Beijing",
+            "China"
+          ]
+        },
+        {
+          "name": "Bin Wang",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory",
+            "Shanghai",
+            "China"
+          ]
+        },
+        {
+          "name": "Victor Shea-Jay Huang",
+          "orgs": [
+            "Beihang University",
+            "Beijing",
+            "China"
+          ]
+        },
+        {
+          "name": "Junyuan Zhang",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory",
+            "Shanghai",
+            "China"
+          ]
+        },
+        {
+          "name": "Zhengren Wang",
+          "orgs": [
+            "Peking University",
+            "Beijing",
+            "China"
+          ]
+        },
+        {
+          "name": "Hao Liang",
+          "orgs": [
+            "Peking University",
+            "Beijing",
+            "China"
+          ]
+        },
+        {
+          "name": "Conghui He",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory",
+            "China"
+          ]
+        },
+        {
+          "name": "Wentao Zhang",
+          "orgs": [
+            "Peking University",
+            "China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2410.21169v4",
+      "date": "2024-10-28T16:11:35Z",
+      "citation_count": 32,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.MM"
+      ]
+    },
+    {
+      "arxiv_id": "2512.15098",
+      "score": 13.279721,
+      "title": "Uni-Parser Technical Report",
+      "tldr": "This paper presents Uni-Parser, a multi-modal document parsing system addressing the challenge of efficiently and accurately extracting structured data from scientific and patent PDFs, which is critical for downstream AI applications; it uses a modular, multi-expert architecture with distributed inference and domain-specialized models to achieve high throughput and accuracy; it processes up to 20 PDF pages per second on 8 GPUs, enabling scalable extraction of text, equations, tables, and chemical structures for AI4Science.",
+      "abstract": "This technical report introduces Uni-Parser, an industrial-grade document parsing engine tailored for scientific literature and patents, delivering high throughput, robust accuracy, and cost efficiency. Unlike pipeline-based document parsing methods, Uni-Parser employs a modular, loosely coupled multi-expert architecture that preserves fine-grained cross-modal alignments across text, equations, tables, figures, and chemical structures, while remaining easily extensible to emerging modalities. The system incorporates adaptive GPU load balancing, distributed inference, dynamic module orchestration, and configurable modes that support either holistic or modality-specific parsing. Optimized for large-scale cloud deployment, Uni-Parser achieves a processing rate of up to 20 PDF pages per second on 8 x NVIDIA RTX 4090D GPUs, enabling cost-efficient inference across billions of pages. This level of scalability facilitates a broad spectrum of downstream applications, ranging from literature retrieval and summarization to the extraction of chemical structures, reaction schemes, and bioactivity data, as well as the curation of large-scale corpora for training next-generation large language models and AI4Science models.",
+      "authors": [
+        {
+          "name": "Xinyu Li",
+          "orgs": [
+            "DP Technology"
+          ]
+        },
+        {
+          "name": "Xi Fang",
+          "orgs": []
+        },
+        {
+          "name": "Shuwen Yang",
+          "orgs": []
+        },
+        {
+          "name": "Suyang Zhong",
+          "orgs": []
+        },
+        {
+          "name": "Haoyi Tao",
+          "orgs": [
+            "DP Technology"
+          ]
+        },
+        {
+          "name": "Haocheng Lu",
+          "orgs": [
+            "DP Technology"
+          ]
+        },
+        {
+          "name": "Chaozheng Huang",
+          "orgs": [
+            "DP Technology"
+          ]
+        },
+        {
+          "name": "Han Lyu",
+          "orgs": [
+            "DP Technology"
+          ]
+        },
+        {
+          "name": "Linfeng Zhang and Guolin Ke",
+          "orgs": [
+            "DP Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.15098v3",
+      "date": "2025-12-17",
+      "citation_count": 2,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1804.06236",
+      "score": 13.244896,
+      "title": "A Saliency-based Convolutional Neural Network for Table and Chart Detection in Digitized Documents",
+      "tldr": "This paper addresses the challenge of table and chart detection in digital documents, aiming to improve automation of information extraction by developing a saliency-based convolutional neural network that combines deep learning, graphical models, and multi-scale reasoning, contributing a fully-convolutional network with dilated convolutions and CRF for precise localization, achieving significant performance improvements over existing models on the extended ICDAR 2013 dataset.",
+      "abstract": "Deep Convolutional Neural Networks (DCNNs) have recently been applied successfully to a variety of vision and multimedia tasks, thus driving development of novel solutions in several application domains. Document analysis is a particularly promising area for DCNNs: indeed, the number of available digital documents has reached unprecedented levels, and humans are no longer able to discover and retrieve all the information contained in these documents without the help of automation. Under this scenario, DCNNs offers a viable solution to automate the information extraction process from digital documents. Within the realm of information extraction from documents, detection of tables and charts is particularly needed as they contain a visual summary of the most valuable information contained in a document. For a complete automation of visual information extraction process from tables and charts, it is necessary to develop techniques that localize them and identify precisely their boundaries. In this paper we aim at solving the table/chart detection task through an approach that combines deep convolutional neural networks, graphical models and saliency concepts. In particular, we propose a saliency-based fully-convolutional neural network performing multi-scale reasoning on visual cues followed by a fully-connected conditional random field (CRF) for localizing tables and charts in digital/digitized documents. Performance analysis carried out on an extended version of ICDAR 2013 (with annotated charts as well as tables) shows that our approach yields promising results, outperforming existing models.",
+      "authors": [
+        {
+          "name": "I. Kavasidis",
+          "orgs": [
+            "Pattern Recognition and Computer Vision (PeRCeiVe) Lab, University of Catania, Italy"
+          ]
+        },
+        {
+          "name": "S. Palazzo",
+          "orgs": [
+            "Pattern Recognition and Computer Vision (PeRCeiVe) Lab, University of Catania, Italy"
+          ]
+        },
+        {
+          "name": "C. Spampinato",
+          "orgs": [
+            "Pattern Recognition and Computer Vision (PeRCeiVe) Lab, University of Catania, Italy"
+          ]
+        },
+        {
+          "name": "D. Giordano",
+          "orgs": [
+            "Pattern Recognition and Computer Vision (PeRCeiVe) Lab, University of Catania, Italy"
+          ]
+        },
+        {
+          "name": "D. Giuffrida",
+          "orgs": [
+            "Tab2Ex company, San Jose’, California (USA)"
+          ]
+        },
+        {
+          "name": "P. Messina",
+          "orgs": [
+            "Tab2Ex company, San Jose’, California (USA)"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1804.06236v1",
+      "date": "2018-04-17T13:39:29Z",
+      "citation_count": 102,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2507.18932",
+      "score": 13.1936655,
+      "title": "MMESGBench: Pioneering Multimodal Understanding and Complex Reasoning Benchmark for ESG Tasks",
+      "tldr": "This paper introduces MMESGBench, a multimodal ESG benchmark addressing the lack of structured datasets for complex document reasoning, comprising 933 QA pairs from 45 diverse ESG documents, validated through human-AI collaboration and expert refinement, enabling evaluation of multimodal and cross-page reasoning with significant performance gains over text-only models.",
+      "abstract": "Environmental, Social, and Governance (ESG) reports are essential for evaluating sustainability practices, ensuring regulatory compliance, and promoting financial transparency. However, these documents are often lengthy, structurally diverse, and multimodal, comprising dense text, structured tables, complex figures, and layout-dependent semantics. Existing AI systems often struggle to perform reliable document-level reasoning in such settings, and no dedicated benchmark currently exists in ESG domain. To fill the gap, we introduce \\textbf{MMESGBench}, a first-of-its-kind benchmark dataset targeted to evaluate multimodal understanding and complex reasoning across structurally diverse and multi-source ESG documents. This dataset is constructed via a human-AI collaborative, multi-stage pipeline. First, a multimodal LLM generates candidate question-answer (QA) pairs by jointly interpreting rich textual, tabular, and visual information from layout-aware document pages. Second, an LLM verifies the semantic accuracy, completeness, and reasoning complexity of each QA pair. This automated process is followed by an expert-in-the-loop validation, where domain specialists validate and calibrate QA pairs to ensure quality, relevance, and diversity. MMESGBench comprises 933 validated QA pairs derived from 45 ESG documents, spanning across seven distinct document types and three major ESG source categories. Questions are categorized as single-page, cross-page, or unanswerable, with each accompanied by fine-grained multimodal evidence. Initial experiments validate that multimodal and retrieval-augmented models substantially outperform text-only baselines, particularly on visually grounded and cross-page tasks. MMESGBench is publicly available as an open-source dataset at https://github.com/Zhanglei1103/MMESGBench.",
+      "authors": [
+        {
+          "name": "Lei Zhang",
+          "orgs": [
+            "Nanyang Technological University, Singapore"
+          ]
+        },
+        {
+          "name": "Xin Zhou",
+          "orgs": [
+            "Nanyang Technological University, Singapore"
+          ]
+        },
+        {
+          "name": "Chaoyue He",
+          "orgs": [
+            "Nanyang Technological University, Singapore"
+          ]
+        },
+        {
+          "name": "Di Wang",
+          "orgs": [
+            "Nanyang Technological University, Singapore"
+          ]
+        },
+        {
+          "name": "Yi Wu",
+          "orgs": [
+            "Nanyang Technological University, Singapore"
+          ]
+        },
+        {
+          "name": "Hong Xu",
+          "orgs": [
+            "Nanyang Technological University, Singapore"
+          ]
+        },
+        {
+          "name": "Wei Liu",
+          "orgs": [
+            "Alibaba Group, China"
+          ]
+        },
+        {
+          "name": "Chunyan Miao",
+          "orgs": [
+            "Nanyang Technological University, Singapore"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2507.18932v2",
+      "date": "2025-07-25T03:58:07Z",
+      "citation_count": 5,
+      "categories": [
+        "cs.CL",
+        "cs.MM"
+      ]
+    },
+    {
+      "arxiv_id": "2503.18641",
+      "score": 13.179587,
+      "title": "From Fragment to One Piece: A Survey on AI-Driven Graphic Design",
+      "tldr": "This paper reviews AI-driven graphic design, addressing the gap in holistic understanding and control of creative processes, by categorizing research into cognitive and generative tasks, highlighting the dominance of generation tasks since 2020 and the focus on raster images and layout generation, with implications for future AI integration in design workflows.",
+      "abstract": "This survey provides a comprehensive overview of the advancements in Artificial Intelligence in Graphic Design (AIGD), focusing on integrating AI techniques to support design interpretation and enhance the creative process. We categorize the field into two primary directions: perception tasks, which involve understanding and analyzing design elements, and generation tasks, which focus on creating new design elements and layouts. The survey covers various subtasks, including visual element perception and generation, aesthetic and semantic understanding, layout analysis, and generation. We highlight the role of large language models and multimodal approaches in bridging the gap between localized visual features and global design intent. Despite significant progress, challenges remain to understanding human intent, ensuring interpretability, and maintaining control over multilayered compositions. This survey serves as a guide for researchers, providing information on the current state of AIGD and potential future directions\\footnote{https://github.com/zhangtianer521/excellent\\_Intelligent\\_graphic\\_design}.",
+      "authors": [
+        {
+          "name": "Xingxing Zou",
+          "orgs": [
+            "Hong Kong Polytechnic University, Hong Kong SAR, China"
+          ]
+        },
+        {
+          "name": "Wen Zhang",
+          "orgs": [
+            "Snap Inc, CALIFORNIA, United States"
+          ]
+        },
+        {
+          "name": "Nanxuan Zhao",
+          "orgs": [
+            "Adobe Inc, CALIFORNIA, United States"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2503.18641v1",
+      "date": "2025-03-24T13:05:09Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.AI"
+      ]
+    },
+    {
+      "arxiv_id": "0905.4717",
+      "score": 13.176403,
+      "title": "Reengineering PDF-Based Documents Targeting Complex Software Specifications",
+      "tldr": "This paper addresses the challenge of reengineering complex PDF-based documents like OMG specifications to improve usability, proposing a general approach involving XML structure extraction and multilayer hypertext generation, contributing an efficient XML conversion technique, text extraction methods, and a document engineering framework, resulting in enhanced navigation and usability with better structured content and cross-referencing.",
+      "abstract": "This article aims at reengineering of PDF-based complex documents, where specifications of the Object Management Group (OMG) are our initial targets. Our motivation is that such specifications are dense and intricate to use, and tend to have complicated structures. Our objective is therefore to create an approach that allows us to reengineer PDF-based documents, and to illustrate how to make more usable versions of electronic documents (such as specifications, technical books, etc) so that end users to have a better experience with them. The first step was to extract the logical structure of the document in a meaningful XML format for subsequent processing. Our initial assumption was that, many key concepts of a document are expressed in this structure. In the next phase, we created a multilayer hypertext version of the document to facilitate browsing and navigating. Although we initially focused on OMG software specifications, we chose a general approach for different phases of our work including format conversions, logical structure extraction, text extraction, multilayer hypertext generation, and concept exploration. As a consequence, we can process other complex documents to achieve our goals.",
+      "authors": [
+        {
+          "name": "Mehrdad Nojoumian",
+          "orgs": [
+            "University of Waterloo, Canada"
+          ]
+        },
+        {
+          "name": "Timothy C. Lethbridge",
+          "orgs": [
+            "University of Ottawa, Canada"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/0905.4717v3",
+      "date": "2009-05-28T19:23:21Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.DL"
+      ]
+    },
+    {
+      "arxiv_id": "2102.10287",
+      "score": 13.11706,
+      "title": "Deep Structured Feature Networks for Table Detection and Tabular Data Extraction from Scanned Financial Document Images",
+      "tldr": "This paper proposes a method for table detection and tabular data extraction from financial PDF documents, addressing the challenge of noise and structure preservation in detected tables, which is crucial for accurate financial data processing; it introduces a Faster R-CNN with FPN for table detection, a rule-based layout segmentation technique with OCR and regular expressions for data extraction, and a new annotated Financial Documents dataset with 3238 page images; experimental results show competitive table detection performance on the dataset, enabling efficient and scalable tabular data extraction.",
+      "abstract": "Automatic table detection in PDF documents has achieved a great success but tabular data extraction are still challenging due to the integrity and noise issues in detected table areas. The accurate data extraction is extremely crucial in finance area. Inspired by this, the aim of this research is proposing an automated table detection and tabular data extraction from financial PDF documents. We proposed a method that consists of three main processes, which are detecting table areas with a Faster R-CNN (Region-based Convolutional Neural Network) model with Feature Pyramid Network (FPN) on each page image, extracting contents and structures by a compounded layout segmentation technique based on optical character recognition (OCR) and formulating regular expression rules for table header separation. The tabular data extraction feature is embedded with rule-based filtering and restructuring functions that are highly scalable. We annotate a new Financial Documents dataset with table regions for the experiment. The excellent table detection performance of the detection model is obtained from our customized dataset. The main contributions of this paper are proposing the Financial Documents dataset with table-area annotations, the superior detection model and the rule-based layout segmentation technique for the tabular data extraction from PDF files.",
+      "authors": [
+        {
+          "name": "Siwen Luo",
+          "orgs": [
+            "School of Computer Science",
+            "The University of Sydney"
+          ]
+        },
+        {
+          "name": "Mengting Wu",
+          "orgs": [
+            "School of Computer Science",
+            "The University of Sydney"
+          ]
+        },
+        {
+          "name": "Yiwen Gong",
+          "orgs": [
+            "School of Computer Science",
+            "The University of Sydney"
+          ]
+        },
+        {
+          "name": "Wanying Zhou",
+          "orgs": [
+            "School of Computer Science",
+            "The University of Sydney"
+          ]
+        },
+        {
+          "name": "Josiah Poon",
+          "orgs": [
+            "School of Computer Science",
+            "The University of Sydney"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2102.10287v2",
+      "date": "2021-02-20T08:21:17Z",
+      "citation_count": 5,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2408.14764",
+      "score": 13.10884,
+      "title": "SynthDoc: Bilingual Documents Synthesis for Visual Document Understanding",
+      "tldr": "This paper introduces SynthDoc, a synthetic document generation pipeline addressing data scarcity in Visual Document Understanding by creating diverse datasets with text, images, tables, and charts, contributing a benchmark of 5,000 image-text pairs and demonstrating improved performance in pre-training and downstream tasks using the Donut model.",
+      "abstract": "This paper introduces SynthDoc, a novel synthetic document generation pipeline designed to enhance Visual Document Understanding (VDU) by generating high-quality, diverse datasets that include text, images, tables, and charts. Addressing the challenges of data acquisition and the limitations of existing datasets, SynthDoc leverages publicly available corpora and advanced rendering tools to create a comprehensive and versatile dataset. Our experiments, conducted using the Donut model, demonstrate that models trained with SynthDoc's data achieve superior performance in pre-training read tasks and maintain robustness in downstream tasks, despite language inconsistencies. The release of a benchmark dataset comprising 5,000 image-text pairs not only showcases the pipeline's capabilities but also provides a valuable resource for the VDU community to advance research and development in document image recognition. This work significantly contributes to the field by offering a scalable solution to data scarcity and by validating the efficacy of end-to-end models in parsing complex, real-world documents.",
+      "authors": [
+        {
+          "name": "Chuanghao Ding",
+          "orgs": [
+            "State Key Laboratory for Novel Software Technology",
+            "Nanjing University",
+            "SenseTime Research",
+            "Nanjing China"
+          ]
+        },
+        {
+          "name": "Xuejing Liu",
+          "orgs": [
+            "SenseTime Research",
+            "Shanghai China"
+          ]
+        },
+        {
+          "name": "Wei Tang",
+          "orgs": [
+            "SenseTime Research",
+            "Shanghai China"
+          ]
+        },
+        {
+          "name": "Xiaoliang Wang",
+          "orgs": [
+            "State Key Laboratory for Novel Software Technology",
+            "Nanjing University"
+          ]
+        },
+        {
+          "name": "Rui Zhao",
+          "orgs": [
+            "SenseTime Research",
+            "Shanghai",
+            "China"
+          ]
+        },
+        {
+          "name": "Cam-Tu Nguyen",
+          "orgs": [
+            "State Key Laboratory for Novel Software Technology",
+            "School of Artificial Intelligence",
+            "Nanjing University",
+            "Nanjing",
+            "China"
+          ]
+        },
+        {
+          "name": "Fei Tan",
+          "orgs": [
+            "SenseTime Research",
+            "Shanghai",
+            "China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2408.14764v1",
+      "date": "2024-08-27T03:31:24Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.CV",
+        "cs.MM"
+      ]
+    },
+    {
+      "arxiv_id": "2106.15322",
+      "score": 13.097216,
+      "title": "TNCR: Table Net Detection and Classification Dataset",
+      "tldr": "This paper introduces TNCR, a table detection and classification dataset with 9428 high-quality labeled images, designed to address table structure recognition challenges in scanned documents, featuring instance segmentation and 5-class classification, and enabling evaluation of deep learning methods with state-of-the-art results achieving 79.7% precision.",
+      "abstract": "We present TNCR, a new table dataset with varying image quality collected from free websites. The TNCR dataset can be used for table detection in scanned document images and their classification into 5 different classes. TNCR contains 9428 high-quality labeled images. In this paper, we have implemented state-of-the-art deep learning-based methods for table detection to create several strong baselines. Cascade Mask R-CNN with ResNeXt-101-64x4d Backbone Network achieves the highest performance compared to other methods with a precision of 79.7%, recall of 89.8%, and f1 score of 84.4% on the TNCR dataset. We have made TNCR open source in the hope of encouraging more deep learning approaches to table detection, classification, and structure recognition. The dataset and trained model checkpoints are available at https://github.com/abdoelsayed2016/TNCR_Dataset.",
+      "authors": [
+        {
+          "name": "Abdelrahman Abdallah",
+          "orgs": [
+            "Department of Machine Learning & Data Science, Satbayev University, Almaty, 050013, Almaty, Kazakhstan",
+            "National Open Research Laboratory for Information and Space Technologies, Satbayev University, Almaty, 050013, Almaty, Kazakhstan"
+          ]
+        },
+        {
+          "name": "Alexander Berendeyev",
+          "orgs": [
+            "Department of Machine Learning & Data Science, Satbayev University, Almaty, 050013, Almaty, Kazakhstan",
+            "National Open Research Laboratory for Information and Space Technologies, Satbayev University, Almaty, 050013, Almaty, Kazakhstan"
+          ]
+        },
+        {
+          "name": "Islam Nuradin",
+          "orgs": [
+            "Department of Machine Learning & Data Science, Satbayev University, Almaty, 050013, Almaty, Kazakhstan",
+            "National Open Research Laboratory for Information and Space Technologies, Satbayev University, Almaty, 050013, Almaty, Kazakhstan"
+          ]
+        },
+        {
+          "name": "Daniyar Nurseitov",
+          "orgs": [
+            "Department of Machine Learning & Data Science, Satbayev University, Almaty, 050013, Almaty, Kazakhstan",
+            "National Open Research Laboratory for Information and Space Technologies, Satbayev University, Almaty, 050013, Almaty, Kazakhstan"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2106.15322v1",
+      "date": "2021-06-19T10:48:58Z",
+      "citation_count": 39,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2601.14490",
+      "score": 12.949534,
+      "title": "GutenOCR: A Grounded Vision-Language Front-End for Documents",
+      "tldr": "This paper presents GutenOCR, a grounded OCR front-end for documents aiming to bridge the gap between classical OCR pipelines and vision-language models by enabling precise text detection, localization, and structured output; it introduces a unified model family fine-tuned on business, scientific, and synthetic data, achieving a composite grounded OCR score of 0.82 on 10.5K pages and improving region- and line-level OCR accuracy while highlighting challenges in formula-heavy layouts.",
+      "abstract": "GutenOCR is a family of grounded OCR front-ends obtained by fine-tuning Qwen2.5-VL-3B and Qwen2.5-VL-7B. The resulting single-checkpoint vision-language models expose reading, detection, and grounding through a unified, prompt-based interface. Trained on business documents, scientific articles, and synthetic grounding data, the models support full-page and localized reading with line- and paragraph-level bounding boxes and conditional ``where is x?'' queries. We introduce a grounded OCR evaluation protocol and show that GutenOCR-7B more than doubles the composite grounded OCR score of its Qwen2.5-VL-7B backbone on 10.5K held-out business and scientific pages (0.40 to 0.82). On Fox and OmniDocBench v1.5, our approach substantially improves region- and line-level OCR as well as text-detection recall, but reveals trade-offs in page-level linearization, color-guided OCR, and formula-heavy layouts.",
+      "authors": [
+        {
+          "name": "Yosheb Getachew",
+          "orgs": [
+            "Roots.ai"
+          ]
+        },
+        {
+          "name": "Hunter Heidenreich",
+          "orgs": [
+            "Roots.ai"
+          ]
+        },
+        {
+          "name": "Ben Elliott",
+          "orgs": [
+            "Roots.ai"
+          ]
+        },
+        {
+          "name": "Olivia Dinica",
+          "orgs": [
+            "Roots.ai"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2601.14490v2",
+      "date": "2026-01-20",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2306.13526",
+      "score": 12.935742,
+      "title": "Bridging the Performance Gap between DETR and R-CNN for Graphical Object Detection in Document Images",
+      "tldr": "This paper addresses the challenge of graphical object detection in document images, where existing methods struggle with layout variability and small object sizes, and proposes a modified DETR with enhanced object queries to bridge the performance gap between DETR and R-CNN; the key contributions include query modifications using points, anchor boxes, and noise to improve detection accuracy; the results show state-of-the-art mAP of 96.9%, 95.7%, and 99.3% on TableBank, PubLaynet, and PubTables respectively, demonstrating the effectiveness of transformer-based methods in document analysis.",
+      "abstract": "This paper takes an important step in bridging the performance gap between DETR and R-CNN for graphical object detection. Existing graphical object detection approaches have enjoyed recent enhancements in CNN-based object detection methods, achieving remarkable progress. Recently, Transformer-based detectors have considerably boosted the generic object detection performance, eliminating the need for hand-crafted features or post-processing steps such as Non-Maximum Suppression (NMS) using object queries. However, the effectiveness of such enhanced transformer-based detection algorithms has yet to be verified for the problem of graphical object detection. Essentially, inspired by the latest advancements in the DETR, we employ the existing detection transformer with few modifications for graphical object detection. We modify object queries in different ways, using points, anchor boxes and adding positive and negative noise to the anchors to boost performance. These modifications allow for better handling of objects with varying sizes and aspect ratios, more robustness to small variations in object positions and sizes, and improved image discrimination between objects and non-objects. We evaluate our approach on the four graphical datasets: PubTables, TableBank, NTable and PubLaynet. Upon integrating query modifications in the DETR, we outperform prior works and achieve new state-of-the-art results with the mAP of 96.9\\%, 95.7\\% and 99.3\\% on TableBank, PubLaynet, PubTables, respectively. The results from extensive ablations show that transformer-based methods are more effective for document analysis analogous to other applications. We hope this study draws more attention to the research of using detection transformers in document image analysis.",
+      "authors": [
+        {
+          "name": "Tahira Shehzadi",
+          "orgs": [
+            "Department of Computer Science, Technical University of Kaiserslautern, 67663, Germany",
+            "Mindgarage Lab, Kaiserslautern, 67663, Germany",
+            "Augmented Vision, German Research Institute for Artificial Intelligence (DFKI), Kaiserslautern, 67663, Germany"
+          ]
+        },
+        {
+          "name": "Khurram Azeem Hashmi",
+          "orgs": [
+            "Department of Computer Science, Technical University of Kaiserslautern, 67663, Germany",
+            "Mindgarage Lab, Kaiserslautern, 67663, Germany",
+            "Augmented Vision, German Research Institute for Artificial Intelligence (DFKI), Kaiserslautern, 67663, Germany"
+          ]
+        },
+        {
+          "name": "Didier Stricker",
+          "orgs": [
+            "Department of Computer Science, Technical University of Kaiserslautern, 67663, Germany",
+            "Mindgarage Lab, Kaiserslautern, 67663, Germany",
+            "Augmented Vision, German Research Institute for Artificial Intelligence (DFKI), Kaiserslautern, 67663, Germany"
+          ]
+        },
+        {
+          "name": "Marcus Liwicki",
+          "orgs": [
+            "Department of Computer Science, Luleå University of Technology, Luleå, 97187, Sweden"
+          ]
+        },
+        {
+          "name": "Muhammad Zeshan Afzal",
+          "orgs": [
+            "Department of Computer Science, Technical University of Kaiserslautern, 67663, Germany",
+            "Mindgarage Lab, Kaiserslautern, 67663, Germany",
+            "Augmented Vision, German Research Institute for Artificial Intelligence (DFKI), Kaiserslautern, 67663, Germany"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2306.13526v1",
+      "date": "2023-06-23T14:46:03Z",
+      "citation_count": 11,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1706.02337",
+      "score": 9.176414,
+      "title": "Learning to Extract Semantic Structure from Documents Using Multimodal Fully Convolutional Neural Network",
+      "tldr": "This paper addresses document semantic structure extraction (DSSE) by proposing a multimodal fully convolutional network (MFCN) that simultaneously identifies appearance-based and semantics-based classes, improving performance through synthetic data pretraining and semi-supervised fine-tuning on real documents, achieving significant state-of-the-art results in pixel-wise segmentation.",
+      "abstract": "We present an end-to-end, multimodal, fully convolutional network for extracting semantic structures from document images. We consider document semantic structure extraction as a pixel-wise segmentation task, and propose a unified model that classifies pixels based not only on their visual appearance, as in the traditional page segmentation task, but also on the content of underlying text. Moreover, we propose an efficient synthetic document generation process that we use to generate pretraining data for our network. Once the network is trained on a large set of synthetic documents, we fine-tune the network on unlabeled real documents using a semi-supervised approach. We systematically study the optimum network architecture and show that both our multimodal approach and the synthetic data pretraining significantly boost the performance.",
+      "authors": [
+        {
+          "name": "Xiao Yang",
+          "orgs": [
+            "The Pennsylvania State University"
+          ]
+        },
+        {
+          "name": "Ersin Yumer",
+          "orgs": [
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Paul Asente",
+          "orgs": [
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Mike Kraley",
+          "orgs": [
+            "Adobe Document Cloud"
+          ]
+        },
+        {
+          "name": "Daniel Kifer",
+          "orgs": [
+            "The Pennsylvania State University"
+          ]
+        },
+        {
+          "name": "C. Lee Giles",
+          "orgs": [
+            "The Pennsylvania State University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1706.02337v1",
+      "date": "2017-06-07T18:51:31Z",
+      "citation_count": 245,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2501.08828",
+      "score": 9.118474,
+      "title": "MMDocIR: Benchmarking Multimodal Retrieval for Long Documents",
+      "tldr": "This paper introduces MMDocIR, a benchmark for multimodal document retrieval addressing the gap in comprehensive evaluation of systems handling visual and textual elements in long documents, by proposing a dual-task framework with page-level and layout-level retrieval; it provides a dataset with 1,685 expert-annotated questions and 73,843 bootstrapped labels; experiments show visual retrievers outperform text-based ones significantly.",
+      "abstract": "Multimodal document retrieval aims to identify and retrieve various forms of multimodal content, such as figures, tables, charts, and layout information from extensive documents. Despite its increasing popularity, there is a notable lack of a comprehensive and robust benchmark to effectively evaluate the performance of systems in such tasks. To address this gap, this work introduces a new benchmark, named MMDocIR, that encompasses two distinct tasks: page-level and layout-level retrieval. The former evaluates the performance of identifying the most relevant pages within a long document, while the later assesses the ability of detecting specific layouts, providing a more fine-grained measure than whole-page analysis. A layout refers to a variety of elements, including textual paragraphs, equations, figures, tables, or charts. The MMDocIR benchmark comprises a rich dataset featuring 1,685 questions annotated by experts and 173,843 questions with bootstrapped labels, making it a valuable resource in multimodal document retrieval for both training and evaluation. Through rigorous experiments, we demonstrate that (i) visual retrievers significantly outperform their text counterparts, (ii) MMDocIR training set effectively enhances the performance of multimodal document retrieval and (iii) text retrievers leveraging VLM-text significantly outperforms retrievers relying on OCR-text. Our dataset is available at https://mmdocrag.github.io/MMDocIR/.",
+      "authors": [
+        {
+          "name": "Kuicai Dong",
+          "orgs": [
+            "Huawei Technologies Co., Ltd."
+          ]
+        },
+        {
+          "name": "Dexun Li",
+          "orgs": [
+            "Huawei Technologies Co., Ltd."
+          ]
+        },
+        {
+          "name": "Ruiming Tang",
+          "orgs": [
+            "Huawei Technologies Co., Ltd."
+          ]
+        },
+        {
+          "name": "Yong Liu",
+          "orgs": [
+            "Huawei Technologies Co., Ltd."
+          ]
+        },
+        {
+          "name": "Yujing Chang",
+          "orgs": [
+            "Huawei Technologies Co., Ltd."
+          ]
+        },
+        {
+          "name": "Xin Deik Goh",
+          "orgs": [
+            "Huawei Technologies Co., Ltd."
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2501.08828v3",
+      "date": "2025-01-15",
+      "citation_count": 23,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.IR"
+      ]
+    },
+    {
+      "arxiv_id": "1909.00997",
+      "score": 8.829769,
+      "title": "PlotQA: Reasoning over Scientific Plots",
+      "tldr": "This paper addresses the gap in existing datasets for plot reasoning by introducing PlotQA, a dataset with 28.9 million question-answer pairs over 224,377 real-world plots, where 80.76% of questions have open-vocabulary answers; it proposes a hybrid model combining classification and structured table QA, achieving 22.52% accuracy on PlotQA and 58% on DVQA, significantly improving over previous methods.",
+      "abstract": "Existing synthetic datasets (FigureQA, DVQA) for reasoning over plots do not contain variability in data labels, real-valued data, or complex reasoning questions. Consequently, proposed models for these datasets do not fully address the challenge of reasoning over plots. In particular, they assume that the answer comes either from a small fixed size vocabulary or from a bounding box within the image. However, in practice, this is an unrealistic assumption because many questions require reasoning and thus have real-valued answers which appear neither in a small fixed size vocabulary nor in the image. In this work, we aim to bridge this gap between existing datasets and real-world plots. Specifically, we propose PlotQA with 28.9 million question-answer pairs over 224,377 plots on data from real-world sources and questions based on crowd-sourced question templates. Further, 80.76% of the out-of-vocabulary (OOV) questions in PlotQA have answers that are not in a fixed vocabulary. Analysis of existing models on PlotQA reveals that they cannot deal with OOV questions: their overall accuracy on our dataset is in single digits. This is not surprising given that these models were not designed for such questions. As a step towards a more holistic model which can address fixed vocabulary as well as OOV questions, we propose a hybrid approach: Specific questions are answered by choosing the answer from a fixed vocabulary or by extracting it from a predicted bounding box in the plot, while other questions are answered with a table question-answering engine which is fed with a structured table generated by detecting visual elements from the image. On the existing DVQA dataset, our model has an accuracy of 58%, significantly improving on the highest reported accuracy of 46%. On PlotQA, our model has an accuracy of 22.52%, which is significantly better than state of the art models.",
+      "authors": [
+        {
+          "name": "Nitesh Methani",
+          "orgs": [
+            "Department of Computer Science and Engineering",
+            "Robert Bosch Centre for Data Science and AI (RBC-DSAI)",
+            "Indian Institute of Technology Madras, Chennai, India"
+          ]
+        },
+        {
+          "name": "Pritha Ganguly",
+          "orgs": [
+            "Department of Computer Science and Engineering",
+            "Robert Bosch Centre for Data Science and AI (RBC-DSAI)",
+            "Indian Institute of Technology Madras, Chennai, India"
+          ]
+        },
+        {
+          "name": "Mitesh M. Khapra",
+          "orgs": [
+            "Department of Computer Science and Engineering",
+            "Robert Bosch Centre for Data Science and AI (RBC-DSAI)",
+            "Indian Institute of Technology Madras, Chennai, India"
+          ]
+        },
+        {
+          "name": "Pratyush Kumar",
+          "orgs": [
+            "Department of Computer Science and Engineering",
+            "Robert Bosch Centre for Data Science and AI (RBC-DSAI)",
+            "Indian Institute of Technology Madras, Chennai, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1909.00997v3",
+      "date": "2019-09-03T08:23:51Z",
+      "citation_count": 372,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1704.01474",
+      "score": 8.695329,
+      "title": "Convolutional Neural Networks for Page Segmentation of Historical Document Images",
+      "tldr": "This paper addresses the challenge of page segmentation for historical document images by proposing a simple CNN with one convolution layer, achieving competitive results on public datasets compared to deep architectures and previous methods.",
+      "abstract": "This paper presents a Convolutional Neural Network (CNN) based page segmentation method for handwritten historical document images. We consider page segmentation as a pixel labeling problem, i.e., each pixel is classified as one of the predefined classes. Traditional methods in this area rely on carefully hand-crafted features or large amounts of prior knowledge. In contrast, we propose to learn features from raw image pixels using a CNN. While many researchers focus on developing deep CNN architectures to solve different problems, we train a simple CNN with only one convolution layer. We show that the simple architecture achieves competitive results against other deep architectures on different public datasets. Experiments also demonstrate the effectiveness and superiority of the proposed method compared to previous methods.",
+      "authors": [
+        {
+          "name": "Kai Chen",
+          "orgs": [
+            "DIVA (Document, Image and Voice Analysis) research group",
+            "Department of Informatics, University of Fribourg, Switzerland"
+          ]
+        },
+        {
+          "name": "Mathias Seuret",
+          "orgs": [
+            "DIVA (Document, Image and Voice Analysis) research group",
+            "Department of Informatics, University of Fribourg, Switzerland"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1704.01474v2",
+      "date": "2017-04-05T15:12:25Z",
+      "citation_count": 94,
+      "categories": [
+        "cs.CV",
+        "cs.LG",
+        "stat.ML"
+      ]
+    }
+  ]
+}

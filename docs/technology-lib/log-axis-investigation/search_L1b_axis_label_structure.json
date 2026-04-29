@@ -1,0 +1,567 @@
+{
+  "status": "success",
+  "total_count": 43,
+  "result": [
+    {
+      "arxiv_id": "2506.05218",
+      "score": 10.624346,
+      "title": "MonkeyOCR: Document Parsing with a Structure-Recognition-Relation Triplet Paradigm",
+      "tldr": "This paper introduces MonkeyOCR, a document parsing system addressing the challenge of efficiently and accurately processing complex documents by decomposing the task into structure, recognition, and relation, outperforming existing methods with 5.1% average improvement and 15.0% gain in formula recognition, while achieving 0.84 pages per second processing speed.",
+      "abstract": "We introduce MonkeyOCR, a vision-language model for document parsing that advances the state of the art by leveraging a Structure-Recognition-Relation (SRR) triplet paradigm. This design simplifies what would otherwise be a complex multi-tool pipeline (as in MinerU's modular approach) and avoids the inefficiencies of processing full pages with giant end-to-end models (e.g., large multimodal LLMs like Qwen-VL). In SRR, document parsing is abstracted into three fundamental questions - \"Where is it?\" (structure), \"What is it?\" (recognition), and \"How is it organized?\" (relation) - corresponding to layout analysis, content identification, and logical ordering. This focused decomposition balances accuracy and speed: it enables efficient, scalable processing without sacrificing precision. To train and evaluate this approach, we introduce the MonkeyDoc (the most comprehensive document parsing dataset to date), with 3.9 million instances spanning over ten document types in both Chinese and English. Experiments show that MonkeyOCR outperforms MinerU by an average of 5.1%, with particularly notable improvements on challenging content such as formulas (+15.0%) and tables (+8.6%). Remarkably, our 3B-parameter model surpasses much larger and top-performing models, including Qwen2.5-VL (72B) and Gemini 2.5 Pro, achieving state-of-the-art average performance on English document parsing tasks. In addition, MonkeyOCR processes multi-page documents significantly faster (0.84 pages per second compared to 0.65 for MinerU and 0.12 for Qwen2.5-VL-7B). The 3B model can be efficiently deployed for inference on a single NVIDIA 3090 GPU. Code and models will be released at https://github.com/Yuliang-Liu/MonkeyOCR.",
+      "authors": [
+        {
+          "name": "Zhang Li",
+          "orgs": [
+            "Huazhong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Yuliang Liu",
+          "orgs": [
+            "Huazhong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Qiang Liu",
+          "orgs": [
+            "Kingsoft Office"
+          ]
+        },
+        {
+          "name": "Zhiyin Ma",
+          "orgs": [
+            "Huazhong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Ziyang Zhang",
+          "orgs": [
+            "Huazhong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Shuo Zhang",
+          "orgs": [
+            "Huazhong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Zidun Guo",
+          "orgs": [
+            "Huazhong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Jiarui Zhang",
+          "orgs": [
+            "Kingsoft Office"
+          ]
+        },
+        {
+          "name": "Xinyu Wang",
+          "orgs": [
+            "Huazhong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Xiang Bai",
+          "orgs": [
+            "Huazhong University of Science and Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2506.05218v1",
+      "date": "2025-06-05T16:34:57Z",
+      "citation_count": 29,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2506.21762",
+      "score": 10.496976,
+      "title": "ViStruct: Simulating Expert-Like Reasoning Through Task Decomposition and Visual Attention Cues",
+      "tldr": "This paper introduces ViStruct, an automated pipeline that simulates expert-like reasoning in data visualization by decomposing tasks into structured steps and highlighting relevant chart regions, addressing the gap in modeling implicit expert strategies; it leverages large language and vision-language models to achieve this, offering a replicable model validated on 45 tasks across 12 chart types with expert validation; results show ViStruct produces interpretable and expert-aligned reasoning sequences, aiding in the development of more transparent visualization tools.",
+      "abstract": "Data visualization tasks often require multi-step reasoning, and the interpretive strategies experts use, such as decomposing complex goals into smaller subtasks and selectively attending to key chart regions are rarely made explicit. ViStruct is an automated pipeline that simulates these expert behaviours by breaking high-level visual questions into structured analytic steps and highlighting semantically relevant chart areas. Leveraging large language and vision-language models, ViStruct identifies chart components, maps subtasks to spatial regions, and presents visual attention cues to externalize expert-like reasoning flows. While not designed for direct novice instruction, ViStruct provides a replicable model of expert interpretation that can inform the development of future visual literacy tools. We evaluate the system on 45 tasks across 12 chart types and validate its outputs with trained visualization users, confirming its ability to produce interpretable and expert-aligned reasoning sequences.",
+      "authors": [
+        {
+          "name": "Oliver Huang",
+          "orgs": []
+        },
+        {
+          "name": "Carolina Nobre",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2506.21762v1",
+      "date": "2025-06-26T20:40:20Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "1210.0999",
+      "score": 10.336612,
+      "title": "Logical segmentation for article extraction in digitized old newspapers",
+      "tldr": "This paper addresses the challenge of extracting articles from digitized old newspapers, where existing systems lack fine-grained access beyond pages or issues, impacting efficient information retrieval; it proposes a logical segmentation method combining pixel-level machine learning and structural rules to identify articles, contributing a novel approach for metadata extraction and article-level indexing; results show successful application on 300,000 pages of \"Journal de Rouen,\" enabling improved article-level search and collaborative transcription.",
+      "abstract": "Newspapers are documents made of news item and informative articles. They are not meant to be red iteratively: the reader can pick his items in any order he fancies. Ignoring this structural property, most digitized newspaper archives only offer access by issue or at best by page to their content. We have built a digitization workflow that automatically extracts newspaper articles from images, which allows indexing and retrieval of information at the article level. Our back-end system extracts the logical structure of the page to produce the informative units: the articles. Each image is labelled at the pixel level, through a machine learning based method, then the page logical structure is constructed up from there by the detection of structuring entities such as horizontal and vertical separators, titles and text lines. This logical structure is stored in a METS wrapper associated to the ALTO file produced by the system including the OCRed text. Our front-end system provides a web high definition visualisation of images, textual indexing and retrieval facilities, searching and reading at the article level. Articles transcriptions can be collaboratively corrected, which as a consequence allows for better indexing. We are currently testing our system on the archives of the Journal de Rouen, one of France eldest local newspaper. These 250 years of publication amount to 300 000 pages of very variable image quality and layout complexity. Test year 1808 can be consulted at plair.univ-rouen.fr.",
+      "authors": [
+        {
+          "name": "Thomas Palfray",
+          "orgs": [
+            "LITIS",
+            "University of Rouen",
+            "UFR des Sciences et Techniques",
+            "F-76800 Saint Etienne du Rouvray"
+          ]
+        },
+        {
+          "name": "David Hébert",
+          "orgs": [
+            "LITIS",
+            "University of Rouen",
+            "UFR des Sciences et Techniques",
+            "F-76800 Saint Etienne du Rouvray"
+          ]
+        },
+        {
+          "name": "Stéphane Nicolas",
+          "orgs": [
+            "LITIS",
+            "University of Rouen",
+            "UFR des Sciences et Techniques",
+            "F-76800 Saint Etienne du Rouvray"
+          ]
+        },
+        {
+          "name": "Pierrick Tranouez",
+          "orgs": [
+            "LITIS",
+            "University of Rouen",
+            "UFR des Sciences et Techniques",
+            "F-76800 Saint Etienne du Rouvray"
+          ]
+        },
+        {
+          "name": "Thierry Paquet",
+          "orgs": [
+            "LITIS",
+            "University of Rouen",
+            "UFR des Sciences et Techniques",
+            "F-76800 Saint Etienne du Rouvray"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1210.0999v1",
+      "date": "2012-10-03T06:24:25Z",
+      "citation_count": 19,
+      "categories": [
+        "cs.CV",
+        "cs.DL",
+        "cs.IR"
+      ]
+    },
+    {
+      "arxiv_id": "2602.04101",
+      "score": 9.78276,
+      "title": "Interfaze: The Future of AI is built on Task-Specific Small Models",
+      "tldr": "This paper presents a context-centric architecture for AI applications, addressing the gap in general-purpose LLMs by integrating small models and tools for perception, context construction, and action; it introduces Interfaze-Beta achieving 83.6% on MMLU-Pro and 90.0% on AIME-2025 while shifting computation to small models; the findings highlight efficiency gains and identify controller limitations for future improvements.",
+      "abstract": "We present Interfaze, a system that treats modern LLM applications as a problem of building and acting over context, not just picking the right monolithic model. Instead of a single transformer, we combine (i) a stack of heterogeneous DNNs paired with small language models as perception modules for OCR involving complex PDFs, charts and diagrams, and multilingual ASR with (ii) a context-construction layer that crawls, indexes, and parses external sources (web pages, code, PDFs) into compact structured state, and (iii) an action layer that can browse, retrieve, execute code in a sandbox, and drive a headless browser for dynamic web pages. A thin controller sits on top of this stack and exposes a single, OpenAI-style endpoint: it decides which small models and actions to run and always forwards the distilled context to a user-selected LLM that produces the final response.\n  On this architecture, Interfaze-Beta achieves 83.6% on MMLU-Pro, 91.4% on MMLU, 81.3% on GPQA-Diamond, 57.8% on LiveCodeBench v5, and 90.0% on AIME-2025, along with strong multimodal scores on MMMU (val) (77.3%), AI2D (91.5%), ChartQA (90.9%), and Common Voice v16 (90.8%). We show that most queries are handled primarily by the small-model and tool stack, with the large LLM operating only on distilled context, yielding competitive accuracy while shifting the bulk of computation away from the most expensive and monolithic models.",
+      "authors": [
+        {
+          "name": "Vineet Agarwal",
+          "orgs": []
+        },
+        {
+          "name": "Harsha Vardhan Khurdula",
+          "orgs": []
+        },
+        {
+          "name": "Yoeven D Khemlani",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.04101v1",
+      "date": "2026-02-04",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI"
+      ]
+    },
+    {
+      "arxiv_id": "2601.19079",
+      "score": 9.660009,
+      "title": "Neuromorphic BrailleNet: Accurate and Generalizable Braille Reading Beyond Single Characters through Event-Based Optical Tactile Sensing",
+      "tldr": "This paper presents a neuromorphic Braille reading system using event-based tactile sensing to address the limitations of conventional character-by-character scanning, achieving over 90% word-level accuracy at speeds up to 32 mm/s and generalizing across multiple Braille layouts and indentation depths.",
+      "abstract": "Conventional robotic Braille readers typically rely on discrete, character-by-character scanning, limiting reading speed and disrupting natural flow. Vision-based alternatives often require substantial computation, introduce latency, and degrade in real-world conditions. In this work, we present a high accuracy, real-time pipeline for continuous Braille recognition using Evetac, an open-source neuromorphic event-based tactile sensor. Unlike frame-based vision systems, the neuromorphic tactile modality directly encodes dynamic contact events during continuous sliding, closely emulating human finger-scanning strategies. Our approach combines spatiotemporal segmentation with a lightweight ResNet-based classifier to process sparse event streams, enabling robust character recognition across varying indentation depths and scanning speeds. The proposed system achieves near-perfect accuracy (>=98%) at standard depths, generalizes across multiple Braille board layouts, and maintains strong performance under fast scanning. On a physical Braille board containing daily-living vocabulary, the system attains over 90% word-level accuracy, demonstrating robustness to temporal compression effects that challenge conventional methods. These results position neuromorphic tactile sensing as a scalable, low latency solution for robotic Braille reading, with broader implications for tactile perception in assistive and robotic applications.",
+      "authors": [
+        {
+          "name": "Naqash Afzal",
+          "orgs": [
+            "Max Planck Institute for Intelligent Systems"
+          ]
+        },
+        {
+          "name": "Niklas Funk",
+          "orgs": [
+            "Max Planck Institute for Intelligent Systems"
+          ]
+        },
+        {
+          "name": "Erik Helmut",
+          "orgs": [
+            "Max Planck Institute for Intelligent Systems"
+          ]
+        },
+        {
+          "name": "Jan Peters",
+          "orgs": [
+            "2",
+            "3"
+          ]
+        },
+        {
+          "name": "Benjamin Ward-Cherrier",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2601.19079v2",
+      "date": "2026-01-27",
+      "citation_count": 0,
+      "categories": [
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2010.11547",
+      "score": 9.650286,
+      "title": "TLGAN: document Text Localization using Generative Adversarial Nets",
+      "tldr": "This paper addresses the text localization task in document images, aiming to improve accuracy and reduce data requirements; it introduces TLGAN, a GAN-based model using semantic segmentation and VGG features, achieving 99.83% precision and 99.64% recall on SROIE with only ten labeled images; the results highlight TLGAN's efficiency and state-of-the-art performance for practical text localization applications.",
+      "abstract": "Text localization from the digital image is the first step for the optical character recognition task. Conventional image processing based text localization performs adequately for specific examples. Yet, a general text localization are only archived by recent deep-learning based modalities. Here we present document Text Localization Generative Adversarial Nets (TLGAN) which are deep neural networks to perform the text localization from digital image. TLGAN is an versatile and easy-train text localization model requiring a small amount of data. Training only ten labeled receipt images from Robust Reading Challenge on Scanned Receipts OCR and Information Extraction (SROIE), TLGAN achieved 99.83% precision and 99.64% recall for SROIE test data. Our TLGAN is a practical text localization solution requiring minimal effort for data labeling and model training and producing a state-of-art performance.",
+      "authors": [
+        {
+          "name": "Dongyoung Kim",
+          "orgs": [
+            "Data Analytic Laboratory",
+            "Samsung Life Insurance",
+            "Seoul, South Korea"
+          ]
+        },
+        {
+          "name": "Myungsung Kwak",
+          "orgs": [
+            "Data Analytic Laboratory",
+            "Samsung Life Insurance",
+            "Seoul, South Korea"
+          ]
+        },
+        {
+          "name": "Eunji Won",
+          "orgs": [
+            "Data Analytic Laboratory",
+            "Samsung Life Insurance",
+            "Seoul, South Korea"
+          ]
+        },
+        {
+          "name": "Sejung Shin",
+          "orgs": [
+            "Data Analytic Laboratory",
+            "Samsung Life Insurance",
+            "Seoul, South Korea"
+          ]
+        },
+        {
+          "name": "Jeongyeon Nam",
+          "orgs": [
+            "Data Analytic Laboratory",
+            "Samsung Life Insurance",
+            "Seoul, South Korea"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2010.11547v1",
+      "date": "2020-10-22T09:19:13Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "1412.4183",
+      "score": 9.336235,
+      "title": "A survey of modern optical character recognition techniques",
+      "tldr": "This paper surveys modern optical character recognition techniques, addressing the challenge of improving recognition accuracy across multi-script, multi-language, and omni-font texts, by reviewing feature-based methods, image enhancement, and contextual processing, and reporting benchmark results from commercial OCR engines with error rates below 2% in task-specific applications.",
+      "abstract": "This report explores the latest advances in the field of digital document recognition. With the focus on printed document imagery, we discuss the major developments in optical character recognition (OCR) and document image enhancement/restoration in application to Latin and non-Latin scripts. In addition, we review and discuss the available technologies for hand-written document recognition. In this report, we also provide some company-accumulated benchmark results on available OCR engines.",
+      "authors": [
+        {
+          "name": "Eugene Borovikov",
+          "orgs": [
+            "American Management Systems, Inc."
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1412.4183v1",
+      "date": "2014-12-13T02:39:09Z",
+      "citation_count": 34,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1309.6691",
+      "score": 9.327269,
+      "title": "Characterness: An Indicator of Text in the Wild",
+      "tldr": "This paper introduces a characterness model for text detection in images, addressing the challenge of identifying text amidst clutter by proposing three novel cues and a Bayesian MRF framework, which outperforms state-of-the-art methods on benchmark datasets and surpasses saliency models in text-specific tasks.",
+      "abstract": "Text in an image provides vital information for interpreting its contents, and text in a scene can aide with a variety of tasks from navigation, to obstacle avoidance, and odometry. Despite its value, however, identifying general text in images remains a challenging research problem. Motivated by the need to consider the widely varying forms of natural text, we propose a bottom-up approach to the problem which reflects the `characterness' of an image region. In this sense our approach mirrors the move from saliency detection methods to measures of `objectness'. In order to measure the characterness we develop three novel cues that are tailored for character detection, and a Bayesian method for their integration. Because text is made up of sets of characters, we then design a Markov random field (MRF) model so as to exploit the inherent dependencies between characters.\n  We experimentally demonstrate the effectiveness of our characterness cues as well as the advantage of Bayesian multi-cue integration. The proposed text detector outperforms state-of-the-art methods on a few benchmark scene text detection datasets. We also show that our measurement of `characterness' is superior than state-of-the-art saliency detection models when applied to the same task.",
+      "authors": [
+        {
+          "name": "Yao Li",
+          "orgs": []
+        },
+        {
+          "name": "Wenjing Jia",
+          "orgs": []
+        },
+        {
+          "name": "Chunhua Shen",
+          "orgs": []
+        },
+        {
+          "name": "Anton van den Hengel",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1309.6691v1",
+      "date": "2013-09-25T23:30:18Z",
+      "citation_count": 65,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1710.10201",
+      "score": 9.264983,
+      "title": "New Methods for Metadata Extraction from Scientific Literature",
+      "tldr": "This paper addresses the challenge of scientific information overload by proposing an automatic metadata extraction algorithm for scientific articles, which improves upon existing solutions through supervised and unsupervised machine learning, achieving high precision in handling diverse document layouts, and demonstrating better performance for most metadata types.",
+      "abstract": "Within the past few decades we have witnessed digital revolution, which moved scholarly communication to electronic media and also resulted in a substantial increase in its volume. Nowadays keeping track with the latest scientific achievements poses a major challenge for the researchers. Scientific information overload is a severe problem that slows down scholarly communication and knowledge propagation across the academia. Modern research infrastructures facilitate studying scientific literature by providing intelligent search tools, proposing similar and related documents, visualizing citation and author networks, assessing the quality and impact of the articles, and so on. In order to provide such high quality services the system requires the access not only to the text content of stored documents, but also to their machine-readable metadata. Since in practice good quality metadata is not always available, there is a strong demand for a reliable automatic method of extracting machine-readable metadata directly from source documents. This research addresses these problems by proposing an automatic, accurate and flexible algorithm for extracting wide range of metadata directly from scientific articles in born-digital form. Extracted information includes basic document metadata, structured full text and bibliography section. Designed as a universal solution, proposed algorithm is able to handle a vast variety of publication layouts with high precision and thus is well-suited for analyzing heterogeneous document collections. This was achieved by employing supervised and unsupervised machine-learning algorithms trained on large, diverse datasets. The evaluation we conducted showed good performance of proposed metadata extraction algorithm. The comparison with other similar solutions also proved our algorithm performs better than competition for most metadata types.",
+      "authors": [
+        {
+          "name": "Dominika Tkaczyk",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1710.10201v1",
+      "date": "2017-10-27T15:33:29Z",
+      "citation_count": 13,
+      "categories": [
+        "cs.DL",
+        "cs.IR"
+      ]
+    },
+    {
+      "arxiv_id": "hep-ex/0107064",
+      "score": 9.230001,
+      "title": "Compact Frontend-Electronics and Bidirectional 3.3 Gbps Optical Datalink for Fast Proportional Chamber Readout",
+      "tldr": "This paper addresses the challenge of reading out 9600 channels of a proportional chamber within 96 ns in a compact space, developing a bidirectional 3.3 Gbps optical datalink with 40 modules and 4 x 832 Mbps physical rate, achieving synchronization and monitoring; the solution meets space constraints and enables efficient data transfer for particle physics experiments.",
+      "abstract": "The 9600 channels of the multi-wire proportional chamber of the H1 experiment at HERA have to be read out within 96 ns and made available to the trigger system. The tight spatial conditions at the rear end flange require a compact bidirectional readout electronics with minimal power consumption and dead material.\\\n  A solution using 40 identical optical link modules, each transferring the trigger information with a physical rate of 4 x 832 Mbps via optical fibers, has been developed and commisioned. The analog pulses from the chamber can be monitored and the synchronization to the global HERA clock signal is ensured.",
+      "authors": [
+        {
+          "name": "S. Lüders",
+          "orgs": []
+        },
+        {
+          "name": "et al",
+          "orgs": [
+            "Institute for Particle Physics, ETH Zurich, 5232 Villigen PSI, Switzerland",
+            "ASIC–Laboratory, Kirchhoff–Institute for Physics, 69120 Heidelberg, Germany",
+            "Physics Institute, University of Zurich, 8057 Zurich, Switzerland"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/hep-ex/0107064v1",
+      "date": "2001-07-23",
+      "citation_count": 6,
+      "categories": [
+        "hep-ex"
+      ]
+    },
+    {
+      "arxiv_id": "1805.12045",
+      "score": 9.15134,
+      "title": "End-to-end named entity extraction from speech",
+      "tldr": "This paper proposes an end-to-end neural architecture for named entity extraction from speech, addressing the limitations of the traditional pipeline approach by jointly optimizing ASR and NER, achieving an F-measure of 0.69 on French test data, which outperforms the classical pipeline's F-measure of 0.65.",
+      "abstract": "Named entity recognition (NER) is among SLU tasks that usually extract semantic information from textual documents. Until now, NER from speech is made through a pipeline process that consists in processing first an automatic speech recognition (ASR) on the audio and then processing a NER on the ASR outputs. Such approach has some disadvantages (error propagation, metric to tune ASR systems sub-optimal in regards to the final task, reduced space search at the ASR output level...) and it is known that more integrated approaches outperform sequential ones, when they can be applied. In this paper, we present a first study of end-to-end approach that directly extracts named entities from speech, though a unique neural architecture. On a such way, a joint optimization is able for both ASR and NER. Experiments are carried on French data easily accessible, composed of data distributed in several evaluation campaign. Experimental results show that this end-to-end approach provides better results (F-measure=0.69 on test data) than a classical pipeline approach to detect named entity categories (F-measure=0.65).",
+      "authors": [
+        {
+          "name": "Sahar Ghannay",
+          "orgs": [
+            "LIUM - University of Le Mans, France"
+          ]
+        },
+        {
+          "name": "Antoine Caubrière",
+          "orgs": [
+            "LIUM - University of Le Mans, France"
+          ]
+        },
+        {
+          "name": "Yannick Esteve",
+          "orgs": [
+            "LIUM - University of Le Mans, France"
+          ]
+        },
+        {
+          "name": "Antoine Laurent",
+          "orgs": [
+            "LIUM - University of Le Mans, France"
+          ]
+        },
+        {
+          "name": "Emmanuel Morin",
+          "orgs": [
+            "LS2N - University of Nantes, France"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1805.12045v1",
+      "date": "2018-05-30T15:56:22Z",
+      "citation_count": 28,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2503.16664",
+      "score": 9.139246,
+      "title": "TextBite: A Historical Czech Document Dataset for Logical Page Segmentation",
+      "tldr": "This paper addresses the challenge of logical page segmentation in historical documents, proposing a pixel-based clustering evaluation method to avoid OCR dependency and geometric variations, introduces TextBite, a dataset of 8,449 Czech historical pages with 78,863 annotated segments, and provides baseline models to advance research in document segmentation.",
+      "abstract": "Logical page segmentation is an important step in document analysis, enabling better semantic representations, information retrieval, and text understanding. Previous approaches define logical segmentation either through text or geometric objects, relying on OCR or precise geometry. To avoid the need for OCR, we define the task purely as segmentation in the image domain. Furthermore, to ensure the evaluation remains unaffected by geometrical variations that do not impact text segmentation, we propose to use only foreground text pixels in the evaluation metric and disregard all background pixels. To support research in logical document segmentation, we introduce TextBite, a dataset of historical Czech documents spanning the 18th to 20th centuries, featuring diverse layouts from newspapers, dictionaries, and handwritten records. The dataset comprises 8,449 page images with 78,863 annotated segments of logically and thematically coherent text. We propose a set of baseline methods combining text region detection and relation prediction. The dataset, baselines and evaluation framework can be accessed at https://github.com/DCGM/textbite-dataset.",
+      "authors": [
+        {
+          "name": "Martin Kostelník",
+          "orgs": []
+        },
+        {
+          "name": "Karel Beneš",
+          "orgs": []
+        },
+        {
+          "name": "Michal Hradiš",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2503.16664v1",
+      "date": "2025-03-20T19:19:12Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1601.05610",
+      "score": 9.116222,
+      "title": "Reading Car License Plates Using Deep Convolutional Neural Networks and LSTMs",
+      "tldr": "This paper addresses the challenge of car license plate detection and recognition in natural scenes, aiming to improve accuracy in complex environments by leveraging deep CNNs and LSTMs; it proposes a cascade framework with a 37-class CNN for detection and a 9-layer CNN with LBP features for recognition, achieving state-of-the-art accuracy without segmentation; the LSTM-based approach outperforms segmentation-based methods, enhancing recognition performance in diverse conditions.",
+      "abstract": "In this work, we tackle the problem of car license plate detection and recognition in natural scene images. Inspired by the success of deep neural networks (DNNs) in various vision applications, here we leverage DNNs to learn high-level features in a cascade framework, which lead to improved performance on both detection and recognition.\n  Firstly, we train a $37$-class convolutional neural network (CNN) to detect all characters in an image, which results in a high recall, compared with conventional approaches such as training a binary text/non-text classifier. False positives are then eliminated by the second plate/non-plate CNN classifier. Bounding box refinement is then carried out based on the edge information of the license plates, in order to improve the intersection-over-union (IoU) ratio. The proposed cascade framework extracts license plates effectively with both high recall and precision. Last, we propose to recognize the license characters as a {sequence labelling} problem. A recurrent neural network (RNN) with long short-term memory (LSTM) is trained to recognize the sequential features extracted from the whole license plate via CNNs. The main advantage of this approach is that it is segmentation free. By exploring context information and avoiding errors caused by segmentation, the RNN method performs better than a baseline method of combining segmentation and deep CNN classification; and achieves state-of-the-art recognition accuracy.",
+      "authors": [
+        {
+          "name": "Hui Li",
+          "orgs": [
+            "School of Computer Science, The University of Adelaide, Australia",
+            "Australian Centre for Robotic Vision"
+          ]
+        },
+        {
+          "name": "Chunhua Shen",
+          "orgs": [
+            "School of Computer Science, The University of Adelaide, Australia",
+            "Australian Centre for Robotic Vision"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1601.05610v1",
+      "date": "2016-01-21T12:42:19Z",
+      "citation_count": 217,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2202.02456",
+      "score": 9.11159,
+      "title": "Application of Machine Learning-Based Pattern Recognition in IoT Devices: Review",
+      "tldr": "This survey reviews machine learning-based pattern recognition in IoT devices, highlighting SVM, k-NN, and random forest as optimal algorithms, and identifies challenges in speed, accuracy, and computational efficiency.",
+      "abstract": "The Internet of things (IoT) is a rapidly advancing area of technology that has quickly become more widespread in recent years. With greater numbers of everyday objects being connected to the Internet, many different innovations have been presented to make our everyday lives more straightforward. Pattern recognition is extremely prevalent in IoT devices because of the many applications and benefits that can come from it. A multitude of studies has been conducted with the intention of improving speed and accuracy, decreasing complexity, and reducing the overall required processing power of pattern recognition algorithms in IoT devices. After reviewing the applications of different machine learning algorithms, results vary from case to case, but a general conclusion can be drawn that the optimal machine learning-based pattern recognition algorithms to be used with IoT devices are support vector machine, k-nearest neighbor, and random forest.",
+      "authors": [
+        {
+          "name": "Zachary Menter",
+          "orgs": [
+            "University of Wisconsin-Eau Claire, Eau Claire WI 54701, USA"
+          ]
+        },
+        {
+          "name": "Wei Zhong Tee",
+          "orgs": [
+            "University of Wisconsin-Eau Claire, Eau Claire WI 54701, USA"
+          ]
+        },
+        {
+          "name": "Rushit Dave",
+          "orgs": [
+            "University of Wisconsin-Eau Claire, Eau Claire WI 54701, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2202.02456v1",
+      "date": "2022-01-10T00:54:51Z",
+      "citation_count": 7,
+      "categories": [
+        "cs.LG",
+        "cs.NI",
+        "eess.SP"
+      ]
+    },
+    {
+      "arxiv_id": "2604.07643",
+      "score": 9.082935,
+      "title": "Narrix: Remixing Narrative Strategies from Examples for Story Writing",
+      "tldr": "This paper presents Narrix, a tool for novice writers to recognize and remix narrative strategies from example stories, addressing the gap in teaching storytelling techniques through an AI-assisted interface that uses color-coded annotations and interactive story arcs; it employs cognitive apprenticeship theory and a digital audio workstation metaphor to enable strategy-based writing, showing improved retention, confidence, and creative adaptation in a study with N=12 participants.",
+      "abstract": "Experienced storytellers decompose stories into local narrative strategies and how these strategies shape higher-level arcs. This decomposition helps writers recognize patterns in others' work and adapt those patterns to tell new stories. Novices, however, struggle to identify these strategies or to reuse them effectively. We present Narrix, a novel writing tool that helps novice writers recognize narrative strategies in example stories and repurpose these strategies in their own writing. Narrix analyzes strategies in example stories, highlights them with color-coded lexical cues and explanations, and situates them on an interactive story arc for exploration by emotional shifts and turning points. Writers then drag strategies onto multi-dimensional tracks and apply block-scoped edits to revise or continue their drafts through controlled generation steered by specified strategies. Through a within-subjects study (N=12), Narrix showed improved participants' retention, confidence, and creative adaptation of narrative strategies compared to a baseline chat-based writing interface.",
+      "authors": [
+        {
+          "name": "Chao Zhang",
+          "orgs": [
+            "Cornell University"
+          ]
+        },
+        {
+          "name": "Shunan Guo",
+          "orgs": [
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Abe Davis",
+          "orgs": [
+            "Cornell University"
+          ]
+        },
+        {
+          "name": "Eunyee Koh",
+          "orgs": [
+            "Adobe Research"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2604.07643v1",
+      "date": "2026-04-08",
+      "citation_count": 0,
+      "categories": [
+        "cs.HC"
+      ]
+    }
+  ]
+}

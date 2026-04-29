@@ -1,0 +1,1064 @@
+{
+  "status": "success",
+  "total_count": 74,
+  "result": [
+    {
+      "arxiv_id": "2210.05597",
+      "score": 14.819227,
+      "title": "Digitization of Raster Logs: A Deep Learning Approach",
+      "tldr": "This paper addresses the challenge of digitizing raster well-logs in geology, aiming to automate the process and reduce manual effort and errors; it proposes VeerNet, a modified UNet-inspired deep learning model with attention mechanisms, offering an F1 score of 35% and IoU of 30%; the model achieves a high Pearson coefficient of 0.62 when compared to actual Gamma-ray values.",
+      "abstract": "Raster well-log images are digital representations of well-logs data generated over the years. Raster digital well logs represent bitmaps of the log image in a rectangular array of black (zeros) and white dots (ones) called pixels. Experts study the raster logs manually or with software applications that still require a tremendous amount of manual input. Besides the loss of thousands of person-hours, this process is erroneous and tedious. To digitize these raster logs, one must buy a costly digitizer that is not only manual and time-consuming but also a hidden technical debt since enterprises stand to lose more money in additional servicing and consulting charges. We propose a deep neural network architecture called VeerNet to semantically segment the raster images from the background grid and classify and digitize the well-log curves. Raster logs have a substantially greater resolution than images traditionally consumed by image segmentation pipelines. Since the input has a low signal-to-resolution ratio, we require rapid downsampling to alleviate unnecessary computation. We thus employ a modified UNet-inspired architecture that balances retaining key signals and reducing result dimensionality. We use attention augmented read-process-write architecture. This architecture efficiently classifies and digitizes the curves with an overall F1 score of 35% and IoU of 30%. When compared to the actual las values for Gamma-ray and derived value of Gamma-ray from VeerNet, a high Pearson coefficient score of 0.62 was achieved.",
+      "authors": [
+        {
+          "name": "M Quamer Nasim",
+          "orgs": [
+            "Deepkapha.ai, Amsterdam, Netherlands",
+            "Indian Institute of Technology, Kharagpur, India"
+          ]
+        },
+        {
+          "name": "Narendra Patwardhan",
+          "orgs": [
+            "Indian Institute of Technology, Kharagpur, India"
+          ]
+        },
+        {
+          "name": "Tannistha Maiti",
+          "orgs": [
+            "Indian Institute of Technology, Kharagpur, India"
+          ]
+        },
+        {
+          "name": "Tarry Singh",
+          "orgs": [
+            "Indian Institute of Technology, Kharagpur, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2210.05597v1",
+      "date": "2022-10-11T16:34:53Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.AI",
+        "physics.geo-ph"
+      ]
+    },
+    {
+      "arxiv_id": "1611.03068",
+      "score": 12.346827,
+      "title": "Incremental Sequence Learning",
+      "tldr": "This paper introduces Incremental Sequence Learning, a method that incrementally increases the sequence length used for training, achieving 20 times faster learning and 74% reduced test error compared to regular sequence learning, demonstrating its effectiveness in sequence prediction and transfer learning tasks.",
+      "abstract": "Deep learning research over the past years has shown that by increasing the scope or difficulty of the learning problem over time, increasingly complex learning problems can be addressed. We study incremental learning in the context of sequence learning, using generative RNNs in the form of multi-layer recurrent Mixture Density Networks. While the potential of incremental or curriculum learning to enhance learning is known, indiscriminate application of the principle does not necessarily lead to improvement, and it is essential therefore to know which forms of incremental or curriculum learning have a positive effect. This research contributes to that aim by comparing three instantiations of incremental or curriculum learning.\n  We introduce Incremental Sequence Learning, a simple incremental approach to sequence learning. Incremental Sequence Learning starts out by using only the first few steps of each sequence as training data. Each time a performance criterion has been reached, the length of the parts of the sequences used for training is increased.\n  We introduce and make available a novel sequence learning task and data set: predicting and classifying MNIST pen stroke sequences. We find that Incremental Sequence Learning greatly speeds up sequence learning and reaches the best test performance level of regular sequence learning 20 times faster, reduces the test error by 74%, and in general performs more robustly; it displays lower variance and achieves sustained progress after all three comparison methods have stopped improving. The other instantiations of curriculum learning do not result in any noticeable improvement. A trained sequence prediction model is also used in transfer learning to the task of sequence classification, where it is found that transfer learning realizes improved classification performance compared to methods that learn to classify from scratch.",
+      "authors": [
+        {
+          "name": "Edwin D. de Jong",
+          "orgs": [
+            "Department of Information and Computing Sciences",
+            "Utrecht University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1611.03068v2",
+      "date": "2016-11-09T20:12:08Z",
+      "citation_count": 5,
+      "categories": [
+        "cs.LG",
+        "cs.NE"
+      ]
+    },
+    {
+      "arxiv_id": "2512.14040",
+      "score": 12.279388,
+      "title": "ChartAgent: A Chart Understanding Framework with Tool Integrated Reasoning",
+      "tldr": "This paper introduces ChartAgent, a chart understanding framework addressing the limitation of MLLMs in handling unannotated charts by using Tool-Integrated Reasoning to decompose tasks into observable steps and provide traceable evidence, achieving SOTA performance on chart QA tasks.",
+      "abstract": "With their high information density and intuitive readability, charts have become the de facto medium for data analysis and communication across disciplines. Recent multimodal large language models (MLLMs) have made notable progress in automated chart understanding, yet they remain heavily dependent on explicit textual annotations and the performance degrades markedly when key numerals are absent. To address this limitation, we introduce ChartAgent, a chart understanding framework grounded in Tool-Integrated Reasoning (TIR). Inspired by human cognition, ChartAgent decomposes complex chart analysis into a sequence of observable, replayable steps. Supporting this architecture is an extensible, modular tool library comprising more than a dozen core tools, such as keyelement detection, instance segmentation, and optical character recognition (OCR), which the agent dynamically orchestrates to achieve systematic visual parsing across diverse chart types. Leveraging TIRs transparency and verifiability, ChartAgent moves beyond the black box paradigm by standardizing and consolidating intermediate outputs into a structured Evidence Package, providing traceable and reproducible support for final conclusions. Experiments show that ChartAgent substantially improves robustness under sparse annotation settings, offering a practical path toward trustworthy and extensible systems for chart understanding.",
+      "authors": [
+        {
+          "name": "Xiang Li",
+          "orgs": [
+            "5"
+          ]
+        },
+        {
+          "name": "Jing Yuan",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Yi Chen",
+          "orgs": [
+            "234"
+          ]
+        },
+        {
+          "name": "Jian Xu",
+          "orgs": [
+            "23"
+          ]
+        },
+        {
+          "name": "Xinming Wang",
+          "orgs": [
+            "School of Computer Science, Fudan University"
+          ]
+        },
+        {
+          "name": "Boran Wang",
+          "orgs": [
+            "Department of Computer Science, Tsinghua University"
+          ]
+        },
+        {
+          "name": "Chenglin Liu",
+          "orgs": [
+            "School of Information Science and Engineering, Central South University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.14040v1",
+      "date": "2025-12-16",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2312.05261",
+      "score": 12.220156,
+      "title": "Breast Cancer Detection Using Deep Learning Technique Based On Ultrasound Image",
+      "tldr": "This paper addresses breast cancer diagnosis challenges using deep learning, aiming to improve classification accuracy from ultrasound images by employing image processing, U-Net segmentation, and Mobilenet feature extraction, contributing a 99.29% accuracy model that outperforms previous methods, with implications for enhancing diagnostic precision and reducing false positives in clinical practice.",
+      "abstract": "Breast cancer ranks as the most prevalent form of cancer diagnosed in women, and diagnosis faces several challenges, a change in the size, shape and appearance of breasts, dense breast tissue, lumps or thickening in the breast especially if in only one breast, lumps and nodules in the breast. The major challenge that faces deep learning diagnosis of breast cancer was its shape, size and position non-uniformity especially malignant cancer. This work proposed a deep learning system that increased the accuracy of classification of breast cancer types from ultrasound images. It reaches 99.29% accuracy, exceeding other previous work. First, image processing was applied to in enhance the quality of input images. Second, the image segmentation was performed using U-Net architecture. Third, many features are extracted using Mobilenet. Finally, the accuracy of proposed system was evaluated.",
+      "authors": [
+        {
+          "name": "Abdulqader Mohammed",
+          "orgs": [
+            "Department of Mathematics and Computer Science, Faculty of Science, AL-Azhar University, Nasr City, Cairo11884, Egypt"
+          ]
+        },
+        {
+          "name": "Mohammed Abdel Razek",
+          "orgs": [
+            "Department of Mathematics and Computer Science, Faculty of Science, AL-Azhar University, Nasr City, Cairo11884, Egypt"
+          ]
+        },
+        {
+          "name": "Mohamed El-dosuky",
+          "orgs": [
+            "Department of Computer Science, Faculty of Computers and Information, Mansoura University, Egypt",
+            "Department of Computer Science, Arab East Colleges, Saudi Arabia"
+          ]
+        },
+        {
+          "name": "Ahmed Sobhi",
+          "orgs": [
+            "Department of Mathematics and Computer Science, Faculty of Science, AL-Azhar University, Nasr City, Cairo11884, Egypt"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2312.05261v1",
+      "date": "2023-12-04T19:05:53Z",
+      "citation_count": 3,
+      "categories": [
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "1601.04699",
+      "score": 12.200776,
+      "title": "Topology-faithful nonparametric estimation and tracking of bulk interface networks",
+      "tldr": "This paper presents a nonparametric filtering technique for estimating interface geometry in bulk materials, addressing the need for explicit treatment of topological features in microstructural analysis; it uses a hierarchy-based approach with Laplacian smoothing optimized internally, contributing a novel front-tracking algorithm for interface transport; it demonstrates improved accuracy in estimating geometric primitives and grain boundary networks, with implications for microstructure simulation and characterization.",
+      "abstract": "The main focus of this paper is a nonparametric filtering technique for the estimation of interface geometry in bulk materials obtainable from modern imaging measurements. The filtering methodology relies on an assumed hierarchy of topological features present in a typical interface network, such as foam interfaces and grain boundary networks in polycrystalline materials. Each type of topological feature is treated in order of rank in the hierarchy, with the lower-level feature being filtered subject to the positional constraints imposed by the higher-level features. Such a scheme is an alternative to existing surface smoothing/estimation techniques in microstructural materials science, in which the explicit treatment of different elements of the network topology is absent, or at best arbitrarily parameterized. We describe the ramifications of this technique in the usual microstructural applications in which the computation of important physical quantities is predicated on the precise estimation of the interface features. As an additional application, we describe a novel front-tracking algorithm for quantifying the transport of such interfaces.",
+      "authors": [
+        {
+          "name": "S. Maddali",
+          "orgs": [
+            "Dept. of Physics, Carnegie Mellon University, Pittsburgh PA 15213 (USA)"
+          ]
+        },
+        {
+          "name": "Shlomo Ta'asan",
+          "orgs": [
+            "Dept. of Mathematical Sciences, Carnegie Mellon University, Pittsburgh PA 15217 (USA)"
+          ]
+        },
+        {
+          "name": "Robert M. Suter",
+          "orgs": [
+            "Dept. of Physics, Carnegie Mellon University, Pittsburgh PA 15213 (USA)",
+            "Dept. of Materials Science and Engineering, Carnegie Mellon University, Pittsburgh PA 15213 (USA)"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1601.04699v4",
+      "date": "2016-01-17T23:17:50Z",
+      "citation_count": 3,
+      "categories": [
+        "cond-mat.mtrl-sci",
+        "physics.data-an"
+      ]
+    },
+    {
+      "arxiv_id": "2406.03194",
+      "score": 11.668826,
+      "title": "Writing Order Recovery in Complex and Long Static Handwriting",
+      "tldr": "This paper addresses the challenge of recovering writing order in complex and long static handwriting, where existing methods lack a common evaluation metric and struggle with trajectory clusters; it proposes a novel system using multiscale strategies to resolve clusters and select pen-down order, achieving competitive results across three databases, thereby improving trajectory recovery for applications like velocity estimation and neurodegenerative disorder screening.",
+      "abstract": "The order in which the trajectory is executed is a powerful source of information for recognizers. However, there is still no general approach for recovering the trajectory of complex and long handwriting from static images. Complex specimens can result in multiple pen-downs and in a high number of trajectory crossings yielding agglomerations of pixels (also known as clusters). While the scientific literature describes a wide range of approaches for recovering the writing order in handwriting, these approaches nevertheless lack a common evaluation metric. In this paper, we introduce a new system to estimate the order recovery of thinned static trajectories, which allows to effectively resolve the clusters and select the order of the executed pen-downs. We evaluate how knowing the starting points of the pen-downs affects the quality of the recovered writing. Once the stability and sensitivity of the system is analyzed, we describe a series of experiments with three publicly available databases, showing competitive results in all cases. We expect the proposed system, whose code is made publicly available to the research community, to reduce potential confusion when the order of complex trajectories are recovered, and this will in turn make the trajectories recovered to be viable for further applications, such as velocity estimation.",
+      "authors": [
+        {
+          "name": "Moises Diaz",
+          "orgs": []
+        },
+        {
+          "name": "Gioele Crispo",
+          "orgs": []
+        },
+        {
+          "name": "Antonio Parziale",
+          "orgs": []
+        },
+        {
+          "name": "Angelo Marcelli",
+          "orgs": []
+        },
+        {
+          "name": "Miguel A. Ferrer",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2406.03194v1",
+      "date": "2024-06-05T12:23:17Z",
+      "citation_count": 11,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2408.03681",
+      "score": 11.635462,
+      "title": "Path-based Design Model for Constructing and Exploring Alternative Visualisations",
+      "tldr": "This paper introduces a path-based design model for creating alternative visualisations, addressing the challenge of generating diverse and creative visual designs by structuring them on a flowpath and using a gene to encode parameters, with contributions including the Genii system and case studies demonstrating its application on smartwatches and dashboards, showing effective design exploration and flexibility.",
+      "abstract": "We present a path-based design model and system for designing and creating visualisations. Our model represents a systematic approach to constructing visual representations of data or concepts following a predefined sequence of steps. The initial step involves outlining the overall appearance of the visualisation by creating a skeleton structure, referred to as a flowpath. Subsequently, we specify objects, visual marks, properties, and appearance, storing them in a gene. Lastly, we map data onto the flowpath, ensuring suitable morphisms. Alternative designs are created by exchanging values in the gene. For example, designs that share similar traits, are created by making small incremental changes to the gene. Our design methodology fosters the generation of diverse creative concepts, space-filling visualisations, and traditional formats like bar charts, circular plots and pie charts. Through our implementation we showcase the model in action. As an example application, we integrate the output visualisations onto a smartwatch and visualisation dashboards. In this article we (1) introduce, define and explain the path model and discuss possibilities for its use, (2) present our implementation, results, and evaluation, and (3) demonstrate and evaluate an application of its use on a mobile watch.",
+      "authors": [
+        {
+          "name": "James Jackson",
+          "orgs": []
+        },
+        {
+          "name": "Panagiotis D. Ritsos",
+          "orgs": []
+        },
+        {
+          "name": "Peter W. S. Butcher",
+          "orgs": []
+        },
+        {
+          "name": "Jonathan C. Roberts",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2408.03681v1",
+      "date": "2024-08-07T10:49:12Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2403.00566",
+      "score": 11.62275,
+      "title": "Lincoln's Annotated Spatio-Temporal Strawberry Dataset (LAST-Straw)",
+      "tldr": "This paper introduces LAST-Straw, a 3D spatio-temporal strawberry dataset with 84 point clouds and semantic annotations, addressing the lack of such data for strawberries and enabling phenotype evaluation through a phenotyping pipeline and in silico ground truth benchmarks.",
+      "abstract": "Automated phenotyping of plants for breeding and plant studies promises to provide quantitative metrics on plant traits at a previously unattainable observation frequency. Developers of tools for performing high-throughput phenotyping are, however, constrained by the availability of relevant datasets on which to perform validation. To this end, we present a spatio-temporal dataset of 3D point clouds of strawberry plants for two varieties, totalling 84 individual point clouds. We focus on the end use of such tools - the extraction of biologically relevant phenotypes - and demonstrate a phenotyping pipeline on the dataset. This comprises of the steps, including; segmentation, skeletonisation and tracking, and we detail how each stage facilitates the extraction of different phenotypes or provision of data insights. We particularly note that assessment is focused on the validation of phenotypes, extracted from the representations acquired at each step of the pipeline, rather than singularly focusing on assessing the representation itself. Therefore, where possible, we provide \\textit{in silico} ground truth baselines for the phenotypes extracted at each step and introduce methodology for the quantitative assessment of skeletonisation and the length trait extracted thereof. This dataset contributes to the corpus of freely available agricultural/horticultural spatio-temporal data for the development of next-generation phenotyping tools, increasing the number of plant varieties available for research in this field and providing a basis for genuine comparison of new phenotyping methodology.",
+      "authors": [
+        {
+          "name": "K.M.F. James",
+          "orgs": [
+            "University of Lincoln, Brayford Pool, Lincoln, LN6 7TS, United Kingdom",
+            "NIAB East Malling, New Road, East Malling, ME19 6BJ, Kent, United Kingdom"
+          ]
+        },
+        {
+          "name": "K. Heiwolt",
+          "orgs": [
+            "University of Lincoln, Brayford Pool, Lincoln, LN6 7TS, United Kingdom"
+          ]
+        },
+        {
+          "name": "D.J. Sargent",
+          "orgs": [
+            "NIAB East Malling, New Road, East Malling, ME19 6BJ, Kent, United Kingdom"
+          ]
+        },
+        {
+          "name": "G. Cielniak",
+          "orgs": [
+            "University of Lincoln, Brayford Pool, Lincoln, LN6 7TS, United Kingdom"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2403.00566v1",
+      "date": "2024-03-01T14:44:05Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2104.01301",
+      "score": 11.594341,
+      "title": "Multimedia Technology Applications and Algorithms: A Survey",
+      "tldr": "This paper provides a survey of multimedia technology applications and algorithms across domains like healthcare, facial recognition, and pose estimation, addressing the need for efficient data interpretation in multimedia-rich environments; it categorizes research papers and reviews existing methodologies, contributing to a structured overview of the field; the findings highlight the integration of multimedia in various sectors, with implications for improving data analysis and security through advanced processing techniques.",
+      "abstract": "Multimedia related research and development has evolved rapidly in the last few years with advancements in hardware, software and network infrastructures. As a result, multimedia has been integrated into domains like Healthcare and Medicine, Human facial feature extraction and tracking, pose recognition, disparity estimation, etc. This survey gives an overview of the various multimedia technologies and algorithms developed in the domains mentioned.",
+      "authors": [
+        {
+          "name": "Palak Tiwary",
+          "orgs": [
+            "Department of Computing Science",
+            "University of Alberta",
+            "Edmonton, Canada"
+          ]
+        },
+        {
+          "name": "Sanjida Ahmed",
+          "orgs": [
+            "Department of Computing Science",
+            "University of Alberta",
+            "Edmonton, Canada"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2104.01301v1",
+      "date": "2021-04-03T03:23:06Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV",
+        "cs.MM"
+      ]
+    },
+    {
+      "arxiv_id": "2505.07754",
+      "score": 11.581269,
+      "title": "Skeletonization of neuronal processes using Discrete Morse techniques from computational topology",
+      "tldr": "This paper addresses the challenge of mapping neuronal networks by introducing a method combining deep nets and Discrete Morse techniques to skeletonize labeled axon fragments, offering a more accurate volumetric length density than previous intensity-based approaches, and demonstrates its utility on whole-brain tracer data, providing an information-theoretic measure that quantifies additional insights from individual axon morphologies.",
+      "abstract": "To understand biological intelligence we need to map neuronal networks in vertebrate brains. Mapping mesoscale neural circuitry is done using injections of tracers that label groups of neurons whose axons project to different brain regions. Since many neurons are labeled, it is difficult to follow individual axons. Previous approaches have instead quantified the regional projections using the total label intensity within a region. However, such a quantification is not biologically meaningful. We propose a new approach better connected to the underlying neurons by skeletonizing labeled axon fragments and then estimating a volumetric length density. Our approach uses a combination of deep nets and the Discrete Morse (DM) technique from computational topology. This technique takes into account nonlocal connectivity information and therefore provides noise-robustness. We demonstrate the utility and scalability of the approach on whole-brain tracer injected data. We also define and illustrate an information theoretic measure that quantifies the additional information obtained, compared to the skeletonized tracer injection fragments, when individual axon morphologies are available. Our approach is the first application of the DM technique to computational neuroanatomy. It can help bridge between single-axon skeletons and tracer injections, two important data types in mapping neural networks in vertebrates.",
+      "authors": [
+        {
+          "name": "Samik Banerjee",
+          "orgs": [
+            "Cold Spring Harbor Laboratory, Cold Spring Harbor, 11724, New York, USA"
+          ]
+        },
+        {
+          "name": "Caleb Stam",
+          "orgs": [
+            "University of California San Diego, La Jolla, 92093, California, USA"
+          ]
+        },
+        {
+          "name": "Daniel J. Tward",
+          "orgs": [
+            "University of California Los Angeles, Los Angeles, 90095, California, USA"
+          ]
+        },
+        {
+          "name": "Steven Savoia",
+          "orgs": [
+            "Cold Spring Harbor Laboratory, Cold Spring Harbor, 11724, New York, USA"
+          ]
+        },
+        {
+          "name": "Yusu Wang",
+          "orgs": [
+            "University of California San Diego, La Jolla, 92093, California, USA."
+          ]
+        },
+        {
+          "name": "Partha P. P. Mitra",
+          "orgs": [
+            "Cold Spring Harbor Laboratory, Cold Spring Harbor, 11724, New York, USA."
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2505.07754v1",
+      "date": "2025-05-12T16:59:36Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV",
+        "q-bio.NC"
+      ]
+    },
+    {
+      "arxiv_id": "1911.10629",
+      "score": 11.446932,
+      "title": "Fatigue Detection",
+      "tldr": "This paper addresses the gap in driver fatigue detection by proposing a pose estimation-based system that marks upper body joints for shoulders and neck, comparing current posture to an ideal one, contributing a non-eye-tracking approach with potential for real-time monitoring and improved safety in driving environments.",
+      "abstract": "Nowadays, there are many fatigue detection methods and the majority of them are tracking eye in real-time using one or two cameras to detect the physical responses in eyes. It is indicated that the responses in eyes have high relativity with driver fatigue. As part of this project, We will propose a fatigue detection system based on pose estimation. Using pose estimation, We plan to mark the body joints in the upper body for shoulders and neck. Then, we plan to compare the location of the joints of the current posture with the ideal posture.",
+      "authors": [
+        {
+          "name": "Ashish Verma",
+          "orgs": [
+            "Computing Science",
+            "Multimedia",
+            "University of Alberta",
+            "Edmonton, Alberta, Canada"
+          ]
+        },
+        {
+          "name": "Ankush Goyal",
+          "orgs": [
+            "Computing Science",
+            "Multimedia",
+            "University of Alberta",
+            "Edmonton, Alberta, Canada"
+          ]
+        },
+        {
+          "name": "Davinderjit Kaur",
+          "orgs": [
+            "Computing Science",
+            "Multimedia",
+            "University of Alberta",
+            "Edmonton, Alberta, Canada"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1911.10629v1",
+      "date": "2019-11-24T22:36:15Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "1803.04345",
+      "score": 11.419409,
+      "title": "Sparse 3D Topological Graphs for Micro-Aerial Vehicle Planning",
+      "tldr": "This paper presents a method for creating sparse 3D topological graphs from noisy sensor data for MAV planning, introducing a novel approach to extract thin skeleton diagrams and construct noise-resistant sparse graphs, achieving orders of magnitude faster planning than existing methods.",
+      "abstract": "Micro-Aerial Vehicles (MAVs) have the advantage of moving freely in 3D space. However, creating compact and sparse map representations that can be efficiently used for planning for such robots is still an open problem. In this paper, we take maps built from noisy sensor data and construct a sparse graph containing topological information that can be used for 3D planning. We use a Euclidean Signed Distance Field, extract a 3D Generalized Voronoi Diagram (GVD), and obtain a thin skeleton diagram representing the topological structure of the environment. We then convert this skeleton diagram into a sparse graph, which we show is resistant to noise and changes in resolution. We demonstrate global planning over this graph, and the orders of magnitude speed-up it offers over other common planning methods. We validate our planning algorithm in real maps built onboard an MAV, using RGB-D sensing.",
+      "authors": [
+        {
+          "name": "Helen Oleynikova",
+          "orgs": [
+            "Autonomous Systems Lab, ETH Zürich"
+          ]
+        },
+        {
+          "name": "Zachary Taylor",
+          "orgs": [
+            "Autonomous Systems Lab, ETH Zürich"
+          ]
+        },
+        {
+          "name": "Roland Siegwart",
+          "orgs": [
+            "Autonomous Systems Lab, ETH Zürich"
+          ]
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Juan Nieto",
+          "orgs": [
+            "Autonomous Systems Lab, ETH Zürich"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1803.04345v2",
+      "date": "2018-03-12T16:11:28Z",
+      "citation_count": 66,
+      "categories": [
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2507.02328",
+      "score": 11.364521,
+      "title": "Path Planning using a One-shot-sampling Skeleton Map",
+      "tldr": "This paper proposes SkelUnet, a Deep Denoising Auto-Encoder based on U-Net architecture, to efficiently generate skeleton maps for path planning in structured environments, addressing the computational intensity of traditional skeletonization methods; the main contribution is the one-shot sampling approach that reduces processing time and enhances path safety; results show SkelUnet outperforms existing methods by connecting all free workspace regions, providing safer paths, and reducing processing times on 250 unseen maps.",
+      "abstract": "Path planning algorithms aim to compute a collision-free path, and many works focus on finding the optimal distance path. However, for some applications, a more suitable approach is to balance response time, safety of the paths, and path length. In this context, a skeleton map is a useful tool in graph-based schemes, as it provides an intrinsic representation of free configuration space. However, skeletonization algorithms are very resource-intensive, being primarily oriented towards image processing tasks. We propose an efficient path-planning methodology that finds safe paths within an acceptable processing time. This methodology leverages a Deep Denoising Auto-Encoder (DDAE) based on U-Net architecture to compute a skeletonized version of the navigation map, which we refer to as SkelUnet. The SkelUnet network facilitates exploration of the entire workspace through one-shot sampling (OSS), as opposed to the iterative process used by exact algorithms or the probabilistic sampling process. SkelUnet is trained and tested on a dataset consisting of 12,500 bi-dimensional dungeon maps. The motion planning methodology is evaluated in a simulation environment for an Unmanned Aerial Vehicle (UAV) using 250 previously unseen maps, and assessed with various navigation metrics to quantify the navigability of the computed paths. The results demonstrate that using SkelUnet to construct a roadmap offers significant advantages, such as connecting all regions of free workspace, providing safer paths, and reducing processing times. These characteristics make this method particularly suitable for mobile service robots in structured environments.",
+      "authors": [
+        {
+          "name": "Gabriel O. Flores-Aquino",
+          "orgs": [
+            "Unidad Profesional Interdisciplinaria en Ingeniería y Tecnologías Avanzadas, Instituto Politécnico Nacional, Mexico City 07340, Mexico"
+          ]
+        },
+        {
+          "name": "Octavio Gutierrez-Frias",
+          "orgs": [
+            "Unidad Profesional Interdisciplinaria en Ingeniería y Tecnologías Avanzadas, Instituto Politécnico Nacional, Mexico City 07340, Mexico"
+          ]
+        },
+        {
+          "name": "Juan Irving Vasquez",
+          "orgs": [
+            "Centro de Innovación y Desarrollo Tecnológico en Cómu (CIDETEC), Instituto Politécnico Nacional (IPN), Mexico City 07700, Mexico"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2507.02328v1",
+      "date": "2025-07-03T05:38:26Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.LG",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2107.05284",
+      "score": 11.292983,
+      "title": "CurveFusion: Reconstructing Thin Structures from RGBD Sequences",
+      "tldr": "This paper addresses the challenge of reconstructing thin structures from RGBD sequences by introducing CurveFusion, a method that uses a data-dependent curve skeleton as a fusion primitive, improving reconstruction quality over existing volumetric methods; it identifies and groups depth samples, extracts L1 axes for skeleton curves, and aligns them to form a complete 3D skeleton; it achieves high-fidelity reconstructions of thin structures previously unattainable from raw RGBD data.",
+      "abstract": "We introduce CurveFusion, the first approach for high quality scanning of thin structures at interactive rates using a handheld RGBD camera. Thin filament-like structures are mathematically just 1D curves embedded in R^3, and integration-based reconstruction works best when depth sequences (from the thin structure parts) are fused using the object's (unknown) curve skeleton. Thus, using the complementary but noisy color and depth channels, CurveFusion first automatically identifies point samples on potential thin structures and groups them into bundles, each being a group of a fixed number of aligned consecutive frames. Then, the algorithm extracts per-bundle skeleton curves using L1 axes, and aligns and iteratively merges the L1 segments from all the bundles to form the final complete curve skeleton. Thus, unlike previous methods, reconstruction happens via integration along a data-dependent fusion primitive, i.e., the extracted curve skeleton. We extensively evaluate CurveFusion on a range of challenging examples, different scanner and calibration settings, and present high fidelity thin structure reconstructions previously just not possible from raw RGBD sequences.",
+      "authors": [
+        {
+          "name": "Lingjie Liu",
+          "orgs": [
+            "University of Hong Kong",
+            "University College London"
+          ]
+        },
+        {
+          "name": "Nenglun Chen",
+          "orgs": [
+            "University of Hong Kong"
+          ]
+        },
+        {
+          "name": "Duygu Ceylan",
+          "orgs": [
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Christian Theobalt",
+          "orgs": [
+            "Max Planck Institute for Informatics"
+          ]
+        },
+        {
+          "name": "Wenping Wang",
+          "orgs": [
+            "University of Hong Kong"
+          ]
+        },
+        {
+          "name": "Niloy J. Mitra",
+          "orgs": [
+            "University College London"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2107.05284v1",
+      "date": "2021-07-12T09:38:27Z",
+      "citation_count": 11,
+      "categories": [
+        "cs.GR"
+      ]
+    },
+    {
+      "arxiv_id": "0804.3234",
+      "score": 11.28703,
+      "title": "Technical Report - Automatic Contour Extraction from 2D Neuron Images",
+      "tldr": "This paper presents a novel method for automatic contour extraction from 2D neuron images, addressing the challenge of overlapping neuronal processes by proposing a preprocessing and tracking framework that successfully handles 34 crossings; the approach uses skeletonization and critical region analysis to yield parametric contours, enabling robust and efficient shape analysis of neuronal morphology.",
+      "abstract": "This work describes a novel methodology for automatic contour extraction from 2D images of 3D neurons (e.g. camera lucida images and other types of 2D microscopy). Most contour-based shape analysis methods can not be used to characterize such cells because of overlaps between neuronal processes. The proposed framework is specifically aimed at the problem of contour following even in presence of multiple overlaps. First, the input image is preprocessed in order to obtain an 8-connected skeleton with one-pixel-wide branches, as well as a set of critical regions (i.e., bifurcations and crossings). Next, for each subtree, the tracking stage iteratively labels all valid pixel of branches, up to a critical region, where it determines the suitable direction to proceed. Finally, the labeled skeleton segments are followed in order to yield the parametric contour of the neuronal shape under analysis. The reported system was successfully tested with respect to several images and the results from a set of three neuron images are presented here, each pertaining to a different class, i.e. alpha, delta and epsilon ganglion cells, containing a total of 34 crossings. The algorithms successfully got across all these overlaps. The method has also been found to exhibit robustness even for images with close parallel segments. The proposed method is robust and may be implemented in an efficient manner. The introduction of this approach should pave the way for more systematic application of contour-based shape analysis methods in neuronal morphology.",
+      "authors": [
+        {
+          "name": "J. J. G. Leandro",
+          "orgs": [
+            "Institute of Mathematics and Statistics - USP",
+            "Department of Computer Science"
+          ]
+        },
+        {
+          "name": "R. M. Cesar Jr",
+          "orgs": [
+            "Institute of Mathematics and Statistics - USP",
+            "Department of Computer Science"
+          ]
+        },
+        {
+          "name": "L. da F. Costa",
+          "orgs": [
+            "Instituto de Física de São Carlos - USP",
+            "Department of Physics and Informatics"
+          ]
+        },
+        {
+          "name": "(2) Instituto de F\\\\'isica de S\\\\~ao Carlos - USP - Brazil)",
+          "orgs": [
+            "Institute of Mathematics and Statistics - USP",
+            "Department of Computer Science",
+            "Rua do Matão, 1010 - São Paulo - SP, 05508-900 Brazil",
+            "Instituto de Física de São Carlos - USP",
+            "Department of Physics and Informatics",
+            "Av. Trabalhador Sãocarlense, 400 - São Carlos - SP, 13560-970 Brazil"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/0804.3234v2",
+      "date": "2008-04-21T04:03:48Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV",
+        "q-bio.NC"
+      ]
+    },
+    {
+      "arxiv_id": "2403.18038",
+      "score": 11.275721,
+      "title": "TGGLinesPlus: A robust topological graph-guided computer vision algorithm for line detection from images",
+      "tldr": "This paper presents TGGLinesPlus, a topological graph-guided line detection method addressing the challenge of robust line detection across diverse image domains, improving upon existing methods by integrating computational geometry and topological relations; it outperforms five state-of-the-art methods both qualitatively and quantitatively, offering a parameter-free approach with enhanced usability for advanced vision tasks.",
+      "abstract": "Line detection is a classic and essential problem in image processing, computer vision and machine intelligence. Line detection has many important applications, including image vectorization (e.g., document recognition and art design), indoor mapping, and important societal challenges (e.g., sea ice fracture line extraction from satellite imagery). Many line detection algorithms and methods have been developed, but robust and intuitive methods are still lacking. In this paper, we proposed and implemented a topological graph-guided algorithm, named TGGLinesPlus, for line detection. Our experiments on images from a wide range of domains have demonstrated the flexibility of our TGGLinesPlus algorithm. We benchmarked our algorithm with five classic and state-of-the-art line detection methods and evaluated the benchmark results qualitatively and quantitatively, the results demonstrate the robustness of TGGLinesPlus.",
+      "authors": [
+        {
+          "name": "Liping Yang",
+          "orgs": [
+            "GeoAIR Lab, Department of Geography and Environmental Studies, University of New Mexico, Albuquerque, NM 87131, USA",
+            "Center for the Advancement of Spatial Informatics Research and Education (ASPIRE), University of New Mexico, Albuquerque, NM 87131, USA",
+            "Department of Computer Science, University of New Mexico, Albuquerque, NM 87106, USA"
+          ]
+        },
+        {
+          "name": "Joshua Driscoll",
+          "orgs": [
+            "GeoAIR Lab, Department of Geography and Environmental Studies, University of New Mexico, Albuquerque, NM 87131, USA",
+            "Center for the Advancement of Spatial Informatics Research and Education (ASPIRE), University of New Mexico, Albuquerque, NM 87131, USA",
+            "Woodwell Climate Research Center, Falmouth, MA 02540, USA"
+          ]
+        },
+        {
+          "name": "Ming Gong",
+          "orgs": [
+            "Department of Electrical and Computer Engineering, University of Dayton, Dayton, OH, 45469, USA"
+          ]
+        },
+        {
+          "name": "Wenbin Zhang",
+          "orgs": [
+            "Knight Foundation School of Computing and Information Sciences, Florida International University, Miami, FL 33199, USA"
+          ]
+        },
+        {
+          "name": "Shujie Wang",
+          "orgs": [
+            "Department of Geography, The Pennsylvania State University, University Park, PA 16802, USA",
+            "Earth and Environmental Systems Institute, The Pennsylvania State University, University Park, PA 16802, USA"
+          ]
+        },
+        {
+          "name": "Catherine G. Potts",
+          "orgs": [
+            "D-Wave Quantum Inc., Burnaby, British Columbia, Canada"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2403.18038v2",
+      "date": "2024-03-26T18:49:56Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2212.00290",
+      "score": 11.17332,
+      "title": "Component Segmentation of Engineering Drawings Using Graph Convolutional Networks",
+      "tldr": "This paper addresses the challenge of semantic segmentation in engineering drawings by developing a graph convolutional network framework that improves component type identification through vectorization and graph-based analysis, contributing a novel method for automated drawing interpretation with superior performance compared to existing image and graph-based segmentation methods.",
+      "abstract": "We present a data-driven framework to automate the vectorization and machine interpretation of 2D engineering part drawings. In industrial settings, most manufacturing engineers still rely on manual reads to identify the topological and manufacturing requirements from drawings submitted by designers. The interpretation process is laborious and time-consuming, which severely inhibits the efficiency of part quotation and manufacturing tasks. While recent advances in image-based computer vision methods have demonstrated great potential in interpreting natural images through semantic segmentation approaches, the application of such methods in parsing engineering technical drawings into semantically accurate components remains a significant challenge. The severe pixel sparsity in engineering drawings also restricts the effective featurization of image-based data-driven methods. To overcome these challenges, we propose a deep learning based framework that predicts the semantic type of each vectorized component. Taking a raster image as input, we vectorize all components through thinning, stroke tracing, and cubic bezier fitting. Then a graph of such components is generated based on the connectivity between the components. Finally, a graph convolutional neural network is trained on this graph data to identify the semantic type of each component. We test our framework in the context of semantic segmentation of text, dimension and, contour components in engineering drawings. Results show that our method yields the best performance compared to recent image, and graph-based segmentation methods.",
+      "authors": [
+        {
+          "name": "Wentai Zhang",
+          "orgs": [
+            "Department of Mechanical Engineering, Carnegie Mellon University, Pittsburgh, PA, 15213, USA"
+          ]
+        },
+        {
+          "name": "Joe Joseph",
+          "orgs": [
+            "Department of Mechanical Engineering, Carnegie Mellon University, Pittsburgh, PA, 15213, USA"
+          ]
+        },
+        {
+          "name": "Yue Yin",
+          "orgs": [
+            "Department of Mechanical Engineering, Carnegie Mellon University, Pittsburgh, PA, 15213, USA"
+          ]
+        },
+        {
+          "name": "Liuyue Xie",
+          "orgs": [
+            "Department of Mechanical Engineering, Carnegie Mellon University, Pittsburgh, PA, 15213, USA"
+          ]
+        },
+        {
+          "name": "Tomotake Furuhata",
+          "orgs": [
+            "Department of Mechanical Engineering, Carnegie Mellon University, Pittsburgh, PA, 15213, USA"
+          ]
+        },
+        {
+          "name": "Soji Yamakawa",
+          "orgs": [
+            "Department of Mechanical Engineering, Carnegie Mellon University, Pittsburgh, PA, 15213, USA"
+          ]
+        },
+        {
+          "name": "Kenji Shimada",
+          "orgs": [
+            "Department of Mechanical Engineering, Carnegie Mellon University, Pittsburgh, PA, 15213, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2212.00290v2",
+      "date": "2022-12-01T05:31:07Z",
+      "citation_count": 22,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "1301.6809",
+      "score": 11.162512,
+      "title": "Skeletal Representations and Applications",
+      "tldr": "This paper discusses skeletal representations for 3D objects, addressing the challenge of compact and expressive shape encoding by comparing medial and curve skeletons, proposing curve skeletons as more practical due to their 1D structure; it presents algorithms for their computation and highlights their utility in geometry processing and shape analysis.",
+      "abstract": "When representing a solid object there are alternatives to the use of traditional explicit (surface meshes) or implicit (zero crossing of implicit functions) methods. Skeletal representations encode shape information in a mixed fashion: they are composed of a set of explicit primitives, yet they are able to efficiently encode the shape's volume as well as its topology. I will discuss, in two dimensions, how symmetry can be used to reduce the dimensionality of the data (from a 2D solid to a 1D curve), and how this relates to the classical definition of skeletons by Medial Axis Transform. While the medial axis of a 2D shape is composed of a set of curves, in 3D it results in a set of sheets connected in a complex fashion. Because of this complexity, medial skeletons are difficult to use in practical applications. Curve skeletons address this problem by strictly requiring their geometry to be one dimensional, resulting in an intuitive yet powerful shape representation. In this report I will define both medial and curve skeletons and discuss their mutual relationship. I will also present several algorithms for their computation and a variety of scenarios where skeletons are employed, with a special focus on geometry processing and shape analysis.",
+      "authors": [
+        {
+          "name": "Andrea Tagliasacchi",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1301.6809v2",
+      "date": "2013-01-29T00:18:00Z",
+      "citation_count": 17,
+      "categories": [
+        "cs.GR"
+      ]
+    },
+    {
+      "arxiv_id": "2505.07249",
+      "score": 11.127037,
+      "title": "When Dance Video Archives Challenge Computer Vision",
+      "tldr": "This paper addresses the challenges of 3D human body pose estimation in dance videos, proposing a new pipeline combining up-to-date techniques not previously used in dance analysis, and presents findings on how video quality parameters impact pose estimation accuracy, with implications for improving semantic enrichment of digitized performances.",
+      "abstract": "The accuracy and efficiency of human body pose estimation depend on the quality of the data to be processed and of the particularities of these data. To demonstrate how dance videos can challenge pose estimation techniques, we proposed a new 3D human body pose estimation pipeline which combined up-to-date techniques and methods that had not been yet used in dance analysis. Second, we performed tests and extensive experimentations from dance video archives, and used visual analytic tools to evaluate the impact of several data parameters on human body pose. Our results are publicly available for research at https://www.couleur.org/articles/arXiv-1-2025/",
+      "authors": [
+        {
+          "name": "Philippe Colantoni",
+          "orgs": [
+            "Laboratoire Hubert Curien - UMR 5516",
+            "Université de Saint-Étienne"
+          ]
+        },
+        {
+          "name": "Rafique Ahmed",
+          "orgs": [
+            "Laboratoire Hubert Curien - UMR 5516",
+            "Université de Saint-Étienne"
+          ]
+        },
+        {
+          "name": "Prashant Ghimire",
+          "orgs": [
+            "Laboratoire Hubert Curien - UMR 5516",
+            "Université de Saint-Étienne"
+          ]
+        },
+        {
+          "name": "Damien Muselet",
+          "orgs": [
+            "Laboratoire Hubert Curien - UMR 5516",
+            "Université de Saint-Étienne"
+          ]
+        },
+        {
+          "name": "Alain Trémeau",
+          "orgs": [
+            "Laboratoire Hubert Curien - UMR 5516"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2505.07249v1",
+      "date": "2025-05-12T05:51:09Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1802.05902",
+      "score": 11.118078,
+      "title": "A complete hand-drawn sketch vectorization framework",
+      "tldr": "This paper addresses the challenge of vectorizing hand-drawn sketches for fashion and creative workflows, proposing a complete framework that outperforms state-of-the-art methods by using a multi-resolution Pearson's cross correlation line extraction and an unbiased thinning algorithm, leading to precise 1-pixel lines and fewer control points in Bezier splines, with feedback from Adidas designers confirming its efficiency and accuracy.",
+      "abstract": "Vectorizing hand-drawn sketches is a challenging task, which is of paramount importance for creating CAD vectorized versions for the fashion and creative workflows. This paper proposes a complete framework that automatically transforms noisy and complex hand-drawn sketches with different stroke types in a precise, reliable and highly-simplified vectorized model. The proposed framework includes a novel line extraction algorithm based on a multi-resolution application of Pearson's cross correlation and a new unbiased thinning algorithm that can get rid of scribbles and variable-width strokes to obtain clean 1-pixel lines. Other contributions include variants of pruning, merging and edge linking procedures to post-process the obtained paths. Finally, a modification of the original Schneider's vectorization algorithm is designed to obtain fewer control points in the resulting Bezier splines. All the proposed steps of the framework have been extensively tested and compared with state-of-the-art algorithms, showing (both qualitatively and quantitatively) its outperformance.",
+      "authors": [
+        {
+          "name": "Luca Donati",
+          "orgs": [
+            "University of Parma",
+            "Parco Area delle Scienze, 181/A, Parma, 43124, Italy"
+          ]
+        },
+        {
+          "name": "Simone Cesano",
+          "orgs": [
+            "Adidas AG",
+            "Adi-Dassler-Strasse 1, Herzogenaurach, 91074, Germany"
+          ]
+        },
+        {
+          "name": "Andrea Prati",
+          "orgs": [
+            "University of Parma",
+            "Parco Area delle Scienze, 181/A, Parma, 43124, Italy"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1802.05902v1",
+      "date": "2018-02-16T11:47:05Z",
+      "citation_count": 29,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1906.01299",
+      "score": 10.982703,
+      "title": "Grid-based Localization Stack for Inspection Drones towards Automation of Large Scale Warehouse Systems",
+      "tldr": "This paper addresses the challenge of drone localization in GPS-denied warehouse environments by developing a grid-based navigation system using low-cost monocular cameras, contributing a robust line detection framework with skeletonization and centroid strategies that works under varying conditions, and demonstrating its effectiveness through simulation and real-world experiments.",
+      "abstract": "SLAM based techniques are often adopted for solving the navigation problem for the drones in GPS denied environment. Despite the widespread success of these approaches, they have not yet been fully exploited for automation in a warehouse system due to expensive sensors and setup requirements. This paper focuses on the use of low-cost monocular camera-equipped drones for performing warehouse management tasks like inventory scanning and position update. The methods introduced are at par with the existing state of warehouse environment present today, that is, the existence of a grid network for the ground vehicles, hence eliminating any additional infrastructure requirement for drone deployment. As we lack scale information, that in itself forbids us to use any 3D techniques, we focus more towards optimizing standard image processing algorithms like the thick line detection and further developing it into a fast and robust grid localization framework. In this paper, we show different line detection algorithms, their significance in grid localization and their limitations. We further extend our proposed implementation towards a real-time navigation stack for an actual warehouse inspection case scenario. Our line detection method using skeletonization and centroid strategy works considerably even with varying light conditions, line thicknesses, colors, orientations, and partial occlusions. A simple yet effective Kalman Filter has been used for smoothening the {\\rho} and {\\theta} outputs of the two different line detection methods for better drone control while grid following. A generic strategy that handles the navigation of the drone on a grid for completion of the allotted task is also developed. Based on the simulation and real-life experiments, the final developments on the drone localization and navigation in a structured environment are discussed.",
+      "authors": [
+        {
+          "name": "Ashwary Anand",
+          "orgs": [
+            "Indian Institute of Technology (IIT) Kharagpur, West Bengal, India - 721302"
+          ]
+        },
+        {
+          "name": "Shubh Agrawal",
+          "orgs": [
+            "Indian Institute of Technology (IIT) Kharagpur, West Bengal, India - 721302"
+          ]
+        },
+        {
+          "name": "Shivang Agrawal",
+          "orgs": [
+            "Indian Institute of Technology (IIT) Kharagpur, West Bengal, India - 721302"
+          ]
+        },
+        {
+          "name": "Aman Chandra",
+          "orgs": [
+            "Indian Institute of Technology (IIT) Kharagpur, West Bengal, India - 721302"
+          ]
+        },
+        {
+          "name": "Krishnakant Deshmukh",
+          "orgs": [
+            "Indian Institute of Technology (IIT) Kharagpur, West Bengal, India - 721302"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1906.01299v1",
+      "date": "2019-06-04T09:42:43Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.RO",
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "2301.01894",
+      "score": 10.936157,
+      "title": "Urban-Semantic Computer Vision: A Framework for Contextual Understanding of People in Urban Spaces",
+      "tldr": "This paper critiques current AI and computer vision applications in urban environments, proposing a framework inspired by Geertz's thick descriptions to achieve contextually specific urban-semantic understanding, contributing novel methodologies for more nuanced analysis of public space and highlighting the potential of these approaches to enhance urban planning and policy-making.",
+      "abstract": "Increasing computational power and improving deep learning methods have made computer vision technologies pervasively common in urban environments. Their applications in policing, traffic management, and documenting public spaces are increasingly common. Despite the often-discussed biases in the algorithms' training and unequally borne benefits, almost all applications similarly reduce urban experiences to simplistic, reductive, and mechanistic measures. There is a lack of context, depth, and specificity in these practices that enables semantic knowledge or analysis within urban contexts, especially within the context of using and occupying urban space. This paper will critique existing uses of artificial intelligence and computer vision in urban practices to propose a new framework for understanding people, action, and public space.\n  This paper revisits Geertz's use of thick descriptions in generating interpretive theories of culture and activity and uses this lens to establish a framework to evaluate the varied uses of computer vision technologies that weigh meaning. We discuss how the framework's positioning may differ (and conflict) between different users of the technology. This paper also discusses the current use and training of deep learning algorithms and how this process limits semantic learning and proposes three potential methodologies for gaining a more contextually specific, urban-semantic, description of urban space relevant to urbanists.\n  This paper contributes to the critical conversations regarding the proliferation of artificial intelligence by challenging the current applications of these technologies in the urban environment by highlighting their failures within this context while also proposing an evolution of these algorithms that may ultimately make them sensitive and useful within this spatial and cultural milieu.",
+      "authors": [
+        {
+          "name": "Anthony Vanky",
+          "orgs": [
+            "Graduate School of Architecture, Planning and Preservation",
+            "Columbia University, New York, NY 10025"
+          ]
+        },
+        {
+          "name": "Ri Le",
+          "orgs": [
+            "Graduate School of Architecture, Planning and Preservation",
+            "Columbia University, New York, NY 10025"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2301.01894v1",
+      "date": "2023-01-05T03:44:03Z",
+      "citation_count": 10,
+      "categories": [
+        "cs.CY"
+      ]
+    },
+    {
+      "arxiv_id": "2604.20123",
+      "score": 10.898054,
+      "title": "Topology-Aware Skeleton Detection via Lighthouse-Guided Structured Inference",
+      "tldr": "This paper addresses the challenge of skeleton detection by improving structural continuity and integrity through a dual-branch collaborative framework and lighthouse-guided topology completion, achieving better connectivity and robustness on public benchmarks.",
+      "abstract": "In natural images, object skeletons are used to represent geometric shapes. However, even slight variations in pose or movement can cause noticeable changes in skeleton structure, increasing the difficulty of detecting the skeleton and often resulting in discontinuous skeletons. Existing methods primarily focus on point-level skeleton point detection and overlook the importance of structural continuity in recovering complete skeletons. To address this issue, we propose Lighthouse-Skel, a topology-aware skeleton detection method via lighthouse-guided structured inference. Specifically, we introduce a dual-branch collaborative detection framework that jointly learns skeleton confidence field and structural anchors, including endpoints and junction points. The spatial distributions learned by the point branch guide the network to focus on topologically vulnerable regions, which improves the accuracy of skeleton detection. Based on the learned skeleton confidence field, we further propose a lighthouse-guided topology completion strategy, which uses detected junction points and breakpoints as lighthouses to reconnect discontinuous skeleton segments along low-cost paths, thereby improving skeleton continuity and structural integrity. Experimental results on four public datasets demonstrate that the proposed method achieves competitive detection accuracy while substantially improving skeleton connectivity and structural integrity.",
+      "authors": [
+        {
+          "name": "Daoyong Fu",
+          "orgs": [
+            "Nanjing University of Information Science and Technology"
+          ]
+        },
+        {
+          "name": "Xiang Zhang",
+          "orgs": [
+            "Nanjing University of Information Science and Technology"
+          ]
+        },
+        {
+          "name": "Zhaohuan Zhan",
+          "orgs": [
+            "Shenzhen MSU-BIT University"
+          ]
+        },
+        {
+          "name": "Fan Yang",
+          "orgs": [
+            "Sichuan University"
+          ]
+        },
+        {
+          "name": "Ke Yang",
+          "orgs": [
+            "Eindhoven University of Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2604.20123v1",
+      "date": "2026-04-22",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1402.5138",
+      "score": 10.865259,
+      "title": "A Comparison and Evaluation of Map Construction Algorithms",
+      "tldr": "This paper presents a comprehensive comparison of seven map construction algorithms using four datasets and four evaluation measures, addressing the lack of benchmark data and standard evaluation methods, with publicly available datasets, algorithms, and code to enable reproducible research and future contributions.",
+      "abstract": "Map construction methods automatically produce and/or update road network datasets using vehicle tracking data. Enabled by the ubiquitous generation of georeferenced tracking data, there has been a recent surge in map construction algorithms coming from different computer science domains. A cross-comparison of the various algorithms is still very rare, since (i) algorithms and constructed maps are generally not publicly available and (ii) there is no standard approach to assess the result quality, given the lack of benchmark data and quantitative evaluation methods. This work represents a first comprehensive attempt to benchmark map construction algorithms. We provide an evaluation and comparison of seven algorithms using four datasets and four different evaluation measures. In addition to this comprehensive comparison, we make our datasets, source code of map construction algorithms and evaluation measures publicly available on mapconstruction.org. This site has been established as a repository for map con- struction data and algorithms and we invite other researchers to contribute by uploading code and benchmark data supporting their contributions to map construction algorithms.",
+      "authors": [
+        {
+          "name": "Mahmuda Ahmed",
+          "orgs": [
+            "University of Texas at San Antonio"
+          ]
+        },
+        {
+          "name": "Sophia Karagiorgou",
+          "orgs": [
+            "National Technical University of Athens, Greece"
+          ]
+        },
+        {
+          "name": "Dieter Pfoser",
+          "orgs": [
+            "George Mason University"
+          ]
+        },
+        {
+          "name": "Carola Wenk",
+          "orgs": [
+            "Tulane University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1402.5138v2",
+      "date": "2014-02-19T21:50:39Z",
+      "citation_count": 189,
+      "categories": [
+        "cs.CG"
+      ]
+    },
+    {
+      "arxiv_id": "2504.18165",
+      "score": 6.2497478,
+      "title": "PerfCam: Digital Twinning for Production Lines Using 3D Gaussian Splatting and Vision Models",
+      "tldr": "This paper presents PerfCam, a digital twinning framework for industrial production lines using 3D Gaussian Splatting and vision models to address the challenge of accurate and cost-effective digital twin creation, by enabling real-time KPI extraction and object tracking; it contributes an open-source PoC, a dataset, and validated performance in pharmaceutical production lines with OEE and conveyor belt speed metrics; the results demonstrate effective real-time monitoring and analytics for smart manufacturing.",
+      "abstract": "We introduce PerfCam, an open source Proof-of-Concept (PoC) digital twinning framework that combines camera and sensory data with 3D Gaussian Splatting and computer vision models for digital twinning, object tracking, and Key Performance Indicators (KPIs) extraction in industrial production lines. By utilizing 3D reconstruction and Convolutional Neural Networks (CNNs), PerfCam offers a semi-automated approach to object tracking and spatial mapping, enabling digital twins that capture real-time KPIs such as availability, performance, Overall Equipment Effectiveness (OEE), and rate of conveyor belts in the production line. We validate the effectiveness of PerfCam through a practical deployment within realistic test production lines in the pharmaceutical industry and contribute an openly published dataset to support further research and development in the field. The results demonstrate PerfCam's ability to deliver actionable insights through its precise digital twin capabilities, underscoring its value as an effective tool for developing usable digital twins in smart manufacturing environments and extracting operational analytics.",
+      "authors": [
+        {
+          "name": "Michel Gokan Khan",
+          "orgs": [
+            "School of Engineering Sciences, KTH Royal Institute of Technology, Stockholm, Sweden",
+            "Digital Futures, KTH Royal Institute of Technology, Stockholm, Sweden"
+          ]
+        },
+        {
+          "name": "Renan Guarese",
+          "orgs": [
+            "Digital Futures, KTH Royal Institute of Technology, Stockholm, Sweden",
+            "School of Electrical Engineering and Computer Science, KTH Royal Institute of Technology, Stockholm, Sweden"
+          ]
+        },
+        {
+          "name": "Fabian Johnson",
+          "orgs": [
+            "AstraZeneca, Stockholm, Sweden"
+          ]
+        },
+        {
+          "name": "Xi Vincent Wang",
+          "orgs": [
+            "School of Industrial Engineering and Management, KTH Royal Institute of Technology, Stockholm, Sweden"
+          ]
+        },
+        {
+          "name": "Anders Bergman",
+          "orgs": [
+            "Digital Futures, KTH Royal Institute of Technology, Stockholm, Sweden",
+            "AstraZeneca, Stockholm, Sweden"
+          ]
+        },
+        {
+          "name": "Benjamin Edvinsson",
+          "orgs": [
+            "AstraZeneca, Stockholm, Sweden"
+          ]
+        },
+        {
+          "name": "Mario Romero",
+          "orgs": [
+            "School of Electrical Engineering and Computer Science, KTH Royal Institute of Technology, Stockholm, Sweden",
+            "Department of Science and Technology, Linköping University, Norrköping, Sweden"
+          ]
+        },
+        {
+          "name": "Jérémy Vachier",
+          "orgs": [
+            "AstraZeneca, Stockholm, Sweden"
+          ]
+        },
+        {
+          "name": "Jan Kronqvist",
+          "orgs": [
+            "School of Engineering Sciences, KTH Royal Institute of Technology, Stockholm, Sweden"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2504.18165v1",
+      "date": "2025-04-25T08:29:00Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ]
+    }
+  ]
+}

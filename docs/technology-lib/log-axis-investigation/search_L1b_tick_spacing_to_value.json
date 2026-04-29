@@ -1,0 +1,699 @@
+{
+  "status": "success",
+  "total_count": 44,
+  "result": [
+    {
+      "arxiv_id": "2512.10904",
+      "score": 11.425177,
+      "title": "A Stellar Magnesium to Silicon ratio in the atmosphere of an exoplanet",
+      "tldr": "This paper investigates the elemental composition of exoplanet WASP-189b to test the assumption that stellar abundances reflect planetary refractory ratios, finding Mg/Si, Fe/Mg, and Si/Fe ratios consistent with stellar values and a refractory-to-volatile ratio enhanced by ~2, validating the stellar-proxy assumption for planetary composition models.",
+      "abstract": "The elemental compositions of exoplanets encode information about their formation environments and internal structures. While volatile ratios such as carbon-to-oxygen (C/O) are used to trace formation location, the rock-forming elements - magnesium (Mg), silicon (Si), and iron (Fe) - govern interior mineralogy and are commonly assumed to reflect the host star's abundances. Yet this assumption remains largely untested. Ultra-hot Jupiters, gas-giant exoplanets with dayside temperatures above 3000 K, provide rare access to refractory elements that remain gaseous. Here we present high-resolution thermal emission spectroscopy of the exoplanet WASP-189b (Teq = 3354^{+27}_{-34} K) obtained with the Immersion Grating Infrared Spectrometer (IGRINS) on Gemini South. We detect neutral iron (Fe I), magnesium (Mg I), silicon (Si I), water (H_2O), carbon monoxide (CO), and hydroxyl (OH) at signal-to-noise ratios exceeding 4, and retrieve their elemental abundances. We show that the Mg/Si, Fe/Mg, and Si/Fe ratios are consistent with stellar values, while the refractory-to-volatile ratio is enhanced by roughly a factor of ~2. These findings demonstrate that giant-planet atmospheres can preserve stellar-like rock-forming ratios, providing an empirical validation of the stellar-proxy assumption that underpins planetary composition and formation models across exoplanet systems.",
+      "authors": [
+        {
+          "name": "Vatsal Panwar",
+          "orgs": [
+            "Department of Physics, University of Warwick, Coventry, UK",
+            "Center for Exoplanets and Habitability, University of Warwick, Coventry, UK"
+          ]
+        },
+        {
+          "name": "Matteo Brogi",
+          "orgs": [
+            "Dipartimento di Fisica, Università degli Studi di Torino, Torino, Italy",
+            "INAF – Osservatorio Astrofisico di Torino, 10025 Pino Torinese, Italy"
+          ]
+        },
+        {
+          "name": "Michael R. Line",
+          "orgs": [
+            "School of Earth and Space Exploration, Arizona State University, Tempe, AZ, USA"
+          ]
+        },
+        {
+          "name": "Luis Welbanks",
+          "orgs": [
+            "School of Earth and Space Exploration, Arizona State University, Tempe, AZ, USA"
+          ]
+        },
+        {
+          "name": "Gregory N. Mace",
+          "orgs": [
+            "Department of Astronomy, The University of Texas at Austin, Austin, TX, USA"
+          ]
+        },
+        {
+          "name": "Jennifer Patience",
+          "orgs": [
+            "School of Earth and Space Exploration, Arizona State University, Tempe, AZ, USA"
+          ]
+        },
+        {
+          "name": "Jacob Bean",
+          "orgs": [
+            "Department of Astronomy and Astrophysics, University of Chicago, Chicago, IL, USA"
+          ]
+        },
+        {
+          "name": "Vivien Parmentier",
+          "orgs": [
+            "Laboratoire Lagrange, Observatoire de la Côte d’Azur, CNRS, Université Côte d’Azur, Nice, France"
+          ]
+        },
+        {
+          "name": "Megan Weiner Mansfield",
+          "orgs": [
+            "Department of Astronomy, University of Maryland, College Park, MD, USA"
+          ]
+        },
+        {
+          "name": "Steven Desch",
+          "orgs": [
+            "School of Earth and Space Exploration, Arizona State University, Tempe, AZ, USA"
+          ]
+        },
+        {
+          "name": "Lorenzo Pino",
+          "orgs": [
+            "INAF – Osservatorio Astrofisico di Arcetri, Florence, Italy"
+          ]
+        },
+        {
+          "name": "Patrick Young",
+          "orgs": [
+            "School of Earth and Space Exploration, Arizona State University, Tempe, AZ, USA"
+          ]
+        },
+        {
+          "name": "Jorge A. Sanchez",
+          "orgs": [
+            "School of Earth and Space Exploration, Arizona State University, Tempe, AZ, USA"
+          ]
+        },
+        {
+          "name": "Stefan Pelletier",
+          "orgs": [
+            "Observatoire astronomique de l’Université de Genève, Switzerland"
+          ]
+        },
+        {
+          "name": "Lennart van Sluijs",
+          "orgs": [
+            "Department of Astronomy, University of Michigan, Ann Arbor, MI, USA"
+          ]
+        },
+        {
+          "name": "Joost P. Wardenier",
+          "orgs": [
+            "Trottier Institute for Research on Exoplanets (iREx), Université de Montréal, Montréal, QC, Canada"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.10904v1",
+      "date": "2025-12-11",
+      "citation_count": 0,
+      "categories": [
+        "astro-ph.EP",
+        "astro-ph.SR"
+      ]
+    },
+    {
+      "arxiv_id": "2310.17814",
+      "score": 11.102623,
+      "title": "DIVI: Dynamically Interactive Visualization",
+      "tldr": "This paper presents DIVI, a novel approach for dynamically orchestrating interactions in static visualizations by deconstructing SVG charts to infer metadata and enable cross-tool interaction, contributing a three-part model, a taxonomy for interactions, and SVG deconstruction techniques; results show usability with 13 participants and support dynamic multi-view and cross-tool linking.",
+      "abstract": "Dynamically Interactive Visualization (DIVI) is a novel approach for orchestrating interactions within and across static visualizations. DIVI deconstructs Scalable Vector Graphics charts at runtime to infer content and coordinate user input, decoupling interaction from specification logic. This decoupling allows interactions to extend and compose freely across different tools, chart types, and analysis goals. DIVI exploits positional relations of marks to detect chart components such as axes and legends, reconstruct scales and view encodings, and infer data fields. DIVI then enumerates candidate transformations across inferred data to perform linking between views. To support dynamic interaction without prior specification, we introduce a taxonomy that formalizes the space of standard interactions by chart element, interaction type, and input event. We demonstrate DIVI's usefulness for rapid data exploration and analysis through a usability study with 13 participants and a diverse gallery of dynamically interactive visualizations, including single chart, multi-view, and cross-tool configurations.",
+      "authors": [
+        {
+          "name": "Luke S. Snyder",
+          "orgs": []
+        },
+        {
+          "name": "Jeffrey Heer",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2310.17814v2",
+      "date": "2023-10-26T23:24:35Z",
+      "citation_count": 12,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2509.18141",
+      "score": 10.78201,
+      "title": "KM-GPT: An Automated Pipeline for Reconstructing Individual Patient Data from Kaplan-Meier Plots",
+      "tldr": "This paper addresses the challenge of reconstructing individual patient data (IPD) from Kaplan-Meier plots in clinical research, aiming to overcome manual digitization limitations by developing KM-GPT, an automated AI-powered pipeline using GPT-5 and advanced image processing; it introduces a fully automated, scalable solution with multi-modal reasoning and user-friendly interface; KM-GPT was evaluated on synthetic and real-world datasets, demonstrating superior accuracy, and was applied to gastric cancer immunotherapy trials to facilitate evidence synthesis and subgroup analyses.",
+      "abstract": "Reconstructing individual patient data (IPD) from Kaplan-Meier (KM) plots provides valuable insights for evidence synthesis in clinical research. However, existing approaches often rely on manual digitization, which is error-prone and lacks scalability. To address these limitations, we develop KM-GPT, the first fully automated, AI-powered pipeline for reconstructing IPD directly from KM plots with high accuracy, robustness, and reproducibility. KM-GPT integrates advanced image preprocessing, multi-modal reasoning powered by GPT-5, and iterative reconstruction algorithms to generate high-quality IPD without manual input or intervention. Its hybrid reasoning architecture automates the conversion of unstructured information into structured data flows and validates data extraction from complex KM plots. To improve accessibility, KM-GPT is equipped with a user-friendly web interface and an integrated AI assistant, enabling researchers to reconstruct IPD without requiring programming expertise. KM-GPT was rigorously evaluated on synthetic and real-world datasets, consistently demonstrating superior accuracy. To illustrate its utility, we applied KM-GPT to a meta-analysis of gastric cancer immunotherapy trials, reconstructing IPD to facilitate evidence synthesis and biomarker-based subgroup analyses. By automating traditionally manual processes and providing a scalable, web-based solution, KM-GPT transforms clinical research by leveraging reconstructed IPD to enable more informed downstream analyses, supporting evidence-based decision-making.",
+      "authors": [
+        {
+          "name": "Yao Zhao",
+          "orgs": [
+            "Department of Applied Mathematics and Statistics Johns Hopkins University"
+          ]
+        },
+        {
+          "name": "Haoyue Sun",
+          "orgs": [
+            "Department of Applied Mathematics and Statistics Johns Hopkins University"
+          ]
+        },
+        {
+          "name": "Yantian Ding",
+          "orgs": [
+            "Department of Applied Mathematics and Statistics Johns Hopkins University"
+          ]
+        },
+        {
+          "name": "Yanxun Xu",
+          "orgs": [
+            "Department of Applied Mathematics and Statistics Johns Hopkins University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2509.18141v1",
+      "date": "2025-09-15T00:38:38Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG",
+        "stat.AP",
+        "stat.ML"
+      ]
+    },
+    {
+      "arxiv_id": "2204.09548",
+      "score": 10.676174,
+      "title": "Misinformed by Visualization: What Do We Learn From Misinformative Visualizations?",
+      "tldr": "This survey reviews misleading visualizations, identifying 74 types of issues and proposing a taxonomy, and highlights four research directions to address misinformation through understanding, detection, and prevention.",
+      "abstract": "Data visualization is powerful in persuading an audience. However, when it is done poorly or maliciously, a visualization may become misleading or even deceiving. Visualizations give further strength to the dissemination of misinformation on the Internet. The visualization research community has long been aware of visualizations that misinform the audience, mostly associated with the terms \"lie\" and \"deceptive.\" Still, these discussions have focused only on a handful of cases. To better understand the landscape of misleading visualizations, we open-coded over one thousand real-world visualizations that have been reported as misleading. From these examples, we discovered 74 types of issues and formed a taxonomy of misleading elements in visualizations. We found four directions that the research community can follow to widen the discussion on misleading visualizations: (1) informal fallacies in visualizations, (2) exploiting conventions and data literacy, (3) deceptive tricks in uncommon charts, and (4) understanding the designers' dilemma. This work lays the groundwork for these research directions, especially in understanding, detecting, and preventing them.",
+      "authors": [
+        {
+          "name": "Leo Yu-Ho Lo",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Ayush Gupta",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Kento Shigyo",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Aoyu Wu",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Enrico Bertini",
+          "orgs": [
+            "Northeastern University"
+          ]
+        },
+        {
+          "name": "Huamin Qu",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2204.09548v1",
+      "date": "2022-04-20T15:35:52Z",
+      "citation_count": 61,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2601.16708",
+      "score": 10.672497,
+      "title": "Make the Unhearable Visible: Exploring Visualization for Musical Instrument Practice",
+      "tldr": "This paper explores visualization for musical instrument practice to address the challenge of making unhearable patterns visible, using 33 designs and evaluations with musicians, contributing insights on design considerations and potential for visual feedback in music education.",
+      "abstract": "We explore the potential of visualization to support musicians in instrument practice through real-time feedback and reflection on their playing. Musicians often struggle to observe the patterns in their playing and interpret them with respect to their goals. Our premise is that these patterns can be made visible with interactive visualization: we can make the unhearable visible. However, understanding the design of such visualizations is challenging: the diversity of needs, including different instruments, skills, musical attributes, and genres, means that any single use case is unlikely to illustrate the broad potential and opportunities. To address this challenge, we conducted a design exploration study where we created and iterated on 33 designs, each focusing on a subset of needs, for example, only one musical skill. Our designs are grounded in our own experience as musicians and the ideas and feedback of 18 musicians with various musical backgrounds and we evaluated them with 13 music learners and teachers. This paper presents the results of our exploration, focusing on a few example designs as instances of possible instrument practice visualizations. From our work, we draw design considerations that contribute to future research and products for visual instrument education.",
+      "authors": [
+        {
+          "name": "Michael Gleicher",
+          "orgs": [
+            "Department of Computer Sciences, University of Wisconsin, Madison"
+          ]
+        },
+        {
+          "name": "Michael Sedlmair",
+          "orgs": [
+            "Visualization Research Center (VISUS), University of Stuttgart"
+          ]
+        },
+        {
+          "name": "Frank Heyen",
+          "orgs": [
+            "Visualization Research Center (VISUS), University of Stuttgart"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2601.16708v1",
+      "date": "2026-01-23",
+      "citation_count": 0,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2301.10843",
+      "score": 10.268686,
+      "title": "Gatherplot: A Non-Overlapping Scatterplot",
+      "tldr": "This paper addresses the overplotting issue in scatterplots by introducing gatherplots, a non-overlapping visualization technique that maintains individual data identity through unit visualization, offering improved data distribution assessment with crowdsourced studies showing faster and more accurate evaluation compared to jittered scatterplots.",
+      "abstract": "Scatterplots are a common tool for exploring multidimensional datasets, especially in the form of scatterplot matrices (SPLOMs). However, scatterplots suffer from overplotting when categorical variables are mapped to one or two axes, or the same continuous variable is used for both axes. Previous methods such as histograms or violin plots use aggregation, which makes brushing and linking difficult. To address this, we propose gatherplots, an extension of scatterplots to manage the overplotting problem. Gatherplots are a form of unit visualization, which avoid aggregation and maintain the identity of individual objects to ease visual perception. In gatherplots, every visual mark that maps to the same position coalesces to form a packed entity, thereby making it easier to see the overview of data groupings. The size and aspect ratio of marks can also be changed dynamically to make it easier to compare the composition of different groups. In the case of a categorical variable vs. a categorical variable, we propose a heuristic to decide bin sizes for optimal space usage. To validate our work, we conducted a crowdsourced user study that shows that gatherplots enable people to assess data distribution more quickly and more correctly than when using jittered scatterplots.",
+      "authors": [
+        {
+          "name": "Deokgun Park",
+          "orgs": [
+            "University of Texas at Arlington, TX, USA"
+          ]
+        },
+        {
+          "name": "Sung-Hee Kim",
+          "orgs": [
+            "Dong-eui University, Busan, Republic of Korea"
+          ]
+        },
+        {
+          "name": "Niklas Elmqvist",
+          "orgs": [
+            "University of Maryland, College Park, MD, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2301.10843v1",
+      "date": "2023-01-25T21:50:10Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2403.03723",
+      "score": 10.223555,
+      "title": "Gravitational waves from first-order phase transitions in LISA: reconstruction pipeline and physics interpretation",
+      "tldr": "This paper investigates gravitational wave backgrounds from first-order phase transitions in LISA, developing a template databank and search pipeline to reconstruct parameters with better than 10% accuracy, contributing a method for mapping reconstructed measurements into Standard Model extensions, and finding that LISA can constrain particle physics parameters with specific thermodynamic and geometric template parameters.",
+      "abstract": "We develop a tool for the analysis of stochastic gravitational wave backgrounds from cosmological first-order phase transitions with LISA: we initiate a template databank for these signals, prototype their searches, and forecast their reconstruction. The templates encompass the gravitational wave signals sourced by bubble collisions, sound waves and turbulence. Accounting for Galactic and extra-Galactic foregrounds, we forecast the region of the parameter space that LISA will reconstruct with better than $\\sim 10\\,\\%$ accuracy, if certain experimental and theoretical uncertainties are solved by the time LISA flies. We illustrate the accuracy with which LISA can reconstruct the parameters on a few benchmark signals, both in terms of the template parameters and the phase transition ones. To show the impact of the forecasts on physics beyond the Standard Model, we map the reconstructed benchmark measurements into the parameter spaces of the singlet extension of the Standard Model and of the classically conformal invariant $U(1)_{B-L}$ model.",
+      "authors": [
+        {
+          "name": "Chiara Caprini",
+          "orgs": [
+            "Département de Physique Théorique and Center for Astroparticle Physics, Université de Genève, Quai E. Ansermet 24, CH-1211 Geneva 4, Switzerland",
+            "Theoretical Physics Department, CERN, 1211 Geneva 23, Switzerland"
+          ]
+        },
+        {
+          "name": "Ryusuke Jinno",
+          "orgs": [
+            "Research Center for the Early Universe (RESCEU), University of Tokyo, Hongo 7-3-1, Bunkyo-ku, Tokyo 113-003, Japan"
+          ]
+        },
+        {
+          "name": "Marek Lewicki",
+          "orgs": [
+            "Faculty of Physics, University of Warsaw, ul. Pasteura 5, 02-093 Warsaw, Poland"
+          ]
+        },
+        {
+          "name": "Eric Madge",
+          "orgs": [
+            "Department of Particle Physics and Astrophysics, Weizmann Institute of Science, Herzl Street 234, Rehovot, 7610001, Israel"
+          ]
+        },
+        {
+          "name": "Marco Merchand",
+          "orgs": [
+            "Department of Physics, KTH Royal Institute of Technology, SE-10691 Stockholm, Sweden",
+            "The Oskar Klein Centre for Cosmoparticle Physics, AlbaNova University Centre, SE-10691 Stockholm, Sweden"
+          ]
+        },
+        {
+          "name": "Germano Nardini",
+          "orgs": [
+            "Department of Mathematics and Physics, University of Stavanger, NO-4036 Stavanger, Norway"
+          ]
+        },
+        {
+          "name": "Mauro Pieroni",
+          "orgs": [
+            "Theoretical Physics Department, CERN, 1211 Geneva 23, Switzerland",
+            "Département de Physique Théorique and Center for Astroparticle Physics, Université de Genève, Quai E. Ansermet 24, CH-1211 Geneva 4, Switzerland"
+          ]
+        },
+        {
+          "name": "Alberto Roper Pol",
+          "orgs": [
+            "Département de Physique Théorique and Center for Astroparticle Physics, Université de Genève, Quai E. Ansermet 24, CH-1211 Geneva 4, Switzerland"
+          ]
+        },
+        {
+          "name": "Ville Vaskonen",
+          "orgs": [
+            "Dipartimento di Fisica e Astronomia, Università degli Studi di Padova, Via Marzolo 8, 35131 Padova, Italy",
+            "Istituto Nazionale di Fisica Nucleare, Sezione di Padova, Via Marzolo 8, 35131 Padova, Italy",
+            "Keemilise ja bioloogilise füüssika instituut, Rävala pst. 10, 10143 Tallinn, Estonia"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2403.03723v2",
+      "date": "2024-03-06T14:13:48Z",
+      "citation_count": 63,
+      "categories": [
+        "astro-ph.CO",
+        "hep-ph"
+      ]
+    },
+    {
+      "arxiv_id": "2112.09357",
+      "score": 10.2195015,
+      "title": "Interpreting Audiograms with Multi-stage Neural Networks",
+      "tldr": "This paper addresses the challenge of accurately interpreting audiograms to extract precise hearing level data, which is crucial for tuning hearing aids; it proposes a Multi-stage Audiogram Interpretation Network (MAIN) with three stages for detection, rectification, and coordinate projection, achieving 84% test accuracy and 94% of tuples within ±5 dB HL error; this method enables reliable automated audiogram interpretation, improving accessibility and efficiency in hearing aid fitting.",
+      "abstract": "Audiograms are a particular type of line charts representing individuals' hearing level at various frequencies. They are used by audiologists to diagnose hearing loss, and further select and tune appropriate hearing aids for customers. There have been several projects such as Autoaudio that aim to accelerate this process through means of machine learning. But all existing models at their best can only detect audiograms in images and classify them into general categories. They are unable to extract hearing level information from detected audiograms by interpreting the marks, axis, and lines. To address this issue, we propose a Multi-stage Audiogram Interpretation Network (MAIN) that directly reads hearing level data from photos of audiograms. We also established Open Audiogram, an open dataset of audiogram images with annotations of marks and axes on which we trained and evaluated our proposed model. Experiments show that our model is feasible and reliable.",
+      "authors": [
+        {
+          "name": "Shufan Li",
+          "orgs": [
+            "Orka Labs Inc."
+          ]
+        },
+        {
+          "name": "Congxi Lu",
+          "orgs": [
+            "Orka Labs Inc."
+          ]
+        },
+        {
+          "name": "Linkai Li",
+          "orgs": [
+            "Orka Labs Inc."
+          ]
+        },
+        {
+          "name": "Jirong Duan",
+          "orgs": [
+            "ENT&Audiology Center",
+            "Xinhua Hospital*",
+            "&Punan Hospital"
+          ]
+        },
+        {
+          "name": "Xinping Fu",
+          "orgs": [
+            "Ear Institute",
+            "University College London"
+          ]
+        },
+        {
+          "name": "Haoshuai Zhou",
+          "orgs": [
+            "Orka Labs Inc."
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2112.09357v1",
+      "date": "2021-12-17T07:27:39Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.CV",
+        "cs.SD",
+        "eess.AS"
+      ]
+    },
+    {
+      "arxiv_id": "1402.6698",
+      "score": 10.159007,
+      "title": "Spacecraft Clocks and Relativity: Prospects for Future Satellite Missions",
+      "tldr": "This paper investigates relativistic effects on spacecraft clocks in satellite missions, addressing how precise timing can detect general relativity phenomena like Schwarzschild perturbations, frame-dragging, and spin-squared effects, with a clock accuracy of $10^{-16}$ enabling detection, while low Earth orbits face greater challenges; findings suggest these effects can be measured with future missions, advancing gravitational physics and satellite navigation.",
+      "abstract": "The successful miniaturization of extremely accurate atomic clocks invites prospects for satellite missions to perform precise timing experiments. This will allow effects predicted by general relativity to be detected in Earth's gravitational field. In this paper we introduce a convenient formalism for studying these effects, and compute the fractional timing differences generated by them for the orbit of a satellite capable of accurate time transfer to a terrestrial receiving station on Earth, as proposed by planned missions. We find that (1) Schwarzschild perturbations would be measurable through their effects both on the orbit and on the signal propagation, (2) frame-dragging of the orbit would be readily measurable, and (3) in optimistic scenarios, the spin-squared metric effects may be measurable for the first time ever. Our estimates suggest that a clock with a fractional timing inaccuracy of $10^{-16}$ on a highly eccentric Earth orbit will measure all these effects, while for a low Earth circular orbit like that of the Atomic Clock Ensemble in Space Mission, detection will be more challenging.",
+      "authors": [],
+      "url": "https://arxiv.org/pdf/1402.6698v2",
+      "date": "2014-02-26T21:00:26Z",
+      "citation_count": 17,
+      "categories": [
+        "astro-ph.EP",
+        "gr-qc",
+        "physics.atom-ph",
+        "physics.geo-ph"
+      ]
+    },
+    {
+      "arxiv_id": "1911.08509",
+      "score": 10.062379,
+      "title": "Unsupervised Bayesian Ising Approximation for revealing the neural dictionary in songbirds",
+      "tldr": "This paper addresses the challenge of reconstructing biological dictionaries from small datasets, aiming to identify irreducible spike patterns in songbird neural activity that encode motor behaviors, by developing an unsupervised Bayesian Ising Approximation method; it detects codewords with arbitrary spike numbers and accounts for their dependencies, revealing differences in encoding motor exploration versus typical behavior; findings show neurons use distinct yet overlapping dictionaries, with specific codewords predicting exploratory vocal deviations.",
+      "abstract": "The problem of deciphering how low-level patterns (action potentials in the brain, amino acids in a protein, etc.) drive high-level biological features (sensorimotor behavior, enzymatic function) represents the central challenge of quantitative biology. The lack of general methods for doing so from the size of datasets that can be collected experimentally severely limits our understanding of the biological world. For example, in neuroscience, some sensory and motor codes have been shown to consist of precisely timed multi-spike patterns. However, the combinatorial complexity of such pattern codes have precluded development of methods for their comprehensive analysis. Thus, just as it is hard to predict a protein's function based on its sequence, we still do not understand how to accurately predict an organism's behavior based on neural activity. Here we derive a method for solving this class of problems. We demonstrate its utility in an application to neural data, detecting precisely timed spike patterns that code for specific motor behaviors in a songbird vocal system. Our method detects such codewords with an arbitrary number of spikes, does so from small data sets, and accounts for dependencies in occurrences of codewords. Detecting such dictionaries of important spike patterns --- rather than merely identifying the timescale on which such patterns exist, as in some prior approaches --- opens the door for understanding fine motor control and the neural bases of sensorimotor learning in animals. For example, for the first time, we identify differences in encoding motor exploration versus typical behavior. Crucially, our method can be used not only for analysis of neural systems, but also for understanding the structure of correlations in other biological and nonbiological datasets.",
+      "authors": [
+        {
+          "name": "Damián G. Hernández",
+          "orgs": [
+            "Department of Medical Physics, Centro Atólico Bariloche and Instituto Balseiro, Bariloche 8400, Argentina"
+          ]
+        },
+        {
+          "name": "Samuel J. Sober",
+          "orgs": [
+            "Department of Biology, Emory University, Atlanta, GA 30322, USA"
+          ]
+        },
+        {
+          "name": "Ilya Nemenman",
+          "orgs": [
+            "Department of Physics, Emory University, Atlanta, GA 30322, USA",
+            "Department of Biology, Emory University, Atlanta, GA 30322, USA",
+            "Initiative in Theory and Modeling of Living Systems, Atlanta, GA 30322, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1911.08509v1",
+      "date": "2019-11-19T19:11:49Z",
+      "citation_count": 0,
+      "categories": [
+        "q-bio.NC",
+        "q-bio.QM"
+      ]
+    },
+    {
+      "arxiv_id": "0911.4996",
+      "score": 10.010352,
+      "title": "Commissioning and Performance of the CMS Silicon Strip Tracker with Cosmic Ray Muons",
+      "tldr": "This paper presents the commissioning and performance evaluation of the CMS Silicon Strip Tracker using cosmic ray muons, addressing the challenge of ensuring accurate hit and track reconstruction in a 3.8 T magnetic field; it employs real data from the Cosmic Run At Four Tesla (CRAFT) with 15 million events, demonstrating hit and track reconstruction efficiencies exceeding 99%; these results validate the tracker's design and provide critical insights for high-energy physics experiments.",
+      "abstract": "During autumn 2008, the Silicon Strip Tracker was operated with the full CMS experiment in a comprehensive test, in the presence of the 3.8 T magnetic field produced by the CMS superconducting solenoid. Cosmic ray muons were detected in the muon chambers and used to trigger the readout of all CMS sub-detectors. About 15 million events with a muon in the tracker were collected. The efficiency of hit and track reconstruction were measured to be higher than 99% and consistent with expectations from Monte Carlo simulation. This article details the commissioning and performance of the Silicon Strip Tracker with cosmic ray muons.",
+      "authors": [
+        {
+          "name": "CMS Collaboration",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/0911.4996v2",
+      "date": "2009-11-26T01:23:00Z",
+      "citation_count": 60,
+      "categories": [
+        "physics.ins-det"
+      ]
+    },
+    {
+      "arxiv_id": "1105.0282",
+      "score": 9.980338,
+      "title": "Timing analysis techniques at large core distances for multi-TeV gamma ray astronomy",
+      "tldr": "This paper investigates timing analysis techniques for multi-TeV gamma-ray astronomy to improve angular and core resolution, addressing the challenge of reconstructing distant showers with large core distances; it combines pixel timing with an improved direction algorithm, achieving up to ~40% and ~30% improvements in resolution, respectively, and an angular resolution of ~0.05 degrees above 10 TeV; findings suggest the potential of a sparse array approach to enhance detection capabilities for energies above 10 TeV.",
+      "abstract": "We present an analysis technique that uses the timing information of Cherenkov images from extensive air showers (EAS). Our emphasis is on distant, or large core distance gamma-ray induced showers at multi-TeV energies. Specifically, combining pixel timing information with an improved direction reconstruction algorithm, leads to improvements in angular and core resolution as large as ~40% and ~30%, respectively, when compared with the same algorithm without the use of timing. Above 10 TeV, this results in an angular resolution approaching 0.05 degrees, together with a core resolution better than ~15 m. The off-axis post-cut gamma-ray acceptance is energy dependent and its full width at half maximum ranges from 4 degrees to 8 degrees. For shower directions that are up to ~6 degrees off-axis, the angular resolution achieved by using timing information is comparable, around 100 TeV, to the on-axis angular resolution. The telescope specifications and layout we describe here are geared towards energies above 10 TeV. However, the methods can in principle be applied to other energies, given suitable telescope parameters. The 5-telescope cell investigated in this study could initially pave the way for a larger array of sparsely spaced telescopes in an effort to push the collection area to >10 km2. These results highlight the potential of a `sparse array' approach in effectively opening up the energy range above 10 TeV.",
+      "authors": [
+        {
+          "name": "V. Stamatescu",
+          "orgs": [
+            "School of Chemistry and Physics, The University of Adelaide, Adelaide 5005, Australia",
+            "Institut de Física d’Altes Energies, Edifici Cn., E-08193, Bellaterra (Barcelona), Spain"
+          ]
+        },
+        {
+          "name": "G. P. Rowell",
+          "orgs": [
+            "School of Chemistry and Physics, The University of Adelaide, Adelaide 5005, Australia"
+          ]
+        },
+        {
+          "name": "J. Denman",
+          "orgs": [
+            "School of Chemistry and Physics, The University of Adelaide, Adelaide 5005, Australia"
+          ]
+        },
+        {
+          "name": "R. W. Clay",
+          "orgs": [
+            "School of Chemistry and Physics, The University of Adelaide, Adelaide 5005, Australia"
+          ]
+        },
+        {
+          "name": "B. R. Dawson",
+          "orgs": [
+            "School of Chemistry and Physics, The University of Adelaide, Adelaide 5005, Australia"
+          ]
+        },
+        {
+          "name": "A. G. K. Smith",
+          "orgs": [
+            "School of Chemistry and Physics, The University of Adelaide, Adelaide 5005, Australia"
+          ]
+        },
+        {
+          "name": "T. Sudholz",
+          "orgs": [
+            "School of Chemistry and Physics, The University of Adelaide, Adelaide 5005, Australia"
+          ]
+        },
+        {
+          "name": "G. J. Thornton",
+          "orgs": [
+            "School of Chemistry and Physics, The University of Adelaide, Adelaide 5005, Australia"
+          ]
+        },
+        {
+          "name": "N. Wild",
+          "orgs": [
+            "School of Chemistry and Physics, The University of Adelaide, Adelaide 5005, Australia"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1105.0282v1",
+      "date": "2011-05-02T09:59:41Z",
+      "citation_count": 11,
+      "categories": [
+        "astro-ph.CO",
+        "astro-ph.GA",
+        "astro-ph.HE",
+        "astro-ph.IM"
+      ]
+    },
+    {
+      "arxiv_id": "2312.12672",
+      "score": 9.931906,
+      "title": "Categorical, Ratio, and Professorial Data: The Case for Reciprocal Rank",
+      "tldr": "This paper addresses the debate over whether categorical SERP data can be mapped to numeric values for comparison, arguing that any such mapping is valid if it plausibly reflects user behavior, and presents reciprocal rank (RR) as a valid example, showing it allows for meaningful averages and comparisons in retrieval system evaluation.",
+      "abstract": "Search engine results pages are usually abstracted as binary relevance vectors and hence are categorical data, meaning that only a limited set of operations is permitted, most notably tabulation of occurrence frequencies, with determination of medians and averages not possible. To compare retrieval systems it is thus usual to make use of a categorical-to-numeric effectiveness mapping. A previous paper has argued that any desired categorical-to-numeric mapping may be used, provided only that there is an argued connection between each category of SERP and the score that is assigned to that category by the mapping. Further, once that plausible connection has been established, then the mapped values can be treated as real-valued observations on a ratio scale, allowing the computation of averages. This article is written in support of that point of view, and to respond to ongoing claims that SERP scores may only be averaged if very restrictive conditions are imposed on the effectiveness mapping.",
+      "authors": [
+        {
+          "name": "Alistair Moffat",
+          "orgs": [
+            "The University of Melbourne",
+            "Australia"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2312.12672v1",
+      "date": "2023-12-20T00:07:43Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.IR"
+      ]
+    },
+    {
+      "arxiv_id": "2512.19173",
+      "score": 9.890219,
+      "title": "CycleChart: A Unified Consistency-Based Learning Framework for Bidirectional Chart Understanding and Generation",
+      "tldr": "This paper introduces CycleChart, a consistency-based learning framework for bidirectional chart understanding and generation, addressing the lack of unified semantic understanding across chart tasks; it employs a generate-parse consistency objective and a multi-task dataset to improve cross-task generalization, achieving strong results on chart generation, parsing, and question answering through a closed cycle of generation, parsing, and reasoning.",
+      "abstract": "Current chart-specific tasks, such as chart question answering, chart parsing, and chart generation, are typically studied in isolation, preventing models from learning the shared semantics that link chart generation and interpretation. We introduce CycleChart, a consistency-based learning framework for bidirectional chart understanding and generation. CycleChart adopts a schema-centric formulation as a common interface across tasks. We construct a consistent multi-task dataset, where each chart sample includes aligned annotations for schema prediction, data parsing, and question answering. To learn cross-directional chart semantics, CycleChart introduces a generate-parse consistency objective: the model generates a chart schema from a table and a textual query, then learns to recover the schema and data from the generated chart, enforcing semantic alignment across directions. CycleChart achieves strong results on chart generation, chart parsing, and chart question answering, demonstrating improved cross-task generalization and marking a step toward more general chart understanding models.",
+      "authors": [
+        {
+          "name": "Dazhen Deng",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Sen Yang",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Yuchen He",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Yuan Tian",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Yingcai Wu",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.19173v1",
+      "date": "2025-12-22",
+      "citation_count": 0,
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1810.10861",
+      "score": 4.661006,
+      "title": "GAMERA: A three-dimensional finite-volume MHD solver for non-orthogonal curvilinear geometries",
+      "tldr": "This paper presents GAMERA, a three-dimensional finite-volume MHD solver for non-orthogonal curvilinear geometries, addressing the need for flexible and efficient simulations in plasma physics and space weather; it improves upon the LFM code with high-order spatial reconstruction, constrained transport, and hybrid parallelism; it demonstrates accurate simulations on modern architectures with real-time performance for planetary magnetospheric models.",
+      "abstract": "Efficient simulation of plasmas in various contexts often involves the use of meshes that conform to the intrinsic geometry of the system under consideration. We present here a description of a new magnetohydrodynamic code, Gamera (Grid Agnostic MHD for Extended Research Applications), designed to combine geometric flexibility with high-order spatial reconstruction and constrained transport to maintain the divergence-free magnetic field. Gamera carries on the legacy of its predecessor, the LFM (Lyon-Fedder-Mobarry), a research code whose use in space physics has spanned three decades. At the time of its initial development the LFM code had a number of novel features: eighth-order centered spatial differencing, the Partial Donor Cell Method limiter for shock capturing, a non-orthogonal staggered mesh with constrained transport, and conservative averaging-reconstruction for axis singularities. A capability to handle multiple ion species was also added later. Gamera preserves the core numerical philosophy of LFM while also incorporating numerous algorithmic and computational improvements. The upgrades in the numerical schemes include accurate grid metric calculations using high-order Gaussian quadrature techniques, high-order upwind reconstruction, non-clipping options for interface values, and improved treatment of axis singularities. The improvements in the code implementation include the use of data structures and memory access patterns conducive to aligned vector operations and the implementation of hybrid parallelism, using MPI and OMP. Gamera is designed to be a portable and easy-to-use code that implements multi-dimensional MHD simulations in arbitrary non-orthogonal curvilinear geometries on modern supercomputer architectures.",
+      "authors": [
+        {
+          "name": "Binzheng Zhang",
+          "orgs": [
+            "Department of Earth Sciences, the University of Hong Kong"
+          ]
+        },
+        {
+          "name": "Kareem A. Sorathia",
+          "orgs": [
+            "Applied Physics Laboratory, Johns Hopkins University"
+          ]
+        },
+        {
+          "name": "John G. Lyon",
+          "orgs": [
+            "Department of Physics and Astronomy, Dartmouth College"
+          ]
+        },
+        {
+          "name": "Viacheslav G. Merkin",
+          "orgs": [
+            "Applied Physics Laboratory, Johns Hopkins University"
+          ]
+        },
+        {
+          "name": "Jeffrey S. Garretson",
+          "orgs": [
+            "Applied Physics Laboratory, Johns Hopkins University"
+          ]
+        },
+        {
+          "name": "Michael Wiltberger",
+          "orgs": [
+            "National Center for Atmospheric Research"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1810.10861v2",
+      "date": "2018-10-25T13:16:15Z",
+      "citation_count": 133,
+      "categories": [
+        "physics.comp-ph",
+        "physics.space-ph"
+      ]
+    }
+  ]
+}

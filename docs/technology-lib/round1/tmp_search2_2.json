@@ -1,0 +1,32 @@
+C:\Python314\Lib\site-packages\langchain_core\_api\deprecation.py:25: UserWarning: Core Pydantic V1 functionality isn't compatible with Python 3.14 or greater.
+  from pydantic.v1.fields import FieldInfo as FieldInfoV1
+python-dotenv could not parse statement starting at line 2
+python-dotenv could not parse statement starting at line 3
+python-dotenv could not parse statement starting at line 4
+python-dotenv could not parse statement starting at line 5
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Huang\AppData\Roaming\Python\Python314\Scripts\deepxiv.exe\__main__.py", line 5, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\Huang\AppData\Roaming\Python\Python314\site-packages\click\core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Huang\AppData\Roaming\Python\Python314\site-packages\click\core.py", line 1406, in main
+    rv = self.invoke(ctx)
+  File "C:\Users\Huang\AppData\Roaming\Python\Python314\site-packages\click\core.py", line 1873, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+                           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Huang\AppData\Roaming\Python\Python314\site-packages\click\core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Huang\AppData\Roaming\Python\Python314\site-packages\click\core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+  File "D:\Codex_lib\code_reference\deepxiv_sdk\deepxiv_sdk\cli.py", line 349, in search
+    click.echo(json.dumps(results, indent=2, ensure_ascii=False))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Huang\AppData\Roaming\Python\Python314\site-packages\click\utils.py", line 321, in echo
+    file.write(out)  # type: ignore
+    ~~~~~~~~~~^^^^^
+UnicodeEncodeError: 'gbk' codec can't encode character '\xe3' in position 16680: illegal multibyte sequence

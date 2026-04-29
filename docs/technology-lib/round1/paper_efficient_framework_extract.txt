@@ -1,0 +1,16 @@
+=== Efficient Framework (2105.02039) ===
+Heading: Weihong Ma11Hesuo Zhang11Shuang Yan22Guangshun Yao22Yichao Huang22Hui Li33Yaqiang Wu33Lianwen Jin1144
+
+Abstract:
+
+
+Introduction:
+<img src='x1.png' alt='Refer to caption' title='' width='461' height='77' />
+
+*Figure 1: Generic pipeline for extracting data in a data mining system. We mainly discuss the sixth stage (data extraction) assuming that the previous output has been obtained.*
+
+Chart data is one of the important information transmitted medium that clarifies and integrates difficult information concisely*[[26](#bib.bib26 "")]*.
+In recent years, an increasing number of chart images have emerged in multimedia, scientific papers, and business reports.
+Therefore, the issue of automatic data extraction from chart images has gathered significant research attention*[[3](#bib.bib3 ""), [15](#bib.bib15 ""), [16](#bib.bib16 ""), [19](#bib.bib19 "")]*.
+
+As shown in Fig.[1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ Towards an efficient framework for Data Extraction from Chart Images"), in general, a chart data mining system*[[8](#bib.bib8 "")]* includes the following six stages: chart classification, text detection and recog

@@ -1,0 +1,900 @@
+{
+  "status": "success",
+  "total_count": 61,
+  "result": [
+    {
+      "arxiv_id": "2010.02319",
+      "score": 14.811116,
+      "title": "Tensor Fields for Data Extraction from Chart Images: Bar Charts and Scatter Plots",
+      "tldr": "This paper addresses the challenge of data extraction from bar charts and scatter plots by proposing a computational model using positive semidefinite second-order tensor fields, contributing a method for degenerate point extraction to automate levels A1 and A2 of Kimura's statistical ability scheme, showing tensor voting effectively extracts data with high accuracy for these chart types.",
+      "abstract": "Charts are an essential part of both graphicacy (graphical literacy), and statistical literacy. As chart understanding has become increasingly relevant in data science, automating chart analysis by processing raster images of the charts has become a significant problem. Automated chart reading involves data extraction and contextual understanding of the data from chart images. In this paper, we perform the first step of determining the computational model of chart images for data extraction for selected chart types, namely, bar charts, and scatter plots. We demonstrate the use of positive semidefinite second-order tensor fields as an effective model. We identify an appropriate tensor field as the model and propose a methodology for the use of its degenerate point extraction for data extraction from chart images. Our results show that tensor voting is effective for data extraction from bar charts and scatter plots, and histograms, as a special case of bar charts.",
+      "authors": [
+        {
+          "name": "Jaya Sreevalsan-Nair",
+          "orgs": [
+            "Graphics-Visualization-Computing Lab",
+            "International Institute of Information Technology Bangalore",
+            "Karnataka 560100, India"
+          ]
+        },
+        {
+          "name": "Komal Dadhich",
+          "orgs": [
+            "Graphics-Visualization-Computing Lab",
+            "International Institute of Information Technology Bangalore",
+            "Karnataka 560100, India"
+          ]
+        },
+        {
+          "name": "Siri Chandana Daggubati",
+          "orgs": [
+            "Graphics-Visualization-Computing Lab",
+            "International Institute of Information Technology Bangalore",
+            "Karnataka 560100, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2010.02319v1",
+      "date": "2020-10-05T20:19:40Z",
+      "citation_count": 12,
+      "categories": [
+        "cs.CV",
+        "cs.GR",
+        "cs.NA",
+        "math.NA"
+      ]
+    },
+    {
+      "arxiv_id": "1912.05023",
+      "score": 11.915023,
+      "title": "A Robust Stereo Camera Localization Method with Prior LiDAR Map Constrains",
+      "tldr": "This paper proposes a stereo visual localization method using a prior LiDAR map to address the challenge of robust and low-cost localization in GPS-denied environments, contributing a novel visual optimization model and a framework that reduces LiDAR dependence, achieving six DOF pose estimation with improved accuracy over ORB-SLAM2 on the KITTI dataset.",
+      "abstract": "In complex environments, low-cost and robust localization is a challenging problem. For example, in a GPSdenied environment, LiDAR can provide accurate position information, but the cost is high. In general, visual SLAM based localization methods become unreliable when the sunlight changes greatly. Therefore, inexpensive and reliable methods are required. In this paper, we propose a stereo visual localization method based on the prior LiDAR map. Different from the conventional visual localization system, we design a novel visual optimization model by matching planar information between the LiDAR map and visual image. Bundle adjustment is built by using coplanarity constraints. To solve the optimization problem, we use a graph-based optimization algorithm and a local window optimization method. Finally, we estimate a full six degrees of freedom (DOF) pose without scale drift. To validate the efficiency, the proposed method has been tested on the KITTI dataset. The results show that our method is more robust and accurate than the state-of-art ORB-SLAM2.",
+      "authors": [
+        {
+          "name": "Dong Han",
+          "orgs": [
+            "Shenzhen Institutes of Advanced Technology, Chinese Academy of Sciences, Shenzhen, China",
+            "University of Chinese Academy of Sciences"
+          ]
+        },
+        {
+          "name": "Zuhao Zou",
+          "orgs": [
+            "Shenzhen Institutes of Advanced Technology, Chinese Academy of Sciences, Shenzhen, China"
+          ]
+        },
+        {
+          "name": "Lujia Wang",
+          "orgs": [
+            "Shenzhen Institutes of Advanced Technology, Chinese Academy of Sciences, Shenzhen, China"
+          ]
+        },
+        {
+          "name": "Cheng-Zhong Xu",
+          "orgs": [
+            "University of Macau"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1912.05023v1",
+      "date": "2019-12-02T03:17:44Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2405.03969",
+      "score": 11.206073,
+      "title": "Speak the Same Language: Global LiDAR Registration on BIM Using Pose Hough Transform",
+      "tldr": "This paper proposes a global LiDAR-BIM registration method to align point clouds and building models in a shared frame, addressing the challenge of cross-modal data association and pose estimation in construction and robotics; it introduces a triangle descriptor with O(1) complexity, a hierarchical Hough voting scheme, and an occupancy-aware scoring method; experiments on a large-scale university building show effective alignment with two LiDAR sensors, enhancing automation in BIM-integrated applications.",
+      "abstract": "Light detection and ranging (LiDAR) point clouds and building information modeling (BIM) represent two distinct data modalities in the fields of robot perception and construction. These modalities originate from different sources and are associated with unique reference frames. The primary goal of this study is to align these modalities within a shared reference frame using a global registration approach, effectively enabling them to ``speak the same language''. To achieve this, we propose a cross-modality registration method, spanning from the front end to the back end. At the front end, we extract triangle descriptors by identifying walls and intersected corners, enabling the matching of corner triplets with a complexity independent of the BIM's size. For the back-end transformation estimation, we utilize the Hough transform to map the matched triplets to the transformation space and introduce a hierarchical voting mechanism to hypothesize multiple pose candidates. The final transformation is then verified using our designed occupancy-aware scoring method. To assess the effectiveness of our approach, we conducted real-world multi-session experiments in a large-scale university building, employing two different types of LiDAR sensors. We make the collected datasets and codes publicly available to benefit the community.",
+      "authors": [
+        {
+          "name": "Zhijian Qiao",
+          "orgs": []
+        },
+        {
+          "name": "Haoming Huang",
+          "orgs": []
+        },
+        {
+          "name": "Chuhao Liu",
+          "orgs": []
+        },
+        {
+          "name": "Zehuan Yu",
+          "orgs": []
+        },
+        {
+          "name": "Shaojie Shen",
+          "orgs": []
+        },
+        {
+          "name": "Fumin Zhang",
+          "orgs": []
+        },
+        {
+          "name": "Huan Yin",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2405.03969v2",
+      "date": "2024-05-07T02:58:29Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2202.13788",
+      "score": 11.120194,
+      "title": "ANTLER: Bayesian Nonlinear Tensor Learning and Modeler for Unstructured, Varying-Size Point Cloud Data",
+      "tldr": "This paper proposes ANTLER, a Bayesian nonlinear tensor learning and modeler for unstructured, varying-size point cloud data, addressing the challenge of nonlinear regression with high-dimensional, unstructured data and limited samples; it introduces a unified framework combining nonlinear tensor decomposition and regression with a novel loss function; empirical results show improved accuracy and efficiency compared to existing methods in both simulated and real-world gear manufacturing applications.",
+      "abstract": "Unstructured point clouds with varying sizes are increasingly acquired in a variety of environments through laser triangulation or Light Detection and Ranging (LiDAR). Predicting a scalar response based on unstructured point clouds is a common problem that arises in a wide variety of applications. The current literature relies on several pre-processing steps such as structured subsampling and feature extraction to analyze the point cloud data. Those techniques lead to quantization artifacts and do not consider the relationship between the regression response and the point cloud during pre-processing. Therefore, we propose a general and holistic \"Bayesian Nonlinear Tensor Learning and Modeler\" (ANTLER) to model the relationship of unstructured, varying-size point cloud data with a scalar or multivariate response. The proposed ANTLER simultaneously optimizes a nonlinear tensor dimensionality reduction and a nonlinear regression model with a 3D point cloud input and a scalar or multivariate response. ANTLER has the ability to consider the complex data representation, high-dimensionality,and inconsistent size of the 3D point cloud data.",
+      "authors": [
+        {
+          "name": "Michael Biehler",
+          "orgs": []
+        },
+        {
+          "name": "Hao Yan",
+          "orgs": []
+        },
+        {
+          "name": "Jianjun Shi",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2202.13788v1",
+      "date": "2022-02-25T08:37:21Z",
+      "citation_count": 9,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2201.12728",
+      "score": 10.847312,
+      "title": "Video-based Facial Micro-Expression Analysis: A Survey of Datasets, Features and Algorithms",
+      "tldr": "This survey provides a systematic overview of video-based facial micro-expression analysis, covering datasets, features, and algorithms with a unified framework and new dataset MMEW, highlighting challenges in detection and recognition while identifying future research directions.",
+      "abstract": "Unlike the conventional facial expressions, micro-expressions are involuntary and transient facial expressions capable of revealing the genuine emotions that people attempt to hide. Therefore, they can provide important information in a broad range of applications such as lie detection, criminal detection, etc. Since micro-expressions are transient and of low intensity, however, their detection and recognition is difficult and relies heavily on expert experiences. Due to its intrinsic particularity and complexity, video-based micro-expression analysis is attractive but challenging, and has recently become an active area of research. Although there have been numerous developments in this area, thus far there has been no comprehensive survey that provides researchers with a systematic overview of these developments with a unified evaluation. Accordingly, in this survey paper, we first highlight the key differences between macro- and micro-expressions, then use these differences to guide our research survey of video-based micro-expression analysis in a cascaded structure, encompassing the neuropsychological basis, datasets, features, spotting algorithms, recognition algorithms, applications and evaluation of state-of-the-art approaches. For each aspect, the basic techniques, advanced developments and major challenges are addressed and discussed. Furthermore, after considering the limitations of existing micro-expression datasets, we present and release a new dataset - called micro-and-macro expression warehouse (MMEW) - containing more video samples and more labeled emotion types. We then perform a unified comparison of representative methods on CAS(ME)2 for spotting, and on MMEW and SAMM for recognition, respectively. Finally, some potential future research directions are explored and outlined.",
+      "authors": [
+        {
+          "name": "Xianye Ben",
+          "orgs": []
+        },
+        {
+          "name": "Yi Ren",
+          "orgs": []
+        },
+        {
+          "name": "Junping Zhang",
+          "orgs": []
+        },
+        {
+          "name": "Su-Jing Wang",
+          "orgs": []
+        },
+        {
+          "name": "Kidiyo Kpalma",
+          "orgs": []
+        },
+        {
+          "name": "Weixiao Meng",
+          "orgs": []
+        },
+        {
+          "name": "Yong-Jin Liu",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2201.12728v2",
+      "date": "2022-01-30T05:14:13Z",
+      "citation_count": 296,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2210.08123",
+      "score": 10.641062,
+      "title": "Keypoint Cascade Voting for Point Cloud Based 6DoF Pose Estimation",
+      "tldr": "This paper presents a novel keypoint voting method for 6DoF pose estimation using pure point cloud data, addressing the challenge of unordered point cloud processing in ML approaches; it introduces a cascaded architecture separating segmentation and regression tasks, along with a pairwise constraint loss and a Voter Confident Score, achieving state-of-the-art results on Occlusion LINEMOD (74.5%) and YCB-Video (96.9%) datasets.",
+      "abstract": "We propose a novel keypoint voting 6DoF object pose estimation method, which takes pure unordered point cloud geometry as input without RGB information. The proposed cascaded keypoint voting method, called RCVPose3D, is based upon a novel architecture which separates the task of semantic segmentation from that of keypoint regression, thereby increasing the effectiveness of both and improving the ultimate performance. The method also introduces a pairwise constraint in between different keypoints to the loss function when regressing the quantity for keypoint estimation, which is shown to be effective, as well as a novel Voter Confident Score which enhances both the learning and inference stages. Our proposed RCVPose3D achieves state-of-the-art performance on the Occlusion LINEMOD (74.5%) and YCB-Video (96.9%) datasets, outperforming existing pure RGB and RGB-D based methods, as well as being competitive with RGB plus point cloud methods.",
+      "authors": [
+        {
+          "name": "Yangzheng Wu",
+          "orgs": [
+            "RCVLab, Dept. of Electrical and Computer Engineering, Queen’s University, Kingston, Ontario, Canada"
+          ]
+        },
+        {
+          "name": "Alireza Javaheri",
+          "orgs": [
+            "RCVLab, Dept. of Electrical and Computer Engineering, Queen’s University, Kingston, Ontario, Canada"
+          ]
+        },
+        {
+          "name": "Mohsen Zand",
+          "orgs": [
+            "RCVLab, Dept. of Electrical and Computer Engineering, Queen’s University, Kingston, Ontario, Canada"
+          ]
+        },
+        {
+          "name": "Michael Greenspan",
+          "orgs": [
+            "RCVLab, Dept. of Electrical and Computer Engineering, Queen’s University, Kingston, Ontario, Canada"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2210.08123v1",
+      "date": "2022-10-14T21:36:52Z",
+      "citation_count": 10,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2001.07360",
+      "score": 10.531797,
+      "title": "From Planes to Corners: Multi-Purpose Primitive Detection in Unorganized 3D Point Clouds",
+      "tldr": "This paper proposes a method for detecting orthogonal planes, their intersection lines, and corners in 3D point clouds without segmentation, contributing a novel voting scheme, efficient refinement loss, and 6D corner extraction, achieving accurate results in synthetic and real-world scenarios.",
+      "abstract": "We propose a new method for segmentation-free joint estimation of orthogonal planes, their intersection lines, relationship graph and corners lying at the intersection of three orthogonal planes. Such unified scene exploration under orthogonality allows for multitudes of applications such as semantic plane detection or local and global scan alignment, which in turn can aid robot localization or grasping tasks. Our two-stage pipeline involves a rough yet joint estimation of orthogonal planes followed by a subsequent joint refinement of plane parameters respecting their orthogonality relations. We form a graph of these primitives, paving the way to the extraction of further reliable features: lines and corners. Our experiments demonstrate the validity of our approach in numerous scenarios from wall detection to 6D tracking, both on synthetic and real data.",
+      "authors": [
+        {
+          "name": "Christiane Sommer",
+          "orgs": []
+        },
+        {
+          "name": "Yumin Sun",
+          "orgs": []
+        },
+        {
+          "name": "Leonidas Guibas",
+          "orgs": []
+        },
+        {
+          "name": "Daniel Cremers",
+          "orgs": []
+        },
+        {
+          "name": "Tolga Birdal",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2001.07360v2",
+      "date": "2020-01-21T06:51:47Z",
+      "citation_count": 10,
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2602.06406",
+      "score": 10.4748535,
+      "title": "Point Virtual Transformer",
+      "tldr": "This paper addresses the challenge of far-field object detection in LiDAR-based 3D object detection by proposing PointViT, a transformer framework that selectively fuses raw LiDAR points with virtual points, achieving 91.16% 3D AP and 95.94% BEV AP on KITTI, and demonstrates that virtual point fusion enhances detection performance across all difficulty levels.",
+      "abstract": "LiDAR-based 3D object detectors often struggle to detect far-field objects due to the sparsity of point clouds at long ranges, which limits the availability of reliable geometric cues. To address this, prior approaches augment LiDAR data with depth-completed virtual points derived from RGB images; however, directly incorporating all virtual points leads to increased computational cost and introduces challenges in effectively fusing real and virtual information. We present Point Virtual Transformer (PointViT), a transformer-based 3D object detection framework that jointly reasons over raw LiDAR points and selectively sampled virtual points. The framework examines multiple fusion strategies, ranging from early point-level fusion to BEV-based gated fusion, and analyses their trade-offs in terms of accuracy and efficiency. The fused point cloud is voxelized and encoded using sparse convolutions to form a BEV representation, from which a compact set of high-confidence object queries is initialised and refined through a transformer-based context aggregation module. Experiments on the KITTI benchmark report 91.16% 3D AP, 95.94% BEV AP, and 99.36% AP on the KITTI 2D detection benchmark for the Car class.",
+      "authors": [
+        {
+          "name": "Gaurav Pandey",
+          "orgs": [
+            "IIT Kanpur",
+            "Indian Institute of Technology, Kanpur"
+          ]
+        },
+        {
+          "name": "Veerain Sood",
+          "orgs": [
+            "University of California, San Diego",
+            "UCSD"
+          ]
+        },
+        {
+          "name": "Bnalin",
+          "orgs": [
+            "IIT Kanpur",
+            "Indian Institute of Technology, Kanpur"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.06406v1",
+      "date": "2026-02-04",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1006.4903",
+      "score": 10.3829,
+      "title": "Toric degenerations of Bezier patches",
+      "tldr": "This paper addresses the significance of control structures in geometric modeling by introducing regular control surfaces as limiting positions of Bezier patches under extreme weights, contributing a general framework based on toric degenerations and showing that any regular decomposition corresponds to a limiting patch, with implications for understanding and generalizing control nets in surface modeling.",
+      "abstract": "The control polygon of a Bezier curve is well-defined and has geometric significance---there is a sequence of weights under which the limiting position of the curve is the control polygon. For a Bezier surface patch, there are many possible polyhedral control structures, and none are canonical. We propose a not necessarily polyhedral control structure for surface patches, regular control surfaces, which are certain C^0 spline surfaces. While not unique, regular control surfaces are exactly the possible limiting positions of a Bezier patch when the weights are allowed to vary.",
+      "authors": [
+        {
+          "name": "Luis David García-Puente",
+          "orgs": [
+            "Department of Mathematics and Statistics",
+            "Sam Houston State University"
+          ]
+        },
+        {
+          "name": "Frank Sottile",
+          "orgs": [
+            "Department of Mathematics",
+            "Texas A&M University"
+          ]
+        },
+        {
+          "name": "Chungang Zhu",
+          "orgs": [
+            "School of Mathematical Sciences",
+            "Dalian University of Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1006.4903v2",
+      "date": "2010-06-25T03:11:37Z",
+      "citation_count": 33,
+      "categories": [
+        "cs.GR",
+        "math.AG"
+      ]
+    },
+    {
+      "arxiv_id": "1810.01666",
+      "score": 10.250358,
+      "title": "Geometry Preserving Sampling Method based on Spectral Decomposition for 3D Registration",
+      "tldr": "This paper presents a novel Spectral Decomposition Filter (SpDF) for 3D registration in mobile robotics, addressing the challenge of accurate alignment in large-scale, non-uniform point clouds; it uses spectral decomposition to preserve geometric topology and scales to large environments, outperforming existing methods with 2.95 million registrations; the method ensures uniform density and preserves details, enhancing registration accuracy and enabling real-time applications.",
+      "abstract": "In the context of 3D mapping, larger and larger point clouds are acquired with LIDAR sensors. The Iterative Closest Point (ICP) algorithm is used to align these point clouds. However, its complexity is directly dependent of the number of points to process. Several strategies exist to address this problem by reducing the number of points. However, they tend to underperform with non-uniform density, large sensor noise, spurious measurements, and large-scale point clouds, which is the case in mobile robotics. This paper presents a novel sampling algorithm for registration in ICP algorithm based on spectral decomposition analysis and called Spectral Decomposition Filter (SpDF). It preserves geometric information along the topology of point clouds and is able to scale to large environments with non-uniform density. The effectiveness of our method is validated and illustrated by quantitative and qualitative experiments on various environments.",
+      "authors": [
+        {
+          "name": "Mathieu Labussiere",
+          "orgs": [
+            "Institut Pascal, Campus des Cezeaux, 63178 Aubière Cedex, France",
+            "Northern Robotics Laboratory, Université Laval, Canada"
+          ]
+        },
+        {
+          "name": "Johann Laconte",
+          "orgs": [
+            "Institut Pascal, Campus des Cezeaux, 63178 Aubière Cedex, France",
+            "Northern Robotics Laboratory, Université Laval, Canada"
+          ]
+        },
+        {
+          "name": "François Pomerleau",
+          "orgs": [
+            "Institut Pascal, Campus des Cezeaux, 63178 Aubière Cedex, France",
+            "Northern Robotics Laboratory, Université Laval, Canada"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1810.01666v2",
+      "date": "2018-10-03T09:59:17Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "1508.06163",
+      "score": 10.248273,
+      "title": "Accurate Urban Road Centerline Extraction from VHR Imagery via Multiscale Segmentation and Tensor Voting",
+      "tldr": "This paper addresses the problem of accurate urban road centerline extraction from VHR imagery, tackling issues like heterogeneous classification, spurs from thinning algorithms, and poor intersection handling; it proposes a three-stage method combining MJCR-GC for segmentation, TV-NMS for smooth centerline extraction, and a fitting algorithm for intersection connections; extensive experiments show higher quantitative results and better visual performance compared to state-of-the-art methods.",
+      "abstract": "It is very useful and increasingly popular to extract accurate road centerlines from very-high-resolution (VHR) re- mote sensing imagery for various applications, such as road map generation and updating etc. There are three shortcomings of current methods: (a) Due to the noise and occlusions (owing to vehicles and trees), most road extraction methods bring in heterogeneous classification results; (b) Morphological thinning algorithm is widely used to extract road centerlines, while it pro- duces small spurs around the centerlines; (c) Many methods are ineffective to extract centerlines around the road intersections. To address the above three issues, we propose a novel method to ex- tract smooth and complete road centerlines via three techniques: the multiscale joint collaborative representation (MJCR) & graph cuts (GC), tensor voting (TV) & non-maximum suppression (NMS) and fitting based connection algorithm. Specifically, a MJCR-GC based road area segmentation method is proposed by incorporating mutiscale features and spatial information. In this way, a homogenous road segmentation result is achieved. Then, to obtain a smooth and correct road centerline network, a TV-NMS based centerline extraction method is introduced. This method not only extracts smooth road centerlines, but also connects the discontinuous road centerlines. Finally, to overcome the ineffectiveness of current methods in the road intersection, a fitting based road centerline connection algorithm is proposed. As a result, we can get a complete road centerline network. Extensive experiments on two datasets demonstrate that our method achieves higher quantitative results, as well as more satisfactory visual performances by comparing with state-of-the- art methods.",
+      "authors": [
+        {
+          "name": "Guangliang Cheng",
+          "orgs": []
+        },
+        {
+          "name": "Feiyun Zhu",
+          "orgs": []
+        },
+        {
+          "name": "Shiming Xiang",
+          "orgs": []
+        },
+        {
+          "name": "Chunhong Pan",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1508.06163v2",
+      "date": "2015-08-25T14:18:34Z",
+      "citation_count": 65,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1809.06298",
+      "score": 10.246753,
+      "title": "Anisotropic osmosis filtering for shadow removal in images",
+      "tldr": "This paper addresses the shadow removal problem in images by extending isotropic osmosis to an anisotropic model using tensor voting and nonnegativity-preserving stencils, contributing a method that avoids blurring artefacts and outperforms isotropic approaches on synthetic and natural images.",
+      "abstract": "We present an anisotropic extension of the isotropic osmosis model that has been introduced by Weickert et al.~(Weickert, 2013) for visual computing applications, and we adapt it specifically to shadow removal applications. We show that in the integrable setting, linear anisotropic osmosis minimises an energy that involves a suitable quadratic form which models local directional structures. In our shadow removal applications we estimate the local structure via a modified tensor voting approach (Moreno, 2012) and use this information within an anisotropic diffusion inpainting that resembles edge-enhancing anisotropic diffusion inpainting (Weickert, 2006, Gali\\'c, 2008). Our numerical scheme combines the nonnegativity preserving stencil of Fehrenbach and Mirebeau (Fehrenbach, 2014) with an exact time stepping based on highly accurate polynomial approximations of the matrix exponential. The resulting anisotropic model is tested on several synthetic and natural images corrupted by constant shadows. We show that it outperforms isotropic osmosis, since it does not suffer from blurring artefacts at the shadow boundaries.",
+      "authors": [],
+      "url": "https://arxiv.org/pdf/1809.06298v1",
+      "date": "2018-09-17T16:04:28Z",
+      "citation_count": 20,
+      "categories": [
+        "math.AP"
+      ]
+    },
+    {
+      "arxiv_id": "1801.04096",
+      "score": 10.224559,
+      "title": "Hierarchical Motion Consistency Constraint for Efficient Geometrical Verification in UAV Image Matching",
+      "tldr": "This paper addresses the problem of efficient geometrical verification in UAV image matching, where false matches due to complex transformations and high outlier ratios hinder accurate orientation; it proposes a hierarchical motion consistency constraint (HMCC) that includes global direction, local direction-change, and global length consistency constraints as core innovations; experimental results show HMCC-RANSAC achieves a 6x speedup for oblique images with 7% completeness sacrifice but competitive accuracy.",
+      "abstract": "This paper proposes a strategy for efficient geometrical verification in unmanned aerial vehicle (UAV) image matching. First, considering the complex transformation model between correspondence set in the image-space, feature points of initial candidate matches are projected onto an elevation plane in the object-space, with assistant of UAV flight control data and camera mounting angles. Spatial relationships are simplified as a 2D-translation in which a motion establishes the relation of two correspondence points. Second, a hierarchical motion consistency constraint, termed HMCC, is designed to eliminate outliers from initial candidate matches, which includes three major steps, namely the global direction consistency constraint, the local direction-change consistency constraint and the global length consistency constraint. To cope with scenarios with high outlier ratios, the HMCC is achieved by using a voting scheme. Finally, an efficient geometrical verification strategy is proposed by using the HMCC as a pre-processing step to increase inlier ratios before the consequent application of the basic RANSAC algorithm. The performance of the proposed strategy is verified through comprehensive comparison and analysis by using real UAV datasets captured with different photogrammetric systems. Experimental results demonstrate that the generated motions have noticeable separation ability, and the HMCC-RANSAC algorithm can efficiently eliminate outliers based on the motion consistency constraint, with a speedup ratio reaching to 6 for oblique UAV images. Even though the completeness sacrifice of approximately 7 percent of points is observed from image orientation tests, competitive orientation accuracy is achieved from all used datasets. For geometrical verification of both nadir and oblique UAV images, the proposed method can be a more efficient solution.",
+      "authors": [
+        {
+          "name": "San Jiang",
+          "orgs": [
+            "State Key Laboratory of Information Engineering in Surveying, Mapping and Remote Sensing, Wuhan University, Wuhan, 430072, China"
+          ]
+        },
+        {
+          "name": "Wanshou Jiang",
+          "orgs": [
+            "State Key Laboratory of Information Engineering in Surveying, Mapping and Remote Sensing, Wuhan University, Wuhan, 430072, China",
+            "Collaborative Innovation Center of Geospatial Technology, Wuhan University, Wuhan, 430072, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1801.04096v1",
+      "date": "2018-01-12T09:15:29Z",
+      "citation_count": 17,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1607.07427",
+      "score": 10.218645,
+      "title": "Mesh Denoising based on Normal Voting Tensor and Binary Optimization",
+      "tldr": "This paper presents a mesh denoising method addressing the challenge of preserving sharp features while smoothing surfaces, which is crucial for applications like CAD and medical imaging; it proposes a tensor-based approach with binary optimization on the element-based normal voting tensor, introducing stable convergence and noise standard deviation bounds; experimental results show improved performance over state-of-the-art methods in retaining features and reducing noise.",
+      "abstract": "This paper presents a tensor multiplication based smoothing algorithm that follows a two step denoising method. Unlike other traditional averaging approaches, our approach uses an element based normal voting tensor to compute smooth surfaces. By introducing a binary optimization on the proposed tensor together with a local binary neighborhood concept, our algorithm better retains sharp features and produces smoother umbilical regions than previous approaches. On top of that, we provide a stochastic analysis on the different kinds of noise based on the average edge length. The quantitative and visual results demonstrate the performance our method is better compared to state of the art smoothing approaches.",
+      "authors": [
+        {
+          "name": "Sunil Kumar Yadav",
+          "orgs": []
+        },
+        {
+          "name": "Ulrich Reitebuch",
+          "orgs": []
+        },
+        {
+          "name": "Konrad Polthier",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1607.07427v2",
+      "date": "2016-07-20T20:39:37Z",
+      "citation_count": 66,
+      "categories": [
+        "cs.CV",
+        "cs.GR",
+        "math.DG"
+      ]
+    },
+    {
+      "arxiv_id": "1811.02793",
+      "score": 10.079906,
+      "title": "GeoSay: A Geometric Saliency for Extracting Buildings in Remote Sensing Images",
+      "tldr": "This paper addresses the challenge of accurately extracting buildings from very high-spatial-resolution remote sensing images by proposing a geometric building index (GBI) based on mid-level geometric representations and junctions, achieving state-of-the-art performance on three public datasets and providing precise building location and shape with reduced redundancy.",
+      "abstract": "Automatic extraction of buildings in remote sensing images is an important but challenging task and finds many applications in different fields such as urban planning, navigation and so on. This paper addresses the problem of buildings extraction in very high-spatial-resolution (VHSR) remote sensing (RS) images, whose spatial resolution is often up to half meters and provides rich information about buildings. Based on the observation that buildings in VHSR-RS images are always more distinguishable in geometry than in texture or spectral domain, this paper proposes a geometric building index (GBI) for accurate building extraction, by computing the geometric saliency from VHSR-RS images. More precisely, given an image, the geometric saliency is derived from a mid-level geometric representations based on meaningful junctions that can locally describe geometrical structures of images. The resulting GBI is finally measured by integrating the derived geometric saliency of buildings. Experiments on three public and commonly used datasets demonstrate that the proposed GBI achieves the state-of-the-art performance and shows impressive generalization capability. Additionally, GBI preserves both the exact position and accurate shape of single buildings compared to existing methods.",
+      "authors": [
+        {
+          "name": "Gui-Song Xia",
+          "orgs": [
+            "State Key Lab. LIESMARS, Wuhan University, Wuhan, 430079, China"
+          ]
+        },
+        {
+          "name": "Jin Huang",
+          "orgs": [
+            "State Key Lab. LIESMARS, Wuhan University, Wuhan, 430079, China"
+          ]
+        },
+        {
+          "name": "Nan Xue",
+          "orgs": [
+            "State Key Lab. LIESMARS, Wuhan University, Wuhan, 430079, China"
+          ]
+        },
+        {
+          "name": "Qikai Lu",
+          "orgs": [
+            "State Key Lab. LIESMARS, Wuhan University, Wuhan, 430079, China",
+            "Electronic Information School, Wuhan University, Wuhan, 430079, China"
+          ]
+        },
+        {
+          "name": "Xiaoxiang Zhu",
+          "orgs": [
+            "Civil, Geo and Environmental Engineering, Technische Universität München, Germany"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1811.02793v1",
+      "date": "2018-11-07T08:12:24Z",
+      "citation_count": 19,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1601.04888",
+      "score": 9.991158,
+      "title": "A Closed-Form Solution to Tensor Voting: Theory and Applications",
+      "tldr": "This paper addresses robust computer vision by proving a closed-form solution to tensor voting, enabling exact and efficient structure-aware tensor computation for salient structure detection and outlier attenuation; it introduces CFTV and EMTV methods, which achieve convergence on Markov random fields and robust parameter estimation without random sampling; empirical results show EMTV outperforms existing techniques in fundamental matrix estimation for multiview stereo matching.",
+      "abstract": "We prove a closed-form solution to tensor voting (CFTV): given a point set in any dimensions, our closed-form solution provides an exact, continuous and efficient algorithm for computing a structure-aware tensor that simultaneously achieves salient structure detection and outlier attenuation. Using CFTV, we prove the convergence of tensor voting on a Markov random field (MRF), thus termed as MRFTV, where the structure-aware tensor at each input site reaches a stationary state upon convergence in structure propagation. We then embed structure-aware tensor into expectation maximization (EM) for optimizing a single linear structure to achieve efficient and robust parameter estimation. Specifically, our EMTV algorithm optimizes both the tensor and fitting parameters and does not require random sampling consensus typically used in existing robust statistical techniques. We performed quantitative evaluation on its accuracy and robustness, showing that EMTV performs better than the original TV and other state-of-the-art techniques in fundamental matrix estimation for multiview stereo matching. The extensions of CFTV and EMTV for extracting multiple and nonlinear structures are underway. An addendum is included in this arXiv version.",
+      "authors": [
+        {
+          "name": "Tai-Pang Wu",
+          "orgs": [
+            "Enterprise and Consumer Electronics Group, Hong Kong Applied Science and Technology Research Institute (ASTRI), Hong Kong"
+          ]
+        },
+        {
+          "name": "Sai-Kit Yeung",
+          "orgs": [
+            "Department of Computer Science and Engineering, Hong Kong University of Science and Technology, Clear Water Bay, Hong Kong"
+          ]
+        },
+        {
+          "name": "Jiaya Jia",
+          "orgs": [
+            "Department of Computer Science and Engineering, Chinese University of Hong Kong, Shatin, Hong Kong"
+          ]
+        },
+        {
+          "name": "Gérard Medioni",
+          "orgs": [
+            "Department of Computer Science, University of Southern California, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1601.04888v2",
+      "date": "2016-01-19T12:19:45Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2004.02503",
+      "score": 9.987583,
+      "title": "Model-free Data-Driven Computational Mechanics Enhanced by Tensor Voting",
+      "tldr": "This paper proposes a data-driven computational mechanics framework enhanced by tensor voting to address the challenge of high-dimensional data in solid mechanics, introducing a second-order approach that improves convergence and robustness for both ideal and noisy datasets, achieving higher-order convergence properties through offline tangent space analysis.",
+      "abstract": "The data-driven computing paradigm initially introduced by Kirchdoerfer & Ortiz (2016) is extended by incorporating locally linear tangent spaces into the data set. These tangent spaces are constructed by means of the tensor voting method introduced by Mordohai & Medioni (2010) which improves the learning of the underlying structure of a data set. Tensor voting is an instance-based machine learning technique which accumulates votes from the nearest neighbors to build up second-order tensors encoding tangents and normals to the underlying data structure. The here proposed second-order data-driven paradigm is a plug-in method for distance-minimizing as well as entropy-maximizing data-driven schemes. Like its predecessor, the resulting method aims to minimize a suitably defined free energy over phase space subject to compatibility and equilibrium constraints. The method's implementation is straightforward and numerically efficient since the data structure analysis is performed in an offline step. Selected numerical examples are presented that establish the higher-order convergence properties of the data-driven solvers enhanced by tensor voting for ideal and noisy data sets.",
+      "authors": [
+        {
+          "name": "Robert Eggersmann",
+          "orgs": [
+            "Institute of Applied Mechanics, RWTH Aachen University, Mies-van-der-Rohe-Str.1, D-52074 Aachen, Germany"
+          ]
+        },
+        {
+          "name": "Laurent Stainier",
+          "orgs": [
+            "Institute of Civil and Mechanical Engineering, École Centrale de Nantes, 1 Rue de la Noë, F-44321 Nantes, France"
+          ]
+        },
+        {
+          "name": "Michael Ortiz",
+          "orgs": [
+            "Division of Engineering and Applied Science, California Institute of Technology, Pasadena, CA 91125, USA",
+            "Hausdorff Center for Mathematics, Rheinische Friedrich-Wilhelms-Universität Bonn, Endenicher Allee 62, D-53115 Bonn, Germany"
+          ]
+        },
+        {
+          "name": "Stefanie Reese",
+          "orgs": [
+            "Institute of Applied Mechanics, RWTH Aachen University, Mies-van-der-Rohe-Str.1, D-52074 Aachen, Germany"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2004.02503v2",
+      "date": "2020-04-06T09:18:24Z",
+      "citation_count": 60,
+      "categories": [
+        "cs.CE"
+      ]
+    },
+    {
+      "arxiv_id": "2109.05221",
+      "score": 9.969719,
+      "title": "Convolutional Hough Matching Networks for Robust and Efficient Visual Correspondence",
+      "tldr": "This paper introduces Convolutional Hough Matching (CHM) for robust visual correspondence, addressing the challenge of intra-class variations in image matching by leveraging geometric transformations; it proposes a learnable layer with semi-isotropic kernels and efficient kernel decomposition, achieving state-of-the-art performance on standard benchmarks with strong robustness to challenging variations.",
+      "abstract": "Despite advances in feature representation, leveraging geometric relations is crucial for establishing reliable visual correspondences under large variations of images. In this work we introduce a Hough transform perspective on convolutional matching and propose an effective geometric matching algorithm, dubbed Convolutional Hough Matching (CHM). The method distributes similarities of candidate matches over a geometric transformation space and evaluates them in a convolutional manner. We cast it into a trainable neural layer with a semi-isotropic high-dimensional kernel, which learns non-rigid matching with a small number of interpretable parameters. To further improve the efficiency of high-dimensional voting, we also propose to use an efficient kernel decomposition with center-pivot neighbors, which significantly sparsifies the proposed semi-isotropic kernels without performance degradation. To validate the proposed techniques, we develop the neural network with CHM layers that perform convolutional matching in the space of translation and scaling. Our method sets a new state of the art on standard benchmarks for semantic visual correspondence, proving its strong robustness to challenging intra-class variations.",
+      "authors": [
+        {
+          "name": "Juhong Min",
+          "orgs": []
+        },
+        {
+          "name": "Seungwook Kim",
+          "orgs": []
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Minsu Cho",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2109.05221v1",
+      "date": "2021-09-11T08:39:41Z",
+      "citation_count": 17,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2108.02114",
+      "score": 9.947841,
+      "title": "Feature Curves and Surfaces of 3D Asymmetric Tensor Fields",
+      "tldr": "This paper addresses the analysis and visualization of 3D asymmetric tensor fields, which are challenging due to complex eigenvalues and lack of existing methods, by proposing six topological surfaces, one topological curve, and non-topological features like magnitude and isotropicity surfaces; it introduces a hyperstreamline visualization method with real and complex eigenvectors, demonstrating effectiveness on solid mechanics and fluid dynamics datasets.",
+      "abstract": "3D asymmetric tensor fields have found many applications in science and engineering domains, such as fluid dynamics and solid mechanics. 3D asymmetric tensors can have complex eigenvalues, which makes their analysis and visualization more challenging than 3D symmetric tensors. Existing research in tensor field visualization focuses on 2D asymmetric tensor fields and 3D symmetric tensor fields. In this paper, we address the analysis and visualization of 3D asymmetric tensor fields. We introduce six topological surfaces and one topological curve, which lead to an eigenvalue space based on the tensor mode that we define. In addition, we identify several non-topological feature surfaces that are nonetheless physically important. Included in our analysis are the realizations that triple degenerate tensors are structurally stable and form curves, unlike the case for 3D symmetric tensors fields. Furthermore, there are two different ways of measuring the relative strengths of rotation and angular deformation in the tensor fields, unlike the case for 2D asymmetric tensor fields. We extract these feature surfaces using the A-patches algorithm. However, since three of our feature surfaces are quadratic, we develop a method to extract quadratic surfaces at any given accuracy. To facilitate the analysis of eigenvector fields, we visualize a hyperstreamline as a tree stem with the other two eigenvectors represented as thorns in the real domain or the dual-eigenvectors as leaves in the complex domain. To demonstrate the effectiveness of our analysis and visualization, we apply our approach to datasets from solid mechanics and fluid dynamics.",
+      "authors": [
+        {
+          "name": "Shih-Hsuan Hung",
+          "orgs": []
+        },
+        {
+          "name": "Yue Zhang",
+          "orgs": []
+        },
+        {
+          "name": "Harry Yeh",
+          "orgs": []
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Eugene Zhang",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2108.02114v1",
+      "date": "2021-08-04T15:35:38Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.GR"
+      ]
+    },
+    {
+      "arxiv_id": "1608.00668",
+      "score": 9.946896,
+      "title": "Global Vertices and the Noising Paradox",
+      "tldr": "This paper addresses the challenges of vertex localization in noisy shapes by proposing a global curvature definition that leverages noise for improved identification, showing that induced noise can enhance vertex detection when combined with global descriptors, and introduces a noising method that outperforms traditional smoothing approaches in experiments.",
+      "abstract": "A theoretical and experimental analysis related to the identification of vertices of unknown shapes is presented. Shapes are seen as real functions of their closed boundary. Unlike traditional approaches, which see curvature as the rate of change of the tangent to the curve, an alternative global perspective of curvature is examined providing insight into the process of noise-enabled vertex localization. The analysis leads to a paradox, that certain vertices can be localized better in the presence of noise. The concept of noising is thus considered and a relevant global method for localizing \"Global Vertices\" is investigated. Theoretical analysis reveals that induced noise can help localizing certain vertices if combined with global descriptors. Experiments with noise and a comparison to localized methods validate the theoretical results.",
+      "authors": [
+        {
+          "name": "Konstantinos A. Raftopoulos",
+          "orgs": [
+            "Computer Science Division, National Technical University of Athens",
+            "Iroon Polytechneiou 9, 15780"
+          ]
+        },
+        {
+          "name": "Stefanos D. Kollias",
+          "orgs": [
+            "Computer Science Division, National Technical University of Athens",
+            "Iroon Polytechneiou 9, 15780"
+          ]
+        },
+        {
+          "name": "Marin Ferecatu",
+          "orgs": [
+            "Conservatoire National des Arts et Métiers",
+            "Laboratoire CEDRIC",
+            "Equipe Vertigo",
+            "292 rue Saint-Martin 75003 Paris - France"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1608.00668v1",
+      "date": "2016-08-02T01:30:28Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1812.00529",
+      "score": 7.7570753,
+      "title": "Geometric interpretation of the multi-scale entanglement renormalization ansatz",
+      "tldr": "This paper investigates the geometric interpretation of the multi-scale entanglement renormalization ansatz (MERA), addressing the question of whether MERA corresponds to hyperbolic geometry or de Sitter spacetime; it is significant for understanding quantum critical systems through geometric frameworks. Using path integral geometry, the authors show MERA on the real line corresponds to a light sheet and finite circle to a light cone, contributing a rigorous geometric interpretation. The findings challenge previous conjectures and propose euclidean and lorentzian generalizations of MERA for path integrals on different geometries.",
+      "abstract": "The multi-scale entanglement renormalization ansatz (MERA) is a tensor network representation for ground states of critical quantum spin chains, with a network that extends in an additional dimension corresponding to scale. Over the years several authors have conjectured, both in the context of holography and cosmology, that MERA realizes a discrete version of some geometry. However, while one proposal argued that the tensor network should be interpreted as representing the hyperbolic plane, another proposal instead equated MERA to de Sitter spacetime. In this \\letter we show, using the framework of path integral geometry [A. Milsted, G. Vidal, arXiv:1807.02501], that MERA on the real line (and finite circle) can be given a rigorous interpretation as a two-dimensional geometry, namely a light sheet (respectively, a light cone). Accordingly, MERA describes neither the hyperbolic plane nor de Sitter spacetime. However, we also propose euclidean and lorentzian generalizations of MERA that correspond to a path integral on these two geometries.",
+      "authors": [
+        {
+          "name": "Ashley Milsted",
+          "orgs": [
+            "Perimeter Institute for Theoretical Physics, Waterloo, Ontario N2L 2Y5, Canada"
+          ]
+        },
+        {
+          "name": "Guifre Vidal",
+          "orgs": [
+            "Perimeter Institute for Theoretical Physics, Waterloo, Ontario N2L 2Y5, Canada"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1812.00529v1",
+      "date": "2018-12-03T02:37:52Z",
+      "citation_count": 66,
+      "categories": [
+        "cond-mat.str-el",
+        "hep-th",
+        "quant-ph"
+      ]
+    },
+    {
+      "arxiv_id": "2304.13425",
+      "score": 7.293454,
+      "title": "Learnable Ophthalmology SAM",
+      "tldr": "This paper addresses the challenge of multi-modal ophthalmology image segmentation by proposing a learnable prompt layer for Segment Anything (SAM), improving segmentation accuracy across four tasks on nine datasets with one-shot fine-tuning, and demonstrating its generalization ability across different modalities and datasets.",
+      "abstract": "Segmentation is vital for ophthalmology image analysis. But its various modal images hinder most of the existing segmentation algorithms applications, as they rely on training based on a large number of labels or hold weak generalization ability. Based on Segment Anything (SAM), we propose a simple but effective learnable prompt layer suitable for multiple target segmentation in ophthalmology multi-modal images, named Learnable Ophthalmology Segment Anything (SAM). The learnable prompt layer learns medical prior knowledge from each transformer layer. During training, we only train the prompt layer and task head based on a one-shot mechanism. We demonstrate the effectiveness of our thought based on four medical segmentation tasks based on nine publicly available datasets. Moreover, we only provide a new improvement thought for applying the existing fundamental CV models in the medical field. Our codes are available at \\href{https://github.com/Qsingle/LearnablePromptSAM}{website}.",
+      "authors": [
+        {
+          "name": "Zhongxi Qiu",
+          "orgs": [
+            "Research Institute of Trustworthy Autonomous Systems",
+            "Department of Computer Science and Engineering, Southern University of Science and Technology, Shenzhen 518055, China"
+          ]
+        },
+        {
+          "name": "Yan Hu",
+          "orgs": [
+            "Research Institute of Trustworthy Autonomous Systems",
+            "Department of Computer Science and Engineering, Southern University of Science and Technology, Shenzhen 518055, China"
+          ]
+        },
+        {
+          "name": "Heng Li",
+          "orgs": [
+            "Research Institute of Trustworthy Autonomous Systems",
+            "Department of Computer Science and Engineering, Southern University of Science and Technology, Shenzhen 518055, China"
+          ]
+        },
+        {
+          "name": "Jiang Liu",
+          "orgs": [
+            "Research Institute of Trustworthy Autonomous Systems",
+            "Department of Computer Science and Engineering, Southern University of Science and Technology, Shenzhen 518055, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2304.13425v1",
+      "date": "2023-04-26T10:14:03Z",
+      "citation_count": 35,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1109.5334",
+      "score": 7.2048798,
+      "title": "Quantum Criticality with the Multi-scale Entanglement Renormalization Ansatz",
+      "tldr": "This paper investigates the application of the multi-scale entanglement renormalization ansatz (MERA) to quantum critical systems in one dimension, addressing the limitations of matrix product states in capturing scale invariance; it introduces MERA's scale-invariant form to directly access conformal data, demonstrating accurate extraction of scaling dimensions and operator product expansion coefficients; findings show MERA outperforms MPS in characterizing long-range properties and provides precise conformal data for critical systems.",
+      "abstract": "The goal of this manuscript is to provide an introduction to the multi-scale entanglement renormalization ansatz (MERA) and its application to the study of quantum critical systems. Only systems in one spatial dimension are considered. The MERA, in its scale-invariant form, is seen to offer direct numerical access to the scale-invariant operators of a critical theory. As a result, given a critical Hamiltonian on the lattice, the scale-invariant MERA can be used to characterize the underlying conformal field theory. The performance of the MERA is benchmarked for several critical quantum spin chains, namely Ising, Potts, XX and (modified) Heisenberg models, and an insightful comparison with results obtained using a matrix product state is made. The extraction of accurate conformal data, such as scaling dimensions and operator product expansion coefficients of both local and non-local primary fields, is also illustrated.",
+      "authors": [
+        {
+          "name": "Glen Evenbly",
+          "orgs": [
+            "The University of Queensland, Brisbane, Queensland 4072, Australia"
+          ]
+        },
+        {
+          "name": "Guifre Vidal",
+          "orgs": [
+            "Perimeter Institute for Theoretical Physics, Waterloo, Ontario N2L 2Y5, Canada"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1109.5334v2",
+      "date": "2011-09-25T07:44:43Z",
+      "citation_count": 110,
+      "categories": [
+        "cond-mat.str-el",
+        "quant-ph"
+      ]
+    },
+    {
+      "arxiv_id": "2212.00262",
+      "score": 6.842289,
+      "title": "Low-Rank Tensor Function Representation for Multi-Dimensional Data Recovery",
+      "tldr": "This paper addresses the challenge of continuous multi-dimensional data representation beyond meshgrid by proposing Low-Rank Tensor Function Representation (LRTFR), which unifies low-rankness and smoothness through tensor function rank and factorization, enabling infinite resolution data recovery in image inpainting, denoising, hyperparameter optimization, and point cloud upsampling.",
+      "abstract": "Since higher-order tensors are naturally suitable for representing multi-dimensional data in real-world, e.g., color images and videos, low-rank tensor representation has become one of the emerging areas in machine learning and computer vision. However, classical low-rank tensor representations can only represent data on finite meshgrid due to their intrinsical discrete nature, which hinders their potential applicability in many scenarios beyond meshgrid. To break this barrier, we propose a low-rank tensor function representation (LRTFR), which can continuously represent data beyond meshgrid with infinite resolution. Specifically, the suggested tensor function, which maps an arbitrary coordinate to the corresponding value, can continuously represent data in an infinite real space. Parallel to discrete tensors, we develop two fundamental concepts for tensor functions, i.e., the tensor function rank and low-rank tensor function factorization. We theoretically justify that both low-rank and smooth regularizations are harmoniously unified in the LRTFR, which leads to high effectiveness and efficiency for data continuous representation. Extensive multi-dimensional data recovery applications arising from image processing (image inpainting and denoising), machine learning (hyperparameter optimization), and computer graphics (point cloud upsampling) substantiate the superiority and versatility of our method as compared with state-of-the-art methods. Especially, the experiments beyond the original meshgrid resolution (hyperparameter optimization) or even beyond meshgrid (point cloud upsampling) validate the favorable performances of our method for continuous representation.",
+      "authors": [
+        {
+          "name": "Yisi Luo",
+          "orgs": [
+            "School of Mathematics and Statistics, Xi'an Jiaotong University, Xi'an, P.R.China"
+          ]
+        },
+        {
+          "name": "Xile Zhao",
+          "orgs": [
+            "School of Mathematical Sciences, University of Electronic Science and Technology of China, Chengdu, P.R.China"
+          ]
+        },
+        {
+          "name": "Zhemin Li",
+          "orgs": [
+            "Department of Mathematics, National University of Defense Technology, Changsha, P.R.China"
+          ]
+        },
+        {
+          "name": "Michael K. Ng",
+          "orgs": [
+            "Department of Mathematics, The University of Hong Kong, Hong Kong"
+          ]
+        },
+        {
+          "name": "Deyu Meng",
+          "orgs": [
+            "School of Mathematics and Statistics, Xi'an Jiaotong University, Xi'an, P.R.China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2212.00262v1",
+      "date": "2022-12-01T04:00:38Z",
+      "citation_count": 75,
+      "categories": [
+        "cs.CV",
+        "cs.LG",
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "1807.10278",
+      "score": 6.821076,
+      "title": "Structured Point Cloud Data Analysis via Regularized Tensor Regression for Process Modeling and Optimization",
+      "tldr": "This paper addresses the challenge of modeling and analyzing structured point cloud data in manufacturing processes, where dimensional accuracy is critical for optimization; it proposes tensor regression methods, including One-step Tensor Decomposition Regression (OTDR) and Regularized Tensor Regression (RTR), to capture the relationship between point clouds and process variables; experimental results show improved estimation accuracy and reduced computational time compared to existing methods.",
+      "abstract": "Advanced 3D metrology technologies such as Coordinate Measuring Machine (CMM) and laser 3D scanners have facilitated the collection of massive point cloud data, beneficial for process monitoring, control and optimization. However, due to their high dimensionality and structure complexity, modeling and analysis of point clouds are still a challenge. In this paper, we utilize multilinear algebra techniques and propose a set of tensor regression approaches to model the variational patterns of point clouds and to link them to process variables. The performance of the proposed methods is evaluated through simulations and a real case study of turning process optimization.",
+      "authors": [
+        {
+          "name": "Hao Yan",
+          "orgs": [
+            "School of Computing, Informatics, & Decision Systems Engineering, Arizona State University, Tempe, Arizona"
+          ]
+        },
+        {
+          "name": "Kamran Paynabar",
+          "orgs": [
+            "School of Industrial and Systems Engineering, Georgia Institute of Technology, Atlanta, Georgia"
+          ]
+        },
+        {
+          "name": "Massimo Pacella",
+          "orgs": [
+            "Dipartimento di Ingegneria dell'Innovazione, University of Salento, Lecce, Italy"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1807.10278v3",
+      "date": "2018-07-26T02:57:49Z",
+      "citation_count": 48,
+      "categories": [
+        "cs.CV",
+        "cs.LG",
+        "stat.ML"
+      ]
+    }
+  ]
+}

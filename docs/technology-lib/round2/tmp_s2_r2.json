@@ -1,0 +1,989 @@
+{
+  "status": "success",
+  "total_count": 56,
+  "result": [
+    {
+      "arxiv_id": "2512.14040",
+      "score": 10.212054,
+      "title": "ChartAgent: A Chart Understanding Framework with Tool Integrated Reasoning",
+      "tldr": "This paper introduces ChartAgent, a chart understanding framework addressing the limitation of MLLMs in handling unannotated charts by using Tool-Integrated Reasoning to decompose tasks into observable steps and provide traceable evidence, achieving SOTA performance on chart QA tasks.",
+      "abstract": "With their high information density and intuitive readability, charts have become the de facto medium for data analysis and communication across disciplines. Recent multimodal large language models (MLLMs) have made notable progress in automated chart understanding, yet they remain heavily dependent on explicit textual annotations and the performance degrades markedly when key numerals are absent. To address this limitation, we introduce ChartAgent, a chart understanding framework grounded in Tool-Integrated Reasoning (TIR). Inspired by human cognition, ChartAgent decomposes complex chart analysis into a sequence of observable, replayable steps. Supporting this architecture is an extensible, modular tool library comprising more than a dozen core tools, such as keyelement detection, instance segmentation, and optical character recognition (OCR), which the agent dynamically orchestrates to achieve systematic visual parsing across diverse chart types. Leveraging TIRs transparency and verifiability, ChartAgent moves beyond the black box paradigm by standardizing and consolidating intermediate outputs into a structured Evidence Package, providing traceable and reproducible support for final conclusions. Experiments show that ChartAgent substantially improves robustness under sparse annotation settings, offering a practical path toward trustworthy and extensible systems for chart understanding.",
+      "authors": [
+        {
+          "name": "Xiang Li",
+          "orgs": [
+            "5"
+          ]
+        },
+        {
+          "name": "Jing Yuan",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Yi Chen",
+          "orgs": [
+            "234"
+          ]
+        },
+        {
+          "name": "Jian Xu",
+          "orgs": [
+            "23"
+          ]
+        },
+        {
+          "name": "Xinming Wang",
+          "orgs": [
+            "School of Computer Science, Fudan University"
+          ]
+        },
+        {
+          "name": "Boran Wang",
+          "orgs": [
+            "Department of Computer Science, Tsinghua University"
+          ]
+        },
+        {
+          "name": "Chenglin Liu",
+          "orgs": [
+            "School of Information Science and Engineering, Central South University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.14040v1",
+      "date": "2025-12-16",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2409.01421",
+      "score": 10.123068,
+      "title": "DiffCSG: Differentiable CSG via Rasterization",
+      "tldr": "This paper addresses the challenge of differentiable rendering for Constructive-Solid-Geometry (CSG) models, which are popular in CAD but difficult to optimize due to complex mesh operations; it proposes DiffCSG, a method that uses CSG rasterization without explicit mesh computation and applies antialiasing at intersections to enable gradient backpropagation; experiments on 50 CAD shapes show effective parameter optimization for image-based and direct shape editing.",
+      "abstract": "Differentiable rendering is a key ingredient for inverse rendering and machine learning, as it allows to optimize scene parameters (shape, materials, lighting) to best fit target images. Differentiable rendering requires that each scene parameter relates to pixel values through differentiable operations. While 3D mesh rendering algorithms have been implemented in a differentiable way, these algorithms do not directly extend to Constructive-Solid-Geometry (CSG), a popular parametric representation of shapes, because the underlying boolean operations are typically performed with complex black-box mesh-processing libraries. We present an algorithm, DiffCSG, to render CSG models in a differentiable manner. Our algorithm builds upon CSG rasterization, which displays the result of boolean operations between primitives without explicitly computing the resulting mesh and, as such, bypasses black-box mesh processing. We describe how to implement CSG rasterization within a differentiable rendering pipeline, taking special care to apply antialiasing along primitive intersections to obtain gradients in such critical areas. Our algorithm is simple and fast, can be easily incorporated into modern machine learning setups, and enables a range of applications for computer-aided design, including direct and image-based editing of CSG primitives. Code and data: https://yyyyyhc.github.io/DiffCSG/.",
+      "authors": [
+        {
+          "name": "Haocheng Yuan",
+          "orgs": [
+            "The University of Edinburgh",
+            "United Kingdom"
+          ]
+        },
+        {
+          "name": "Adrien Bousseau",
+          "orgs": [
+            "Inria",
+            "Université Côte d'Azur",
+            "France"
+          ]
+        },
+        {
+          "name": "Hao Pan",
+          "orgs": [
+            "Microsoft Research Asia",
+            "China"
+          ]
+        },
+        {
+          "name": "Niloy J. Mitra",
+          "orgs": [
+            "University College London",
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Changjian Li",
+          "orgs": [
+            "The University of Edinburgh"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2409.01421v2",
+      "date": "2024-09-02T18:57:07Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.CV",
+        "cs.GR"
+      ]
+    },
+    {
+      "arxiv_id": "2005.12489",
+      "score": 9.786135,
+      "title": "HiVision: Rapid Visualization of Large-Scale Spatial Vector Data",
+      "tldr": "This paper addresses the challenge of rapid visualization of large-scale spatial vector data, where traditional methods struggle with performance due to increasing computational overheads; it proposes HiVision, a display-driven model that uses pixels as computing units and efficient spatial-index strategies, achieving O(log(n)) complexity and real-time performance for billion-scale data; experiments show HiVision outperforms existing methods in rendering speed and can handle 10-million-scale data interactively on a standard CPU.",
+      "abstract": "Rapid visualization of large-scale spatial vector data is a long-standing challenge in Geographic Information Science. In existing methods, the computation overheads grow rapidly with data volumes, leading to the incapability of providing real-time visualization for large-scale spatial vector data, even with parallel acceleration technologies. To fill the gap, we present HiVision, a display-driven visualization model for large-scale spatial vector data. Different from traditional data-driven methods, the computing units in HiVision are pixels rather than spatial objects to achieve real-time performance, and efficient spatial-index-based strategies are introduced to estimate the topological relationships between pixels and spatial objects. HiVision can maintain exceedingly good performance regardless of the data volume due to the stable pixel number for display. In addition, an optimized parallel computing architecture is proposed in HiVision to ensure the ability of real-time visualization. Experiments show that our approach outperforms traditional methods in rendering speed and visual effects while dealing with large-scale spatial vector data, and can provide interactive visualization of datasets with billion-scale points/segments/edges in real-time with flexible rendering styles. The HiVision code is open-sourced at https://github.com/MemoryMmy/HiVision with an online demonstration.",
+      "authors": [
+        {
+          "name": "Mengyu Ma",
+          "orgs": [
+            "College of Electronic Science, National University of Defense Technology, Changsha 410073, China"
+          ]
+        },
+        {
+          "name": "Ye Wu",
+          "orgs": [
+            "College of Electronic Science, National University of Defense Technology, Changsha 410073, China"
+          ]
+        },
+        {
+          "name": "Xue Ouyang",
+          "orgs": [
+            "College of Electronic Science, National University of Defense Technology, Changsha 410073, China"
+          ]
+        },
+        {
+          "name": "Luo Chen",
+          "orgs": [
+            "College of Electronic Science, National University of Defense Technology, Changsha 410073, China"
+          ]
+        },
+        {
+          "name": "Jun Li",
+          "orgs": [
+            "College of Electronic Science, National University of Defense Technology, Changsha 410073, China"
+          ]
+        },
+        {
+          "name": "Ning Jing",
+          "orgs": [
+            "College of Electronic Science, National University of Defense Technology, Changsha 410073, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2005.12489v2",
+      "date": "2020-05-26T02:48:40Z",
+      "citation_count": 14,
+      "categories": [
+        "cs.DB",
+        "cs.GR"
+      ]
+    },
+    {
+      "arxiv_id": "1906.11999",
+      "score": 9.767169,
+      "title": "Efficient Spatial Anti-Aliasing Rendering for Line Joins on Vector Maps",
+      "tldr": "This paper addresses the problem of anti-aliasing line joins in vector maps, where traditional methods using multiple triangles cause unreality and performance issues, impacting visual quality and system efficiency; it proposes an efficient algorithm using two triangles with alpha operation for realistic rendering, achieving smoother visuals, reduced memory cost, and higher frame rate; experiments show the method is widely used in real-world map applications with improved performance metrics.",
+      "abstract": "The spatial anti-aliasing technique for line joins (intersections of the road segments) on vector maps is exclusively crucial to visual experience and system performance. Due to limitations of OpenGL API, one common practice to achieve the anti-aliased effect is splicing multiple triangles at varying scale levels to approximate the fan-shaped line joins. However, this approximation inevitably produces some unreality, and the system rendering performance is not optimal. To circumvent these drawbacks, in this paper, we propose a simple but efficient algorithm which uses only two triangles to substitute the multiple triangles approximation and then renders a realistic fan-shaped curve with alpha operation based on geometrical relation computing. Our experiment shows it has advantages of a realistic anti-aliasing effect, less memory cost, higher frame rate, and drawing line joins without overlapping rendering. Our proposed spatial anti-aliasing technique has been widely used in Internet Maps such as Tencent Mobile Maps and Tencent Automotive Maps.",
+      "authors": [
+        {
+          "name": "Chaoyang He",
+          "orgs": [
+            "Department of Computer Science",
+            "University of Southern California"
+          ]
+        },
+        {
+          "name": "Ming Li",
+          "orgs": [
+            "Department of Maps Platform",
+            "Tencent"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1906.11999v1",
+      "date": "2019-06-27T23:58:37Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CG",
+        "cs.GR"
+      ]
+    },
+    {
+      "arxiv_id": "2304.00900",
+      "score": 9.746894,
+      "title": "Data Point Selection for Line Chart Visualization: Methodological Assessment and Evidence-Based Guidelines",
+      "tldr": "This paper addresses the challenge of effectively visualizing large time series data by evaluating data point selection algorithms, proposing a metrics-based methodology to assess visual representativeness and stability, and finding that LTTB and M4 perform best across three toolkits, offering guidelines for scalable line chart visualization.",
+      "abstract": "Time series visualization plays a crucial role in identifying patterns and extracting insights across various domains. However, as datasets continue to grow in size, visualizing them effectively becomes challenging. Downsampling, which involves data aggregation or selection, is a well-established approach to overcome this challenge. This work focuses on data selection algorithms, which accomplish downsampling by selecting values from the original time series. Despite their widespread adoption in visualization platforms and time series databases, there is limited literature on the evaluation of these techniques. To address this, we propose an extensive metrics-based evaluation methodology. Our methodology analyzes visual representativeness by assessing how well a downsampled time series line chart visually approximates the original data. Moreover, our methodology includes a novel concept called \"visual stability\", which captures visual changes when updating (streaming) or interacting with the visualization (panning and zooming). We evaluated four data point selection algorithms across three open-source visualization toolkits using our proposed methodology, considering various figure-drawing properties. Following the analysis of our findings, we formulated a set of evidence-based guidelines for line chart visualization at scale with downsampling. To promote reproducibility and enable the qualitative evaluation of new advancements in time series data point selection, we have made our methodology and results openly accessible. The proposed evaluation methodology, along with the obtained insights from this study, establishes a foundation for future research in this domain.",
+      "authors": [
+        {
+          "name": "Jonas Van Der Donckt",
+          "orgs": [
+            "IDLab, Ghent University - imec, Belgium"
+          ]
+        },
+        {
+          "name": "Jeroen Van Der Donckt",
+          "orgs": [
+            "IDLab, Ghent University - imec, Belgium"
+          ]
+        },
+        {
+          "name": "Michael Rademaker",
+          "orgs": [
+            "IDLab, Ghent University - imec, Belgium"
+          ]
+        },
+        {
+          "name": "Sofie Van Hoecke",
+          "orgs": [
+            "IDLab, Ghent University - imec, Belgium"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2304.00900v1",
+      "date": "2023-04-03T11:43:11Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2211.07735",
+      "score": 9.516675,
+      "title": "Monte Carlo Planning in Hybrid Belief POMDPs",
+      "tldr": "This paper addresses the challenge of planning in hybrid belief POMDPs where discrete and continuous variables coexist, proposing HB-MCP, a novel algorithm that uses Monte Carlo Tree Search with UCB to manage hybrid beliefs and reduce computational complexity, achieving unbiased utility estimates and effective hypothesis management in simulated environments with multi-modal belief hypotheses.",
+      "abstract": "Real-world problems often require reasoning about hybrid beliefs, over both discrete and continuous random variables. Yet, such a setting has hardly been investigated in the context of planning. Moreover, existing online Partially Observable Markov Decision Processes (POMDPs) solvers do not support hybrid beliefs directly. In particular, these solvers do not address the added computational burden due to an increasing number of hypotheses with the planning horizon, which can grow exponentially. As part of this work, we present a novel algorithm, Hybrid Belief Monte Carlo Planning (HB-MCP) that utilizes the Monte Carlo Tree Search (MCTS) algorithm to solve a POMDP while maintaining a hybrid belief. We illustrate how the upper confidence bound (UCB) exploration bonus can be leveraged to guide the growth of hypotheses trees alongside the belief trees. We then evaluate our approach in highly aliased simulated environments where unresolved data association leads to multi-modal belief hypotheses.",
+      "authors": [
+        {
+          "name": "Moran Barenboim",
+          "orgs": []
+        },
+        {
+          "name": "Moshe Shienman",
+          "orgs": []
+        },
+        {
+          "name": "Vadim Indelman",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2211.07735v2",
+      "date": "2022-11-14T20:16:51Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.AI",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2106.00184",
+      "score": 9.509945,
+      "title": "Anti-aliasing Semantic Reconstruction for Few-Shot Semantic Segmentation",
+      "tldr": "This paper addresses the challenge of few-shot semantic segmentation by tackling semantic aliasing through an anti-aliasing semantic reconstruction (ASR) approach, which converts base class features into orthogonal basis vectors for novel class reconstruction, improving performance on PASCAL VOC and MS COCO datasets compared to prior works.",
+      "abstract": "Encouraging progress in few-shot semantic segmentation has been made by leveraging features learned upon base classes with sufficient training data to represent novel classes with few-shot examples. However, this feature sharing mechanism inevitably causes semantic aliasing between novel classes when they have similar compositions of semantic concepts. In this paper, we reformulate few-shot segmentation as a semantic reconstruction problem, and convert base class features into a series of basis vectors which span a class-level semantic space for novel class reconstruction. By introducing contrastive loss, we maximize the orthogonality of basis vectors while minimizing semantic aliasing between classes. Within the reconstructed representation space, we further suppress interference from other classes by projecting query features to the support vector for precise semantic activation. Our proposed approach, referred to as anti-aliasing semantic reconstruction (ASR), provides a systematic yet interpretable solution for few-shot learning problems. Extensive experiments on PASCAL VOC and MS COCO datasets show that ASR achieves strong results compared with the prior works.",
+      "authors": [
+        {
+          "name": "Binghao Liu",
+          "orgs": [
+            "EECE University of Chinese Academy of Sciences",
+            "Department of Automation Tsinghua University"
+          ]
+        },
+        {
+          "name": "Yao Ding",
+          "orgs": [
+            "EECE University of Chinese Academy of Sciences",
+            "Department of Automation Tsinghua University"
+          ]
+        },
+        {
+          "name": "Jianbin Jiao",
+          "orgs": [
+            "EECE University of Chinese Academy of Sciences",
+            "Department of Automation Tsinghua University"
+          ]
+        },
+        {
+          "name": "Xiangyang Ji",
+          "orgs": [
+            "Department of Automation Tsinghua University"
+          ]
+        },
+        {
+          "name": "Qixiang Ye",
+          "orgs": [
+            "PriSDL EECE University of Chinese Academy of Sciences"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2106.00184v1",
+      "date": "2021-06-01T02:17:36Z",
+      "citation_count": 58,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2205.02268",
+      "score": 9.50544,
+      "title": "Visual Analysis of Multiple Dynamic Sensitivities along Ascending Trajectories in the Atmosphere",
+      "tldr": "This paper addresses the uncertainty in microphysical parameterizations within numerical weather prediction models by analyzing sensitivities of rain mass density to model parameters along warm conveyor belt trajectories, contributing a visual analytics workflow with 3D trajectory and curve plots views to compare sensitivities across trajectories and time, finding that sensitivities vary with trajectory type and ascent timing, with implications for improving NWP models through better understanding of parameterization impacts.",
+      "abstract": "Numerical weather prediction models rely on parameterizations for subgrid-scale processes, e.g., for cloud microphysics. These parameterizations are a well-known source of uncertainty in weather forecasts that can be quantified via algorithmic differentiation, which computes the sensitivities of prognostic variables to changes in model parameters. It is particularly interesting to use sensitivities to analyze the validity of physical assumptions on which microphysical parameterizations in the numerical model source code are based. In this article, we consider the use case of strongly ascending trajectories, so-called warm conveyor belt trajectories, known to have a significant impact on intense surface precipitation rates in extratropical cyclones. We present visual analytics solutions to analyze interactively the sensitivities of a selected prognostic variable, i.e. rain mass density, to multiple model parameters along such trajectories. We propose a visual interface that enables to a) compare the values of multiple sensitivities at a single time step on multiple trajectories, b) assess the spatio-temporal relationships between sensitivities and the shape and location of trajectories, and c) a comparative analysis of the temporal development of sensitivities along multiple trajectories. We demonstrate how our approach enables atmospheric scientists to interactively analyze the uncertainty in the microphysical parameterizations, and along the trajectories, with respect to a selected prognostic variable. We apply our approach to the analysis of convective trajectories within the extratropical cyclone \"Vladiana\", which occurred between 22-25 September 2016 over the North Atlantic.",
+      "authors": [],
+      "url": "https://arxiv.org/pdf/2205.02268v2",
+      "date": "2022-05-02T18:02:02Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.GR",
+        "physics.ao-ph"
+      ]
+    },
+    {
+      "arxiv_id": "2603.10757",
+      "score": 9.366308,
+      "title": "CodePercept: Code-Grounded Visual STEM Perception for MLLMs",
+      "tldr": "This paper investigates the bottleneck in STEM visual reasoning for MLLMs, identifying perception as the key limitation through scaling analysis; it introduces ICC-1M, a large-scale dataset with 1M Image-Caption-Code triplets, and STEM2Code-Eval, a benchmark assessing visual perception via code generation; findings show code-based evaluation outperforms caption-based methods in verifying comprehensive visual understanding.",
+      "abstract": "When MLLMs fail at Science, Technology, Engineering, and Mathematics (STEM) visual reasoning, a fundamental question arises: is it due to perceptual deficiencies or reasoning limitations? Through systematic scaling analysis that independently scales perception and reasoning components, we uncover a critical insight: scaling perception consistently outperforms scaling reasoning. This reveals perception as the true lever limiting current STEM visual reasoning. Motivated by this insight, our work focuses on systematically enhancing the perception capabilities of MLLMs by establishing code as a powerful perceptual medium--executable code provides precise semantics that naturally align with the structured nature of STEM visuals. Specifically, we construct ICC-1M, a large-scale dataset comprising 1M Image-Caption-Code triplets that materializes this code-as-perception paradigm through two complementary approaches: (1) Code-Grounded Caption Generation treats executable code as ground truth for image captions, eliminating the hallucinations inherent in existing knowledge distillation methods; (2) STEM Image-to-Code Translation prompts models to generate reconstruction code, mitigating the ambiguity of natural language for perception enhancement. To validate this paradigm, we further introduce STEM2Code-Eval, a novel benchmark that directly evaluates visual perception in STEM domains. Unlike existing work relying on problem-solving accuracy as a proxy that only measures problem-relevant understanding, our benchmark requires comprehensive visual comprehension through executable code generation for image reconstruction, providing deterministic and verifiable assessment. Code is available at https://github.com/TongkunGuan/Qwen-CodePercept.",
+      "authors": [
+        {
+          "name": "Tongkun Guan",
+          "orgs": [
+            "Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Zhibo Yang",
+          "orgs": [
+            "Qwen Team, Alibaba Group"
+          ]
+        },
+        {
+          "name": "Jianqiang Wan",
+          "orgs": [
+            "Qwen Team, Alibaba Group"
+          ]
+        },
+        {
+          "name": "Mingkun Yang",
+          "orgs": [
+            "Qwen Team, Alibaba Group"
+          ]
+        },
+        {
+          "name": "Zhengtao Guo",
+          "orgs": [
+            "Beijing Institute of Technology"
+          ]
+        },
+        {
+          "name": "Zijian Hu",
+          "orgs": [
+            "Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Ruilin Luo",
+          "orgs": [
+            "Alibaba Group"
+          ]
+        },
+        {
+          "name": "Ruize Chen",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Songtao Jiang",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Peng Wang",
+          "orgs": [
+            "Alibaba Group"
+          ]
+        },
+        {
+          "name": "Wei Shen",
+          "orgs": [
+            "Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Junyang Lin",
+          "orgs": [
+            "Alibaba Group"
+          ]
+        },
+        {
+          "name": "Xiaokang Yang",
+          "orgs": [
+            "Shanghai Jiao Tong University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2603.10757v1",
+      "date": "2026-03-11",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2203.03870",
+      "score": 9.31544,
+      "title": "Morphological Anti-Aliasing Method for Boundary Slope Prediction",
+      "tldr": "This paper addresses the issue of boundary slope prediction in anti-aliasing algorithms, aiming to improve the accuracy of straight line boundary reconstruction by considering global morphological information, which reduces computational cost and enhances anti-aliasing quality by minimizing boundary deviation.",
+      "abstract": "Image pixel aliasing caused by insufficient sampling is a long-standing problem in the field of computer graphics. It has always been the goal of researchers to seek anti-aliasing algorithms with high speed and good effect. Due to the deficiencies in local detection and reconstruction of sloping line boundaries, a morphological anti-aliasing method for boundary slope prediction is proposed. This method uses the information of the local line boundary slope to predict and test the end positions of the line boundary in the global scope, thereby reconstructing The boundary information more consistent with the actual boundary is obtained, and a more accurate linear boundary shape is obtained with only a small increase in the amount of calculation. Compared with the previous morphological anti-aliasing algorithm, the proposed method is based on the global morphological boundary. , can reconstruct the straight line boundary more accurately, and apply it to the anti-aliasing calculation, which can further improve the color transition of the straight line boundary, make the inclined straight line boundary have higher continuity, and obtain a better anti-aliasing effect.",
+      "authors": [
+        {
+          "name": "Yuchen Zhong",
+          "orgs": []
+        },
+        {
+          "name": "Yuchi Huo",
+          "orgs": []
+        },
+        {
+          "name": "Rui Wang",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2203.03870v1",
+      "date": "2022-03-08T06:15:58Z",
+      "citation_count": 8,
+      "categories": [
+        "cs.GR"
+      ]
+    },
+    {
+      "arxiv_id": "2601.19233",
+      "score": 9.248064,
+      "title": "UniMGS: Unifying Mesh and 3D Gaussian Splatting with Single-Pass Rasterization and Proxy-Based Deformation",
+      "tldr": "This paper addresses the challenge of integrating mesh and 3D Gaussian Splatting (3DGS) for unified rendering and deformation in graphics applications, aiming to improve compatibility between the two representations for better handling of occlusion and transparency; it introduces UniMGS, a single-pass rasterization framework with a proxy-based Gaussian deformation strategy that enhances visual quality and robustness; experiments show UniMGS achieves faithful transparency and correct occlusion handling, outperforming prior methods with flawed proxy meshes.",
+      "abstract": "Joint rendering and deformation of mesh and 3D Gaussian Splatting (3DGS) have significant value as both representa tions offer complementary advantages for graphics applica tions. However, due to differences in representation and ren dering pipelines, existing studies render meshes and 3DGS separately, making it difficult to accurately handle occlusions and transparency. Moreover, the deformed 3DGS still suffers from visual artifacts due to the sensitivity to the topology quality of the proxy mesh. These issues pose serious obsta cles to the joint use of 3DGS and meshes, making it diffi cult to adapt 3DGS to conventional mesh-oriented graphics pipelines. We propose UniMGS, the first unified framework for rasterizing mesh and 3DGS in a single-pass anti-aliased manner, with a novel binding strategy for 3DGS deformation based on proxy mesh. Our key insight is to blend the col ors of both triangle and Gaussian fragments by anti-aliased {\\alpha}-blending in a single pass, achieving visually coherent re sults with precise handling of occlusion and transparency. To improve the visual appearance of the deformed 3DGS, our Gaussian-centric binding strategy employs a proxy mesh and spatially associates Gaussians with the mesh faces, signifi cantly reducing rendering artifacts. With these two compo nents, UniMGS enables the visualization and manipulation of 3D objects represented by mesh or 3DGS within a unified framework, opening up new possibilities in embodied AI, vir tual reality, and gaming. We will release our source code to facilitate future research.",
+      "authors": [
+        {
+          "name": "Lihua Zhang",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Mingyang Sun",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Zeyu Wang",
+          "orgs": [
+            "3",
+            "4"
+          ]
+        },
+        {
+          "name": "Dingkang Yang",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Zeyu Xiao",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Peng Zhai",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Dongliang Kou",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Lintao Wang",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Zhenyi Wu",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Yimin Cong",
+          "orgs": [
+            "1"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2601.19233v1",
+      "date": "2026-01-27",
+      "citation_count": 0,
+      "categories": [
+        "cs.GR"
+      ]
+    },
+    {
+      "arxiv_id": "2509.14197",
+      "score": 9.22793,
+      "title": "Framing Migration: A Computational Analysis of UK Parliamentary Discourse",
+      "tldr": "This paper examines UK parliamentary discourse on migration over 75 years, addressing the gap in understanding evolving attitudes and narrative frames, using LLMs to analyze stances and frames, revealing a shift toward securitised rhetoric and ideological gaps, with Labour more solidarity-oriented than Conservatives, and a decline in integration-focused narratives.",
+      "abstract": "We present a large-scale computational analysis of migration-related discourse in UK parliamentary debates spanning over 75 years and compare it with US congressional discourse. Using open-weight LLMs, we annotate each statement with high-level stances toward migrants and track the net tone toward migrants across time and political parties. For the UK, we extend this with a semi-automated framework for extracting fine-grained narrative frames to capture nuances of migration discourse. Our findings show that, while US discourse has grown increasingly polarised, UK parliamentary attitudes remain relatively aligned across parties, with a persistent ideological gap between Labour and the Conservatives, reaching its most negative level in 2025. The analysis of narrative frames in the UK parliamentary statements reveals a shift toward securitised narratives such as border control and illegal immigration, while longer-term integration-oriented frames such as social integration have declined. Moreover, discussions of national law about immigration have been replaced over time by international law and human rights, revealing nuances in discourse trends. Taken together broadly, our findings demonstrate how LLMs can support scalable, fine-grained discourse analysis in political and historical contexts.",
+      "authors": [
+        {
+          "name": "Vahid Ghafouri",
+          "orgs": []
+        },
+        {
+          "name": "Robert McNeil",
+          "orgs": []
+        },
+        {
+          "name": "Teodor Yankov",
+          "orgs": []
+        },
+        {
+          "name": "Madeleine Sumption",
+          "orgs": []
+        },
+        {
+          "name": "Luc Rocher",
+          "orgs": []
+        },
+        {
+          "name": "Scott A. Hale",
+          "orgs": []
+        },
+        {
+          "name": "Adam Mahdi",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2509.14197v1",
+      "date": "2025-09-17T17:31:57Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CL",
+        "cs.CY"
+      ]
+    },
+    {
+      "arxiv_id": "2402.14196",
+      "score": 9.180778,
+      "title": "Mip-Grid: Anti-aliased Grid Representations for Neural Radiance Fields",
+      "tldr": "This paper addresses the aliasing issue in neural radiance fields (NeRF) by proposing mip-Grid, a method that integrates anti-aliasing techniques into grid-based representations, improving rendering performance and achieving faster training times compared to existing methods; it generates multi-scale grids via convolution operations and scale-aware coordinate retrieval, demonstrating significant improvements in aliasing reduction and performance on multi-scale datasets.",
+      "abstract": "Despite the remarkable achievements of neural radiance fields (NeRF) in representing 3D scenes and generating novel view images, the aliasing issue, rendering \"jaggies\" or \"blurry\" images at varying camera distances, remains unresolved in most existing approaches. The recently proposed mip-NeRF has addressed this challenge by rendering conical frustums instead of rays. However, it relies on MLP architecture to represent the radiance fields, missing out on the fast training speed offered by the latest grid-based methods. In this work, we present mip-Grid, a novel approach that integrates anti-aliasing techniques into grid-based representations for radiance fields, mitigating the aliasing artifacts while enjoying fast training time. The proposed method generates multi-scale grids by applying simple convolution operations over a shared grid representation and uses the scale-aware coordinate to retrieve features at different scales from the generated multi-scale grids. To test the effectiveness, we integrated the proposed method into the two recent representative grid-based methods, TensoRF and K-Planes. Experimental results demonstrate that mip-Grid greatly improves the rendering performance of both methods and even outperforms mip-NeRF on multi-scale datasets while achieving significantly faster training time. For code and demo videos, please see https://stnamjef.github.io/mipgrid.github.io/.",
+      "authors": [
+        {
+          "name": "Seungtae Nam",
+          "orgs": [
+            "Department of Artificial Intelligence, Sungkyunkwan University"
+          ]
+        },
+        {
+          "name": "Daniel Rho",
+          "orgs": [
+            "AI2XL, KT"
+          ]
+        },
+        {
+          "name": "Jong Hwan Ko",
+          "orgs": [
+            "Department of Artificial Intelligence, Sungkyunkwan University",
+            "Department of Electrical and Computer Engineering, Sungkyunkwan University"
+          ]
+        },
+        {
+          "name": "Eunbyung Park",
+          "orgs": [
+            "Department of Artificial Intelligence, Sungkyunkwan University",
+            "Department of Electrical and Computer Engineering, Sungkyunkwan University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2402.14196v1",
+      "date": "2024-02-22T00:45:40Z",
+      "citation_count": 18,
+      "categories": [
+        "cs.CV",
+        "cs.GR"
+      ]
+    },
+    {
+      "arxiv_id": "1009.0794",
+      "score": 9.107597,
+      "title": "Layered Depth-Normal Images: a Sparse Implicit Representation of Solid Models",
+      "tldr": "This paper introduces Layered Depth-Normal Images (LDNIs), a sparse implicit representation of solid models that uses three orthogonal depth-normal images to reduce memory usage and enable efficient Boolean operations and contouring, achieving O(w²) memory with sampling rate w and demonstrating fast rendering and accurate mesh reconstruction.",
+      "abstract": "This paper presents a novel implicit representation of solid models. With this representation, every solid model can be effectively presented by three layered depth-normal images (LDNIs) that are perpendicular to three orthogonal axes respectively. The layered depth-normal images for a solid model, whose boundary is presented by a polygonal mesh, can be generated efficiently with help of the graphics hardware accelerated sampling. Based on this implicit representation - LDNIs, solid modeling operations including the Boolean operations and the offsetting operation have been developed. A contouring algorithm is also introduced in this paper to generate thin structure and sharp feature preserved mesh surfaces from the layered depth-normal images. Comparisons between LDNIs and other implicit representation of solid models are given at the end of the paper to demonstrate the advantages of LDNIs.",
+      "authors": [
+        {
+          "name": "Charlie C. L. Wang",
+          "orgs": [
+            "Department of Mechanical and Automation Engineering",
+            "The Chinese University of Hong Kong"
+          ]
+        },
+        {
+          "name": "Yong Chen",
+          "orgs": [
+            "Department of Industrial and Systems Engineering",
+            "University of Southern California"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1009.0794v1",
+      "date": "2010-09-04T01:17:54Z",
+      "citation_count": 10,
+      "categories": [
+        "cs.CG"
+      ]
+    },
+    {
+      "arxiv_id": "2603.03520",
+      "score": 9.102344,
+      "title": "Matched Filtering for the Canadian Hydrogen Observatory and Radio-Transient Detector Galaxy Search",
+      "tldr": "This paper addresses the spatial aliasing challenge in CHORD's galaxy search, using a matched filter in the visibility plane to predict alias locations and severity, contributing a strategy to disambiguate aliases by re-pointing the array by about two degrees, finding that aliases are harder to distinguish near the celestial equator but can be resolved with offset scanning.",
+      "abstract": "We present the spatial part of the point source signal extraction strategy for the upcoming CHORD galaxy survey. CHORD, the Canadian Hydrogen Observatory and Radio-transient Detector, is an under-construction drift-scanning compact interferometric radio telescope. CHORD comprises 512 six meter dishes and observes in the 300 to 1500 MHz frequency range. One of its science goals is producing a catalogue of galaxies detected by the neutral hydrogen (HI) 21 cm emission line. CHORD's highly redundant dish layout creates the problem of spatial aliasing, the effect where the same signal could be feasibly produced from sources at multiple locations on the sky. The search will be done with a matched filter in the visibility plane. This paper presents the search strategy and a prediction tool that can quickly estimate the matched filter response at a given sky position, allowing a prediction of alias locations and severity. This tool confirms that although aliases are impossible to distinguish in a single snapshot, they become possible to distinguish when combining data over a period of time. It predicts that aliases will be harder to distinguish for observations closer to the celestial equator, but that scanning with offset adjacent strips can remove this degeneracy. It predicts that the optimal strategy for a single offset to disambiguate aliases is to re-point the array in declination by about two degrees. A future paper will combine these findings with realistic noise estimates and galaxy population statistics to make forecasts of the population of galaxies that CHORD will detect.",
+      "authors": [
+        {
+          "name": "Hans S. Hopkins",
+          "orgs": [
+            "Perimeter Institute for Theoretical Physics",
+            "Waterloo Center for Astrophysics, University of Waterloo"
+          ]
+        },
+        {
+          "name": "Dustin Lang",
+          "orgs": [
+            "Perimeter Institute for Theoretical Physics",
+            "Waterloo Center for Astrophysics, University of Waterloo"
+          ]
+        },
+        {
+          "name": "Kendrick Smith",
+          "orgs": [
+            "Perimeter Institute for Theoretical Physics"
+          ]
+        },
+        {
+          "name": "Kristine Spekkens",
+          "orgs": [
+            "Department of Physics, Engineering Physics and Astronomy, Queen's University"
+          ]
+        },
+        {
+          "name": "Simon Foreman",
+          "orgs": [
+            "Department of Physics, Arizona State University, 550 E. Tyler Mall, Tempe, AZ 85287, USA"
+          ]
+        },
+        {
+          "name": "Akanksha Bij",
+          "orgs": [
+            "Department of Physics, Engineering Physics and Astronomy, Queen's University, Kingston, ON K7L 3N6, Canada"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2603.03520v2",
+      "date": "2026-03-03",
+      "citation_count": 0,
+      "categories": [
+        "astro-ph.IM"
+      ]
+    },
+    {
+      "arxiv_id": "2108.03489",
+      "score": 9.082452,
+      "title": "Impact of Aliasing on Generalization in Deep Convolutional Networks",
+      "tldr": "This paper investigates how aliasing affects generalization in deep convolutional networks, addressing the gap that data augmentation alone cannot prevent it due to architectural limitations; it proposes inserting non-trainable low-pass filters in key locations of ResNet and EfficientNet to mitigate aliasing, leading to significant improvements in generalization on i.i.d. and out-of-distribution tasks like ImageNet-C and Meta-Dataset, achieving state-of-the-art results without additional parameters.",
+      "abstract": "We investigate the impact of aliasing on generalization in Deep Convolutional Networks and show that data augmentation schemes alone are unable to prevent it due to structural limitations in widely used architectures. Drawing insights from frequency analysis theory, we take a closer look at ResNet and EfficientNet architectures and review the trade-off between aliasing and information loss in each of their major components. We show how to mitigate aliasing by inserting non-trainable low-pass filters at key locations, particularly where networks lack the capacity to learn them. These simple architectural changes lead to substantial improvements in generalization on i.i.d. and even more on out-of-distribution conditions, such as image classification under natural corruptions on ImageNet-C [11] and few-shot learning on Meta-Dataset [26]. State-of-the art results are achieved on both datasets without introducing additional trainable parameters and using the default hyper-parameters of open source codebases.",
+      "authors": [
+        {
+          "name": "Cristina Vasconcelos",
+          "orgs": [
+            "Google Research, Brain Team"
+          ]
+        },
+        {
+          "name": "Hugo Larochelle",
+          "orgs": [
+            "Mila, Université de Montréal"
+          ]
+        },
+        {
+          "name": "Vincent Dumoulin",
+          "orgs": [
+            "Mila, McGill University"
+          ]
+        },
+        {
+          "name": "Rob Romijnders",
+          "orgs": [
+            "Google Research, Brain Team"
+          ]
+        },
+        {
+          "name": "Nicolas Le Roux",
+          "orgs": [
+            "Mila, Université de Montréal",
+            "Mila, McGill University"
+          ]
+        },
+        {
+          "name": "Ross Goroshin",
+          "orgs": [
+            "Mila, McGill University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2108.03489v1",
+      "date": "2021-08-07T17:12:03Z",
+      "citation_count": 40,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "1006.2441",
+      "score": 8.959546,
+      "title": "Accurate Coordinates and 2MASS Cross-IDs for (Almost) All Gliese Catalog Stars",
+      "tldr": "This paper addresses the need for accurate coordinates and cross-identifications of Gliese Catalog stars, aiming to update outdated positional data and improve access to 2MASS photometric information; it uses Hipparcos, 2MASS, and other astrometric data to derive J2000 positions for 4251 stars, with 2693 based on Hipparcos and 1549 on 2MASS; findings show significant improvements in positional accuracy, with over 200 stars previously having errors exceeding 30 arcseconds.",
+      "abstract": "We provide precise J2000, epoch 2000 coordinates and cross-identifications to sources in the 2MASS point source catalog for nearly all stars in the Gliese, Gliese and Jahreiss, and Woolley catalogs of nearby stars. The only Gliese objects where we were not successful are two Gliese sources that are actually QSOs, two proposed companions to brighter stars which we believe do not exist, four stars included in one of the catalogs but identified there as only optical companions, one probable plate flaw, and two stars which simply remain un-recovered. For the 4251 recovered stars, 2693 have coordinates based on Hipparcos positions, 1549 have coordinates based on 2MASS data, and 9 have positions from other astrometric sources. All positions have been calculated at epoch 2000 using proper motions from the literature, which are also given here.",
+      "authors": [
+        {
+          "name": "John Stauffer",
+          "orgs": [
+            "Spitzer Science Center, 1200 E California Blvd, Pasadena, CA 91125"
+          ]
+        },
+        {
+          "name": "Angelle M. Tanner",
+          "orgs": [
+            "Department of Physics and Astronomy, Georgia State University, Atlanta, GA 30302"
+          ]
+        },
+        {
+          "name": "Geoffrey Bryden",
+          "orgs": [
+            "NASA Exoplanet Science Institute, California Institute of Technology, 770 S Wilson Ave, Pasadena, CA 91125",
+            "Jet Propulsion Lab, 4800 Oak Grove Dr, Pasadena, CA 91109"
+          ]
+        },
+        {
+          "name": "Solange Ramirez",
+          "orgs": [
+            "NASA Exoplanet Science Institute",
+            "California Institute of Technology",
+            "770 S Wilson Ave, Pasadena, CA 91125"
+          ]
+        },
+        {
+          "name": "Bruce Berriman",
+          "orgs": [
+            "NASA Exoplanet Science Institute",
+            "California Institute of Technology",
+            "770 S Wilson Ave, Pasadena, CA 91125"
+          ]
+        },
+        {
+          "name": "David R. Ciardi",
+          "orgs": [
+            "NASA Exoplanet Science Institute",
+            "California Institute of Technology",
+            "770 S Wilson Ave, Pasadena, CA 91125"
+          ]
+        },
+        {
+          "name": "Stephen Kane",
+          "orgs": [
+            "NASA Exoplanet Science Institute",
+            "California Institute of Technology",
+            "770 S Wilson Ave, Pasadena, CA 91125"
+          ]
+        },
+        {
+          "name": "Trisha Mizusawa",
+          "orgs": [
+            "NASA Exoplanet Science Institute",
+            "California Institute of Technology",
+            "770 S Wilson Ave, Pasadena, CA 91125"
+          ]
+        },
+        {
+          "name": "Alan Payne",
+          "orgs": [
+            "Australian National University",
+            "Mount Stromlo Observatory",
+            "Canberra, ACT, Australia"
+          ]
+        },
+        {
+          "name": "Peter Plavchan",
+          "orgs": [
+            "NASA Exoplanet Science Institute",
+            "California Institute of Technology",
+            "770 S Wilson Ave, Pasadena, CA 91125"
+          ]
+        },
+        {
+          "name": "Kaspar von Braun",
+          "orgs": [
+            "NASA Exoplanet Science Institute",
+            "California Institute of Technology",
+            "770 S Wilson Ave, Pasadena, CA 91125"
+          ]
+        },
+        {
+          "name": "Pamela Wyatt",
+          "orgs": [
+            "NASA Exoplanet Science Institute",
+            "California Institute of Technology",
+            "770 S Wilson Ave, Pasadena, CA 91125"
+          ]
+        },
+        {
+          "name": "J. Davy Kirkpatrick",
+          "orgs": [
+            "Infrared Processing and Analysis Center",
+            "California Institute of Technology",
+            "770 S Wilson Ave, Pasadena, CA 91125"
+          ]
+        },
+        {
+          "name": "J. Davy Kirkpatrick",
+          "orgs": [
+            "Spitzer Science Center",
+            "Department of Physics and Astronomy",
+            "Georgia State University",
+            "NASA Exoplanet Science Institute",
+            "California Institute of Technology",
+            "Jet Propulsion Lab",
+            "Australian National University",
+            "Mount Stromlo Observatory",
+            "Canberra, ACT, Australia",
+            "Infrared Processing and Analysis Center"
+          ]
+        },
+        {
+          "name": "Geoffrey Bryden",
+          "orgs": [
+            "Jet Propulsion Lab, 4800 Oak Grove Dr, Pasadena, CA 91109",
+            "NASA Exoplanet Science Institute, California Institute of Technology, 770 S Wilson Ave, Pasadena, CA 91125"
+          ]
+        },
+        {
+          "name": "Alan Payne",
+          "orgs": [
+            "Australian National University, Mount Stromlo Observatory, Canberra, ACT, Australia"
+          ]
+        },
+        {
+          "name": "J. Davy Kirkpatrick",
+          "orgs": [
+            "Infrared Processing and Analysis Center, California Institute of Technology, 770 S Wilson Ave, Pasadena, CA 91125"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1006.2441v1",
+      "date": "2010-06-12T08:54:08Z",
+      "citation_count": 24,
+      "categories": [
+        "astro-ph.SR"
+      ]
+    },
+    {
+      "arxiv_id": "1611.07596",
+      "score": 8.880179,
+      "title": "Fast Fourier Color Constancy",
+      "tldr": "This paper introduces Fast Fourier Color Constancy (FFCC), a color constancy method that addresses the challenge of accurate and efficient illuminant estimation by transforming it into a spatial localization task on a torus, improving accuracy by 13-20% and speed by 250-3000 times over prior methods; it proposes a posterior distribution over illuminants as its core novelty, enabling better training, temporal smoothing, and error analysis; FFCC achieves ~700 frames per second on mobile devices, making it suitable for real-time automatic white balance.",
+      "abstract": "We present Fast Fourier Color Constancy (FFCC), a color constancy algorithm which solves illuminant estimation by reducing it to a spatial localization task on a torus. By operating in the frequency domain, FFCC produces lower error rates than the previous state-of-the-art by 13-20% while being 250-3000 times faster. This unconventional approach introduces challenges regarding aliasing, directional statistics, and preconditioning, which we address. By producing a complete posterior distribution over illuminants instead of a single illuminant estimate, FFCC enables better training techniques, an effective temporal smoothing technique, and richer methods for error analysis. Our implementation of FFCC runs at ~700 frames per second on a mobile device, allowing it to be used as an accurate, real-time, temporally-coherent automatic white balance algorithm.",
+      "authors": [
+        {
+          "name": "Jonathan T. Barron",
+          "orgs": [
+            "Google"
+          ]
+        },
+        {
+          "name": "Yun-Ta Tsai",
+          "orgs": [
+            "Google"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1611.07596v3",
+      "date": "2016-11-23T01:28:43Z",
+      "citation_count": 209,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1903.09823",
+      "score": 5.387686,
+      "title": "Color Filter Arrays for Quanta Image Sensors",
+      "tldr": "This paper addresses the challenge of designing color filter arrays for Quanta Image Sensors (QIS) and small pixels, where maximizing light efficiency while suppressing aliasing and crosstalk are conflicting tasks, due to the importance of high-quality image acquisition in advanced imaging systems; it proposes an optimization-based framework that unifies mainstream color filter array design methodologies, offering greater generality and flexibility by simultaneously handling luminance sensitivity, chrominance sensitivity, cross-talk, anti-aliasing, manufacturability, and orthogonality; extensive experiments demonstrate the framework's effectiveness in improving color filter array design for QIS and other small pixel sensors.",
+      "abstract": "Quanta image sensor (QIS) is envisioned to be the next generation image sensor after CCD and CMOS. In this paper, we discuss how to design color filter arrays for QIS and other small pixels. Designing color filter arrays for small pixels is challenging because maximizing the light efficiency while suppressing aliasing and crosstalk are conflicting tasks. We present an optimization-based framework which unifies several mainstream color filter array design methodologies. Our method offers greater generality and flexibility. Compared to existing methods, the new framework can simultaneously handle luminance sensitivity, chrominance sensitivity, cross-talk, anti-aliasing, manufacturability and orthogonality. Extensive experimental comparisons demonstrate the effectiveness of the framework.",
+      "authors": [
+        {
+          "name": "Omar A. Elgendy",
+          "orgs": []
+        },
+        {
+          "name": "Stanley H. Chan",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1903.09823v4",
+      "date": "2019-03-23T13:35:10Z",
+      "citation_count": 10,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2009.02969",
+      "score": 4.925284,
+      "title": "Palettailor: Discriminable Colorization for Categorical Data",
+      "tldr": "This paper proposes Palettailor, a data-aware color palette generation framework using simulated annealing to maximize discriminability for visualizations, contributing a novel method that outperforms existing approaches in class discrimination with results showing higher effectiveness in user studies.",
+      "abstract": "We present an integrated approach for creating and assigning color palettes to different visualizations such as multi-class scatterplots, line, and bar charts. While other methods separate the creation of colors from their assignment, our approach takes data characteristics into account to produce color palettes, which are then assigned in a way that fosters better visual discrimination of classes. To do so, we use a customized optimization based on simulated annealing to maximize the combination of three carefully designed color scoring functions: point distinctness, name difference, and color discrimination. We compare our approach to state-ofthe-art palettes with a controlled user study for scatterplots and line charts, furthermore we performed a case study. Our results show that Palettailor, as a fully-automated approach, generates color palettes with a higher discrimination quality than existing approaches. The efficiency of our optimization allows us also to incorporate user modifications into the color selection process.",
+      "authors": [
+        {
+          "name": "Kecheng Lu",
+          "orgs": []
+        },
+        {
+          "name": "Mi Feng",
+          "orgs": []
+        },
+        {
+          "name": "Xin Chen",
+          "orgs": []
+        },
+        {
+          "name": "Michael Sedlmair",
+          "orgs": []
+        },
+        {
+          "name": "Oliver Deussen",
+          "orgs": []
+        },
+        {
+          "name": "Dani Lischinski",
+          "orgs": []
+        },
+        {
+          "name": "Zhanglin Cheng",
+          "orgs": []
+        },
+        {
+          "name": "Yunhai Wang",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2009.02969v1",
+      "date": "2020-09-07T09:30:27Z",
+      "citation_count": 40,
+      "categories": [
+        "cs.GR"
+      ]
+    }
+  ]
+}

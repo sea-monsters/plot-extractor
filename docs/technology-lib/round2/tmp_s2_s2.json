@@ -1,0 +1,1186 @@
+{
+  "status": "success",
+  "total_count": 73,
+  "result": [
+    {
+      "arxiv_id": "2601.19053",
+      "score": 11.505949,
+      "title": "From Answer Givers to Design Mentors: Guiding LLMs with the Cognitive Apprenticeship Model",
+      "tldr": "This paper investigates how to guide LLMs as design mentors using the Cognitive Apprenticeship Model, addressing the gap in reflective feedback by improving design reasoning and engagement through structured prompting; it introduces DesignMentor, an AI system that operationalizes CAM principles, showing it outperforms baseline LLMs in fostering metacognitive awareness and contextually relevant guidance, though effectiveness varies by design phase and user experience.",
+      "abstract": "Design feedback helps practitioners improve their artifacts while also fostering reflection and design reasoning. Large Language Models (LLMs) such as ChatGPT can support design work, but often provide generic, one-off suggestions that limit reflective engagement. We investigate how to guide LLMs to act as design mentors by applying the Cognitive Apprenticeship Model, which emphasizes demonstrating reasoning through six methods: modeling, coaching, scaffolding, articulation, reflection, and exploration. We operationalize these instructional methods through structured prompting and evaluate them in a within-subjects study with data visualization practitioners. Participants interacted with both a baseline LLM and an instructional LLM designed with cognitive apprenticeship prompts. Surveys, interviews, and conversational log analyses compared experiences across conditions. Our findings show that cognitively informed prompts elicit deeper design reasoning and more reflective feedback exchanges, though the baseline is sometimes preferred depending on task types or experience levels. We distill design considerations for AI-assisted feedback systems that foster reflective practice.",
+      "authors": [
+        {
+          "name": "Benjamin Bach",
+          "orgs": [
+            "Inria",
+            "University of Edinburgh"
+          ]
+        },
+        {
+          "name": "Yongsu Ahn",
+          "orgs": [
+            "Boston College"
+          ]
+        },
+        {
+          "name": "Lejun R Liao",
+          "orgs": [
+            "Boston College"
+          ]
+        },
+        {
+          "name": "and Nam Wook Kim",
+          "orgs": [
+            "Boston College"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2601.19053v1",
+      "date": "2026-01-27",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2507.14920",
+      "score": 11.459968,
+      "title": "Time Series Information Visualization -- A Review of Approaches and Tools",
+      "tldr": "This survey reviews time series information visualization techniques and tools, offering a systematic taxonomy and design guidelines for multi-feature time series analysis, highlighting challenges in integrating analytical tools and future directions for improving temporal data interpretation.",
+      "abstract": "Time series data are prevalent across various domains and often encompass large datasets containing multiple time-dependent features in each sample. Exploring time-varying data is critical for data science practitioners aiming to understand dynamic behaviors and discover periodic patterns and trends. However, the analysis of such data often requires sophisticated procedures and tools. Information visualization is a communication channel that leverages human perceptual abilities to transform abstract data into visual representations. Visualization techniques have been successfully applied in the context of time series to enhance interpretability by graphically representing the temporal evolution of data. The challenge for information visualization developers lies in integrating a wide range of analytical tools into rich visualization systems that can summarize complex datasets while clearly describing the impacts of the temporal component. Such systems enable data scientists to turn raw data into understandable and potentially useful knowledge. This review examines techniques and approaches designed for handling time series data, guiding users through knowledge discovery processes based on visual analysis. We also provide readers with theoretical insights and design guidelines for considering when developing comprehensive information visualization approaches for time series, with a particular focus on time series with multiple features. As a result, we highlight the challenges and future research directions to address open questions in the visualization of time-dependent data.",
+      "authors": [
+        {
+          "name": "Evandro S. Ortigossa",
+          "orgs": [
+            "Department of Computer Science and Applied Mathematics, Weizmann Institute of Science, Rehovot, 7610001, Israel",
+            "Institute of Mathematics and Computer Science, University of São Paulo, São Carlos, 13566-590, Brazil"
+          ]
+        },
+        {
+          "name": "Fábio F. Dias",
+          "orgs": [
+            "New York University Tandon School of Engineering, Brooklyn, NY, 11201, USA"
+          ]
+        },
+        {
+          "name": "Diego C. Nascimento",
+          "orgs": [
+            "NEOMA Business School, Mont-Saint-Aignan, 76825, France"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2507.14920v2",
+      "date": "2025-07-20T11:28:47Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.GR"
+      ]
+    },
+    {
+      "arxiv_id": "1907.13187",
+      "score": 11.3172455,
+      "title": "CloudDet: Interactive Visual Analysis of Anomalous Performances in Cloud Computing Systems",
+      "tldr": "This paper presents CloudDet, an interactive visual analytics system for detecting and diagnosing anomalies in cloud computing systems, introducing a novel unsupervised anomaly detection algorithm and visualization techniques that improve accuracy by 15% over baselines, enabling efficient anomaly interpretation in large-scale data.",
+      "abstract": "Detecting and analyzing potential anomalous performances in cloud computing systems is essential for avoiding losses to customers and ensuring the efficient operation of the systems. To this end, a variety of automated techniques have been developed to identify anomalies in cloud computing performance. These techniques are usually adopted to track the performance metrics of the system (e.g., CPU, memory, and disk I/O), represented by a multivariate time series. However, given the complex characteristics of cloud computing data, the effectiveness of these automated methods is affected. Thus, substantial human judgment on the automated analysis results is required for anomaly interpretation. In this paper, we present a unified visual analytics system named CloudDet to interactively detect, inspect, and diagnose anomalies in cloud computing systems. A novel unsupervised anomaly detection algorithm is developed to identify anomalies based on the specific temporal patterns of the given metrics data (e.g., the periodic pattern), the results of which are visualized in our system to indicate the occurrences of anomalies. Rich visualization and interaction designs are used to help understand the anomalies in the spatial and temporal context. We demonstrate the effectiveness of CloudDet through a quantitative evaluation, two case studies with real-world data, and interviews with domain experts.",
+      "authors": [
+        {
+          "name": "Ke Xu",
+          "orgs": []
+        },
+        {
+          "name": "Yun Wang",
+          "orgs": []
+        },
+        {
+          "name": "Leni Yang",
+          "orgs": []
+        },
+        {
+          "name": "Yifang Wang",
+          "orgs": []
+        },
+        {
+          "name": "Bo Qiao",
+          "orgs": []
+        },
+        {
+          "name": "Si Qin",
+          "orgs": []
+        },
+        {
+          "name": "Yong Xu",
+          "orgs": []
+        },
+        {
+          "name": "Haidong Zhang",
+          "orgs": []
+        },
+        {
+          "name": "Huamin Qu",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1907.13187v1",
+      "date": "2019-07-30T19:12:46Z",
+      "citation_count": 49,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2308.01971",
+      "score": 11.101484,
+      "title": "SpaDen : Sparse and Dense Keypoint Estimation for Real-World Chart Understanding",
+      "tldr": "This paper addresses the challenge of real-world chart data extraction by introducing SpaDen, a model that combines sparse and dense keypoint estimation with self-attention and deep metric learning to segment and reconstruct chart components, achieving improved accuracy through post-processing thresholds and extensive experimental evaluation.",
+      "abstract": "We introduce a novel bottom-up approach for the extraction of chart data. Our model utilizes images of charts as inputs and learns to detect keypoints (KP), which are used to reconstruct the components within the plot area. Our novelty lies in detecting a fusion of continuous and discrete KP as predicted heatmaps. A combination of sparse and dense per-pixel objectives coupled with a uni-modal self-attention-based feature-fusion layer is applied to learn KP embeddings. Further leveraging deep metric learning for unsupervised clustering, allows us to segment the chart plot area into various objects. By further matching the chart components to the legend, we are able to obtain the data series names. A post-processing threshold is applied to the KP embeddings to refine the object reconstructions and improve accuracy. Our extensive experiments include an evaluation of different modules for KP estimation and the combination of deep layer aggregation and corner pooling approaches. The results of our experiments provide extensive evaluation for the task of real-world chart data extraction.",
+      "authors": [
+        {
+          "name": "Saleem Ahmed",
+          "orgs": []
+        },
+        {
+          "name": "Pengyu Yan",
+          "orgs": []
+        },
+        {
+          "name": "David Doermann",
+          "orgs": []
+        },
+        {
+          "name": "Srirangaraj Setlur",
+          "orgs": []
+        },
+        {
+          "name": "Venu Govindaraju",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2308.01971v1",
+      "date": "2023-08-03T18:03:42Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1910.05536",
+      "score": 10.821999,
+      "title": "sPortfolio: Stratified Visual Analysis of Stock Portfolios",
+      "tldr": "This paper presents sPortfolio, a visual analytics system addressing the challenge of analyzing high-dimensional factor data in quantitative investment by providing stratified visualization tools; it introduces a method for stratifying portfolio data and visualizing strata effectively, along with a system enabling detailed portfolio comparison and exploration; results show its effectiveness through case studies with financial experts, demonstrating its potential to enhance factor research and portfolio analysis efficiency.",
+      "abstract": "Quantitative Investment, built on the solid foundation of robust financial theories, is at the center stage in investment industry today. The essence of quantitative investment is the multi-factor model, which explains the relationship between the risk and return of equities. However, the multi-factor model generates enormous quantities of factor data, through which even experienced portfolio managers find it difficult to navigate. This has led to portfolio analysis and factor research being limited by a lack of intuitive visual analytics tools. Previous portfolio visualization systems have mainly focused on the relationship between the portfolio return and stock holdings, which is insufficient for making actionable insights or understanding market trends. In this paper, we present sPortfolio, which, to the best of our knowledge, is the first visualization that attempts to explore the factor investment area. In particular, sPortfolio provides a holistic overview of the factor data and aims to facilitate the analysis at three different levels: a Risk-Factor level, for a general market situation analysis; a Multiple-Portfolio level, for understanding the portfolio strategies; and a Single-Portfolio level, for investigating detailed operations. The system's effectiveness and usability are demonstrated through three case studies. The system has passed its pilot study and is soon to be deployed in industry.",
+      "authors": [
+        {
+          "name": "Xuanwu Yue",
+          "orgs": []
+        },
+        {
+          "name": "Jiaxin Bai",
+          "orgs": []
+        },
+        {
+          "name": "Qinhan Liu",
+          "orgs": []
+        },
+        {
+          "name": "Yiyang Tang",
+          "orgs": []
+        },
+        {
+          "name": "Abishek Puri",
+          "orgs": []
+        },
+        {
+          "name": "Ke Li",
+          "orgs": []
+        },
+        {
+          "name": "Huamin Qu",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1910.05536v1",
+      "date": "2019-10-12T09:26:11Z",
+      "citation_count": 27,
+      "categories": [
+        "cs.HC",
+        "q-fin.GN"
+      ]
+    },
+    {
+      "arxiv_id": "2304.04870",
+      "score": 10.620883,
+      "title": "DASS Good: Explainable Data Mining of Spatial Cohort Data",
+      "tldr": "This paper presents DASS, a system for explainable data mining of spatial cohort data in head and neck cancer radiotherapy, addressing the challenge of developing accurate predictive models for long-term toxicities using spatial dose distributions; it introduces a human-in-the-loop visual steering approach with unsupervised rule models and temporal analysis, contributing to improved clinical stratification and model interpretability; empirical results show enhanced stratification of patients into high- and low-risk groups for treatment-related symptoms.",
+      "abstract": "Developing applicable clinical machine learning models is a difficult task when the data includes spatial information, for example, radiation dose distributions across adjacent organs at risk. We describe the co-design of a modeling system, DASS, to support the hybrid human-machine development and validation of predictive models for estimating long-term toxicities related to radiotherapy doses in head and neck cancer patients. Developed in collaboration with domain experts in oncology and data mining, DASS incorporates human-in-the-loop visual steering, spatial data, and explainable AI to augment domain knowledge with automatic data mining. We demonstrate DASS with the development of two practical clinical stratification models and report feedback from domain experts. Finally, we describe the design lessons learned from this collaborative experience.",
+      "authors": [
+        {
+          "name": "A. Wentzel",
+          "orgs": [
+            "University of Illinois Chicago",
+            "Electronic Visualization Lab"
+          ]
+        },
+        {
+          "name": "C. Floricel",
+          "orgs": [
+            "University of Illinois Chicago",
+            "Electronic Visualization Lab"
+          ]
+        },
+        {
+          "name": "G. Canahuate",
+          "orgs": [
+            "University of Iowa"
+          ]
+        },
+        {
+          "name": "M.A. Naser",
+          "orgs": [
+            "University of Texas MD Anderson Cancer Center"
+          ]
+        },
+        {
+          "name": "A.S. Mohamed",
+          "orgs": [
+            "University of Texas MD Anderson Cancer Center"
+          ]
+        },
+        {
+          "name": "C.D. Fuller",
+          "orgs": [
+            "University of Texas MD Anderson Cancer Center"
+          ]
+        },
+        {
+          "name": "L. van Dijk",
+          "orgs": [
+            "University of Texas MD Anderson Cancer Center"
+          ]
+        },
+        {
+          "name": "G.E. Marai",
+          "orgs": [
+            "University of Illinois Chicago, Electronic Visualization Lab"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2304.04870v1",
+      "date": "2023-04-10T21:24:21Z",
+      "citation_count": 10,
+      "categories": [
+        "cs.HC",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2412.16098",
+      "score": 10.598192,
+      "title": "Explainable AI for Multivariate Time Series Pattern Exploration: Latent Space Visual Analytics with Temporal Fusion Transformer and Variational Autoencoders in Power Grid Event Diagnosis",
+      "tldr": "This paper addresses the challenge of analyzing complex multivariate time series patterns in power grid operations by proposing a visual analytics framework integrating Temporal Fusion Transformer (TFT) and Variational Autoencoders (VAEs) with dimensionality reduction techniques, contributing novel metrics and visualizations for model evaluation and fault diagnosis, and finding that TFT achieves shorter run times and 86–92% consistency in latent vector representations compared to VAE under optimized configurations.",
+      "abstract": "Detecting and analyzing complex patterns in multivariate time-series data is crucial for decision-making in urban and environmental system operations. However, challenges arise from the high dimensionality, intricate complexity, and interconnected nature of complex patterns, which hinder the understanding of their underlying physical processes. Existing AI methods often face limitations in interpretability, computational efficiency, and scalability, reducing their applicability in real-world scenarios. This paper proposes a novel visual analytics framework that integrates two generative AI models, Temporal Fusion Transformer (TFT) and Variational Autoencoders (VAEs), to reduce complex patterns into lower-dimensional latent spaces and visualize them in 2D using dimensionality reduction techniques such as PCA, t-SNE, and UMAP with DBSCAN. These visualizations, presented through coordinated and interactive views and tailored glyphs, enable intuitive exploration of complex multivariate temporal patterns, identifying patterns' similarities and uncover their potential correlations for a better interpretability of the AI outputs. The framework is demonstrated through a case study on power grid signal data, where it identifies multi-label grid event signatures, including faults and anomalies with diverse root causes. Additionally, novel metrics and visualizations are introduced to validate the models and evaluate the performance, efficiency, and consistency of latent maps generated by TFT and VAE under different configurations. These analyses provide actionable insights for model parameter tuning and reliability improvements. Comparative results highlight that TFT achieves shorter run times and superior scalability to diverse time-series data shapes compared to VAE. This work advances fault diagnosis in multivariate time series, fostering explainable AI to support critical system operations.",
+      "authors": [
+        {
+          "name": "Haowen Xu",
+          "orgs": [
+            "Computational Urban Sciences Group, Oak Ridge National Laboratory, Oak Ridge, TN 37830, USA",
+            "Grid Communications and Security Group, Oak Ridge National Laboratory, Oak Ridge, TN 37830, USA",
+            "Grid-interactive Controls Group, Oak Ridge, TN 37830, USA"
+          ]
+        },
+        {
+          "name": "Ali Boyaci",
+          "orgs": [
+            "Computational Urban Sciences Group, Oak Ridge National Laboratory, Oak Ridge, TN 37830, USA",
+            "Grid Communications and Security Group, Oak Ridge National Laboratory, Oak Ridge, TN 37830, USA",
+            "Grid-interactive Controls Group, Oak Ridge, TN 37830, USA"
+          ]
+        },
+        {
+          "name": "Jianming Lian",
+          "orgs": [
+            "Computational Urban Sciences Group, Oak Ridge National Laboratory, Oak Ridge, TN 37830, USA",
+            "Grid Communications and Security Group, Oak Ridge National Laboratory, Oak Ridge, TN 37830, USA",
+            "Grid-interactive Controls Group, Oak Ridge, TN 37830, USA"
+          ]
+        },
+        {
+          "name": "Aaron Wilson",
+          "orgs": [
+            "Computational Urban Sciences Group, Oak Ridge National Laboratory, Oak Ridge, TN 37830, USA",
+            "Grid Communications and Security Group, Oak Ridge National Laboratory, Oak Ridge, TN 37830, USA",
+            "Grid-interactive Controls Group, Oak Ridge, TN 37830, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2412.16098v2",
+      "date": "2024-12-20T17:41:11Z",
+      "citation_count": 5,
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2508.09804",
+      "score": 10.543524,
+      "title": "BigCharts-R1: Enhanced Chart Reasoning with Visual Reinforcement Finetuning",
+      "tldr": "This paper addresses the challenge of chart comprehension by vision-language models (VLMs), which struggle due to low-quality datasets and limited generalization, proposing BigCharts-R1, a model that combines supervised fine-tuning with GRPO-based reinforcement learning for enhanced chart reasoning, achieving state-of-the-art performance on multiple benchmarks and demonstrating robust generalization.",
+      "abstract": "Charts are essential to data analysis, transforming raw data into clear visual representations that support human decision-making. Although current vision-language models (VLMs) have made significant progress, they continue to struggle with chart comprehension due to training on datasets that lack diversity and real-world authenticity, or on automatically extracted underlying data tables of charts, which can contain numerous estimation errors. Furthermore, existing models only rely on supervised fine-tuning using these low-quality datasets, severely limiting their effectiveness. To address these issues, we first propose BigCharts, a dataset creation pipeline that generates visually diverse chart images by conditioning the rendering process on real-world charts sourced from multiple online platforms. Unlike purely synthetic datasets, BigCharts incorporates real-world data, ensuring authenticity and visual diversity, while still retaining accurate underlying data due to our proposed replotting process. Additionally, we introduce a comprehensive training framework that integrates supervised fine-tuning with Group Relative Policy Optimization (GRPO)-based reinforcement learning. By introducing novel reward signals specifically designed for chart reasoning, our approach enhances model robustness and generalization across diverse chart styles and domains, resulting in a state-of-the-art chart reasoning model, BigCharts-R1. Extensive experiments demonstrate that our models surpass existing methods on multiple chart question-answering benchmarks compared to even larger open-source and closed-source models.",
+      "authors": [
+        {
+          "name": "Ahmed Masry",
+          "orgs": [
+            "ServiceNow Research",
+            "York University"
+          ]
+        },
+        {
+          "name": "Abhay Puri",
+          "orgs": [
+            "ServiceNow Research"
+          ]
+        },
+        {
+          "name": "Masoud Hashemi",
+          "orgs": [
+            "ServiceNow Research"
+          ]
+        },
+        {
+          "name": "Juan A. Rodriguez",
+          "orgs": [
+            "ServiceNow Research",
+            "Mila",
+            "Université de Montréal",
+            "ÉTS Montréal"
+          ]
+        },
+        {
+          "name": "Megh Thakkar",
+          "orgs": [
+            "ServiceNow Research"
+          ]
+        },
+        {
+          "name": "Khyati Mahajan",
+          "orgs": [
+            "ServiceNow Research"
+          ]
+        },
+        {
+          "name": "Vikas Yadav",
+          "orgs": [
+            "ServiceNow Research"
+          ]
+        },
+        {
+          "name": "Sathwik Tejaswi Madhusudhan",
+          "orgs": [
+            "ServiceNow Research"
+          ]
+        },
+        {
+          "name": "Alexandre Piché",
+          "orgs": [
+            "ServiceNow Research",
+            "Mila",
+            "Université de Montréal"
+          ]
+        },
+        {
+          "name": "Dzmitry Bahdanau",
+          "orgs": [
+            "ServiceNow Research",
+            "Mila",
+            "CIFAR AI Chair"
+          ]
+        },
+        {
+          "name": "Christopher Pal",
+          "orgs": [
+            "ServiceNow Research",
+            "Mila",
+            "Polytechnique Montréal",
+            "CIFAR AI Chair"
+          ]
+        },
+        {
+          "name": "David Vazquez",
+          "orgs": [
+            "ServiceNow Research"
+          ]
+        },
+        {
+          "name": "Enamul Hoque",
+          "orgs": [
+            "York University"
+          ]
+        },
+        {
+          "name": "Perouz Taslakian",
+          "orgs": [
+            "ServiceNow Research"
+          ]
+        },
+        {
+          "name": "Sai Rajeswar",
+          "orgs": [
+            "ServiceNow Research",
+            "Mila",
+            "Université de Montréal"
+          ]
+        },
+        {
+          "name": "Spandana Gella",
+          "orgs": [
+            "ServiceNow Research"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2508.09804v1",
+      "date": "2025-08-13T13:39:17Z",
+      "citation_count": 5,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2511.00010",
+      "score": 10.434325,
+      "title": "PlotCraft: Pushing the Limits of LLMs for Complex and Interactive Data Visualization",
+      "tldr": "This paper addresses the gap in LLMs' ability to generate complex data visualizations by introducing PlotCraft, a benchmark with 1k tasks across 48 chart types, and presents PlotCraftor, a model achieving 50% performance improvement on hard tasks and comparable results to proprietary models.",
+      "abstract": "Recent Large Language Models (LLMs) have demonstrated remarkable proficiency in code generation. However, their ability to create complex visualizations for scaled and structured data remains largely unevaluated and underdeveloped. To address this gap, we introduce PlotCraft, a new benchmark featuring 1k challenging visualization tasks that cover a wide range of topics, such as finance, scientific research, and sociology. The benchmark is structured around seven high-level visualization tasks and encompasses 48 distinct chart types. Crucially, it is the first to systematically evaluate both single-turn generation and multi-turn refinement across a diverse spectrum of task complexities. Our comprehensive evaluation of 23 leading LLMs on PlotCraft reveals obvious performance deficiencies in handling sophisticated visualization tasks. To bridge this performance gap, we develope SynthVis-30K, a large-scale, high-quality dataset of complex visualization code synthesized via a collaborative agent framework. Building upon this dataset, we develope PlotCraftor, a novel code generation model that achieves strong capabilities in complex data visualization with a remarkably small size. Across VisEval, PandasPlotBench, and our proposed PlotCraft, PlotCraftor shows performance comparable to that of leading proprietary approaches. Especially, on hard task, Our model achieves over 50% performance improvement. We will release the benchmark, dataset, and code at https://github.com/Speakn0w/PlotCraft-Benchmark.",
+      "authors": [
+        {
+          "name": "Jiajun Zhang",
+          "orgs": [
+            "USTC",
+            "CASIA"
+          ]
+        },
+        {
+          "name": "Jianke Zhang",
+          "orgs": [
+            "THU"
+          ]
+        },
+        {
+          "name": "Zeyu Cui",
+          "orgs": [
+            "Qwen Team, Alibaba Inc.",
+            "Qwen Team, Alibaba Inc."
+          ]
+        },
+        {
+          "name": "Lei Zhang",
+          "orgs": [
+            "SIAT"
+          ]
+        },
+        {
+          "name": "Binyuan Hui",
+          "orgs": [
+            "Qwen Team, Alibaba Inc."
+          ]
+        },
+        {
+          "name": "Qiang Liu",
+          "orgs": [
+            "CASIA"
+          ]
+        },
+        {
+          "name": "Zilei Wang",
+          "orgs": [
+            "USTC"
+          ]
+        },
+        {
+          "name": "Liang Wang",
+          "orgs": [
+            "CASIA"
+          ]
+        },
+        {
+          "name": "Junyang Lin",
+          "orgs": [
+            "Qwen Team, Alibaba Inc."
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2511.00010v1",
+      "date": "2025-10-15",
+      "citation_count": 6,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2307.08494",
+      "score": 10.380993,
+      "title": "Visual Explanations with Attributions and Counterfactuals on Time Series Classification",
+      "tldr": "This paper addresses the challenge of explainable AI in time series classification by proposing a visual analytics workflow that integrates global and local explanations using attributions and counterfactuals, contributing a method for generating global insights from local attributions and enabling interactive what-if analysis to identify model behavior and misclassifications.",
+      "abstract": "With the rising necessity of explainable artificial intelligence (XAI), we see an increase in task-dependent XAI methods on varying abstraction levels. XAI techniques on a global level explain model behavior and on a local level explain sample predictions. We propose a visual analytics workflow to support seamless transitions between global and local explanations, focusing on attributions and counterfactuals on time series classification. In particular, we adapt local XAI techniques (attributions) that are developed for traditional datasets (images, text) to analyze time series classification, a data type that is typically less intelligible to humans. To generate a global overview, we apply local attribution methods to the data, creating explanations for the whole dataset. These explanations are projected onto two dimensions, depicting model behavior trends, strategies, and decision boundaries. To further inspect the model decision-making as well as potential data errors, a what-if analysis facilitates hypothesis generation and verification on both the global and local levels. We constantly collected and incorporated expert user feedback, as well as insights based on their domain knowledge, resulting in a tailored analysis workflow and system that tightly integrates time series transformations into explanations. Lastly, we present three use cases, verifying that our technique enables users to (1)~explore data transformations and feature relevance, (2)~identify model behavior and decision boundaries, as well as, (3)~the reason for misclassifications.",
+      "authors": [
+        {
+          "name": "Udo Schlegel",
+          "orgs": [
+            "University of Konstanz",
+            "Germany"
+          ]
+        },
+        {
+          "name": "Daniela Oelke",
+          "orgs": [
+            "Applied Science University Offenburg",
+            "Germany"
+          ]
+        },
+        {
+          "name": "Daniel A. Keim",
+          "orgs": [
+            "University of Konstanz",
+            "Germany"
+          ]
+        },
+        {
+          "name": "Mennatallah El-Assady",
+          "orgs": [
+            "ETH AI Center",
+            "Switzerland"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2307.08494v1",
+      "date": "2023-07-14T10:01:30Z",
+      "citation_count": 5,
+      "categories": [
+        "cs.HC",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2404.17619",
+      "score": 10.372553,
+      "title": "VisAnywhere: Developing Multi-platform Scientific Visualization Applications",
+      "tldr": "This paper presents VisAnywhere, a multi-platform scientific visualization application that addresses the challenge of developing cross-device visualizations by leveraging web technologies, enabling flexible user interfaces and collaboration across mobile, display walls, and VR devices, with results showing effective adaptation to various displays using a single codebase.",
+      "abstract": "Scientists often explore and analyze large-scale scientific simulation data by leveraging two- and three-dimensional visualizations. The data and tasks can be complex and therefore best supported using myriad display technologies, from mobile devices to large high-resolution display walls to virtual reality headsets. Using a simulation of neuron connections in the human brain, we present our work leveraging various web technologies to create a multi-platform scientific visualization application. Users can spread visualization and interaction across multiple devices to support flexible user interfaces and both co-located and remote collaboration. Drawing inspiration from responsive web design principles, this work demonstrates that a single codebase can be adapted to develop scientific visualization applications that operate everywhere.",
+      "authors": [
+        {
+          "name": "Thomas Marrinan",
+          "orgs": [
+            "University of St. Thomas"
+          ]
+        },
+        {
+          "name": "Madeleine Moeller",
+          "orgs": [
+            "University of St. Thomas"
+          ]
+        },
+        {
+          "name": "Alina Kanayinkal",
+          "orgs": [
+            "University of St. Thomas"
+          ]
+        },
+        {
+          "name": "Victor A. Mateevitsi",
+          "orgs": [
+            "Argonne National Laboratory"
+          ]
+        },
+        {
+          "name": "Michael E. Papka",
+          "orgs": [
+            "Argonne National Laboratory"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2404.17619v1",
+      "date": "2024-04-26T13:09:16Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.GR",
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2011.09896",
+      "score": 10.2975,
+      "title": "TBSSvis: Visual Analytics for Temporal Blind Source Separation",
+      "tldr": "This paper presents TBSSvis, a visual analytics tool for Temporal Blind Source Separation (TBSS), addressing the lack of interactive visualization support for TBSS tasks by proposing a user-centered design and task-specific visualization techniques, which were validated through expert interviews showing improved workflow efficiency and result comparison capabilities.",
+      "abstract": "Temporal Blind Source Separation (TBSS) is used to obtain the true underlying processes from noisy temporal multivariate data, such as electrocardiograms. TBSS has similarities to Principal Component Analysis (PCA) as it separates the input data into univariate components and is applicable to suitable datasets from various domains, such as medicine, finance, or civil engineering. Despite TBSS's broad applicability, the involved tasks are not well supported in current tools, which offer only text-based interactions and single static images. Analysts are limited in analyzing and comparing obtained results, which consist of diverse data such as matrices and sets of time series. Additionally, parameter settings have a big impact on separation performance, but as a consequence of improper tooling, analysts currently do not consider the whole parameter space. We propose to solve these problems by applying visual analytics (VA) principles. Our primary contribution is a design study for TBSS, which so far has not been explored by the visualization community. We developed a task abstraction and visualization design in a user-centered design process. Task-specific assembling of well-established visualization techniques and algorithms to gain insights in the TBSS processes is our secondary contribution. We present TBSSvis, an interactive web-based VA prototype, which we evaluated extensively in two interviews with five TBSS experts. Feedback and observations from these interviews show that TBSSvis supports the actual workflow and combination of interactive visualizations that facilitate the tasks involved in analyzing TBSS results.",
+      "authors": [],
+      "url": "https://arxiv.org/pdf/2011.09896v2",
+      "date": "2020-11-19T15:29:16Z",
+      "citation_count": 9,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "1808.06019",
+      "score": 10.171049,
+      "title": "Visualizing a Million Time Series with the Density Line Chart",
+      "tldr": "This paper addresses the challenge of visualizing many time series simultaneously, introducing the DenseLines technique to compute normalized density representations, which enables scalable and clutter-free visualization of trends and anomalies in large datasets.",
+      "abstract": "Data analysts often need to work with multiple series of data---conventionally shown as line charts---at once. Few visual representations allow analysts to view many lines simultaneously without becoming overwhelming or cluttered. In this paper, we introduce the DenseLines technique to calculate a discrete density representation of time series. DenseLines normalizes time series by the arc length to compute accurate densities. The derived density visualization allows users both to see the aggregate trends of multiple series and to identify anomalous extrema.",
+      "authors": [
+        {
+          "name": "Dominik Moritz",
+          "orgs": [
+            "Paul G. Allen School of Computer Science & Engineering, University of Washington"
+          ]
+        },
+        {
+          "name": "Danyel Fisher",
+          "orgs": [
+            "Honeycomb"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1808.06019v2",
+      "date": "2018-08-17T23:17:25Z",
+      "citation_count": 24,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2109.08329",
+      "score": 10.165958,
+      "title": "Cross-layer Visualization and Profiling of Network and I/O Communication for HPC Clusters",
+      "tldr": "This paper addresses the challenge of holistic profiling and visualization of HPC communication stacks, aiming to provide real-time insights into network and I/O interactions across different layers to identify performance bottlenecks; it introduces INAM, a low-overhead tool with cross-stack analysis capabilities, offering novel visualization methods and I/O profiling; experimental results demonstrate effective detection of communication bottlenecks and improved understanding of performance trade-offs in HPC environments.",
+      "abstract": "Understanding and visualizing the full-stack performance trade-offs and interplay between HPC applications, MPI libraries, the communication fabric, and the file system is a challenging endeavor. Designing a holistic profiling and visualization method for HPC communication networks is challenging since different levels of communication coexist and interact with each other on the communication fabric. A breakdown of traffic is essential to understand the interplay of different layers along with the application's communication behavior without losing a general view of network traffic. Unfortunately, existing profiling tools are disjoint and either focus on only profiling and visualizing a few levels of the HPC stack, which limits the insights they can provide, or they provide extremely detailed information which necessitates a steep learning curve to understand. We target our profiling tool visualization to provide holistic and real-time insights into HPC communication stacks.\n  In this paper, we propose and implement our visualization methods to enable holistic insight for representing the cross-stack metrics. Moreover, we propose and implement a low-overhead I/O profiling inside the communication library, collect and store the profiling information, and then study the correlation and evaluation of I/O traffic with MPI communication using a cross-stack approach by INAM. Through experimental evaluations and use cases, we demonstrate novel benefits of our cross-stack communication analysis in real-time to detect bottlenecks and understand communication performance.",
+      "authors": [
+        {
+          "name": "Pouya Kousha",
+          "orgs": [
+            "Department of Computer Science and Engineering",
+            "The Ohio State University"
+          ]
+        },
+        {
+          "name": "Quentin Anthony",
+          "orgs": [
+            "Department of Computer Science and Engineering",
+            "The Ohio State University"
+          ]
+        },
+        {
+          "name": "Hari Subramoni",
+          "orgs": [
+            "Department of Computer Science and Engineering",
+            "The Ohio State University"
+          ]
+        },
+        {
+          "name": "Dhabaleswar K. Panda",
+          "orgs": [
+            "Department of Computer Science and Engineering",
+            "The Ohio State University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2109.08329v1",
+      "date": "2021-09-17T02:50:44Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.DC",
+        "cs.GR",
+        "cs.PF"
+      ]
+    },
+    {
+      "arxiv_id": "2512.12076",
+      "score": 10.127048,
+      "title": "SigTime: Learning and Visually Explaining Time Series Signatures",
+      "tldr": "This paper introduces a joint learning framework combining shapelet-based and statistical time series representations to address challenges in interpretability and scalability of temporal pattern discovery, contributing a visual analytics system, SigTime, which demonstrates competitive classification performance on eight datasets and supports insights generation in healthcare applications.",
+      "abstract": "Understanding and distinguishing temporal patterns in time series data is essential for scientific discovery and decision-making. For example, in biomedical research, uncovering meaningful patterns in physiological signals can improve diagnosis, risk assessment, and patient outcomes. However, existing methods for time series pattern discovery face major challenges, including high computational complexity, limited interpretability, and difficulty in capturing meaningful temporal structures. To address these gaps, we introduce a novel learning framework that jointly trains two Transformer models using complementary time series representations: shapelet-based representations to capture localized temporal structures and traditional feature engineering to encode statistical properties. The learned shapelets serve as interpretable signatures that differentiate time series across classification labels. Additionally, we develop a visual analytics system -- SigTIme -- with coordinated views to facilitate exploration of time series signatures from multiple perspectives, aiding in useful insights generation. We quantitatively evaluate our learning framework on eight publicly available datasets and one proprietary clinical dataset. Additionally, we demonstrate the effectiveness of our system through two usage scenarios along with the domain experts: one involving public ECG data and the other focused on preterm labor analysis.",
+      "authors": [
+        {
+          "name": "Kwan-Liu Ma",
+          "orgs": [
+            "Department of Computer Science, University of California, Davis, One Shields Ave., Davis, California 95616"
+          ]
+        },
+        {
+          "name": "Dongyu Liu",
+          "orgs": [
+            "Department of Computer Science, University of California, Davis, One Shields Ave., Davis, California 95616"
+          ]
+        },
+        {
+          "name": "Juntong Chen",
+          "orgs": [
+            "Department of Computer Science, University of California, Davis, One Shields Ave., Davis, California 95616"
+          ]
+        },
+        {
+          "name": "Yu-Chia Huang",
+          "orgs": [
+            "Department of Computer Science, University of California, Davis, One Shields Ave., Davis, California 95616"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.12076v1",
+      "date": "2025-12-12",
+      "citation_count": 0,
+      "categories": [
+        "cs.LG",
+        "stat.ML"
+      ]
+    },
+    {
+      "arxiv_id": "2511.20814",
+      "score": 10.122543,
+      "title": "SPHINX: A Synthetic Environment for Visual Perception and Reasoning",
+      "tldr": "This paper introduces Sphinx, a synthetic environment for visual perception and reasoning tasks, addressing the gap in evaluating core cognitive primitives in LVLMs by providing a benchmark with 25 task types and 2,500 questions; it employs RLVR to improve model accuracy, achieving 51.1% accuracy on LVLMs and showing gains on external benchmarks.",
+      "abstract": "We present Sphinx, a synthetic environment for visual perception and reasoning that targets core cognitive primitives. Sphinx procedurally generates puzzles using motifs, tiles, charts, icons, and geometric primitives, each paired with verifiable ground-truth solutions, enabling both precise evaluation and large-scale dataset construction. The benchmark covers 25 task types spanning symmetry detection, geometric transformations, spatial reasoning, chart interpretation, and sequence prediction. Evaluating recent large vision-language models (LVLMs) shows that even state-of-the-art GPT-5 attains only 51.1% accuracy, well below human performance. Finally, we demonstrate that reinforcement learning with verifiable rewards (RLVR) substantially improves model accuracy on these tasks and yields gains on external visual reasoning benchmarks, highlighting its promise for advancing multimodal reasoning.",
+      "authors": [
+        {
+          "name": "Saksham Aggarwal",
+          "orgs": [
+            "Rochester Institute of Technology"
+          ]
+        },
+        {
+          "name": "Md Tanvirul Alam",
+          "orgs": [
+            "Rochester Institute of Technology"
+          ]
+        },
+        {
+          "name": "Justin Yang Chae and Nidhi Rastogi",
+          "orgs": [
+            "University of Washington",
+            "Rochester Institute of Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2511.20814v1",
+      "date": "2025-11-25",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2306.09812",
+      "score": 10.088703,
+      "title": "Boundary Blending: Reconsidering the Design of Multi-View Visualizations",
+      "tldr": "This paper addresses the challenge of boundary blending in multi-view visualizations (MVs) to enhance visual analysis, proposing three boundaries (data, representation, semantic) and four design strategies (highlighting, linking, embedding, extending) to support integrated sensemaking across views.",
+      "abstract": "Multiple-view visualizations (MVs) have been widely used for visual analysis. Each view shows some part of the data in a usable way, and together multiple views enable a holistic understanding of the data under investigation. For example, an analyst may check a social network graph, a map of sensitive locations, a table of transaction records, and a collection of reports to identify suspicious activities. While each view is designed to preserve its own visual context with visible borders or perceivable spatial distance from others, the key to solving real-world analysis problems often requires \"breaking\" such boundaries, and further integrating and synthesizing the data scattered across multiple views. This calls for blending the boundaries in MVs, instead of simply breaking them, which brings key questions: what are possible boundaries in MVs, and what are design options that can support the boundary blending in MVs? To answer these questions, we present three boundaries in MVs: 1) data boundary, 2) representation boundary, and 3) semantic boundary, corresponding to three major aspects regarding the usage of MVs: encoded information, visual representation, and interpretation. Then, we discuss four design strategies (highlighting, linking, embedding, and extending) and their pros and cons for supporting boundary blending in MVs. We conclude our discussion with future research opportunities.",
+      "authors": [
+        {
+          "name": "Maoyuan Sun",
+          "orgs": [
+            "Northern Illinois University"
+          ]
+        },
+        {
+          "name": "Abdul Rahman Shaikh",
+          "orgs": [
+            "Northern Illinois University"
+          ]
+        },
+        {
+          "name": "Yue Ma",
+          "orgs": [
+            "Northern Illinois University"
+          ]
+        },
+        {
+          "name": "David Koop",
+          "orgs": [
+            "Northern Illinois University"
+          ]
+        },
+        {
+          "name": "Hamed Alhoori",
+          "orgs": [
+            "Northern Illinois University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2306.09812v1",
+      "date": "2023-06-16T12:47:52Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2512.16017",
+      "score": 10.080039,
+      "title": "Enhancing Line Density Plots with Outlier Control and Bin-based Illumination",
+      "tldr": "This paper addresses the challenge of visualizing line-based datasets, such as trajectories, by improving density plots through a bin-based illumination model and outlierness metric, contributing a method that enhances flow, reveals sparse outliers, and reduces color distortion, with results showing significantly lower CIEDE2000 color distortion than standard shading and supporting interactive updates for up to 10,000 lines.",
+      "abstract": "Density plots effectively summarize large numbers of points, which would otherwise lead to severe overplotting in, for example, a scatter plot. However, when applied to line-based datasets, such as trajectories or time series, density plots alone are insufficient, as they disrupt path continuity, obscuring smooth trends and rare anomalies. We propose a bin-based illumination model that decouples structure from density to enhance flow and reveal sparse outliers while preserving the original colormap. We introduce a bin-based outlierness metric to rank trajectories. Guided by this ranking, we construct a structural normal map and apply locally-adaptive lighting in the luminance channel to highlight chosen patterns -- from dominant trends to atypical paths -- with acceptable color distortion. Our interactive method enables analysts to prioritize main trends, focus on outliers, or strike a balance between the two. We demonstrate our method on several real-world datasets, showing it reveals details missed by simpler alternatives, achieves significantly lower CIEDE2000 color distortion than standard shading, and supports interactive updates for up to 10,000 lines.",
+      "authors": [
+        {
+          "name": "Bin Chen",
+          "orgs": [
+            "Microsoft Research"
+          ]
+        },
+        {
+          "name": "Oliver Deussen",
+          "orgs": [
+            "Max Planck Institute for Informatics"
+          ]
+        },
+        {
+          "name": "Yunhai Wang",
+          "orgs": [
+            "University of Tokyo"
+          ]
+        },
+        {
+          "name": "Christophe Hurter",
+          "orgs": [
+            "ETH Zurich"
+          ]
+        },
+        {
+          "name": "Yumeng Xue",
+          "orgs": [
+            "University of Science and Technology of China",
+            "Microsoft Research"
+          ]
+        },
+        {
+          "name": "Patrick Paetzold",
+          "orgs": [
+            "University of Stuttgart",
+            "Microsoft Research"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.16017v1",
+      "date": "2025-12-17",
+      "citation_count": 0,
+      "categories": [
+        "cs.GR"
+      ]
+    },
+    {
+      "arxiv_id": "2402.10055",
+      "score": 10.074621,
+      "title": "Robust semi-automatic vessel tracing in the human retinal image by an instance segmentation neural network",
+      "tldr": "This paper addresses the challenge of retinal vessel tracing in fundus images, aiming to quantify vascular morphology for disease analysis; it introduces an instance segmentation neural network (InSegNN) with temporal learning, spatial multi-sampling, and dynamic probability map strategies, achieving 83% specificity and 50% improvement in Symmetric Best Dice compared to literature; the method enables accurate tracing of individual vascular trees and preserves hierarchy information for further morphological studies.",
+      "abstract": "The morphology and hierarchy of the vascular systems are essential for perfusion in supporting metabolism. In human retina, one of the most energy-demanding organs, retinal circulation nourishes the entire inner retina by an intricate vasculature emerging and remerging at the optic nerve head (ONH). Thus, tracing the vascular branching from ONH through the vascular tree can illustrate vascular hierarchy and allow detailed morphological quantification, and yet remains a challenging task. Here, we presented a novel approach for a robust semi-automatic vessel tracing algorithm on human fundus images by an instance segmentation neural network (InSegNN). Distinct from semantic segmentation, InSegNN separates and labels different vascular trees individually and therefore enable tracing each tree throughout its branching. We have built-in three strategies to improve robustness and accuracy with temporal learning, spatial multi-sampling, and dynamic probability map. We achieved 83% specificity, and 50% improvement in Symmetric Best Dice (SBD) compared to literature, and outperformed baseline U-net. We have demonstrated tracing individual vessel trees from fundus images, and simultaneously retain the vessel hierarchy information. InSegNN paves a way for any subsequent morphological analysis of vascular morphology in relation to retinal diseases.",
+      "authors": [
+        {
+          "name": "Siyi Chen",
+          "orgs": [
+            "Department of Biomedical Engineering, Johns Hopkins University, Baltimore MD, 21231"
+          ]
+        },
+        {
+          "name": "Amir H. Kashani",
+          "orgs": [
+            "Department of Ophthalmology, Johns Hopkins University, School of Medicine, Baltimore MD, 21231"
+          ]
+        },
+        {
+          "name": "Ji Yi",
+          "orgs": [
+            "Department of Biomedical Engineering, Johns Hopkins University, Baltimore MD, 21231",
+            "Department of Ophthalmology, Johns Hopkins University, School of Medicine, Baltimore MD, 21231"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2402.10055v1",
+      "date": "2024-02-15T16:25:28Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "2211.12555",
+      "score": 10.06398,
+      "title": "An Origin Story for Amplitudes",
+      "tldr": "This paper investigates origin limits of maximally helicity violating multi-gluon scattering amplitudes in planar $\\mathcal{N}=4$ super-Yang-Mills theory, addressing the simplification of amplitudes in specific kinematic regions and their relation to cluster algebras; it uses perturbative data and thermodynamic Bethe ansatz to conjecture exact expressions for up to 8 gluons, showing amplitudes as exponentials of quadratic polynomials in logarithms; findings suggest a master formula organizing QL behavior via discrete sums over tilt angles, with implications for understanding amplitudes across coupling regimes.",
+      "abstract": "We classify origin limits of maximally helicity violating multi-gluon scattering amplitudes in planar $\\mathcal{N}=4$ super-Yang-Mills theory, where a large number of cross ratios approach zero, with the help of cluster algebras. By analyzing existing perturbative data, and bootstrapping new data, we provide evidence that the amplitudes become the exponential of a quadratic polynomial in the large logarithms. With additional input from the thermodynamic Bethe ansatz at strong coupling, we conjecture exact expressions for amplitudes with up to 8 gluons in all origin limits. Our expressions are governed by the tilted cusp anomalous dimension evaluated at various values of the tilt angle.",
+      "authors": [
+        {
+          "name": "Benjamin Basso",
+          "orgs": [
+            "Laboratoire de Physique de l’Ecole Normale Supérieure",
+            "ENS",
+            "Université PSL",
+            "CNRS",
+            "Sorbonne Université",
+            "Université Paris Cité"
+          ]
+        },
+        {
+          "name": "Lance J. Dixon",
+          "orgs": [
+            "SLAC National Accelerator Laboratory",
+            "Stanford University"
+          ]
+        },
+        {
+          "name": "Yu-Ting Liu",
+          "orgs": [
+            "SLAC National Accelerator Laboratory",
+            "Stanford University",
+            "Kavli Institute for Theoretical Physics",
+            "UC Santa Barbara"
+          ]
+        },
+        {
+          "name": "Georgios Papathanasiou",
+          "orgs": [
+            "Deutsches Elektronen-Synchrotron DESY"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2211.12555v2",
+      "date": "2022-11-22T20:07:47Z",
+      "citation_count": 5,
+      "categories": [
+        "hep-th"
+      ]
+    },
+    {
+      "arxiv_id": "2509.03985",
+      "score": 10.03157,
+      "title": "NeuroBreak: Unveil Internal Jailbreak Mechanisms in Large Language Models",
+      "tldr": "This paper addresses the challenge of understanding and mitigating jailbreak attacks in large language models by introducing NeuroBreak, a visual analytics system that analyzes neuron-level safety mechanisms and identifies critical vulnerabilities, offering insights into the functional roles of neurons and their contributions to harmful outputs.",
+      "abstract": "In deployment and application, large language models (LLMs) typically undergo safety alignment to prevent illegal and unethical outputs. However, the continuous advancement of jailbreak attack techniques, designed to bypass safety mechanisms with adversarial prompts, has placed increasing pressure on the security defenses of LLMs. Strengthening resistance to jailbreak attacks requires an in-depth understanding of the security mechanisms and vulnerabilities of LLMs. However, the vast number of parameters and complex structure of LLMs make analyzing security weaknesses from an internal perspective a challenging task. This paper presents NeuroBreak, a top-down jailbreak analysis system designed to analyze neuron-level safety mechanisms and mitigate vulnerabilities. We carefully design system requirements through collaboration with three experts in the field of AI security. The system provides a comprehensive analysis of various jailbreak attack methods. By incorporating layer-wise representation probing analysis, NeuroBreak offers a novel perspective on the model's decision-making process throughout its generation steps. Furthermore, the system supports the analysis of critical neurons from both semantic and functional perspectives, facilitating a deeper exploration of security mechanisms. We conduct quantitative evaluations and case studies to verify the effectiveness of our system, offering mechanistic insights for developing next-generation defense strategies against evolving jailbreak attacks.",
+      "authors": [
+        {
+          "name": "Chuhan Zhang",
+          "orgs": []
+        },
+        {
+          "name": "Ye Zhang",
+          "orgs": []
+        },
+        {
+          "name": "Bowen Shi",
+          "orgs": []
+        },
+        {
+          "name": "Yuyou Gan",
+          "orgs": []
+        },
+        {
+          "name": "Tianyu Du",
+          "orgs": []
+        },
+        {
+          "name": "Shouling Ji",
+          "orgs": []
+        },
+        {
+          "name": "Dazhan Deng",
+          "orgs": []
+        },
+        {
+          "name": "Yingcai Wu",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2509.03985v1",
+      "date": "2025-09-04T08:12:06Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CR"
+      ]
+    },
+    {
+      "arxiv_id": "2305.01837",
+      "score": 10.016648,
+      "title": "LineFormer: Rethinking Line Chart Data Extraction as Instance Segmentation",
+      "tldr": "This paper addresses the challenge of line chart data extraction, aiming to improve accuracy in handling visual and structural variations in multi-line graphs, which is critical for automated document understanding; it proposes LineFormer, a method that reformulates the task as instance segmentation, achieving state-of-the-art performance on benchmark datasets; empirical results show significant improvements over previous methods, particularly on real chart datasets.",
+      "abstract": "Data extraction from line-chart images is an essential component of the automated document understanding process, as line charts are a ubiquitous data visualization format. However, the amount of visual and structural variations in multi-line graphs makes them particularly challenging for automated parsing. Existing works, however, are not robust to all these variations, either taking an all-chart unified approach or relying on auxiliary information such as legends for line data extraction. In this work, we propose LineFormer, a robust approach to line data extraction using instance segmentation. We achieve state-of-the-art performance on several benchmark synthetic and real chart datasets. Our implementation is available at https://github.com/TheJaeLal/LineFormer .",
+      "authors": [
+        {
+          "name": "Jay Lal",
+          "orgs": []
+        },
+        {
+          "name": "Aditya Mitkari",
+          "orgs": []
+        },
+        {
+          "name": "Mahesh Bhosale",
+          "orgs": []
+        },
+        {
+          "name": "David Doermann",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2305.01837v1",
+      "date": "2023-05-03T00:38:24Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2604.08959",
+      "score": 10.016437,
+      "title": "How Do LLMs See Charts? A Comparative Study on High-Level Visualization Comprehension in Humans and LLMs",
+      "tldr": "This paper investigates high-level visualization comprehension strategies in humans and LLMs, addressing the gap in understanding how LLMs interpret charts compared to human intuition, by analyzing 60 visualizations across three chart types and varying prompt constraints, revealing LLMs consistently prioritize structural enumeration while humans synthesize trends, with implications for visualization design and collaborative analytics.",
+      "abstract": "Designers often create visualizations to achieve specific high-level analytical or communication goals. These goals require people to extract complex and interconnected data patterns. Prior perceptual studies of visualization effectiveness have focused on low-level tasks, such as estimating statistical quantities, and have recently explored high-level comprehension of visualization. Despite the growing use of Large Language Models (LLMs) as visualization interpreters, how their interpretations relate to human understanding or what reasoning processes underlie their responses remains insufficiently understood. In this work, we explore LLMs' visualization comprehension, examining the alignment between designers' communicative goals and what their audience sees in a visualization. We have conducted a qualitative study to investigate the gap between human interpretative strategies and the reasoning pathways of LLMs across three types of visualizations, line graphs, bar graphs, and scatterplots, to identify the high-level patterns generated by LLMs using three prompt conditions. Our analysis results indicate that LLMs exhibit a consistent interpretative strategy that remains unchanged across prompt constraints. Furthermore, we observe two distinct approaches: humans naturally synthesize data into trend-centric narratives, whereas LLMs persist with a structural enumeration of comparisons and numerical ranges. Lastly, we see LLMs achieve visualization comprehension through mechanisms distinct from human intuition, pointing to critical challenges and new opportunities for visualization design.",
+      "authors": [
+        {
+          "name": "Hyotaek Jeon",
+          "orgs": [
+            "Pohang University of Science and Technology (POSTECH)",
+            "Republic of Korea"
+          ]
+        },
+        {
+          "name": "Hyunwook Lee",
+          "orgs": [
+            "Pohang University of Science and Technology (POSTECH)",
+            "Republic of Korea",
+            "Soongsil University",
+            "Republic of Korea"
+          ]
+        },
+        {
+          "name": "Minjeong Shin",
+          "orgs": [
+            "Pohang University of Science and Technology (POSTECH)",
+            "Republic of Korea",
+            "Australian National University",
+            "Australia"
+          ]
+        },
+        {
+          "name": "Tapendra Pandey",
+          "orgs": [
+            "University of Oklahoma, USA"
+          ]
+        },
+        {
+          "name": "Joohee Kim",
+          "orgs": [
+            "Ulsan National Institute of Science and Technology (UNIST), Republic of Korea"
+          ]
+        },
+        {
+          "name": "Shinwook Seon",
+          "orgs": [
+            "Pohang University of Science and Technology (POSTECH), Republic of Korea"
+          ]
+        },
+        {
+          "name": "Daeun Jeong",
+          "orgs": [
+            "Pohang University of Science and Technology (POSTECH)",
+            "Republic of Korea"
+          ]
+        },
+        {
+          "name": "Sungahn Ko",
+          "orgs": [
+            "Pohang University of Science and Technology (POSTECH)",
+            "Republic of Korea"
+          ]
+        },
+        {
+          "name": "Ghulam Jilani Quadri",
+          "orgs": [
+            "University of Oklahoma",
+            "USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2604.08959v1",
+      "date": "2026-04-10",
+      "citation_count": 0,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2510.04514",
+      "score": 9.947773,
+      "title": "ChartAgent: A Multimodal Agent for Visually Grounded Reasoning in Complex Chart Question Answering",
+      "tldr": "This paper introduces ChartAgent, a novel agentic framework for chart visual question answering that addresses the challenge of unannotated charts by using visual reasoning and specialized tools, achieving state-of-the-art accuracy with 16.07% absolute gain overall and 17.31% on numeric queries, and demonstrating effectiveness across diverse chart types and reasoning complexities.",
+      "abstract": "Recent multimodal LLMs have shown promise in chart-based visual question answering, but their performance declines sharply on unannotated charts-those requiring precise visual interpretation rather than relying on textual shortcuts. To address this, we introduce ChartAgent, a novel agentic framework that explicitly performs visual reasoning directly within the chart's spatial domain. Unlike textual chain-of-thought reasoning, ChartAgent iteratively decomposes queries into visual subtasks and actively manipulates and interacts with chart images through specialized actions such as drawing annotations, cropping regions (e.g., segmenting pie slices, isolating bars), and localizing axes, using a library of chart-specific vision tools to fulfill each subtask. This iterative reasoning process closely mirrors human cognitive strategies for chart comprehension. ChartAgent achieves state-of-the-art accuracy on the ChartBench and ChartX benchmarks, surpassing prior methods by up to 16.07% absolute gain overall and 17.31% on unannotated, numerically intensive queries. Furthermore, our analyses show that ChartAgent is (a) effective across diverse chart types, (b) achieves the highest scores across varying visual and reasoning complexity levels, and (c) serves as a plug-and-play framework that boosts performance across diverse underlying LLMs. Our work is among the first to demonstrate visually grounded reasoning for chart understanding using tool-augmented multimodal agents.",
+      "authors": [
+        {
+          "name": "Rachneet Kaur",
+          "orgs": [
+            "J.P. Morgan AI Research"
+          ]
+        },
+        {
+          "name": "Nishan Srishankar",
+          "orgs": [
+            "J.P. Morgan AI Research"
+          ]
+        },
+        {
+          "name": "Zhen Zeng",
+          "orgs": [
+            "J.P. Morgan AI Research"
+          ]
+        },
+        {
+          "name": "Sumitra Ganesh",
+          "orgs": [
+            "J.P. Morgan AI Research"
+          ]
+        },
+        {
+          "name": "Manuela Veloso",
+          "orgs": [
+            "J.P. Morgan AI Research"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2510.04514v2",
+      "date": "2025-10-06",
+      "citation_count": 1,
+      "categories": [
+        "cs.AI",
+        "cs.CE",
+        "cs.CL",
+        "cs.CV",
+        "stat.ME"
+      ]
+    },
+    {
+      "arxiv_id": "2304.05532",
+      "score": 5.879506,
+      "title": "Distinguishing surface-links with 4-charts with 2 crossings and 8 black vertices",
+      "tldr": "This paper investigates surface-links using 4-charts with 2 crossings and 8 black vertices, addressing the question of whether charts in the second class represent distinct surface-links; it employs quandle colorings to show that charts T₀, T₁, T₃, T₅,... and T₀*, T₁*, T₃*, T₅*,... are not C-move equivalent; the findings imply distinct surface-link structures based on these charts.",
+      "abstract": "Charts are oriented labeled graphs in a disk. Any simple surface braid (2-dimensional braid) can be described by using a chart. Also, a chart represents an oriented closed surface (called a surface-link) embedded in 4-space. In this paper, we investigate surface-links by using charts. In [11], [12], we gave an enumeration of the charts with two crossings. In particular, there are two classes for 4-charts with 2 crossings and 8 black vertices. The first class represents surface-links each of which is connected. The second class represents surface-links each of which is exactly two connected components. In this paper, by using quandle colorings, we shall show that the charts in the second class represent different surface-links.",
+      "authors": [
+        {
+          "name": "Teruo Nagase",
+          "orgs": []
+        },
+        {
+          "name": "Akiko Shima",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2304.05532v2",
+      "date": "2023-04-11T23:18:07Z",
+      "citation_count": 0,
+      "categories": [
+        "math.GT"
+      ]
+    }
+  ]
+}

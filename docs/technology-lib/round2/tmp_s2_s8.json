@@ -1,0 +1,852 @@
+{
+  "status": "success",
+  "total_count": 68,
+  "result": [
+    {
+      "arxiv_id": "2308.01971",
+      "score": 11.998231,
+      "title": "SpaDen : Sparse and Dense Keypoint Estimation for Real-World Chart Understanding",
+      "tldr": "This paper addresses the challenge of real-world chart data extraction by introducing SpaDen, a model that combines sparse and dense keypoint estimation with self-attention and deep metric learning to segment and reconstruct chart components, achieving improved accuracy through post-processing thresholds and extensive experimental evaluation.",
+      "abstract": "We introduce a novel bottom-up approach for the extraction of chart data. Our model utilizes images of charts as inputs and learns to detect keypoints (KP), which are used to reconstruct the components within the plot area. Our novelty lies in detecting a fusion of continuous and discrete KP as predicted heatmaps. A combination of sparse and dense per-pixel objectives coupled with a uni-modal self-attention-based feature-fusion layer is applied to learn KP embeddings. Further leveraging deep metric learning for unsupervised clustering, allows us to segment the chart plot area into various objects. By further matching the chart components to the legend, we are able to obtain the data series names. A post-processing threshold is applied to the KP embeddings to refine the object reconstructions and improve accuracy. Our extensive experiments include an evaluation of different modules for KP estimation and the combination of deep layer aggregation and corner pooling approaches. The results of our experiments provide extensive evaluation for the task of real-world chart data extraction.",
+      "authors": [
+        {
+          "name": "Saleem Ahmed",
+          "orgs": []
+        },
+        {
+          "name": "Pengyu Yan",
+          "orgs": []
+        },
+        {
+          "name": "David Doermann",
+          "orgs": []
+        },
+        {
+          "name": "Srirangaraj Setlur",
+          "orgs": []
+        },
+        {
+          "name": "Venu Govindaraju",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2308.01971v1",
+      "date": "2023-08-03T18:03:42Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2010.02319",
+      "score": 11.995882,
+      "title": "Tensor Fields for Data Extraction from Chart Images: Bar Charts and Scatter Plots",
+      "tldr": "This paper addresses the challenge of data extraction from bar charts and scatter plots by proposing a computational model using positive semidefinite second-order tensor fields, contributing a method for degenerate point extraction to automate levels A1 and A2 of Kimura's statistical ability scheme, showing tensor voting effectively extracts data with high accuracy for these chart types.",
+      "abstract": "Charts are an essential part of both graphicacy (graphical literacy), and statistical literacy. As chart understanding has become increasingly relevant in data science, automating chart analysis by processing raster images of the charts has become a significant problem. Automated chart reading involves data extraction and contextual understanding of the data from chart images. In this paper, we perform the first step of determining the computational model of chart images for data extraction for selected chart types, namely, bar charts, and scatter plots. We demonstrate the use of positive semidefinite second-order tensor fields as an effective model. We identify an appropriate tensor field as the model and propose a methodology for the use of its degenerate point extraction for data extraction from chart images. Our results show that tensor voting is effective for data extraction from bar charts and scatter plots, and histograms, as a special case of bar charts.",
+      "authors": [
+        {
+          "name": "Jaya Sreevalsan-Nair",
+          "orgs": [
+            "Graphics-Visualization-Computing Lab",
+            "International Institute of Information Technology Bangalore",
+            "Karnataka 560100, India"
+          ]
+        },
+        {
+          "name": "Komal Dadhich",
+          "orgs": [
+            "Graphics-Visualization-Computing Lab",
+            "International Institute of Information Technology Bangalore",
+            "Karnataka 560100, India"
+          ]
+        },
+        {
+          "name": "Siri Chandana Daggubati",
+          "orgs": [
+            "Graphics-Visualization-Computing Lab",
+            "International Institute of Information Technology Bangalore",
+            "Karnataka 560100, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2010.02319v1",
+      "date": "2020-10-05T20:19:40Z",
+      "citation_count": 12,
+      "categories": [
+        "cs.CV",
+        "cs.GR",
+        "cs.NA",
+        "math.NA"
+      ]
+    },
+    {
+      "arxiv_id": "2307.12213",
+      "score": 11.561413,
+      "title": "LiveRetro: Visual Analytics for Strategic Retrospect in Livestream E-Commerce",
+      "tldr": "This paper presents LiveRetro, a visual analytics system for strategic retrospect in livestream e-commerce, addressing the challenge of analyzing the interdependence between live performance and feedback; it introduces enhanced visualization and time-series forecasting models, offering a novel approach to joint analysis of multimodal data and synchronous feedback; empirical case studies demonstrate its effectiveness in providing deep insights into the relationship between live performance and streaming statistics, enabling efficient strategic analysis.",
+      "abstract": "Livestream e-commerce integrates live streaming and online shopping, allowing viewers to make purchases while watching. However, effective marketing strategies remain a challenge due to limited empirical research and subjective biases from the absence of quantitative data. Current tools fail to capture the interdependence between live performances and feedback. This study identified computational features, formulated design requirements, and developed LiveRetro, an interactive visual analytics system. It enables comprehensive retrospective analysis of livestream e-commerce for streamers, viewers, and merchandise. LiveRetro employs enhanced visualization and time-series forecasting models to align performance features and feedback, identifying influences at channel, merchandise, feature, and segment levels. Through case studies and expert interviews, the system provides deep insights into the relationship between live performance and streaming statistics, enabling efficient strategic analysis from multiple perspectives.",
+      "authors": [
+        {
+          "name": "Yuchen Wu",
+          "orgs": []
+        },
+        {
+          "name": "Yuansong Xu",
+          "orgs": []
+        },
+        {
+          "name": "Shenghan Gao",
+          "orgs": []
+        },
+        {
+          "name": "Xingbo Wang",
+          "orgs": []
+        },
+        {
+          "name": "Wenkai Song",
+          "orgs": []
+        },
+        {
+          "name": "Zhiheng Nie",
+          "orgs": []
+        },
+        {
+          "name": "Xiaomeng Fan",
+          "orgs": []
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Quan Li",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2307.12213v2",
+      "date": "2023-07-23T03:10:05Z",
+      "citation_count": 11,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2311.10234",
+      "score": 11.282388,
+      "title": "The Analysis and Extraction of Structure from Organizational Charts",
+      "tldr": "This paper presents an end-to-end approach for automatically extracting and analyzing organizational charts to improve business decision-making by converting them into structured tabular formats, introducing a novel evaluation metric for completeness and hierarchical accuracy, and providing an open-source implementation for further research.",
+      "abstract": "Organizational charts, also known as org charts, are critical representations of an organization's structure and the hierarchical relationships between its components and positions. However, manually extracting information from org charts can be error-prone and time-consuming. To solve this, we present an automated and end-to-end approach that uses computer vision, deep learning, and natural language processing techniques. Additionally, we propose a metric to evaluate the completeness and hierarchical accuracy of the extracted information. This approach has the potential to improve organizational restructuring and resource utilization by providing a clear and concise representation of the organizational structure. Our study lays a foundation for further research on the topic of hierarchical chart analysis.",
+      "authors": [
+        {
+          "name": "Nikhil Manali",
+          "orgs": [
+            "Department of Computer Science and Engineering, University at Buffalo"
+          ]
+        },
+        {
+          "name": "David Doermann",
+          "orgs": [
+            "Department of Computer Science and Engineering, University at Buffalo"
+          ]
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Mahesh Desai",
+          "orgs": [
+            "Department of Computer Science and Engineering, University at Buffalo"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2311.10234v1",
+      "date": "2023-11-16T23:49:05Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2206.05539",
+      "score": 10.857552,
+      "title": "A Simplified Un-Supervised Learning Based Approach for Ink Mismatch Detection in Handwritten Hyper-Spectral Document Images",
+      "tldr": "This paper addresses ink mismatch detection in hyper-spectral document images, aiming to identify different but visually similar inks without prior knowledge, which is crucial for early forgery detection; it uses an unsupervised learning approach and achieves comparable results to existing state-of-the-art methods on the iVision HHID dataset; the findings suggest the method is effective for practical applications in document analysis.",
+      "abstract": "Hyper-spectral imaging has become the latest trend in the field of optical imaging systems. Among various other applications, hyper-spectral imaging has been widely used for analysis of printed and handwritten documents. This paper proposes an efficient technique for estimating the number of different but visibly similar inks present in a Hyper spectral Document Image. Our approach is based on un-supervised learning and does not require any prior knowledge of the dataset. The algorithm was tested on the iVision HHID dataset and has achieved comparable results with the state of the algorithms present in the literature. This work can prove to be effective when employed during the early stages of forgery detection in Hyper-spectral Document Images.",
+      "authors": [
+        {
+          "name": "M. Farhan Humayun",
+          "orgs": [
+            "Department of Electrical Engineering",
+            "Institute of Space Technology",
+            "Islamabad, Pakistan"
+          ]
+        },
+        {
+          "name": "H. Waseem Malik",
+          "orgs": [
+            "Department of Electrical Engineering",
+            "Institute of Space Technology",
+            "Islamabad, Pakistan"
+          ]
+        },
+        {
+          "name": "A. Ahsan Alvi",
+          "orgs": [
+            "Department of Electrical Engineering",
+            "Institute of Space Technology",
+            "Islamabad, Pakistan"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2206.05539v1",
+      "date": "2022-06-11T14:38:25Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2007.01142",
+      "score": 10.839693,
+      "title": "Automatic Page Segmentation Without Decompressing the Run-Length Compressed Text Documents",
+      "tldr": "This paper addresses the challenge of automatic page segmentation in run-length compressed text documents, proposing a method that identifies and toggles inverted text regions and employs incremental white space analysis for column separation, contributing to efficient processing without decompression, achieving accurate segmentation in compressed data with potential applications in document analysis and OCR.",
+      "abstract": "Page segmentation is considered to be the crucial stage for the automatic analysis of documents with complex layouts. This has traditionally been carried out in uncompressed documents, although most of the documents in real life exist in a compressed form warranted by the requirement to make storage and transfer efficient. However, carrying out page segmentation directly in compressed documents without going through the stage of decompression is a challenging goal. This research paper proposes demonstrating the possibility of carrying out a page segmentation operation directly in the run-length data of the CCITT Group-3 compressed text document, which could be single- or multi-columned and might even have some text regions in the inverted text color mode. Therefore, before carrying out the segmentation of the text document into columns, each column into paragraphs, each paragraph into text lines, each line into words, and, finally, each word into characters, a pre-processing of the text document needs to be carried out. The pre-processing stage identifies the normal text regions and inverted text regions, and the inverted text regions are toggled to the normal mode. In the sequel to initiate column separation, a new strategy of incremental assimilation of white space runs in the vertical direction and the auto-estimation of certain related parameters is proposed. A procedure to realize column-segmentation employing these extracted parameters has been devised. Subsequently, what follows first is a two-level horizontal row separation process, which segments every column into paragraphs, and in turn, into text-lines. Then, there is a two-level vertical column separation process, which completes the separation into words and characters.",
+      "authors": [
+        {
+          "name": "Mohammed Javed",
+          "orgs": [
+            "Department of IT, Indian Institute of Information Technology, Allahabad, India-211015"
+          ]
+        },
+        {
+          "name": "P. Nagabhushan",
+          "orgs": [
+            "Department of IT, Indian Institute of Information Technology, Allahabad, India-211015"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2007.01142v1",
+      "date": "2020-07-02T14:29:35Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2602.09337",
+      "score": 10.738869,
+      "title": "Kyrtos: A methodology for automatic deep analysis of graphic charts with curves in technical documents",
+      "tldr": "This paper presents a methodology for automatic deep analysis of graphic charts with curves in technical documents, addressing the gap in accurate curve recognition and semantic understanding by using clustering-based processing and attributed graphs to capture structural and behavioral features, contributing a novel framework for converting chart information into SPN graphs with high structural similarity accuracy.",
+      "abstract": "Deep Understanding of Technical Documents (DUTD) has become a very attractive field with great potential due to large amounts of accumulated documents and the valuable knowledge contained in them. In addition, the holistic understanding of technical documents depends on the accurate analysis of its particular modalities, such as graphics, tables, diagrams, text, etc. and their associations. In this paper, we introduce the Kyrtos methodology for the automatic recognition and analysis of charts with curves in graphics images of technical documents. The recognition processing part adopts a clustering based approach to recognize middle-points that delimit the line-segments that construct the illustrated curves. The analysis processing part parses the extracted line-segments of curves to capture behavioral features such as direction, trend and etc. These associations assist the conversion of recognized segments' relations into attributed graphs, for the preservation of the curves' structural characteristics. The graph relations are also are expressed into natural language (NL) text sentences, enriching the document's text and facilitating their conversion into Stochastic Petri-net (SPN) graphs, which depict the internal functionality represented in the chart image. Extensive evaluation results demonstrate the accuracy of Kyrtos' recognition and analysis methods by measuring the structural similarity between input chart curves and the approximations generated by Kyrtos for charts with multiple functions.",
+      "authors": [
+        {
+          "name": "Michail S. Alexiou",
+          "orgs": [
+            "Kennesaw State University"
+          ]
+        },
+        {
+          "name": "Nikolaos G. Bourbakis",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.09337v1",
+      "date": "2026-02-10",
+      "citation_count": 2,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2505.19360",
+      "score": 10.710435,
+      "title": "ChartLens: Fine-grained Visual Attribution in Charts",
+      "tldr": "This paper addresses the challenge of hallucinations in multimodal large language models by introducing Post-Hoc Fine-grained Visual Attribution for Charts, proposing ChartLens and ChartVA-Eval, which improve fine-grained attributions by 26-66% and provide a benchmark for evaluating chart attribution systems.",
+      "abstract": "The growing capabilities of multimodal large language models (MLLMs) have advanced tasks like chart understanding. However, these models often suffer from hallucinations, where generated text sequences conflict with the provided visual data. To address this, we introduce Post-Hoc Visual Attribution for Charts, which identifies fine-grained chart elements that validate a given chart-associated response. We propose ChartLens, a novel chart attribution algorithm that uses segmentation-based techniques to identify chart objects and employs set-of-marks prompting with MLLMs for fine-grained visual attribution. Additionally, we present ChartVA-Eval, a benchmark with synthetic and real-world charts from diverse domains like finance, policy, and economics, featuring fine-grained attribution annotations. Our evaluations show that ChartLens improves fine-grained attributions by 26-66%.",
+      "authors": [
+        {
+          "name": "Manan Suri",
+          "orgs": [
+            "University of Maryland, College Park",
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Puneet Mathur",
+          "orgs": [
+            "University of Maryland, College Park",
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Nedim Lipka",
+          "orgs": [
+            "University of Maryland, College Park",
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Franck Dernoncourt",
+          "orgs": [
+            "University of Maryland, College Park",
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Ryan A. Rossi",
+          "orgs": [
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Dinesh Manocha",
+          "orgs": [
+            "University of Maryland, College Park"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2505.19360v1",
+      "date": "2025-05-25T23:17:32Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2009.01375",
+      "score": 10.627465,
+      "title": "Angular Clustering of Millimeter-Wave Propagation Channels with Watershed Transformation",
+      "tldr": "This paper proposes an angular clustering method using watershed transformation for millimeter-wave propagation channels, addressing the need for unsupervised clustering that preserves cluster shapes in 2D power angular spectrum maps, outperforming K-Power-Means in accuracy and computational efficiency, and demonstrating effectiveness through simulations with IEEE 802.11ad and measurements at 60 GHz.",
+      "abstract": "An angular clustering method based on image processing is proposed in this paper. It is used to identify clusters in 2D representations of propagation channels. The approach uses operations such as watershed segmentation and is particularly well suited for clustering directional channels obtained by beam-steering at millimeter-wave. This situation occurs for instance with electronic beam-steering using analog antenna arrays during beam training process or during channel modeling measurements using either electronic or mechanical beam-steering. In particular, the proposed technique is used here to cluster two-dimensional power angular spectrum maps. The proposed clustering is unsupervised and is well suited to preserve the shape of clusters by considering the angular connection between neighbor samples, which is useful to obtain more accurate descriptions of channel angular properties. The approach is found to outperform approaches based on K-Power- Means in terms of accuracy as well as computational resource . The technique is assessed in simulation using IEEE 802.11ad channel model and in measurement using experiments conducted at 60 GHz in an indoor environment.",
+      "authors": [],
+      "url": "https://arxiv.org/pdf/2009.01375v2",
+      "date": "2020-09-02T22:52:16Z",
+      "citation_count": 5,
+      "categories": [
+        "eess.SP"
+      ]
+    },
+    {
+      "arxiv_id": "1602.02434",
+      "score": 10.588397,
+      "title": "Screen Content Image Segmentation Using Sparse Decomposition and Total Variation Minimization",
+      "tldr": "This paper addresses background-foreground segmentation in screen content images, proposing a sparse decomposition method with total variation minimization to overcome limitations of prior techniques, contributing a framework that enforces sparsity and connectivity in foreground pixels, and demonstrating superior performance over existing methods on HEVC test sequences.",
+      "abstract": "Sparse decomposition has been widely used for different applications, such as source separation, image classification, image denoising and more. This paper presents a new algorithm for segmentation of an image into background and foreground text and graphics using sparse decomposition and total variation minimization. The proposed method is designed based on the assumption that the background part of the image is smoothly varying and can be represented by a linear combination of a few smoothly varying basis functions, while the foreground text and graphics can be modeled with a sparse component overlaid on the smooth background. The background and foreground are separated using a sparse decomposition framework regularized with a few suitable regularization terms which promotes the sparsity and connectivity of foreground pixels. This algorithm has been tested on a dataset of images extracted from HEVC standard test sequences for screen content coding, and is shown to have superior performance over some prior methods, including least absolute deviation fitting, k-means clustering based segmentation in DjVu and shape primitive extraction and coding (SPEC) algorithm.",
+      "authors": [
+        {
+          "name": "Shervin Minaee",
+          "orgs": []
+        },
+        {
+          "name": "Yao Wang",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1602.02434v2",
+      "date": "2016-02-07T22:12:16Z",
+      "citation_count": 18,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2302.07091",
+      "score": 10.552017,
+      "title": "An Innovative Method for Measuring Instrument Data Acquisition using Image Processing Techniques",
+      "tldr": "This paper proposes an innovative method for measuring instrument data acquisition using image processing techniques to extract measured values from instrument displays, addressing the challenge of data acquisition without direct cable connections; it employs Python libraries like OpenCV for contour detection and thresholding, contributing a generalized approach applicable to various instruments; experimental results demonstrate its effectiveness in capturing the magnetic field of a permanent magnet with a webcam, offering a flexible, cost-effective solution for data acquisition.",
+      "abstract": "Measuring instruments are vital for obtaining accurate data in various fields, including scientific research, engineering, and manufacturing. However, data acquisition can be challenging, particularly when direct cable connections are not feasible or difficult to establish. In this paper, we propose a novel method for measuring instrument data acquisition utilizing a camera to capture the instrument display and image processing techniques to extract the measured values. Our method combines computer vision and machine learning techniques to recognize and extract numerical values from the instrument display. We demonstrate the effectiveness and accuracy of this approach by applying it to capture the magnetic field of a permanent magnet using a gauss meter and webcam. Our results indicate that the proposed method offers a practical and accurate solution for data acquisition in cases where direct cable connections are not possible. This method has potential applications in scientific research, engineering, and manufacturing industries.",
+      "authors": [
+        {
+          "name": "D. Shulman",
+          "orgs": [
+            "Department of Chemical Engineering, Ariel University, Ariel, Israel 407000",
+            "Physics Department, Ariel University, Ariel, Israel 407000"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2302.07091v3",
+      "date": "2023-02-13T16:29:05Z",
+      "citation_count": 0,
+      "categories": [
+        "physics.ed-ph"
+      ]
+    },
+    {
+      "arxiv_id": "2512.14040",
+      "score": 10.485192,
+      "title": "ChartAgent: A Chart Understanding Framework with Tool Integrated Reasoning",
+      "tldr": "This paper introduces ChartAgent, a chart understanding framework addressing the limitation of MLLMs in handling unannotated charts by using Tool-Integrated Reasoning to decompose tasks into observable steps and provide traceable evidence, achieving SOTA performance on chart QA tasks.",
+      "abstract": "With their high information density and intuitive readability, charts have become the de facto medium for data analysis and communication across disciplines. Recent multimodal large language models (MLLMs) have made notable progress in automated chart understanding, yet they remain heavily dependent on explicit textual annotations and the performance degrades markedly when key numerals are absent. To address this limitation, we introduce ChartAgent, a chart understanding framework grounded in Tool-Integrated Reasoning (TIR). Inspired by human cognition, ChartAgent decomposes complex chart analysis into a sequence of observable, replayable steps. Supporting this architecture is an extensible, modular tool library comprising more than a dozen core tools, such as keyelement detection, instance segmentation, and optical character recognition (OCR), which the agent dynamically orchestrates to achieve systematic visual parsing across diverse chart types. Leveraging TIRs transparency and verifiability, ChartAgent moves beyond the black box paradigm by standardizing and consolidating intermediate outputs into a structured Evidence Package, providing traceable and reproducible support for final conclusions. Experiments show that ChartAgent substantially improves robustness under sparse annotation settings, offering a practical path toward trustworthy and extensible systems for chart understanding.",
+      "authors": [
+        {
+          "name": "Xiang Li",
+          "orgs": [
+            "5"
+          ]
+        },
+        {
+          "name": "Jing Yuan",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Yi Chen",
+          "orgs": [
+            "234"
+          ]
+        },
+        {
+          "name": "Jian Xu",
+          "orgs": [
+            "23"
+          ]
+        },
+        {
+          "name": "Xinming Wang",
+          "orgs": [
+            "School of Computer Science, Fudan University"
+          ]
+        },
+        {
+          "name": "Boran Wang",
+          "orgs": [
+            "Department of Computer Science, Tsinghua University"
+          ]
+        },
+        {
+          "name": "Chenglin Liu",
+          "orgs": [
+            "School of Information Science and Engineering, Central South University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.14040v1",
+      "date": "2025-12-16",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2501.07320",
+      "score": 10.475402,
+      "title": "ChartEditor: A Human-AI Paired Tool for Authoring Pictorial Charts",
+      "tldr": "This paper introduces ChartEditor, a human-AI paired tool for creating pictorial charts that addresses the complexity and lack of design control in current methods, by combining natural language input and interactive refinement; it proposes the Chart Tree framework and a curated dataset with 59,693 annotated charts; user studies show improved usability and efficiency in generating accurate and visually appealing pictorial charts.",
+      "abstract": "Pictorial charts are favored for their memorability and visual appeal, offering a more engaging alternative to basic charts. However, their creation can be complex and time-consuming due to the lack of native support in popular visualization tools like Tableau. While AI-generated content (AIGC) tools have lowered the barrier to creating pictorial charts, they often lack precise design control. To address this issue, we introduce ChartEditor, a human-AI paired tool that transforms basic charts into pictorial versions based on user intent. ChartEditor decomposes chart images into visual components and organizes them within a hierarchical tree. Based on this tree, users can express their intent in natural language, which is then translated into modifications to the hierarchy. In addition, users can directly interact with and modify specific chart components via an intuitive interface to achieve fine-grained design control. A user study demonstrates the effectiveness and usability of ChartEditor in simplifying the creation of pictorial charts.",
+      "authors": [
+        {
+          "name": "Siyu Yan",
+          "orgs": []
+        },
+        {
+          "name": "Tiancheng Liu",
+          "orgs": []
+        },
+        {
+          "name": "Weikai Yang",
+          "orgs": []
+        },
+        {
+          "name": "Nan Tang",
+          "orgs": []
+        },
+        {
+          "name": "Yuyu Luo",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2501.07320v1",
+      "date": "2025-01-13T13:31:28Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "1712.01434",
+      "score": 10.453205,
+      "title": "Zone-based Keyword Spotting in Bangla and Devanagari Documents",
+      "tldr": "This paper presents a zone-based keyword spotting system for Bangla and Devanagari scripts, addressing the challenge of accurate word recognition in Indic scripts by using HMM for zone segmentation and combining foreground and background features, achieving significant performance improvement over traditional methods.",
+      "abstract": "In this paper we present a word spotting system in text lines for offline Indic scripts such as Bangla (Bengali) and Devanagari. Recently, it was shown that zone-wise recognition method improves the word recognition performance than conventional full word recognition system in Indic scripts. Inspired with this idea we consider the zone segmentation approach and use middle zone information to improve the traditional word spotting performance. To avoid the problem of zone segmentation using heuristic approach, we propose here an HMM based approach to segment the upper and lower zone components from the text line images. The candidate keywords are searched from a line without segmenting characters or words. Also, we propose a novel feature combining foreground and background information of text line images for keyword-spotting by character filler models. A significant improvement in performance is noted by using both foreground and background information than their individual one. Pyramid Histogram of Oriented Gradient (PHOG) feature has been used in our word spotting framework. From the experiment, it has been noted that the proposed zone-segmentation based system outperforms traditional approaches of word spotting.",
+      "authors": [
+        {
+          "name": "Ayan Kumar Bhunia",
+          "orgs": [
+            "Dept. of ECE, Institute of Engineering & Management, Kolkata, India"
+          ]
+        },
+        {
+          "name": "Partha Pratim Roy",
+          "orgs": [
+            "Dept. of CSE, Indian Institute of Technology Roorkee, India"
+          ]
+        },
+        {
+          "name": "Umapada Pal",
+          "orgs": [
+            "CVPR Unit, Indian Statistical Institute, Kolkata, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1712.01434v1",
+      "date": "2017-12-05T01:12:25Z",
+      "citation_count": 8,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2304.14630",
+      "score": 10.37798,
+      "title": "Let the Chart Spark: Embedding Semantic Context into Chart with Text-to-Image Generative Model",
+      "tldr": "This paper presents ChartSpark, a system that embeds semantic context into charts using a text-to-image generative model, addressing the limitation of retrieving-and-editing pipelines that compromise data integrity; it proposes a novel approach combining text analysis, editing, and evaluation modules for generating and modifying pictorial visualizations; experimental results demonstrate its usability and effectiveness in creating flexible and accurate visualizations.",
+      "abstract": "Pictorial visualization seamlessly integrates data and semantic context into visual representation, conveying complex information in a manner that is both engaging and informative. Extensive studies have been devoted to developing authoring tools to simplify the creation of pictorial visualizations. However, mainstream works mostly follow a retrieving-and-editing pipeline that heavily relies on retrieved visual elements from a dedicated corpus, which often compromise the data integrity. Text-guided generation methods are emerging, but may have limited applicability due to its predefined recognized entities. In this work, we propose ChartSpark, a novel system that embeds semantic context into chart based on text-to-image generative model. ChartSpark generates pictorial visualizations conditioned on both semantic context conveyed in textual inputs and data information embedded in plain charts. The method is generic for both foreground and background pictorial generation, satisfying the design practices identified from an empirical research into existing pictorial visualizations. We further develop an interactive visual interface that integrates a text analyzer, editing module, and evaluation module to enable users to generate, modify, and assess pictorial visualizations. We experimentally demonstrate the usability of our tool, and conclude with a discussion of the potential of using text-to-image generative model combined with interactive interface for visualization design.",
+      "authors": [
+        {
+          "name": "Shishi Xiao",
+          "orgs": []
+        },
+        {
+          "name": "Suizi Huang",
+          "orgs": []
+        },
+        {
+          "name": "Yue Lin",
+          "orgs": []
+        },
+        {
+          "name": "Yilin Ye",
+          "orgs": []
+        },
+        {
+          "name": "Wei Zeng",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2304.14630v2",
+      "date": "2023-04-28T05:18:30Z",
+      "citation_count": 50,
+      "categories": [
+        "cs.AI",
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "1607.02547",
+      "score": 10.372679,
+      "title": "Screen Content Image Segmentation Using Robust Regression and Sparse Decomposition",
+      "tldr": "This paper addresses the challenge of segmenting text and graphics from smooth backgrounds in screen content images, proposing robust regression and sparse decomposition methods to improve segmentation accuracy over existing approaches, with experimental results showing superior performance on HEVC test sequences.",
+      "abstract": "This paper considers how to separate text and/or graphics from smooth background in screen content and mixed document images and proposes two approaches to perform this segmentation task. The proposed methods make use of the fact that the background in each block is usually smoothly varying and can be modeled well by a linear combination of a few smoothly varying basis functions, while the foreground text and graphics create sharp discontinuity. The algorithms separate the background and foreground pixels by trying to fit background pixel values in the block into a smooth function using two different schemes. One is based on robust regression, where the inlier pixels will be considered as background, while remaining outlier pixels will be considered foreground. The second approach uses a sparse decomposition framework where the background and foreground layers are modeled with a smooth and sparse components respectively. These algorithms have been tested on images extracted from HEVC standard test sequences for screen content coding, and are shown to have superior performance over previous approaches. The proposed methods can be used in different applications such as text extraction, separate coding of background and foreground for compression of screen content, and medical image segmentation.",
+      "authors": [
+        {
+          "name": "Shervin Minaee",
+          "orgs": []
+        },
+        {
+          "name": "Yao Wang",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1607.02547v1",
+      "date": "2016-07-08T23:16:45Z",
+      "citation_count": 44,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1906.11470",
+      "score": 10.261672,
+      "title": "Automatically Extract the Semi-transparent Motion-blurred Hand from a Single Image",
+      "tldr": "This paper addresses the challenge of automatically extracting semi-transparent motion-blurred hands from single images, aiming to improve video editing and behavior analysis by eliminating the need for user interaction or additional data; it proposes a framework using Xception-based encoder-decoder networks for alpha matte and foreground prediction, contributing a novel method with promising performance on synthetic and real datasets.",
+      "abstract": "When we use video chat, video game, or other video applications, motion-blurred hands often appear. Accurately extracting these hands is very useful for video editing and behavior analysis. However, existing motion-blurred object extraction methods either need user interactions, such as user supplied trimaps and scribbles, or need additional information, such as background images. In this paper, a novel method which can automatically extract the semi-transparent motion-blurred hand just according to the original RGB image is proposed. The proposed method separates the extraction task into two subtasks: alpha matte prediction and foreground prediction. These two subtasks are implemented by Xception based encoder-decoder networks. The extracted motion-blurred hand images can be calculated by multiplying the predicted alpha mattes and foreground images. Experiments on synthetic and real datasets show that the proposed method has promising performance.",
+      "authors": [
+        {
+          "name": "Xiaomei Zhao",
+          "orgs": [
+            "National Laboratory of Pattern Recognition, Institute of Automation, Chinese Academy of Sciences, Beijing 100190, China",
+            "University of Chinese Academy of Sciences, Beijing, China"
+          ]
+        },
+        {
+          "name": "Yihong Wu",
+          "orgs": [
+            "National Laboratory of Pattern Recognition, Institute of Automation, Chinese Academy of Sciences, Beijing 100190, China",
+            "University of Chinese Academy of Sciences, Beijing, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1906.11470v1",
+      "date": "2019-06-27T07:32:53Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1611.07909",
+      "score": 10.232797,
+      "title": "Image Segmentation Using Overlapping Group Sparsity",
+      "tldr": "This paper proposes a sparse decomposition method for image segmentation into background and foreground text/graphics, addressing the limitations of prior methods by incorporating smoothness and connectivity priors, and demonstrates superior performance on a dataset of HEVC test images.",
+      "abstract": "Sparse decomposition has been widely used for different applications, such as source separation, image classification and image denoising. This paper presents a new algorithm for segmentation of an image into background and foreground text and graphics using sparse decomposition. First, the background is represented using a suitable smooth model, which is a linear combination of a few smoothly varying basis functions, and the foreground text and graphics are modeled as a sparse component overlaid on the smooth background. Then the background and foreground are separated using a sparse decomposition framework and imposing some prior information, which promote the smoothness of background, and the sparsity and connectivity of foreground pixels. This algorithm has been tested on a dataset of images extracted from HEVC standard test sequences for screen content coding, and is shown to outperform prior methods, including least absolute deviation fitting, k-means clustering based segmentation in DjVu, and shape primitive extraction and coding algorithm.",
+      "authors": [
+        {
+          "name": "Shervin Minaee",
+          "orgs": []
+        },
+        {
+          "name": "Yao Wang",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1611.07909v4",
+      "date": "2016-11-23T18:08:33Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1303.0633",
+      "score": 10.215263,
+      "title": "Omega Model for Human Detection and Counting for application in Smart Surveillance System",
+      "tldr": "This paper proposes the Omega Model for human detection and counting in smart surveillance systems, addressing the challenge of robust detection under varying conditions by using four descriptors to capture head, neck, and shoulder features; it introduces a weight-based decision system as its core novelty; experimental results show effective performance in real-world scenarios.",
+      "abstract": "Driven by the significant advancements in technology and social issues such as security management, there is a strong need for Smart Surveillance System in our society today. One of the key features of a Smart Surveillance System is efficient human detection and counting such that the system can decide and label events on its own. In this paper we propose a new, novel and robust model, The Omega Model, for detecting and counting human beings present in the scene. The proposed model employs a set of four distinct descriptors for identifying the unique features of the head, neck and shoulder regions of a person. This unique head neck shoulder signature given by the Omega Model exploits the challenges such as inter person variations in size and shape of peoples head, neck and shoulder regions to achieve robust detection of human beings even under partial occlusion, dynamically changing background and varying illumination conditions. After experimentation we observe and analyze the influences of each of the four descriptors on the system performance and computation speed and conclude that a weight based decision making system produces the best results. Evaluation results on a number of images indicate the validation of our method in actual situation.",
+      "authors": [
+        {
+          "name": "Subra Mukherjee",
+          "orgs": [
+            "Assam Don Bosco University",
+            "Guwahati, India"
+          ]
+        },
+        {
+          "name": "Karen Das",
+          "orgs": [
+            "Assam Don Bosco University",
+            "Guwahati, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1303.0633v1",
+      "date": "2013-03-04T08:01:36Z",
+      "citation_count": 12,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2312.11146",
+      "score": 10.154271,
+      "title": "OsmLocator: locating overlapping scatter marks with a non-training generative perspective",
+      "tldr": "This paper addresses the challenge of locating overlapping marks in scatter images, which is critical for data mining and visual question answering, by proposing a non-training generative approach using clustering-based re-visualization and an adaptive simulated annealing method; it introduces OsmLocator, achieving a 0.3 absolute increase on an assignment-cost-based metric compared to state-of-the-art methods.",
+      "abstract": "Automated mark localization in scatter images, greatly helpful for discovering knowledge and understanding enormous document images and reasoning in visual question answering AI systems, is a highly challenging problem because of the ubiquity of overlapping marks. Locating overlapping marks faces many difficulties such as no texture, less contextual information, hallow shape and tiny size. Here, we formulate it as a combinatorial optimization problem on clustering-based re-visualization from a non-training generative perspective, to locate scatter marks by finding the status of multi-variables when an objective function reaches a minimum. The objective function is constructed on difference between binarized scatter images and corresponding generated re-visualization based on their clustering. Fundamentally, re-visualization tries to generate a new scatter graph only taking a rasterized scatter image as an input, and clustering is employed to provide the information for such re-visualization. This method could stably locate severely-overlapping, variable-size and variable-shape marks in scatter images without dependence of any training dataset or reference. Meanwhile, we propose an adaptive variant of simulated annealing which can works on various connected regions. In addition, we especially built a dataset named SML2023 containing hundreds of scatter images with different markers and various levels of overlapping severity, and tested the proposed method and compared it to existing methods. The results show that it can accurately locate most marks in scatter images with different overlapping severity and marker types, with about 0.3 absolute increase on an assignment-cost-based metric in comparison with state-of-the-art methods. This work is of value to data mining on massive web pages and literatures, and shedding new light on image measurement such as bubble counting.",
+      "authors": [
+        {
+          "name": "Yuming Qiu",
+          "orgs": [
+            "Chongqing Institute of Green and Intelligent Technology, Chinese Academy of Sciences, No.266, Fangzheng Ave., Chongqing, 400714, China"
+          ]
+        },
+        {
+          "name": "Aleksandra Pizurica",
+          "orgs": [
+            "GAIM, Faculty of Engineering and Architecture, Ghent University, Sint-Pietersnieuwstraat 25, Gent, 9000, Belgium"
+          ]
+        },
+        {
+          "name": "Qi Ming",
+          "orgs": [
+            "GAIM, Faculty of Engineering and Architecture, Ghent University, Sint-Pietersnieuwstraat 25, Gent, 9000, Belgium"
+          ]
+        },
+        {
+          "name": "Nicolas Nadisic",
+          "orgs": [
+            "GAIM, Faculty of Engineering and Architecture, Ghent University, Sint-Pietersnieuwstraat 25, Gent, 9000, Belgium"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2312.11146v2",
+      "date": "2023-12-18T12:39:48Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2101.07487",
+      "score": 10.10612,
+      "title": "Unsupervised Deep Learning for Handwritten Page Segmentation",
+      "tldr": "This paper addresses the challenge of page segmentation in handwritten historical documents by proposing an unsupervised deep learning method using a siamese neural network to differentiate patches based on measurable properties, contributing a method that achieves comparable accuracy to supervised approaches on complex layouts.",
+      "abstract": "Segmenting handwritten document images into regions with homogeneous patterns is an important pre-processing step for many document images analysis tasks. Hand-labeling data to train a deep learning model for layout analysis requires significant human effort. In this paper, we present an unsupervised deep learning method for page segmentation, which revokes the need for annotated images. A siamese neural network is trained to differentiate between patches using their measurable properties such as number of foreground pixels, and average component height and width. The network is trained that spatially nearby patches are similar. The network's learned features are used for page segmentation, where patches are classified as main and side text based on the extracted features. We tested the method on a dataset of handwritten document images with quite complex layouts. Our experiments show that the proposed unsupervised method is as effective as typical supervised methods.",
+      "authors": [
+        {
+          "name": "Ahmad Droby",
+          "orgs": [
+            "Ben-Gurion University of the Negev"
+          ]
+        },
+        {
+          "name": "Berat Kurar Barakat",
+          "orgs": [
+            "Ben-Gurion University of the Negev"
+          ]
+        },
+        {
+          "name": "Borak Madi",
+          "orgs": [
+            "Ben-Gurion University of the Negev"
+          ]
+        },
+        {
+          "name": "Reem Alaasam",
+          "orgs": [
+            "Ben-Gurion University of the Negev"
+          ]
+        },
+        {
+          "name": "Jihad El-Sana",
+          "orgs": [
+            "Ben-Gurion University of the Negev"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2101.07487v1",
+      "date": "2021-01-19T07:13:38Z",
+      "citation_count": 8,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1804.02419",
+      "score": 10.089472,
+      "title": "Image Segmentation Using Subspace Representation and Sparse Decomposition",
+      "tldr": "This paper addresses foreground segmentation in screen content and mixed-content images, aiming to improve segmentation accuracy by modeling background as a smooth subspace and foreground as sparse components; it introduces sparse decomposition, robust subspace learning, and masked signal decomposition methods, achieving significant improvements in text segmentation and motion segmentation; the proposed algorithms show promising results on a manually labeled dataset of over 300 image blocks.",
+      "abstract": "Image foreground extraction is a classical problem in image processing and vision, with a large range of applications. In this dissertation, we focus on the extraction of text and graphics in mixed-content images, and design novel approaches for various aspects of this problem.\n  We first propose a sparse decomposition framework, which models the background by a subspace containing smooth basis vectors, and foreground as a sparse and connected component. We then formulate an optimization framework to solve this problem, by adding suitable regularizations to the cost function to promote the desired characteristics of each component. We present two techniques to solve the proposed optimization problem, one based on alternating direction method of multipliers (ADMM), and the other one based on robust regression. Promising results are obtained for screen content image segmentation using the proposed algorithm.\n  We then propose a robust subspace learning algorithm for the representation of the background component using training images that could contain both background and foreground components, as well as noise. With the learnt subspace for the background, we can further improve the segmentation results, compared to using a fixed subspace. Lastly, we investigate a different class of signal/image decomposition problem, where only one signal component is active at each signal element. In this case, besides estimating each component, we need to find their supports, which can be specified by a binary mask. We propose a mixed-integer programming problem, that jointly estimates the two components and their supports through an alternating optimization scheme. We show the application of this algorithm on various problems, including image segmentation, video motion segmentation, and also separation of text from textured images.",
+      "authors": [
+        {
+          "name": "Shervin Minaee",
+          "orgs": [
+            "NEW YORK UNIVERSITY",
+            "TANDON SCHOOL OF ENGINEERING",
+            "Electrical and Computer Engineering Department"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1804.02419v1",
+      "date": "2018-04-06T18:36:53Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2506.10503",
+      "score": 10.072807,
+      "title": "Semantic Localization Guiding Segment Anything Model For Reference Remote Sensing Image Segmentation",
+      "tldr": "This paper addresses the Reference Remote Sensing Image Segmentation (RRSIS) task, aiming to improve segmentation accuracy with reduced annotation burden by decomposing the task into coarse localization and fine segmentation stages; it introduces PSLG-SAM, a framework combining visual grounding and SAM with an unsupervised centroid generator and iterative boundary optimization; experimental results on RRSIS-D and RRSIS-M show significant performance improvements over existing methods.",
+      "abstract": "The Reference Remote Sensing Image Segmentation (RRSIS) task generates segmentation masks for specified objects in images based on textual descriptions, which has attracted widespread attention and research interest. Current RRSIS methods rely on multi-modal fusion backbones and semantic segmentation heads but face challenges like dense annotation requirements and complex scene interpretation. To address these issues, we propose a framework named \\textit{prompt-generated semantic localization guiding Segment Anything Model}(PSLG-SAM), which decomposes the RRSIS task into two stages: coarse localization and fine segmentation. In coarse localization stage, a visual grounding network roughly locates the text-described object. In fine segmentation stage, the coordinates from the first stage guide the Segment Anything Model (SAM), enhanced by a clustering-based foreground point generator and a mask boundary iterative optimization strategy for precise segmentation. Notably, the second stage can be train-free, significantly reducing the annotation data burden for the RRSIS task. Additionally, decomposing the RRSIS task into two stages allows for focusing on specific region segmentation, avoiding interference from complex scenes.We further contribute a high-quality, multi-category manually annotated dataset. Experimental validation on two datasets (RRSIS-D and RRSIS-M) demonstrates that PSLG-SAM achieves significant performance improvements and surpasses existing state-of-the-art models.Our code will be made publicly available.",
+      "authors": [
+        {
+          "name": "Shuyang Li",
+          "orgs": [
+            "School of Artificial Intelligence, Xidian University, Xi’an, Shaanxi Province, China"
+          ]
+        },
+        {
+          "name": "Shuang Wang",
+          "orgs": [
+            "School of Artificial Intelligence, Xidian University, Xi’an, Shaanxi Province, China"
+          ]
+        },
+        {
+          "name": "Zhuangzhuang Sun",
+          "orgs": [
+            "School of Artificial Intelligence, Xidian University, Xi’an, Shaanxi Province, China"
+          ]
+        },
+        {
+          "name": "Jing Xiao",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2506.10503v1",
+      "date": "2025-06-12T09:04:07Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2104.08777",
+      "score": 10.068362,
+      "title": "Line Segmentation from Unconstrained Handwritten Text Images using Adaptive Approach",
+      "tldr": "This paper addresses the challenge of line segmentation from unconstrained handwritten text images, proposing an adaptive method that dynamically calculates text height for improved segmentation; the core novelty is dynamic text height calculation using statistical proof; experiments on complex datasets achieved 98.01% average detection rate, demonstrating robustness across diverse handwriting variations.",
+      "abstract": "Line segmentation from handwritten text images is one of the challenging task due to diversity and unknown variations as undefined spaces, styles, orientations, stroke heights, overlapping, and alignments. Though abundant researches, there is a need of improvement to achieve robustness and higher segmentation rates. In the present work, an adaptive approach is used for the line segmentation from handwritten text images merging the alignment of connected component coordinates and text height. The mathematical justification is provided for measuring the text height respective to the image size. The novelty of the work lies in the text height calculation dynamically. The experiments are tested on the dataset provided by the Chinese company for the project. The proposed scheme is tested on two different type of datasets; document pages having base lines and plain pages. Dataset is highly complex and consists of abundant and uncommon variations in handwriting patterns. The performance of the proposed method is tested on our datasets as well as benchmark datasets, namely IAM and ICDAR09 to achieve 98.01% detection rate on average. The performance is examined on the above said datasets to observe 91.99% and 96% detection rates, respectively.",
+      "authors": [
+        {
+          "name": "Nidhi Gupta",
+          "orgs": [
+            "Mathematics and Scientific Computing, National Institute of Technology, Hamirpur, Himachal Pradesh, India"
+          ]
+        },
+        {
+          "name": "Wenju Liu",
+          "orgs": [
+            "National Laboratory of Pattern Recognition, Institute of Automation, Chinese Academy of Sciences, Beijing, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2104.08777v1",
+      "date": "2021-04-18T08:52:52Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2107.06278",
+      "score": 7.083776,
+      "title": "Per-Pixel Classification is Not All You Need for Semantic Segmentation",
+      "tldr": "This paper addresses the gap in semantic segmentation by proposing MaskFormer, a mask classification model that unifies semantic and instance-level tasks using the same model, loss, and training, outperforming per-pixel classification methods on large-scale datasets with 55.6 mIoU on ADE20K and 52.7 PQ on COCO.",
+      "abstract": "Modern approaches typically formulate semantic segmentation as a per-pixel classification task, while instance-level segmentation is handled with an alternative mask classification. Our key insight: mask classification is sufficiently general to solve both semantic- and instance-level segmentation tasks in a unified manner using the exact same model, loss, and training procedure. Following this observation, we propose MaskFormer, a simple mask classification model which predicts a set of binary masks, each associated with a single global class label prediction. Overall, the proposed mask classification-based method simplifies the landscape of effective approaches to semantic and panoptic segmentation tasks and shows excellent empirical results. In particular, we observe that MaskFormer outperforms per-pixel classification baselines when the number of classes is large. Our mask classification-based method outperforms both current state-of-the-art semantic (55.6 mIoU on ADE20K) and panoptic segmentation (52.7 PQ on COCO) models.",
+      "authors": [
+        {
+          "name": "Bowen Cheng",
+          "orgs": [
+            "Facebook AI Research (FAIR)",
+            "University of Illinois at Urbana-Champaign (UIUC)"
+          ]
+        },
+        {
+          "name": "Alexander G. Schwing",
+          "orgs": [
+            "University of Illinois at Urbana-Champaign (UIUC)"
+          ]
+        },
+        {
+          "name": "Alexander Kirillov",
+          "orgs": [
+            "Facebook AI Research (FAIR)"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2107.06278v2",
+      "date": "2021-07-13T17:59:50Z",
+      "citation_count": 1917,
+      "categories": [
+        "cs.CV"
+      ]
+    }
+  ]
+}

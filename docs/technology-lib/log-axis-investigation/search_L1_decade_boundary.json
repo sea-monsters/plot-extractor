@@ -1,0 +1,1176 @@
+{
+  "status": "success",
+  "total_count": 58,
+  "result": [
+    {
+      "arxiv_id": "2404.15150",
+      "score": 10.715384,
+      "title": "Lost in Magnitudes: Exploring Visualization Designs for Large Value Ranges",
+      "tldr": "This paper addresses the challenge of visualizing large value ranges (Orders of Magnitude Values) where traditional linear and logarithmic scales fail, by proposing a design space and two visualization methods (Facet and EplusM) that separate values into mantissa and exponent, showing improved quantitative comparisons and user confidence compared to existing solutions.",
+      "abstract": "We explore the design of visualizations for values spanning multiple orders of magnitude; we call them Orders of Magnitude Values (OMVs). Visualization researchers have shown that separating OMVs into two components, the mantissa and the exponent, and encoding them separately overcomes limitations of linear and logarithmic scales. However, only a small number of such visualizations have been tested, and the design guidelines for visualizing the mantissa and exponent separately remain under-explored. To initiate this exploration, better understand the factors influencing the effectiveness of these visualizations, and create guidelines, we adopt a multi-stage workflow. We introduce a design space for visualizing mantissa and exponent, systematically generating and qualitatively evaluating all possible visualizations within it. From this evaluation, we derive guidelines. We select two visualizations that align with our guidelines and test them using a crowdsourcing experiment, showing they facilitate quantitative comparisons and increase confidence in interpretation compared to the state-of-the-art.",
+      "authors": [
+        {
+          "name": "Katerina Batziakoudi",
+          "orgs": [
+            "Berger-Levrault",
+            "Université Paris-Saclay",
+            "CNRS",
+            "Inria"
+          ]
+        },
+        {
+          "name": "Florent Cabric",
+          "orgs": [
+            "Université Paris-Saclay",
+            "CNRS",
+            "Inria"
+          ]
+        },
+        {
+          "name": "Stéphanie Rey",
+          "orgs": [
+            "Berger-Levrault"
+          ]
+        },
+        {
+          "name": "Jean-Daniel Fekete",
+          "orgs": [
+            "Université Paris-Saclay",
+            "CNRS",
+            "Inria"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2404.15150v2",
+      "date": "2024-04-23T15:52:53Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2510.17925",
+      "score": 10.674229,
+      "title": "SpecAgent: A Speculative Retrieval and Forecasting Agent for Code Completion",
+      "tldr": "This paper addresses the challenge of improving code completion in real-world software repositories by developing SpecAgent, which constructs speculative context during indexing to enhance both latency and generation quality, achieving 9-11% absolute gains over baselines with no additional inference latency.",
+      "abstract": "Large Language Models (LLMs) excel at code-related tasks but often struggle in realistic software repositories, where project-specific APIs and cross-file dependencies are crucial. Retrieval-augmented methods mitigate this by injecting repository context at inference time. The low inference-time latency budget affects either retrieval quality or the added latency adversely impacts user experience. We address this limitation with SpecAgent, an agent that improves both latency and code-generation quality by proactively exploring repository files during indexing and constructing speculative context that anticipates future edits in each file. This indexing-time asynchrony allows thorough context computation, masking latency, and the speculative nature of the context improves code-generation quality. Additionally, we identify the problem of future context leakage in existing benchmarks, which can inflate reported performance. To address this, we construct a synthetic, leakage-free benchmark that enables a more realistic evaluation of our agent against baselines. Experiments show that SpecAgent consistently achieves absolute gains of 9-11% (48-58% relative) compared to the best-performing baselines, while significantly reducing inference latency.",
+      "authors": [
+        {
+          "name": "George Ma",
+          "orgs": [
+            "UC Berkeley"
+          ]
+        },
+        {
+          "name": "Anurag Koul",
+          "orgs": [
+            "Amazon Web Services"
+          ]
+        },
+        {
+          "name": "Qi Chen",
+          "orgs": [
+            "Amazon Web Services"
+          ]
+        },
+        {
+          "name": "Yawen Wu",
+          "orgs": [
+            "Amazon Web Services"
+          ]
+        },
+        {
+          "name": "Sachit Kuhar",
+          "orgs": [
+            "Amazon Web Services"
+          ]
+        },
+        {
+          "name": "Yu Yu",
+          "orgs": [
+            "Amazon Web Services"
+          ]
+        },
+        {
+          "name": "Aritra Sengupta",
+          "orgs": [
+            "Amazon Web Services"
+          ]
+        },
+        {
+          "name": "Varun Kumar",
+          "orgs": [
+            "Amazon Web Services"
+          ]
+        },
+        {
+          "name": "Murali Krishna Ramanathan",
+          "orgs": [
+            "Amazon Web Services"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2510.17925v2",
+      "date": "2025-10-20",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.SE"
+      ]
+    },
+    {
+      "arxiv_id": "1903.00004",
+      "score": 10.342471,
+      "title": "The Column Density, Kinematics, and Thermal State of Metal-Bearing Gas within the Virial Radius of z~2 Star-Forming Galaxies in the Keck Baryonic Structure Survey",
+      "tldr": "This paper investigates the column densities, kinematics, and thermal state of metal-bearing gas in the CGM of eight z~2 galaxies, addressing the role of baryonic flows in galaxy evolution; it uses Voigt profile decomposition of QSO absorption lines to analyze 130 metal-bearing absorbers, revealing a multi-phase CGM with 70% of galaxies showing unbound metal-enriched gas and 40% of gas at 10^4.5-5.5 K; findings suggest dynamic CGM with short cooling times and implications for galactic winds and baryonic flows.",
+      "abstract": "We present results from the Keck Baryonic Structure Survey (KBSS) including the first detailed measurements of the column densities, kinematics, and internal energy of metal-bearing gas within the virial radius (35-100 physical kpc) of eight ~$L^*$ galaxies at $z\\sim2$. From our full sample of 130 metal-bearing absorbers, we infer that halo gas is kinematically complex when viewed in singly, doubly, and triply ionized species. Broad OVI and CIV absorbers are detected at similar velocities to the lower-ionization gas but with very different kinematic structure indicating that the circumgalactic medium (CGM) is multi-phase. There is a high covering fraction of metal-bearing gas within 100 kpc including highly ionized gas such as OVI; however, observations of a single galaxy probed by a lensed background QSO suggest the size of metal-bearing clouds is small (<400 pc for all but the OVI-bearing gas). The mass in metals found within the halo is substantial, equivalent to $\\gtrsim$ 25% of the metal mass within the interstellar medium. The gas kinematics unambiguously show that 70% of galaxies with detected metal absorption have some unbound metal-enriched gas, suggesting galactic winds may commonly eject gas from halos at $z\\sim2$. Significant thermal broadening is detected in CGM absorbers which dominates the internal energy of the gas. 40% of the detected gas has temperatures in the range $10^{4.5-5.5}$ K where cooling times are short, suggesting the CGM is dynamic, with constant heating and/or cooling to produce this short-lived thermal phase.",
+      "authors": [
+        {
+          "name": "Gwen C. Rudie",
+          "orgs": [
+            "The Observatories of the Carnegie Institution for Science"
+          ]
+        },
+        {
+          "name": "Charles C. Steidel",
+          "orgs": [
+            "Cahill Center for Astronomy and Astrophysics, California Institute of Technology"
+          ]
+        },
+        {
+          "name": "Max Pettini",
+          "orgs": [
+            "Institute of Astronomy"
+          ]
+        },
+        {
+          "name": "Allison L. Strom",
+          "orgs": [
+            "The Observatories of the Carnegie Institution for Science",
+            "813 Santa Barbara Street, Pasadena, CA 91101, USA"
+          ]
+        },
+        {
+          "name": "Cameron B. Hummels",
+          "orgs": [
+            "Cahill Center for Astronomy and Astrophysics, California Institute of Technology, MS 249-17, Pasadena, CA 91125, USA"
+          ]
+        },
+        {
+          "name": "Naveen A. Reddy",
+          "orgs": [
+            "Department of Physics and Astronomy, University of California, Riverside, 900 University Avenue, Riverside, CA 92521, USA"
+          ]
+        },
+        {
+          "name": "Alice E. Shapley",
+          "orgs": [
+            "Department of Physics & Astronomy, University of California, Los Angeles, 430 Portola Plaza, Los Angeles, CA 90095, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1903.00004v1",
+      "date": "2019-02-28T19:00:00Z",
+      "citation_count": 72,
+      "categories": [
+        "astro-ph.GA"
+      ]
+    },
+    {
+      "arxiv_id": "1005.2191",
+      "score": 10.272274,
+      "title": "HST/COS Observations of the Ly alpha Forest toward the BL Lac Object 1ES1553+113",
+      "tldr": "This paper investigates the Ly alpha forest toward the BL Lac object 1ES1553+113 to determine its redshift and study interstellar and intergalactic medium properties, as its featureless spectrum hinders direct redshift measurement; it uses HST/COS far-UV spectra to detect 41 Ly alpha absorbers and derive redshift limits of z_em>0.395 and z_em>0.433; findings suggest the absorption complex may arise in a galaxy filament and provide insights into the IGM and metallicity.",
+      "abstract": "We present new far-ultraviolet spectra from the Cosmic Origins Spectrograph (HST/COS) of the BL Lac object 1ES1553+113 covering the wavelength range 1135-1795 A.  The data show a smooth continuum with a wealth of narrow absorption features arising in the ISM and IGM.  These features include 41 Lya absorbers at 0<z<0.43, fourteen of which are detected in multiple Lyman lines and six in one or more metal lines.  We analyze a metal-rich triplet of Lya absorbers at z=0.188 in which OVI, NV, and CIII absorption is detected.  Silicon ions (SiIII/IV) are not detected to fairly strong upper limits, and we use the measured SiIII/CIII upper limit to derive an abundance limit [C/Si]>0.6 for the strongest component of the absorber complex.  Galaxy redshift surveys show a number of massive galaxies at approximately the same redshift as this absorption complex, suggesting that it arises in a large-scale galaxy filament.  As one of the brightest extragalactic X-ray and gamma-ray sources, 1ES1553+113 is of great interest to the high-energy astrophysics community.  With no intrinsic emission or absorption features, 1ES1553+113 has no direct redshift determination.  We use intervening Lya absorbers to place a direct limit on the redshift: z_em>0.395 based on a confirmed Lya+OVI absorber and z_em>0.433 based on a single-line detection of Lya.  COS/FUV data are only sensitive to Lya absorbers at z<0.47, but we present statistical arguments that z_em<0.58 based on the non-detection of any Lyb absorbers at z>0.4.",
+      "authors": [
+        {
+          "name": "Charles W. Danforth",
+          "orgs": [
+            "CASA, Department of Astrophysical & Planetary Sciences, University of Colorado, 389-UCB, Boulder, CO 80309"
+          ]
+        },
+        {
+          "name": "Brian A. Keeney",
+          "orgs": [
+            "CASA, Department of Astrophysical & Planetary Sciences, University of Colorado, 389-UCB, Boulder, CO 80309"
+          ]
+        },
+        {
+          "name": "John T. Stocke",
+          "orgs": [
+            "CASA, Department of Astrophysical & Planetary Sciences, University of Colorado, 389-UCB, Boulder, CO 80309"
+          ]
+        },
+        {
+          "name": "J. Michael Shull",
+          "orgs": [
+            "CASA, Department of Astrophysical & Planetary Sciences, University of Colorado, 389-UCB, Boulder, CO 80309"
+          ]
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Yangsen Yao",
+          "orgs": [
+            "CASA, Department of Astrophysical & Planetary Sciences, University of Colorado, 389-UCB, Boulder, CO 80309"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1005.2191v1",
+      "date": "2010-05-12T20:00:07Z",
+      "citation_count": 172,
+      "categories": [
+        "astro-ph.CO",
+        "astro-ph.HE"
+      ]
+    },
+    {
+      "arxiv_id": "astro-ph/0412383",
+      "score": 10.170965,
+      "title": "VLBA Polarization Observations of Markarian 421 After a Gamma-Ray High State",
+      "tldr": "This paper investigates the radio jet properties of Markarian 421 following its 2001 gamma-ray high state, aiming to understand jet dynamics and polarization changes post-flare; it uses VLBA polarization observations combined with archival data to analyze apparent speeds and polarization patterns; findings reveal component C5 with an apparent speed of 0.1 +/- 0.02 c and significant EVPA variability in component C6, suggesting propagating disturbances linked to the 2001 flares.",
+      "abstract": "We present four high dynamic range, dual-circular polarization, Very Long Baseline Array (VLBA) observations at 22 GHz of Markarian 421, taken throughout the year following the source's unprecedented gamma-ray high state in early 2001. These four new VLBA observations are combined with data from our earlier 1999 paper and archival VLBA data-sets that have become available since 1999 to produce a combined 28 epoch VLBA data-set on Mrk 421 spanning the years 1994 to 2002. No new component associated with the 2001 flares was seen on the total intensity images, but the combined data-set allowed precise measurements of the apparent speeds of the existing components. The peak measured apparent speed was for component C5, which has an apparent speed of 0.1 +/- 0.02 c (H_0=71 km s^{-1} Mpc^{-1}, Omega_m=0.27, and Omega_Lambda=0.73). No counterjet is seen with a limit on the jet to counterjet brightness ratio J >~ 100. These observed VLBI properties of Markarian 421 are consistent with a jet with a bulk Lorentz factor of about 2 and an angle to the line-of-sight of about 1 degree, suggesting a jet that decelerates between the gamma-ray producing region and the parsec scale. The VLBI core and inner jet (component C7) have fractional polarizations of about 5%, and an electric vector position angle (EVPA) aligned with the jet axis. Component C5 (at 1.5 mas from the core) has a higher fractional polarization of about 15%, and an EVPA nearly orthogonal to the jet axis. Significant variability is detected in the EVPA of component C6, which at two of the four epochs shows an EVPA aligned with the jet axis, possibly a sign of propagating disturbances that are only visible on the polarization images. If these propagating disturbances are linked to the 2001 gamma-ray high state, then their inferred apparent speed is between 1 and 3 c.",
+      "authors": [
+        {
+          "name": "B. Glenn Piner",
+          "orgs": [
+            "1",
+            "2"
+          ]
+        },
+        {
+          "name": "Philip G. Edwards",
+          "orgs": [
+            "3"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/astro-ph/0412383v1",
+      "date": "2004-12-15",
+      "citation_count": 41,
+      "categories": [
+        "astro-ph"
+      ]
+    },
+    {
+      "arxiv_id": "2510.17932",
+      "score": 10.044416,
+      "title": "From Charts to Code: A Hierarchical Benchmark for Multimodal Models",
+      "tldr": "This paper introduces Chart2Code, a hierarchical benchmark for evaluating large multimodal models' chart understanding and code generation capabilities, addressing the gap in realistic and challenging chart-to-code tasks by introducing three levels with 2,023 tasks across 22 chart types, finding that even top models like GPT-5 score only 0.57 on code-based evaluation and 0.22 on chart-quality assessment, highlighting the need for more robust and general-purpose LMMs.",
+      "abstract": "We introduce Chart2Code, a new benchmark for evaluating the chart understanding and code generation capabilities of large multimodal models (LMMs). Chart2Code is explicitly designed from a user-driven perspective, capturing diverse real-world scenarios and progressively increasing task difficulty. It consists of three levels: Level 1 (Chart Reproduction) reproduces charts from a reference figure and user query; Level 2 (Chart Editing) involves complex modifications such as changing chart types or adding elements; and Level 3 (Long-Table to Chart Generation) requires models to transform long, information-dense tables into faithful charts following user instructions. To our knowledge, this is the first hierarchical benchmark that reflects practical chart2code usage while systematically scaling task complexity. In total, Chart2Code contains 2,023 tasks across 22 chart types, paired with multi-level evaluation metrics that assess both code correctness and the visual fidelity of rendered charts. We benchmark 25 state-of-the-art (SoTA) LMMs, including both proprietary and the latest open-source models such as GPT-5, Qwen2.5-VL, InternVL3/3.5, MiMo-VL, and Seed-1.6-VL. Experimental results demonstrate that even the SoTA model GPT-5 averages only 0.57 on code-based evaluation and 0.22 on chart-quality assessment across the editing tasks, underscoring the difficulty of Chart2Code. We anticipate this benchmark will drive advances in multimodal reasoning and foster the development of more robust and general-purpose LMMs. Our code and data are available on Chart2Code.",
+      "authors": [
+        {
+          "name": "Jiahao Tang",
+          "orgs": [
+            "CSU-JPG, Central South University"
+          ]
+        },
+        {
+          "name": "Henry Hengyuan Zhao",
+          "orgs": [
+            "National University of Singapore"
+          ]
+        },
+        {
+          "name": "Lijian Wu",
+          "orgs": [
+            "CSU-JPG, Central South University"
+          ]
+        },
+        {
+          "name": "Zijian Zhang",
+          "orgs": [
+            "CSU-JPG, Central South University"
+          ]
+        },
+        {
+          "name": "Yifei Tao",
+          "orgs": [
+            "Nanyang Technological University"
+          ]
+        },
+        {
+          "name": "Dongxing Mao",
+          "orgs": [
+            "CSU-JPG, Central South University"
+          ]
+        },
+        {
+          "name": "Yang Wan",
+          "orgs": [
+            "CSU-JPG, Central South University"
+          ]
+        },
+        {
+          "name": "Jingru Tan",
+          "orgs": [
+            "CSU-JPG, Central South University"
+          ]
+        },
+        {
+          "name": "Min Zeng",
+          "orgs": [
+            "CSU-JPG, Central South University"
+          ]
+        },
+        {
+          "name": "Min Li",
+          "orgs": [
+            "CSU-JPG, Central South University"
+          ]
+        },
+        {
+          "name": "Alex Jinpeng Wang",
+          "orgs": [
+            "CSU-JPG, Central South University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2510.17932v4",
+      "date": "2025-10-20",
+      "citation_count": 2,
+      "categories": [
+        "cs.AI",
+        "cs.SE"
+      ]
+    },
+    {
+      "arxiv_id": "1401.4818",
+      "score": 9.839889,
+      "title": "Horizontal flow fields observed in Hinode G-band images IV. Statistical properties of the dynamical environment around pores",
+      "tldr": "This paper investigates the statistical properties of the dynamical environment around solar pores using Hinode G-band images, addressing the lack of comprehensive statistical analysis of pores and their flow fields; it employs LCT to derive horizontal flow fields from 356 one-hour sequences and analyzes 2863 pores, revealing that pores are rarely isolated, typically elliptical with 3:2 aspect ratio, and exhibit log-normal distributions in area and perimeter; findings show bright features cover 20% of pores, with intensity peaks at R_N=2.1 and divergence maxima at R_N=2.3, implying significant implications for understanding solar magnetic dynamics and flow patterns.",
+      "abstract": "The extensive database of high-resolution G-band images observed with the Hinode/SOT is a unique resource to derive statistical properties of pores using advanced digital image processing techniques. The study is based on two data sets: (1) Photometric and morphological properties inferred from single G-band images cover almost seven years from 2006 October 25 to 2013 August 31. (2) Horizontal flow fields have been derived from 356 one-hour sequences of G-band images using LCT for a shorter period of time from 2006 November 3 to 2008 January 6 comprising 13 active regions.\n  A total of 7643/2863 (single/time-averaged) pores builds the foundation of the statistical analysis. Pores are preferentially observed at low latitudes in the southern hemisphere during the deep minimum of solar cycle No. 23. This imbalance reverses during the rise of cycle No. 24, when the pores migrate from high to low latitudes. Pores are rarely encountered in quiet-Sun G-band images, and only about 10% of pores exists in isolation. In general, pores do not exhibit a circular shape. Typical aspect ratios of the semi-major and -minor axes are 3:2 when ellipses are fitted to pores. Smaller pores (more than two-thirds are smaller than 5~Mm^2) tend to be more circular, and their boundaries are less corrugated. Both area and perimeter length of pores obey log-normal frequency distributions. The frequency distribution of the intensity can be reproduced by two Gaussians representing dark and bright components. Bright features resembling umbral dots and even light-bridges cover about 20% of the pore's area. Averaged radial profiles show a peak of the intensity at normalized radius R_N = r /R_pore = 2.1, followed by maxima of the divergence at R_N= 2.3 and the radial component of the horizontal velocity at R_N= 4.6. The divergence is negative within pores.",
+      "authors": [
+        {
+          "name": "Meetu Verma",
+          "orgs": [
+            "1122C"
+          ]
+        },
+        {
+          "name": "Carsten Denker",
+          "orgs": [
+            "11"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1401.4818v1",
+      "date": "2014-01-20T08:03:20Z",
+      "citation_count": 20,
+      "categories": [
+        "astro-ph.SR"
+      ]
+    },
+    {
+      "arxiv_id": "2311.12806",
+      "score": 9.755718,
+      "title": "MatGD: Materials Graph Digitizer",
+      "tldr": "This paper introduces MatGD, a tool for digitizing data from scientific graphs, addressing the gap in figure mining by enabling accurate extraction of quantitative data from materials science publications; it proposes a four-step algorithm for graph analysis and data separation, with key contributions including high accuracy in legend detection (99%) and improved data line separation (66%) compared to existing tools; empirical results show its effectiveness in mining 501,045 figures from 62,534 papers, supporting enhanced material prediction and discovery through large-scale data collection.",
+      "abstract": "We have developed MatGD (Material Graph Digitizer), which is a tool for digitizing a data line from scientific graphs. The algorithm behind the tool consists of four steps: (1) identifying graphs within subfigures, (2) separating axes and data sections, (3) discerning the data lines by eliminating irrelevant graph objects and matching with the legend, and (4) data extraction and saving. From the 62,534 papers in the areas of batteries, catalysis, and MOFs, 501,045 figures were mined. Remarkably, our tool showcased performance with over 99% accuracy in legend marker and text detection. Moreover, its capability for data line separation stood at 66%, which is much higher compared to other existing figure mining tools. We believe that this tool will be integral to collecting both past and future data from publications, and these data can be used to train various machine learning models that can enhance material predictions and new materials discovery.",
+      "authors": [
+        {
+          "name": "Jaewoong Lee",
+          "orgs": [
+            "Department of Chemical and Biomolecular Engineering, Korea Advanced Institute of Science and Technology, Daejeon, Republic of Korea"
+          ]
+        },
+        {
+          "name": "Wonseok Lee",
+          "orgs": [
+            "Department of Chemical and Biomolecular Engineering, Korea Advanced Institute of Science and Technology, Daejeon, Republic of Korea"
+          ]
+        },
+        {
+          "name": "Jihan Kim",
+          "orgs": [
+            "Department of Chemical and Biomolecular Engineering, Korea Advanced Institute of Science and Technology, Daejeon, Republic of Korea"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2311.12806v1",
+      "date": "2023-09-19T07:19:16Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.CV",
+        "cs.DL",
+        "cs.IR",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2309.13960",
+      "score": 9.731115,
+      "title": "Newton Method-based Subspace Support Vector Data Description",
+      "tldr": "This paper addresses the limitations of gradient descent in subspace learning for one-class classification by proposing a Newton's method-based optimization for S-SVDD, which improves efficiency and performance compared to gradient-based methods, showing superior results in experiments.",
+      "abstract": "In this paper, we present an adaptation of Newton's method for the optimization of Subspace Support Vector Data Description (S-SVDD). The objective of S-SVDD is to map the original data to a subspace optimized for one-class classification, and the iterative optimization process of data mapping and description in S-SVDD relies on gradient descent. However, gradient descent only utilizes first-order information, which may lead to suboptimal results. To address this limitation, we leverage Newton's method to enhance data mapping and data description for an improved optimization of subspace learning-based one-class classification. By incorporating this auxiliary information, Newton's method offers a more efficient strategy for subspace learning in one-class classification as compared to gradient-based optimization. The paper discusses the limitations of gradient descent and the advantages of using Newton's method in subspace learning for one-class classification tasks. We provide both linear and nonlinear formulations of Newton's method-based optimization for S-SVDD. In our experiments, we explored both the minimization and maximization strategies of the objective. The results demonstrate that the proposed optimization strategy outperforms the gradient-based S-SVDD in most cases.",
+      "authors": [
+        {
+          "name": "Fahad Sohrab",
+          "orgs": [
+            "Faculty of Information Technology and Communication Sciences, Tampere University, Tampere, Finland"
+          ]
+        },
+        {
+          "name": "Firas Laakom",
+          "orgs": [
+            "Faculty of Information Technology and Communication Sciences, Tampere University, Tampere, Finland"
+          ]
+        },
+        {
+          "name": "Moncef Gabbouj",
+          "orgs": [
+            "Faculty of Information Technology and Communication Sciences, Tampere University, Tampere, Finland"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2309.13960v1",
+      "date": "2023-09-25T08:49:41Z",
+      "citation_count": 7,
+      "categories": [
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2108.09828",
+      "score": 9.4771,
+      "title": "A puzzle solved after two decades: SN 2002gh among the brightest of superluminous supernovae",
+      "tldr": "This paper investigates SN 2002gh, a superluminous supernova whose extreme brightness was overlooked for two decades, aiming to understand its power mechanism and progenitor properties; it uses optical photometry and spectroscopy along with host galaxy analysis to explore magnetar spin-down and radioactive decay as energy sources; findings reveal SN 2002gh as one of the brightest hydrogen-poor SLSNe with $M_{V} = -22.40$ and two magnetar models yielding ejecta masses of 0.6–3.2 $M_{\\odot}$ and 30 $M_{\\odot}$, respectively.",
+      "abstract": "We present optical photometry and spectroscopy of the superluminous SN 2002gh from maximum light to $+204$ days, obtained as part of the Carnegie Type II Supernova (CATS) project. SN 2002gh is among the most luminous discovered supernovae ever, yet it remained unnoticed for nearly two decades. Using Dark Energy Camera archival images we identify the potential SN host galaxy as a faint dwarf galaxy, presumably having low metallicity, and in an apparent merging process with other nearby dwarf galaxies. We show that SN 2002gh is among the brightest hydrogen-poor SLSNe with $M_{V} = -22.40 \\pm 0.02$, with an estimated peak bolometric luminosity of $2.6 \\pm 0.1 \\times 10^{44}$ erg s$^{-1}$. We discount the decay of radioactive nickel as the main SN power mechanism, and assuming that the SN is powered by the spin down of a magnetar we obtain two alternative solutions. The first case, is characterized by significant magnetar power leakage, and $M_{\\mathrm{ej}}$ between 0.6 and 3.2 $M_{\\odot}$, $P_{\\mathrm{spin}} = 3.2$ ms, and $B = 5 \\times 10^{13}$ G. The second case does not require power leakage, resulting in a huge ejecta mass of about 30 $M_{\\odot}$, a fast spin period of $P_{\\mathrm{spin}} \\sim 1$ ms, and $B\\sim 1.6 \\times 10^{14}$ G. We estimate a zero-age main-sequence mass between 14 and 25 $M_{\\odot}$ for the first case and of about 135 $M_{\\odot}$ for the second case. The latter case would place the SN progenitor among the most massive stars observed to explode as a SN.",
+      "authors": [
+        {
+          "name": "Régis Cartier",
+          "orgs": [
+            "Cerro Tololo Inter-American Observatory, NSF’s National Optical-Infrared Astronomy Research Laboratory, Casilla 603, La Serena, Chile"
+          ]
+        },
+        {
+          "name": "Mario Hamuy",
+          "orgs": [
+            "Fundación Chilena de Astronomía, Santiago, Chile",
+            "Hagler Institute for Advanced Studies, Texas A\\&M University, Texas, USA"
+          ]
+        },
+        {
+          "name": "Carlos Contreras",
+          "orgs": [
+            "Las Campanas Observatory, Carnegie Observatories, Casilla 601, La Serena, Chile",
+            "Departamento de Astronomía, Universidad de Chile, Casilla 36-D, Santiago, Chile"
+          ]
+        },
+        {
+          "name": "Mark M. Phillips",
+          "orgs": [
+            "Las Campanas Observatory",
+            "Carnegie Observatories",
+            "Casilla 601, La Serena, Chile"
+          ]
+        },
+        {
+          "name": "Nidia Morrell",
+          "orgs": [
+            "Las Campanas Observatory",
+            "Carnegie Observatories",
+            "Casilla 601, La Serena, Chile"
+          ]
+        },
+        {
+          "name": "Maximilian D. Stritzinger",
+          "orgs": [
+            "Department of Physics and Astronomy",
+            "Aarhus University",
+            "Ny Munkegade 120, 8000 Aarhus C, Denmark"
+          ]
+        },
+        {
+          "name": "Emilio D. Hueichapan",
+          "orgs": [
+            "Cerro Tololo Inter-American Observatory",
+            "NSF’s National Optical-Infrared Astronomy Research Laboratory",
+            "Casilla 603, La Serena, Chile"
+          ]
+        },
+        {
+          "name": "Alejandro Clocchiatti",
+          "orgs": [
+            "Instituto de Astrofísica, Facultad de Física, Pontificia Universidad Católica de Chile, Av. Vicuña Mackenna 4860, Santiago, Chile",
+            "Millennium Institute of Astrophysics, Nuncio Monseñor Sótero Sanz 100, Providencia, Santiago, Chile"
+          ]
+        },
+        {
+          "name": "Miguel Roth",
+          "orgs": [
+            "Las Campanas Observatory, Carnegie Observatories, Casilla 601, La Serena, Chile"
+          ]
+        },
+        {
+          "name": "Joanna Thomas-Osip",
+          "orgs": [
+            "Gemini Observatory, NSF’s National Optical-Infrared Astronomy Research Laboratory, Casilla 603, La Serena, Chile"
+          ]
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Luis E. González",
+          "orgs": [
+            "Departamento de Astronomía, Universidad de Chile, Casilla 36-D, Santiago, Chile"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2108.09828v2",
+      "date": "2021-08-18T03:25:25Z",
+      "citation_count": 3,
+      "categories": [
+        "astro-ph.CO",
+        "astro-ph.HE",
+        "astro-ph.SR"
+      ]
+    },
+    {
+      "arxiv_id": "2012.15006",
+      "score": 9.4342985,
+      "title": "Dynamic Graph-Based Anomaly Detection in the Electrical Grid",
+      "tldr": "This paper addresses the challenge of detecting anomalies in dynamic electrical grids, focusing on improving detection of both natural and cyber-induced faults by considering topology changes, and proposes DYNWATCH, a topology-aware algorithm that outperforms existing methods by 20% in F-measure and runs efficiently on large-scale grids, detecting anomalies without false positives.",
+      "abstract": "Given sensor readings over time from a power grid, how can we accurately detect when an anomaly occurs? A key part of achieving this goal is to use the network of power grid sensors to quickly detect, in real-time, when any unusual events, whether natural faults or malicious, occur on the power grid. Existing bad-data detectors in the industry lack the sophistication to robustly detect broad types of anomalies, especially those due to emerging cyber-attacks, since they operate on a single measurement snapshot of the grid at a time. New ML methods are more widely applicable, but generally do not consider the impact of topology change on sensor measurements and thus cannot accommodate regular topology adjustments in historical data. Hence, we propose DYNWATCH, a domain knowledge based and topology-aware algorithm for anomaly detection using sensors placed on a dynamic grid. Our approach is accurate, outperforming existing approaches by 20% or more (F-measure) in experiments; and fast, running in less than 1.7ms on average per time tick per sensor on a 60K+ branch case using a laptop computer, and scaling linearly in the size of the graph.",
+      "authors": [
+        {
+          "name": "Shimiao Li",
+          "orgs": [
+            "Department of Electrical and Computer Engineering, Carnegie Mellon University, Pittsburgh, PA, 15213 USA"
+          ]
+        },
+        {
+          "name": "Amritanshu Pandey",
+          "orgs": [
+            "Department of Electrical and Computer Engineering, Carnegie Mellon University, Pittsburgh, PA, 15213 USA"
+          ]
+        },
+        {
+          "name": "Bryan Hooi",
+          "orgs": [
+            "School of Computing",
+            "Institute of Data Science in National University of Singapore"
+          ]
+        },
+        {
+          "name": "Christos Faloutsos",
+          "orgs": [
+            "Department of Computer Science, Carnegie Mellon University, Pittsburgh, PA, 15213 USA"
+          ]
+        },
+        {
+          "name": "Larry Pileggi",
+          "orgs": [
+            "Department of Electrical and Computer Engineering, Carnegie Mellon University, Pittsburgh, PA, 15213 USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2012.15006v4",
+      "date": "2020-12-30T02:25:07Z",
+      "citation_count": 40,
+      "categories": [
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "1502.02160",
+      "score": 9.421044,
+      "title": "A Survey on Hough Transform, Theory, Techniques and Applications",
+      "tldr": "This survey provides a comprehensive overview of Hough Transform theory, techniques, and applications, highlighting its evolution, key variations like line and circle transforms, and diverse applications in image processing, while emphasizing its robustness and adaptability.",
+      "abstract": "For more than half a century, the Hough transform is ever-expanding for new frontiers. Thousands of research papers and numerous applications have evolved over the decades. Carrying out an all-inclusive survey is hardly possible and enormously space-demanding. What we care about here is emphasizing some of the most crucial milestones of the transform. We describe its variations elaborating on the basic ones such as the line and circle Hough transforms. The high demand for storage and computation time is clarified with different solution approaches. Since most uses of the transform take place on binary images, we have been concerned with the work done directly on gray or color images. The myriad applications of the standard transform and its variations have been classified highlighting the up-to-date and the unconventional ones. Due to its merits such as noise-immunity and expandability, the transform has an excellent history, and a bright future as well.",
+      "authors": [
+        {
+          "name": "Allam Shehata Hassanein",
+          "orgs": [
+            "Informatics Department, Electronics Research Institute, El-Dokki, Giza, 12622, Egypt"
+          ]
+        },
+        {
+          "name": "Sherien Mohammad",
+          "orgs": [
+            "Informatics Department, Electronics Research Institute, El-Dokki, Giza, 12622, Egypt"
+          ]
+        },
+        {
+          "name": "Mohamed Sameer",
+          "orgs": [
+            "Informatics Department, Electronics Research Institute, El-Dokki, Giza, 12622, Egypt"
+          ]
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Mohammad Ehab Ragab",
+          "orgs": [
+            "Informatics Department, Electronics Research Institute, El-Dokki, Giza, 12622, Egypt"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1502.02160v1",
+      "date": "2015-02-07T16:40:17Z",
+      "citation_count": 141,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2410.04588",
+      "score": 9.384856,
+      "title": "Frequency Comb Calibrated Laser Heterodyne Radiometry for Precision Radial Velocity Measurements",
+      "tldr": "This paper addresses the challenge of distinguishing stellar activity from exoplanet-induced radial velocity signals by introducing a frequency comb calibrated laser heterodyne radiometer (LHR) for high-precision solar radial velocity measurements, achieving sub-meter-per-second precision over a single day and demonstrating long-term stability over six weeks, with key contributions including high spectral resolution (~800,000) and signal-to-noise ratio (~2,600), and implications for improving solar variability studies and exoplanet detection.",
+      "abstract": "Disk-integrated observations of the Sun provide a unique vantage point to explore stellar activity and its effect on measured radial velocities. Here, we report a new approach for disk-integrated solar spectroscopy and evaluate its capabilities for solar radial velocity measurements. Our approach is based on a near-infrared laser heterodyne radiometer (LHR) combined with an optical frequency comb calibration, and we show that this combination enables precision, disk-integrated solar spectroscopy with high spectral resolution (~800,000), high signal-to-noise ratio (~2,600), and absolute frequency accuracy. We use the comb-calibrated LHR to record spectra of the solar Fe I 1565 nm transition over a six-week period. We show that our measurements reach sub-meter-per-second radial velocity precision over a single day, and we use daily measurements of the absolute line center to assess the long-term stability of the comb-calibrated LHR approach. We use this long-duration dataset to quantify the principal uncertainty sources that impact the measured radial velocities, and we discuss future modifications that can further improve this approach in studies of stellar variability and its impact on radial velocity measurements.",
+      "authors": [
+        {
+          "name": "Ryan K. Cole",
+          "orgs": [
+            "Time and Frequency Division, National Institute of Standards and Technology Boulder, Colorado, USA",
+            "Department of Physics and Astronomy, Bates College, Lewiston, Maine, USA"
+          ]
+        },
+        {
+          "name": "Connor Fredrick",
+          "orgs": [
+            "Time and Frequency Division, National Institute of Standards and Technology Boulder, Colorado, USA",
+            "Department of Electrical, Computer, and Energy Engineering, University of Colorado Boulder Boulder, Colorado, USA"
+          ]
+        },
+        {
+          "name": "Winter Parts",
+          "orgs": [
+            "Department of Physics and Astronomy, The Pennsylvania State University University Park, Pennsylvania, USA",
+            "Center for Exoplanets and Habitable Worlds, The Pennsylvania State University University Park, Pennsylvania, USA"
+          ]
+        },
+        {
+          "name": "Carolyn Chinatti",
+          "orgs": [
+            "Department of Physics and Astronomy, Carleton College, Northfield, Minnesota, USA"
+          ]
+        },
+        {
+          "name": "Josiah Tusler",
+          "orgs": [
+            "Department of Physics and Astronomy, Carleton College, Northfield, Minnesota, USA"
+          ]
+        },
+        {
+          "name": "Suvrath Mahadevan",
+          "orgs": [
+            "Department of Physics and Astronomy, The Pennsylvania State University University Park, Pennsylvania, USA",
+            "Center for Exoplanets and Habitable Worlds, The Pennsylvania State University University Park, Pennsylvania, USA"
+          ]
+        },
+        {
+          "name": "Ryan Terrien",
+          "orgs": [
+            "Department of Physics and Astronomy, Carleton College, Northfield, Minnesota, USA"
+          ]
+        },
+        {
+          "name": "Scott A. Diddams",
+          "orgs": [
+            "Time and Frequency Division, National Institute of Standards and Technology Boulder, Colorado, USA",
+            "Department of Electrical, Computer, and Energy Engineering, University of Colorado Boulder Boulder, Colorado, USA",
+            "Department of Physics, University of Colorado Boulder, Boulder, Colorado, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2410.04588v1",
+      "date": "2024-10-06T18:58:31Z",
+      "citation_count": 0,
+      "categories": [
+        "astro-ph.EP",
+        "astro-ph.IM",
+        "astro-ph.SR",
+        "physics.optics"
+      ]
+    },
+    {
+      "arxiv_id": "1410.7821",
+      "score": 9.372779,
+      "title": "First background-free limit from a directional dark matter experiment: results from a fully fiducialised DRIFT detector",
+      "tldr": "This paper presents a directional dark matter experiment using a fully fiducialised DRIFT detector to achieve background-free operation, improving spin-dependent WIMP-proton exclusion limits to 1.1 pb at 100 GeV/c², and demonstrating a new method for measuring ionising event positions through minority carrier analysis.",
+      "abstract": "The addition of O2 to gas mixtures in time projection chambers containing CS2 has recently been shown to produce multiple negative ions that travel at slightly different velocities. This allows a measurement of the absolute position of ionising events in the z (drift) direction. In this work, we apply the z-fiducialisation technique to a directional dark matter search. In particular, we present results from a 46.3 live-day source-free exposure of the DRIFT-IId detector run in this completely new mode. With full-volume fiducialisation, we have achieved the first background-free operation of a directional detector. The resulting exclusion curve for spin-dependent WIMP-proton interactions reaches 1.1 pb at 100 GeV/c2, a factor of 2 better than our previous work. We describe the automated analysis used here, and argue that detector upgrades, implemented after the acquisition of these data, will bring an additional factor of >3 improvement in the near future.",
+      "authors": [
+        {
+          "name": "J. B. R. Battat",
+          "orgs": [
+            "Department of Physics, Wellesley College, 106 Central Street, Wellesley, MA 02481, USA"
+          ]
+        },
+        {
+          "name": "J. Brack",
+          "orgs": [
+            "Department of Physics, Wellesley College, 106 Central Street, Wellesley, MA 02481, USA"
+          ]
+        },
+        {
+          "name": "E. Daw",
+          "orgs": [
+            "Department of Physics, Wellesley College, 106 Central Street, Wellesley, MA 02481, USA"
+          ]
+        },
+        {
+          "name": "A. Dorofeev",
+          "orgs": [
+            "Department of Physics, Wellesley College, 106 Central Street, Wellesley, MA 02481, USA"
+          ]
+        },
+        {
+          "name": "A. C. Ezeribe",
+          "orgs": [
+            "Department of Physics, Wellesley College, 106 Central Street, Wellesley, MA 02481, USA"
+          ]
+        },
+        {
+          "name": "J.-L. Gauvreau",
+          "orgs": [
+            "Department of Physics, Wellesley College, 106 Central Street, Wellesley, MA 02481, USA"
+          ]
+        },
+        {
+          "name": "M. Gold",
+          "orgs": [
+            "Department of Physics, Wellesley College, 106 Central Street, Wellesley, MA 02481, USA"
+          ]
+        },
+        {
+          "name": "J. L. Harton",
+          "orgs": [
+            "Department of Physics, Wellesley College, 106 Central Street, Wellesley, MA 02481, USA"
+          ]
+        },
+        {
+          "name": "J. M. Landers",
+          "orgs": [
+            "Department of Physics, Occidental College, Los Angeles, CA 90041, USA"
+          ]
+        },
+        {
+          "name": "E. Law",
+          "orgs": [
+            "Department of Physics, Wellesley College, 106 Central Street, Wellesley, MA 02481, USA"
+          ]
+        },
+        {
+          "name": "E. R. Lee",
+          "orgs": [
+            "Department of Physics, Wellesley College, 106 Central Street, Wellesley, MA 02481, USA"
+          ]
+        },
+        {
+          "name": "D. Loomba",
+          "orgs": [
+            "Department of Physics, Wellesley College, 106 Central Street, Wellesley, MA 02481, USA"
+          ]
+        },
+        {
+          "name": "A. Lumnah",
+          "orgs": [
+            "Department of Physics, Wellesley College, 106 Central Street, Wellesley, MA 02481, USA"
+          ]
+        },
+        {
+          "name": "J. A. J. Matthews",
+          "orgs": [
+            "Department of Physics, Wellesley College, 106 Central Street, Wellesley, MA 02481, USA"
+          ]
+        },
+        {
+          "name": "E. H. Miller",
+          "orgs": [
+            "Department of Physics, Wellesley College, 106 Central Street, Wellesley, MA 02481, USA"
+          ]
+        },
+        {
+          "name": "A. Monte",
+          "orgs": [
+            "Department of Physics, Wellesley College, 106 Central Street, Wellesley, MA 02481, USA"
+          ]
+        },
+        {
+          "name": "F. Mouton",
+          "orgs": [
+            "Department of Physics and Astronomy, University of Sheffield, S3 7RH, UK"
+          ]
+        },
+        {
+          "name": "A. StJ. Murphy",
+          "orgs": [
+            "Department of Physics and Astronomy, University of Sheffield, S3 7RH, UK"
+          ]
+        },
+        {
+          "name": "S. M. Paling",
+          "orgs": [
+            "Department of Physics and Astronomy, University of Sheffield, S3 7RH, UK"
+          ]
+        },
+        {
+          "name": "N. Phan",
+          "orgs": [
+            "Department of Physics and Astronomy, University of Sheffield, S3 7RH, UK"
+          ]
+        },
+        {
+          "name": "M. Robinson",
+          "orgs": [
+            "Department of Physics and Astronomy, University of Sheffield, S3 7RH, UK"
+          ]
+        },
+        {
+          "name": "S. W. Sadler",
+          "orgs": [
+            "Department of Physics and Astronomy, University of New Mexico, NM 87131, USA"
+          ]
+        },
+        {
+          "name": "A. Scarff",
+          "orgs": [
+            "Department of Physics, Colorado State University, Fort Collins, CO 80523-1875 USA"
+          ]
+        },
+        {
+          "name": "D. P. Snowden-Ifft",
+          "orgs": [
+            "STFC Boulby Underground Science Facility, Boulby Mine, Cleveland, TS13 4UZ, UK"
+          ]
+        },
+        {
+          "name": "N. J. C. Spooner",
+          "orgs": [
+            "STFC Boulby Underground Science Facility, Boulby Mine, Cleveland, TS13 4UZ, UK"
+          ]
+        },
+        {
+          "name": "S. Telfer",
+          "orgs": [
+            "STFC Boulby Underground Science Facility, Boulby Mine, Cleveland, TS13 4UZ, UK"
+          ]
+        },
+        {
+          "name": "D. Walker",
+          "orgs": [
+            "Department of Physics, Wellesley College, 106 Central Street, Wellesley, MA 02481, USA"
+          ]
+        },
+        {
+          "name": "D. Warner",
+          "orgs": [
+            "Department of Physics, Wellesley College, 106 Central Street, Wellesley, MA 02481, USA"
+          ]
+        },
+        {
+          "name": "L. Yuriev",
+          "orgs": [
+            "Department of Physics, Wellesley College, 106 Central Street, Wellesley, MA 02481, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1410.7821v3",
+      "date": "2014-10-28T21:36:40Z",
+      "citation_count": 86,
+      "categories": [
+        "astro-ph.CO",
+        "hep-ex",
+        "physics.ins-det"
+      ]
+    },
+    {
+      "arxiv_id": "2304.13048",
+      "score": 9.290411,
+      "title": "Stars on the edge: Galactic tides and the outskirts of the Sculptor dwarf spheroidal",
+      "tldr": "This paper investigates the origin of distant stars in the Sculptor dwarf galaxy using a Bayesian algorithm to identify new members, finding that Galactic tides extend its boundary to ~10 half-light radii (~3 kpc), revealing a metal-poor population and a density kink at ~25 arcmin, supporting tidal influence on its outskirts.",
+      "abstract": "The formation of \"stellar halos\" in dwarf galaxies have been discussed in terms of early mergers or Galactic tides, although fluctuations in the gravitational potential due to stellar feedback is also a possible candidate mechanism. A Bayesian algorithm is used to find new candidate members in the extreme outskirts of the Sculptor dwarf galaxy. Precise metallicities and radial velocities for two distant stars are measured from their spectra taken with the Gemini South GMOS spectrograph. The radial velocity, proper motion and metallicity of these targets are consistent with Sculptor membership. As a result, the known boundary of the Sculptor dwarf extends now out to an elliptical distance of $\\sim10$ half-light radii, which corresponds to a projected physical distance of $\\sim3$ kpc. As reported in earlier work, the overall distribution of radial velocities and metallicities indicate the presence of a more spatially and kinematically dispersed metal-poor population that surrounds the more concentrated and colder metal-rich stars. Sculptor's density profile shows a \"kink\" in its logarithmic slope at a projected distance of $\\sim25$ arcmin (620 pc), which we interpret as evidence that Galactic tides have helped to populate the distant outskirts of the dwarf. We discuss further ways to test and validate this tidal interpretation for the origin of these distant stars.",
+      "authors": [
+        {
+          "name": "Federico Sestito",
+          "orgs": [
+            "Department of Physics and Astronomy, University of Victoria, PO Box 3055, STN CSC, Victoria BC V8W 3P6, Canada"
+          ]
+        },
+        {
+          "name": "Joel Roediger",
+          "orgs": [
+            "NRC Herzberg Astronomy & Astrophysics, 5071 West Saanich Road, Victoria, BC V9E 2E7, Canada"
+          ]
+        },
+        {
+          "name": "Julio F. Navarro",
+          "orgs": [
+            "Department of Physics and Astronomy, University of Victoria, PO Box 3055, STN CSC, Victoria BC V8W 3P6, Canada"
+          ]
+        },
+        {
+          "name": "Jaclyn Jensen",
+          "orgs": [
+            "Department of Physics and Astronomy, University of Victoria, PO Box 3055, STN CSC, Victoria BC V8W 3P6, Canada"
+          ]
+        },
+        {
+          "name": "Kim A. Venn",
+          "orgs": [
+            "Department of Physics and Astronomy, University of Victoria, PO Box 3055, STN CSC, Victoria BC V8W 3P6, Canada"
+          ]
+        },
+        {
+          "name": "Simon E. T. Smith",
+          "orgs": [
+            "Department of Physics and Astronomy, University of Victoria, PO Box 3055, STN CSC, Victoria BC V8W 3P6, Canada"
+          ]
+        },
+        {
+          "name": "Christian Hayes",
+          "orgs": [
+            "NRC Herzberg Astronomy & Astrophysics, 5071 West Saanich Road, Victoria, BC V9E 2E7, Canada"
+          ]
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Alan W. McConnachie",
+          "orgs": [
+            "Department of Physics and Astronomy, University of Victoria, PO Box 3055, STN CSC, Victoria BC V8W 3P6, Canada",
+            "NRC Herzberg Astronomy & Astrophysics, 5071 West Saanich Road, Victoria, BC V9E 2E7, Canada"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2304.13048v2",
+      "date": "2023-04-25T18:00:01Z",
+      "citation_count": 10,
+      "categories": [
+        "astro-ph.GA",
+        "astro-ph.SR"
+      ]
+    },
+    {
+      "arxiv_id": "2512.01017",
+      "score": 9.160633,
+      "title": "ChartAnchor: Chart Grounding with Structural-Semantic Fidelity",
+      "tldr": "This paper addresses the challenge of chart grounding in multimodal large language models (MLLMs), aiming to improve structured chart comprehension by evaluating both visual and numerical fidelity; it introduces ChartAnchor, a benchmark with 8k+ chart-table-code triples across 30 types, featuring two complementary tasks and a multi-level evaluation framework; experiments reveal critical limitations in numerical precision and code synthesis, highlighting the need for structured reasoning in MLLMs.",
+      "abstract": "Recent advances in multimodal large language models (MLLMs) highlight the need for benchmarks that rigorously evaluate structured chart comprehension. Chart grounding refers to the bidirectional alignment between a chart's visual appearance and its structured semantics. This task requires models to produce a symbolic specification that faithfully captures the chart's visual and structural intent, while also recovering the underlying tabular data with precise values and relationships. Chart grounding directly reflects a model's capabilities in numerical reasoning, multimodal alignment, and structural reconstruction, and has several important real-world applications. Existing benchmarks, constrained by narrow chart diversity, isolated tasks, and incomplete evaluation frameworks, fail to holistically assess grounding. To address this, we propose ChartAnchor, a comprehensive benchmark of 8k+ chart-table-code triples spanning 30 chart types drawn from diverse real-world and augmented sources. ChartAnchor introduces two complementary tasks: chart-to-code generation and controlled chart-to-table reconstruction, enabling cross-validation of visual and numerical fidelity. A multi-level evaluation framework integrates semantic validation, stylistic analysis, and perceptual metrics to assess both structural and content-level correctness. Extensive experiments on MLLMs reveal critical limitations in numerical precision and code synthesis, emphasizing the need for structured reasoning beyond surface-level perception. By unifying symbolic and data-driven grounding, ChartAnchor establishes a rigorous foundation for chart grounding, offering meaningful insights for advancing MLLMs in scientific, financial, and industrial domains.",
+      "authors": [
+        {
+          "name": "Xinhang Li",
+          "orgs": [
+            "Baidu Research",
+            "USTC"
+          ]
+        },
+        {
+          "name": "Jingbo Zhou",
+          "orgs": [
+            "Baidu Research",
+            "USTC"
+          ]
+        },
+        {
+          "name": "Tong Xu",
+          "orgs": [
+            "USTC"
+          ]
+        },
+        {
+          "name": "Pengfei Luo",
+          "orgs": [
+            "Baidu Research",
+            "USTC"
+          ]
+        },
+        {
+          "name": "Yixiong Xiao",
+          "orgs": [
+            "Baidu Research"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.01017v3",
+      "date": "2025-11-30",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI"
+      ]
+    },
+    {
+      "arxiv_id": "1904.05207",
+      "score": 9.112811,
+      "title": "Know Your Boundaries: Constraining Gaussian Processes by Variational Harmonic Features",
+      "tldr": "This paper addresses the challenge of constraining Gaussian processes to arbitrarily-shaped domains by introducing a variational harmonic features approach, offering a low-rank representation and enabling non-Gaussian likelihoods; it proposes a novel method for incorporating boundary conditions and improves computational efficiency with $\\mathcal{O}(nm^2)$ prediction and $\\mathcal{O}(m^3)$ hyperparameter learning; experiments on simulated and empirical data demonstrate the method's effectiveness in handling complex domain constraints.",
+      "abstract": "Gaussian processes (GPs) provide a powerful framework for extrapolation, interpolation, and noise removal in regression and classification. This paper considers constraining GPs to arbitrarily-shaped domains with boundary conditions. We solve a Fourier-like generalised harmonic feature representation of the GP prior in the domain of interest, which both constrains the GP and attains a low-rank representation that is used for speeding up inference. The method scales as $\\mathcal{O}(nm^2)$ in prediction and $\\mathcal{O}(m^3)$ in hyperparameter learning for regression, where $n$ is the number of data points and $m$ the number of features. Furthermore, we make use of the variational approach to allow the method to deal with non-Gaussian likelihoods. The experiments cover both simulated and empirical data in which the boundary conditions allow for inclusion of additional physical information.",
+      "authors": [
+        {
+          "name": "Arno Solin",
+          "orgs": [
+            "Department of Computer Science",
+            "Aalto University"
+          ]
+        },
+        {
+          "name": "Manon Kok",
+          "orgs": [
+            "Delft Center for Systems and Control",
+            "Delft University of Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1904.05207v1",
+      "date": "2019-04-10T14:24:26Z",
+      "citation_count": 28,
+      "categories": [
+        "cs.LG",
+        "stat.ML"
+      ]
+    },
+    {
+      "arxiv_id": "2603.00520",
+      "score": 9.073319,
+      "title": "SWE-ABS: Adversarial Benchmark Strengthening Exposes Inflated Success Rates on Test-based Benchmark",
+      "tldr": "This paper addresses the evaluation crisis in software engineering benchmarks by introducing SWE-ABS, an adversarial framework that strengthens test suites through coverage-driven augmentation and mutation-driven testing, revealing that 19.78% of previously accepted patches are semantically incorrect and leading to a 16.6 percentage point drop in the top agent's success rate from 78.80% to 62.20%.",
+      "abstract": "The SWE-Bench Verified leaderboard is approaching saturation, with the top system achieving 78.80%. However, we show that this performance is inflated. Our re-evaluation reveals that one in five \"solved\" patches from the top-30 agents are semantically incorrect, passing only because weak test suites fail to expose their errors. We present SWE-ABS, an adversarial framework that strengthens test suites through a two-stage pipeline: (1) coverage-driven augmentation using program slicing to target untested code regions, and (2) mutation-driven adversarial testing that synthesizes plausible but incorrect patches to expose semantic blind spots. On SWE-Bench Verified (500 instances), SWE-ABS strengthens 50.2% of instances, a 25.1x improvement over prior work, and rejects 19.71% of previously passing patches. As a result, the top agent's score decreases from 78.80% to 62.20%, leading to significant leaderboard reshuffling, with the previous top-ranked agent dropping to fifth place.",
+      "authors": [
+        {
+          "name": "Boxi Yu",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Yang Cao",
+          "orgs": [
+            "2"
+          ]
+        },
+        {
+          "name": "Yuzhong Zhang",
+          "orgs": [
+            "3"
+          ]
+        },
+        {
+          "name": "Liting Lin",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Junjielong Xu",
+          "orgs": [
+            "3"
+          ]
+        },
+        {
+          "name": "Zhiqing Zhong",
+          "orgs": [
+            "3"
+          ]
+        },
+        {
+          "name": "Qinghua Xu",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Guancheng Wang",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Jialun Cao",
+          "orgs": [
+            "4"
+          ]
+        },
+        {
+          "name": "Shing-Chi Cheung",
+          "orgs": [
+            "4"
+          ]
+        },
+        {
+          "name": "Pinjia He",
+          "orgs": [
+            "3"
+          ]
+        },
+        {
+          "name": "Lionel Briand",
+          "orgs": [
+            "15"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2603.00520v1",
+      "date": "2026-02-28",
+      "citation_count": 0,
+      "categories": [
+        "cs.SE"
+      ]
+    },
+    {
+      "arxiv_id": "2512.15650",
+      "score": 4.4380755,
+      "title": "A Statistical Framework for Spatial Boundary Estimation and Change Detection: Application to the Sahel Sahara Climate Transition",
+      "tldr": "This paper addresses the challenge of estimating and detecting changes in spatial environmental boundaries using a heteroskedastic Gaussian process combined with a scaled MAD Global Envelope Test, contributing a unified framework for probabilistic boundary reconstruction and formal hypothesis testing; it finds no significant decade-scale shifts in Sahel-Sahara climate interfaces but identifies localized changes during extreme drought years 1983-1984.",
+      "abstract": "Spatial boundaries, such as ecological transitions or climatic regime interfaces, capture steep environmental gradients, and shifts in their structure can signal emerging environmental changes. Quantifying uncertainty in spatial boundary locations and formally testing for temporal shifts remains challenging, especially when boundaries are derived from noisy, gridded environmental data. We present a unified framework that combines heteroskedastic Gaussian process (GP) regression with a scaled Maximum Absolute Difference (MAD) Global Envelope Test (GET) to estimate spatial boundary curves and assess whether they evolve over time. The heteroskedastic GP provides a flexible probabilistic reconstruction of boundary lines, capturing spatially varying mean structure and location specific variability, while the test offers a rigorous hypothesis testing tool for detecting departures from expected boundary behaviors. Simulation studies show that the proposed method achieves the correct size under the null and high power for detecting local boundary shifts. Applying our framework to the Sahel Sahara transition zone, using annual Koppen Trewartha climate classifications from 1960 to 1989, we find no statistically significant decade scale changes in the arid and semi arid or semi arid and non arid interfaces. However, the method successfully identifies localized boundary shifts during the extreme drought years of 1983 and 1984, consistent with climate studies documenting regional anomalies in these interfaces during that period.",
+      "authors": [
+        {
+          "name": "Stephen Tivenan",
+          "orgs": [
+            "Department of Statistical Sciences and Operations Research, Virginia Commonwealth University, Richmond, VA, USA."
+          ]
+        },
+        {
+          "name": "Indranil Sahoo*",
+          "orgs": [
+            "Department of Statistical Sciences and Operations Research, Virginia Commonwealth University, Richmond, VA, USA."
+          ]
+        },
+        {
+          "name": "Yanjun Qian",
+          "orgs": [
+            "Department of Statistical Sciences and Operations Research, Virginia Commonwealth University, Richmond, VA, USA."
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.15650v1",
+      "date": "2025-12-17",
+      "citation_count": 0,
+      "categories": [
+        "stat.AP",
+        "stat.ML"
+      ]
+    },
+    {
+      "arxiv_id": "1210.4475",
+      "score": 4.0510497,
+      "title": "The Evolution and Space Weather Effects of Solar Coronal Holes",
+      "tldr": "This paper investigates solar coronal holes (CHs) and their space weather effects, addressing the need for accurate forecasting of geomagnetic disturbances caused by CH-related high-speed solar wind streams; it employs automated detection (CHARM) and evolution tracking (CHEVOL) methods, along with MIST algorithm, to analyze CH properties and their long-term impacts on geomagnetic indices and radiation belts; findings confirm the relationship between CHs, high-speed solar wind, and electron flux enhancements, advancing understanding of CH evolution and space weather prediction.",
+      "abstract": "In recent years the role of space weather forecasting has grown tremendously as our society increasingly relies on satellite dependent technologies. The forecasting of flare and CME related transient geomagnetic storms has become a primary initiative, however, minor magnetic storms caused by coronal holes (CHs) have also proven to be of high importance due to their long lasting and recurrent geomagnetic effects. In order to study CH properties, the author developed an automated CH detection method (CHARM), which uses local intensity histograms to identify CH boundaries. An additional algorithm package (CHEVOL) was developed to study individual CHs by tracking their boundary evolution. It is widely accepted that the short-term changes in CH boundaries are due to the interchange reconnection between the CH open field lines and small loops. In order to test the interchange reconnection model, the magnetic reconnection rate and the diffusion coefficient at CH boundaries were determined using observed CH boundary displacement velocities. The results were found to be in agreement with those determined by the theory. The MIST algorithm was developed by the author to build on the CHARM package, providing a fast and consistent way to link CHs to high-speed solar wind periods detected at Earth. This allowed us to carry out a long-term analysis (2000-2009) to study the relationship between CHs, the corresponding HSSW properties, and geomagnetic indices. The relationship between CH related high-speed solar wind streams and the electron flux enhancements in the Van Allen radiation belt was confirmed. The research presented in this thesis includes the small-scale analysis of individual CHs on time scales of days, which is complemented with large scale analysis of CH groups on time scales of years. This allowed us to further our understanding of CH evolution as a whole.",
+      "authors": [
+        {
+          "name": "Larisza D. Krista",
+          "orgs": [
+            "School of Physics",
+            "University of Dublin, Trinity College"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1210.4475v1",
+      "date": "2012-10-16T16:11:02Z",
+      "citation_count": 2,
+      "categories": [
+        "astro-ph.SR"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1363 @@
+C:\Python314\Lib\site-packages\langchain_core\_api\deprecation.py:25: UserWarning: Core Pydantic V1 functionality isn't compatible with Python 3.14 or greater.
+  from pydantic.v1.fields import FieldInfo as FieldInfoV1
+python-dotenv could not parse statement starting at line 2
+python-dotenv could not parse statement starting at line 3
+python-dotenv could not parse statement starting at line 4
+python-dotenv could not parse statement starting at line 5
+{
+  "status": "success",
+  "total_count": 79,
+  "result": [
+    {
+      "arxiv_id": "2506.21762",
+      "score": 12.084305,
+      "title": "ViStruct: Simulating Expert-Like Reasoning Through Task Decomposition and Visual Attention Cues",
+      "tldr": "This paper introduces ViStruct, an automated pipeline that simulates expert-like reasoning in data visualization by decomposing tasks into structured steps and highlighting relevant chart regions, addressing the gap in modeling implicit expert strategies; it leverages large language and vision-language models to achieve this, offering a replicable model validated on 45 tasks across 12 chart types with expert validation; results show ViStruct produces interpretable and expert-aligned reasoning sequences, aiding in the development of more transparent visualization tools.",
+      "abstract": "Data visualization tasks often require multi-step reasoning, and the interpretive strategies experts use, such as decomposing complex goals into smaller subtasks and selectively attending to key chart regions are rarely made explicit. ViStruct is an automated pipeline that simulates these expert behaviours by breaking high-level visual questions into structured analytic steps and highlighting semantically relevant chart areas. Leveraging large language and vision-language models, ViStruct identifies chart components, maps subtasks to spatial regions, and presents visual attention cues to externalize expert-like reasoning flows. While not designed for direct novice instruction, ViStruct provides a replicable model of expert interpretation that can inform the development of future visual literacy tools. We evaluate the system on 45 tasks across 12 chart types and validate its outputs with trained visualization users, confirming its ability to produce interpretable and expert-aligned reasoning sequences.",
+      "authors": [
+        {
+          "name": "Oliver Huang",
+          "orgs": []
+        },
+        {
+          "name": "Carolina Nobre",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2506.21762v1",
+      "date": "2025-06-26T20:40:20Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "1412.6079",
+      "score": 10.453781,
+      "title": "Decoding the Text Encoding",
+      "tldr": "This paper addresses the gap in text visualization by proposing an automatic algorithm to decode word clouds and extract raw (word, value) data, contributing a novel method for improving data analysis and visualization design, and demonstrating effective extraction with low error rates.",
+      "abstract": "Word clouds and text visualization is one of the recent most popular and widely used types of visualizations. Despite the attractiveness and simplicity of producing word clouds, they do not provide a thorough visualization for the distribution of the underlying data. Therefore, it is important to redesign word clouds for improving their design choices and to be able to do further statistical analysis on data. In this paper we have proposed a fully automatic redesigning algorithm for word cloud visualization. Our proposed method is able to decode an input word cloud visualization and provides the raw data in the form of a list of (word, value) pairs. To the best of our knowledge our work is the first attempt to extract raw data from word cloud visualization. We have tested our proposed method both qualitatively and quantitatively. The results of our experiments show that our algorithm is able to extract the words and their weights effectively with considerable low error rate.",
+      "authors": [
+        {
+          "name": "Fereshteh Sadeghi",
+          "orgs": [
+            "Computer Science and Engineering, University of Washington"
+          ]
+        },
+        {
+          "name": "Hamid Izadinia",
+          "orgs": [
+            "Computer Science and Engineering, University of Washington"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1412.6079v1",
+      "date": "2014-12-16T04:34:16Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2303.02869",
+      "score": 10.420138,
+      "title": "Enhancing Border Security and Countering Terrorism Through Computer Vision: a Field of Artificial Intelligence",
+      "tldr": "This paper addresses the challenge of enhancing border security and countering terrorism by developing an AI-powered computer vision system that detects and classifies moving objects, snaps images, performs background checks, and alerts authorities; it proposes a model combining Open CV and AdaBoost algorithms for object detection and classification, with contributions including automated image capture and threat prediction; empirical results show the system can effectively detect individuals from afar and perform background checks against global databases, improving border security efficiency.",
+      "abstract": "Border security had been a persistent problem in international border especially when it get to the issue of preventing illegal movement of weapons, contraband, drugs, and combating issue of illegal or undocumented immigrant while at the same time ensuring that lawful trade, economic prosperity coupled with national sovereignty across the border is maintained. In this research work, we used open source computer vision (Open CV) and adaboost algorithm to develop a model which can detect a moving object a far off, classify it, automatically snap full image and face of the individual separately, and then run a background check on them against worldwide databases while making a prediction about an individual being a potential threat, intending immigrant, potential terrorists or extremist and then raise sound alarm. Our model can be deployed on any camera device and be mounted at any international border. There are two stages involved, we first developed a model based on open CV computer vision algorithm, with the ability to detect human movement from afar, it will automatically snap both the face and the full image of the person separately, and the second stage is the automatic triggering of background check against the moving object. This ensures it check the moving object against several databases worldwide and is able to determine the admissibility of the person afar off. If the individual is inadmissible, it will automatically alert the border officials with the image of the person and other details, and if the bypass the border officials, the system is able to detect and alert the authority with his images and other details. All these operations will be done afar off by the AI powered camera before the individual reach the border",
+      "authors": [
+        {
+          "name": "Tosin Ige",
+          "orgs": [
+            "University of Texas at El Paso, Texas, TX 79968, USA"
+          ]
+        },
+        {
+          "name": "Abosede Kolade",
+          "orgs": [
+            "Texas A&M University-Commerce, Texas, TX, 75428, USA"
+          ]
+        },
+        {
+          "name": "Olukunle Kolade",
+          "orgs": [
+            "United State Navy, 1200 Navy, Pentagon, Washington, DC, 20350-1200, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2303.02869v1",
+      "date": "2023-03-06T03:37:43Z",
+      "citation_count": 9,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2501.05452",
+      "score": 10.181527,
+      "title": "ReFocus: Visual Editing as a Chain of Thought for Structured Image Understanding",
+      "tldr": "This paper addresses structured image understanding, specifically the challenge of multi-hop visual reasoning in tables and charts, by introducing ReFocus, a framework that enables multimodal LLMs to generate visual edits as code to enhance selective attention; ReFocus improves performance by 11.0% on table tasks and 6.8% on chart tasks compared to GPT-4o, and achieves an 8.0% average gain over standard VQA data when used for training.",
+      "abstract": "Structured image understanding, such as interpreting tables and charts, requires strategically refocusing across various structures and texts within an image, forming a reasoning sequence to arrive at the final answer. However, current multimodal large language models (LLMs) lack this multihop selective attention capability. In this work, we introduce ReFocus, a simple yet effective framework that equips multimodal LLMs with the ability to generate \"visual thoughts\" by performing visual editing on the input image through code, shifting and refining their visual focuses. Specifically, ReFocus enables multimodal LLMs to generate Python codes to call tools and modify the input image, sequentially drawing boxes, highlighting sections, and masking out areas, thereby enhancing the visual reasoning process. We experiment upon a wide range of structured image understanding tasks involving tables and charts. ReFocus largely improves performance on all tasks over GPT-4o without visual editing, yielding an average gain of 11.0% on table tasks and 6.8% on chart tasks. We present an in-depth analysis of the effects of different visual edits, and reasons why ReFocus can improve the performance without introducing additional information. Further, we collect a 14k training set using ReFocus, and prove that such visual chain-of-thought with intermediate information offers a better supervision than standard VQA data, reaching a 8.0% average gain over the same model trained with QA pairs and 2.6% over CoT.",
+      "authors": [
+        {
+          "name": "Xingyu Fu",
+          "orgs": [
+            "University of Pennsylvania",
+            "Microsoft"
+          ]
+        },
+        {
+          "name": "Minqian Liu",
+          "orgs": [
+            "Virginia Tech"
+          ]
+        },
+        {
+          "name": "Zhengyuan Yang",
+          "orgs": [
+            "Microsoft"
+          ]
+        },
+        {
+          "name": "John Corring",
+          "orgs": [
+            "Microsoft"
+          ]
+        },
+        {
+          "name": "Yijuan Lu",
+          "orgs": [
+            "Microsoft"
+          ]
+        },
+        {
+          "name": "Jianwei Yang",
+          "orgs": [
+            "Microsoft"
+          ]
+        },
+        {
+          "name": "Dan Roth",
+          "orgs": [
+            "University of Pennsylvania"
+          ]
+        },
+        {
+          "name": "Dinei Florencio",
+          "orgs": [
+            "Microsoft"
+          ]
+        },
+        {
+          "name": "Cha Zhang",
+          "orgs": [
+            "Microsoft"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2501.05452v1",
+      "date": "2025-01-09T18:59:58Z",
+      "citation_count": 55,
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2307.16112",
+      "score": 10.143543,
+      "title": "Augmented Math: Authoring AR-Based Explorable Explanations by Augmenting Static Math Textbooks",
+      "tldr": "This paper presents Augmented Math, a machine learning approach to transform static math textbooks into interactive explorable explanations by extracting and augmenting mathematical content with dynamic values, interactive figures, relationship highlights, concrete examples, and step-by-step hints; user studies show AR-based interfaces enhance engagement and understanding of math concepts compared to static texts.",
+      "abstract": "We introduce Augmented Math, a machine learning-based approach to authoring AR explorable explanations by augmenting static math textbooks without programming. To augment a static document, our system first extracts mathematical formulas and figures from a given document using optical character recognition (OCR) and computer vision. By binding and manipulating these extracted contents, the user can see the interactive animation overlaid onto the document through mobile AR interfaces. This empowers non-technical users, such as teachers or students, to transform existing math textbooks and handouts into on-demand and personalized explorable explanations. To design our system, we first analyzed existing explorable math explanations to identify common design strategies. Based on the findings, we developed a set of augmentation techniques that can be automatically generated based on the extracted content, which are 1) dynamic values, 2) interactive figures, 3) relationship highlights, 4) concrete examples, and 5) step-by-step hints. To evaluate our system, we conduct two user studies: preliminary user testing and expert interviews. The study results confirm that our system allows more engaging experiences for learning math concepts.",
+      "authors": [
+        {
+          "name": "Neil Chulpongsatorn",
+          "orgs": [
+            "University of Calgary",
+            "Calgary, Canada"
+          ]
+        },
+        {
+          "name": "Mille Skovhus Lunding",
+          "orgs": [
+            "Aarhus University",
+            "Aarhus, Denmark",
+            "University of Calgary",
+            "Calgary, Canada"
+          ]
+        },
+        {
+          "name": "Nishan Soni",
+          "orgs": [
+            "University of Calgary",
+            "Calgary, Canada"
+          ]
+        },
+        {
+          "name": "Ryo Suzuki",
+          "orgs": [
+            "University of Calgary",
+            "Calgary, Canada"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2307.16112v1",
+      "date": "2023-07-30T03:02:52Z",
+      "citation_count": 29,
+      "categories": [
+        "cs.CV",
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "1812.10636",
+      "score": 10.067407,
+      "title": "Chart-Text: A Fully Automated Chart Image Descriptor",
+      "tldr": "This paper presents Chart-Text, a fully automated system for generating textual descriptions of chart images, addressing the challenge of creating standardized Alt-Text for visually impaired users; it proposes a method combining chart classification and data extraction with accuracies of 99.72% and 78.9%, respectively, significantly improving accessibility and productivity for content creators.",
+      "abstract": "Images greatly help in understanding, interpreting and visualizing data. Adding textual description to images is the first and foremost principle of web accessibility. Visually impaired users using screen readers will use these textual descriptions to get better understanding of images present in digital contents. In this paper, we propose Chart-Text a novel fully automated system that creates textual description of chart images. Given a PNG image of a chart, our Chart-Text system creates a complete textual description of it. First, the system classifies the type of chart and then it detects and classifies the labels and texts in the charts. Finally, it uses specific image processing algorithms to extract relevant information from the chart images. Our proposed system achieves an accuracy of 99.72% in classifying the charts and an accuracy of 78.9% in extracting the data and creating the corresponding textual description.",
+      "authors": [
+        {
+          "name": "Abhijit Balaji",
+          "orgs": [
+            "SPi Technologies India Private Limited"
+          ]
+        },
+        {
+          "name": "Thuvaarakkesh Ramanathan",
+          "orgs": [
+            "SPi Technologies India Private Limited"
+          ]
+        },
+        {
+          "name": "Venkateshwarlu Sonathi",
+          "orgs": [
+            "SPi Technologies India Private Limited"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1812.10636v1",
+      "date": "2018-12-27T05:52:06Z",
+      "citation_count": 61,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2403.12027",
+      "score": 10.010857,
+      "title": "From Pixels to Insights: A Survey on Automatic Chart Understanding in the Era of Large Foundation Models",
+      "tldr": "This paper reviews automatic chart understanding within the context of large foundation models, addressing the gap in comprehensive surveys by covering modern datasets, modeling strategies, and evaluation metrics, contributing insights on domain-specific charts, evaluation metrics, and future research directions, and reporting state-of-the-art performance improvements through vision-language models and tool augmentation.",
+      "abstract": "Data visualization in the form of charts plays a pivotal role in data analysis, offering critical insights and aiding in informed decision-making. Automatic chart understanding has witnessed significant advancements with the rise of large foundation models in recent years. Foundation models, such as large language models, have revolutionized various natural language processing tasks and are increasingly being applied to chart understanding tasks. This survey paper provides a comprehensive overview of the recent developments, challenges, and future directions in chart understanding within the context of these foundation models. We review fundamental building blocks crucial for studying chart understanding tasks. Additionally, we explore various tasks and their evaluation metrics and sources of both charts and textual inputs. Various modeling strategies are then examined, encompassing both classification-based and generation-based approaches, along with tool augmentation techniques that enhance chart understanding performance. Furthermore, we discuss the state-of-the-art performance of each task and discuss how we can improve the performance. Challenges and future directions are addressed, highlighting the importance of several topics, such as domain-specific charts, lack of efforts in developing evaluation metrics, and agent-oriented settings. This survey paper serves as a comprehensive resource for researchers and practitioners in the fields of natural language processing, computer vision, and data analysis, providing valuable insights and directions for future research in chart understanding leveraging large foundation models. The studies mentioned in this paper, along with emerging new research, will be continually updated at: https://github.com/khuangaf/Awesome-Chart-Understanding.",
+      "authors": [
+        {
+          "name": "Kung-Hsiang Huang",
+          "orgs": [
+            "Salesforce AI Research"
+          ]
+        },
+        {
+          "name": "Hou Pong Chan",
+          "orgs": [
+            "University of Illinois Urbana-Champaign"
+          ]
+        },
+        {
+          "name": "May Fung",
+          "orgs": [
+            "University of Illinois Urbana-Champaign"
+          ]
+        },
+        {
+          "name": "Haoyi Qiu",
+          "orgs": [
+            "University of California, Los Angeles"
+          ]
+        },
+        {
+          "name": "Mingyang Zhou",
+          "orgs": [
+            "Capital One"
+          ]
+        },
+        {
+          "name": "Shafiq Joty",
+          "orgs": [
+            "Salesforce AI Research",
+            "NTU"
+          ]
+        },
+        {
+          "name": "Shih-Fu Chang",
+          "orgs": [
+            "Columbia University"
+          ]
+        },
+        {
+          "name": "Heng Ji",
+          "orgs": [
+            "University of Illinois Urbana-Champaign"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2403.12027v4",
+      "date": "2024-03-18T17:57:09Z",
+      "citation_count": 64,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2411.11740",
+      "score": 10.00819,
+      "title": "Revitalizing Electoral Trust: Enhancing Transparency and Efficiency through Automated Voter Counting with Machine Learning",
+      "tldr": "This paper addresses the challenge of manual vote counting in elections, particularly in Bangladesh, where it undermines trust and transparency, by proposing an automated voter counting system using OpenCV, CVZone, and MOG2 algorithm; it contributes a novel integration of image processing technologies for improved accuracy and efficiency; empirical results show enhanced performance metrics compared to manual methods, reinforcing the potential of automated systems to restore public confidence in electoral processes.",
+      "abstract": "In order to address issues with manual vote counting during election procedures, this study intends to examine the viability of using advanced image processing techniques for automated voter counting. The study aims to shed light on how automated systems that utilize cutting-edge technologies like OpenCV, CVZone, and the MOG2 algorithm could greatly increase the effectiveness and openness of electoral operations. The empirical findings demonstrate how automated voter counting can enhance voting processes and rebuild public confidence in election outcomes, particularly in places where trust is low. The study also emphasizes how rigorous metrics, such as the F1 score, should be used to systematically compare the accuracy of automated systems against manual counting methods. This methodology enables a detailed comprehension of the differences in performance between automated and human counting techniques by providing a nuanced assessment. The incorporation of said measures serves to reinforce an extensive assessment structure, guaranteeing the legitimacy and dependability of automated voting systems inside the electoral sphere.",
+      "authors": [
+        {
+          "name": "Mir Farisa",
+          "orgs": [
+            "Department of Computer Science, American International University-Bangladesh, Dhaka-1229, Bangladesh"
+          ]
+        },
+        {
+          "name": "Syeda Aynul Karim",
+          "orgs": [
+            "Department of Computer Science, American International University-Bangladesh, Dhaka-1229, Bangladesh"
+          ]
+        },
+        {
+          "name": "Md. Juniadul Islam",
+          "orgs": [
+            "Department of Computer Science, American International University-Bangladesh, Dhaka-1229, Bangladesh"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2411.11740v1",
+      "date": "2024-11-18T17:10:14Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2111.14103",
+      "score": 9.9578905,
+      "title": "CHARTER: heatmap-based multi-type chart data extraction",
+      "tldr": "This paper addresses the challenge of extracting tabular data from diverse chart types in documents, proposing a heatmap-based detection system that improves precision for non-rectangular charts like pie and line plots, and introduces novel algorithms for label matching and data extraction, achieving state-of-the-art results on benchmark datasets.",
+      "abstract": "The digital conversion of information stored in documents is a great source of knowledge. In contrast to the documents text, the conversion of the embedded documents graphics, such as charts and plots, has been much less explored. We present a method and a system for end-to-end conversion of document charts into machine readable tabular data format, which can be easily stored and analyzed in the digital domain. Our approach extracts and analyses charts along with their graphical elements and supporting structures such as legends, axes, titles, and captions. Our detection system is based on neural networks, trained solely on synthetic data, eliminating the limiting factor of data collection. As opposed to previous methods, which detect graphical elements using bounding-boxes, our networks feature auxiliary domain specific heatmaps prediction enabling the precise detection of pie charts, line and scatter plots which do not fit the rectangular bounding-box presumption. Qualitative and quantitative results show high robustness and precision, improving upon previous works on popular benchmarks",
+      "authors": [
+        {
+          "name": "Joseph Shtok",
+          "orgs": [
+            "IBM Research AI",
+            "Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Sivan Harary",
+          "orgs": [
+            "IBM Research AI",
+            "Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Ophir Azulai",
+          "orgs": [
+            "IBM Research AI",
+            "Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Adi Raz Goldfarb",
+          "orgs": [
+            "IBM Research AI",
+            "Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Assaf Arbelle",
+          "orgs": [
+            "IBM Research AI, Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Leonid Karlinsky",
+          "orgs": [
+            "IBM Research AI, Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2111.14103v1",
+      "date": "2021-11-28T11:01:21Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2405.12385",
+      "score": 9.9309225,
+      "title": "SciJava Ops: An Improved Algorithms Framework for Fiji and Beyond",
+      "tldr": "This paper introduces SciJava Ops, a framework addressing the interoperability challenge in scientific image analysis by enabling unified algorithm execution across diverse platforms and data structures, with key contributions including automatic data adaptation and decoupling from ImageJ; empirical results show effective integration of algorithms from incompatible tools, enhancing workflow flexibility and reducing manual data conversion efforts.",
+      "abstract": "Many scientific software platforms provide plugin mechanisms that simplify the integration, deployment, and execution of externally developed functionality. One of the most widely used platforms in the imaging space is Fiji, a popular open-source application for scientific image analysis. Fiji incorporates and builds on the ImageJ and ImageJ2 platforms, which provide a powerful plugin architecture used by thousands of plugins to solve a wide variety of problems. This capability is a major part of Fiji's success, and it has become a widely used biological image analysis tool and a target for new functionality. However, a plugin-based software architecture cannot unify disparate platforms operating on incompatible data structures; interoperability necessitates the creation of adaptation or \"bridge\" layers to translate data and invoke functionality. As a result, while platforms like Fiji enable a high degree of interconnectivity and extensibility, they were not fundamentally designed to integrate across the many data types, programming languages, and architectural differences of various software platforms.To help address this challenge, we present SciJava Ops, a foundational software library for expressing algorithms as plugins in a unified and extensible way. Continuing the evolution of Fiji's SciJava plugin mechanism, SciJava Ops enables users to harness algorithms from various software platforms within a central execution environment. In addition, SciJava Ops automatically adapts data into the most appropriate structure for each algorithm, allowing users to freely and transparently combine algorithms from otherwise incompatible tools. While SciJava Ops is initially distributed as a Fiji update site, the framework does not require Fiji, ImageJ, or ImageJ2, and would be suitable for integration with additional image analysis platforms.",
+      "authors": [
+        {
+          "name": "Gabriel J. Selzer",
+          "orgs": [
+            "Center for Quantitative Cell Imaging, University of Wisconsin-Madison, Madison, Wisconsin, USA"
+          ]
+        },
+        {
+          "name": "Curtis T. Rueden",
+          "orgs": [
+            "Center for Quantitative Cell Imaging, University of Wisconsin-Madison, Madison, Wisconsin, USA"
+          ]
+        },
+        {
+          "name": "Mark C. Hiner",
+          "orgs": [
+            "Center for Quantitative Cell Imaging, University of Wisconsin-Madison, Madison, Wisconsin, USA"
+          ]
+        },
+        {
+          "name": "Edward L. Evans III",
+          "orgs": [
+            "Center for Quantitative Cell Imaging, University of Wisconsin-Madison, Madison, Wisconsin, USA",
+            "Morgridge Institute for Research, Madison, Wisconsin, USA"
+          ]
+        },
+        {
+          "name": "David Kolb",
+          "orgs": [
+            "University of Konstanz, Konstanz, Germany",
+            "KNIME GmbH, Konstanz, Germany"
+          ]
+        },
+        {
+          "name": "Marcel Wiedenmann",
+          "orgs": [
+            "University of Konstanz, Konstanz, Germany",
+            "KNIME GmbH, Konstanz, Germany"
+          ]
+        },
+        {
+          "name": "Christian Birkhold",
+          "orgs": [
+            "University of Konstanz, Konstanz, Germany",
+            "KNIME GmbH, Konstanz, Germany"
+          ]
+        },
+        {
+          "name": "Tim-Oliver Buchholz",
+          "orgs": [
+            "Max Planck Institute of Molecular Cell Biology and Genetics, Dresden, Germany",
+            "Friedrich Miescher Institute for Biomedical Research, Basel, Switzerland"
+          ]
+        },
+        {
+          "name": "Stefan Helfrich",
+          "orgs": [
+            "KNIME GmbH, Konstanz, Germany"
+          ]
+        },
+        {
+          "name": "Brian Northan",
+          "orgs": [
+            "True North Intelligent Algorithms"
+          ]
+        },
+        {
+          "name": "Alison Walter",
+          "orgs": [
+            "Center for Quantitative Cell Imaging, University of Wisconsin-Madison, Madison, Wisconsin, USA",
+            "Morgridge Institute for Research, Madison, Wisconsin, USA",
+            "KNIME GmbH, Konstanz, Germany"
+          ]
+        },
+        {
+          "name": "Johannes Schindelin",
+          "orgs": [
+            "Center for Quantitative Cell Imaging, University of Wisconsin-Madison, Madison, Wisconsin, USA",
+            "Morgridge Institute for Research, Madison, Wisconsin, USA",
+            "Max Planck Institute of Molecular Cell Biology and Genetics, Dresden, Germany",
+            "Nelia Research Campus, Howard Hughes Medical Institute, Ashburn, Virginia, USA"
+          ]
+        },
+        {
+          "name": "Tobias Pietzsch",
+          "orgs": [
+            "Max Planck Institute of Molecular Cell Biology and Genetics",
+            "Dresden, Germany"
+          ]
+        },
+        {
+          "name": "Stephan Saalfeld",
+          "orgs": [
+            "Max Planck Institute of Molecular Cell Biology and Genetics",
+            "Dresden, Germany",
+            "Nelia Research Campus, Howard Hughes Medical Institute",
+            "Ashburn, Virginia, USA"
+          ]
+        },
+        {
+          "name": "Michael R. Berthold",
+          "orgs": [
+            "University of Konstanz",
+            "Konstanz, Germany",
+            "KNIME GmbH",
+            "Konstanz, Germany"
+          ]
+        },
+        {
+          "name": "Kevin W. Eliceiri",
+          "orgs": [
+            "Center for Quantitative Cell Imaging, University of Wisconsin-Madison, Madison, Wisconsin, USA",
+            "Morgridge Institute for Research, Madison, Wisconsin, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2405.12385v1",
+      "date": "2024-05-20T21:40:08Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.SE"
+      ]
+    },
+    {
+      "arxiv_id": "1906.11906",
+      "score": 9.852457,
+      "title": "Data Extraction from Charts via Single Deep Neural Network",
+      "tldr": "This paper presents a deep learning model for automatic data extraction from bar and pie charts, addressing the challenge of handling complex object relations and varying chart types, by combining object detection, text recognition, and component matching; it introduces a single model for bar charts and a specialized model for pie charts with RNN-based angle detection, achieving 79.4% and 88.0% accuracy on simulated charts, but degrading to 57.5% and 62.3% on out-of-domain data, offering improved automation for business data management.",
+      "abstract": "Automatic data extraction from charts is challenging for two reasons: there exist many relations among objects in a chart, which is not a common consideration in general computer vision problems; and different types of charts may not be processed by the same model. To address these problems, we propose a framework of a single deep neural network, which consists of object detection, text recognition and object matching modules. The framework handles both bar and pie charts, and it may also be extended to other types of charts by slight revisions and by augmenting the training data. Our model performs successfully on 79.4% of test simulated bar charts and 88.0% of test simulated pie charts, while for charts outside of the training domain it degrades for 57.5% and 62.3%, respectively.",
+      "authors": [
+        {
+          "name": "Xiaoyi Liu",
+          "orgs": []
+        },
+        {
+          "name": "Diego Klabjan",
+          "orgs": []
+        },
+        {
+          "name": "Patrick N Bless",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1906.11906v1",
+      "date": "2019-06-06T21:54:50Z",
+      "citation_count": 60,
+      "categories": [
+        "cs.CL",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2601.17221",
+      "score": 9.812901,
+      "title": "Vidformer: Drop-in Declarative Optimization for Rendering Video-Native Query Results",
+      "tldr": "This paper addresses the challenge of slow rendering in video-native querying by introducing Vidformer, a declarative optimization framework that accelerates video visualization through symbolic computation, parallelization, and just-in-time streaming, achieving 2-3x faster rendering and 400x faster time-to-playback, enabling sub-second interactive video exploration.",
+      "abstract": "When interactively exploring video data, video-native querying involves consuming query results as videos, including steps such as compilation of extracted video clips or data overlays. These video-native queries are bottlenecked by rendering, not the execution of the underlying queries. This rendering is currently performed using post-processing scripts that are often slow. This step poses a critical point of friction in interactive video data workloads: even short clips contain thousands of high-definition frames; conventional OpenCV/Python scripts must decode -> transform -> encode the entire data stream before a single pixel appears, leaving users waiting for many seconds, minutes, or hours.\n  To address these issues, we present Vidformer, a drop-in rendering accelerator for video-native querying which, (i) transparently lifts existing visualization code into a declarative representation, (ii) transparently optimizes and parallelizes rendering, and (iii) instantly serves videos through a Video on Demand protocol with just-in-time segment rendering. We demonstrate that Vidformer cuts full-render time by 2-3x across diverse annotation workloads, and, more critically, drops time-to-playback to 0.25-0.5s. This represents a 400x improvement that decouples clip length from first-frame playback latency, and unlocks the ability to perform interactive video-native querying with sub-second latencies. Furthermore, we show how our approach enables interactive video-native LLM-based conversational querying as well.",
+      "authors": [
+        {
+          "name": "Dominik Winecki",
+          "orgs": [
+            "The Ohio State University"
+          ]
+        },
+        {
+          "name": "Arnab Nandi",
+          "orgs": [
+            "The Ohio State University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2601.17221v1",
+      "date": "2026-01-23",
+      "citation_count": 0,
+      "categories": [
+        "cs.DB",
+        "cs.MM"
+      ]
+    },
+    {
+      "arxiv_id": "2601.08049",
+      "score": 9.788296,
+      "title": "Integrating Attendance Tracking and Emotion Detection for Enhanced Student Engagement in Smart Classrooms",
+      "tldr": "This paper presents SCASED, an IoT-based system integrating automated attendance tracking and real-time facial emotion recognition to address the gap in monitoring student engagement in smart classrooms, using a fine-tuned MobileNetV2 model for emotion classification with 89.5% accuracy, offering instructors insights into classroom dynamics through a cloud-based dashboard.",
+      "abstract": "The increasing adoption of smart classroom technologies in higher education has mainly focused on automating attendance, with limited attention given to students' emotional and cognitive engagement during lectures. This limits instructors' ability to identify disengagement and adapt teaching strategies in real time. This paper presents SCASED (Smart Classroom Attendance System with Emotion Detection), an IoT-based system that integrates automated attendance tracking with facial emotion recognition to support classroom engagement monitoring. The system uses a Raspberry Pi camera and OpenCV for face detection, and a finetuned MobileNetV2 model to classify four learning-related emotional states: engagement, boredom, confusion, and frustration. A session-based mechanism is implemented to manage attendance and emotion monitoring by recording attendance once per session and performing continuous emotion analysis thereafter. Attendance and emotion data are visualized through a cloud-based dashboard to provide instructors with insights into classroom dynamics. Experimental evaluation using the DAiSEE dataset achieved an emotion classification accuracy of 89.5%. The results show that integrating attendance data with emotion analytics can provide instructors with additional insight into classroom dynamics and support more responsive teaching practices.",
+      "authors": [
+        {
+          "name": "Ann Move Oguti",
+          "orgs": [
+            "School of Engineering and Technology, Soroti University"
+          ]
+        },
+        {
+          "name": "Keith Ainebyona",
+          "orgs": [
+            "School of Engineering and Technology, Soroti University"
+          ]
+        },
+        {
+          "name": "Joseph Walusimbi",
+          "orgs": [
+            "School of Engineering and Technology, Soroti University"
+          ]
+        },
+        {
+          "name": "Ritah Kobusingye",
+          "orgs": [
+            "School of Engineering and Technology, Soroti University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2601.08049v1",
+      "date": "2026-01-12",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI"
+      ]
+    },
+    {
+      "arxiv_id": "2303.06537",
+      "score": 9.695984,
+      "title": "Perceptual Pat: A Virtual Human System for Iterative Visualization Design",
+      "tldr": "This paper introduces Perceptual Pat, a virtual human visual system for iterative visualization design that addresses the lack of timely and cost-effective feedback by providing automated analysis through perceptually-inspired filters; it contributes a suite of AI and computer vision techniques, a web-based design lab for version tracking and report generation, and qualitative findings from a study with four designers showing the system's effectiveness in detecting design issues.",
+      "abstract": "Designing a visualization is often a process of iterative refinement where the designer improves a chart over time by adding features, improving encodings, and fixing mistakes. However, effective design requires external critique and evaluation. Unfortunately, such critique is not always available on short notice and evaluation can be costly. To address this need, we present Perceptual Pat, an extensible suite of AI and computer vision techniques that forms a virtual human visual system for supporting iterative visualization design. The system analyzes snapshots of a visualization using an extensible set of filters - including gaze maps, text recognition, color analysis, etc - and generates a report summarizing the findings. The web-based Pat Design Lab provides a version tracking system that enables the designer to track improvements over time. We validate Perceptual Pat using a longitudinal qualitative study involving 4 professional visualization designers that used the tool over a few days to design a new visualization.",
+      "authors": [
+        {
+          "name": "Sungbok Shin",
+          "orgs": [
+            "University of Maryland",
+            "College Park, Maryland, USA"
+          ]
+        },
+        {
+          "name": "Sanghyun Hong",
+          "orgs": [
+            "Oregon State University",
+            "Corvallis, Oregon, USA"
+          ]
+        },
+        {
+          "name": "Niklas Elmqvist",
+          "orgs": [
+            "University of Maryland",
+            "College Park, Maryland, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2303.06537v1",
+      "date": "2023-03-12T01:54:01Z",
+      "citation_count": 11,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2205.03966",
+      "score": 9.658061,
+      "title": "Chart Question Answering: State of the Art and Future Directions",
+      "tldr": "This survey reviews Chart Question Answering, highlighting its challenges in visual data analysis, provides a taxonomy of inputs/outputs and evaluation methods, and identifies open challenges and future directions.",
+      "abstract": "Information visualizations such as bar charts and line charts are very common for analyzing data and discovering critical insights. Often people analyze charts to answer questions that they have in mind. Answering such questions can be challenging as they often require a significant amount of perceptual and cognitive effort. Chart Question Answering (CQA) systems typically take a chart and a natural language question as input and automatically generate the answer to facilitate visual data analysis. Over the last few years, there has been a growing body of literature on the task of CQA. In this survey, we systematically review the current state-of-the-art research focusing on the problem of chart question answering. We provide a taxonomy by identifying several important dimensions of the problem domain including possible inputs and outputs of the task and discuss the advantages and limitations of proposed solutions. We then summarize various evaluation techniques used in the surveyed papers. Finally, we outline the open challenges and future research opportunities related to chart question answering.",
+      "authors": [
+        {
+          "name": "E. Hoque",
+          "orgs": [
+            "Intelligent Visualization Lab, York University, Toronto, Canada"
+          ]
+        },
+        {
+          "name": "P. Kavehzadeh",
+          "orgs": [
+            "Intelligent Visualization Lab, York University, Toronto, Canada"
+          ]
+        },
+        {
+          "name": "A. Masy",
+          "orgs": [
+            "Intelligent Visualization Lab, York University, Toronto, Canada"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2205.03966v2",
+      "date": "2022-05-08T22:54:28Z",
+      "citation_count": 57,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "1701.01611",
+      "score": 9.590175,
+      "title": "Adapting astronomical source detection software to help detect animals in thermal images obtained by unmanned aerial systems",
+      "tldr": "This paper addresses the challenge of monitoring animal populations for conservation by adapting astronomical source detection software to detect animals in thermal images from unmanned aerial systems, aiming to improve efficiency and reliability in species monitoring; it combines astronomical software with machine learning into an automated pipeline tested in controlled environments, demonstrating reliable detection and the potential to estimate animal density and distribution; the system shows promise for field applications, particularly in monitoring endangered species in national parks.",
+      "abstract": "In this paper we describe an unmanned aerial system equipped with a thermal-infrared camera and software pipeline that we have developed to monitor animal populations for conservation purposes. Taking a multi-disciplinary approach to tackle this problem, we use freely available astronomical source detection software and the associated expertise of astronomers, to efficiently and reliably detect humans and animals in aerial thermal-infrared footage. Combining this astronomical detection software with existing machine learning algorithms into a single, automated, end-to-end pipeline, we test the software using aerial video footage taken in a controlled, field-like environment. We demonstrate that the pipeline works reliably and describe how it can be used to estimate the completeness of different observational datasets to objects of a given type as a function of height, observing conditions etc. -- a crucial step in converting video footage to scientifically useful information such as the spatial distribution and density of different animal species. Finally, having demonstrated the potential utility of the system, we describe the steps we are taking to adapt the system for work in the field, in particular systematic monitoring of endangered species at National Parks around the world.",
+      "authors": [
+        {
+          "name": "S. N. Longmore",
+          "orgs": [
+            "Astrophysics Research Institute, Liverpool John Moores University, UK",
+            "General Engineering Research Institute, Liverpool John Moores University, UK",
+            "School of Natural Sciences and Psychology, Liverpool John Moores University, UK"
+          ]
+        },
+        {
+          "name": "R. P. Collins",
+          "orgs": [
+            "Astrophysics Research Institute, Liverpool John Moores University, UK"
+          ]
+        },
+        {
+          "name": "S. Pfeifer",
+          "orgs": [
+            "Astrophysics Research Institute, Liverpool John Moores University, UK"
+          ]
+        },
+        {
+          "name": "S. E. Fox",
+          "orgs": [
+            "Astrophysics Research Institute, Liverpool John Moores University, UK"
+          ]
+        },
+        {
+          "name": "M. Mulero-P¨¢zm¨¢ny",
+          "orgs": [
+            "Departamento de Ciencias Naturales, Universidad T¨¦cnica Particular de Loja, San Cayetano Alto, Loja, Ecuador"
+          ]
+        },
+        {
+          "name": "F. Bezombes",
+          "orgs": [
+            "General Engineering Research Institute, Liverpool John Moores University, UK"
+          ]
+        },
+        {
+          "name": "A. Goodwind",
+          "orgs": [
+            "Remote Insight Basecamp, Creative Campus, Jamaica Street, Liverpool, UK"
+          ]
+        },
+        {
+          "name": "M. de Juan Ovelar",
+          "orgs": [
+            "Instituto de Astrof¨ªsica de Canarias, E-38200 La Laguna, Tenerife, Spain"
+          ]
+        },
+        {
+          "name": "J. H. Knapen",
+          "orgs": [
+            "Instituto de Astrof¨ªsica de Canarias, E-38200 La Laguna, Tenerife, Spain",
+            "Departamento de Astrof¨ªsica, Universidad de La Laguna, E-38205 La Laguna, Tenerife, Spain"
+          ]
+        },
+        {
+          "name": "S. A. Wich",
+          "orgs": [
+            "Institute for Biodiversity and Ecosystem Dynamics, University of Amsterdam, Sciencepark 904, Amsterdam 1098, the Netherlands"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1701.01611v1",
+      "date": "2017-01-06T12:15:05Z",
+      "citation_count": 77,
+      "categories": [
+        "astro-ph.IM"
+      ]
+    },
+    {
+      "arxiv_id": "2507.12378",
+      "score": 9.5388365,
+      "title": "Developing Visual Augmented Q&A System using Scalable Vision Embedding Retrieval & Late Interaction Re-ranker",
+      "tldr": "This paper addresses the challenge of efficient and scalable vision augmented Q&A systems by proposing a two-step retrieval method combining approximate nearest neighbor search with ColPali late interaction re-ranking, contributing a scalable and high-performance solution for enterprise use, achieving significant speedup without performance degradation.",
+      "abstract": "Traditional information extraction systems face challenges with text only language models as it does not consider infographics (visual elements of information) such as tables, charts, images etc. often used to convey complex information to readers. Multimodal LLM (MLLM) face challenges of finding needle in the haystack problem i.e., either longer context length or substantial number of documents as search space. Late interaction mechanism over visual language models has shown state of the art performance in retrieval-based vision augmented Q&A tasks. There are yet few challenges using it for RAG based multi-modal Q&A. Firstly, many popular and widely adopted vector databases do not support native multi-vector retrieval. Secondly, late interaction requires computation which inflates space footprint and can hinder enterprise adoption. Lastly, the current state of late interaction mechanism does not leverage the approximate neighbor search indexing methods for large speed ups in retrieval process. This paper explores a pragmatic approach to make vision retrieval process scalable and efficient without compromising on performance quality. We propose multi-step custom implementation utilizing widely adopted hybrid search (metadata & embedding) and state of the art late interaction re-ranker to retrieve best matching pages. Finally, MLLM are prompted as reader to generate answers from contextualized best matching pages. Through experiments, we observe that the proposed design is scalable (significant speed up) and stable (without degrading performance quality), hence can be used as production systems at enterprises.",
+      "authors": [
+        {
+          "name": "Rachna Saxena",
+          "orgs": [
+            "Fidelity Investments"
+          ]
+        },
+        {
+          "name": "Abhijeet Kumar",
+          "orgs": [
+            "Fidelity Investments"
+          ]
+        },
+        {
+          "name": "Suresh Shanmugam",
+          "orgs": [
+            "Fidelity Investments"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2507.12378v1",
+      "date": "2025-07-16T16:27:05Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CL",
+        "cs.IR"
+      ]
+    },
+    {
+      "arxiv_id": "2105.00928",
+      "score": 9.537486,
+      "title": "Development of a software complex for the diagnosis of dentoalveolar anomalies using neural networks",
+      "tldr": "This paper presents a software complex for diagnosing dentoalveolar anomalies using convolutional neural networks to automate teleradiographic image analysis, addressing the need for efficient and accurate diagnosis in orthodontics; the approach involves integrating neural networks into a treatment planning system, contributing a tool that reduces manual effort and medical errors; findings show improved diagnostic efficiency through automated image decoding, with implications for enhancing clinical practice and reducing workload in orthodontic care.",
+      "abstract": "This article describes the goals and objectives of developing a software complex for planning the treatment of dentoalveolar anomalies, the architecture of the software complex as interacting components for treatment planning, as well as the principle of using algorithms using convolutional neural networks within the software complex for a component that solves the problem of decoding a teleradiographic image.",
+      "authors": [
+        {
+          "name": "Alexander Kolsanov",
+          "orgs": [
+            "Department of Operative Surgery and Clinical Anatomy",
+            "FSBEI HE SamSMU MOH Russia",
+            "Samara, Russia"
+          ]
+        },
+        {
+          "name": "Nikolai Popov",
+          "orgs": [
+            "Department of Pediatric Dentistry",
+            "FSBEI HE SamSMU MOH Russia",
+            "Samara, Russia"
+          ]
+        },
+        {
+          "name": "Irina Aiupova",
+          "orgs": [
+            "Department of Pediatric Dentistry",
+            "FSBEI HE SamSMU MOH Russia",
+            "Samara, Russia"
+          ]
+        },
+        {
+          "name": "Konstantin Dobratulin",
+          "orgs": [
+            "College of Information Technologies",
+            "and Computer Sciences",
+            "NUST MISIS",
+            "Moscow, Russia"
+          ]
+        },
+        {
+          "name": "Andrey Gaidel",
+          "orgs": [
+            "Video Mining Laboratory",
+            "IPSI RAS",
+            "Samara, Russia"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2105.00928v1",
+      "date": "2021-05-03T15:07:53Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.SE"
+      ]
+    },
+    {
+      "arxiv_id": "2409.19747",
+      "score": 9.530215,
+      "title": "Natural Language Generation for Visualizations: State of the Art, Challenges and Future Directions",
+      "tldr": "This paper reviews natural language generation for visualizations, addressing the gap in systematically categorizing NLG tasks for visualizations and proposing a taxonomy based on five Wh-questions, contributing insights into task inputs, outputs, and integration with visualizations, and highlighting challenges and future research directions in this domain.",
+      "abstract": "Natural language and visualization are two complementary modalities of human communication that play a crucial role in conveying information effectively. While visualizations help people discover trends, patterns, and anomalies in data, natural language descriptions help explain these insights. Thus, combining text with visualizations is a prevalent technique for effectively delivering the core message of the data. Given the rise of natural language generation (NLG), there is a growing interest in automatically creating natural language descriptions for visualizations, which can be used as chart captions, answering questions about charts, or telling data-driven stories. In this survey, we systematically review the state of the art on NLG for visualizations and introduce a taxonomy of the problem. The NLG tasks fall within the domain of Natural Language Interfaces (NLI) for visualization, an area that has garnered significant attention from both the research community and industry. To narrow down the scope of the survey, we primarily concentrate on the research works that focus on text generation for visualizations. To characterize the NLG problem and the design space of proposed solutions, we pose five Wh-questions, why and how NLG tasks are performed for visualizations, what the task inputs and outputs are, as well as where and when the generated texts are integrated with visualizations. We categorize the solutions used in the surveyed papers based on these \"five Wh-questions.\" Finally, we discuss the key challenges and potential avenues for future research in this domain.",
+      "authors": [
+        {
+          "name": "Enamul Hoque",
+          "orgs": [
+            "Intelligent Visualization Lab, York University, Toronto, Canada"
+          ]
+        },
+        {
+          "name": "Mohammed Saidul Islam",
+          "orgs": [
+            "Intelligent Visualization Lab, York University, Toronto, Canada"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2409.19747v1",
+      "date": "2024-09-29T15:53:18Z",
+      "citation_count": 9,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2512.05536",
+      "score": 9.519761,
+      "title": "Eye of the Beholder: Towards Measuring Visualization Complexity",
+      "tldr": "This paper investigates visualization complexity as a subjective yet measurable concept, addressing the gap in understanding how graphical features influence perceived complexity; it employs crowdsourced ratings, multilinear regression, and zero-shot LLM prompting to evaluate methods for estimating complexity, finding that LLMs effectively approximate human ratings while image metrics and manual coding have limited success; results highlight the subjective nature of visualization complexity and suggest scalable LLM-based approaches for its assessment.",
+      "abstract": "Constructing expressive and legible visualizations is a key activity for visualization designers. While numerous design guidelines exist, research on how specific graphical features affect perceived visual complexity remains limited. In this paper, we report on a crowdsourced study to collect human ratings of perceived complexity for diverse visualizations. Using these ratings as ground truth, we then evaluated three methods to estimate this perceived complexity: image analysis metrics, multilinear regression using manually coded visualization features, and automated feature extraction using a large language model (LLM). Image complexity metrics showed no correlation with human-perceived visualization complexity. Manual feature coding produced a reasonable predictive model but required substantial effort. In contrast, a zero-shot LLM (GPT-4o mini) demonstrated strong capabilities in both rating complexity and extracting relevant features. Our findings suggest that visualization complexity is truly in the eye of the beholder, yet can be effectively approximated using zero-shot LLM prompting, offering a scalable approach for evaluating the complexity of visualizations. The dataset and code for the study and data analysis can be found at https://osf.io/w85a4/",
+      "authors": [
+        {
+          "name": "Johannes Ellemose and Niklas Elmqvist",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.05536v1",
+      "date": "2025-12-05",
+      "citation_count": 0,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "1205.2555",
+      "score": 9.516173,
+      "title": "Public Data Integration with WebSmatch",
+      "tldr": "This paper addresses the challenge of integrating poorly structured public data sources and achieving rich visualization, by introducing WebSmatch, a flexible environment that uses computer vision and machine learning for metadata extraction, schema matching with YAM++, and third-party tools for visualization, contributing to improved data integration workflows and enabling better policy and business intelligence applications.",
+      "abstract": "Integrating open data sources can yield high value information but raises major problems in terms of metadata extraction, data source integration and visualization of integrated data. In this paper, we describe WebSmatch, a flexible environment for Web data integration, based on a real, end-to-end data integration scenario over public data from Data Publica. WebSmatch supports the full process of importing, refining and integrating data sources and uses third party tools for high quality visualization. We use a typical scenario of public data integration which involves problems not solved by currents tools: poorly structured input data sources (XLS files) and rich visualization of integrated data.",
+      "authors": [
+        {
+          "name": "R. Coletta",
+          "orgs": [
+            "INRIA",
+            "LIRMM Montpellier France",
+            "LIRMM Montpellier"
+          ]
+        },
+        {
+          "name": "E. Castanier",
+          "orgs": [
+            "INRIA",
+            "LIRMM Montpellier France",
+            "LIRMM Montpellier"
+          ]
+        },
+        {
+          "name": "P. Valduriez",
+          "orgs": [
+            "INRIA",
+            "LIRMM Montpellier France",
+            "LIRMM Montpellier"
+          ]
+        },
+        {
+          "name": "C. Frisch",
+          "orgs": [
+            "Data Publica Paris France"
+          ]
+        },
+        {
+          "name": "DuyHoa Ngo",
+          "orgs": [
+            "INRIA and LIRMM Montpellier France",
+            "Data Publica Paris France"
+          ]
+        },
+        {
+          "name": "Zohra Bellahsene",
+          "orgs": [
+            "INRIA and LIRMM Montpellier France",
+            "Data Publica Paris France"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1205.2555v2",
+      "date": "2012-05-11T15:24:09Z",
+      "citation_count": 26,
+      "categories": [
+        "cs.DL"
+      ]
+    },
+    {
+      "arxiv_id": "2407.05183",
+      "score": 9.486953,
+      "title": "FlowLearn: Evaluating Large Vision-Language Models on Flowchart Understanding",
+      "tldr": "This paper introduces FlowLearn, a dataset addressing the underexplored challenge of flowchart understanding by LVLMs, evaluating their performance on scientific and simulated flowcharts with detailed annotations; it employs a mixed-method approach with 3,858 scientific and 10,000 simulated flowcharts, revealing that GPT-4V achieved 58% node counting accuracy and Claude 83% OCR accuracy, highlighting the need for model improvements in flowchart comprehension.",
+      "abstract": "Flowcharts are graphical tools for representing complex concepts in concise visual representations. This paper introduces the FlowLearn dataset, a resource tailored to enhance the understanding of flowcharts. FlowLearn contains complex scientific flowcharts and simulated flowcharts. The scientific subset contains 3,858 flowcharts sourced from scientific literature and the simulated subset contains 10,000 flowcharts created using a customizable script. The dataset is enriched with annotations for visual components, OCR, Mermaid code representation, and VQA question-answer pairs. Despite the proven capabilities of Large Vision-Language Models (LVLMs) in various visual understanding tasks, their effectiveness in decoding flowcharts - a crucial element of scientific communication - has yet to be thoroughly investigated. The FlowLearn test set is crafted to assess the performance of LVLMs in flowchart comprehension. Our study thoroughly evaluates state-of-the-art LVLMs, identifying existing limitations and establishing a foundation for future enhancements in this relatively underexplored domain. For instance, in tasks involving simulated flowcharts, GPT-4V achieved the highest accuracy (58%) in counting the number of nodes, while Claude recorded the highest accuracy (83%) in OCR tasks. Notably, no single model excels in all tasks within the FlowLearn framework, highlighting significant opportunities for further development.",
+      "authors": [
+        {
+          "name": "Huitong Pan",
+          "orgs": [
+            "Dept. of Computer and Information Sciences, Temple University, Philadelphia"
+          ]
+        },
+        {
+          "name": "Qi Zhang",
+          "orgs": [
+            "Dept. of Computer Science, University of Illinois Chicago"
+          ]
+        },
+        {
+          "name": "Cornelia Caragea",
+          "orgs": [
+            "Dept. of Computer Science, University of Illinois Chicago"
+          ]
+        },
+        {
+          "name": "Eduard Dragut",
+          "orgs": [
+            "Dept. of Computer Science, University of Illinois Chicago"
+          ]
+        },
+        {
+          "name": "Longin Jan Latecki",
+          "orgs": [
+            "Dept. of Computer and Information Sciences, Temple University, Philadelphia",
+            "Dept. of Computer Science, University of Illinois Chicago"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2407.05183v2",
+      "date": "2024-07-06T20:58:51Z",
+      "citation_count": 21,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2407.16351",
+      "score": 9.421416,
+      "title": "Datasets of Visualization for Machine Learning",
+      "tldr": "This survey reviews visualization datasets for machine learning, highlighting their diversity, challenges in standardization and scalability, and proposing a what-why-how framework for categorization and comparison.",
+      "abstract": "Datasets of visualization play a crucial role in automating data-driven visualization pipelines, serving as the foundation for supervised model training and algorithm benchmarking. In this paper, we survey the literature on visualization datasets and provide a comprehensive overview of existing visualization datasets, including their data types, formats, supported tasks, and openness. We propose a what-why-how model for visualization datasets, considering the content of the dataset (what), the supported tasks (why), and the dataset construction process (how). This model provides a clear understanding of the diversity and complexity of visualization datasets. Additionally, we highlight the challenges faced by existing visualization datasets, including the lack of standardization in data types and formats and the limited availability of large-scale datasets. To address these challenges, we suggest future research directions.",
+      "authors": [
+        {
+          "name": "Can Liu",
+          "orgs": []
+        },
+        {
+          "name": "Ruike Jiang",
+          "orgs": []
+        },
+        {
+          "name": "Shaocong Tan",
+          "orgs": []
+        },
+        {
+          "name": "Jiacheng Yu",
+          "orgs": []
+        },
+        {
+          "name": "Chaofan Yang",
+          "orgs": []
+        },
+        {
+          "name": "Hanning Shao",
+          "orgs": []
+        },
+        {
+          "name": "Xiaoru Yuan",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2407.16351v1",
+      "date": "2024-07-23T09:52:39Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2307.02065",
+      "score": 9.389627,
+      "title": "Line Graphics Digitization: A Step Towards Full Automation",
+      "tldr": "This paper addresses the under-explored task of fine-grained visual understanding of mathematical graphics, introducing the Line Graphics (LG) dataset with 520 images from 450 documents, annotated for 10 categories, and benchmarks 7 models achieving 67.56% mIoU, highlighting challenges in spine and title recognition, with implications for automated document digitization and accessibility.",
+      "abstract": "The digitization of documents allows for wider accessibility and reproducibility. While automatic digitization of document layout and text content has been a long-standing focus of research, this problem in regard to graphical elements, such as statistical plots, has been under-explored. In this paper, we introduce the task of fine-grained visual understanding of mathematical graphics and present the Line Graphics (LG) dataset, which includes pixel-wise annotations of 5 coarse and 10 fine-grained categories. Our dataset covers 520 images of mathematical graphics collected from 450 documents from different disciplines. Our proposed dataset can support two different computer vision tasks, i.e., semantic segmentation and object detection. To benchmark our LG dataset, we explore 7 state-of-the-art models. To foster further research on the digitization of statistical graphs, we will make the dataset, code, and models publicly available to the community.",
+      "authors": [
+        {
+          "name": "Omar Moured",
+          "orgs": []
+        },
+        {
+          "name": "Jiaming Zhang",
+          "orgs": []
+        },
+        {
+          "name": "Alina Roitberg",
+          "orgs": []
+        },
+        {
+          "name": "Thorsten Schwarz",
+          "orgs": []
+        },
+        {
+          "name": "Rainer Stiefelhagen",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2307.02065v1",
+      "date": "2023-07-05T07:08:58Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2307.04147",
+      "score": 9.356105,
+      "title": "A Survey and Approach to Chart Classification",
+      "tldr": "This paper addresses the challenge of chart classification in document understanding, aiming to improve automated chart recognition by comparing traditional ML, CNN, and transformer-based approaches; it introduces a vision-based transformer model achieving state-of-the-art results on the CHARTINFO UB-UNITECH PMC dataset with 22,923 training and 13,260 test images, highlighting the potential of transformers for robust and accurate chart classification.",
+      "abstract": "Charts represent an essential source of visual information in documents and facilitate a deep understanding and interpretation of information typically conveyed numerically. In the scientific literature, there are many charts, each with its stylistic differences. Recently the document understanding community has begun to address the problem of automatic chart understanding, which begins with chart classification. In this paper, we present a survey of the current state-of-the-art techniques for chart classification and discuss the available datasets and their supported chart types. We broadly classify these contributions as traditional approaches based on ML, CNN, and Transformers. Furthermore, we carry out an extensive comparative performance analysis of CNN-based and transformer-based approaches on the recently published CHARTINFO UB-UNITECH PMC dataset for the CHART-Infographics competition at ICPR 2022. The data set includes 15 different chart categories, including 22,923 training images and 13,260 test images. We have implemented a vision-based transformer model that produces state-of-the-art results in chart classification.",
+      "authors": [
+        {
+          "name": "Anurag Dhote",
+          "orgs": []
+        },
+        {
+          "name": "Mohammed Javed",
+          "orgs": []
+        },
+        {
+          "name": "David S Doermann",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2307.04147v1",
+      "date": "2023-07-09T10:35:19Z",
+      "citation_count": 8,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "1906.11879",
+      "score": 9.321929,
+      "title": "Comparing Energy Efficiency of CPU, GPU and FPGA Implementations for Vision Kernels",
+      "tldr": "This paper compares energy efficiency of CPU, GPU, and FPGA implementations for vision kernels, addressing the challenge of selecting optimal hardware for embedded vision applications by evaluating performance and energy metrics; it uses vendor-optimized libraries to benchmark three platforms, contributing insights into hardware-specific performance characteristics and an energy efficiency comparison; findings show GPU outperforms others for simple kernels with 1.1-3.2x energy/frame reduction, while FPGA achieves 1.2-22.3x reduction for complex kernels and pipelines.",
+      "abstract": "Developing high performance embedded vision applications requires balancing run-time performance with energy constraints. Given the mix of hardware accelerators that exist for embedded computer vision (e.g. multi-core CPUs, GPUs, and FPGAs), and their associated vendor optimized vision libraries, it becomes a challenge for developers to navigate this fragmented solution space. To aid with determining which embedded platform is most suitable for their application, we conduct a comprehensive benchmark of the run-time performance and energy efficiency of a wide range of vision kernels. We discuss rationales for why a given underlying hardware architecture innately performs well or poorly based on the characteristics of a range of vision kernel categories. Specifically, our study is performed for three commonly used HW accelerators for embedded vision applications: ARM57 CPU, Jetson TX2 GPU and ZCU102 FPGA, using their vendor optimized vision libraries: OpenCV, VisionWorks and xfOpenCV. Our results show that the GPU achieves an energy/frame reduction ratio of 1.1-3.2x compared to the others for simple kernels. While for more complicated kernels and complete vision pipelines, the FPGA outperforms the others with energy/frame reduction ratios of 1.2-22.3x. It is also observed that the FPGA performs increasingly better as a vision application's pipeline complexity grows.",
+      "authors": [
+        {
+          "name": "Murad Qasaimeh",
+          "orgs": [
+            "Iowa State University, IA, USA"
+          ]
+        },
+        {
+          "name": "Kristof Denolf",
+          "orgs": [
+            "Iowa State University, IA, USA"
+          ]
+        },
+        {
+          "name": "Jack Lo",
+          "orgs": [
+            "Iowa State University, IA, USA"
+          ]
+        },
+        {
+          "name": "Kees Vissers",
+          "orgs": [
+            "Iowa State University, IA, USA"
+          ]
+        },
+        {
+          "name": "Joseph Zambreno",
+          "orgs": [
+            "Iowa State University, IA, USA"
+          ]
+        },
+        {
+          "name": "Phillip H. Jones",
+          "orgs": [
+            "Iowa State University, IA, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1906.11879v1",
+      "date": "2019-05-31T21:25:42Z",
+      "citation_count": 181,
+      "categories": [
+        "cs.CV",
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "2403.09028",
+      "score": 9.30336,
+      "title": "ChartInstruct: Instruction Tuning for Chart Comprehension and Reasoning",
+      "tldr": "This paper addresses the challenge of chart comprehension and reasoning by introducing ChartInstruct, a novel dataset with 191K instructions generated from 71K charts, and presents two systems for instruction tuning to enhance VLMs' performance on chart-related tasks, achieving state-of-the-art results across four benchmarks and expanding their applicability to new tasks.",
+      "abstract": "Charts provide visual representations of data and are widely used for analyzing information, addressing queries, and conveying insights to others. Various chart-related downstream tasks have emerged recently, such as question-answering and summarization. A common strategy to solve these tasks is to fine-tune various models originally trained on vision tasks language. However, such task-specific models are not capable of solving a wide range of chart-related tasks, constraining their real-world applicability. To overcome these challenges, we introduce ChartInstruct: a novel chart-specific vision-language Instruction-following dataset comprising 191K instructions generated with 71K charts. We then present two distinct systems for instruction tuning on such datasets: (1) an end-to-end model that connects a vision encoder for chart understanding with a LLM; and (2) a pipeline model that employs a two-step approach to extract chart data tables and input them into the LLM. In experiments on four downstream tasks, we first show the effectiveness of our model--achieving a new set of state-of-the-art results. Further evaluation shows that our instruction-tuning approach supports a wide array of real-world chart comprehension and reasoning scenarios, thereby expanding the scope and applicability of our models to new kinds of tasks.",
+      "authors": [
+        {
+          "name": "Ahmed Masry",
+          "orgs": [
+            "York University, Canada",
+            "Nanyang Technological University, Singapore"
+          ]
+        },
+        {
+          "name": "Mehrad Shahmohammadi",
+          "orgs": [
+            "York University, Canada"
+          ]
+        },
+        {
+          "name": "Md Rizwan Parvez",
+          "orgs": [
+            "Qatar Computing Research Institute (QCRI)"
+          ]
+        },
+        {
+          "name": "Enamul Hoque",
+          "orgs": [
+            "York University, Canada"
+          ]
+        },
+        {
+          "name": "Shafiq Joty",
+          "orgs": [
+            "Salesforce Research",
+            "Nanyang Technological University, Singapore"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2403.09028v1",
+      "date": "2024-03-14T01:40:23Z",
+      "citation_count": 66,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2304.13425",
+      "score": 9.14698,
+      "title": "Learnable Ophthalmology SAM",
+      "tldr": "This paper addresses the challenge of multi-modal ophthalmology image segmentation by proposing a learnable prompt layer for Segment Anything (SAM), improving segmentation accuracy across four tasks on nine datasets with one-shot fine-tuning, and demonstrating its generalization ability across different modalities and datasets.",
+      "abstract": "Segmentation is vital for ophthalmology image analysis. But its various modal images hinder most of the existing segmentation algorithms applications, as they rely on training based on a large number of labels or hold weak generalization ability. Based on Segment Anything (SAM), we propose a simple but effective learnable prompt layer suitable for multiple target segmentation in ophthalmology multi-modal images, named Learnable Ophthalmology Segment Anything (SAM). The learnable prompt layer learns medical prior knowledge from each transformer layer. During training, we only train the prompt layer and task head based on a one-shot mechanism. We demonstrate the effectiveness of our thought based on four medical segmentation tasks based on nine publicly available datasets. Moreover, we only provide a new improvement thought for applying the existing fundamental CV models in the medical field. Our codes are available at \\href{https://github.com/Qsingle/LearnablePromptSAM}{website}.",
+      "authors": [
+        {
+          "name": "Zhongxi Qiu",
+          "orgs": [
+            "Research Institute of Trustworthy Autonomous Systems",
+            "Department of Computer Science and Engineering, Southern University of Science and Technology, Shenzhen 518055, China"
+          ]
+        },
+        {
+          "name": "Yan Hu",
+          "orgs": [
+            "Research Institute of Trustworthy Autonomous Systems",
+            "Department of Computer Science and Engineering, Southern University of Science and Technology, Shenzhen 518055, China"
+          ]
+        },
+        {
+          "name": "Heng Li",
+          "orgs": [
+            "Research Institute of Trustworthy Autonomous Systems",
+            "Department of Computer Science and Engineering, Southern University of Science and Technology, Shenzhen 518055, China"
+          ]
+        },
+        {
+          "name": "Jiang Liu",
+          "orgs": [
+            "Research Institute of Trustworthy Autonomous Systems",
+            "Department of Computer Science and Engineering, Southern University of Science and Technology, Shenzhen 518055, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2304.13425v1",
+      "date": "2023-04-26T10:14:03Z",
+      "citation_count": 35,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2009.02491",
+      "score": 7.409144,
+      "title": "Reverse-engineering Bar Charts Using Neural Networks",
+      "tldr": "This paper addresses the problem of reverse-engineering bar charts to extract textual and numeric information, which is crucial for applications requiring underlying data; it proposes a neural network-based method combining Faster-RCNN for textual extraction and an encoder-decoder framework with attention mechanism for numeric extraction, achieving F1 scores of 0.89 and 0.80, and accuracies of 0.91 and 0.78 on synthetic and real-world datasets respectively.",
+      "abstract": "Reverse-engineering bar charts extracts textual and numeric information from the visual representations of bar charts to support application scenarios that require the underlying information. In this paper, we propose a neural network-based method for reverse-engineering bar charts. We adopt a neural network-based object detection model to simultaneously localize and classify textual information. This approach improves the efficiency of textual information extraction. We design an encoder-decoder framework that integrates convolutional and recurrent neural networks to extract numeric information. We further introduce an attention mechanism into the framework to achieve high accuracy and robustness. Synthetic and real-world datasets are used to evaluate the effectiveness of the method. To the best of our knowledge, this work takes the lead in constructing a complete neural network-based method of reverse-engineering bar charts.",
+      "authors": [
+        {
+          "name": "Fangfang Zhou",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yong Zhao",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Wenjiang Chen",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yijing Tan",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yaqi Xu",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yi Chen",
+          "orgs": [
+            "Beijing Key Laboratory of Big Data Technology for Food Safety, Beijing Technology and Business University, Beijing, China"
+          ]
+        },
+        {
+          "name": "Chao Liu",
+          "orgs": [
+            "Institute of Systems Engineering, Academy of Military Sciences, Beijing, China"
+          ]
+        },
+        {
+          "name": "Ying Zhao",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China",
+            "Rail Data Research and Application Key Laboratory of Hunan Province, Changsha, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2009.02491v1",
+      "date": "2020-09-05T08:14:35Z",
+      "citation_count": 34,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2112.03485",
+      "score": 7.0243015,
+      "title": "VizExtract: Automatic Relation Extraction from Data Visualizations",
+      "tldr": "This paper introduces VizExtract, a computer vision framework for automatically extracting correlations between variables in statistical charts, addressing the gap of reliable tools for visual information extraction; it proposes a deep learning model combined with preprocessing and algorithmic approaches to identify high-level visual relations; it achieves 87.5% accuracy on controlled experiments and 72.8% accuracy on real-world graphs, demonstrating its effectiveness in handling diverse chart types.",
+      "abstract": "Visual graphics, such as plots, charts, and figures, are widely used to communicate statistical conclusions. Extracting information directly from such visualizations is a key sub-problem for effective search through scientific corpora, fact-checking, and data extraction. This paper presents a framework for automatically extracting compared variables from statistical charts. Due to the diversity and variation of charting styles, libraries, and tools, we leverage a computer vision based framework to automatically identify and localize visualization facets in line graphs, scatter plots, or bar graphs and can include multiple series per graph. The framework is trained on a large synthetically generated corpus of matplotlib charts and we evaluate the trained model on other chart datasets. In controlled experiments, our framework is able to classify, with 87.5% accuracy, the correlation between variables for graphs with 1-3 series per graph, varying colors, and solid line styles. When deployed on real-world graphs scraped from the internet, it achieves 72.8% accuracy (81.2% accuracy when excluding \"hard\" graphs). When deployed on the FigureQA dataset, it achieves 84.7% accuracy.",
+      "authors": [
+        {
+          "name": "Dale Decatur",
+          "orgs": [
+            "University of Chicago"
+          ]
+        },
+        {
+          "name": "Sanjay Krishnan",
+          "orgs": [
+            "University of Chicago"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2112.03485v1",
+      "date": "2021-12-07T04:27:08Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.CV"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1705 @@
+{
+  "status": "success",
+  "total_count": 50,
+  "result": [
+    {
+      "arxiv_id": "2212.09662",
+      "score": 13.873894,
+      "title": "MatCha: Enhancing Visual Language Pretraining with Math Reasoning and Chart Derendering",
+      "tldr": "This paper addresses the challenge of visual language understanding by enhancing vision-language models with math reasoning and chart derendering, aiming to improve performance on complex visual data; it introduces MatCha, a pretraining approach based on Pix2Struct, which adds chart derendering and math reasoning tasks, leading to significant improvements on ChartQA and PlotQA by up to 20% and demonstrating transferability to other visual domains.",
+      "abstract": "Visual language data such as plots, charts, and infographics are ubiquitous in the human world. However, state-of-the-art vision-language models do not perform well on these data. We propose MatCha (Math reasoning and Chart derendering pretraining) to enhance visual language models' capabilities in jointly modeling charts/plots and language data. Specifically, we propose several pretraining tasks that cover plot deconstruction and numerical reasoning which are the key capabilities in visual language modeling.\n  We perform the MatCha pretraining starting from Pix2Struct, a recently proposed image-to-text visual language model. On standard benchmarks such as PlotQA and ChartQA, the MatCha model outperforms state-of-the-art methods by as much as nearly 20%. We also examine how well MatCha pretraining transfers to domains such as screenshots, textbook diagrams, and document figures and observe overall improvement, verifying the usefulness of MatCha pretraining on broader visual language tasks.",
+      "authors": [
+        {
+          "name": "Fangyu Liu",
+          "orgs": [
+            "Google DeepMind",
+            "University of Cambridge"
+          ]
+        },
+        {
+          "name": "Francesco Piccinno",
+          "orgs": [
+            "Google DeepMind",
+            "University of Cambridge"
+          ]
+        },
+        {
+          "name": "Syrine Krichene",
+          "orgs": [
+            "Google DeepMind",
+            "University of Cambridge"
+          ]
+        },
+        {
+          "name": "Chenxi Pang",
+          "orgs": [
+            "Google DeepMind",
+            "University of Cambridge"
+          ]
+        },
+        {
+          "name": "Kenton Lee",
+          "orgs": [
+            "Google DeepMind"
+          ]
+        },
+        {
+          "name": "Mandar Joshi",
+          "orgs": [
+            "Google DeepMind"
+          ]
+        },
+        {
+          "name": "Yasemin Altun",
+          "orgs": [
+            "Google DeepMind",
+            "University of Cambridge"
+          ]
+        },
+        {
+          "name": "Nigel Collier",
+          "orgs": [
+            "University of Cambridge"
+          ]
+        },
+        {
+          "name": "Julian Martin Eisenschlos",
+          "orgs": [
+            "Google DeepMind",
+            "University of Cambridge"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2212.09662v2",
+      "date": "2022-12-19T17:44:54Z",
+      "citation_count": 146,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2602.13232",
+      "score": 12.783844,
+      "title": "PlotChain: Deterministic Checkpointed Evaluation of Multimodal LLMs on Engineering Plot Reading",
+      "tldr": "This paper introduces PlotChain, a deterministic benchmark for engineering plot reading that addresses the gap in existing benchmarks by targeting canonical engineering plots with exact ground truth and checkpoint-based diagnostics, using a generator-based dataset of 15 families with 450 plots; it evaluates MLLMs under a standardized protocol achieving up to 80.42% field-level pass rates, highlighting challenges in frequency-domain tasks with <=23% performance.",
+      "abstract": "We present PlotChain, a deterministic, generator-based benchmark for evaluating multimodal large language models (MLLMs) on engineering plot reading-recovering quantitative values from classic plots (e.g., Bode/FFT, step response, stress-strain, pump curves) rather than OCR-only extraction or free-form captioning. PlotChain contains 15 plot families with 450 rendered plots (30 per family), where every item is produced from known parameters and paired with exact ground truth computed directly from the generating process. A central contribution is checkpoint-based diagnostic evaluation: in addition to final targets, each item includes intermediate 'cp_' fields that isolate sub-skills (e.g., reading cutoff frequency or peak magnitude) and enable failure localization within a plot family. We evaluate four state-of-the-art MLLMs under a standardized, deterministic protocol (temperature = 0 and a strict JSON-only numeric output schema) and score predictions using per-field tolerances designed to reflect human plot-reading precision. Under the 'plotread' tolerance policy, the top models achieve 80.42% (Gemini 2.5 Pro), 79.84% (GPT-4.1), and 78.21% (Claude Sonnet 4.5) overall field-level pass rates, while GPT-4o trails at 61.59%. Despite strong performance on many families, frequency-domain tasks remain brittle: bandpass response stays low (<= 23%), and FFT spectrum remains challenging. We release the generator, dataset, raw model outputs, scoring code, and manifests with checksums to support fully reproducible runs and retrospective rescoring under alternative tolerance policies.",
+      "authors": [
+        {
+          "name": "Mayank Ravishankara",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.13232v1",
+      "date": "2026-01-29",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.SE"
+      ]
+    },
+    {
+      "arxiv_id": "2510.13756",
+      "score": 11.52988,
+      "title": "RECODE: Reasoning Through Code Generation for Visual Question Answering",
+      "tldr": "This paper addresses the challenge of precise reasoning for structured visuals like charts and diagrams, where current MLLMs struggle with verification and quantitative accuracy; it introduces RECODE, an agentic framework that generates and refines executable code to reproduce images, enabling verifiable reasoning; RECODE achieves 73% accuracy on CharXiv-Reasoning (15% improvement) and 93.2% on ChartQA, outperforming existing methods.",
+      "abstract": "Multimodal Large Language Models (MLLMs) struggle with precise reasoning for structured visuals like charts and diagrams, as pixel-based perception lacks a mechanism for verification. To address this, we propose to leverage derendering -- the process of reverse-engineering visuals into executable code -- as a new modality for verifiable visual reasoning. Specifically, we propose RECODE, an agentic framework that first generates multiple candidate programs to reproduce the input image. It then uses a critic to select the most faithful reconstruction and iteratively refines the code. This process not only transforms an ambiguous perceptual task into a verifiable, symbolic problem, but also enables precise calculations and logical inferences later on. On various visual reasoning benchmarks such as CharXiv, ChartQA, and Geometry3K, RECODE significantly outperforms methods that do not leverage code or only use code for drawing auxiliary lines or cropping. Our work demonstrates that grounding visual perception in executable code provides a new path toward more accurate and verifiable multimodal reasoning.",
+      "authors": [
+        {
+          "name": "Junhong Shen",
+          "orgs": [
+            "Carnegie Mellon University"
+          ]
+        },
+        {
+          "name": "Mu Cai",
+          "orgs": [
+            "Google DeepMind"
+          ]
+        },
+        {
+          "name": "Bo Hu",
+          "orgs": [
+            "Google DeepMind"
+          ]
+        },
+        {
+          "name": "Ameet Talwalkar",
+          "orgs": [
+            "Carnegie Mellon University"
+          ]
+        },
+        {
+          "name": "David A Ross",
+          "orgs": [
+            "Google DeepMind"
+          ]
+        },
+        {
+          "name": "Cordelia Schmid",
+          "orgs": [
+            "Google DeepMind"
+          ]
+        },
+        {
+          "name": "Alireza Fathi",
+          "orgs": [
+            "Google DeepMind"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2510.13756v1",
+      "date": "2025-10-15",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2602.09337",
+      "score": 11.188924,
+      "title": "Kyrtos: A methodology for automatic deep analysis of graphic charts with curves in technical documents",
+      "tldr": "This paper presents a methodology for automatic deep analysis of graphic charts with curves in technical documents, addressing the gap in accurate curve recognition and semantic understanding by using clustering-based processing and attributed graphs to capture structural and behavioral features, contributing a novel framework for converting chart information into SPN graphs with high structural similarity accuracy.",
+      "abstract": "Deep Understanding of Technical Documents (DUTD) has become a very attractive field with great potential due to large amounts of accumulated documents and the valuable knowledge contained in them. In addition, the holistic understanding of technical documents depends on the accurate analysis of its particular modalities, such as graphics, tables, diagrams, text, etc. and their associations. In this paper, we introduce the Kyrtos methodology for the automatic recognition and analysis of charts with curves in graphics images of technical documents. The recognition processing part adopts a clustering based approach to recognize middle-points that delimit the line-segments that construct the illustrated curves. The analysis processing part parses the extracted line-segments of curves to capture behavioral features such as direction, trend and etc. These associations assist the conversion of recognized segments' relations into attributed graphs, for the preservation of the curves' structural characteristics. The graph relations are also are expressed into natural language (NL) text sentences, enriching the document's text and facilitating their conversion into Stochastic Petri-net (SPN) graphs, which depict the internal functionality represented in the chart image. Extensive evaluation results demonstrate the accuracy of Kyrtos' recognition and analysis methods by measuring the structural similarity between input chart curves and the approximations generated by Kyrtos for charts with multiple functions.",
+      "authors": [
+        {
+          "name": "Michail S. Alexiou",
+          "orgs": [
+            "Kennesaw State University"
+          ]
+        },
+        {
+          "name": "Nikolaos G. Bourbakis",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.09337v1",
+      "date": "2026-02-10",
+      "citation_count": 2,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2507.19492",
+      "score": 10.709123,
+      "title": "ChartGen: Scaling Chart Understanding Via Code-Guided Synthetic Chart Generation",
+      "tldr": "This paper presents ChartGen, a code-guided synthetic chart generation pipeline addressing the gap in chart-to-code reconstruction by creating a large-scale dataset of 222.5K chart-image-code pairs, which enables evaluating six VLMs with findings showing data fidelity of 0.58/1, code similarity of 5.83/10, and image similarity of 7.48/10, highlighting the need for improved chart understanding models.",
+      "abstract": "Chart-to-code reconstruction -- the task of recovering executable plotting scripts from chart images -- provides important insights into a model's ability to ground data visualizations in precise, machine-readable form. Yet many existing multimodal benchmarks largely focus primarily on answering questions about charts or summarizing them. To bridge this gap, we present ChartGen, a fully-automated pipeline for code-guided synthetic chart generation. Starting from seed chart images, ChartGen (i) prompts a vision-language model (VLM) to reconstruct each image into a python script, and (ii) iteratively augments that script with a code-oriented large language model (LLM). Using ChartGen, we create 222.5K unique chart-image code pairs from 13K seed chart images, and present an open-source synthetic chart dataset covering 27 chart types, 11 plotting libraries, and multiple data modalities (image, code, text, CSV, DocTags). From this corpus, we curate a held-out chart-to-code evaluation subset of 4.3K chart image-code pairs, and evaluate six open-weight VLMs (3B - 26B parameters), highlighting substantial room for progress. We release the pipeline, prompts, and the dataset to help accelerate efforts towards robust chart understanding and vision-conditioned code generation: https://github.com/SD122025/ChartGen/",
+      "authors": [
+        {
+          "name": "Jovana Kondic",
+          "orgs": [
+            "MIT",
+            "MIT-IBM Watson AI Labs"
+          ]
+        },
+        {
+          "name": "Pengyuan Li",
+          "orgs": [
+            "IBM Research"
+          ]
+        },
+        {
+          "name": "Dhiraj Joshi",
+          "orgs": [
+            "IBM Research"
+          ]
+        },
+        {
+          "name": "Zexue He",
+          "orgs": [
+            "MIT-IBM Watson AI Labs",
+            "IBM Research"
+          ]
+        },
+        {
+          "name": "Shafiq Abedin",
+          "orgs": [
+            "IBM Research"
+          ]
+        },
+        {
+          "name": "Jennifer Sun",
+          "orgs": [
+            "MIT",
+            "MIT-IBM Watson AI Labs"
+          ]
+        },
+        {
+          "name": "Ben Wiesel",
+          "orgs": [
+            "IBM Research"
+          ]
+        },
+        {
+          "name": "Eli Schwartz",
+          "orgs": [
+            "IBM Research"
+          ]
+        },
+        {
+          "name": "Ahmed Nassar",
+          "orgs": [
+            "IBM Research"
+          ]
+        },
+        {
+          "name": "Bo Wu",
+          "orgs": [
+            "MIT-IBM Watson AI Labs",
+            "IBM Research"
+          ]
+        },
+        {
+          "name": "Assaf Arbelle",
+          "orgs": [
+            "IBM Research"
+          ]
+        },
+        {
+          "name": "Aude Oliva",
+          "orgs": [
+            "MIT",
+            "MIT-IBM Watson AI Labs",
+            "IBM Research"
+          ]
+        },
+        {
+          "name": "Dan Gutfreund",
+          "orgs": [
+            "MIT",
+            "MIT-IBM Watson AI Labs",
+            "IBM Research"
+          ]
+        },
+        {
+          "name": "Leonid Karlinsky",
+          "orgs": [
+            "MIT",
+            "MIT-IBM Watson AI Labs",
+            "IBM Research"
+          ]
+        },
+        {
+          "name": "Rogerio Feris",
+          "orgs": [
+            "MIT",
+            "MIT-IBM Watson AI Labs",
+            "IBM Research"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2507.19492v1",
+      "date": "2025-05-31T02:35:38Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2306.11699",
+      "score": 10.534793,
+      "title": "GenPlot: Increasing the Scale and Diversity of Chart Derendering Data",
+      "tldr": "This paper addresses the challenge of chart derendering by proposing GenPlot, a plot generator that creates billions of synthetic plots to enhance dataset scale and diversity, contributing a framework for efficient pre-training in visual language tasks, and finding that it can generate 500,000 pre-generated plots or billions of synthetic ones, enabling improved model training and performance.",
+      "abstract": "Vertical bars, horizontal bars, dot, scatter, and line plots provide a diverse set of visualizations to represent data. To understand these plots, one must be able to recognize textual components, locate data points in a plot, and process diverse visual contexts to extract information. In recent works such as Pix2Struct, Matcha, and Deplot, OCR-free chart-to-text translation has achieved state-of-the-art results on visual language tasks. These results outline the importance of chart-derendering as a pre-training objective, yet existing datasets provide a fixed set of training examples. In this paper, we propose GenPlot; a plot generator that can generate billions of additional plots for chart-derendering using synthetic data.",
+      "authors": [
+        {
+          "name": "Brendan Artley",
+          "orgs": [
+            "Independent Researcher"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2306.11699v1",
+      "date": "2023-06-20T17:25:53Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2304.02173",
+      "score": 10.297607,
+      "title": "ChartReader: A Unified Framework for Chart Derendering and Comprehension without Heuristic Rules",
+      "tldr": "This paper presents ChartReader, a unified framework for chart derendering and comprehension that eliminates heuristic rules and OCR reliance, introducing a transformer-based component detection module and data variable replacement technique, achieving superior performance on Chart-to-Table, ChartQA, and Chart-to-Text tasks compared to existing methods.",
+      "abstract": "Charts are a powerful tool for visually conveying complex data, but their comprehension poses a challenge due to the diverse chart types and intricate components. Existing chart comprehension methods suffer from either heuristic rules or an over-reliance on OCR systems, resulting in suboptimal performance. To address these issues, we present ChartReader, a unified framework that seamlessly integrates chart derendering and comprehension tasks. Our approach includes a transformer-based chart component detection module and an extended pre-trained vision-language model for chart-to-X tasks. By learning the rules of charts automatically from annotated datasets, our approach eliminates the need for manual rule-making, reducing effort and enhancing accuracy.~We also introduce a data variable replacement technique and extend the input and position embeddings of the pre-trained model for cross-task training. We evaluate ChartReader on Chart-to-Table, ChartQA, and Chart-to-Text tasks, demonstrating its superiority over existing methods. Our proposed framework can significantly reduce the manual effort involved in chart analysis, providing a step towards a universal chart understanding model. Moreover, our approach offers opportunities for plug-and-play integration with mainstream LLMs such as T5 and TaPas, extending their capability to chart comprehension tasks. The code is available at https://github.com/zhiqic/ChartReader.",
+      "authors": [
+        {
+          "name": "Zhi-Qi Cheng",
+          "orgs": [
+            "Carnegie Mellon University"
+          ]
+        },
+        {
+          "name": "Qi Dai",
+          "orgs": [
+            "Microsoft Research"
+          ]
+        },
+        {
+          "name": "Siyao Li",
+          "orgs": [
+            "Carnegie Mellon University",
+            "Amazon"
+          ]
+        },
+        {
+          "name": "Jingdong Sun",
+          "orgs": [
+            "Carnegie Mellon University"
+          ]
+        },
+        {
+          "name": "Teruko Mitamura",
+          "orgs": [
+            "Carnegie Mellon University"
+          ]
+        },
+        {
+          "name": "Alexander G. Hauptmann",
+          "orgs": [
+            "Carnegie Mellon University",
+            "Microsoft Research",
+            "Amazon"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2304.02173v1",
+      "date": "2023-04-05T00:25:27Z",
+      "citation_count": 31,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.MM"
+      ]
+    },
+    {
+      "arxiv_id": "2310.02804",
+      "score": 10.14963,
+      "title": "DOMINO: A Dual-System for Multi-step Visual Language Reasoning",
+      "tldr": "This paper addresses multi-step visual language reasoning by proposing DOMINO, a dual-system approach combining a visual encoder-text decoder (System-1) for information extraction and an LLM (System-2) for deliberate reasoning, which improves accuracy by 5.7% over end-to-end methods on ChartQA, demonstrating enhanced robustness and efficiency in handling complex charts.",
+      "abstract": "Visual language reasoning requires a system to extract text or numbers from information-dense images like charts or plots and perform logical or arithmetic reasoning to arrive at an answer. To tackle this task, existing work relies on either (1) an end-to-end vision-language model trained on a large amount of data, or (2) a two-stage pipeline where a captioning model converts the image into text that is further read by another large language model to deduce the answer. However, the former approach forces the model to answer a complex question with one single step, and the latter approach is prone to inaccurate or distracting information in the converted text that can confuse the language model. In this work, we propose a dual-system for multi-step multimodal reasoning, which consists of a \"System-1\" step for visual information extraction and a \"System-2\" step for deliberate reasoning. Given an input, System-2 breaks down the question into atomic sub-steps, each guiding System-1 to extract the information required for reasoning from the image. Experiments on chart and plot datasets show that our method with a pre-trained System-2 module performs competitively compared to prior work on in- and out-of-distribution data. By fine-tuning the System-2 module (LLaMA-2 70B) on only a small amount of data on multi-step reasoning, the accuracy of our method is further improved and surpasses the best fully-supervised end-to-end approach by 5.7% and a pipeline approach with FlanPaLM (540B) by 7.5% on a challenging dataset with human-authored questions.",
+      "authors": [
+        {
+          "name": "Peifeng Wang",
+          "orgs": [
+            "University of Southern California"
+          ]
+        },
+        {
+          "name": "Olga Golovneva",
+          "orgs": [
+            "FAIR at Meta"
+          ]
+        },
+        {
+          "name": "Armen Aghajanyan",
+          "orgs": [
+            "FAIR at Meta"
+          ]
+        },
+        {
+          "name": "Xiang Ren",
+          "orgs": [
+            "University of Southern California"
+          ]
+        },
+        {
+          "name": "Muhao Chen",
+          "orgs": [
+            "University of Southern California",
+            "University of California, Davis"
+          ]
+        },
+        {
+          "name": "Asli Celikyilmaz",
+          "orgs": [
+            "FAIR at Meta"
+          ]
+        },
+        {
+          "name": "Maryam Fazel-Zarandi",
+          "orgs": [
+            "FAIR at Meta"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2310.02804v1",
+      "date": "2023-10-04T13:29:47Z",
+      "citation_count": 15,
+      "categories": [
+        "cs.CL",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2602.10138",
+      "score": 9.859834,
+      "title": "Multimodal Information Fusion for Chart Understanding: A Survey of MLLMs -- Evolution, Limitations, and Cognitive Enhancement",
+      "tldr": "This paper reviews MLLMs in chart understanding, addressing the challenge of integrating visual and textual data in charts and the limitations of existing models, contributing a structured taxonomy of datasets and methodologies, and highlighting advancements in alignment techniques and cognitive enhancement strategies.",
+      "abstract": "Chart understanding is a quintessential information fusion task, requiring the seamless integration of graphical and textual data to extract meaning. The advent of Multimodal Large Language Models (MLLMs) has revolutionized this domain, yet the landscape of MLLM-based chart analysis remains fragmented and lacks systematic organization. This survey provides a comprehensive roadmap of this nascent frontier by structuring the domain's core components. We begin by analyzing the fundamental challenges of fusing visual and linguistic information in charts. We then categorize downstream tasks and datasets, introducing a novel taxonomy of canonical and non-canonical benchmarks to highlight the field's expanding scope. Subsequently, we present a comprehensive evolution of methodologies, tracing the progression from classic deep learning techniques to state-of-the-art MLLM paradigms that leverage sophisticated fusion strategies. By critically examining the limitations of current models, particularly their perceptual and reasoning deficits, we identify promising future directions, including advanced alignment techniques and reinforcement learning for cognitive enhancement. This survey aims to equip researchers and practitioners with a structured understanding of how MLLMs are transforming chart information fusion and to catalyze progress toward more robust and reliable systems.",
+      "authors": [
+        {
+          "name": "Tao Wang",
+          "orgs": []
+        },
+        {
+          "name": "Jian Zhao",
+          "orgs": []
+        },
+        {
+          "name": "Jiancheng Lv",
+          "orgs": []
+        },
+        {
+          "name": "Zhihang Yi",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.10138v1",
+      "date": "2026-02-08",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2410.13883",
+      "score": 9.650487,
+      "title": "Transformers Utilization in Chart Understanding: A Review of Recent Advances & Future Trends",
+      "tldr": "This paper reviews transformer utilization in Chart Understanding (CU), addressing the gap in automating multimodal chart tasks by integrating transformers into end-to-end solutions; it analyzes 32 studies, categorizing frameworks into single/multi-task and exploring pre-trained and prompt-based techniques; findings highlight challenges like OCR dependency and low-resolution handling, with implications for improving benchmarks, model efficiency, and explainability in CU.",
+      "abstract": "In recent years, interest in vision-language tasks has grown, especially those involving chart interactions. These tasks are inherently multimodal, requiring models to process chart images, accompanying text, underlying data tables, and often user queries. Traditionally, Chart Understanding (CU) relied on heuristics and rule-based systems. However, recent advancements that have integrated transformer architectures significantly improved performance. This paper reviews prominent research in CU, focusing on State-of-The-Art (SoTA) frameworks that employ transformers within End-to-End (E2E) solutions. Relevant benchmarking datasets and evaluation techniques are analyzed. Additionally, this article identifies key challenges and outlines promising future directions for advancing CU solutions. Following the PRISMA guidelines, a comprehensive literature search is conducted across Google Scholar, focusing on publications from Jan'20 to Jun'24. After rigorous screening and quality assessment, 32 studies are selected for in-depth analysis. The CU tasks are categorized into a three-layered paradigm based on the cognitive task required. Recent advancements in the frameworks addressing various CU tasks are also reviewed. Frameworks are categorized into single-task or multi-task based on the number of tasks solvable by the E2E solution. Within multi-task frameworks, pre-trained and prompt-engineering-based techniques are explored. This review overviews leading architectures, datasets, and pre-training tasks. Despite significant progress, challenges remain in OCR dependency, handling low-resolution images, and enhancing visual reasoning. Future directions include addressing these challenges, developing robust benchmarks, and optimizing model efficiency. Additionally, integrating explainable AI techniques and exploring the balance between real and synthetic data are crucial for advancing CU research.",
+      "authors": [
+        {
+          "name": "Mirna Al-Shetairy",
+          "orgs": [
+            "CIS, ASU",
+            "Arizona State University"
+          ]
+        },
+        {
+          "name": "Hanan Hindy",
+          "orgs": [
+            "CIS, ASU",
+            "Arizona State University"
+          ]
+        },
+        {
+          "name": "Dina Khattab",
+          "orgs": [
+            "CIS, ASU",
+            "Arizona State University"
+          ]
+        },
+        {
+          "name": "Mostafa M. Aref",
+          "orgs": [
+            "CIS, ASU",
+            "Arizona State University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2410.13883v1",
+      "date": "2024-10-05T16:26:44Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.HC",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2602.07645",
+      "score": 9.569688,
+      "title": "From Dead Pixels to Editable Slides: Infographic Reconstruction into Native Google Slides via Vision-Language Region Understanding",
+      "tldr": "This paper addresses the challenge of converting static infographic images into editable Google Slides by leveraging vision-language models and API-driven reconstruction, contributing an end-to-end system with a model-agnostic region schema and practical techniques, achieving 98.9% element recovery and 3.3% CER while highlighting limitations in text calibration and non-uniform backgrounds.",
+      "abstract": "Infographics are widely used to communicate information with a combination of text, icons, and data visualizations, but once exported as images their content is locked into pixels, making updates, localization, and reuse expensive. We describe \\textsc{Images2Slides}, an API-based pipeline that converts a static infographic (PNG/JPG) into a native, editable Google Slides slide by extracting a region-level specification with a vision-language model (VLM), mapping pixel geometry into slide coordinates, and recreating elements using the Google Slides batch update API. The system is model-agnostic and supports multiple VLM backends via a common JSON region schema and deterministic postprocessing. On a controlled benchmark of 29 programmatically generated infographic slides with known ground-truth regions, \\textsc{Images2Slides} achieves an overall element recovery rate of $0.989\\pm0.057$ (text: $0.985\\pm0.083$, images: $1.000\\pm0.000$), with mean text transcription error $\\mathrm{CER}=0.033\\pm0.149$ and mean layout fidelity $\\mathrm{IoU}=0.364\\pm0.161$ for text regions and $0.644\\pm0.131$ for image regions. We also highlight practical engineering challenges in reconstruction, including text size calibration and non-uniform backgrounds, and describe failure modes that guide future work.",
+      "authors": [
+        {
+          "name": "Leonardo Gonzalez",
+          "orgs": [
+            "Trilogy AI Center of Excellence",
+            "AustinUSA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.07645v1",
+      "date": "2026-02-07",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2602.01527",
+      "score": 9.06809,
+      "title": "Toward a Machine Bertin: Why Visualization Needs Design Principles for Machine Cognition",
+      "tldr": "This paper argues that visualization design principles, rooted in human perceptual science, do not transfer to machine audiences, as evidenced by a 33-point performance gap between humans and GPT-4o on charts, and proposes a research agenda to develop machine-oriented visual design principles to address this divergence.",
+      "abstract": "Visualization's design knowledge-effectiveness rankings, encoding guidelines, color models, preattentive processing rules -- derives from six decades of psychophysical studies of human vision. Yet vision-language models (VLMs) increasingly consume chart images in automated analysis pipelines, and a growing body of benchmark evidence indicates that this human-centered knowledge base does not straightforwardly transfer to machine audiences. Machines exhibit different encoding performance patterns, process images through patch-based tokenization rather than holistic perception, and fail on design patterns that pose no difficulty for humans-while occasionally succeeding where humans struggle. Current approaches address this gap primarily by bypassing vision entirely, converting charts to data tables or structured text. We argue that this response forecloses a more fundamental question: what visual representations would actually serve machine cognition well? This paper makes the case that the visualization field needs to investigate machine-oriented visual design as a distinct research problem. We synthesize evidence from VLM benchmarks, visual reasoning research, and visualization literacy studies to show that the human-machine perceptual divergence is qualitative, not merely quantitative, and critically examine the prevailing bypassing approach. We propose a conceptual distinction between human-oriented and machine-oriented visualization-not as an engineering architecture but as a recognition that different audiences may require fundamentally different design foundations-and outline a research agenda for developing the empirical foundations the field currently lacks: the beginnings of a \"machine Bertin\" to complement the human-centered knowledge the field already possesses.",
+      "authors": [
+        {
+          "name": "Brian Keith-Norambuena",
+          "orgs": [
+            "Department of Computing & Systems Engineering, Universidad Católica del Norte, Antofagasta, Chile"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.01527v1",
+      "date": "2026-02-02",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2403.12596",
+      "score": 8.768936,
+      "title": "Chart-based Reasoning: Transferring Capabilities from LLMs to VLMs",
+      "tldr": "This paper addresses the challenge of improving reasoning capabilities in vision-language models (VLMs) by transferring strengths from large-language models (LLMs), focusing on chart-based reasoning tasks; it introduces a pre-training task with an improved chart-to-table translation and a 20x larger synthetic dataset, along with a multitask loss for fine-tuning; the proposed method achieves state-of-the-art performance on ChartQA, outperforming even larger models like PaLIX-55B and rivaling GPT-4V with a 10x smaller parameter count.",
+      "abstract": "Vision-language models (VLMs) are achieving increasingly strong performance on multimodal tasks. However, reasoning capabilities remain limited particularly for smaller VLMs, while those of large-language models (LLMs) have seen numerous improvements. We propose a technique to transfer capabilities from LLMs to VLMs. On the recently introduced ChartQA, our method obtains state-of-the-art performance when applied on the PaLI3-5B VLM by \\citet{chen2023pali3}, while also enabling much better performance on PlotQA and FigureQA.\n  We first improve the chart representation by continuing the pre-training stage using an improved version of the chart-to-table translation task by \\citet{liu2023deplot}. We then propose constructing a 20x larger dataset than the original training set. To improve general reasoning capabilities and improve numerical operations, we synthesize reasoning traces using the table representation of charts. Lastly, our model is fine-tuned using the multitask loss introduced by \\citet{hsieh2023distilling}.\n  Our variant ChartPaLI-5B outperforms even 10x larger models such as PaLIX-55B without using an upstream OCR system, while keeping inference time constant compared to the PaLI3-5B baseline. When rationales are further refined with a simple program-of-thought prompt \\cite{chen2023program}, our model outperforms the recently introduced Gemini Ultra and GPT-4V.",
+      "authors": [
+        {
+          "name": "Victor Cărbune",
+          "orgs": [
+            "Google Research"
+          ]
+        },
+        {
+          "name": "Hassan Mansoor",
+          "orgs": [
+            "Google Research"
+          ]
+        },
+        {
+          "name": "Fangyu Liu",
+          "orgs": [
+            "Google Research"
+          ]
+        },
+        {
+          "name": "Rahul Aralikatte",
+          "orgs": [
+            "Google Research"
+          ]
+        },
+        {
+          "name": "Gilles Baechler",
+          "orgs": [
+            "Google Research"
+          ]
+        },
+        {
+          "name": "Jindong Chen",
+          "orgs": [
+            "Google Research"
+          ]
+        },
+        {
+          "name": "Abhanshu Sharma",
+          "orgs": [
+            "Google Research"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2403.12596v1",
+      "date": "2024-03-19T10:03:07Z",
+      "citation_count": 25,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2405.19094",
+      "score": 8.629807,
+      "title": "Faithful Chart Summarization with ChaTS-Pi",
+      "tldr": "This paper addresses the challenge of faithful chart summarization by introducing ChaTS-Critic, a reference-free metric that combines table extraction and entailment models to score summaries, and ChaTS-PI, a pipeline that refines and ranks summaries using ChaTS-Critic, achieving state-of-the-art results on two benchmarks.",
+      "abstract": "Chart-to-summary generation can help explore data, communicate insights, and help the visually impaired people. Multi-modal generative models have been used to produce fluent summaries, but they can suffer from factual and perceptual errors. In this work we present CHATS-CRITIC, a reference-free chart summarization metric for scoring faithfulness. CHATS-CRITIC is composed of an image-to-text model to recover the table from a chart, and a tabular entailment model applied to score the summary sentence by sentence. We find that CHATS-CRITIC evaluates the summary quality according to human ratings better than reference-based metrics, either learned or n-gram based, and can be further used to fix candidate summaries by removing not supported sentences. We then introduce CHATS-PI, a chart-to-summary pipeline that leverages CHATS-CRITIC during inference to fix and rank sampled candidates from any chart-summarization model. We evaluate CHATS-PI and CHATS-CRITIC using human raters, establishing state-of-the-art results on two popular chart-to-summary datasets.",
+      "authors": [
+        {
+          "name": "Syrine Krichene",
+          "orgs": [
+            "Google DeepMind, Zürich"
+          ]
+        },
+        {
+          "name": "Francesco Piccinno",
+          "orgs": [
+            "Google DeepMind, Zürich"
+          ]
+        },
+        {
+          "name": "Fangyu Liu",
+          "orgs": [
+            "Google DeepMind, Zürich"
+          ]
+        },
+        {
+          "name": "Julian Martin Eisenschlos",
+          "orgs": [
+            "Google DeepMind, Zürich"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2405.19094v1",
+      "date": "2024-05-29T13:55:06Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2305.14761",
+      "score": 8.250669,
+      "title": "UniChart: A Universal Vision-language Pretrained Model for Chart Comprehension and Reasoning",
+      "tldr": "This paper introduces UniChart, a universal vision-language pretrained model for chart comprehension and reasoning, addressing the gap of chart-specific modeling by proposing low- and high-level pretraining tasks; it achieves state-of-the-art performance on three downstream tasks with 11x faster speed and 28% fewer parameters compared to previous models.",
+      "abstract": "Charts are very popular for analyzing data, visualizing key insights and answering complex reasoning questions about data. To facilitate chart-based data analysis using natural language, several downstream tasks have been introduced recently such as chart question answering and chart summarization. However, most of the methods that solve these tasks use pretraining on language or vision-language tasks that do not attempt to explicitly model the structure of the charts (e.g., how data is visually encoded and how chart elements are related to each other). To address this, we first build a large corpus of charts covering a wide variety of topics and visual styles. We then present UniChart, a pretrained model for chart comprehension and reasoning. UniChart encodes the relevant text, data, and visual elements of charts and then uses a chart-grounded text decoder to generate the expected output in natural language. We propose several chart-specific pretraining tasks that include: (i) low-level tasks to extract the visual elements (e.g., bars, lines) and data from charts, and (ii) high-level tasks to acquire chart understanding and reasoning skills. We find that pretraining the model on a large corpus with chart-specific low- and high-level tasks followed by finetuning on three down-streaming tasks results in state-of-the-art performance on three downstream tasks.",
+      "authors": [
+        {
+          "name": "Ahmed Masry",
+          "orgs": [
+            "York University, Canada"
+          ]
+        },
+        {
+          "name": "Parsa Kavehzadeh",
+          "orgs": [
+            "York University, Canada"
+          ]
+        },
+        {
+          "name": "Xuan Long Do",
+          "orgs": [
+            "Nanyang Technological University, Singapore",
+            "Salesforce AI"
+          ]
+        },
+        {
+          "name": "Enamul Hoque",
+          "orgs": [
+            "York University, Canada"
+          ]
+        },
+        {
+          "name": "Shafiq Joty",
+          "orgs": [
+            "Nanyang Technological University, Singapore",
+            "Salesforce AI"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2305.14761v3",
+      "date": "2023-05-24T06:11:17Z",
+      "citation_count": 175,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "1906.11906",
+      "score": 7.6378636,
+      "title": "Data Extraction from Charts via Single Deep Neural Network",
+      "tldr": "This paper presents a deep learning model for automatic data extraction from bar and pie charts, addressing the challenge of handling complex object relations and varying chart types, by combining object detection, text recognition, and component matching; it introduces a single model for bar charts and a specialized model for pie charts with RNN-based angle detection, achieving 79.4% and 88.0% accuracy on simulated charts, but degrading to 57.5% and 62.3% on out-of-domain data, offering improved automation for business data management.",
+      "abstract": "Automatic data extraction from charts is challenging for two reasons: there exist many relations among objects in a chart, which is not a common consideration in general computer vision problems; and different types of charts may not be processed by the same model. To address these problems, we propose a framework of a single deep neural network, which consists of object detection, text recognition and object matching modules. The framework handles both bar and pie charts, and it may also be extended to other types of charts by slight revisions and by augmenting the training data. Our model performs successfully on 79.4% of test simulated bar charts and 88.0% of test simulated pie charts, while for charts outside of the training domain it degrades for 57.5% and 62.3%, respectively.",
+      "authors": [
+        {
+          "name": "Xiaoyi Liu",
+          "orgs": []
+        },
+        {
+          "name": "Diego Klabjan",
+          "orgs": []
+        },
+        {
+          "name": "Patrick N Bless",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1906.11906v1",
+      "date": "2019-06-06T21:54:50Z",
+      "citation_count": 60,
+      "categories": [
+        "cs.CL",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2009.02491",
+      "score": 7.5184746,
+      "title": "Reverse-engineering Bar Charts Using Neural Networks",
+      "tldr": "This paper addresses the problem of reverse-engineering bar charts to extract textual and numeric information, which is crucial for applications requiring underlying data; it proposes a neural network-based method combining Faster-RCNN for textual extraction and an encoder-decoder framework with attention mechanism for numeric extraction, achieving F1 scores of 0.89 and 0.80, and accuracies of 0.91 and 0.78 on synthetic and real-world datasets respectively.",
+      "abstract": "Reverse-engineering bar charts extracts textual and numeric information from the visual representations of bar charts to support application scenarios that require the underlying information. In this paper, we propose a neural network-based method for reverse-engineering bar charts. We adopt a neural network-based object detection model to simultaneously localize and classify textual information. This approach improves the efficiency of textual information extraction. We design an encoder-decoder framework that integrates convolutional and recurrent neural networks to extract numeric information. We further introduce an attention mechanism into the framework to achieve high accuracy and robustness. Synthetic and real-world datasets are used to evaluate the effectiveness of the method. To the best of our knowledge, this work takes the lead in constructing a complete neural network-based method of reverse-engineering bar charts.",
+      "authors": [
+        {
+          "name": "Fangfang Zhou",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yong Zhao",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Wenjiang Chen",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yijing Tan",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yaqi Xu",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yi Chen",
+          "orgs": [
+            "Beijing Key Laboratory of Big Data Technology for Food Safety, Beijing Technology and Business University, Beijing, China"
+          ]
+        },
+        {
+          "name": "Chao Liu",
+          "orgs": [
+            "Institute of Systems Engineering, Academy of Military Sciences, Beijing, China"
+          ]
+        },
+        {
+          "name": "Ying Zhao",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China",
+            "Rail Data Research and Application Key Laboratory of Hunan Province, Changsha, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2009.02491v1",
+      "date": "2020-09-05T08:14:35Z",
+      "citation_count": 34,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "1812.10636",
+      "score": 7.361661,
+      "title": "Chart-Text: A Fully Automated Chart Image Descriptor",
+      "tldr": "This paper presents Chart-Text, a fully automated system for generating textual descriptions of chart images, addressing the challenge of creating standardized Alt-Text for visually impaired users; it proposes a method combining chart classification and data extraction with accuracies of 99.72% and 78.9%, respectively, significantly improving accessibility and productivity for content creators.",
+      "abstract": "Images greatly help in understanding, interpreting and visualizing data. Adding textual description to images is the first and foremost principle of web accessibility. Visually impaired users using screen readers will use these textual descriptions to get better understanding of images present in digital contents. In this paper, we propose Chart-Text a novel fully automated system that creates textual description of chart images. Given a PNG image of a chart, our Chart-Text system creates a complete textual description of it. First, the system classifies the type of chart and then it detects and classifies the labels and texts in the charts. Finally, it uses specific image processing algorithms to extract relevant information from the chart images. Our proposed system achieves an accuracy of 99.72% in classifying the charts and an accuracy of 78.9% in extracting the data and creating the corresponding textual description.",
+      "authors": [
+        {
+          "name": "Abhijit Balaji",
+          "orgs": [
+            "SPi Technologies India Private Limited"
+          ]
+        },
+        {
+          "name": "Thuvaarakkesh Ramanathan",
+          "orgs": [
+            "SPi Technologies India Private Limited"
+          ]
+        },
+        {
+          "name": "Venkateshwarlu Sonathi",
+          "orgs": [
+            "SPi Technologies India Private Limited"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1812.10636v1",
+      "date": "2018-12-27T05:52:06Z",
+      "citation_count": 61,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2212.10505",
+      "score": 7.3537006,
+      "title": "DePlot: One-shot visual language reasoning by plot-to-table translation",
+      "tldr": "This paper addresses the challenge of visual language reasoning by proposing DePlot, a modality conversion module that translates plots to tables for one-shot reasoning with LLMs, achieving a 24.0% improvement over SOTA on ChartQA with human-written queries.",
+      "abstract": "Visual language such as charts and plots is ubiquitous in the human world. Comprehending plots and charts requires strong reasoning skills. Prior state-of-the-art (SOTA) models require at least tens of thousands of training examples and their reasoning capabilities are still much limited, especially on complex human-written queries. This paper presents the first one-shot solution to visual language reasoning. We decompose the challenge of visual language reasoning into two steps: (1) plot-to-text translation, and (2) reasoning over the translated text. The key in this method is a modality conversion module, named as DePlot, which translates the image of a plot or chart to a linearized table. The output of DePlot can then be directly used to prompt a pretrained large language model (LLM), exploiting the few-shot reasoning capabilities of LLMs. To obtain DePlot, we standardize the plot-to-table task by establishing unified task formats and metrics, and train DePlot end-to-end on this task. DePlot can then be used off-the-shelf together with LLMs in a plug-and-play fashion. Compared with a SOTA model finetuned on more than >28k data points, DePlot+LLM with just one-shot prompting achieves a 24.0% improvement over finetuned SOTA on human-written queries from the task of chart QA.",
+      "authors": [
+        {
+          "name": "Fangyu Liu",
+          "orgs": [
+            "Google DeepMind",
+            "University of Cambridge"
+          ]
+        },
+        {
+          "name": "Julian Martin Eisenschlos",
+          "orgs": [
+            "Google DeepMind",
+            "University of Cambridge"
+          ]
+        },
+        {
+          "name": "Francesco Piccinno",
+          "orgs": [
+            "Google DeepMind",
+            "University of Cambridge"
+          ]
+        },
+        {
+          "name": "Syrine Krichene",
+          "orgs": [
+            "Google DeepMind",
+            "University of Cambridge"
+          ]
+        },
+        {
+          "name": "Chenxi Pang",
+          "orgs": [
+            "Google DeepMind"
+          ]
+        },
+        {
+          "name": "Kenton Lee",
+          "orgs": [
+            "Google DeepMind"
+          ]
+        },
+        {
+          "name": "Mandar Joshi",
+          "orgs": [
+            "Google DeepMind"
+          ]
+        },
+        {
+          "name": "Wenhu Chen",
+          "orgs": [
+            "Google DeepMind"
+          ]
+        },
+        {
+          "name": "Nigel Collier",
+          "orgs": [
+            "University of Cambridge"
+          ]
+        },
+        {
+          "name": "Yasemin Altun",
+          "orgs": [
+            "Google DeepMind"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2212.10505v2",
+      "date": "2022-12-20T18:20:50Z",
+      "citation_count": 163,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2210.03347",
+      "score": 7.104739,
+      "title": "Pix2Struct: Screenshot Parsing as Pretraining for Visual Language Understanding",
+      "tldr": "This paper addresses the challenge of visually-situated language understanding by introducing a pretraining approach that leverages screenshot parsing to enable a unified model for diverse tasks, as it aims to overcome the limitations of domain-specific methods; it proposes a screenshot parsing pretraining objective using HTML-based structure prediction and variable-resolution input representations, contributing a general-purpose model that achieves state-of-the-art results in six out of nine tasks across four domains; the model outperforms existing baselines by 9-53 points in some tasks and shows significant improvements in low-resource domains.",
+      "abstract": "Visually-situated language is ubiquitous -- sources range from textbooks with diagrams to web pages with images and tables, to mobile apps with buttons and forms. Perhaps due to this diversity, previous work has typically relied on domain-specific recipes with limited sharing of the underlying data, model architectures, and objectives. We present Pix2Struct, a pretrained image-to-text model for purely visual language understanding, which can be finetuned on tasks containing visually-situated language. Pix2Struct is pretrained by learning to parse masked screenshots of web pages into simplified HTML. The web, with its richness of visual elements cleanly reflected in the HTML structure, provides a large source of pretraining data well suited to the diversity of downstream tasks. Intuitively, this objective subsumes common pretraining signals such as OCR, language modeling, image captioning. In addition to the novel pretraining strategy, we introduce a variable-resolution input representation and a more flexible integration of language and vision inputs, where language prompts such as questions are rendered directly on top of the input image. For the first time, we show that a single pretrained model can achieve state-of-the-art results in six out of nine tasks across four domains: documents, illustrations, user interfaces, and natural images.",
+      "authors": [
+        {
+          "name": "Kenton Lee",
+          "orgs": []
+        },
+        {
+          "name": "Mandar Joshi",
+          "orgs": []
+        },
+        {
+          "name": "Iulia Turc",
+          "orgs": []
+        },
+        {
+          "name": "Hexiang Hu",
+          "orgs": []
+        },
+        {
+          "name": "Fangyu Liu",
+          "orgs": []
+        },
+        {
+          "name": "Julian Eisenschlos",
+          "orgs": []
+        },
+        {
+          "name": "Urvashi Khandelwal",
+          "orgs": []
+        },
+        {
+          "name": "Peter Shaw",
+          "orgs": []
+        },
+        {
+          "name": "Ming-Wei Chang",
+          "orgs": []
+        },
+        {
+          "name": "Kristina Toutanova",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2210.03347v2",
+      "date": "2022-10-07T06:42:06Z",
+      "citation_count": 396,
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2311.16502",
+      "score": 6.959268,
+      "title": "MMMU: A Massive Multi-discipline Multimodal Understanding and Reasoning Benchmark for Expert AGI",
+      "tldr": "This paper introduces MMMU, a benchmark with 11.5K multimodal college-level questions across six disciplines, featuring diverse image types and requiring expert reasoning, which challenges LMMs with accuracies up to 59% for top models.",
+      "abstract": "We introduce MMMU: a new benchmark designed to evaluate multimodal models on massive multi-discipline tasks demanding college-level subject knowledge and deliberate reasoning. MMMU includes 11.5K meticulously collected multimodal questions from college exams, quizzes, and textbooks, covering six core disciplines: Art & Design, Business, Science, Health & Medicine, Humanities & Social Science, and Tech & Engineering. These questions span 30 subjects and 183 subfields, comprising 30 highly heterogeneous image types, such as charts, diagrams, maps, tables, music sheets, and chemical structures. Unlike existing benchmarks, MMMU focuses on advanced perception and reasoning with domain-specific knowledge, challenging models to perform tasks akin to those faced by experts. The evaluation of 14 open-source LMMs as well as the proprietary GPT-4V(ision) and Gemini highlights the substantial challenges posed by MMMU. Even the advanced GPT-4V and Gemini Ultra only achieve accuracies of 56% and 59% respectively, indicating significant room for improvement. We believe MMMU will stimulate the community to build next-generation multimodal foundation models towards expert artificial general intelligence.",
+      "authors": [
+        {
+          "name": "Xiang Yue",
+          "orgs": [
+            "IN.AI Research"
+          ]
+        },
+        {
+          "name": "Yuansheng Ni",
+          "orgs": [
+            "University of Waterloo"
+          ]
+        },
+        {
+          "name": "Kai Zhang",
+          "orgs": [
+            "The Ohio State University"
+          ]
+        },
+        {
+          "name": "Tianyu Zheng",
+          "orgs": [
+            "The Ohio State University"
+          ]
+        },
+        {
+          "name": "Ruoqi Liu",
+          "orgs": [
+            "The Ohio State University"
+          ]
+        },
+        {
+          "name": "Ge Zhang",
+          "orgs": [
+            "University of Waterloo"
+          ]
+        },
+        {
+          "name": "Samuel Stevens",
+          "orgs": [
+            "The Ohio State University"
+          ]
+        },
+        {
+          "name": "Dongfu Jiang",
+          "orgs": [
+            "University of Waterloo"
+          ]
+        },
+        {
+          "name": "Weiming Ren",
+          "orgs": [
+            "University of Waterloo"
+          ]
+        },
+        {
+          "name": "Yuxuan Sun",
+          "orgs": [
+            "Independent"
+          ]
+        },
+        {
+          "name": "Cong Wei",
+          "orgs": [
+            "University of Waterloo"
+          ]
+        },
+        {
+          "name": "Botao Yu",
+          "orgs": [
+            "The Ohio State University"
+          ]
+        },
+        {
+          "name": "Ruibin Yuan",
+          "orgs": [
+            "Carnegie Mellon University"
+          ]
+        },
+        {
+          "name": "Renliang Sun",
+          "orgs": [
+            "University of Waterloo"
+          ]
+        },
+        {
+          "name": "Ming Yin",
+          "orgs": [
+            "Princeton University"
+          ]
+        },
+        {
+          "name": "Boyuan Zheng",
+          "orgs": [
+            "The Ohio State University"
+          ]
+        },
+        {
+          "name": "Zhenzhu Yang",
+          "orgs": [
+            "Independent"
+          ]
+        },
+        {
+          "name": "Yibo Liu",
+          "orgs": [
+            "University of Victoria"
+          ]
+        },
+        {
+          "name": "Wenhao Huang",
+          "orgs": [
+            "Independent"
+          ]
+        },
+        {
+          "name": "Huan Sun",
+          "orgs": [
+            "The Ohio State University"
+          ]
+        },
+        {
+          "name": "Yu Su",
+          "orgs": [
+            "The Ohio State University"
+          ]
+        },
+        {
+          "name": "Wenhu Chen",
+          "orgs": [
+            "University of Waterloo"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2311.16502v4",
+      "date": "2023-11-27T17:33:21Z",
+      "citation_count": 1816,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2307.13567",
+      "score": 6.785558,
+      "title": "Mystique: Deconstructing SVG Charts for Layout Reuse",
+      "tldr": "This paper addresses the challenge of reusing SVG charts by deconstructing their layouts, focusing on rectangle-based charts which cover 17 types and advanced layouts; it proposes Mystique, an interactive tool using mixed-initiative approach to extract axes, legend, and deconstruct layout into four components with 96% accuracy on 150 charts; results show users can easily reuse charts on new datasets.",
+      "abstract": "To facilitate the reuse of existing charts, previous research has examined how to obtain a semantic understanding of a chart by deconstructing its visual representation into reusable components, such as encodings. However, existing deconstruction approaches primarily focus on chart styles, handling only basic layouts. In this paper, we investigate how to deconstruct chart layouts, focusing on rectangle-based ones, as they cover not only 17 chart types but also advanced layouts (e.g., small multiples, nested layouts). We develop an interactive tool, called Mystique, adopting a mixed-initiative approach to extract the axes and legend, and deconstruct a chart's layout into four semantic components: mark groups, spatial relationships, data encodings, and graphical constraints. Mystique employs a wizard interface that guides chart authors through a series of steps to specify how the deconstructed components map to their own data. On 150 rectangle-based SVG charts, Mystique achieves above 85% accuracy for axis and legend extraction and 96% accuracy for layout deconstruction. In a chart reproduction study, participants could easily reuse existing charts on new datasets. We discuss the current limitations of Mystique and future research directions.",
+      "authors": [
+        {
+          "name": "Chen Chen",
+          "orgs": [
+            "Microsoft Research"
+          ]
+        },
+        {
+          "name": "Bongshin Lee",
+          "orgs": [
+            "Microsoft Research"
+          ]
+        },
+        {
+          "name": "Yunhai Wang",
+          "orgs": [
+            "Microsoft Research"
+          ]
+        },
+        {
+          "name": "Yunjeong Chang",
+          "orgs": []
+        },
+        {
+          "name": "Zhicheng Liu",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2307.13567v2",
+      "date": "2023-07-25T15:20:19Z",
+      "citation_count": 15,
+      "categories": [
+        "cs.CV",
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2406.09961",
+      "score": 6.3807926,
+      "title": "ChartMimic: Evaluating LMM's Cross-Modal Reasoning Capability via Chart-to-Code Generation",
+      "tldr": "This paper introduces ChartMimic, a benchmark evaluating LMMs' cross-modal reasoning via chart-to-code generation with 4,800 curated triplets across 201 chart subcategories, featuring multi-level metrics to assess code and visual accuracy, showing significant performance gaps even for advanced models like GPT-4o.",
+      "abstract": "We introduce a new benchmark, ChartMimic, aimed at assessing the visually-grounded code generation capabilities of large multimodal models (LMMs). ChartMimic utilizes information-intensive visual charts and textual instructions as inputs, requiring LMMs to generate the corresponding code for chart rendering. ChartMimic includes 4,800 human-curated (figure, instruction, code) triplets, which represent the authentic chart use cases found in scientific papers across various domains (e.g., Physics, Computer Science, Economics, etc). These charts span 18 regular types and 4 advanced types, diversifying into 201 subcategories. Furthermore, we propose multi-level evaluation metrics to provide an automatic and thorough assessment of the output code and the rendered charts. Unlike existing code generation benchmarks, ChartMimic places emphasis on evaluating LMMs' capacity to harmonize a blend of cognitive capabilities, encompassing visual understanding, code generation, and cross-modal reasoning. The evaluation of $3$ proprietary models and 14 open-weight models highlights the substantial challenges posed by ChartMimic. Even the advanced GPT-4o, InternVL2-Llama3-76B only achieved an average score across Direct Mimic and Customized Mimic tasks of 82.2 and 61.6, respectively, indicating significant room for improvement. We anticipate that ChartMimic will inspire the development of LMMs, advancing the pursuit of artificial general intelligence.",
+      "authors": [
+        {
+          "name": "Cheng Yang",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Chufan Shi",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Yaxin Liu",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Bo Shui",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Junjie Wang",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Mohan Jing",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Linran Xu",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Xinyu Zhu",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Siheng Li",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Yuxiang Zhang",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Gongye Liu",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Xiaomei Nie",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Deng Cai",
+          "orgs": [
+            "Tencent AI Lab"
+          ]
+        },
+        {
+          "name": "Yujiu Yang",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2406.09961v2",
+      "date": "2024-06-14T12:10:51Z",
+      "citation_count": 72,
+      "categories": [
+        "cs.CL",
+        "cs.CV",
+        "cs.SE"
+      ]
+    },
+    {
+      "arxiv_id": "2311.16483",
+      "score": 6.030654,
+      "title": "ChartLlama: A Multimodal LLM for Chart Understanding and Generation",
+      "tldr": "This paper introduces ChartLlama, a multimodal LLM trained on a novel dataset generated via GPT-4 for chart understanding and generation, addressing the lack of specialized datasets for chart interpretation; the proposed method enables diverse and high-quality data creation with flexibility and efficiency; ChartLlama outperforms prior methods on ChartQA, Chart-to-text, and Chart-extraction benchmarks with 160K instruction-tuning data and supports 10 chart types and 7 task types.",
+      "abstract": "Multi-modal large language models have demonstrated impressive performances on most vision-language tasks. However, the model generally lacks the understanding capabilities for specific domain data, particularly when it comes to interpreting chart figures. This is mainly due to the lack of relevant multi-modal instruction tuning datasets. In this article, we create a high-quality instruction-tuning dataset leveraging GPT-4. We develop a multi-step data generation process in which different steps are responsible for generating tabular data, creating chart figures, and designing instruction tuning data separately. Our method's flexibility enables us to generate diverse, high-quality instruction-tuning data consistently and efficiently while maintaining a low resource expenditure. Additionally, it allows us to incorporate a wider variety of chart and task types not yet featured in existing datasets. Next, we introduce ChartLlama, a multi-modal large language model that we've trained using our created dataset. ChartLlama outperforms all prior methods in ChartQA, Chart-to-text, and Chart-extraction evaluation benchmarks. Additionally, ChartLlama significantly improves upon the baseline in our specially compiled chart dataset, which includes new chart and task types. The results of ChartLlama confirm the value and huge potential of our proposed data generation method in enhancing chart comprehension.",
+      "authors": [
+        {
+          "name": "Yucheng Han",
+          "orgs": [
+            "Nanyang Technological University"
+          ]
+        },
+        {
+          "name": "Chi Zhang",
+          "orgs": [
+            "Tencent"
+          ]
+        },
+        {
+          "name": "Xin Chen",
+          "orgs": [
+            "Tencent"
+          ]
+        },
+        {
+          "name": "Xu Yang",
+          "orgs": [
+            "South",
+            "Southeast University"
+          ]
+        },
+        {
+          "name": "Zhibin Wang",
+          "orgs": [
+            "Tencent"
+          ]
+        },
+        {
+          "name": "Gang Yu",
+          "orgs": [
+            "Tencent"
+          ]
+        },
+        {
+          "name": "Bin Fu",
+          "orgs": [
+            "Tencent"
+          ]
+        },
+        {
+          "name": "Hanwang Zhang",
+          "orgs": [
+            "Nanyang Technological University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2311.16483v1",
+      "date": "2023-11-27T15:20:23Z",
+      "citation_count": 146,
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1609.05283",
+      "score": 5.95433,
+      "title": "Converting Basic D3 Charts into Reusable Style Templates",
+      "tldr": "This paper presents a method to convert basic D3 charts into reusable style templates, enabling new data to be visualized in the style of the original chart by ranking perceptual effectiveness of mappings and matching important data fields; it contributes an algorithm for template creation and application, extending deconstruction techniques and demonstrating effectiveness through diverse dataset applications.",
+      "abstract": "We present a technique for converting a basic D3 chart into a reusable style template. Then, given a new data source we can apply the style template to generate a chart that depicts the new data, but in the style of the template. To construct the style template we first deconstruct the input D3 chart to recover its underlying structure: the data, the marks and the mappings that describe how the marks encode the data. We then rank the perceptual effectiveness of the deconstructed mappings. To apply the resulting style template to a new data source we first obtain importance ranks for each new data field. We then adjust the template mappings to depict the source data by matching the most important data fields to the most perceptually effective mappings. We show how the style templates can be applied to source data in the form of either a data table or another D3 chart. While our implementation focuses on generating templates for basic chart types (e.g. variants of bar charts, line charts, dot plots, scatterplots, etc.), these are the most commonly used chart types today. Users can easily find such basic D3 charts on the Web, turn them into templates, and immediately see how their own data would look in the visual style (e.g. colors, shapes, fonts, etc.) of the templates. We demonstrate the effectiveness of our approach by applying a diverse set of style templates to a variety of source datasets.",
+      "authors": [
+        {
+          "name": "Jonathan Harper",
+          "orgs": []
+        },
+        {
+          "name": "Maneesh Agrawala",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1609.05283v3",
+      "date": "2016-09-17T05:08:24Z",
+      "citation_count": 65,
+      "categories": [
+        "cs.GR",
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2412.13501",
+      "score": 5.94715,
+      "title": "GUI Agents: A Survey",
+      "tldr": "This survey reviews GUI agents, focusing on their benchmarks, architectures, and training methods, and contributes a unified framework for perception, reasoning, and action; it highlights challenges in cross-platform interaction and emphasizes the need for standardized evaluation metrics.",
+      "abstract": "Graphical User Interface (GUI) agents, powered by Large Foundation Models, have emerged as a transformative approach to automating human-computer interaction. These agents autonomously interact with digital systems or software applications via GUIs, emulating human actions such as clicking, typing, and navigating visual elements across diverse platforms. Motivated by the growing interest and fundamental importance of GUI agents, we provide a comprehensive survey that categorizes their benchmarks, evaluation metrics, architectures, and training methods. We propose a unified framework that delineates their perception, reasoning, planning, and acting capabilities. Furthermore, we identify important open challenges and discuss key future directions. Finally, this work serves as a basis for practitioners and researchers to gain an intuitive understanding of current progress, techniques, benchmarks, and critical open problems that remain to be addressed.",
+      "authors": [
+        {
+          "name": "Dang Nguyen",
+          "orgs": [
+            "University of Maryland"
+          ]
+        },
+        {
+          "name": "Jian Chen",
+          "orgs": [
+            "State University of New York at Buffalo"
+          ]
+        },
+        {
+          "name": "Yu Wang",
+          "orgs": [
+            "University of Oregon"
+          ]
+        },
+        {
+          "name": "Namyong Park",
+          "orgs": [
+            "Meta AI"
+          ]
+        },
+        {
+          "name": "Zhengmian Hu",
+          "orgs": [
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Hanjia Lyu",
+          "orgs": [
+            "University of Rochester"
+          ]
+        },
+        {
+          "name": "Junda Wu",
+          "orgs": [
+            "University of California, San Diego"
+          ]
+        },
+        {
+          "name": "Ryan Aponte",
+          "orgs": [
+            "Carnegie Mellon University"
+          ]
+        },
+        {
+          "name": "Yu Xia",
+          "orgs": [
+            "University of California, San Diego"
+          ]
+        },
+        {
+          "name": "Xintong Li",
+          "orgs": [
+            "University of California, San Diego"
+          ]
+        },
+        {
+          "name": "Jing Shi",
+          "orgs": [
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Hongjie Chen",
+          "orgs": [
+            "Dolby Labs"
+          ]
+        },
+        {
+          "name": "Viet Dao Lai",
+          "orgs": [
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Zhouhang Xie",
+          "orgs": [
+            "University of California, San Diego"
+          ]
+        },
+        {
+          "name": "Sungchul Kim",
+          "orgs": [
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Ruiyi Zhang",
+          "orgs": [
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Tong Yu",
+          "orgs": [
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Mehrab Tanjim",
+          "orgs": [
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Nesreen K. Ahmed",
+          "orgs": [
+            "Intel AI Research"
+          ]
+        },
+        {
+          "name": "Puneet Mathur",
+          "orgs": [
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Seunghyun Yoon",
+          "orgs": [
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Lina Yao",
+          "orgs": [
+            "University of New South Wales"
+          ]
+        },
+        {
+          "name": "Branislav Kveton",
+          "orgs": [
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Jihyung Kil",
+          "orgs": []
+        },
+        {
+          "name": "Thien Huu Nguyen",
+          "orgs": [
+            "University of Oregon"
+          ]
+        },
+        {
+          "name": "Trung Bui",
+          "orgs": [
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Tianyi Zhou",
+          "orgs": [
+            "University of Maryland"
+          ]
+        },
+        {
+          "name": "Ryan A. Rossi",
+          "orgs": [
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Franck Dernoncourt",
+          "orgs": [
+            "Adobe Research"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2412.13501v3",
+      "date": "2024-12-18T04:48:28Z",
+      "citation_count": 65,
+      "categories": [
+        "cs.AI",
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2212.11684",
+      "score": 5.94715,
+      "title": "Scene-aware Egocentric 3D Human Pose Estimation",
+      "tldr": "This paper addresses the problem of egocentric 3D human pose estimation in challenging scenes with occlusions and body-environment interactions, proposing a scene-aware framework that uses depth estimation and voxel-based representation to improve accuracy and physical plausibility, contributing synthetic and real datasets, novel depth networks, and achieving state-of-the-art results on new evaluation sequences.",
+      "abstract": "Egocentric 3D human pose estimation with a single head-mounted fisheye camera has recently attracted attention due to its numerous applications in virtual and augmented reality. Existing methods still struggle in challenging poses where the human body is highly occluded or is closely interacting with the scene. To address this issue, we propose a scene-aware egocentric pose estimation method that guides the prediction of the egocentric pose with scene constraints. To this end, we propose an egocentric depth estimation network to predict the scene depth map from a wide-view egocentric fisheye camera while mitigating the occlusion of the human body with a depth-inpainting network. Next, we propose a scene-aware pose estimation network that projects the 2D image features and estimated depth map of the scene into a voxel space and regresses the 3D pose with a V2V network. The voxel-based feature representation provides the direct geometric connection between 2D image features and scene geometry, and further facilitates the V2V network to constrain the predicted pose based on the estimated scene geometry. To enable the training of the aforementioned networks, we also generated a synthetic dataset, called EgoGTA, and an in-the-wild dataset based on EgoPW, called EgoPW-Scene. The experimental results of our new evaluation sequences show that the predicted 3D egocentric poses are accurate and physically plausible in terms of human-scene interaction, demonstrating that our method outperforms the state-of-the-art methods both quantitatively and qualitatively.",
+      "authors": [
+        {
+          "name": "Jian Wang",
+          "orgs": [
+            "MPI Informatics",
+            "Saarland Informatics Campus"
+          ]
+        },
+        {
+          "name": "Lingjie Liu",
+          "orgs": [
+            "MPI Informatics",
+            "Saarland Informatics Campus"
+          ]
+        },
+        {
+          "name": "Weipeng Xu",
+          "orgs": [
+            "Meta Reality Labs"
+          ]
+        },
+        {
+          "name": "Kripasindhu Sarkar",
+          "orgs": [
+            "Google"
+          ]
+        },
+        {
+          "name": "Diogo Luvizon",
+          "orgs": [
+            "MPI Informatics",
+            "Saarland Informatics Campus"
+          ]
+        },
+        {
+          "name": "Christian Theobalt",
+          "orgs": [
+            "MPI Informatics",
+            "Saarland Informatics Campus"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2212.11684v3",
+      "date": "2022-12-20T21:35:39Z",
+      "citation_count": 38,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2509.18425",
+      "score": 5.2771616,
+      "title": "Losing the Plot: How VLM responses degrade on imperfect charts",
+      "tldr": "This paper addresses the challenge of chart understanding in VLMs by evaluating their performance on corrupted and occluded charts, introducing CHART NOISe, a dataset with 1,500 charts and exam-style questions, and revealing systematic hallucinations such as value fabrication and trend misinterpretation, with implications for improving robustness and reliability in real-world chart comprehension.",
+      "abstract": "Vision language models (VLMs) show strong results on chart understanding, yet existing benchmarks assume clean figures and fact based queries. Real world charts often contain distortions and demand reasoning beyond simple matching. We evaluate ChatGPT 4o, Claude Sonnet 4, and Gemini 2.5 Pro, finding sharp performance drops under corruption or occlusion, with hallucinations such as value fabrication, trend misinterpretation, and entity confusion becoming more frequent. Models remain overconfident in degraded settings, generating plausible but unsupported explanations.\n  To address this gap, we introduce CHART NOISe(Chart Hallucinations, Answers, and Reasoning Testing on Noisy and Occluded Input Selections), a dataset combining chart corruptions, occlusions, and exam style multiple choice questions inspired by Korea's CSAT English section. A key innovation is prompt reverse inconsistency, where models contradict themselves when asked to confirm versus deny the same statement. Our contributions are threefold: (1) benchmarking state of the art VLMs, exposing systematic vulnerabilities in chart reasoning; (2) releasing CHART NOISe, the first dataset unifying corruption, occlusion, and reverse inconsistency; and (3) proposing baseline mitigation strategies such as quality filtering and occlusion detection. Together, these efforts establish a rigorous testbed for advancing robustness and reliability in chart understanding.",
+      "authors": [
+        {
+          "name": "Philip Wootaek Shin",
+          "orgs": []
+        },
+        {
+          "name": "Jack Sampson",
+          "orgs": []
+        },
+        {
+          "name": "Vijaykrishnan Narayanan",
+          "orgs": []
+        },
+        {
+          "name": "Andres Marquez",
+          "orgs": []
+        },
+        {
+          "name": "Mahantesh Halappanavar",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2509.18425v1",
+      "date": "2025-09-22T21:12:20Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1908.01277",
+      "score": 4.6581197,
+      "title": "Interactive Visualisation of Hierarchical Quantitative Data: An Evaluation",
+      "tldr": "This paper presents a benchmark evaluating treemaps, icicle plots, sunburst charts, and sundown charts for hierarchical quantitative data visualization, featuring a hybrid WebGL-D3 implementation for large datasets and user studies showing treemaps as least preferred with icicle plots having slight user preference.",
+      "abstract": "We have compared three common visualisations for hierarchical quantitative data, treemaps, icicle plots and sunburst charts as well as a semicircular variant of sunburst charts we call the sundown chart. In a pilot study, we found that the sunburst chart was least preferred. In a controlled study with 12 participants, we compared treemaps, icicle plots and sundown charts. Treemap was the least preferred and had a slower performance on a basic navigation task and slower performance and accuracy in hierarchy understanding tasks. The icicle plot and sundown chart had similar performance with slight user preference for the icicle plot.",
+      "authors": [
+        {
+          "name": "Linda Woodburn",
+          "orgs": [
+            "Monash University"
+          ]
+        },
+        {
+          "name": "Yalong Yang",
+          "orgs": [
+            "Monash University"
+          ]
+        },
+        {
+          "name": "Kim Marriott",
+          "orgs": [
+            "Monash University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1908.01277v3",
+      "date": "2019-08-04T06:16:08Z",
+      "citation_count": 23,
+      "categories": [
+        "cs.GR",
+        "cs.HC",
+        "cs.MM"
+      ]
+    },
+    {
+      "arxiv_id": "1704.06687",
+      "score": 4.354702,
+      "title": "Scatteract: Automated extraction of data from scatter plots",
+      "tldr": "This paper addresses the challenge of automatically extracting numerical data from scatter plots, aiming to facilitate further analysis by converting pixel coordinates to chart coordinates; it uses deep learning for object detection and OCR combined with robust regression for coordinate mapping, introducing a fully automated system that achieves 89% success in data extraction; the findings demonstrate effective data retrieval with robustness to OCR errors, advancing automated chart analysis and enabling broader applications in data processing and visualization.",
+      "abstract": "Charts are an excellent way to convey patterns and trends in data, but they do not facilitate further modeling of the data or close inspection of individual data points. We present a fully automated system for extracting the numerical values of data points from images of scatter plots. We use deep learning techniques to identify the key components of the chart, and optical character recognition together with robust regression to map from pixels to the coordinate system of the chart. We focus on scatter plots with linear scales, which already have several interesting challenges. Previous work has done fully automatic extraction for other types of charts, but to our knowledge this is the first approach that is fully automatic for scatter plots. Our method performs well, achieving successful data extraction on 89% of the plots in our test set.",
+      "authors": [
+        {
+          "name": "Mathieu Cliche",
+          "orgs": []
+        },
+        {
+          "name": "David Rosenberg",
+          "orgs": []
+        },
+        {
+          "name": "Dhruv Madeka",
+          "orgs": []
+        },
+        {
+          "name": "Connie Yee",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1704.06687v1",
+      "date": "2017-04-21T19:25:32Z",
+      "citation_count": 75,
+      "categories": [
+        "cs.CV",
+        "cs.IR",
+        "stat.ML"
+      ]
+    }
+  ]
+}

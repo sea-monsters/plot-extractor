@@ -1,0 +1,1325 @@
+{
+  "status": "success",
+  "total_count": 43,
+  "result": [
+    {
+      "arxiv_id": "0905.0041",
+      "score": 10.918816,
+      "title": "Chandra Discovery of an Intermediate Polar in Baade's Window",
+      "tldr": "This paper reports the discovery of an intermediate polar in Baade's Window through Chandra X-ray observations, addressing the gap in understanding the Galactic Bulge X-ray population by identifying a magnetic cataclysmic variable with a 1028.4 s pulsation period and hard X-ray spectrum, contributing to the census of IPs and supporting their role as dominant GC X-ray sources, with estimated distance 2-10 kpc and luminosity $6 \\times 10^{31} - 10^{33}$ erg s$^{-1}$.",
+      "abstract": "(Abridged) We have discovered an intermediate polar (IP) in the 100 ks Chandra observation of Baade's Window (BW), a low extinction region at ~ 4 deg south of the Galactic Center. The source exhibits large X-ray modulations at a period of 1028.4 s in the 0.3 - 8 keV band. The X-ray spectral fit with a power law model shows the integrated spectrum is intrinsically hard (photon index ~ 0.44) and moderately absorbed (NH22 ~ 0.15). Quantile analysis reveals that the modulations in the X-ray flux strongly correlate with spectral changes that are dominated by varying internal absorption. The X-ray spectrum of the source is heavily absorbed (NH22 > 1) during the faint phases, while the absorption is consistent with the field value during the bright phases. These X-ray properties are typical signatures of IPs. Images taken with the IMACS camera on the Magellan 6.5m telescope show a faint (V ~ 22), relatively blue object within the 2 sigma error circle of the Chandra source. If we assume a nominal range of absolute V magnitude for a cataclysmic variable (MV ~ 5.5-10.5) and the known reddening in the region, the source would likely be at a distance of 2-10 kpc. The corresponding average Lx would be $6 \\times 10^{31} - 10^{33}$ erg s$^{-1}$ in the 2-8 keV band. Assuming the space density of IPs follows the stellar distribution, which is highly concentrated in the Galactic Bulge, the source is probably a relatively bright IP belonging to the Galactic Bulge X-ray population, the majority of which is now believed to be magnetic cataclysmic variables.",
+      "authors": [
+        {
+          "name": "JaeSub Hong",
+          "orgs": [
+            "Harvard-Smithsonian Center for Astrophysics"
+          ]
+        },
+        {
+          "name": "Maureen van den Berg",
+          "orgs": [
+            "Harvard-Smithsonian Center for Astrophysics"
+          ]
+        },
+        {
+          "name": "Silas Laycock",
+          "orgs": [
+            "Gemini Observatory"
+          ]
+        },
+        {
+          "name": "Jonathan E. Grindlay",
+          "orgs": [
+            "Harvard-Smithsonian Center for Astrophysics"
+          ]
+        },
+        {
+          "name": "Ping Zhao",
+          "orgs": [
+            "Harvard-Smithsonian Center for Astrophysics",
+            "60 Garden St., Cambridge, MA 02138"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/0905.0041v2",
+      "date": "2009-05-01T03:06:49Z",
+      "citation_count": 11,
+      "categories": [
+        "astro-ph.HE"
+      ]
+    },
+    {
+      "arxiv_id": "2310.17814",
+      "score": 10.674552,
+      "title": "DIVI: Dynamically Interactive Visualization",
+      "tldr": "This paper presents DIVI, a novel approach for dynamically orchestrating interactions in static visualizations by deconstructing SVG charts to infer metadata and enable cross-tool interaction, contributing a three-part model, a taxonomy for interactions, and SVG deconstruction techniques; results show usability with 13 participants and support dynamic multi-view and cross-tool linking.",
+      "abstract": "Dynamically Interactive Visualization (DIVI) is a novel approach for orchestrating interactions within and across static visualizations. DIVI deconstructs Scalable Vector Graphics charts at runtime to infer content and coordinate user input, decoupling interaction from specification logic. This decoupling allows interactions to extend and compose freely across different tools, chart types, and analysis goals. DIVI exploits positional relations of marks to detect chart components such as axes and legends, reconstruct scales and view encodings, and infer data fields. DIVI then enumerates candidate transformations across inferred data to perform linking between views. To support dynamic interaction without prior specification, we introduce a taxonomy that formalizes the space of standard interactions by chart element, interaction type, and input event. We demonstrate DIVI's usefulness for rapid data exploration and analysis through a usability study with 13 participants and a diverse gallery of dynamically interactive visualizations, including single chart, multi-view, and cross-tool configurations.",
+      "authors": [
+        {
+          "name": "Luke S. Snyder",
+          "orgs": []
+        },
+        {
+          "name": "Jeffrey Heer",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2310.17814v2",
+      "date": "2023-10-26T23:24:35Z",
+      "citation_count": 12,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "gr-qc/0307051",
+      "score": 10.654509,
+      "title": "Radiation from Bodies with Extreme Acceleration II: Kinematics",
+      "tldr": "This paper addresses the radiation from bodies with extreme acceleration, specifically examining how Maxwell's equations predict enhanced radiative power compared to Larmor's formula, using inertially expanding frames to measure radiation without experiencing extreme acceleration, and finding that the observed radiation rate is given by a modified formula involving geometrical dipole moments and Rindler time.",
+      "abstract": "When applied to a dipole source subjected to acceleration which is violent and long lasting (``extreme acceleration''), Maxwell's equations predict radiative power which augments Larmor's classical radiation formula by a nontrivial amount. The physical assumptions behind this result are made possible by the kinematics of a system of geometrical clocks whose tickings are controlled by cavities which are expanding inertially. For the purpose of measuring the radiation from such a source we take advantage of the physical validity of a spacetime coordinate framework (``inertially expanding frame'') based on such clocks. They are compatible and commensurable with the accelerated clocks of the accelerated source. By contrast, a common Lorentz frame with its mutually static clocks won't do: it lacks that commensurability. Inertially expanding clocks give a physicist a window into the frame of a source with extreme acceleration. He thus can locate that source and measure radiation from it without being subjected to such acceleration himself. The conclusion is that inertially expanding reference frames reveal qualitatively distinct aspects of nature which would not be accessible if static inertial frames were the only admissible frames.",
+      "authors": [
+        {
+          "name": "Ulrich H. Gerlach",
+          "orgs": [
+            "Department of Mathematics, Ohio State University, Columbus, OH 43210, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/gr-qc/0307051v1",
+      "date": "2003-07-10",
+      "citation_count": 2,
+      "categories": [
+        "gr-qc"
+      ]
+    },
+    {
+      "arxiv_id": "1704.06687",
+      "score": 10.5715885,
+      "title": "Scatteract: Automated extraction of data from scatter plots",
+      "tldr": "This paper addresses the challenge of automatically extracting numerical data from scatter plots, aiming to facilitate further analysis by converting pixel coordinates to chart coordinates; it uses deep learning for object detection and OCR combined with robust regression for coordinate mapping, introducing a fully automated system that achieves 89% success in data extraction; the findings demonstrate effective data retrieval with robustness to OCR errors, advancing automated chart analysis and enabling broader applications in data processing and visualization.",
+      "abstract": "Charts are an excellent way to convey patterns and trends in data, but they do not facilitate further modeling of the data or close inspection of individual data points. We present a fully automated system for extracting the numerical values of data points from images of scatter plots. We use deep learning techniques to identify the key components of the chart, and optical character recognition together with robust regression to map from pixels to the coordinate system of the chart. We focus on scatter plots with linear scales, which already have several interesting challenges. Previous work has done fully automatic extraction for other types of charts, but to our knowledge this is the first approach that is fully automatic for scatter plots. Our method performs well, achieving successful data extraction on 89% of the plots in our test set.",
+      "authors": [
+        {
+          "name": "Mathieu Cliche",
+          "orgs": []
+        },
+        {
+          "name": "David Rosenberg",
+          "orgs": []
+        },
+        {
+          "name": "Dhruv Madeka",
+          "orgs": []
+        },
+        {
+          "name": "Connie Yee",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1704.06687v1",
+      "date": "2017-04-21T19:25:32Z",
+      "citation_count": 75,
+      "categories": [
+        "cs.CV",
+        "cs.IR",
+        "stat.ML"
+      ]
+    },
+    {
+      "arxiv_id": "astro-ph/0702140",
+      "score": 10.519803,
+      "title": "The Stability of the Point Spread Function of the Advanced Camera for Surveys on the Hubble Space Telescope and Implications for Weak Gravitational Lensing",
+      "tldr": "This paper addresses the stability of the ACS WFC PSF on HST for weak lensing, focusing on reducing PSF variation through Gaussian drizzle kernels and 0.03'' output pixel size, and introduces PSF correction methods using TinyTim models to mitigate systematic errors and CTE degradation effects.",
+      "abstract": "(abridged) We examine the spatial and temporal stability of the HST ACS Wide Field Camera (WFC) point spread function (PSF) using the two square degree COSMOS survey. We show that stochastic aliasing of the PSF necessarily occurs during `drizzling'. This aliasing is maximal if the output pixel scale is equal to the input pixel scale of 0.05''. We show that this source of PSF variation can be significantly reduced by choosing a Gaussian drizzle kernel and by setting the output pixel size to 0.03''. We show that the PSF is temporally unstable, most likely due to thermal fluctuations in the telescope's focus. We find that the primary manifestation of this thermal drift in COSMOS images is an overall slow periodic focus change. Using a modified version of TinyTim, we create undistorted stars in a 30x30 grid across the ACS WFC CCDs. These PSF models are created for telescope focus values in the range -10 microns to +5 microns, thus spanning the allowed range of telescope focus values. We then use the approximately ten well measured stars in each COSMOS field to pick the best-fit focus value for each field. The TinyTim model stars are then used to perform PSF corrections for weak lensing allowing systematics due to incorrectly modeled PSFs to be greatly reduced. We have made the software for PSF modeling using our modified version of TinyTim available to the astronomical community. We show the effects of Charge Transfer Efficiency (CTE) degradation, which distorts the object in the readout direction, mimicking a weak lensing signal. We derive a parametric correction for the effect of CTE on the shapes of objects in the COSMOS field as a function of observation date, position within the ACS WFC field, and object flux.",
+      "authors": [
+        {
+          "name": "Jason D. Rhodes",
+          "orgs": [
+            "Jet Propulsion Laboratory, Pasadena, CA 91109",
+            "California Institute of Technology, MC 105-24, 1200 East California Boulevard, Pasadena, CA 91125"
+          ]
+        },
+        {
+          "name": "Richard Massey",
+          "orgs": [
+            "California Institute of Technology, MC 105-24, 1200 East California Boulevard, Pasadena, CA 91125"
+          ]
+        },
+        {
+          "name": "Justin Albert",
+          "orgs": [
+            "California Institute of Technology, MC 105-24, 1200 East California Boulevard, Pasadena, CA 91125"
+          ]
+        },
+        {
+          "name": "Richard S. Ellis",
+          "orgs": [
+            "California Institute of Technology, MC 105-24, 1200 East California Boulevard, Pasadena, CA 91125"
+          ]
+        },
+        {
+          "name": "Catherine Heymans",
+          "orgs": [
+            "University of British Columbia, 6224 Agricultural Road, Vancouver, B.C. V6T 1Z1, Canada"
+          ]
+        },
+        {
+          "name": "Jonathan P. Gardner",
+          "orgs": [
+            "Exploration of the Universe Division, Observational Cosmology Laboratory, Code 665, Goddard Space Flight Center, Greenbelt, MD 20771"
+          ]
+        },
+        {
+          "name": "Jean-Paul Kneib",
+          "orgs": [
+            "Laboratoire d’Astrophysique de Marseille, BP 8, Traverse du Siphon, 13376 Marseille Cedex 12, France"
+          ]
+        },
+        {
+          "name": "Anton Koekemoer",
+          "orgs": [
+            "Space Telescope Science Institute, 3700 San Martin Drive, Baltimore, MD 21218"
+          ]
+        },
+        {
+          "name": "Alexie Leauthaud",
+          "orgs": [
+            "Laboratoire d’Astrophysique de Marseille, BP 8, Traverse du Siphon, 13376 Marseille Cedex 12, France"
+          ]
+        },
+        {
+          "name": "Yannick Mellier",
+          "orgs": [
+            "Institut d’Astrophysique de Paris, UMR7095 CNRS, Université Pierre & Marie Curie - Paris, 98 bis bd Arago, 75014 Paris, France",
+            "Observatoire de Paris, LERMA, 61, avenue de l’Observatoire, 75014 Paris, France"
+          ]
+        },
+        {
+          "name": "Alexandre Refregier",
+          "orgs": [
+            "Service d’Astrophysique, CEA/Saclay, 91191 Gif-sur-Yvette, France"
+          ]
+        },
+        {
+          "name": "James E. Taylor",
+          "orgs": [
+            "California Institute of Technology, MC 105-24, 1200 East California Boulevard, Pasadena, CA 91125",
+            "Department of Physics and Astronomy, University of Waterloo, Waterloo, Quebec, Canada"
+          ]
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Ludovic Van Waerbeke",
+          "orgs": [
+            "University of British Columbia, 6224 Agricultural Road, Vancouver, B.C. V6T 1Z1, Canada"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/astro-ph/0702140v1",
+      "date": "2007-02-06",
+      "citation_count": 128,
+      "categories": [
+        "astro-ph"
+      ]
+    },
+    {
+      "arxiv_id": "astro-ph/0412383",
+      "score": 10.355957,
+      "title": "VLBA Polarization Observations of Markarian 421 After a Gamma-Ray High State",
+      "tldr": "This paper investigates the radio jet properties of Markarian 421 following its 2001 gamma-ray high state, aiming to understand jet dynamics and polarization changes post-flare; it uses VLBA polarization observations combined with archival data to analyze apparent speeds and polarization patterns; findings reveal component C5 with an apparent speed of 0.1 +/- 0.02 c and significant EVPA variability in component C6, suggesting propagating disturbances linked to the 2001 flares.",
+      "abstract": "We present four high dynamic range, dual-circular polarization, Very Long Baseline Array (VLBA) observations at 22 GHz of Markarian 421, taken throughout the year following the source's unprecedented gamma-ray high state in early 2001. These four new VLBA observations are combined with data from our earlier 1999 paper and archival VLBA data-sets that have become available since 1999 to produce a combined 28 epoch VLBA data-set on Mrk 421 spanning the years 1994 to 2002. No new component associated with the 2001 flares was seen on the total intensity images, but the combined data-set allowed precise measurements of the apparent speeds of the existing components. The peak measured apparent speed was for component C5, which has an apparent speed of 0.1 +/- 0.02 c (H_0=71 km s^{-1} Mpc^{-1}, Omega_m=0.27, and Omega_Lambda=0.73). No counterjet is seen with a limit on the jet to counterjet brightness ratio J >~ 100. These observed VLBI properties of Markarian 421 are consistent with a jet with a bulk Lorentz factor of about 2 and an angle to the line-of-sight of about 1 degree, suggesting a jet that decelerates between the gamma-ray producing region and the parsec scale. The VLBI core and inner jet (component C7) have fractional polarizations of about 5%, and an electric vector position angle (EVPA) aligned with the jet axis. Component C5 (at 1.5 mas from the core) has a higher fractional polarization of about 15%, and an EVPA nearly orthogonal to the jet axis. Significant variability is detected in the EVPA of component C6, which at two of the four epochs shows an EVPA aligned with the jet axis, possibly a sign of propagating disturbances that are only visible on the polarization images. If these propagating disturbances are linked to the 2001 gamma-ray high state, then their inferred apparent speed is between 1 and 3 c.",
+      "authors": [
+        {
+          "name": "B. Glenn Piner",
+          "orgs": [
+            "1",
+            "2"
+          ]
+        },
+        {
+          "name": "Philip G. Edwards",
+          "orgs": [
+            "3"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/astro-ph/0412383v1",
+      "date": "2004-12-15",
+      "citation_count": 41,
+      "categories": [
+        "astro-ph"
+      ]
+    },
+    {
+      "arxiv_id": "2312.12672",
+      "score": 10.158266,
+      "title": "Categorical, Ratio, and Professorial Data: The Case for Reciprocal Rank",
+      "tldr": "This paper addresses the debate over whether categorical SERP data can be mapped to numeric values for comparison, arguing that any such mapping is valid if it plausibly reflects user behavior, and presents reciprocal rank (RR) as a valid example, showing it allows for meaningful averages and comparisons in retrieval system evaluation.",
+      "abstract": "Search engine results pages are usually abstracted as binary relevance vectors and hence are categorical data, meaning that only a limited set of operations is permitted, most notably tabulation of occurrence frequencies, with determination of medians and averages not possible. To compare retrieval systems it is thus usual to make use of a categorical-to-numeric effectiveness mapping. A previous paper has argued that any desired categorical-to-numeric mapping may be used, provided only that there is an argued connection between each category of SERP and the score that is assigned to that category by the mapping. Further, once that plausible connection has been established, then the mapped values can be treated as real-valued observations on a ratio scale, allowing the computation of averages. This article is written in support of that point of view, and to respond to ongoing claims that SERP scores may only be averaged if very restrictive conditions are imposed on the effectiveness mapping.",
+      "authors": [
+        {
+          "name": "Alistair Moffat",
+          "orgs": [
+            "The University of Melbourne",
+            "Australia"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2312.12672v1",
+      "date": "2023-12-20T00:07:43Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.IR"
+      ]
+    },
+    {
+      "arxiv_id": "cmp-lg/9505015",
+      "score": 10.004391,
+      "title": "Efficient Analysis of Complex Diagrams using Constraint-Based Parsing",
+      "tldr": "This paper presents a constraint-based parsing system for complex diagrams, addressing the challenge of efficient and adaptable diagram analysis by introducing set types and spatial indexing, contributing a method that parses diagrams like data graphs and gene diagrams with 133 primitives in 35 seconds, and demonstrating its effectiveness through examples and implications for structured graphics in future information systems.",
+      "abstract": "This paper describes substantial advances in the analysis (parsing) of diagrams using constraint grammars. The addition of set types to the grammar and spatial indexing of the data make it possible to efficiently parse real diagrams of substantial complexity. The system is probably the first to demonstrate efficient diagram parsing using grammars that easily be retargeted to other domains. The work assumes that the diagrams are available as a flat collection of graphics primitives: lines, polygons, circles, Bezier curves and text. This is appropriate for future electronic documents or for vectorized diagrams converted from scanned images. The classes of diagrams that we have analyzed include x,y data graphs and genetic diagrams drawn from the biological literature, as well as finite state automata diagrams (states and arcs). As an example, parsing a four-part data graph composed of 133 primitives required 35 sec using Macintosh Common Lisp on a Macintosh Quadra 700.",
+      "authors": [
+        {
+          "name": "Robert P. Futrelle",
+          "orgs": [
+            "Biological Knowledge Laboratory, College of Computer Science 161 Cullinane Hall, Northeastern University, Boston, MA 02115"
+          ]
+        },
+        {
+          "name": "Nikos Nikolakis",
+          "orgs": [
+            "Biological Knowledge Laboratory, College of Computer Science 161 Cullinane Hall, Northeastern University, Boston, MA 02115"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/cmp-lg/9505015v1",
+      "date": "1995-05-05",
+      "citation_count": 51,
+      "categories": [
+        "cmp-lg",
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "astro-ph/0604301",
+      "score": 9.943725,
+      "title": "The flow field in the sunspot canopy",
+      "tldr": "This paper investigates the flow field in the sunspot canopy using Stokes vector spectropolarimetry of sunspots and their surroundings, addressing the debate on whether the Evershed flow continues beyond the white-light boundary; it employs simultaneous observations of visible and near-infrared iron lines to analyze magnetic field properties and flow dynamics, contributing insights into the radial outflow and magnetic canopy structure; findings show that at least 10% of the Evershed flow extends into the magnetic canopy, implying a continuous flow beyond the visible spot boundary.",
+      "abstract": "We investigate the flow field in the sunspot canopy using simultaneous Stokes vector spectropolarimetry of three sunspots ($\\\\theta$ = 27, 50, 75 deg) and their surroundings in visible (630.15 and 630.25 nm) and near infrared (1564.8 and 1565.2 nm) neutral iron lines.} {To calibrate the Doppler shifts, we compare an absolute velocity calibration using the telluric $O_2$-line at 630.20 nm and a relative velocity calibration using the Doppler shift of Stokes V profiles in the umbra under the assumption that the umbra is at rest. Both methods yield the same result within the calibration uncertainties (~150 m/s). We study the radial dependence of Stokes V profiles in the directions of disk center and limb side. Maps of Stokes V profile shifts, polarity, amplitude asymmetry, field strength and magnetic field azimuth provide strong evidence for the presence of a magnetic canopy and for the existence of a radial outflow in the canopy. Our findings indicate that the Evershed flow does not cease abruptly at the white-light spot boundary, but that at least a part of the penumbral Evershed flow continues into the magnetic canopy.",
+      "authors": [
+        {
+          "name": "R. Rezaei",
+          "orgs": []
+        },
+        {
+          "name": "R. Schlichenmaier",
+          "orgs": []
+        },
+        {
+          "name": "C.A.R. Beck",
+          "orgs": []
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "L.R. Bellot Rubio",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/astro-ph/0604301v1",
+      "date": "2006-04-13",
+      "citation_count": 29,
+      "categories": [
+        "astro-ph"
+      ]
+    },
+    {
+      "arxiv_id": "2204.09548",
+      "score": 9.919924,
+      "title": "Misinformed by Visualization: What Do We Learn From Misinformative Visualizations?",
+      "tldr": "This survey reviews misleading visualizations, identifying 74 types of issues and proposing a taxonomy, and highlights four research directions to address misinformation through understanding, detection, and prevention.",
+      "abstract": "Data visualization is powerful in persuading an audience. However, when it is done poorly or maliciously, a visualization may become misleading or even deceiving. Visualizations give further strength to the dissemination of misinformation on the Internet. The visualization research community has long been aware of visualizations that misinform the audience, mostly associated with the terms \"lie\" and \"deceptive.\" Still, these discussions have focused only on a handful of cases. To better understand the landscape of misleading visualizations, we open-coded over one thousand real-world visualizations that have been reported as misleading. From these examples, we discovered 74 types of issues and formed a taxonomy of misleading elements in visualizations. We found four directions that the research community can follow to widen the discussion on misleading visualizations: (1) informal fallacies in visualizations, (2) exploiting conventions and data literacy, (3) deceptive tricks in uncommon charts, and (4) understanding the designers' dilemma. This work lays the groundwork for these research directions, especially in understanding, detecting, and preventing them.",
+      "authors": [
+        {
+          "name": "Leo Yu-Ho Lo",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Ayush Gupta",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Kento Shigyo",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Aoyu Wu",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Enrico Bertini",
+          "orgs": [
+            "Northeastern University"
+          ]
+        },
+        {
+          "name": "Huamin Qu",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2204.09548v1",
+      "date": "2022-04-20T15:35:52Z",
+      "citation_count": 61,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "1508.03067",
+      "score": 9.872586,
+      "title": "Eclipse Mapping: Astrotomography of Accretion Discs",
+      "tldr": "This paper presents the Eclipse Mapping Method, an indirect imaging technique used to study accretion discs around white dwarfs in cataclysmic variables, addressing gaps in understanding their structure and dynamics through light curve analysis, and contributes by revealing details like moving heating/cooling waves and disc viscosity measurements, with implications for future studies on accretion processes.",
+      "abstract": "The Eclipse Mapping Method is an indirect imaging technique that transforms the shape of the eclipse light curve into a map of the surface brightness distribution of the occulted regions. Three decades of application of this technique to the investigation of the structure, the spectrum and the time evolution of accretion discs around white dwarfs in cataclysmic variables have enriched our understanding of these accretion devices with a wealth of details such as (but not limited to) moving heating/cooling waves during outbursts in dwarf novae, tidally-induced spiral shocks of emitting gas with sub-Keplerian velocities, elliptical precessing discs associated to superhumps, and measurements of the radial run of the disc viscosity through the mapping of the disc flickering sources. This chapter reviews the principles of the method, discusses its performance, limitations, useful error propagation procedures, as well as highlights a selection of applications aimed at showing the possible scientific problems that have been and may be addresses with it.",
+      "authors": [
+        {
+          "name": "Raymundo Baptista",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1508.03067v1",
+      "date": "2015-08-12T20:52:38Z",
+      "citation_count": 7,
+      "categories": [
+        "astro-ph.IM",
+        "astro-ph.SR"
+      ]
+    },
+    {
+      "arxiv_id": "2002.09375",
+      "score": 9.793157,
+      "title": "Vertex-Finding and Reconstruction of Contained Two-track Neutrino Events in the MicroBooNE Detector",
+      "tldr": "This paper presents algorithms for vertex-finding and reconstruction of contained two-track neutrino events in the MicroBooNE detector, addressing the need for accurate reconstruction of two tracks longer than 5 cm to study neutrino oscillations and cross sections; it uses deep learning on high-resolution TPC images and provides an alternative to existing reconstruction packages with similar performance; simulations show its applicability to future LArTPC experiments like SBND and DUNE.",
+      "abstract": "We describe algorithms developed to isolate and accurately reconstruct two-track events that are contained within the MicroBooNE detector. This method is optimized to reconstruct two tracks of lengths longer than 5 cm. This code has applications to searches for neutrino oscillations and measurements of cross sections using quasi-elastic-like charged current events. The algorithms we discuss will be applicable to all detectors running in Fermilab's Short Baseline Neutrino program (SBN), and to any future liquid argon time projection chamber (LArTPC) experiment with beam energies ~1 GeV. The algorithms are publicly available on a GITHUB repository. This reconstruction offers a complementary and independent alternative to the Pandora reconstruction package currently in use in LArTPC experiments, and provides similar reconstruction performance for two-track events.",
+      "authors": [
+        {
+          "name": "MicroBooNE collaboration: P. Abratenko",
+          "orgs": []
+        },
+        {
+          "name": "M. Alrashed",
+          "orgs": []
+        },
+        {
+          "name": "R. An",
+          "orgs": []
+        },
+        {
+          "name": "J. Anthony",
+          "orgs": []
+        },
+        {
+          "name": "J. Asaadi",
+          "orgs": []
+        },
+        {
+          "name": "A. Ashkenazi",
+          "orgs": []
+        },
+        {
+          "name": "S. Balasubramanian",
+          "orgs": []
+        },
+        {
+          "name": "B. Baller",
+          "orgs": []
+        },
+        {
+          "name": "C. Barnes",
+          "orgs": []
+        },
+        {
+          "name": "G. Barr",
+          "orgs": []
+        },
+        {
+          "name": "V. Basque",
+          "orgs": []
+        },
+        {
+          "name": "L. Bathe-Peters",
+          "orgs": []
+        },
+        {
+          "name": "S. Berkman",
+          "orgs": []
+        },
+        {
+          "name": "A. Bhanderi",
+          "orgs": []
+        },
+        {
+          "name": "A. Bhat",
+          "orgs": []
+        },
+        {
+          "name": "M. Bishai",
+          "orgs": []
+        },
+        {
+          "name": "A. Blake",
+          "orgs": []
+        },
+        {
+          "name": "T. Bolton",
+          "orgs": []
+        },
+        {
+          "name": "L. Camilleri",
+          "orgs": []
+        },
+        {
+          "name": "D. Caratelli",
+          "orgs": []
+        },
+        {
+          "name": "I. Caro Terrazas",
+          "orgs": []
+        },
+        {
+          "name": "R. Castillo Fernandez",
+          "orgs": []
+        },
+        {
+          "name": "F. Cavanna",
+          "orgs": []
+        },
+        {
+          "name": "G. Cerati",
+          "orgs": []
+        },
+        {
+          "name": "Y. Chen",
+          "orgs": []
+        },
+        {
+          "name": "E. Church",
+          "orgs": []
+        },
+        {
+          "name": "D. Cianci",
+          "orgs": []
+        },
+        {
+          "name": "E.O. Cohen",
+          "orgs": []
+        },
+        {
+          "name": "J.M. Conrad",
+          "orgs": []
+        },
+        {
+          "name": "M. Convery",
+          "orgs": []
+        },
+        {
+          "name": "L. Cooper-Troendle",
+          "orgs": []
+        },
+        {
+          "name": "J.I. Crespo-Anadon",
+          "orgs": []
+        },
+        {
+          "name": "M. Del Tutto",
+          "orgs": []
+        },
+        {
+          "name": "D. Devitt",
+          "orgs": []
+        },
+        {
+          "name": "L. Domine",
+          "orgs": []
+        },
+        {
+          "name": "K. Duffy",
+          "orgs": []
+        },
+        {
+          "name": "S. Dytman",
+          "orgs": []
+        },
+        {
+          "name": "B. Eberly",
+          "orgs": []
+        },
+        {
+          "name": "A. Ereditato",
+          "orgs": []
+        },
+        {
+          "name": "L. Escudero Sanchez",
+          "orgs": []
+        },
+        {
+          "name": "J.J. Evans",
+          "orgs": []
+        },
+        {
+          "name": "G.A. Fiorentini Aguirre",
+          "orgs": []
+        },
+        {
+          "name": "R.S. Fitzpatrick",
+          "orgs": []
+        },
+        {
+          "name": "B.T. Fleming",
+          "orgs": []
+        },
+        {
+          "name": "N. Foppiani",
+          "orgs": []
+        },
+        {
+          "name": "D. Franco",
+          "orgs": []
+        },
+        {
+          "name": "A.P. Furmanski",
+          "orgs": []
+        },
+        {
+          "name": "D. Garcia-Gamez",
+          "orgs": []
+        },
+        {
+          "name": "S. Gardiner",
+          "orgs": []
+        },
+        {
+          "name": "V. Genty",
+          "orgs": []
+        },
+        {
+          "name": "D. Goeldi",
+          "orgs": []
+        },
+        {
+          "name": "S. Gollapinni",
+          "orgs": []
+        },
+        {
+          "name": "O. Goodwin",
+          "orgs": []
+        },
+        {
+          "name": "E. Gramellini",
+          "orgs": []
+        },
+        {
+          "name": "P. Green",
+          "orgs": []
+        },
+        {
+          "name": "H. Greenlee",
+          "orgs": []
+        },
+        {
+          "name": "L. Gu",
+          "orgs": []
+        },
+        {
+          "name": "W. Gu",
+          "orgs": []
+        },
+        {
+          "name": "R. Guenette",
+          "orgs": []
+        },
+        {
+          "name": "P. Guzowski",
+          "orgs": []
+        },
+        {
+          "name": "E. Hall",
+          "orgs": []
+        },
+        {
+          "name": "P. Hamilton",
+          "orgs": []
+        },
+        {
+          "name": "O. Hen",
+          "orgs": []
+        },
+        {
+          "name": "C. Hill",
+          "orgs": []
+        },
+        {
+          "name": "G.A. Horton-Smith",
+          "orgs": []
+        },
+        {
+          "name": "A. Hourlier",
+          "orgs": []
+        },
+        {
+          "name": "E.C. Huang",
+          "orgs": []
+        },
+        {
+          "name": "R. Itay",
+          "orgs": []
+        },
+        {
+          "name": "C. James",
+          "orgs": []
+        },
+        {
+          "name": "J. Jan de Vries",
+          "orgs": []
+        },
+        {
+          "name": "X. Ji",
+          "orgs": []
+        },
+        {
+          "name": "L. Jiang",
+          "orgs": []
+        },
+        {
+          "name": "J.H. Jo",
+          "orgs": []
+        },
+        {
+          "name": "R.A. Johnson",
+          "orgs": []
+        },
+        {
+          "name": "Y.J. Jwa",
+          "orgs": []
+        },
+        {
+          "name": "G. Karagiorgi",
+          "orgs": []
+        },
+        {
+          "name": "W. Ketchum",
+          "orgs": []
+        },
+        {
+          "name": "B. Kirby",
+          "orgs": []
+        },
+        {
+          "name": "M. Kirby",
+          "orgs": []
+        },
+        {
+          "name": "T. Kobilarcik",
+          "orgs": []
+        },
+        {
+          "name": "I. Kreslo",
+          "orgs": []
+        },
+        {
+          "name": "R. LaZur",
+          "orgs": []
+        },
+        {
+          "name": "I. Lepetic",
+          "orgs": []
+        },
+        {
+          "name": "K. Li",
+          "orgs": []
+        },
+        {
+          "name": "Y. Li",
+          "orgs": []
+        },
+        {
+          "name": "A. Lister",
+          "orgs": []
+        },
+        {
+          "name": "B.R. Littlejohn",
+          "orgs": []
+        },
+        {
+          "name": "S. Lockwitz",
+          "orgs": []
+        },
+        {
+          "name": "D. Lorca",
+          "orgs": []
+        },
+        {
+          "name": "W.C. Louis",
+          "orgs": []
+        },
+        {
+          "name": "M. Luethi",
+          "orgs": []
+        },
+        {
+          "name": "B. Lundberg",
+          "orgs": []
+        },
+        {
+          "name": "X. Luo",
+          "orgs": []
+        },
+        {
+          "name": "A. Marchionni",
+          "orgs": []
+        },
+        {
+          "name": "S. Marcocci",
+          "orgs": []
+        },
+        {
+          "name": "C. Mariani",
+          "orgs": []
+        },
+        {
+          "name": "J. Marshall",
+          "orgs": []
+        },
+        {
+          "name": "J. Martin-Albo",
+          "orgs": []
+        },
+        {
+          "name": "D.A. Martinez Caicedo",
+          "orgs": []
+        },
+        {
+          "name": "K. Mason",
+          "orgs": []
+        },
+        {
+          "name": "A. Mastbaum",
+          "orgs": []
+        },
+        {
+          "name": "N. McConkey",
+          "orgs": []
+        },
+        {
+          "name": "V. Meddage",
+          "orgs": []
+        },
+        {
+          "name": "T. Mettler",
+          "orgs": []
+        },
+        {
+          "name": "K. Miller",
+          "orgs": []
+        },
+        {
+          "name": "J. Mills",
+          "orgs": []
+        },
+        {
+          "name": "K. Mistry",
+          "orgs": []
+        },
+        {
+          "name": "T. Mohayai",
+          "orgs": []
+        },
+        {
+          "name": "A. Mogan",
+          "orgs": []
+        },
+        {
+          "name": "J. Moon",
+          "orgs": []
+        },
+        {
+          "name": "M. Mooney",
+          "orgs": []
+        },
+        {
+          "name": "C.D. Moore",
+          "orgs": []
+        },
+        {
+          "name": "J. Mousseau",
+          "orgs": []
+        },
+        {
+          "name": "M. Murphy",
+          "orgs": []
+        },
+        {
+          "name": "D. Naples",
+          "orgs": []
+        },
+        {
+          "name": "R.K. Neely",
+          "orgs": []
+        },
+        {
+          "name": "P. Nienaber",
+          "orgs": []
+        },
+        {
+          "name": "J. Nowak",
+          "orgs": []
+        },
+        {
+          "name": "O. Palamara",
+          "orgs": []
+        },
+        {
+          "name": "V. Pandey",
+          "orgs": []
+        },
+        {
+          "name": "V. Paolone",
+          "orgs": []
+        },
+        {
+          "name": "A. Papadopoulou",
+          "orgs": []
+        },
+        {
+          "name": "V. Papavassiliou",
+          "orgs": []
+        },
+        {
+          "name": "S.F. Pate",
+          "orgs": []
+        },
+        {
+          "name": "A. Paudel",
+          "orgs": []
+        },
+        {
+          "name": "Z. Pavlovic",
+          "orgs": []
+        },
+        {
+          "name": "E. Piasetzky",
+          "orgs": []
+        },
+        {
+          "name": "I. Ponce-Pinto",
+          "orgs": []
+        },
+        {
+          "name": "D. Porzio",
+          "orgs": []
+        },
+        {
+          "name": "S. Prince",
+          "orgs": []
+        },
+        {
+          "name": "G. Pulliam",
+          "orgs": []
+        },
+        {
+          "name": "X. Qian",
+          "orgs": []
+        },
+        {
+          "name": "J.L. Raaf",
+          "orgs": []
+        },
+        {
+          "name": "V. Radeka",
+          "orgs": []
+        },
+        {
+          "name": "A. Rafique",
+          "orgs": []
+        },
+        {
+          "name": "L. Ren",
+          "orgs": []
+        },
+        {
+          "name": "L. Rochester",
+          "orgs": []
+        },
+        {
+          "name": "J. Rodriguez Rondon",
+          "orgs": []
+        },
+        {
+          "name": "H.E. Rogers",
+          "orgs": []
+        },
+        {
+          "name": "M. Ross-Lonergan",
+          "orgs": []
+        },
+        {
+          "name": "C. Rudolf von Rohr",
+          "orgs": []
+        },
+        {
+          "name": "B. Russell",
+          "orgs": []
+        },
+        {
+          "name": "G. Scanavini",
+          "orgs": []
+        },
+        {
+          "name": "D.W. Schmitz",
+          "orgs": []
+        },
+        {
+          "name": "A. Schukraft",
+          "orgs": []
+        },
+        {
+          "name": "W. Seligman",
+          "orgs": []
+        },
+        {
+          "name": "M.H. Shaevitz",
+          "orgs": []
+        },
+        {
+          "name": "R. Sharankova",
+          "orgs": []
+        },
+        {
+          "name": "J. Sinclair",
+          "orgs": []
+        },
+        {
+          "name": "A. Smith",
+          "orgs": []
+        },
+        {
+          "name": "E.L. Snider",
+          "orgs": []
+        },
+        {
+          "name": "M. Soderberg",
+          "orgs": []
+        },
+        {
+          "name": "S. Soldner-Rembold",
+          "orgs": []
+        },
+        {
+          "name": "S.R. Soleti",
+          "orgs": []
+        },
+        {
+          "name": "P. Spentzouris",
+          "orgs": []
+        },
+        {
+          "name": "J. Spitz",
+          "orgs": []
+        },
+        {
+          "name": "M. Stancari",
+          "orgs": []
+        },
+        {
+          "name": "J. St. John",
+          "orgs": []
+        },
+        {
+          "name": "T. Strauss",
+          "orgs": []
+        },
+        {
+          "name": "K. Sutton",
+          "orgs": []
+        },
+        {
+          "name": "S. Sword-Fehlberg",
+          "orgs": []
+        },
+        {
+          "name": "A.M. Szelc",
+          "orgs": []
+        },
+        {
+          "name": "N. Tagg",
+          "orgs": []
+        },
+        {
+          "name": "W. Tang",
+          "orgs": []
+        },
+        {
+          "name": "K. Terao",
+          "orgs": []
+        },
+        {
+          "name": "R.T. Thornton",
+          "orgs": []
+        },
+        {
+          "name": "M. Toups",
+          "orgs": []
+        },
+        {
+          "name": "Y.-T. Tsai",
+          "orgs": []
+        },
+        {
+          "name": "S. Tufanli",
+          "orgs": []
+        },
+        {
+          "name": "M.A. Uchida",
+          "orgs": []
+        },
+        {
+          "name": "T. Usher",
+          "orgs": []
+        },
+        {
+          "name": "W. Van De Pontseele",
+          "orgs": []
+        },
+        {
+          "name": "R.G. Van de Water",
+          "orgs": []
+        },
+        {
+          "name": "B. Viren",
+          "orgs": []
+        },
+        {
+          "name": "M. Weber",
+          "orgs": []
+        },
+        {
+          "name": "H. Wei",
+          "orgs": []
+        },
+        {
+          "name": "D.A. Wickremasinghe",
+          "orgs": []
+        },
+        {
+          "name": "Z. Williams",
+          "orgs": []
+        },
+        {
+          "name": "S. Wolbers",
+          "orgs": []
+        },
+        {
+          "name": "T. Wongjirad",
+          "orgs": []
+        },
+        {
+          "name": "M. Wospakrik",
+          "orgs": []
+        },
+        {
+          "name": "W. Wu",
+          "orgs": []
+        },
+        {
+          "name": "T. Yang",
+          "orgs": []
+        },
+        {
+          "name": "G. Yarbrough",
+          "orgs": []
+        },
+        {
+          "name": "L.E. Yates",
+          "orgs": []
+        },
+        {
+          "name": "G.P. Zeller",
+          "orgs": []
+        },
+        {
+          "name": "J. Zennamo",
+          "orgs": []
+        },
+        {
+          "name": "C. Zhang",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2002.09375v5",
+      "date": "2020-02-21T16:03:56Z",
+      "citation_count": 13,
+      "categories": [
+        "hep-ex",
+        "physics.ins-det"
+      ]
+    },
+    {
+      "arxiv_id": "2512.19173",
+      "score": 9.77614,
+      "title": "CycleChart: A Unified Consistency-Based Learning Framework for Bidirectional Chart Understanding and Generation",
+      "tldr": "This paper introduces CycleChart, a consistency-based learning framework for bidirectional chart understanding and generation, addressing the lack of unified semantic understanding across chart tasks; it employs a generate-parse consistency objective and a multi-task dataset to improve cross-task generalization, achieving strong results on chart generation, parsing, and question answering through a closed cycle of generation, parsing, and reasoning.",
+      "abstract": "Current chart-specific tasks, such as chart question answering, chart parsing, and chart generation, are typically studied in isolation, preventing models from learning the shared semantics that link chart generation and interpretation. We introduce CycleChart, a consistency-based learning framework for bidirectional chart understanding and generation. CycleChart adopts a schema-centric formulation as a common interface across tasks. We construct a consistent multi-task dataset, where each chart sample includes aligned annotations for schema prediction, data parsing, and question answering. To learn cross-directional chart semantics, CycleChart introduces a generate-parse consistency objective: the model generates a chart schema from a table and a textual query, then learns to recover the schema and data from the generated chart, enforcing semantic alignment across directions. CycleChart achieves strong results on chart generation, chart parsing, and chart question answering, demonstrating improved cross-task generalization and marking a step toward more general chart understanding models.",
+      "authors": [
+        {
+          "name": "Dazhen Deng",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Sen Yang",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Yuchen He",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Yuan Tian",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Yingcai Wu",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.19173v1",
+      "date": "2025-12-22",
+      "citation_count": 0,
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2503.00086",
+      "score": 9.686922,
+      "title": "Generalization of CNNs on Relational Reasoning with Bar Charts",
+      "tldr": "This paper investigates CNNs' generalization on relational reasoning with bar charts, addressing the gap in understanding their performance compared to humans in real-world visualizations; it uses perturbed bar charts and user studies, showing CNNs outperform humans only with matching visual encodings and are less robust to perturbations; findings reveal CNNs rely on non-target regions, while humans focus on bar lengths, suggesting improved guidance could enhance CNNs' generalization.",
+      "abstract": "This paper presents a systematic study of the generalization of convolutional neural networks (CNNs) and humans on relational reasoning tasks with bar charts. We first revisit previous experiments on graphical perception and update the benchmark performance of CNNs. We then test the generalization performance of CNNs on a classic relational reasoning task: estimating bar length ratios in a bar chart, by progressively perturbing the standard visualizations. We further conduct a user study to compare the performance of CNNs and humans. Our results show that CNNs outperform humans only when the training and test data have the same visual encodings. Otherwise, they may perform worse. We also find that CNNs are sensitive to perturbations in various visual encodings, regardless of their relevance to the target bars. Yet, humans are mainly influenced by bar lengths. Our study suggests that robust relational reasoning with visualizations is challenging for CNNs. Improving CNNs' generalization performance may require training them to better recognize task-related visual properties.",
+      "authors": [
+        {
+          "name": "Zhenxing Cui",
+          "orgs": [
+            "School of Computer Science and Technology, Shandong University, China"
+          ]
+        },
+        {
+          "name": "Lu Chen",
+          "orgs": [
+            "State Key Lab of CAD&CG, Zhejiang University, China"
+          ]
+        },
+        {
+          "name": "Yunhai Wang",
+          "orgs": [
+            "School of Information, Renmin University of China, China"
+          ]
+        },
+        {
+          "name": "Daniel Haehn",
+          "orgs": [
+            "College of Science and Mathematics, University of Massachusetts Boston, USA"
+          ]
+        },
+        {
+          "name": "Yong Wang",
+          "orgs": [
+            "College of Computing and Data Science, Nanyang Technological University, Singapore"
+          ]
+        },
+        {
+          "name": "Hanspeter Pfister",
+          "orgs": [
+            "School of Engineering and Applied Sciences, Harvard University, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2503.00086v1",
+      "date": "2025-02-28T13:32:06Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.HC",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "1208.2447",
+      "score": 4.8573227,
+      "title": "Compressive Sensing with Local Geometric Features",
+      "tldr": "This paper proposes a compressive sensing framework for images with local distinguishable objects, addressing the problem of reducing sensor requirements in celestial navigation by improving measurement efficiency and sparsity; it introduces a sparse measurement matrix and recovery algorithm with O((k log N)/(log k)) measurements and O(k log_k N) column sparsity, achieving faster recovery and better performance in attitude determination tasks.",
+      "abstract": "We propose a framework for compressive sensing of images with local distinguishable objects, such as stars, and apply it to solve a problem in celestial navigation. Specifically, let x be an N-pixel real-valued image, consisting of a small number of local distinguishable objects plus noise. Our goal is to design an m-by-N measurement matrix A with m << N, such that we can recover an approximation to x from the measurements Ax.\n  We construct a matrix A and recovery algorithm with the following properties: (i) if there are k objects, the number of measurements m is O((k log N)/(log k)), undercutting the best known bound of O(k log(N/k)) (ii) the matrix A is very sparse, which is important for hardware implementations of compressive sensing algorithms, and (iii) the recovery algorithm is empirically fast and runs in time polynomial in k and log(N).\n  We also present a comprehensive study of the application of our algorithm to attitude determination, or finding one's orientation in space. Spacecraft typically use cameras to acquire an image of the sky, and then identify stars in the image to compute their orientation. Taking pictures is very expensive for small spacecraft, since camera sensors use a lot of power. Our algorithm optically compresses the image before it reaches the camera's array of pixels, reducing the number of sensors that are required.",
+      "authors": [
+        {
+          "name": "Rishi Gupta",
+          "orgs": [
+            "MIT CSAIL"
+          ]
+        },
+        {
+          "name": "Piotr Indyk",
+          "orgs": [
+            "MIT CSAIL"
+          ]
+        },
+        {
+          "name": "Eric Price",
+          "orgs": [
+            "MIT CSAIL"
+          ]
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Yaron Rachlin",
+          "orgs": [
+            "MIT Lincoln Laboratory"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1208.2447v1",
+      "date": "2012-08-12T18:12:58Z",
+      "citation_count": 16,
+      "categories": [
+        "cs.CG",
+        "cs.DS"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1084 @@
+{
+  "status": "success",
+  "total_count": 75,
+  "result": [
+    {
+      "arxiv_id": "2511.03120",
+      "score": 13.430113,
+      "title": "Image-Intrinsic Priors for Integrated Circuit Defect Detection and Novel Class Discovery via Self-Supervised Learning",
+      "tldr": "This paper addresses the challenge of defect detection and novel class discovery in integrated circuit manufacturing, where supervised methods struggle with unseen defects and unsupervised methods lack classification accuracy, by proposing IC-DefectNCD, a support-set free framework leveraging image intrinsic priors; it uses a learnable normal information extractor, adaptive binarization, and soft-mask guided attention to enhance defect localization and classification; experiments on real data with 15 defect types show robust performance on both known and unseen defects.",
+      "abstract": "Integrated circuit manufacturing is highly complex, comprising hundreds of process steps. Defects can arise at any stage, causing yield loss and ultimately degrading product reliability. Supervised methods require extensive human annotation and struggle with emergent categories and rare, data scarce defects. Clustering-based unsupervised methods often exhibit unstable performance due to missing priors. We propose IC DefectNCD, a support set free framework that leverages Image Intrinsic Priors in IC SEM images for defect detection and novel class discovery. We first develop Self Normal Information Guided IC Defect Detection, aggregating representative normal features via a learnable normal information extractor and using reconstruction residuals to coarsely localize defect regions. To handle saliency variations across defects, we introduce an adaptive binarization strategy that produces stable subimages focused on core defective areas. Finally, we design Self Defect Information Guided IC Defect Classification, which incorporates a soft mask guided attention mechanism to inject spatial defect priors into the teacher student model. This enhances sensitivity to defective regions, suppresses background interference, and enables recognition and classification of unseen defects. We validate the approach on a real world dataset spanning three key fabrication stages and covering 15 defect types. Experiments demonstrate robust performance on both defect detection and unseen defect classification.",
+      "authors": [
+        {
+          "name": "Botong.Zhao",
+          "orgs": []
+        },
+        {
+          "name": "Xubin.Wang",
+          "orgs": []
+        },
+        {
+          "name": "Shujing.Lyu",
+          "orgs": []
+        },
+        {
+          "name": "Yue.Lu",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2511.03120v1",
+      "date": "2025-11-05",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1908.00102",
+      "score": 13.329925,
+      "title": "OCT Fingerprints: Resilience to Presentation Attacks",
+      "tldr": "This paper addresses the challenge of detecting fingerprint presentation attacks by developing a deep convolutional neural network (CNN) based PAD approach using OCT depth profile patches, achieving a TDR of 99.73% @ FDR of 0.2% on a database of 3,413 bonafide and 357 PA OCT scans, and identifying critical regions for detection through CNN-Fixations.",
+      "abstract": "Optical coherent tomography (OCT) fingerprint technology provides rich depth information, including internal fingerprint (papillary junction) and sweat (eccrine) glands, in addition to imaging any fake layers (presentation attacks) placed over finger skin. Unlike 2D surface fingerprint scans, additional depth information provided by the cross-sectional OCT depth profile scans are purported to thwart fingerprint presentation attacks. We develop and evaluate a presentation attack detector (PAD) based on deep convolutional neural network (CNN). Input data to CNN are local patches extracted from the cross-sectional OCT depth profile scans captured using THORLabs Telesto series spectral-domain fingerprint reader. The proposed approach achieves a TDR of 99.73% @ FDR of 0.2% on a database of 3,413 bonafide and 357 PA OCT scans, fabricated using 8 different PA materials. By employing a visualization technique, known as CNN-Fixations, we are able to identify the regions in the OCT scan patches that are crucial for fingerprint PAD detection.",
+      "authors": [
+        {
+          "name": "Tarang Chugh",
+          "orgs": [
+            "Department of Computer Science and Engineering",
+            "Michigan State University"
+          ]
+        },
+        {
+          "name": "Anil K. Jain",
+          "orgs": [
+            "Department of Computer Science and Engineering",
+            "Michigan State University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1908.00102v1",
+      "date": "2019-07-31T21:18:34Z",
+      "citation_count": 33,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1901.06081",
+      "score": 13.291557,
+      "title": "DeepOtsu: Document Enhancement and Binarization using Iterative Deep Learning",
+      "tldr": "This paper addresses document enhancement and binarization by proposing an iterative deep learning framework that learns and corrects degradations in document images, offering improved visualization and binarization results using global Otsu's threshold on enhanced images.",
+      "abstract": "This paper presents a novel iterative deep learning framework and apply it for document enhancement and binarization. Unlike the traditional methods which predict the binary label of each pixel on the input image, we train the neural network to learn the degradations in document images and produce the uniform images of the degraded input images, which allows the network to refine the output iteratively. Two different iterative methods have been studied in this paper: recurrent refinement (RR) which uses the same trained neural network in each iteration for document enhancement and stacked refinement (SR) which uses a stack of different neural networks for iterative output refinement. Given the learned uniform and enhanced image, the binarization map can be easy to obtain by a global or local threshold. The experimental results on several public benchmark data sets show that our proposed methods provide a new clean version of the degraded image which is suitable for visualization and promising results of binarization using the global Otsu's threshold based on the enhanced images learned iteratively by the neural network.",
+      "authors": [
+        {
+          "name": "Sheng He",
+          "orgs": [
+            "Bernoulli Institute for Mathematics, Computer Science and Artificial Intelligence, University of Groningen",
+            "PO Box 407, 9700 AK, Groningen, The Netherlands"
+          ]
+        },
+        {
+          "name": "Lambert Schomaker",
+          "orgs": [
+            "Bernoulli Institute for Mathematics, Computer Science and Artificial Intelligence, University of Groningen",
+            "PO Box 407, 9700 AK, Groningen, The Netherlands"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1901.06081v1",
+      "date": "2019-01-18T04:23:51Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2509.18141",
+      "score": 13.1652975,
+      "title": "KM-GPT: An Automated Pipeline for Reconstructing Individual Patient Data from Kaplan-Meier Plots",
+      "tldr": "This paper addresses the challenge of reconstructing individual patient data (IPD) from Kaplan-Meier plots in clinical research, aiming to overcome manual digitization limitations by developing KM-GPT, an automated AI-powered pipeline using GPT-5 and advanced image processing; it introduces a fully automated, scalable solution with multi-modal reasoning and user-friendly interface; KM-GPT was evaluated on synthetic and real-world datasets, demonstrating superior accuracy, and was applied to gastric cancer immunotherapy trials to facilitate evidence synthesis and subgroup analyses.",
+      "abstract": "Reconstructing individual patient data (IPD) from Kaplan-Meier (KM) plots provides valuable insights for evidence synthesis in clinical research. However, existing approaches often rely on manual digitization, which is error-prone and lacks scalability. To address these limitations, we develop KM-GPT, the first fully automated, AI-powered pipeline for reconstructing IPD directly from KM plots with high accuracy, robustness, and reproducibility. KM-GPT integrates advanced image preprocessing, multi-modal reasoning powered by GPT-5, and iterative reconstruction algorithms to generate high-quality IPD without manual input or intervention. Its hybrid reasoning architecture automates the conversion of unstructured information into structured data flows and validates data extraction from complex KM plots. To improve accessibility, KM-GPT is equipped with a user-friendly web interface and an integrated AI assistant, enabling researchers to reconstruct IPD without requiring programming expertise. KM-GPT was rigorously evaluated on synthetic and real-world datasets, consistently demonstrating superior accuracy. To illustrate its utility, we applied KM-GPT to a meta-analysis of gastric cancer immunotherapy trials, reconstructing IPD to facilitate evidence synthesis and biomarker-based subgroup analyses. By automating traditionally manual processes and providing a scalable, web-based solution, KM-GPT transforms clinical research by leveraging reconstructed IPD to enable more informed downstream analyses, supporting evidence-based decision-making.",
+      "authors": [
+        {
+          "name": "Yao Zhao",
+          "orgs": [
+            "Department of Applied Mathematics and Statistics Johns Hopkins University"
+          ]
+        },
+        {
+          "name": "Haoyue Sun",
+          "orgs": [
+            "Department of Applied Mathematics and Statistics Johns Hopkins University"
+          ]
+        },
+        {
+          "name": "Yantian Ding",
+          "orgs": [
+            "Department of Applied Mathematics and Statistics Johns Hopkins University"
+          ]
+        },
+        {
+          "name": "Yanxun Xu",
+          "orgs": [
+            "Department of Applied Mathematics and Statistics Johns Hopkins University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2509.18141v1",
+      "date": "2025-09-15T00:38:38Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG",
+        "stat.AP",
+        "stat.ML"
+      ]
+    },
+    {
+      "arxiv_id": "1907.06194",
+      "score": 12.858912,
+      "title": "A Divide-and-Conquer Approach towards Understanding Deep Networks",
+      "tldr": "This paper addresses the challenge of interpreting deep neural networks in medical image segmentation, proposing a divide-and-conquer approach to replace network components with known operators, introducing a modular design that combines a trainable guided filter and Frangi filter for retinal vessel segmentation, achieving AUC 0.974 with 111,536 parameters, demonstrating improved interpretability and performance comparable to U-Net.",
+      "abstract": "Deep neural networks have achieved tremendous success in various fields including medical image segmentation. However, they have long been criticized for being a black-box, in that interpretation, understanding and correcting architectures is difficult as there is no general theory for deep neural network design. Previously, precision learning was proposed to fuse deep architectures and traditional approaches. Deep networks constructed in this way benefit from the original known operator, have fewer parameters, and improved interpretability. However, they do not yield state-of-the-art performance in all applications. In this paper, we propose to analyze deep networks using known operators, by adopting a divide-and-conquer strategy to replace network components, whilst retaining its performance. The task of retinal vessel segmentation is investigated for this purpose. We start with a high-performance U-Net and show by step-by-step conversion that we are able to divide the network into modules of known operators. The results indicate that a combination of a trainable guided filter and a trainable version of the Frangi filter yields a performance at the level of U-Net (AUC 0.974 vs. 0.972) with a tremendous reduction in parameters (111,536 vs. 9,575). In addition, the trained layers can be mapped back into their original algorithmic interpretation and analyzed using standard tools of signal processing.",
+      "authors": [
+        {
+          "name": "Weilin Fu",
+          "orgs": [
+            "Pattern Recognition Lab, Friedrich-Alexander University Erlangen-Nürnberg, 91058 Erlangen, Germany",
+            "Erlangen Graduate School in Advanced Optical Technologies (SAOT), 91058 Erlangen, Germany"
+          ]
+        },
+        {
+          "name": "Katharina Breininger",
+          "orgs": [
+            "Pattern Recognition Lab, Friedrich-Alexander University Erlangen-Nürnberg, 91058 Erlangen, Germany"
+          ]
+        },
+        {
+          "name": "Roman Schaffert",
+          "orgs": [
+            "Pattern Recognition Lab, Friedrich-Alexander University Erlangen-Nürnberg, 91058 Erlangen, Germany"
+          ]
+        },
+        {
+          "name": "Nishant Ravikumar",
+          "orgs": [
+            "Pattern Recognition Lab, Friedrich-Alexander University Erlangen-Nürnberg, 91058 Erlangen, Germany"
+          ]
+        },
+        {
+          "name": "Andreas Maier",
+          "orgs": [
+            "Pattern Recognition Lab, Friedrich-Alexander University Erlangen-Nürnberg, 91058 Erlangen, Germany",
+            "Erlangen Graduate School in Advanced Optical Technologies (SAOT), 91058 Erlangen, Germany"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1907.06194v1",
+      "date": "2019-07-14T09:50:45Z",
+      "citation_count": 19,
+      "categories": [
+        "cs.CV",
+        "cs.LG",
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "1910.07521",
+      "score": 12.786493,
+      "title": "End-to-End Cascaded U-Nets with a Localization Network for Kidney Tumor Segmentation",
+      "tldr": "This paper addresses kidney tumor segmentation in medical imaging, aiming to improve automated segmentation accuracy by leveraging cascaded U-Nets and localization networks; it introduces TuNet, a method achieving a Sørensen-Dice coefficient of 0.902 for kidney and 0.408 for tumor segmentation; the results highlight the potential of hierarchical models for precise tumor detection and support further research in medical image analysis.",
+      "abstract": "Kidney tumor segmentation emerges as a new frontier of computer vision in medical imaging. This is partly due to its challenging manual annotation and great medical impact. Within the scope of the Kidney Tumor Segmentation Challenge 2019, that is aiming at combined kidney and tumor segmentation, this work proposes a novel combination of 3D U-Nets---collectively denoted TuNet---utilizing the resulting kidney masks for the consecutive tumor segmentation. The proposed method achieves a S{\\o}rensen-Dice coefficient score of 0.902 for the kidney, and 0.408 for the tumor segmentation, computed from a five-fold cross-validation on the 210 patients available in the data.",
+      "authors": [],
+      "url": "https://arxiv.org/pdf/1910.07521v1",
+      "date": "2019-10-16T11:25:23Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.LG",
+        "eess.IV",
+        "stat.ML"
+      ]
+    },
+    {
+      "arxiv_id": "2601.17429",
+      "score": 12.758608,
+      "title": "Coronary Artery Segmentation and Vessel-Type Classification in X-Ray Angiography",
+      "tldr": "This paper addresses coronary artery segmentation and vessel-type classification in X-ray angiography, aiming to improve robustness and external transferability in the face of imaging challenges; it employs classical vesselness filters with per-image parameter tuning via SVR and deep models like FPN with merged supervision, achieving Dice scores of 0.931 for coronary segmentation and 98.5% accuracy for RCA labeling; findings highlight the effectiveness of learned tuning and merged labels, with external validation on DCA1 showing Dice of 0.814.",
+      "abstract": "X-ray coronary angiography (XCA) is the clinical reference standard for assessing coronary artery disease, yet quantitative analysis is limited by the difficulty of robust vessel segmentation in routine data. Low contrast, motion, foreshortening, overlap, and catheter confounding degrade segmentation and contribute to domain shift across centers. Reliable segmentation, together with vessel-type labeling, enables vessel-specific coronary analytics and downstream measurements that depend on anatomical localization. From 670 cine sequences (407 subjects), we select a best frame near peak opacification using a low-intensity histogram criterion and apply joint super-resolution and enhancement. We benchmark classical Meijering, Frangi, and Sato vesselness filters under per-image oracle tuning, a single global mean setting, and per-image parameter prediction via Support Vector Regression (SVR). Neural baselines include U-Net, FPN, and a Swin Transformer, trained with coronary-only and merged coronary+catheter supervision. A second stage assigns vessel identity (LAD, LCX, RCA). External evaluation uses the public DCA1 cohort. SVR per-image tuning improves Dice over global means for all classical filters (e.g., Frangi: 0.759 vs. 0.741). Among deep models, FPN attains 0.914+/-0.007 Dice (coronary-only), and merged coronary+catheter labels further improve to 0.931+/-0.006. On DCA1 as a strict external test, Dice drops to 0.798 (coronary-only) and 0.814 (merged), while light in-domain fine-tuning recovers to 0.881+/-0.014 and 0.882+/-0.015. Vessel-type labeling achieves 98.5% accuracy (Dice 0.844) for RCA, 95.4% (0.786) for LAD, and 96.2% (0.794) for LCX. Learned per-image tuning strengthens classical pipelines, while high-resolution FPN models and merged-label supervision improve stability and external transfer with modest adaptation.",
+      "authors": [
+        {
+          "name": "Mehdi Yousefzadeh",
+          "orgs": [
+            "School of Computer Science, Institute for Research in Fundamental Sciences (IPM), Tehran, Iran",
+            "Department of Physics, Shahid Beheshti University, Tehran, Iran"
+          ]
+        },
+        {
+          "name": "Negar Sadat Rafiee Tabatabaee",
+          "orgs": [
+            "Fatemeh Zahra Hospital, Alborz University of Medical Sciences, Eshtehard, Iran"
+          ]
+        },
+        {
+          "name": "Parsa Esfahanian",
+          "orgs": [
+            "School of Computer Science, Institute for Research in Fundamental Sciences (IPM), Tehran, Iran"
+          ]
+        },
+        {
+          "name": "Majid Maleki",
+          "orgs": [
+            "Rajaie Cardiovascular Medical and Research Institute, Iran University of Medical Sciences, Tehran, Iran"
+          ]
+        },
+        {
+          "name": "Ghazaleh Sadeghi Gohar",
+          "orgs": [
+            "Rajaie Cardiovascular Medical and Research Institute, Iran University of Medical Sciences, Tehran, Iran"
+          ]
+        },
+        {
+          "name": "Mohaddeseh Mozaffari",
+          "orgs": [
+            "Department of Physics, Shahid Beheshti University, Tehran, Iran"
+          ]
+        },
+        {
+          "name": "Yashar Tayyarazad",
+          "orgs": [
+            "Department of Physics, Shahid Beheshti University, Tehran, Iran"
+          ]
+        },
+        {
+          "name": "Armin Elahifar",
+          "orgs": [
+            "Rajaie Cardiovascular Medical and Research Institute, Iran University of Medical Sciences, Tehran, Iran"
+          ]
+        },
+        {
+          "name": "Ehsan Khalilipur",
+          "orgs": [
+            "Rajaie Cardiovascular Medical and Research Institute, Iran University of Medical Sciences, Tehran, Iran"
+          ]
+        },
+        {
+          "name": "Narges Eghbali",
+          "orgs": [
+            "Department of Physics, Shahid Beheshti University, Tehran, Iran"
+          ]
+        },
+        {
+          "name": "Saeideh Mazloomzadeh",
+          "orgs": [
+            "Rajaie Cardiovascular Medical and Research Institute, Iran University of Medical Sciences, Tehran, Iran"
+          ]
+        },
+        {
+          "name": "Siavash Shirzadeh Barough",
+          "orgs": [
+            "Brain Mapping Research Center, Shahid Beheshti University of Medical Sciences, Tehran, Iran"
+          ]
+        },
+        {
+          "name": "Ashkan Fakharifar",
+          "orgs": [
+            "Gilan University of Medical Sciences, Rasht, Gilan, Iran"
+          ]
+        },
+        {
+          "name": "Amineh Safavirad",
+          "orgs": [
+            "Rajaie Cardiovascular Medical and Research Institute, Iran University of Medical Sciences, Tehran, Iran"
+          ]
+        },
+        {
+          "name": "Hoda Taeb",
+          "orgs": [
+            "Department of Physics, Simon Fraser University, Burnaby, Canada"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2601.17429v1",
+      "date": "2026-01-24",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2109.05526",
+      "score": 12.6588335,
+      "title": "An Unsupervised Deep-Learning Method for Fingerprint Classification: the CCAE Network and the Hybrid Clustering Strategy",
+      "tldr": "This paper proposes an unsupervised deep-learning method for fingerprint classification, addressing the need for efficient and accurate fingerprint matching without pre-labeled data; it uses a constraint convolutional auto-encoder (CCAE) and hybrid clustering strategy to extract features and classify patterns, achieving 97.3% accuracy on 1000 unlabeled fingerprints in the NIST-DB4 dataset, offering a resource-efficient alternative to supervised methods.",
+      "abstract": "The fingerprint classification is an important and effective method to quicken the process and improve the accuracy in the fingerprint matching process. Conventional supervised methods need a large amount of pre-labeled data and thus consume immense human resources. In this paper, we propose a new and efficient unsupervised deep learning method that can extract fingerprint features and classify fingerprint patterns automatically. In this approach, a new model named constraint convolutional auto-encoder (CCAE) is used to extract fingerprint features and a hybrid clustering strategy is applied to obtain the final clusters. A set of experiments in the NIST-DB4 dataset shows that the proposed unsupervised method exhibits the efficient performance on fingerprint classification. For example, the CCAE achieves an accuracy of 97.3% on only 1000 unlabeled fingerprints in the NIST-DB4.",
+      "authors": [
+        {
+          "name": "Yue-Jie Hou",
+          "orgs": []
+        },
+        {
+          "name": "Zai-Xin Xie",
+          "orgs": []
+        },
+        {
+          "name": "Jian-Hu",
+          "orgs": []
+        },
+        {
+          "name": "Yao-Shen",
+          "orgs": []
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Chi-Chun Zhou",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2109.05526v1",
+      "date": "2021-09-12T14:35:59Z",
+      "citation_count": 7,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "1706.10241",
+      "score": 12.516953,
+      "title": "A selectional auto-encoder approach for document image binarization",
+      "tldr": "This paper addresses the challenge of document image binarization, aiming to improve accuracy across diverse document types by using a convolutional auto-encoder to learn an end-to-end mapping from input images to binary outputs, outperforming existing methods in Latin text, palm leaf scripts, Persian documents, and music scores.",
+      "abstract": "Binarization plays a key role in the automatic information retrieval from document images. This process is usually performed in the first stages of documents analysis systems, and serves as a basis for subsequent steps. Hence it has to be robust in order to allow the full analysis workflow to be successful. Several methods for document image binarization have been proposed so far, most of which are based on hand-crafted image processing strategies. Recently, Convolutional Neural Networks have shown an amazing performance in many disparate duties related to computer vision. In this paper we discuss the use of convolutional auto-encoders devoted to learning an end-to-end map from an input image to its selectional output, in which activations indicate the likelihood of pixels to be either foreground or background. Once trained, documents can therefore be binarized by parsing them through the model and applying a threshold. This approach has proven to outperform existing binarization strategies in a number of document domains.",
+      "authors": [
+        {
+          "name": "Jorge Calvo-Zaragoza",
+          "orgs": [
+            "PRHLT Research Center, Universitat Politècnica de València, Valencia, 46022, Spain",
+            "Department of Software and Computing Systems, University of Alicante, Carretera San Vicente del Raspeig s/n, 03690 Alicante, Spain"
+          ]
+        },
+        {
+          "name": "Antonio-Javier Gallego",
+          "orgs": [
+            "PRHLT Research Center, Universitat Politècnica de València, Valencia, 46022, Spain",
+            "Department of Software and Computing Systems, University of Alicante, Carretera San Vicente del Raspeig s/n, 03690 Alicante, Spain"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1706.10241v3",
+      "date": "2017-06-30T15:35:13Z",
+      "citation_count": 160,
+      "categories": [
+        "cs.CV",
+        "cs.DL"
+      ]
+    },
+    {
+      "arxiv_id": "2507.07029",
+      "score": 12.470806,
+      "title": "Design and Implementation of an OCR-Powered Pipeline for Table Extraction from Invoices",
+      "tldr": "This paper addresses the challenge of table extraction from noisy and non-standard invoices, aiming to improve data extraction accuracy and consistency for automated financial workflows; it employs a hybrid system combining OpenCV, Tesseract OCR, and custom post-processing logic to detect, align, and extract structured tabular data; the pipeline achieves significant improvements in handling multi-line items and variable layouts, supporting scalable and robust invoice processing.",
+      "abstract": "This paper presents the design and development of an OCR-powered pipeline for efficient table extraction from invoices. The system leverages Tesseract OCR for text recognition and custom post-processing logic to detect, align, and extract structured tabular data from scanned invoice documents. Our approach includes dynamic preprocessing, table boundary detection, and row-column mapping, optimized for noisy and non-standard invoice formats. The resulting pipeline significantly improves data extraction accuracy and consistency, supporting real-world use cases such as automated financial workflows and digital archiving.",
+      "authors": [
+        {
+          "name": "Parshva Dhilankumar Patel",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2507.07029v1",
+      "date": "2025-07-09T16:59:00Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2512.23710",
+      "score": 12.429775,
+      "title": "Enriching Historical Records: An OCR and AI-Driven Approach for Database Integration",
+      "tldr": "This paper presents an OCR and AI-driven pipeline for harmonizing historical document data with existing databases, addressing the challenge of integrating degraded typewritten records from 1575-1815 into a structured format; it employs OCR with Tesseract and GPT-3.5 for text extraction and JSON structuring, achieving 63% accuracy in JSON extraction and 94% accuracy in record linkage; the findings demonstrate the effectiveness of generative AI in improving OCR performance and facilitating database integration.",
+      "abstract": "This research digitizes and analyzes the Leidse hoogleraren en lectoren 1575-1815 books written between 1983 and 1985, which contain biographic data about professors and curators of Leiden University. It addresses the central question: how can we design an automated pipeline that integrates OCR, LLM-based interpretation, and database linking to harmonize data from historical document images with existing high-quality database records? We applied OCR techniques, generative AI decoding constraints that structure data extraction, and database linkage methods to process typewritten historical records into a digital format. OCR achieved a Character Error Rate (CER) of 1.08 percent and a Word Error Rate (WER) of 5.06 percent, while JSON extraction from OCR text achieved an average accuracy of 63 percent and, based on annotated OCR, 65 percent. This indicates that generative AI somewhat corrects low OCR performance. Our record linkage algorithm linked annotated JSON files with 94% accuracy and OCR-derived JSON files with 81%. This study contributes to digital humanities research by offering an automated pipeline for interpreting digitized historical documents, addressing challenges like layout variability and terminology differences, and exploring the applicability and strength of an advanced generative AI model.",
+      "authors": [
+        {
+          "name": "Tessa Verhoef",
+          "orgs": [
+            "Leiden Institute of Advanced Computer Science, Leiden University, Gorlaeus Building, Einsteinweg 55, 2333 CC Leiden, the Netherlands"
+          ]
+        },
+        {
+          "name": "Gijs Wijnholds",
+          "orgs": [
+            "Leiden Institute of Advanced Computer Science, Leiden University, Gorlaeus Building, Einsteinweg 55, 2333 CC Leiden, the Netherlands"
+          ]
+        },
+        {
+          "name": "Richard M.K. van Dijk",
+          "orgs": [
+            "Leiden Institute of Advanced Computer Science, Leiden University, Gorlaeus Building, Einsteinweg 55, 2333 CC Leiden, the Netherlands"
+          ]
+        },
+        {
+          "name": "Zahra Abedi",
+          "orgs": [
+            "Leiden Institute of Advanced Computer Science, Leiden University, Gorlaeus Building, Einsteinweg 55, 2333 CC Leiden, the Netherlands"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.23710v1",
+      "date": "2025-11-17",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2205.01671",
+      "score": 12.382463,
+      "title": "The scope for AI-augmented interpretation of building blueprints in commercial and industrial property insurance",
+      "tldr": "This survey reviews AI applications in commercial and industrial property insurance risk assessment, focusing on automated blueprint analysis and information extraction, contributing a proof-of-concept solution and highlighting challenges in data standardization and model interpretability.",
+      "abstract": "This report, commissioned by the WTW research network, investigates the use of AI in property risk assessment. It (i) reviews existing work on risk assessment in commercial and industrial properties and automated information extraction from building blueprints; and (ii) presents an exploratory 'proof-of concept-solution' exploring the feasibility of using machine learning for the automated extraction of information from building blueprints to support insurance risk assessment.",
+      "authors": [
+        {
+          "name": "Long Chen",
+          "orgs": [
+            "Loughborough University"
+          ]
+        },
+        {
+          "name": "Mao Ye",
+          "orgs": [
+            "Loughborough University"
+          ]
+        },
+        {
+          "name": "Alistair Milne",
+          "orgs": [
+            "Loughborough University"
+          ]
+        },
+        {
+          "name": "John Hillier",
+          "orgs": [
+            "Loughborough University"
+          ]
+        },
+        {
+          "name": "Frances Oglesby",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2205.01671v2",
+      "date": "2022-04-29T16:52:04Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG",
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "2406.00409",
+      "score": 12.32315,
+      "title": "Arabic Handwritten Text for Person Biometric Identification: A Deep Learning Approach",
+      "tldr": "This paper investigates Arabic handwritten text recognition for biometric identification, addressing the gap in Arabic script recognition by comparing deep learning models and proposing preprocessing and transfer learning techniques, with EfficientNetB7 achieving test accuracies of 98.57%, 99.15%, and 99.79% on three datasets, demonstrating enhanced accuracy and potential applications in identity verification and forensic analysis.",
+      "abstract": "This study thoroughly investigates how well deep learning models can recognize Arabic handwritten text for person biometric identification. It compares three advanced architectures -- ResNet50, MobileNetV2, and EfficientNetB7 -- using three widely recognized datasets: AHAWP, Khatt, and LAMIS-MSHD. Results show that EfficientNetB7 outperforms the others, achieving test accuracies of 98.57\\%, 99.15\\%, and 99.79\\% on AHAWP, Khatt, and LAMIS-MSHD datasets, respectively. EfficientNetB7's exceptional performance is credited to its innovative techniques, including compound scaling, depth-wise separable convolutions, and squeeze-and-excitation blocks. These features allow the model to extract more abstract and distinctive features from handwritten text images. The study's findings hold significant implications for enhancing identity verification and authentication systems, highlighting the potential of deep learning in Arabic handwritten text recognition for person biometric identification.",
+      "authors": [
+        {
+          "name": "Mazen Balat",
+          "orgs": [
+            "Egypt-Japan University of Science and Technology (E-JUST)",
+            "Computer science and information technology"
+          ]
+        },
+        {
+          "name": "Youssef Mohamed",
+          "orgs": [
+            "Egypt-Japan University of Science and Technology (E-JUST)",
+            "Computer science and information technology"
+          ]
+        },
+        {
+          "name": "Ahmed Heakl",
+          "orgs": [
+            "Egypt-Japan University of Science and Technology (E-JUST)",
+            "Computer engineering"
+          ]
+        },
+        {
+          "name": "Ahmed Zaky",
+          "orgs": [
+            "Egypt-Japan University of Science and Technology (E-JUST)",
+            "Computer science and information technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2406.00409v1",
+      "date": "2024-06-01T11:43:00Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG",
+        "cs.MM",
+        "cs.NE"
+      ]
+    },
+    {
+      "arxiv_id": "2502.07486",
+      "score": 12.269951,
+      "title": "Automated Road Extraction and Centreline Fitting in LiDAR Point Clouds",
+      "tldr": "This paper addresses road extraction from LiDAR point clouds in urban planning and traffic management, proposing a top-down approach combining statistical outlier removal, grid-based segmentation, and 2D skeletonization to improve accuracy and efficiency, achieving 73% IoU and 23% faster processing compared to prior methods.",
+      "abstract": "Road information extraction from 3D point clouds is useful for urban planning and traffic management. Existing methods often rely on local features and the refraction angle of lasers from kerbs, which makes them sensitive to variable kerb designs and issues in high-density areas due to data homogeneity. We propose an approach for extracting road points and fitting centrelines using a top-down view of LiDAR based ground-collected point clouds. This prospective view reduces reliance on specific kerb design and results in better road extraction. We first perform statistical outlier removal and density-based clustering to reduce noise from 3D point cloud data. Next, we perform ground point filtering using a grid-based segmentation method that adapts to diverse road scenarios and terrain characteristics. The filtered points are then projected onto a 2D plane, and the road is extracted by a skeletonisation algorithm. The skeleton is back-projected onto the 3D point cloud with calculated normals, which guide a region growing algorithm to find nearby road points. The extracted road points are then smoothed with the Savitzky-Golay filter to produce the final centreline. Our initial approach without post-processing of road skeleton achieved 67% in IoU by testing on the Perth CBD dataset with different road types. Incorporating the post-processing of the road skeleton improved the extraction of road points around the smoothed skeleton. The refined approach achieved a higher IoU value of 73% and with 23% reduction in the processing time. Our approach offers a generalised and computationally efficient solution that combines 3D and 2D processing techniques, laying the groundwork for future road reconstruction and 3D-to-2D point cloud alignment.",
+      "authors": [
+        {
+          "name": "Xinyu Wang",
+          "orgs": [
+            "The University of Western Australia",
+            "Perth, Australia"
+          ]
+        },
+        {
+          "name": "Muhammad Ibrahim",
+          "orgs": [
+            "Department of Primary Industries and Regional Development",
+            "Perth, Australia"
+          ]
+        },
+        {
+          "name": "Atif Mansoor",
+          "orgs": [
+            "The University of Western Australia",
+            "Perth, Australia"
+          ]
+        },
+        {
+          "name": "Hasnein Tareque",
+          "orgs": [
+            "Department of Primary Industries and Regional Development",
+            "Perth, Australia"
+          ]
+        },
+        {
+          "name": "Ajmal Mian",
+          "orgs": [
+            "Department of Primary Industries and Regional Development",
+            "The University of Western Australia"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2502.07486v1",
+      "date": "2025-02-11T11:45:52Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1608.08471",
+      "score": 12.2292595,
+      "title": "New Methods to Improve Large-Scale Microscopy Image Analysis with Prior Knowledge and Uncertainty",
+      "tldr": "This paper addresses the challenge of analyzing large-scale 3D+t microscopy images by introducing methods that incorporate prior knowledge and uncertainty estimation, aiming to improve accuracy and reliability in automated image analysis; it proposes new segmentation algorithms and uncertainty propagation techniques as core contributions; empirical results demonstrate enhanced performance on terabyte-scale datasets, offering practical benefits for scientific research.",
+      "abstract": "Multidimensional imaging techniques provide powerful ways to examine various kinds of scientific questions. The routinely produced datasets in the terabyte-range, however, can hardly be analyzed manually and require an extensive use of automated image analysis. The present thesis introduces a new concept for the estimation and propagation of uncertainty involved in image analysis operators and new segmentation algorithms that are suitable for terabyte-scale analyses of 3D+t microscopy images.",
+      "authors": [
+        {
+          "name": "Johannes Stegmaier",
+          "orgs": [
+            "Karlsruhe Institut für Technologie (KIT)"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1608.08471v1",
+      "date": "2016-08-30T14:21:55Z",
+      "citation_count": 11,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2003.00825",
+      "score": 12.202584,
+      "title": "SIP-SegNet: A Deep Convolutional Encoder-Decoder Network for Joint Semantic Segmentation and Extraction of Sclera, Iris and Pupil based on Periocular Region Suppression",
+      "tldr": "This paper presents SIP-SegNet, a deep convolutional encoder-decoder network for joint semantic segmentation of sclera, iris, and pupil in unconstrained scenarios, addressing challenges like periocular occlusions and reflections; it introduces denoising, reflection removal, adaptive thresholding, and fuzzy filtering as core novelties; the framework achieves mean F1 scores of 93.35, 95.11, and 96.69 for sclera, iris, and pupil respectively, demonstrating high accuracy in biometric recognition systems.",
+      "abstract": "The current developments in the field of machine vision have opened new vistas towards deploying multimodal biometric recognition systems in various real-world applications. These systems have the ability to deal with the limitations of unimodal biometric systems which are vulnerable to spoofing, noise, non-universality and intra-class variations. In addition, the ocular traits among various biometric traits are preferably used in these recognition systems. Such systems possess high distinctiveness, permanence, and performance while, technologies based on other biometric traits (fingerprints, voice etc.) can be easily compromised. This work presents a novel deep learning framework called SIP-SegNet, which performs the joint semantic segmentation of ocular traits (sclera, iris and pupil) in unconstrained scenarios with greater accuracy. The acquired images under these scenarios exhibit purkinje reflexes, specular reflections, eye gaze, off-angle shots, low resolution, and various occlusions particularly by eyelids and eyelashes. To address these issues, SIP-SegNet begins with denoising the pristine image using denoising convolutional neural network (DnCNN), followed by reflection removal and image enhancement based on contrast limited adaptive histogram equalization (CLAHE). Our proposed framework then extracts the periocular information using adaptive thresholding and employs the fuzzy filtering technique to suppress this information. Finally, the semantic segmentation of sclera, iris and pupil is achieved using the densely connected fully convolutional encoder-decoder network. We used five CASIA datasets to evaluate the performance of SIP-SegNet based on various evaluation metrics. The simulation results validate the optimal segmentation of the proposed SIP-SegNet, with the mean f1 scores of 93.35, 95.11 and 96.69 for the sclera, iris and pupil classes respectively.",
+      "authors": [
+        {
+          "name": "Bilal Hassan",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Ramsha Ahmed",
+          "orgs": [
+            "2"
+          ]
+        },
+        {
+          "name": "Taimur Hassan",
+          "orgs": [
+            "3"
+          ]
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Naufel Werghi",
+          "orgs": [
+            "King Fahd University of Petroleum and Minerals (KFUPM)"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2003.00825v1",
+      "date": "2020-02-15T15:20:44Z",
+      "citation_count": 20,
+      "categories": [
+        "cs.CV",
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "2011.09041",
+      "score": 12.1663685,
+      "title": "SoftSeg: Advantages of soft versus binary training for image segmentation",
+      "tldr": "This paper investigates the use of soft labels in image segmentation to address the limitations of binary masks in medical imaging, particularly in handling partial volume effects and inter-expert variability; it introduces SoftSeg, a method using soft ground truth, normalized ReLU activation, and regression loss, which improves Dice scores by 2.0%, 3.3%, and 6.5% on three datasets; the findings suggest enhanced sensitivity for small objects and better calibration of model predictions.",
+      "abstract": "Most image segmentation algorithms are trained on binary masks formulated as a classification task per pixel. However, in applications such as medical imaging, this \"black-and-white\" approach is too constraining because the contrast between two tissues is often ill-defined, i.e., the voxels located on objects' edges contain a mixture of tissues. Consequently, assigning a single \"hard\" label can result in a detrimental approximation. Instead, a soft prediction containing non-binary values would overcome that limitation. We introduce SoftSeg, a deep learning training approach that takes advantage of soft ground truth labels, and is not bound to binary predictions. SoftSeg aims at solving a regression instead of a classification problem. This is achieved by using (i) no binarization after preprocessing and data augmentation, (ii) a normalized ReLU final activation layer (instead of sigmoid), and (iii) a regression loss function (instead of the traditional Dice loss). We assess the impact of these three features on three open-source MRI segmentation datasets from the spinal cord gray matter, the multiple sclerosis brain lesion, and the multimodal brain tumor segmentation challenges. Across multiple cross-validation iterations, SoftSeg outperformed the conventional approach, leading to an increase in Dice score of 2.0% on the gray matter dataset (p=0.001), 3.3% for the MS lesions, and 6.5% for the brain tumors. SoftSeg produces consistent soft predictions at tissues' interfaces and shows an increased sensitivity for small objects. The richness of soft labels could represent the inter-expert variability, the partial volume effect, and complement the model uncertainty estimation. The developed training pipeline can easily be incorporated into most of the existing deep learning architectures. It is already implemented in the freely-available deep learning toolbox ivadomed (https://ivadomed.org).",
+      "authors": [
+        {
+          "name": "Charley Gros",
+          "orgs": [
+            "NeuroPoly Lab, Institute of Biomedical Engineering, Polytechnique Montreal, Montreal, QC, Canada"
+          ]
+        },
+        {
+          "name": "Andreanne Lemay",
+          "orgs": [
+            "NeuroPoly Lab, Institute of Biomedical Engineering, Polytechnique Montreal, Montreal, QC, Canada"
+          ]
+        },
+        {
+          "name": "Julien Cohen-Adad",
+          "orgs": [
+            "NeuroPoly Lab, Institute of Biomedical Engineering, Polytechnique Montreal, Montreal, QC, Canada",
+            "Functional Neuroimaging Unit, CRIUGM, Université de Montréal, Montreal, QC, Canada"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2011.09041v1",
+      "date": "2020-11-18T02:25:09Z",
+      "citation_count": 82,
+      "categories": [
+        "cs.CV",
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "2201.08550",
+      "score": 12.118755,
+      "title": "What Can Machine Vision Do for Lymphatic Histopathology Image Analysis: A Comprehensive Review",
+      "tldr": "This paper reviews machine vision applications in lymphatic histopathology image analysis to address the limitations of manual diagnosis, using deep learning methods for segmentation, classification, and detection, and finds that 171 papers were analyzed to identify trends and potential future directions in the field.",
+      "abstract": "In the past ten years, the computing power of machine vision (MV) has been continuously improved, and image analysis algorithms have developed rapidly. At the same time, histopathological slices can be stored as digital images. Therefore, MV algorithms can provide doctors with diagnostic references. In particular, the continuous improvement of deep learning algorithms has further improved the accuracy of MV in disease detection and diagnosis. This paper reviews the applications of image processing technology based on MV in lymphoma histopathological images in recent years, including segmentation, classification and detection. Finally, the current methods are analyzed, some more potential methods are proposed, and further prospects are made.",
+      "authors": [
+        {
+          "name": "Xiaoqi Li",
+          "orgs": []
+        },
+        {
+          "name": "Haoyuan Chen",
+          "orgs": []
+        },
+        {
+          "name": "Chen Li",
+          "orgs": []
+        },
+        {
+          "name": "Md Mamunur Rahaman",
+          "orgs": []
+        },
+        {
+          "name": "Xintong Li",
+          "orgs": []
+        },
+        {
+          "name": "Jian Wu",
+          "orgs": []
+        },
+        {
+          "name": "Xiaoyan Li",
+          "orgs": []
+        },
+        {
+          "name": "Hongzan Sun",
+          "orgs": []
+        },
+        {
+          "name": "Marcin Grzegorzek",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2201.08550v2",
+      "date": "2022-01-21T05:54:14Z",
+      "citation_count": 8,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2407.11865",
+      "score": 12.095719,
+      "title": "Novel Hybrid Integrated Pix2Pix and WGAN Model with Gradient Penalty for Binary Images Denoising",
+      "tldr": "This paper proposes a hybrid Pix2Pix and WGAN-GP model for binary image denoising, addressing the challenge of preserving structural details while mitigating GAN training instability; the model combines conditional GANs' denoising capabilities with WGAN-GP's Lipschitz constraint to enhance stability and performance; numerical experiments show significant improvements over traditional methods in denoising effectiveness.",
+      "abstract": "This paper introduces a novel approach to image denoising that leverages the advantages of Generative Adversarial Networks (GANs). Specifically, we propose a model that combines elements of the Pix2Pix model and the Wasserstein GAN (WGAN) with Gradient Penalty (WGAN-GP). This hybrid framework seeks to capitalize on the denoising capabilities of conditional GANs, as demonstrated in the Pix2Pix model, while mitigating the need for an exhaustive search for optimal hyperparameters that could potentially ruin the stability of the learning process. In the proposed method, the GAN's generator is employed to produce denoised images, harnessing the power of a conditional GAN for noise reduction. Simultaneously, the implementation of the Lipschitz continuity constraint during updates, as featured in WGAN-GP, aids in reducing susceptibility to mode collapse. This innovative design allows the proposed model to benefit from the strong points of both Pix2Pix and WGAN-GP, generating superior denoising results while ensuring training stability. Drawing on previous work on image-to-image translation and GAN stabilization techniques, the proposed research highlights the potential of GANs as a general-purpose solution for denoising. The paper details the development and testing of this model, showcasing its effectiveness through numerical experiments. The dataset was created by adding synthetic noise to clean images. Numerical results based on real-world dataset validation underscore the efficacy of this approach in image-denoising tasks, exhibiting significant enhancements over traditional techniques. Notably, the proposed model demonstrates strong generalization capabilities, performing effectively even when trained with synthetic noise.",
+      "authors": [
+        {
+          "name": "Luca Tirel",
+          "orgs": []
+        },
+        {
+          "name": "Ali Mohamed Ali",
+          "orgs": []
+        },
+        {
+          "name": "Hashim A. Hashim",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2407.11865v2",
+      "date": "2024-07-16T15:50:45Z",
+      "citation_count": 16,
+      "categories": [
+        "cs.CV",
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "0912.0950",
+      "score": 12.085443,
+      "title": "Fingerprint Verification based on Gabor Filter Enhancement",
+      "tldr": "This paper proposes FVGFE algorithm for fingerprint verification, enhancing fingerprint images using Gabor filters and 9-pixel neighborhood for minutiae extraction, achieving better Sensitivity and Specificity compared to existing methods, thereby improving biometric identification accuracy.",
+      "abstract": "Human fingerprints are reliable characteristics for personnel identification as it is unique and persistence. A fingerprint pattern consists of ridges, valleys and minutiae. In this paper we propose Fingerprint Verification based on Gabor Filter Enhancement (FVGFE) algorithm for minutiae feature extraction and post processing based on 9 pixel neighborhood. A global feature extraction and fingerprints enhancement are based on Hong enhancement method which is simultaneously able to extract local ridge orientation and ridge frequency. It is observed that the Sensitivity and Specificity values are better compared to the existing algorithms.",
+      "authors": [
+        {
+          "name": "Lavanya B N",
+          "orgs": [
+            "Department of Computer Science and Engineering",
+            "University Visvesvariah College of Engineering, Bangalore University, Bangalore 560 001"
+          ]
+        },
+        {
+          "name": "K B Raja",
+          "orgs": [
+            "Department of Computer Science and Engineering",
+            "University Visvesvariah College of Engineering, Bangalore University, Bangalore 560 001"
+          ]
+        },
+        {
+          "name": "Venugopal K R",
+          "orgs": [
+            "Department of Computer Science and Engineering",
+            "University Visvesvariah College of Engineering, Bangalore University, Bangalore 560 001"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/0912.0950v1",
+      "date": "2009-12-04T21:17:20Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.CR",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2507.23256",
+      "score": 12.064198,
+      "title": "EMedNeXt: An Enhanced Brain Tumor Segmentation Framework for Sub-Saharan Africa using MedNeXt V2 with Deep Supervision",
+      "tldr": "This paper addresses the challenge of brain tumor segmentation in sub-Saharan Africa, where resource constraints and image quality issues hinder accurate diagnosis, by introducing EMedNeXt, an enhanced framework based on MedNeXt V2 with deep supervision and optimized post-processing; it achieves an average LesionWise DSC of 0.897 and NSD of 0.541 and 0.84 at tolerances of 0.5 mm and 1.0 mm, demonstrating improved robustness in real-world conditions.",
+      "abstract": "Brain cancer affects millions worldwide, and in nearly every clinical setting, doctors rely on magnetic resonance imaging (MRI) to diagnose and monitor gliomas. However, the current standard for tumor quantification through manual segmentation of multi-parametric MRI is time-consuming, requires expert radiologists, and is often infeasible in under-resourced healthcare systems. This problem is especially pronounced in low-income regions, where MRI scanners are of lower quality and radiology expertise is scarce, leading to incorrect segmentation and quantification. In addition, the number of acquired MRI scans in Africa is typically small. To address these challenges, the BraTS-Lighthouse 2025 Challenge focuses on robust tumor segmentation in sub-Saharan Africa (SSA), where resource constraints and image quality degradation introduce significant shifts. In this study, we present EMedNeXt -- an enhanced brain tumor segmentation framework based on MedNeXt V2 with deep supervision and optimized post-processing pipelines tailored for SSA. EMedNeXt introduces three key contributions: a larger region of interest, an improved nnU-Net v2-based architectural skeleton, and a robust model ensembling system. Evaluated on the hidden validation set, our solution achieved an average LesionWise DSC of 0.897 with an average LesionWise NSD of 0.541 and 0.84 at a tolerance of 0.5 mm and 1.0 mm, respectively.",
+      "authors": [
+        {
+          "name": "Ahmed Jaheen",
+          "orgs": [
+            "Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)"
+          ]
+        },
+        {
+          "name": "Abdelrahman Elsayed",
+          "orgs": [
+            "Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)"
+          ]
+        },
+        {
+          "name": "Damir Kim",
+          "orgs": [
+            "Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)"
+          ]
+        },
+        {
+          "name": "Matheus Scatolin",
+          "orgs": [
+            "Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)"
+          ]
+        },
+        {
+          "name": "Mohor Banerjee",
+          "orgs": [
+            "Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)"
+          ]
+        },
+        {
+          "name": "Qiankun Ji",
+          "orgs": [
+            "Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)"
+          ]
+        },
+        {
+          "name": "Hu Wang",
+          "orgs": [
+            "Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)"
+          ]
+        },
+        {
+          "name": "Sarim Hashmi",
+          "orgs": [
+            "Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)"
+          ]
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Mohammad Yaqub",
+          "orgs": [
+            "Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2507.23256v3",
+      "date": "2025-07-31T05:30:19Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV",
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "1201.1422",
+      "score": 12.040272,
+      "title": "Minutiae Extraction from Fingerprint Images - a Review",
+      "tldr": "This survey reviews minutiae extraction techniques from fingerprint images, covering binarized and gray-scale methods, providing a systematic taxonomy and highlighting challenges in degraded image processing.",
+      "abstract": "Fingerprints are the oldest and most widely used form of biometric identification. Everyone is known to have unique, immutable fingerprints. As most Automatic Fingerprint Recognition Systems are based on local ridge features known as minutiae, marking minutiae accurately and rejecting false ones is very important. However, fingerprint images get degraded and corrupted due to variations in skin and impression conditions. Thus, image enhancement techniques are employed prior to minutiae extraction. A critical step in automatic fingerprint matching is to reliably extract minutiae from the input fingerprint images. This paper presents a review of a large number of techniques present in the literature for extracting fingerprint minutiae. The techniques are broadly classified as those working on binarized images and those that work on gray scale images directly.",
+      "authors": [
+        {
+          "name": "Roli Bansal",
+          "orgs": [
+            "Department of Computer Science, University of Delhi, New Delhi - 110001, India"
+          ]
+        },
+        {
+          "name": "Priti Sehgal",
+          "orgs": [
+            "Reader, Department of Computer Science, Keshav Mahavidyalaya, University of Delhi, Pitampura, New Delhi - 110034, India"
+          ]
+        },
+        {
+          "name": "Punam Bedi",
+          "orgs": [
+            "Associate Professor, Department of Computer Science, University of Delhi, New Delhi - 110001, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1201.1422v1",
+      "date": "2011-11-29T05:42:36Z",
+      "citation_count": 142,
+      "categories": [
+        "cs.CR",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2506.19208",
+      "score": 12.030802,
+      "title": "Ancient Script Image Recognition and Processing: A Review",
+      "tldr": "This paper reviews ancient script image recognition, addressing the challenge of recognizing diverse scripts with limited data and image degradation, by systematically analyzing logographic and phonographic scripts, introducing few-shot learning and noise-robust methods, and highlighting current limitations and future directions.",
+      "abstract": "Ancient scripts, e.g., Egyptian hieroglyphs, Oracle Bone Inscriptions, and Ancient Greek inscriptions, serve as vital carriers of human civilization, embedding invaluable historical and cultural information. Automating ancient script image recognition has gained importance, enabling large-scale interpretation and advancing research in archaeology and digital humanities. With the rise of deep learning, this field has progressed rapidly, with numerous script-specific datasets and models proposed. While these scripts vary widely, spanning phonographic systems with limited glyphs to logographic systems with thousands of complex symbols, they share common challenges and methodological overlaps. Moreover, ancient scripts face unique challenges, including imbalanced data distribution and image degradation, which have driven the development of various dedicated methods. This survey provides a comprehensive review of ancient script image recognition methods. We begin by categorizing existing studies based on script types and analyzing respective recognition methods, highlighting both their differences and shared strategies. We then focus on challenges unique to ancient scripts, systematically examining their impact and reviewing recent solutions, including few-shot learning and noise-robust techniques. Finally, we summarize current limitations and outline promising future directions. Our goal is to offer a structured, forward-looking perspective to support ongoing advancements in the recognition, interpretation, and decipherment of ancient scripts.",
+      "authors": [
+        {
+          "name": "Xiaolei Diao",
+          "orgs": [
+            "Queen Mary University of London",
+            "London",
+            "UK"
+          ]
+        },
+        {
+          "name": "Rite Bo",
+          "orgs": [
+            "Jilin University",
+            "Changchun",
+            "China"
+          ]
+        },
+        {
+          "name": "Yanling Xiao",
+          "orgs": [
+            "Jilin University",
+            "Changchun",
+            "China"
+          ]
+        },
+        {
+          "name": "Zhihan Zhou",
+          "orgs": [
+            "Jilin University",
+            "Changchun",
+            "China"
+          ]
+        },
+        {
+          "name": "Hao Xu",
+          "orgs": [
+            "Jilin University",
+            "Changchun",
+            "China"
+          ]
+        },
+        {
+          "name": "Chuntao Li",
+          "orgs": [
+            "Jilin University",
+            "Changchun",
+            "China"
+          ]
+        },
+        {
+          "name": "Massimo Poesio",
+          "orgs": [
+            "Queen Mary University of London",
+            "London",
+            "UK"
+          ]
+        },
+        {
+          "name": "Cédric M. John",
+          "orgs": [
+            "Queen Mary University of London",
+            "London",
+            "UK"
+          ]
+        },
+        {
+          "name": "Daqian Shi",
+          "orgs": [
+            "Queen Mary University of London",
+            "London",
+            "UK"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2506.19208v1",
+      "date": "2025-06-24T00:34:55Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2011.04137",
+      "score": 11.980591,
+      "title": "Automated data extraction of bar chart raster images",
+      "tldr": "This paper proposes an automated data extraction pipeline for bar chart raster images in medical research, addressing the challenge of efficiently extracting data from figures to support meta-analysis, particularly in AMD studies; it introduces a multistep approach combining figure extraction, text detection, and image disassembly with optical character recognition, achieving 91.8% agreement with manual extraction and 88.6% accuracy for Y-tick values; results show high accuracy in most categories but highlight issues with OCR errors and suggest potential improvements through deep learning models.",
+      "abstract": "Objective: To develop software utilizing optical character recognition toward the automatic extraction of data from bar charts for meta-analysis. Methods: We utilized a multistep data extraction approach that included figure extraction, text detection, and image disassembly. PubMed Central papers that were processed in this manner included clinical trials regarding macular degeneration, a disease causing blindness with a heavy disease burden and many clinical trials. Bar chart characteristics were extracted in both an automated and manual fashion. These two approaches were then compared for accuracy. These characteristics were then compared using a Bland-Altman analysis. Results: Based on Bland-Altman analysis, 91.8% of data points were within the limits of agreement. By comparing our automated data extraction with manual data extraction, automated data extraction yielded the following accuracies: X-axis labels 79.5%, Y-tick values 88.6%, Y-axis label 88.6%, Bar value <5% error 88.0%. Discussion: Based on our analysis, we achieved an agreement between automated data extraction and manual data extraction. A major source of error was the incorrect delineation of 7s as 2s by optical character recognition library. We also would benefit from adding redundancy checks in the form of a deep neural network to boost our bar detection accuracy. Further refinements to this method are justified to extract tabulated and line graph data to facilitate automated data gathering for meta-analysis.",
+      "authors": [
+        {
+          "name": "Alex Carderas",
+          "orgs": [
+            "Department of Computer Science, Donald Bren School of Information and Computer Sciences, University of California, Irvine, Irvine, California, United States"
+          ]
+        },
+        {
+          "name": "Ye Yuan",
+          "orgs": [
+            "Department of Computer Science, Donald Bren School of Information and Computer Sciences, University of California, Irvine, Irvine, California, United States"
+          ]
+        },
+        {
+          "name": "Itamar Livnat",
+          "orgs": [
+            "Department of Ophthalmology, Gavin Herbert Eye Institute, University of California, Irvine, Irvine, California, United States"
+          ]
+        },
+        {
+          "name": "Rosita Saul",
+          "orgs": [
+            "Department of Biological Sciences, Schmid College of Science and Technology, Chapman University, Orange, California, United States"
+          ]
+        },
+        {
+          "name": "Gabrielle Montes De Oca",
+          "orgs": [
+            "Department of Biological Sciences, Schmid College of Science and Technology, Chapman University, Orange, California, United States"
+          ]
+        },
+        {
+          "name": "Kai Zheng",
+          "orgs": [
+            "Department of Informatics, Donald Bren School of Information and Computer Sciences, University of California, Irvine, Irvine, California, United States"
+          ]
+        },
+        {
+          "name": "Andrew W. Browne",
+          "orgs": [
+            "Department of Ophthalmology, Gavin Herbert Eye Institute, University of California, Irvine, Irvine, California, United States"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2011.04137v1",
+      "date": "2020-11-09T01:45:36Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.IR"
+      ]
+    },
+    {
+      "arxiv_id": "2511.17300",
+      "score": 11.968088,
+      "title": "MolSight: Optical Chemical Structure Recognition with SMILES Pretraining, Multi-Granularity Learning and Reinforcement Learning",
+      "tldr": "This paper presents MolSight, a three-stage OCSR framework addressing stereochemical recognition challenges in chemical images by integrating SMILES pretraining, multi-granularity fine-tuning, and reinforcement learning; it introduces Stereo-200k dataset and achieves state-of-the-art performance in accuracy and robustness for stereomolecular recognition.",
+      "abstract": "Optical Chemical Structure Recognition (OCSR) plays a pivotal role in modern chemical informatics, enabling the automated conversion of chemical structure images from scientific literature, patents, and educational materials into machine-readable molecular representations. This capability is essential for large-scale chemical data mining, drug discovery pipelines, and Large Language Model (LLM) applications in related domains. However, existing OCSR systems face significant challenges in accurately recognizing stereochemical information due to the subtle visual cues that distinguish stereoisomers, such as wedge and dash bonds, ring conformations, and spatial arrangements. To address these challenges, we propose MolSight, a comprehensive learning framework for OCSR that employs a three-stage training paradigm. In the first stage, we conduct pre-training on large-scale but noisy datasets to endow the model with fundamental perception capabilities for chemical structure images. In the second stage, we perform multi-granularity fine-tuning using datasets with richer supervisory signals, systematically exploring how auxiliary tasks-specifically chemical bond classification and atom localization-contribute to molecular formula recognition. Finally, we employ reinforcement learning for post-training optimization and introduce a novel stereochemical structure dataset. Remarkably, we find that even with MolSight's relatively compact parameter size, the Group Relative Policy Optimization (GRPO) algorithm can further enhance the model's performance on stereomolecular. Through extensive experiments across diverse datasets, our results demonstrate that MolSight achieves state-of-the-art performance in (stereo)chemical optical structure recognition.",
+      "authors": [
+        {
+          "name": "Wenyu Liu",
+          "orgs": []
+        },
+        {
+          "name": "Xinggang Wang",
+          "orgs": []
+        },
+        {
+          "name": "Bin Feng",
+          "orgs": []
+        },
+        {
+          "name": "Wenrui Zhang",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2511.17300v1",
+      "date": "2025-11-21",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    }
+  ]
+}

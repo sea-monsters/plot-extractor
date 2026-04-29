@@ -1,0 +1,10 @@
+=== LineFormer (2305.01837) ===
+Heading: Jay LalCorresponding AuthorAditya MitkariJoint Second AuthorshipMahesh Bhosale22footnotemark: 2David Doermann
+
+Abstract:
+
+
+Introduction:
+Automated parsing of chart images has been of interest to the research community for some time now. Some of the downstream applications include the generation of new visualizations*[[20](#bib.bib20 "")]*, textual summarization*[[10](#bib.bib10 "")]*, retrieval*[[26](#bib.bib26 "")]* and visual question answering*[[19](#bib.bib19 "")]*. Although the related text and image recognition fields have matured, research on understanding figures, such as charts, is still developing. Most charts, such as bar, pie, lines, scatter, etc., typically contain textual elements (title, axis labels, legend labels) and graphical elements (axis, tick marks, graph/plot). Like OCR is often a precursor to any document understanding task, data extraction from these chart images is a critical component of the figure analysis process.
+
+For this study, we have chosen to focus on the analysis of line charts. Despite their widespread use, line charts are among the most difficult to parse accurately (see Figs. [4](#

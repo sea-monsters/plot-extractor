@@ -1,0 +1,497 @@
+{
+  "status": "success",
+  "total_count": 44,
+  "result": [
+    {
+      "arxiv_id": "2409.06704",
+      "score": 13.388476,
+      "title": "GeoCalib: Learning Single-image Calibration with Geometric Optimization",
+      "tldr": "This paper introduces GeoCalib, a deep neural network that combines geometric optimization with deep learning to estimate camera parameters from single images, addressing the limitations of classical methods in unstructured environments and the generalization issues of learned approaches; it leverages 3D geometry through an end-to-end optimization process, achieving higher robustness and accuracy than existing methods; experiments show GeoCalib outperforms classical and learned approaches, with improved interpretability and failure detection capabilities.",
+      "abstract": "From a single image, visual cues can help deduce intrinsic and extrinsic camera parameters like the focal length and the gravity direction. This single-image calibration can benefit various downstream applications like image editing and 3D mapping. Current approaches to this problem are based on either classical geometry with lines and vanishing points or on deep neural networks trained end-to-end. The learned approaches are more robust but struggle to generalize to new environments and are less accurate than their classical counterparts. We hypothesize that they lack the constraints that 3D geometry provides. In this work, we introduce GeoCalib, a deep neural network that leverages universal rules of 3D geometry through an optimization process. GeoCalib is trained end-to-end to estimate camera parameters and learns to find useful visual cues from the data. Experiments on various benchmarks show that GeoCalib is more robust and more accurate than existing classical and learned approaches. Its internal optimization estimates uncertainties, which help flag failure cases and benefit downstream applications like visual localization. The code and trained models are publicly available at https://github.com/cvg/GeoCalib.",
+      "authors": [
+        {
+          "name": "Alexander Veicht",
+          "orgs": []
+        },
+        {
+          "name": "Paul-Edouard Sarlin",
+          "orgs": []
+        },
+        {
+          "name": "Philipp Lindenberger",
+          "orgs": []
+        },
+        {
+          "name": "Marc Pollefeys",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2409.06704v2",
+      "date": "2024-09-10T17:59:55Z",
+      "citation_count": 29,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2604.04554",
+      "score": 12.539086,
+      "title": "Relational Epipolar Graphs for Robust Relative Camera Pose Estimation",
+      "tldr": "This paper proposes a relational epipolar graph framework for robust relative camera pose estimation in Visual SLAM, addressing the challenge of noisy correspondences by integrating geometric reasoning and graph-based learning, contributing a novel formulation, geometry-aware graph construction, and spectral relational inference, showing improved robustness to dense noise and large baseline variation with SOTA performance on ATE, APE, and APE-R metrics.",
+      "abstract": "A key component of Visual Simultaneous Localization and Mapping (VSLAM) is estimating relative camera poses using matched keypoints. Accurate estimation is challenged by noisy correspondences. Classical methods rely on stochastic hypothesis sampling and iterative estimation, while learning-based methods often lack explicit geometric structure. In this work, we reformulate relative pose estimation as a relational inference problem over epipolar correspondence graphs, where matched keypoints are nodes and nearby ones are connected by edges. Graph operations such as pruning, message passing, and pooling estimate a quaternion rotation, translation vector, and the Essential Matrix (EM). Minimizing a loss comprising (i) $\\mathcal{L}_2$ differences with ground truth (GT), (ii) Frobenius norm between estimated and GT EMs, (iii) singular value differences, (iv) heading angle differences, and (v) scale differences, yields the relative pose between image pairs. The dense detector-free method LoFTR is used for matching. Experiments on indoor and outdoor benchmarks show improved robustness to dense noise and large baseline variation compared to classical and learning-guided approaches, highlighting the effectiveness of global relational consensus.",
+      "authors": [
+        {
+          "name": "Prateeth Rao",
+          "orgs": [
+            "International Institute of Information Technology Bangalore"
+          ]
+        },
+        {
+          "name": "Sachit Rao",
+          "orgs": [
+            "International Institute of Information Technology Bangalore"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2604.04554v1",
+      "date": "2026-04-06",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2008.01574",
+      "score": 12.456264,
+      "title": "Revisiting Robust Model Fitting Using Truncated Loss",
+      "tldr": "This paper addresses robust model fitting in low-level vision, aiming to improve inlier identification and model estimation by using truncated loss based SIME formulation, which adapts to linear and nonlinear models and achieves lower residual than MC; it introduces alternating minimization and SDR embedded algorithms, and shows significant performance improvements over RANSAC and state-of-the-art methods in 2D/3D registration at high outlier ratios.",
+      "abstract": "Robust fitting is a fundamental problem in low-level vision, which is typically achieved by maximum consensus (MC) estimators to identify inliers first or by M-estimators directly. While these two methods are discriminately preferred in different applications, truncated loss based M-estimators are similar to MC as they can also identify inliers. This work revisits a formulation that achieves simultaneous inlier identification and model estimation (SIME) using truncated loss. It has a generalized form adapts to both linear and nonlinear residual models. We show that as SIME takes fitting residual into account in finding inliers, its lowest achievable residual in model fitting is lower than that of MC robust fitting. Then, an alternating minimization (AM) algorithm is employed to solve the SIME formulation. Meanwhile, a semidefinite relaxation (SDR) embedded AM algorithm is developed in order to ease the high nonconvexity of the SIME formulation. Furthermore, the new algorithms are applied to various 2D/3D registration problems. Experimental results show that the new algorithms significantly outperform RANSAC and deterministic approximate MC methods at high outlier ratios. Besides, in rotation and Euclidean registration problems, the new algorithms also compare favorably with state-of-the-art registration methods, especially in high noise and outliers. Code is available at \\textit{https://github.com/FWen/mcme.git}.",
+      "authors": [
+        {
+          "name": "Fei Wen",
+          "orgs": [
+            "Department of Electronic Engineering, Shanghai Jiao Tong University, Shanghai, China, 200240"
+          ]
+        },
+        {
+          "name": "Hewen Wei",
+          "orgs": [
+            "Shanghai branch of the Southwest Institute of Electronics and Telecommunication Technology of China, Shanghai, China, 200434"
+          ]
+        },
+        {
+          "name": "Yipeng Liu",
+          "orgs": [
+            "School of Electronic Engineering, University of Electronic Science and Technology of China, Chengdu, China, 611731"
+          ]
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Peilin Liu",
+          "orgs": [
+            "Department of Electronic Engineering, Shanghai Jiao Tong University, Shanghai, China, 200240"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2008.01574v2",
+      "date": "2020-08-04T14:10:41Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1812.08351",
+      "score": 11.9052105,
+      "title": "Robustness Meets Deep Learning: An End-to-End Hybrid Pipeline for Unsupervised Learning of Egomotion",
+      "tldr": "This paper proposes an end-to-end hybrid pipeline for unsupervised egomotion learning, addressing the challenge of robust camera pose estimation in dynamic scenes by combining deep learning predictions with RANSAC outlier rejection, contributing a novel method achieving state-of-the-art results on KITTI with robustness to independently moving objects.",
+      "abstract": "In this work, we propose a method that combines unsupervised deep learning predictions for optical flow and monocular disparity with a model based optimization procedure for instantaneous camera pose. Given the flow and disparity predictions from the network, we apply a RANSAC outlier rejection scheme to find an inlier set of flows and disparities, which we use to solve for the relative camera pose in a least squares fashion. We show that this pipeline is fully differentiable, allowing us to combine the pose with the network outputs as an additional unsupervised training loss to further refine the predicted flows and disparities. This method not only allows us to directly regress relative pose from the network outputs, but also automatically segments away pixels that do not fit the rigid scene assumptions that many unsupervised structure from motion methods apply, such as on independently moving objects. We evaluate our method on the KITTI dataset, and demonstrate state of the art results, even in the presence of challenging independently moving objects.",
+      "authors": [
+        {
+          "name": "Alex Zihao Zhu",
+          "orgs": [
+            "University of Pennsylvania"
+          ]
+        },
+        {
+          "name": "Wenxin Liu",
+          "orgs": [
+            "University of Pennsylvania"
+          ]
+        },
+        {
+          "name": "Ziyun Wang",
+          "orgs": [
+            "University of Pennsylvania"
+          ]
+        },
+        {
+          "name": "Vijay Kumar",
+          "orgs": [
+            "University of Pennsylvania"
+          ]
+        },
+        {
+          "name": "Kostas Daniilidis",
+          "orgs": [
+            "University of Pennsylvania"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1812.08351v3",
+      "date": "2018-12-20T03:51:47Z",
+      "citation_count": 17,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2511.14286",
+      "score": 11.852103,
+      "title": "NeuralBoneReg: A Novel Self-Supervised Method for Robust and Accurate Multi-Modal Bone Surface Registration",
+      "tldr": "This paper addresses the challenge of robust and accurate multi-modal bone surface registration in computer- and robot-assisted orthopedic surgery, proposing NeuralBoneReg, a self-supervised framework using implicit neural representations and parallel hypothesis optimization, achieving mean RRE/RTE of 1.68°/1.86 mm on UltraBones100k, 1.88°/1.89 mm on UltraBones-Hip, and 3.79°/2.45 mm on SpineDepth, with the UltraBones-Hip dataset made publicly available.",
+      "abstract": "In computer- and robot-assisted orthopedic surgery (CAOS), patient-specific surgical plans derived from preoperative imaging define target locations and implant trajectories. During surgery, these plans must be accurately transferred, relying on precise cross-registration between preoperative and intraoperative data. However, substantial modality heterogeneity across imaging modalities makes this registration challenging and error-prone. Robust, automatic, and modality-agnostic bone surface registration is therefore clinically important. We propose NeuralBoneReg, a self-supervised, surface-based framework that registers bone surfaces using 3D point clouds as a modality-agnostic representation. NeuralBoneReg includes two modules: an implicit neural unsigned distance field (UDF) that learns the preoperative bone model, and an MLP-based registration module that performs global initialization and local refinement by generating transformation hypotheses to align the intraoperative point cloud with the neural UDF. Unlike SOTA supervised methods, NeuralBoneReg operates in a self-supervised manner, without requiring inter-subject training data. We evaluated NeuralBoneReg against baseline methods on two publicly available multi-modal datasets: a CT-ultrasound dataset of the fibula and tibia (UltraBones100k) and a CT-RGB-D dataset of spinal vertebrae (SpineDepth). The evaluation also includes a newly introduced CT--ultrasound dataset of cadaveric subjects containing femur and pelvis (UltraBones-Hip), which will be made publicly available. NeuralBoneReg matches or surpasses existing methods across all datasets, achieving mean RRE/RTE of 1.68{\\\\deg}/1.86 mm on UltraBones100k, 1.88{\\\\deg}/1.89 mm on UltraBones-Hip, and 3.79{\\\\deg}/2.45 mm on SpineDepth. These results demonstrate strong generalizability across anatomies and modalities, providing robust and accurate cross-modal alignment for CAOS.",
+      "authors": [],
+      "url": "https://arxiv.org/abs/2511.14286v1",
+      "date": "2025-11-18",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1603.03856",
+      "score": 11.645757,
+      "title": "Real-time 3D scene description using Spheres, Cones and Cylinders",
+      "tldr": "This paper presents a real-time algorithm for extracting 3D geometric primitives (cylinders, cones, spheres) from range data to improve 3D scene description in robotics, addressing the limitation of raw data representations; it uses a three-stage approach with O(1) model updates and 1.5D sub-space inspection, achieving 30 frames per second on Kinect data; it enables efficient pre-processing for tasks like SLAM and feature-based mapping.",
+      "abstract": "The paper describes a novel real-time algorithm for finding 3D geometric primitives (cylinders, cones and spheres) from 3D range data. In its core, it performs a fast model fitting with a model update in constant time (O(1)) for each new data point added to the model. We use a three stage approach.The first step inspects 1.5D sub spaces, to find ellipses. The next stage uses these ellipses as input by examining their neighborhood structure to form sets of candidates for the 3D geometric primitives. Finally, candidate ellipses are fitted to the geometric primitives. The complexity for point processing is O(n); additional time of lower order is needed for working on significantly smaller amount of mid-level objects. This allows the approach to process 30 frames per second on Kinect depth data, which suggests this approach as a pre-processing step for 3D real-time higher level tasks in robotics, like tracking or feature based mapping.",
+      "authors": [
+        {
+          "name": "Kristiyan Georgiev",
+          "orgs": [
+            "Department of Computer and Information Science, Temple University, Philadelphia, PA, 19107, USA"
+          ]
+        },
+        {
+          "name": "Mo'taz Al-Hami",
+          "orgs": [
+            "Department of Computer and Information Science, Temple University, Philadelphia, PA, 19107, USA"
+          ]
+        },
+        {
+          "name": "Rolf Lakaemper",
+          "orgs": [
+            "Department of Computer and Information Science, Temple University, Philadelphia, PA, 19107, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1603.03856v1",
+      "date": "2016-03-12T04:03:46Z",
+      "citation_count": 7,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2603.12936",
+      "score": 11.642121,
+      "title": "MotionAnymesh: Physics-Grounded Articulation for Simulation-Ready Digital Twins",
+      "tldr": "This paper proposes MotionAnymesh, a zero-shot framework addressing the gap in converting static 3D meshes into physically executable digital twins by eliminating kinematic hallucinations and ensuring collision-free articulation through SP4D priors and physics-constrained optimization, significantly outperforming baselines in geometric precision and dynamic physical executability.",
+      "abstract": "Converting static 3D meshes into interactable articulated assets is crucial for embodied AI and robotic simulation. However, existing zero-shot pipelines struggle with complex assets due to a critical lack of physical grounding. Specifically, ungrounded Vision-Language Models (VLMs) frequently suffer from kinematic hallucinations, while unconstrained joint estimation inevitably leads to catastrophic mesh inter-penetration during physical simulation. To bridge this gap, we propose MotionAnymesh, an automated zero-shot framework that seamlessly transforms unstructured static meshes into simulation-ready digital twins. Our method features a kinematic-aware part segmentation module that grounds VLM reasoning with explicit SP4D physical priors, effectively eradicating kinematic hallucinations. Furthermore, we introduce a geometry-physics joint estimation pipeline that combines robust type-aware initialization with physics-constrained trajectory optimization to rigorously guarantee collision-free articulation. Extensive experiments demonstrate that MotionAnymesh significantly outperforms state-of-the-art baselines in both geometric precision and dynamic physical executability, providing highly reliable assets for downstream applications.",
+      "authors": [
+        {
+          "name": "WenBo Xu",
+          "orgs": [
+            "Hefei University of Technology"
+          ]
+        },
+        {
+          "name": "Liu Liu",
+          "orgs": [
+            "The Hong Kong Polytechnic University"
+          ]
+        },
+        {
+          "name": "Li Zhang",
+          "orgs": [
+            "Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Dan Guo",
+          "orgs": [
+            "The Hong Kong Polytechnic University"
+          ]
+        },
+        {
+          "name": "RuoNan Liu",
+          "orgs": [
+            "The Hong Kong Polytechnic University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2603.12936v1",
+      "date": "2026-03-13",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "1709.09550",
+      "score": 11.632427,
+      "title": "Scale Adaptive Clustering of Multiple Structures",
+      "tldr": "This paper proposes MISRE, a scale adaptive clustering method for multiple inlier structures without parameter tuning, innovating with adaptive scale estimation, no threshold requirements, and strength-based classification; it achieves robust and efficient segmentation across synthetic and real datasets, outperforming existing methods in handling varying noise levels and multiple structures.",
+      "abstract": "We propose the segmentation of noisy datasets into Multiple Inlier Structures with a new Robust Estimator (MISRE). The scale of each individual structure is estimated adaptively from the input data and refined by mean shift, without tuning any parameter in the process, or manually specifying thresholds for different estimation problems. Once all the data points were classified into separate structures, these structures are sorted by their densities with the strongest inlier structures coming out first. Several 2D and 3D synthetic and real examples are presented to illustrate the efficiency, robustness and the limitations of the MISRE algorithm.",
+      "authors": [
+        {
+          "name": "Xiang Yang",
+          "orgs": []
+        },
+        {
+          "name": "Peter Meer",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1709.09550v1",
+      "date": "2017-09-26T15:15:52Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2509.23038",
+      "score": 11.563384,
+      "title": "GeLoc3r: Enhancing Relative Camera Pose Regression with Geometric Consistency Regularization",
+      "tldr": "This paper addresses the speed-accuracy dilemma in relative camera pose estimation by introducing GeLoc3r, which uses Geometric Consistency Regularization during training to enhance regression accuracy without inference-time geometric computation, achieving 40.45% AUC@5° on CO3Dv2 and outperforming ReLoc3R across benchmarks, demonstrating improved accuracy while maintaining fast inference speeds.",
+      "abstract": "Prior ReLoc3R achieves breakthrough performance with fast 25ms inference and state-of-the-art regression accuracy, yet our analysis reveals subtle geometric inconsistencies in its internal representations that prevent reaching the precision ceiling of correspondence-based methods like MASt3R (which require 300ms per pair). In this work, we present GeLoc3r, a novel approach to relative camera pose estimation that enhances pose regression methods through Geometric Consistency Regularization (GCR). GeLoc3r overcomes the speed-accuracy dilemma by training regression networks to produce geometrically consistent poses without inference-time geometric computation. During training, GeLoc3r leverages ground-truth depth to generate dense 3D-2D correspondences, weights them using a FusionTransformer that learns correspondence importance, and computes geometrically-consistent poses via weighted RANSAC. This creates a consistency loss that transfers geometric knowledge into the regression network. Unlike FAR method which requires both regression and geometric solving at inference, GeLoc3r only uses the enhanced regression head at test time, maintaining ReLoc3R's fast speed and approaching MASt3R's high accuracy. On challenging benchmarks, GeLoc3r consistently outperforms ReLoc3R, achieving significant improvements including 40.45% vs. 34.85% AUC@5{\\deg} on the CO3Dv2 dataset (16% relative improvement), 68.66% vs. 66.70% AUC@5{\\deg} on RealEstate10K, and 50.45% vs. 49.60% on MegaDepth1500. By teaching geometric consistency during training rather than enforcing it at inference, GeLoc3r represents a paradigm shift in how neural networks learn camera geometry, achieving both the speed of regression and the geometric understanding of correspondence methods.",
+      "authors": [
+        {
+          "name": "Jingxing Li",
+          "orgs": [
+            "School of Electrical, Computer and Energy Engineering",
+            "Arizona State University"
+          ]
+        },
+        {
+          "name": "Yongjae Lee",
+          "orgs": [
+            "School of Electrical, Computer and Energy Engineering",
+            "Arizona State University"
+          ]
+        },
+        {
+          "name": "Deliang Fan",
+          "orgs": [
+            "School of Electrical, Computer and Energy Engineering",
+            "Arizona State University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2509.23038v1",
+      "date": "2025-09-27T01:21:38Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2506.04803",
+      "score": 11.521235,
+      "title": "SupeRANSAC: One RANSAC to Rule Them All",
+      "tldr": "This paper presents SupeRANSAC, a unified RANSAC framework addressing the challenge of consistent accuracy across vision tasks like homography and pose estimation, by integrating problem-specific optimizations and achieving 6 AUC points improvement on average for fundamental matrix estimation, with state-of-the-art results on 11 datasets.",
+      "abstract": "Robust estimation is a cornerstone in computer vision, particularly for tasks like Structure-from-Motion and Simultaneous Localization and Mapping. RANSAC and its variants are the gold standard for estimating geometric models (e.g., homographies, relative/absolute poses) from outlier-contaminated data. Despite RANSAC's apparent simplicity, achieving consistently high performance across different problems is challenging. While recent research often focuses on improving specific RANSAC components (e.g., sampling, scoring), overall performance is frequently more influenced by the \"bells and whistles\" (i.e., the implementation details and problem-specific optimizations) within a given library. Popular frameworks like OpenCV and PoseLib demonstrate varying performance, excelling in some tasks but lagging in others. We introduce SupeRANSAC, a novel unified RANSAC pipeline, and provide a detailed analysis of the techniques that make RANSAC effective for specific vision tasks, including homography, fundamental/essential matrix, and absolute/rigid pose estimation. SupeRANSAC is designed for consistent accuracy across these tasks, improving upon the best existing methods by, for example, 6 AUC points on average for fundamental matrix estimation. We demonstrate significant performance improvements over the state-of-the-art on multiple problems and datasets. Code: https://github.com/danini/superansac",
+      "authors": [
+        {
+          "name": "Daniel Barath",
+          "orgs": [
+            "ETH Zurich",
+            "Switzerland"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2506.04803v1",
+      "date": "2025-06-05T09:30:27Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2011.07138",
+      "score": 11.400774,
+      "title": "Tracking Algorithms for TPCs using Consensus-Based Robust Estimators",
+      "tldr": "This paper presents a tracking algorithm using consensus-robust estimators for Time Projection Chambers, addressing the challenge of accurate inlier-outlier detection in particle tracking; it improves upon RANSAC with modified random sampling and clustering, offering better performance in fitting short tracks; experimental results show successful application across AT-TPC, ACTAR, and TexAT detectors.",
+      "abstract": "A tracking algorithm based on consensus-robust estimators was implemented for the analysis of experiments with time-projection chambers. In this work, few algorithms beyond RANSAC were successfully tested using experimental data taken with the AT-TPC, ACTAR and TexAT detectors. The present tracking algorithm has a better inlier-outlier detection than the simple sequential RANSAC routine. Modifications in the random sampling and clustering were included to improve the tracking efficiency. Very good results were obtained in all the test cases, in particular for fitting short tracks in the detection limit.",
+      "authors": [
+        {
+          "name": "J. C. Zamora",
+          "orgs": [
+            "Instituto de Fisica, Universidade de Sao Paulo, Sao Paulo 05508-090, Brazil"
+          ]
+        },
+        {
+          "name": "G. F. Fortino",
+          "orgs": [
+            "Instituto de Fisica, Universidade de Sao Paulo, Sao Paulo 05508-090, Brazil"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2011.07138v1",
+      "date": "2020-11-13T21:43:33Z",
+      "citation_count": 12,
+      "categories": [
+        "nucl-ex",
+        "physics.comp-ph",
+        "physics.data-an",
+        "physics.ins-det"
+      ]
+    },
+    {
+      "arxiv_id": "1903.10175",
+      "score": 11.380888,
+      "title": "A Novel Method for the Absolute Pose Problem with Pairwise Constraints",
+      "tldr": "This paper addresses the absolute pose estimation problem in computer vision, aiming to solve it efficiently despite outliers by introducing a globally optimal algorithm with linear complexity in correspondences; it uses pairwise constraints to decouple rotation and translation subproblems, solved via branch-and-bound methods; the method achieves robustness and global optimality, offering significant improvements in efficiency and accuracy for real-world applications.",
+      "abstract": "Absolute pose estimation is a fundamental problem in computer vision, and it is a typical parameter estimation problem, meaning that efforts to solve it will always suffer from outlier-contaminated data. Conventionally, for a fixed dimensionality d and the number of measurements N, a robust estimation problem cannot be solved faster than O(N^d). Furthermore, it is almost impossible to remove d from the exponent of the runtime of a globally optimal algorithm. However, absolute pose estimation is a geometric parameter estimation problem, and thus has special constraints. In this paper, we consider pairwise constraints and propose a globally optimal algorithm for solving the absolute pose estimation problem. The proposed algorithm has a linear complexity in the number of correspondences at a given outlier ratio. Concretely, we first decouple the rotation and the translation subproblems by utilizing the pairwise constraints, and then we solve the rotation subproblem using the branch-and-bound algorithm. Lastly, we estimate the translation based on the known rotation by using another branch-and-bound algorithm. The advantages of our method are demonstrated via thorough testing on both synthetic and real-world data",
+      "authors": [
+        {
+          "name": "Yinlong Liu",
+          "orgs": [
+            "Technische Universität München"
+          ]
+        },
+        {
+          "name": "Xuechen Li",
+          "orgs": [
+            "Digital Medical Research Center, School of Basic Medical Sciences, Fudan University",
+            "Shanghai Key Laboratory of Medical Imaging Computing and Computer Assisted Intervention"
+          ]
+        },
+        {
+          "name": "Manning Wang",
+          "orgs": [
+            "Digital Medical Research Center, School of Basic Medical Sciences, Fudan University",
+            "Shanghai Key Laboratory of Medical Imaging Computing and Computer Assisted Intervention"
+          ]
+        },
+        {
+          "name": "Guang Chen",
+          "orgs": [
+            "Digital Medical Research Center, School of Basic Medical Sciences, Fudan University",
+            "Tongji University"
+          ]
+        },
+        {
+          "name": "Zhijian Song",
+          "orgs": [
+            "Digital Medical Research Center, School of Basic Medical Sciences, Fudan University",
+            "Shanghai Key Laboratory of Medical Imaging Computing and Computer Assisted Intervention",
+            "Tongji University"
+          ]
+        },
+        {
+          "name": "Alois Knoll",
+          "orgs": [
+            "Technische Universität München"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1903.10175v2",
+      "date": "2019-03-25T08:37:49Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2306.10988",
+      "score": 11.380346,
+      "title": "Tame a Wild Camera: In-the-Wild Monocular Camera Calibration",
+      "tldr": "This paper addresses the challenge of monocular camera calibration for in-the-wild images, aiming to calibrate the complete 4 DoF intrinsic parameters without assumptions, by leveraging a novel 3D monocular prior called the incidence field; it introduces a RANSAC-based method to recover intrinsic parameters from estimated incidence fields and demonstrates superior performance on synthetic and zero-shot datasets, enabling applications in image manipulation detection, uncalibrated pose estimation, and 3D sensing.",
+      "abstract": "3D sensing for monocular in-the-wild images, e.g., depth estimation and 3D object detection, has become increasingly important. However, the unknown intrinsic parameter hinders their development and deployment. Previous methods for the monocular camera calibration rely on specific 3D objects or strong geometry prior, such as using a checkerboard or imposing a Manhattan World assumption. This work solves the problem from the other perspective by exploiting the monocular 3D prior. Our method is assumption-free and calibrates the complete $4$ Degree-of-Freedom (DoF) intrinsic parameters. First, we demonstrate intrinsic is solved from two well-studied monocular priors, i.e., monocular depthmap, and surface normal map. However, this solution imposes a low-bias and low-variance requirement for depth estimation. Alternatively, we introduce a novel monocular 3D prior, the incidence field, defined as the incidence rays between points in 3D space and pixels in the 2D imaging plane. The incidence field is a pixel-wise parametrization of the intrinsic invariant to image cropping and resizing. With the estimated incidence field, a robust RANSAC algorithm recovers intrinsic. We demonstrate the effectiveness of our method by showing superior performance on synthetic and zero-shot testing datasets. Beyond calibration, we demonstrate downstream applications in image manipulation detection & restoration, uncalibrated two-view pose estimation, and 3D sensing. Codes, models, and data will be held in https://github.com/ShngJZ/WildCamera.",
+      "authors": [
+        {
+          "name": "Shengjie Zhu",
+          "orgs": [
+            "Department of Computer Science and Engineering, Michigan State University, East Lansing, MI, 48824"
+          ]
+        },
+        {
+          "name": "Abhinav Kumar",
+          "orgs": [
+            "Department of Computer Science and Engineering, Michigan State University, East Lansing, MI, 48824"
+          ]
+        },
+        {
+          "name": "Masa Hu",
+          "orgs": [
+            "Department of Computer Science and Engineering, Michigan State University, East Lansing, MI, 48824"
+          ]
+        },
+        {
+          "name": "Xiaoming Liu",
+          "orgs": [
+            "Department of Computer Science and Engineering, Michigan State University, East Lansing, MI, 48824"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2306.10988v2",
+      "date": "2023-06-19T14:55:26Z",
+      "citation_count": 36,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1802.07045",
+      "score": 11.375372,
+      "title": "Latent RANSAC",
+      "tldr": "This paper introduces Latent RANSAC, a method that evaluates RANSAC hypotheses in constant time by leveraging latent parameter clustering and Random Grid hashing, enabling efficient robust estimation for tasks like 3D alignment and camera localization with improved efficiency and accuracy, achieving state-of-the-art results on the Redwood dataset.",
+      "abstract": "We present a method that can evaluate a RANSAC hypothesis in constant time, i.e. independent of the size of the data. A key observation here is that correct hypotheses are tightly clustered together in the latent parameter domain. In a manner similar to the generalized Hough transform we seek to find this cluster, only that we need as few as two votes for a successful detection. Rapidly locating such pairs of similar hypotheses is made possible by adapting the recent \"Random Grids\" range-search technique. We only perform the usual (costly) hypothesis verification stage upon the discovery of a close pair of hypotheses. We show that this event rarely happens for incorrect hypotheses, enabling a significant speedup of the RANSAC pipeline. The suggested approach is applied and tested on three robust estimation problems: camera localization, 3D rigid alignment and 2D-homography estimation. We perform rigorous testing on both synthetic and real datasets, demonstrating an improvement in efficiency without a compromise in accuracy. Furthermore, we achieve state-of-the-art 3D alignment results on the challenging \"Redwood\" loop-closure challenge.",
+      "authors": [
+        {
+          "name": "Simon Korman",
+          "orgs": [
+            "Weizmann Institute of Science",
+            "Israel"
+          ]
+        },
+        {
+          "name": "Roee Litman",
+          "orgs": [
+            "General Motors",
+            "Israel"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1802.07045v2",
+      "date": "2018-02-20T10:16:11Z",
+      "citation_count": 30,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2106.03239",
+      "score": 8.08422,
+      "title": "Constrained Ellipse Fitting for Efficient Parameter Mapping with Phase-cycled bSSFP MRI",
+      "tldr": "This paper addresses the challenge of efficient and accurate parameter estimation in phase-cycled bSSFP MRI, aiming to reduce the number of acquisitions needed while mitigating field inhomogeneity artifacts; it introduces a constrained ellipse fitting method (CELF) with geometric constraints and dictionary-based identification, enabling accurate T1, T2, off-resonance, and on-resonant signal maps with N=4 acquisitions; results show CELF produces banding-free maps with N=4 but relaxation parameter estimates have biases from microstructural sensitivity.",
+      "abstract": "Balanced steady-state free precession (bSSFP) imaging enables high scan efficiency in MRI, but differs from conventional sequences in terms of elevated sensitivity to main field inhomogeneity and nonstandard T2/T1-weighted tissue contrast. To address these limitations, multiple bSSFP images of the same anatomy are commonly acquired with a set of different RF phase-cycling increments. Joint processing of phase-cycled acquisitions serves to mitigate sensitivity to field inhomogeneity. Recently phase-cycled bSSFP acquisitions were also leveraged to estimate relaxation parameters based on explicit signal models. While effective, these model-based methods often involve a large number of acquisitions (N~10-16), degrading scan efficiency. Here, we propose a new constrained ellipse fitting method (CELF) for parameter estimation with improved efficiency and accuracy in phase-cycled bSSFP MRI. CELF is based on the elliptical signal model framework for complex bSSFP signals; and it introduces geometrical constraints on ellipse properties to improve estimation efficiency, and dictionary-based identification to improve estimation accuracy. CELF generates maps of T1, T2, off-resonance and on-resonant bSSFP signal by employing a separate B1 map to mitigate sensitivity to flip angle variations. Our results indicate that CELF can produce accurate off-resonance and banding-free bSSFP maps with as few as N=4 acquisitions, while estimation accuracy for relaxation parameters is notably limited by biases from microstructural sensitivity of bSSFP imaging.",
+      "authors": [],
+      "url": "https://arxiv.org/pdf/2106.03239v3",
+      "date": "2021-06-06T20:36:58Z",
+      "citation_count": 5,
+      "categories": [
+        "eess.IV",
+        "physics.med-ph"
+      ]
+    }
+  ]
+}

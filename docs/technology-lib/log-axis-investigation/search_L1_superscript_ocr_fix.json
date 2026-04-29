@@ -1,0 +1,825 @@
+{
+  "status": "success",
+  "total_count": 59,
+  "result": [
+    {
+      "arxiv_id": "2510.04514",
+      "score": 15.698134,
+      "title": "ChartAgent: A Multimodal Agent for Visually Grounded Reasoning in Complex Chart Question Answering",
+      "tldr": "This paper introduces ChartAgent, a novel agentic framework for chart visual question answering that addresses the challenge of unannotated charts by using visual reasoning and specialized tools, achieving state-of-the-art accuracy with 16.07% absolute gain overall and 17.31% on numeric queries, and demonstrating effectiveness across diverse chart types and reasoning complexities.",
+      "abstract": "Recent multimodal LLMs have shown promise in chart-based visual question answering, but their performance declines sharply on unannotated charts-those requiring precise visual interpretation rather than relying on textual shortcuts. To address this, we introduce ChartAgent, a novel agentic framework that explicitly performs visual reasoning directly within the chart's spatial domain. Unlike textual chain-of-thought reasoning, ChartAgent iteratively decomposes queries into visual subtasks and actively manipulates and interacts with chart images through specialized actions such as drawing annotations, cropping regions (e.g., segmenting pie slices, isolating bars), and localizing axes, using a library of chart-specific vision tools to fulfill each subtask. This iterative reasoning process closely mirrors human cognitive strategies for chart comprehension. ChartAgent achieves state-of-the-art accuracy on the ChartBench and ChartX benchmarks, surpassing prior methods by up to 16.07% absolute gain overall and 17.31% on unannotated, numerically intensive queries. Furthermore, our analyses show that ChartAgent is (a) effective across diverse chart types, (b) achieves the highest scores across varying visual and reasoning complexity levels, and (c) serves as a plug-and-play framework that boosts performance across diverse underlying LLMs. Our work is among the first to demonstrate visually grounded reasoning for chart understanding using tool-augmented multimodal agents.",
+      "authors": [
+        {
+          "name": "Rachneet Kaur",
+          "orgs": [
+            "J.P. Morgan AI Research"
+          ]
+        },
+        {
+          "name": "Nishan Srishankar",
+          "orgs": [
+            "J.P. Morgan AI Research"
+          ]
+        },
+        {
+          "name": "Zhen Zeng",
+          "orgs": [
+            "J.P. Morgan AI Research"
+          ]
+        },
+        {
+          "name": "Sumitra Ganesh",
+          "orgs": [
+            "J.P. Morgan AI Research"
+          ]
+        },
+        {
+          "name": "Manuela Veloso",
+          "orgs": [
+            "J.P. Morgan AI Research"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2510.04514v2",
+      "date": "2025-10-06",
+      "citation_count": 1,
+      "categories": [
+        "cs.AI",
+        "cs.CE",
+        "cs.CL",
+        "cs.CV",
+        "stat.ME"
+      ]
+    },
+    {
+      "arxiv_id": "2408.04852",
+      "score": 15.203466,
+      "title": "MSG-Chart: Multimodal Scene Graph for ChartQA",
+      "tldr": "This paper addresses the challenge of ChartQA by proposing a multimodal scene graph to explicitly represent relationships between chart elements and their patterns, improving performance on benchmarks with structured data understanding and explicit spatial-semantic integration.",
+      "abstract": "Automatic Chart Question Answering (ChartQA) is challenging due to the complex distribution of chart elements with patterns of the underlying data not explicitly displayed in charts. To address this challenge, we design a joint multimodal scene graph for charts to explicitly represent the relationships between chart elements and their patterns. Our proposed multimodal scene graph includes a visual graph and a textual graph to jointly capture the structural and semantical knowledge from the chart. This graph module can be easily integrated with different vision transformers as inductive bias. Our experiments demonstrate that incorporating the proposed graph module enhances the understanding of charts' elements' structure and semantics, thereby improving performance on publicly available benchmarks, ChartQA and OpenCQA.",
+      "authors": [
+        {
+          "name": "Yue Dai",
+          "orgs": [
+            "The University of Western Australia",
+            "P.O. Box 1212",
+            "Perth",
+            "Western Australia",
+            "Australia",
+            "43017-6221"
+          ]
+        },
+        {
+          "name": "Soyeon Caren Han",
+          "orgs": [
+            "The University of Melbourne",
+            "1 Thørväld Circle",
+            "Melbourne",
+            "Australia"
+          ]
+        },
+        {
+          "name": "Wei Liu",
+          "orgs": [
+            "The University of Western Australia",
+            "1 Thørväld Circle",
+            "Perth",
+            "Australia"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2408.04852v1",
+      "date": "2024-08-09T04:11:23Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1704.06687",
+      "score": 14.938817,
+      "title": "Scatteract: Automated extraction of data from scatter plots",
+      "tldr": "This paper addresses the challenge of automatically extracting numerical data from scatter plots, aiming to facilitate further analysis by converting pixel coordinates to chart coordinates; it uses deep learning for object detection and OCR combined with robust regression for coordinate mapping, introducing a fully automated system that achieves 89% success in data extraction; the findings demonstrate effective data retrieval with robustness to OCR errors, advancing automated chart analysis and enabling broader applications in data processing and visualization.",
+      "abstract": "Charts are an excellent way to convey patterns and trends in data, but they do not facilitate further modeling of the data or close inspection of individual data points. We present a fully automated system for extracting the numerical values of data points from images of scatter plots. We use deep learning techniques to identify the key components of the chart, and optical character recognition together with robust regression to map from pixels to the coordinate system of the chart. We focus on scatter plots with linear scales, which already have several interesting challenges. Previous work has done fully automatic extraction for other types of charts, but to our knowledge this is the first approach that is fully automatic for scatter plots. Our method performs well, achieving successful data extraction on 89% of the plots in our test set.",
+      "authors": [
+        {
+          "name": "Mathieu Cliche",
+          "orgs": []
+        },
+        {
+          "name": "David Rosenberg",
+          "orgs": []
+        },
+        {
+          "name": "Dhruv Madeka",
+          "orgs": []
+        },
+        {
+          "name": "Connie Yee",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1704.06687v1",
+      "date": "2017-04-21T19:25:32Z",
+      "citation_count": 75,
+      "categories": [
+        "cs.CV",
+        "cs.IR",
+        "stat.ML"
+      ]
+    },
+    {
+      "arxiv_id": "2009.02491",
+      "score": 14.326569,
+      "title": "Reverse-engineering Bar Charts Using Neural Networks",
+      "tldr": "This paper addresses the problem of reverse-engineering bar charts to extract textual and numeric information, which is crucial for applications requiring underlying data; it proposes a neural network-based method combining Faster-RCNN for textual extraction and an encoder-decoder framework with attention mechanism for numeric extraction, achieving F1 scores of 0.89 and 0.80, and accuracies of 0.91 and 0.78 on synthetic and real-world datasets respectively.",
+      "abstract": "Reverse-engineering bar charts extracts textual and numeric information from the visual representations of bar charts to support application scenarios that require the underlying information. In this paper, we propose a neural network-based method for reverse-engineering bar charts. We adopt a neural network-based object detection model to simultaneously localize and classify textual information. This approach improves the efficiency of textual information extraction. We design an encoder-decoder framework that integrates convolutional and recurrent neural networks to extract numeric information. We further introduce an attention mechanism into the framework to achieve high accuracy and robustness. Synthetic and real-world datasets are used to evaluate the effectiveness of the method. To the best of our knowledge, this work takes the lead in constructing a complete neural network-based method of reverse-engineering bar charts.",
+      "authors": [
+        {
+          "name": "Fangfang Zhou",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yong Zhao",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Wenjiang Chen",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yijing Tan",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yaqi Xu",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yi Chen",
+          "orgs": [
+            "Beijing Key Laboratory of Big Data Technology for Food Safety, Beijing Technology and Business University, Beijing, China"
+          ]
+        },
+        {
+          "name": "Chao Liu",
+          "orgs": [
+            "Institute of Systems Engineering, Academy of Military Sciences, Beijing, China"
+          ]
+        },
+        {
+          "name": "Ying Zhao",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China",
+            "Rail Data Research and Application Key Laboratory of Hunan Province, Changsha, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2009.02491v1",
+      "date": "2020-09-05T08:14:35Z",
+      "citation_count": 34,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "1802.05385",
+      "score": 14.203903,
+      "title": "Fooling OCR Systems with Adversarial Text Images",
+      "tldr": "This paper investigates adversarial attacks on OCR systems, demonstrating that minor perturbations can cause Tesseract to misrecognize words as their semantic opposites, significantly altering text meaning and impacting NLP applications, with attacks affecting less than 0.1% of pixels and being effective on documents with multiple target words.",
+      "abstract": "We demonstrate that state-of-the-art optical character recognition (OCR) based on deep learning is vulnerable to adversarial images. Minor modifications to images of printed text, which do not change the meaning of the text to a human reader, cause the OCR system to \"recognize\" a different text where certain words chosen by the adversary are replaced by their semantic opposites. This completely changes the meaning of the output produced by the OCR system and by the NLP applications that use OCR for preprocessing their inputs.",
+      "authors": [
+        {
+          "name": "Congzheng Song",
+          "orgs": [
+            "Cornell University"
+          ]
+        },
+        {
+          "name": "Vitaly Shmatikov",
+          "orgs": [
+            "Cornell Tech"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1802.05385v1",
+      "date": "2018-02-15T02:08:19Z",
+      "citation_count": 55,
+      "categories": [
+        "cs.AI",
+        "cs.CR",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "1608.05054",
+      "score": 14.169202,
+      "title": "MT3S: Mobile Turkish Scene Text-to-Speech System for the Visually Impaired",
+      "tldr": "This paper presents MT3S, a mobile Turkish scene text-to-speech system for the visually impaired, addressing the gap of lacking multi-language assistive apps by combining a fast multi-scale text detection algorithm and Tesseract OCR, achieving OCR accuracy comparable to state-of-the-art systems and real-time performance on mobile devices.",
+      "abstract": "Reading text is one of the essential needs of the visually impaired people. We developed a mobile system that can read Turkish scene and book text, using a fast gradient-based multi-scale text detection algorithm for real-time operation and Tesseract OCR engine for character recognition. We evaluated the OCR accuracy and running time of our system on a new, publicly available mobile Turkish scene text dataset we constructed and also compared with state-of-the-art systems. Our system proved to be much faster, able to run on a mobile device, with OCR accuracy comparable to the state-of-the-art.",
+      "authors": [
+        {
+          "name": "Muhammet Baştan",
+          "orgs": []
+        },
+        {
+          "name": "Hilal Kandemir",
+          "orgs": []
+        },
+        {
+          "name": "Büşra Cantürk",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1608.05054v1",
+      "date": "2016-08-17T19:24:23Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.MM"
+      ]
+    },
+    {
+      "arxiv_id": "2407.12875",
+      "score": 14.124983,
+      "title": "ChatBCG: Can AI Read Your Slide Deck?",
+      "tldr": "This paper investigates the accuracy of GPT 4o and Gemini Flash in reading labeled and unlabeled charts from business decks, finding that they can only perfectly read 7-8 out of 15 labeled charts and struggle with unlabeled ones, highlighting a gap in their ability to handle complex visual data in practical applications.",
+      "abstract": "Multimodal models like GPT4o and Gemini Flash are exceptional at inference and summarization tasks, which approach human-level in performance. However, we find that these models underperform compared to humans when asked to do very specific 'reading and estimation' tasks, particularly in the context of visual charts in business decks. This paper evaluates the accuracy of GPT 4o and Gemini Flash-1.5 in answering straightforward questions about data on labeled charts (where data is clearly annotated on the graphs), and unlabeled charts (where data is not clearly annotated and has to be inferred from the X and Y axis). We conclude that these models aren't currently capable of reading a deck accurately end-to-end if it contains any complex or unlabeled charts. Even if a user created a deck of only labeled charts, the model would only be able to read 7-8 out of 15 labeled charts perfectly end-to-end. For full list of slide deck figures visit https://www.repromptai.com/chat_bcg",
+      "authors": [
+        {
+          "name": "Nikita Singh",
+          "orgs": []
+        },
+        {
+          "name": "Rob Balian",
+          "orgs": [
+            "Reprompt AI"
+          ]
+        },
+        {
+          "name": "Lukas Martinelli",
+          "orgs": [
+            "Reprompt AI"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2407.12875v1",
+      "date": "2024-07-16T06:00:45Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2005.08650",
+      "score": 14.084665,
+      "title": "Development of a New Image-to-text Conversion System for Pashto, Farsi and Traditional Chinese",
+      "tldr": "This paper presents Worldly~OCR, a new image-to-text system for Pashto, Farsi, and Traditional Chinese, addressing the challenge of accurate conversion for cursive scripts and large character sets; it proposes a deep learning approach with significant improvements in handling over a billion pages of documents, offering enhanced accuracy for digital humanities and text retrieval tasks.",
+      "abstract": "We report upon the results of a research and prototype building project \\emph{Worldly~OCR} dedicated to developing new, more accurate image-to-text conversion software for several languages and writing systems. These include the cursive scripts Farsi and Pashto, and Latin cursive scripts. We also describe approaches geared towards Traditional Chinese, which is non-cursive, but features an extremely large character set of 65,000 characters. Our methodology is based on Machine Learning, especially Deep Learning, and Data Science, and is directed towards vast quantities of original documents, exceeding a billion pages. The target audience of this paper is a general audience with interest in Digital Humanities or in retrieval of accurate full-text and metadata from digital images.",
+      "authors": [
+        {
+          "name": "Marek Rychlik",
+          "orgs": []
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Dwight Nwaigwe",
+          "orgs": []
+        },
+        {
+          "name": "Yan Han",
+          "orgs": []
+        },
+        {
+          "name": "Dylan Murphy",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2005.08650v1",
+      "date": "2020-05-08T17:58:48Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.CL",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "1909.07899",
+      "score": 14.009888,
+      "title": "Fast Search with Poor OCR",
+      "tldr": "This paper addresses the challenge of searching historical documents with poor OCR by proposing a vector-based method that encodes noisy OCR outputs and queries into a common space for efficient nearest-neighbor search, contributing a novel metric that improves retrieval results on a corpus of 2 million unique reads, with implications for accessible and scalable text search in large digitized archives.",
+      "abstract": "The indexing and searching of historical documents have garnered attention in recent years due to massive digitization efforts of important collections worldwide. Pure textual search in these corpora is a problem since optical character recognition (OCR) is infamous for performing poorly on such historical material, which often suffer from poor preservation. We propose a novel text-based method for searching through noisy text. Our system represents words as vectors, projects queries and candidates obtained from the OCR into a common space, and ranks the candidates using a metric suited to nearest-neighbor search. We demonstrate the practicality of our method on typewritten German documents from the WWII era.",
+      "authors": [
+        {
+          "name": "Taivanbat Badamdorj",
+          "orgs": [
+            "University of Alberta",
+            "Tel Aviv University"
+          ]
+        },
+        {
+          "name": "Adiel Ben-Shalom",
+          "orgs": [
+            "Tel Aviv University"
+          ]
+        },
+        {
+          "name": "Nachum Dershowitz",
+          "orgs": [
+            "Tel Aviv University"
+          ]
+        },
+        {
+          "name": "Lior Wolf",
+          "orgs": [
+            "Facebook AI Research",
+            "Tel Aviv University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1909.07899v3",
+      "date": "2019-09-17T15:40:38Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.DL",
+        "cs.IR"
+      ]
+    },
+    {
+      "arxiv_id": "1907.06370",
+      "score": 13.784974,
+      "title": "Multimodal deep networks for text and image-based document classification",
+      "tldr": "This paper addresses the challenge of fine-grained document classification by integrating text and image analysis, proposing a multimodal deep network that improves classification accuracy by 3% on Tobacco3482 and RVL-CDIP datasets using OCR-extracted text, contributing a novel approach for handling unclean data in real-world settings.",
+      "abstract": "Classification of document images is a critical step for archival of old manuscripts, online subscription and administrative procedures. Computer vision and deep learning have been suggested as a first solution to classify documents based on their visual appearance. However, achieving the fine-grained classification that is required in real-world setting cannot be achieved by visual analysis alone. Often, the relevant information is in the actual text content of the document. We design a multimodal neural network that is able to learn from word embeddings, computed on text extracted by OCR, and from the image. We show that this approach boosts pure image accuracy by 3% on Tobacco3482 and RVL-CDIP augmented by our new QS-OCR text dataset (https://github.com/Quicksign/ocrized-text-dataset), even without clean text information.",
+      "authors": [
+        {
+          "name": "Nicolas Audebert",
+          "orgs": [
+            "Quicksign"
+          ]
+        },
+        {
+          "name": "Catherine Herold",
+          "orgs": [
+            "Quicksign"
+          ]
+        },
+        {
+          "name": "Kuider Slimani",
+          "orgs": [
+            "Quicksign"
+          ]
+        },
+        {
+          "name": "Cédric Vidal",
+          "orgs": [
+            "Quicksign"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1907.06370v1",
+      "date": "2019-07-15T08:43:49Z",
+      "citation_count": 109,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1812.10636",
+      "score": 13.729723,
+      "title": "Chart-Text: A Fully Automated Chart Image Descriptor",
+      "tldr": "This paper presents Chart-Text, a fully automated system for generating textual descriptions of chart images, addressing the challenge of creating standardized Alt-Text for visually impaired users; it proposes a method combining chart classification and data extraction with accuracies of 99.72% and 78.9%, respectively, significantly improving accessibility and productivity for content creators.",
+      "abstract": "Images greatly help in understanding, interpreting and visualizing data. Adding textual description to images is the first and foremost principle of web accessibility. Visually impaired users using screen readers will use these textual descriptions to get better understanding of images present in digital contents. In this paper, we propose Chart-Text a novel fully automated system that creates textual description of chart images. Given a PNG image of a chart, our Chart-Text system creates a complete textual description of it. First, the system classifies the type of chart and then it detects and classifies the labels and texts in the charts. Finally, it uses specific image processing algorithms to extract relevant information from the chart images. Our proposed system achieves an accuracy of 99.72% in classifying the charts and an accuracy of 78.9% in extracting the data and creating the corresponding textual description.",
+      "authors": [
+        {
+          "name": "Abhijit Balaji",
+          "orgs": [
+            "SPi Technologies India Private Limited"
+          ]
+        },
+        {
+          "name": "Thuvaarakkesh Ramanathan",
+          "orgs": [
+            "SPi Technologies India Private Limited"
+          ]
+        },
+        {
+          "name": "Venkateshwarlu Sonathi",
+          "orgs": [
+            "SPi Technologies India Private Limited"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1812.10636v1",
+      "date": "2018-12-27T05:52:06Z",
+      "citation_count": 61,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2601.12585",
+      "score": 13.71798,
+      "title": "Do MLLMs See What We See? Analyzing Visualization Literacy Barriers in AI Systems",
+      "tldr": "This paper investigates visualization literacy barriers in MLLMs, addressing the gap in understanding their limitations compared to humans, by analyzing 309 erroneous responses from four SOTA models using a barrier-centric framework, revealing two machine-specific barriers and highlighting performance disparities in complex visualizations.",
+      "abstract": "Multimodal Large Language Models (MLLMs) are increasingly used to interpret visualizations, yet little is known about why they fail. We present the first systematic analysis of barriers to visualization literacy in MLLMs. Using the regenerated Visualization Literacy Assessment Test (reVLAT) benchmark with synthetic data, we open-coded 309 erroneous responses from four state-of-the-art models with a barrier-centric strategy adapted from human visualization literacy research. Our analysis yields a taxonomy of MLLM failures, revealing two machine-specific barriers that extend prior human-participation frameworks. Results show that models perform well on simple charts but struggle with color-intensive, segment-based visualizations, often failing to form consistent comparative reasoning. Our findings inform future evaluation and design of reliable AI-driven visualization assistants.",
+      "authors": [
+        {
+          "name": "Matthew Varona",
+          "orgs": []
+        },
+        {
+          "name": "Mengli (Dawn) Duan",
+          "orgs": []
+        },
+        {
+          "name": "and Carolina Nobre",
+          "orgs": []
+        },
+        {
+          "name": "Yuhe (Sissi) Jiang",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2601.12585v1",
+      "date": "2026-01-18",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.ET",
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "1801.08163",
+      "score": 13.70987,
+      "title": "DVQA: Understanding Data Visualizations via Question Answering",
+      "tldr": "This paper introduces DVQA, a dataset testing bar chart understanding through question answering, addressing the gap in algorithms' ability to interpret visualizations; it proposes two systems handling unique vocabulary and dynamic dictionaries, showing state-of-the-art VQA models perform poorly on DVQA tasks; findings reveal challenges in multi-step reasoning and vocabulary flexibility, with implications for improving machine interpretation of data visualizations.",
+      "abstract": "Bar charts are an effective way to convey numeric information, but today's algorithms cannot parse them. Existing methods fail when faced with even minor variations in appearance. Here, we present DVQA, a dataset that tests many aspects of bar chart understanding in a question answering framework. Unlike visual question answering (VQA), DVQA requires processing words and answers that are unique to a particular bar chart. State-of-the-art VQA algorithms perform poorly on DVQA, and we propose two strong baselines that perform considerably better. Our work will enable algorithms to automatically extract numeric and semantic information from vast quantities of bar charts found in scientific publications, Internet articles, business reports, and many other areas.",
+      "authors": [
+        {
+          "name": "Kushal Kafle",
+          "orgs": [
+            "Rochester Institute of Technology",
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Brian Price",
+          "orgs": [
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Scott Cohen",
+          "orgs": [
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Christopher Kanan",
+          "orgs": [
+            "Rochester Institute of Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1801.08163v2",
+      "date": "2018-01-24T19:47:04Z",
+      "citation_count": 497,
+      "categories": [
+        "cs.CV",
+        "cs.GR"
+      ]
+    },
+    {
+      "arxiv_id": "2007.14958",
+      "score": 13.632182,
+      "title": "Advancing Visual Specification of Code Requirements for Graphs",
+      "tldr": "This paper addresses the challenge of creating visualizations in Digital Humanities by developing a tool that allows users to visually specify code requirements, using a hybrid model combining a neural network and OCR to generate editable Matplotlib code, contributing a novel approach to Visual Requirements Engineering and showing user effectiveness in generating visualizations.",
+      "abstract": "Researchers in the humanities are among the many who are now exploring the world of big data. They have begun to use programming languages like Python or R and their corresponding libraries to manipulate large data sets and discover brand new insights. One of the major hurdles that still exists is incorporating visualizations of this data into their projects. Visualization libraries can be difficult to learn how to use, even for those with formal training. Yet these visualizations are crucial for recognizing themes and communicating results to not only other researchers, but also the general public. This paper focuses on producing meaningful visualizations of data using machine learning. We allow the user to visually specify their code requirements in order to lower the barrier for humanities researchers to learn how to program visualizations. We use a hybrid model, combining a neural network and optical character recognition to generate the code to create the visualization.",
+      "authors": [
+        {
+          "name": "Dewi Yokelson",
+          "orgs": [
+            "Computer and Information Science",
+            "University of Oregon"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2007.14958v1",
+      "date": "2020-07-29T17:01:53Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV",
+        "cs.HC",
+        "cs.LG",
+        "cs.SE"
+      ]
+    },
+    {
+      "arxiv_id": "2601.03331",
+      "score": 13.610184,
+      "title": "MMErroR: A Benchmark for Erroneous Reasoning in Vision-Language Models",
+      "tldr": "This paper introduces MMErroR, a benchmark for evaluating erroneous reasoning in Vision-Language Models by detecting and classifying error types across 1997 samples spanning six domains, revealing that even the best model, Gemini-3-Pro-Preview, correctly identifies errors in only 66.65% of cases, highlighting significant gaps in models' introspective capabilities.",
+      "abstract": "Recent advances in Vision-Language Models (VLMs) have improved performance in multi-modal learning, raising the question of whether these models truly understand the content they process. Crucially, can VLMs detect when a reasoning process is wrong and identify its error type? To answer this, we present MMErroR, a multi-modal benchmark of 1997 samples, each embedding a single coherent reasoning error. These samples span 24 subdomains across six top-level domains, ensuring broad coverage and taxonomic richness. Unlike existing benchmarks that focus on answer correctness, MMErroR targets a process-level, error-centric evaluation that requires models to detect incorrect reasoning and classify the error type within both visual and linguistic contexts. We evaluate 12 representative VLMs, and even the best model, Gemini-3-Pro-Preview, classifies the error correctly in only 66.65\\% of cases, underscoring the challenge of identifying erroneous reasoning. Furthermore, the ability to accurately identify errors offers valuable insights into the capabilities of multi-modal models. Project Page: https://mmerror-benchmark.github.io",
+      "authors": [
+        {
+          "name": "Yang Shi",
+          "orgs": [
+            "Guangdong University of Technology"
+          ]
+        },
+        {
+          "name": "Yifeng Xie",
+          "orgs": [
+            "Hong Kong Baptist University"
+          ]
+        },
+        {
+          "name": "Minzhe Guo",
+          "orgs": [
+            "Guangdong University of Technology"
+          ]
+        },
+        {
+          "name": "Liangsi Lu",
+          "orgs": [
+            "Guangdong University of Technology"
+          ]
+        },
+        {
+          "name": "Mingxuan Huang",
+          "orgs": [
+            "Sun Yat-sen University"
+          ]
+        },
+        {
+          "name": "Jingchao Wang",
+          "orgs": [
+            "Peking University"
+          ]
+        },
+        {
+          "name": "Zhihong Zhu",
+          "orgs": [
+            "Peking University"
+          ]
+        },
+        {
+          "name": "Boyan Xu",
+          "orgs": [
+            "Guangdong University of Technology"
+          ]
+        },
+        {
+          "name": "Zhiqi Huang",
+          "orgs": [
+            "Peking University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2601.03331v2",
+      "date": "2026-01-06",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2402.14579",
+      "score": 13.587987,
+      "title": "Text Role Classification in Scientific Charts Using Multimodal Transformers",
+      "tldr": "This paper addresses text role classification in scientific charts, aiming to improve the accuracy of identifying semantic roles of text elements in charts, which is crucial for enhancing the comprehensibility and completeness of scientific figures; it proposes finetuning LayoutLMv3 and UDOP on multimodal data, achieving an F1-macro score of 82.87 on ICPR22 and demonstrating robustness and generalizability across datasets; findings show LayoutLMv3 outperforms UDOP, with data augmentation and balancing improving performance on some datasets.",
+      "abstract": "Text role classification involves classifying the semantic role of textual elements within scientific charts. For this task, we propose to finetune two pretrained multimodal document layout analysis models, LayoutLMv3 and UDOP, on chart datasets. The transformers utilize the three modalities of text, image, and layout as input. We further investigate whether data augmentation and balancing methods help the performance of the models. The models are evaluated on various chart datasets, and results show that LayoutLMv3 outperforms UDOP in all experiments. LayoutLMv3 achieves the highest F1-macro score of 82.87 on the ICPR22 test dataset, beating the best-performing model from the ICPR22 CHART-Infographics challenge. Moreover, the robustness of the models is tested on a synthetic noisy dataset ICPR22-N. Finally, the generalizability of the models is evaluated on three chart datasets, CHIME-R, DeGruyter, and EconBiz, for which we added labels for the text roles. Findings indicate that even in cases where there is limited training data, transformers can be used with the help of data augmentation and balancing methods. The source code and datasets are available on GitHub under https://github.com/hjkimk/text-role-classification",
+      "authors": [
+        {
+          "name": "Hye Jin Kim",
+          "orgs": [
+            "Universität Ulm",
+            "Ulm",
+            "Germany"
+          ]
+        },
+        {
+          "name": "Nicolas Lell",
+          "orgs": [
+            "Universität Ulm",
+            "Ulm",
+            "Germany"
+          ]
+        },
+        {
+          "name": "Ansgar Scherp",
+          "orgs": [
+            "Universität Ulm",
+            "Ulm",
+            "Germany"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2402.14579v1",
+      "date": "2024-02-08T13:21:44Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CL",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2603.17357",
+      "score": 13.321275,
+      "title": "WebPII: Benchmarking Visual PII Detection for Computer-Use Agents",
+      "tldr": "This paper addresses the gap in visual PII detection for computer-use agents by introducing WebPII, a synthetic benchmark with 44,865 e-commerce images featuring extended PII taxonomy, anticipatory detection, and scalable generation; it demonstrates improved detection accuracy (0.753 mAP@50) and supports privacy-preserving research.",
+      "abstract": "Computer use agents create new privacy risks: training data collected from real websites inevitably contains sensitive information, and cloud-hosted inference exposes user screenshots. Detecting personally identifiable information in web screenshots is critical for privacy-preserving deployment, but no public benchmark exists for this task. We introduce WebPII, a fine-grained synthetic benchmark of 44,865 annotated e-commerce UI images designed with three key properties: extended PII taxonomy including transaction-level identifiers that enable reidentification, anticipatory detection for partially-filled forms where users are actively entering data, and scalable generation through VLM-based UI reproduction. Experiments validate that these design choices improve layout-invariant detection across diverse interfaces and generalization to held-out page types. We train WebRedact to demonstrate practical utility, more than doubling text-extraction baseline accuracy (0.753 vs 0.357 mAP@50) at real-time CPU latency (20ms). We release the dataset and model to support privacy-preserving computer use research.",
+      "authors": [
+        {
+          "name": "Nathan Zhao",
+          "orgs": [
+            "Stanford University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2603.17357v1",
+      "date": "2026-03-18",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CR"
+      ]
+    },
+    {
+      "arxiv_id": "2604.12239",
+      "score": 13.306092,
+      "title": "Physics-Grounded Monocular Vehicle Distance Estimation Using Standardized License Plate Typography",
+      "tldr": "This paper presents a physics-grounded monocular vehicle distance estimation framework using standardized license plate typography to resolve scale ambiguity, contributing a four-method parallel plate detector, three-stage state identification engine, and hybrid depth fusion with Kalman filter, achieving 2.3% mean absolute error at 10 m and outperforming deep learning baselines by fivefold in relative error, enabling reliable collision warning for ADAS.",
+      "abstract": "Accurate inter-vehicle distance estimation is a cornerstone of Advanced Driver Assistance Systems (ADAS) and autonomous driving. While LiDAR and radar provide high precision, their high cost prohibits widespread adoption in mass-market vehicles. Monocular camera-based estimation offers a low-cost alternative but suffers from fundamental scale ambiguity. Recent deep learning methods for monocular depth achieve impressive results yet require expensive supervised training, suffer from domain shift, and produce predictions that are difficult to certify for safety-critical deployment. This paper presents a framework that exploits the standardized typography of United States license plates as passive fiducial markers for metric ranging, resolving scale ambiguity through explicit geometric priors without any training data or active illumination. First, a four-method parallel plate detector achieves robust plate reading across the full automotive lighting range. Second, a three-stage state identification engine fusing OCR text matching, multi-design color scoring, and a lightweight neural network classifier provides robust identification across all ambient conditions. Third, hybrid depth fusion with inverse-variance weighting and online scale alignment, combined with a one-dimensional constant-velocity Kalman filter, delivers smoothed distance, relative velocity, and time-to-collision for collision warning. Baseline validation reproduces a 2.3% coefficient of variation in character height measurements and a 36% reduction in distance-estimate variance compared with plate-width methods from prior work. Extensive outdoor experiments confirm a mean absolute error of 2.3% at 10 m and continuous distance output during brief plate occlusions, outperforming deep learning baselines by a factor of five in relative error.",
+      "authors": [
+        {
+          "name": "Manognya Lokesh Reddy",
+          "orgs": [
+            "Department of Computer and Information Science, University of Michigan-Dearborn, Dearborn, Michigan, USA"
+          ]
+        },
+        {
+          "name": "Zheng Liu",
+          "orgs": [
+            "Department of Industrial and Manufacturing Systems Engineering, University of Michigan-Dearborn, Dearborn, Michigan, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2604.12239v1",
+      "date": "2026-04-14",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV",
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "2507.04878",
+      "score": 13.296156,
+      "title": "Transcribing Spanish Texts from the Past: Experiments with Transkribus, Tesseract and Granite",
+      "tldr": "This paper investigates OCR performance on historical Spanish texts using Transkribus, Tesseract, and Granite, aiming to address the challenge of digitizing old documents for computational analysis; it employs web-based OCR services and open models, contributing insights into model effectiveness on consumer-grade hardware; results show satisfactory but improvable performance, highlighting the need for further research on historical text transcription.",
+      "abstract": "This article presents the experiments and results obtained by the GRESEL team in the IberLEF 2025 shared task PastReader: Transcribing Texts from the Past. Three types of experiments were conducted with the dual aim of participating in the task and enabling comparisons across different approaches. These included the use of a web-based OCR service, a traditional OCR engine, and a compact multimodal model. All experiments were run on consumer-grade hardware, which, despite lacking high-performance computing capacity, provided sufficient storage and stability. The results, while satisfactory, leave room for further improvement. Future work will focus on exploring new techniques and ideas using the Spanish-language dataset provided by the shared task, in collaboration with Biblioteca Nacional de Espa\\~na (BNE).",
+      "authors": [
+        {
+          "name": "Yanco Amor Torterolo-Orta",
+          "orgs": [
+            "Universidad Nacional de Educación a Distancia (UNED)",
+            "Madrid, Spain"
+          ]
+        },
+        {
+          "name": "Jaione Macicior-Mitxelena",
+          "orgs": [
+            "Universidad Nacional de Educación a Distancia (UNED)",
+            "Madrid, Spain"
+          ]
+        },
+        {
+          "name": "Marina Miguez-Lamanuzzi",
+          "orgs": [
+            "Universidad Nacional de Educación a Distancia (UNED)",
+            "Madrid, Spain"
+          ]
+        },
+        {
+          "name": "Ana García-Serrano",
+          "orgs": [
+            "Universidad Nacional de Educación a Distancia (UNED)",
+            "Madrid, Spain"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2507.04878v1",
+      "date": "2025-07-07T11:04:17Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2012.14740",
+      "score": 0.78358173,
+      "title": "LayoutLMv2: Multi-modal Pre-training for Visually-Rich Document Understanding",
+      "tldr": "This paper addresses Visually-Rich Document Understanding (VrDU) by improving pre-training strategies to model text, layout, and image interactions, aiming to enhance cross-modal learning for document analysis; it introduces LayoutLMv2 with text-image alignment and matching tasks, along with a spatial-aware self-attention mechanism; experiments show LayoutLMv2 outperforms LayoutLM on FUNSD (0.8420), CORD (0.9601), SROIE (0.9781), Kleister-NDA (0.8520), RVL-CDIP (0.9564), and DocVQA (0.8672).",
+      "abstract": "Pre-training of text and layout has proved effective in a variety of visually-rich document understanding tasks due to its effective model architecture and the advantage of large-scale unlabeled scanned/digital-born documents. We propose LayoutLMv2 architecture with new pre-training tasks to model the interaction among text, layout, and image in a single multi-modal framework. Specifically, with a two-stream multi-modal Transformer encoder, LayoutLMv2 uses not only the existing masked visual-language modeling task but also the new text-image alignment and text-image matching tasks, which make it better capture the cross-modality interaction in the pre-training stage. Meanwhile, it also integrates a spatial-aware self-attention mechanism into the Transformer architecture so that the model can fully understand the relative positional relationship among different text blocks. Experiment results show that LayoutLMv2 outperforms LayoutLM by a large margin and achieves new state-of-the-art results on a wide variety of downstream visually-rich document understanding tasks, including FUNSD (0.7895 $\\to$ 0.8420), CORD (0.9493 $\\to$ 0.9601), SROIE (0.9524 $\\to$ 0.9781), Kleister-NDA (0.8340 $\\to$ 0.8520), RVL-CDIP (0.9443 $\\to$ 0.9564), and DocVQA (0.7295 $\\to$ 0.8672). We made our model and code publicly available at \\url{https://aka.ms/layoutlmv2}.",
+      "authors": [
+        {
+          "name": "Yang Xu",
+          "orgs": [
+            "Research Center for Social Computing and Information Retrieval",
+            "Harbin Institute of Technology"
+          ]
+        },
+        {
+          "name": "Yiheng Xu",
+          "orgs": [
+            "Microsoft Research Asia"
+          ]
+        },
+        {
+          "name": "Tengchao Lv",
+          "orgs": [
+            "Microsoft Research Asia"
+          ]
+        },
+        {
+          "name": "Lei Cui",
+          "orgs": [
+            "Microsoft Research Asia"
+          ]
+        },
+        {
+          "name": "Furu Wei",
+          "orgs": [
+            "Microsoft Research Asia"
+          ]
+        },
+        {
+          "name": "Guoxin Wang",
+          "orgs": [
+            "Microsoft Azure AI"
+          ]
+        },
+        {
+          "name": "Yijuan Lu",
+          "orgs": [
+            "Microsoft Azure AI"
+          ]
+        },
+        {
+          "name": "Cha Zhang",
+          "orgs": [
+            "Microsoft Azure AI"
+          ]
+        },
+        {
+          "name": "Wanxiang Che",
+          "orgs": [
+            "Research Center for Social Computing and Information Retrieval, Harbin Institute of Technology"
+          ]
+        },
+        {
+          "name": "Min Zhang",
+          "orgs": [
+            "Soochow University"
+          ]
+        },
+        {
+          "name": "Lidong Zhou",
+          "orgs": [
+            "Microsoft Research Asia"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2012.14740v4",
+      "date": "2020-12-29T13:01:52Z",
+      "citation_count": 636,
+      "categories": [
+        "cs.CL"
+      ]
+    }
+  ]
+}

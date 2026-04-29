@@ -1,0 +1,654 @@
+{
+  "status": "success",
+  "total_count": 34,
+  "result": [
+    {
+      "arxiv_id": "1901.09425",
+      "score": 22.667534,
+      "title": "Degraded Historical Documents Images Binarization Using a Combination of Enhanced Techniques",
+      "tldr": "This paper addresses the challenge of document image binarization for degraded historical documents, aiming to improve the accuracy and robustness of OCR systems by enhancing contrast and segmenting images effectively; it proposes a multi-phase system combining CLAHE, hybrid thresholding methods (Otsu’s, Multilevel Otsu’s, and Nick’s), and post-processing techniques to remove noise and correct characters; experiments show improved performance compared to existing methods on three benchmarks.",
+      "abstract": "Document image binarization is the initial step and a crucial in many document analysis and recognition scheme. In fact, it is still a relevant research subject and a fundamental challenge due to its importance and influence. This paper provides an original multi-phases system that hybridizes various efficient image thresholding methods in order to get the best binarization output. First, to improve contrast in particularly defective images, the application of CLAHE algorithm is suggested and justified. We then use a cooperative technique to segment image into two separated classes. At the end, a special transformation is applied for the purpose of removing scattered noise and of correcting characters forms. Experimentations demonstrate the precision and the robustness of our framework applied on historical degraded documents images within three benchmarks compared to other noted methods.",
+      "authors": [
+        {
+          "name": "Omar Boudraa",
+          "orgs": [
+            "Laboratoire de la Communication dans les Systèmes Informatiques, Ecole nationale Supérieure d’Informatique (ESI)",
+            "BP 68M, 16309, Oued-Smar, Alger, Algérie"
+          ]
+        },
+        {
+          "name": "Walid Khaled Hidouci",
+          "orgs": [
+            "Laboratoire de la Communication dans les Systèmes Informatiques, Ecole nationale Supérieure d’Informatique (ESI)",
+            "BP 68M, 16309, Oued-Smar, Alger, Algérie"
+          ]
+        },
+        {
+          "name": "Dominique Michelucci",
+          "orgs": [
+            "Laboratoire LIB, Université de Bourgogne",
+            "BP 47870, 21078, DIJON CEDEX, France"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1901.09425v1",
+      "date": "2019-01-27T19:37:52Z",
+      "citation_count": 9,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1501.07862",
+      "score": 22.642082,
+      "title": "An Analytical Study of different Document Image Binarization Methods",
+      "tldr": "This survey reviews document image binarization methods, comparing existing techniques and proposing optimizations, highlighting challenges in degraded image processing and the need for performance improvements.",
+      "abstract": "Document image has been the area of research for a couple of decades because of its potential application in the area of text recognition, line recognition or any other shape recognition from the image. For most of these purposes binarization of image becomes mandatory as far as recognition is concerned. Throughout couple decades standard algorithms have already been developed for this purpose. Some of these algorithms are applicable to degraded image also. Our objective behind this work is to study the existing techniques, compare them in view of advantages and disadvantages and modify some of these algorithms to optimize time or performance.",
+      "authors": [
+        {
+          "name": "Mahua Nandy (Pal)",
+          "orgs": [
+            "Department of CSE, MCKV Institute of Engineering, Howrah, India"
+          ]
+        },
+        {
+          "name": "Satadal Saha",
+          "orgs": [
+            "Department of CSE, MCKV Institute of Engineering, Howrah, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1501.07862v1",
+      "date": "2015-01-30T17:50:41Z",
+      "citation_count": 8,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1901.06081",
+      "score": 22.533676,
+      "title": "DeepOtsu: Document Enhancement and Binarization using Iterative Deep Learning",
+      "tldr": "This paper addresses document enhancement and binarization by proposing an iterative deep learning framework that learns and corrects degradations in document images, offering improved visualization and binarization results using global Otsu's threshold on enhanced images.",
+      "abstract": "This paper presents a novel iterative deep learning framework and apply it for document enhancement and binarization. Unlike the traditional methods which predict the binary label of each pixel on the input image, we train the neural network to learn the degradations in document images and produce the uniform images of the degraded input images, which allows the network to refine the output iteratively. Two different iterative methods have been studied in this paper: recurrent refinement (RR) which uses the same trained neural network in each iteration for document enhancement and stacked refinement (SR) which uses a stack of different neural networks for iterative output refinement. Given the learned uniform and enhanced image, the binarization map can be easy to obtain by a global or local threshold. The experimental results on several public benchmark data sets show that our proposed methods provide a new clean version of the degraded image which is suitable for visualization and promising results of binarization using the global Otsu's threshold based on the enhanced images learned iteratively by the neural network.",
+      "authors": [
+        {
+          "name": "Sheng He",
+          "orgs": [
+            "Bernoulli Institute for Mathematics, Computer Science and Artificial Intelligence, University of Groningen",
+            "PO Box 407, 9700 AK, Groningen, The Netherlands"
+          ]
+        },
+        {
+          "name": "Lambert Schomaker",
+          "orgs": [
+            "Bernoulli Institute for Mathematics, Computer Science and Artificial Intelligence, University of Groningen",
+            "PO Box 407, 9700 AK, Groningen, The Netherlands"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1901.06081v1",
+      "date": "2019-01-18T04:23:51Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2311.15740",
+      "score": 22.441002,
+      "title": "Optimization of Image Processing Algorithms for Character Recognition in Cultural Typewritten Documents",
+      "tldr": "This paper addresses the challenge of improving OCR performance for cultural typewritten documents by optimizing image processing algorithms using NSGA-II, contributing a dataset and source code, and finding that Adaptive Thresholding, Bilateral Filter, and Opening are the top algorithms for theatre plays' covers, letters, and overall dataset respectively.",
+      "abstract": "Linked Data is used in various fields as a new way of structuring and connecting data. Cultural heritage institutions have been using linked data to improve archival descriptions and facilitate the discovery of information. Most archival records have digital representations of physical artifacts in the form of scanned images that are non-machine-readable. Optical Character Recognition (OCR) recognizes text in images and translates it into machine-encoded text. This paper evaluates the impact of image processing methods and parameter tuning in OCR applied to typewritten cultural heritage documents. The approach uses a multi-objective problem formulation to minimize Levenshtein edit distance and maximize the number of words correctly identified with a non-dominated sorting genetic algorithm (NSGA-II) to tune the methods' parameters. Evaluation results show that parameterization by digital representation typology benefits the performance of image pre-processing algorithms in OCR. Furthermore, our findings suggest that employing image pre-processing algorithms in OCR might be more suitable for typologies where the text recognition task without pre-processing does not produce good results. In particular, Adaptive Thresholding, Bilateral Filter, and Opening are the best-performing algorithms for the theatre plays' covers, letters, and overall dataset, respectively, and should be applied before OCR to improve its performance.",
+      "authors": [
+        {
+          "name": "Mariana Dias",
+          "orgs": [
+            "Faculty of Engineering of the University of Porto",
+            "INESC-TEC",
+            "Portugal"
+          ]
+        },
+        {
+          "name": "Carla Teixeira Lopes",
+          "orgs": [
+            "Faculty of Engineering of the University of Porto",
+            "INESC-TEC",
+            "Portugal"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2311.15740v1",
+      "date": "2023-11-27T11:44:46Z",
+      "citation_count": 9,
+      "categories": [
+        "cs.CV",
+        "cs.DL"
+      ]
+    },
+    {
+      "arxiv_id": "2601.03609",
+      "score": 22.384607,
+      "title": "Unveiling Text in Challenging Stone Inscriptions: A Character-Context-Aware Patching Strategy for Binarization",
+      "tldr": "This paper addresses the challenge of binarizing degraded Indic stone inscriptions by introducing a character-context-aware patching strategy and an Attention U-Net model, which outperforms existing methods and enables zero-shot generalization across scripts, providing a foundation for downstream epigraphic analysis.",
+      "abstract": "Binarization is a popular first step towards text extraction in historical artifacts. Stone inscription images pose severe challenges for binarization due to poor contrast between etched characters and the stone background, non-uniform surface degradation, distracting artifacts, and highly variable text density and layouts. These conditions frequently cause existing binarization techniques to fail and struggle to isolate coherent character regions. Many approaches sub-divide the image into patches to improve text fragment resolution and improve binarization performance. With this in mind, we present a robust and adaptive patching strategy to binarize challenging Indic inscriptions. The patches from our approach are used to train an Attention U-Net for binarization. The attention mechanism allows the model to focus on subtle structural cues, while our dynamic sampling and patch selection method ensures that the model learns to overcome surface noise and layout irregularities. We also introduce a carefully annotated, pixel-precise dataset of Indic stone inscriptions at the character-fragment level. We demonstrate that our novel patching mechanism significantly boosts binarization performance across classical and deep learning baselines. Despite training only on single script Indic dataset, our model exhibits strong zero-shot generalization to other Indic and non-indic scripts, highlighting its robustness and script-agnostic generalization capabilities. By producing clean, structured representations of inscription content, our method lays the foundation for downstream tasks such as script identification, OCR, and historical text analysis. Project page: https://ihdia.iiit.ac.in/shilalekhya-binarization/",
+      "authors": [
+        {
+          "name": "Ravi Kiran Sarvadevabhatla",
+          "orgs": [
+            "Center for Visual Information Technology",
+            "International Institute of Information Technology, HyderabadGachibowliHyderabadTelanganaIndia500032"
+          ]
+        },
+        {
+          "name": "Amal Joseph",
+          "orgs": [
+            "Center for Visual Information Technology",
+            "International Institute of Information Technology, HyderabadGachibowliHyderabadTelanganaIndia500032"
+          ]
+        },
+        {
+          "name": "Arnav Sharma",
+          "orgs": [
+            "Center for Visual Information Technology",
+            "International Institute of Information Technology, HyderabadGachibowliHyderabadTelanganaIndia500032"
+          ]
+        },
+        {
+          "name": "Pratyush Jena",
+          "orgs": [
+            "Center for Visual Information Technology",
+            "International Institute of Information Technology, HyderabadGachibowliHyderabadTelanganaIndia500032"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2601.03609v1",
+      "date": "2026-01-07",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1905.13038",
+      "score": 22.377296,
+      "title": "Memory-efficient and fast implementation of local adaptive binarization methods",
+      "tldr": "This paper addresses the challenge of efficient local adaptive binarization in image processing, aiming to improve segmentation for noisy and unevenly illuminated images, which is critical for accurate OCR; it introduces a recursive technique to compute moment-based statistics without integral images, enabling Sauvola's method to run in Θ(HW) time with only 6 min{H,W} bytes of auxiliary space, significantly reducing memory usage and allowing real-time applications on resource-limited devices.",
+      "abstract": "Binarization is widely used as an image preprocessing step to separate object especially text from background before recognition. For noisy images with uneven illumination such as degraded documents, threshold values need to be computed pixel by pixel to obtain a good segmentation. Since local threshold values typically depend on moment-based statistics such as mean and variance of gray levels inside rectangular windows, integral images which are memory consuming are commonly used to accelerate the calculation. Observed that moment-based statistics as well as quantiles in a sliding window can be computed recursively, integral images can be avoided without neglecting speed, more binarization methods can be accelerated too. In particular, given a $H\\times W$ input image, Sauvola's method and alike can run in $\\Theta (HW)$ time independent of window size, while only around $6\\min\\{H,W\\}$ bytes of auxiliary space is needed, which is significantly lower than the $16HW$ bytes occupied by the two integral images. Since the proposed technique enable various well-known local adaptive binarization methods to be applied in real-time use cases on devices with limited resources, it has the potential of wide application.",
+      "authors": [
+        {
+          "name": "Chungkwong Chan",
+          "orgs": [
+            "School of Mathematics, Sun Yat-Sen University, 135 Xingang Xi Road, Guangzhou, 510275, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1905.13038v3",
+      "date": "2019-05-30T13:17:18Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2511.09117",
+      "score": 21.312431,
+      "title": "DKDS: A Benchmark Dataset of Degraded Kuzushiji Documents with Seals for Detection and Binarization",
+      "tldr": "This paper introduces the DKDS dataset, addressing the challenge of Kuzushiji character and seal detection in degraded documents, by providing a benchmark for text and seal detection and document binarization tasks, with baseline results using YOLO models and cGAN; the dataset includes 2,703 Kuzushiji characters and simulates real-world degradation and seal overlap issues.",
+      "abstract": "Kuzushiji, a pre-modern Japanese cursive script, can currently be read and understood by only a few thousand trained experts in Japan. With the rapid development of deep learning, researchers have begun applying Optical Character Recognition (OCR) techniques to transcribe Kuzushiji into modern Japanese. Although existing OCR methods perform well on clean pre-modern Japanese documents written in Kuzushiji, they often fail to consider various types of noise, such as document degradation and seals, which significantly affect recognition accuracy. To the best of our knowledge, no existing dataset specifically addresses these challenges. To address this gap, we introduce the Degraded Kuzushiji Documents with Seals (DKDS) dataset as a new benchmark for related tasks. We describe the dataset construction process, which required the assistance of a trained Kuzushiji expert, and define two benchmark tracks: (1) text and seal detection and (2) document binarization. For the text and seal detection track, we provide baseline results using several recent versions of the You Only Look Once (YOLO) models for detecting Kuzushiji characters and seals. For the document binarization track, we present baseline results from traditional binarization algorithms, traditional algorithms combined with K-means clustering, two state-of-the-art (SOTA) Generative Adversarial Network (GAN) methods, as well as our Conditional GAN (cGAN) baseline. The DKDS dataset and the implementation code for baseline methods are available at https://ruiyangju.github.io/DKDS.",
+      "authors": [
+        {
+          "name": "Rui-Yang Ju",
+          "orgs": []
+        },
+        {
+          "name": "Kohei Yamashita",
+          "orgs": [
+            "Kyoto University"
+          ]
+        },
+        {
+          "name": "Shinsuke Mori",
+          "orgs": []
+        },
+        {
+          "name": "Hirotaka Kameko",
+          "orgs": [
+            "Kyoto University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2511.09117v2",
+      "date": "2025-11-12",
+      "citation_count": 2,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2105.09076",
+      "score": 21.243027,
+      "title": "Light-weight Document Image Cleanup using Perceptual Loss",
+      "tldr": "This paper addresses the challenge of document image cleanup in resource-constrained mobile applications, aiming to improve readability and automatic processing by removing noise such as stains and shadows; it proposes a light-weight encoder-decoder CNN with perceptual loss for efficient and accurate cleanup, achieving 65-1030 fewer parameters and 3-27 fewer product-sum operations than state-of-the-art models; the approach demonstrates effective performance on real-world datasets, offering a favorable trade-off between resource usage and accuracy.",
+      "abstract": "Smartphones have enabled effortless capturing and sharing of documents in digital form. The documents, however, often undergo various types of degradation due to aging, stains, or shortcoming of capturing environment such as shadow, non-uniform lighting, etc., which reduces the comprehensibility of the document images. In this work, we consider the problem of document image cleanup on embedded applications such as smartphone apps, which usually have memory, energy, and latency limitations due to the device and/or for best human user experience. We propose a light-weight encoder decoder based convolutional neural network architecture for removing the noisy elements from document images. To compensate for generalization performance with a low network capacity, we incorporate the perceptual loss for knowledge transfer from pre-trained deep CNN network in our loss function. In terms of the number of parameters and product-sum operations, our models are 65-1030 and 3-27 times, respectively, smaller than existing state-of-the-art document enhancement models. Overall, the proposed models offer a favorable resource versus accuracy trade-off and we empirically illustrate the efficacy of our approach on several real-world benchmark datasets.",
+      "authors": [
+        {
+          "name": "Soumyadeep Dey",
+          "orgs": [
+            "Microsoft India"
+          ]
+        },
+        {
+          "name": "Pratik Jawanpuria",
+          "orgs": [
+            "Microsoft India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2105.09076v1",
+      "date": "2021-05-19T11:54:28Z",
+      "citation_count": 11,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1709.01782",
+      "score": 21.131899,
+      "title": "Automatic Document Image Binarization using Bayesian Optimization",
+      "tldr": "This paper addresses the challenge of document image binarization in heavily degraded images, proposing a method that uses two band-pass filters and Bayesian optimization for hyperparameter selection, contributing a fully automated technique that improves binarization performance by 12.3% on DIBCO and H-DIBCO datasets, with implications for enhancing document analysis in archival and historical contexts.",
+      "abstract": "Document image binarization is often a challenging task due to various forms of degradation. Although there exist several binarization techniques in literature, the binarized image is typically sensitive to control parameter settings of the employed technique. This paper presents an automatic document image binarization algorithm to segment the text from heavily degraded document images. The proposed technique uses a two band-pass filtering approach for background noise removal, and Bayesian optimization for automatic hyperparameter selection for optimal results. The effectiveness of the proposed binarization technique is empirically demonstrated on the Document Image Binarization Competition (DIBCO) and the Handwritten Document Image Binarization Competition (H-DIBCO) datasets.",
+      "authors": [
+        {
+          "name": "Ekta Vats",
+          "orgs": [
+            "Department of Information Technology, Uppsala University, SE-751 05 Uppsala, Sweden"
+          ]
+        },
+        {
+          "name": "Anders Hast",
+          "orgs": [
+            "Department of Information Technology, Uppsala University, SE-751 05 Uppsala, Sweden"
+          ]
+        },
+        {
+          "name": "Prashant Singh",
+          "orgs": [
+            "Department of Information Technology, Uppsala University, SE-751 05 Uppsala, Sweden"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1709.01782v3",
+      "date": "2017-09-06T11:47:31Z",
+      "citation_count": 26,
+      "categories": [
+        "cs.CV",
+        "cs.IR"
+      ]
+    },
+    {
+      "arxiv_id": "1201.5227",
+      "score": 21.10874,
+      "title": "A New Local Adaptive Thresholding Technique in Binarization",
+      "tldr": "This paper proposes a local adaptive thresholding technique for document binarization, addressing the problem of degraded images with non-uniform illumination by improving speed without sacrificing performance compared to existing local methods; it uses integral sum image for efficient local mean calculation, avoiding standard deviation computations and achieving binarization speed close to global methods while maintaining performance comparable to Sauvola and Pietikainen's approach.",
+      "abstract": "Image binarization is the process of separation of pixel values into two groups, white as background and black as foreground. Thresholding plays a major in binarization of images. Thresholding can be categorized into global thresholding and local thresholding. In images with uniform contrast distribution of background and foreground like document images, global thresholding is more appropriate. In degraded document images, where considerable background noise or variation in contrast and illumination exists, there exists many pixels that cannot be easily classified as foreground or background. In such cases, binarization with local thresholding is more appropriate. This paper describes a locally adaptive thresholding technique that removes background by using local mean and mean deviation. Normally the local mean computational time depends on the window size. Our technique uses integral sum image as a prior processing to calculate local mean. It does not involve calculations of standard deviations as in other local adaptive techniques. This along with the fact that calculations of mean is independent of window size speed up the process as compared to other local thresholding techniques.",
+      "authors": [
+        {
+          "name": "T. Romen Singh",
+          "orgs": [
+            "Research Scholar",
+            "Department of Information Technology, School of Technology, Assam University, Silchar - 788011, Assam, India"
+          ]
+        },
+        {
+          "name": "Sudipta Roy",
+          "orgs": [
+            "Associate Professor & Head",
+            "Department of Information Technology, School of Technology, Assam University, Silchar - 788011, Assam, India"
+          ]
+        },
+        {
+          "name": "O. Imocha Singh",
+          "orgs": [
+            "Associate Professor & Head",
+            "Department of Computer Science, Manipur University, Canchipur, Imphal - 795003, Manipur, India"
+          ]
+        },
+        {
+          "name": "Tejmani Sinam",
+          "orgs": [
+            "Associate Professor",
+            "Department of Computer Science, Manipur University, Canchipur, Imphal - 795003, Manipur, India"
+          ]
+        },
+        {
+          "name": "Kh. Manglem Singh",
+          "orgs": [
+            "Department of Computer Science and Engineering, NIT, Manipur",
+            "Imphal -795001, Manipur, India."
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1201.5227v1",
+      "date": "2012-01-25T10:17:30Z",
+      "citation_count": 299,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1103.5621",
+      "score": 21.105364,
+      "title": "Application of Threshold Techniques for Readability Improvement of Jawi Historical Manuscript Images",
+      "tldr": "This paper addresses the problem of improving readability of degraded Jawi historical manuscript images due to quality issues, proposing local thresholding methods like Niblack's and Sauvola's which outperform Otsu's method, with Niblack's showing better performance in symbol recognition; it introduces edge detection and image refinement techniques to enhance post-processing results.",
+      "abstract": "Historical documents such as old books and manuscripts have a high aesthetic value and highly appreciated. Unfortunately, there are some documents cannot be read due to quality problems like faded paper, ink expand, uneven colour tone, torn paper and other elements disruption such as the existence of small spots. The study aims to produce a copy of manuscript that shows clear wordings so they can easily be read and the copy can also be displayed for visitors. 16 samples of Jawi historical manuscript with different quality problems were obtained from The Royal Museum of Pahang, Malaysia. We applied three binarization techniques; Otsu's method represents global threshold technique; Sauvola and Niblack method which are categorized as local threshold techniques. We compared the binarized images with the original manuscript to be visually inspected by the museum's curator. The unclear features were marked and analyzed. Most of the examined images show that with optimal parameters and effective pre processing technique, local thresholding methods are work well compare with the other one. Niblack's and Sauvola's techniques seem to be the suitable approaches for these types of images. Most of binarized images with these two methods show improvement for readability and character recognition. For this research, even the differences of image result were hard to be distinguished by human capabilities, after comparing the time cost and overall achievement rate of recognized symbols, Niblack's method is performing better than Sauvola's. We could improve the post processing step by adding edge detection techniques and further enhanced by an innovative image refinement technique and a formulation of a class proper method.",
+      "authors": [
+        {
+          "name": "Hafizan Mat Som",
+          "orgs": [
+            "IKIP International College Taman Gelora"
+          ]
+        },
+        {
+          "name": "Jasni Mohamad Zain",
+          "orgs": [
+            "Faculty Of Computer Systems and Software Engineering, University Malaysia Pahang"
+          ]
+        },
+        {
+          "name": "Amzari Jihadi Ghazali",
+          "orgs": [
+            "Kolej Profesional Mara Indera Mahkota"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1103.5621v1",
+      "date": "2011-03-29T12:34:53Z",
+      "citation_count": 11,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1003.6059",
+      "score": 20.828077,
+      "title": "A novel scheme for binarization of vehicle images using hierarchical histogram equalization technique",
+      "tldr": "This paper addresses the challenge of binarizing vehicle images in congested road scenarios for Automatic License Plate Recognition, proposing a hierarchical histogram equalization technique with pixel membership value calculation as a novel approach, achieving satisfactory performance on vehicle and license plate datasets.",
+      "abstract": "Automatic License Plate Recognition system is a challenging area of research now-a-days and binarization is an integral and most important part of it. In case of a real life scenario, most of existing methods fail to properly binarize the image of a vehicle in a congested road, captured through a CCD camera. In the current work we have applied histogram equalization technique over the complete image and also over different hierarchy of image partitioning. A novel scheme is formulated for giving the membership value to each pixel for each hierarchy of histogram equalization. Then the image is binarized depending on the net membership value of each pixel. The technique is exhaustively evaluated on the vehicle image dataset as well as the license plate dataset, giving satisfactory performances.",
+      "authors": [
+        {
+          "name": "Satadal Saha",
+          "orgs": [
+            "CSE Department, MCKV Institute of Engineering, Howrah, India"
+          ]
+        },
+        {
+          "name": "Subhadip Basu",
+          "orgs": [
+            "CSE Department, Jadavpur University, Kolkata, India"
+          ]
+        },
+        {
+          "name": "Mita Nasipuri",
+          "orgs": [
+            "CSE Department, Jadavpur University, Kolkata, India"
+          ]
+        },
+        {
+          "name": "Dipak Kumar Basu",
+          "orgs": [
+            "CSE Department, Jadavpur University, Kolkata, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1003.6059v2",
+      "date": "2010-03-31T14:00:16Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2411.10668",
+      "score": 20.718641,
+      "title": "Segmentation of Ink and Parchment in Dead Sea Scroll Fragments",
+      "tldr": "This paper addresses the computational challenge of segmenting ink and parchment in Dead Sea Scroll fragments, aiming to improve fragment clustering and provenance determination by accurately distinguishing ink regions from background; it introduces the Qumran Segmentation Dataset (QSD) with 20 fragments and applies multispectral thresholding combined with energy minimization to achieve better segmentation than Otsu and Sauvola methods, showing significant improvements in parchment segmentation and accurate delineation of ink borders.",
+      "abstract": "The discovery of the Dead Sea Scrolls over 60 years ago is widely regarded as one of the greatest archaeological breakthroughs in modern history. Recent study of the scrolls presents ongoing computational challenges, including determining the provenance of fragments, clustering fragments based on their degree of similarity, and pairing fragments that originate from the same manuscript -- all tasks that require focusing on individual letter and fragment shapes. This paper presents a computational method for segmenting ink and parchment regions in multispectral images of Dead Sea Scroll fragments. Using the newly developed Qumran Segmentation Dataset (QSD) consisting of 20 fragments, we apply multispectral thresholding to isolate ink and parchment regions based on their unique spectral signatures. To refine segmentation accuracy, we introduce an energy minimization technique that leverages ink contours, which are more distinguishable from the background and less noisy than inner ink regions. Experimental results demonstrate that this Multispectral Thresholding and Energy Minimization (MTEM) method achieves significant improvements over traditional binarization approaches like Otsu and Sauvola in parchment segmentation and is successful at delineating ink borders, in distinction from holes and background regions.",
+      "authors": [
+        {
+          "name": "Berat Kurar-Barakat",
+          "orgs": [
+            "Tel Aviv University"
+          ]
+        },
+        {
+          "name": "Nachum Dershowitz",
+          "orgs": [
+            "Tel Aviv University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2411.10668v1",
+      "date": "2024-11-16T02:06:41Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV",
+        "cs.DL"
+      ]
+    },
+    {
+      "arxiv_id": "1706.10241",
+      "score": 20.628506,
+      "title": "A selectional auto-encoder approach for document image binarization",
+      "tldr": "This paper addresses the challenge of document image binarization, aiming to improve accuracy across diverse document types by using a convolutional auto-encoder to learn an end-to-end mapping from input images to binary outputs, outperforming existing methods in Latin text, palm leaf scripts, Persian documents, and music scores.",
+      "abstract": "Binarization plays a key role in the automatic information retrieval from document images. This process is usually performed in the first stages of documents analysis systems, and serves as a basis for subsequent steps. Hence it has to be robust in order to allow the full analysis workflow to be successful. Several methods for document image binarization have been proposed so far, most of which are based on hand-crafted image processing strategies. Recently, Convolutional Neural Networks have shown an amazing performance in many disparate duties related to computer vision. In this paper we discuss the use of convolutional auto-encoders devoted to learning an end-to-end map from an input image to its selectional output, in which activations indicate the likelihood of pixels to be either foreground or background. Once trained, documents can therefore be binarized by parsing them through the model and applying a threshold. This approach has proven to outperform existing binarization strategies in a number of document domains.",
+      "authors": [
+        {
+          "name": "Jorge Calvo-Zaragoza",
+          "orgs": [
+            "PRHLT Research Center, Universitat Politècnica de València, Valencia, 46022, Spain",
+            "Department of Software and Computing Systems, University of Alicante, Carretera San Vicente del Raspeig s/n, 03690 Alicante, Spain"
+          ]
+        },
+        {
+          "name": "Antonio-Javier Gallego",
+          "orgs": [
+            "PRHLT Research Center, Universitat Politècnica de València, Valencia, 46022, Spain",
+            "Department of Software and Computing Systems, University of Alicante, Carretera San Vicente del Raspeig s/n, 03690 Alicante, Spain"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1706.10241v3",
+      "date": "2017-06-30T15:35:13Z",
+      "citation_count": 160,
+      "categories": [
+        "cs.CV",
+        "cs.DL"
+      ]
+    },
+    {
+      "arxiv_id": "1505.00529",
+      "score": 20.456495,
+      "title": "Learning Document Image Binarization from Data",
+      "tldr": "This paper addresses document image binarization, a critical preprocessing task for document analysis, by proposing a supervised learning approach that encodes pixel foreground determination into high-dimensional features and learns a complex decision function; it introduces new features like LIP and RDI, and demonstrates comparable performance to state-of-the-art methods using only 1.5% of training data; results show good generalization on out-of-domain data, implying practical significance for robust document processing.",
+      "abstract": "In this paper we present a fully trainable binarization solution for degraded document images. Unlike previous attempts that often used simple features with a series of pre- and post-processing, our solution encodes all heuristics about whether or not a pixel is foreground text into a high-dimensional feature vector and learns a more complicated decision function. In particular, we prepare features of three types: 1) existing features for binarization such as intensity [1], contrast [2], [3], and Laplacian [4], [5]; 2) reformulated features from existing binarization decision functions such those in [6] and [7]; and 3) our newly developed features, namely the Logarithm Intensity Percentile (LIP) and the Relative Darkness Index (RDI). Our initial experimental results show that using only selected samples (about 1.5% of all available training data), we can achieve a binarization performance comparable to those fine-tuned (typically by hand), state-of-the-art methods. Additionally, the trained document binarization classifier shows good generalization capabilities on out-of-domain data.",
+      "authors": [
+        {
+          "name": "Yue Wu",
+          "orgs": []
+        },
+        {
+          "name": "Stephen Rawls",
+          "orgs": []
+        },
+        {
+          "name": "Wael AbdAlmageed",
+          "orgs": []
+        },
+        {
+          "name": "Premkumar Natarajan",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1505.00529v1",
+      "date": "2015-05-04T05:57:17Z",
+      "citation_count": 30,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2302.02073",
+      "score": 20.426306,
+      "title": "GDB: Gated convolutions-based Document Binarization",
+      "tldr": "This paper addresses the challenge of precise stroke edge extraction in degraded document images by proposing a gated convolutions-based network (GDB) that improves performance through learned gating values and multi-scale feature integration, achieving top rankings on six benchmark datasets and outperforming state-of-the-art methods across all metrics on average.",
+      "abstract": "Document binarization is a key pre-processing step for many document analysis tasks. However, existing methods can not extract stroke edges finely, mainly due to the fair-treatment nature of vanilla convolutions and the extraction of stroke edges without adequate supervision by boundary-related information. In this paper, we formulate text extraction as the learning of gating values and propose an end-to-end gated convolutions-based network (GDB) to solve the problem of imprecise stroke edge extraction. The gated convolutions are applied to selectively extract the features of strokes with different attention. Our proposed framework consists of two stages. Firstly, a coarse sub-network with an extra edge branch is trained to get more precise feature maps by feeding a priori mask and edge. Secondly, a refinement sub-network is cascaded to refine the output of the first stage by gated convolutions based on the sharp edge. For global information, GDB also contains a multi-scale operation to combine local and global features. We conduct comprehensive experiments on ten Document Image Binarization Contest (DIBCO) datasets from 2009 to 2019. Experimental results show that our proposed methods outperform the state-of-the-art methods in terms of all metrics on average and achieve top ranking on six benchmark datasets.",
+      "authors": [
+        {
+          "name": "Zongyuan Yang",
+          "orgs": [
+            "School of Computer Science, Beijing University of Posts and Telecommunications"
+          ]
+        },
+        {
+          "name": "Yongping Xiong",
+          "orgs": [
+            "School of Computer Science, Beijing University of Posts and Telecommunications"
+          ]
+        },
+        {
+          "name": "Guibin Wu",
+          "orgs": [
+            "School of Computer Science, Beijing University of Posts and Telecommunications"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2302.02073v1",
+      "date": "2023-02-04T02:56:40Z",
+      "citation_count": 14,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2105.05521",
+      "score": 12.159133,
+      "title": "SauvolaNet: Learning Adaptive Sauvola Network for Degraded Document Binarization",
+      "tldr": "This paper proposes SauvolaNet, an end-to-end trainable DNN for degraded document binarization that adapts the classic Sauvola method with three modules (MWS, PWA, AST) to achieve SoTA performance with only 40K parameters (1% of MobileNetV2), significantly improving efficiency and accuracy over existing solutions.",
+      "abstract": "Inspired by the classic Sauvola local image thresholding approach, we systematically study it from the deep neural network (DNN) perspective and propose a new solution called SauvolaNet for degraded document binarization (DDB). It is composed of three explainable modules, namely, Multi-Window Sauvola (MWS), Pixelwise Window Attention (PWA), and Adaptive Sauolva Threshold (AST). The MWS module honestly reflects the classic Sauvola but with trainable parameters and multi-window settings. The PWA module estimates the preferred window sizes for each pixel location. The AST module further consolidates the outputs from MWS and PWA and predicts the final adaptive threshold for each pixel location. As a result, SauvolaNet becomes end-to-end trainable and significantly reduces the number of required network parameters to 40K -- it is only 1\\% of MobileNetV2. In the meantime, it achieves the State-of-The-Art (SoTA) performance for the DDB task -- SauvolaNet is at least comparable to, if not better than, SoTA binarization solutions in our extensive studies on the 13 public document binarization datasets. Our source code is available at https://github.com/Leedeng/SauvolaNet.",
+      "authors": [
+        {
+          "name": "Deng Li",
+          "orgs": [
+            "University of Macau, Department of Computer and Information Science, Macau, China"
+          ]
+        },
+        {
+          "name": "Yue Wu",
+          "orgs": [
+            "Amazon Alexa Natural Understanding, Manhattan Beach, CA, USA"
+          ]
+        },
+        {
+          "name": "Yicong Zhou",
+          "orgs": [
+            "University of Macau, Department of Computer and Information Science, Macau, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2105.05521v1",
+      "date": "2021-05-12T08:56:04Z",
+      "citation_count": 14,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2204.04044",
+      "score": 10.816735,
+      "title": "Confidence Score for Unsupervised Foreground Background Separation of Document Images",
+      "tldr": "This paper addresses the challenge of foreground-background separation in document images by proposing an unsupervised confidence scoring method for pixel classification, which enhances the reliability of binarization techniques like Sauvola's algorithm; the approach maintains the same computational complexity as existing methods and demonstrates utility in applications such as document cleanup and texture addition through empirical validation.",
+      "abstract": "Foreground-background separation is an important problem in document image analysis. Popular unsupervised binarization methods (such as the Sauvola's algorithm) employ adaptive thresholding to classify pixels as foreground or background. In this work, we propose a novel approach for computing confidence scores of the classification in such algorithms. This score provides an insight of the confidence level of the prediction. The computational complexity of the proposed approach is the same as the underlying binarization algorithm. Our experiments illustrate the utility of the proposed scores in various applications like document binarization, document image cleanup, and texture addition.",
+      "authors": [
+        {
+          "name": "Soumyadeep Dey",
+          "orgs": []
+        },
+        {
+          "name": "Pratik Jawanpuria",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2204.04044v1",
+      "date": "2022-04-03T18:22:11Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2007.07350",
+      "score": 10.200367,
+      "title": "A Generalization of Otsu's Method and Minimum Error Thresholding",
+      "tldr": "This paper introduces Generalized Histogram Thresholding (GHT), a method that subsumes Otsu's method, Minimum Error Thresholding, and weighted percentile thresholding, enabling continuous interpolation between them and improving thresholding accuracy; GHT provides a clear interpretation of histogram binning practices and outperforms or matches existing methods on handwritten document image binarization tasks.",
+      "abstract": "We present Generalized Histogram Thresholding (GHT), a simple, fast, and effective technique for histogram-based image thresholding. GHT works by performing approximate maximum a posteriori estimation of a mixture of Gaussians with appropriate priors. We demonstrate that GHT subsumes three classic thresholding techniques as special cases: Otsu's method, Minimum Error Thresholding (MET), and weighted percentile thresholding. GHT thereby enables the continuous interpolation between those three algorithms, which allows thresholding accuracy to be improved significantly. GHT also provides a clarifying interpretation of the common practice of coarsening a histogram's bin width during thresholding. We show that GHT outperforms or matches the performance of all algorithms on a recent challenge for handwritten document image binarization (including deep neural networks trained to produce per-pixel binarizations), and can be implemented in a dozen lines of code or as a trivial modification to Otsu's method or MET.",
+      "authors": [
+        {
+          "name": "Jonathan T. Barron",
+          "orgs": [
+            "Google Research"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2007.07350v3",
+      "date": "2020-07-14T20:55:10Z",
+      "citation_count": 36,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2304.13425",
+      "score": 9.497655,
+      "title": "Learnable Ophthalmology SAM",
+      "tldr": "This paper addresses the challenge of multi-modal ophthalmology image segmentation by proposing a learnable prompt layer for Segment Anything (SAM), improving segmentation accuracy across four tasks on nine datasets with one-shot fine-tuning, and demonstrating its generalization ability across different modalities and datasets.",
+      "abstract": "Segmentation is vital for ophthalmology image analysis. But its various modal images hinder most of the existing segmentation algorithms applications, as they rely on training based on a large number of labels or hold weak generalization ability. Based on Segment Anything (SAM), we propose a simple but effective learnable prompt layer suitable for multiple target segmentation in ophthalmology multi-modal images, named Learnable Ophthalmology Segment Anything (SAM). The learnable prompt layer learns medical prior knowledge from each transformer layer. During training, we only train the prompt layer and task head based on a one-shot mechanism. We demonstrate the effectiveness of our thought based on four medical segmentation tasks based on nine publicly available datasets. Moreover, we only provide a new improvement thought for applying the existing fundamental CV models in the medical field. Our codes are available at \\href{https://github.com/Qsingle/LearnablePromptSAM}{website}.",
+      "authors": [
+        {
+          "name": "Zhongxi Qiu",
+          "orgs": [
+            "Research Institute of Trustworthy Autonomous Systems",
+            "Department of Computer Science and Engineering, Southern University of Science and Technology, Shenzhen 518055, China"
+          ]
+        },
+        {
+          "name": "Yan Hu",
+          "orgs": [
+            "Research Institute of Trustworthy Autonomous Systems",
+            "Department of Computer Science and Engineering, Southern University of Science and Technology, Shenzhen 518055, China"
+          ]
+        },
+        {
+          "name": "Heng Li",
+          "orgs": [
+            "Research Institute of Trustworthy Autonomous Systems",
+            "Department of Computer Science and Engineering, Southern University of Science and Technology, Shenzhen 518055, China"
+          ]
+        },
+        {
+          "name": "Jiang Liu",
+          "orgs": [
+            "Research Institute of Trustworthy Autonomous Systems",
+            "Department of Computer Science and Engineering, Southern University of Science and Technology, Shenzhen 518055, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2304.13425v1",
+      "date": "2023-04-26T10:14:03Z",
+      "citation_count": 35,
+      "categories": [
+        "cs.CV"
+      ]
+    }
+  ]
+}

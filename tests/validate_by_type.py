@@ -614,6 +614,13 @@ def run_all(
         summaries.append(summary)
         for r in summary["results"]:
             row = {"type": chart_type, **r}
+            # Extract stage timing from diagnostics before removal
+            diag = row.get("diagnostics") or {}
+            st = diag.get("stage_timing", {})
+            row["timing_crop_ms"] = st.get("crop_planning_ms", 0)
+            row["timing_formula_ms"] = st.get("formula_infer_ms", 0)
+            row["timing_calib_ms"] = st.get("calibrate_ms", 0)
+            row["timing_total_ms"] = st.get("total_ms", 0)
             row.pop("diagnostics", None)
             row.pop("guess_probs", None)
             all_rows.append(row)
@@ -624,6 +631,7 @@ def run_all(
             "type", "file", "rel_err", "ssim", "threshold", "passed",
             "guess_top1", "guess_top1_correct", "guess_top2_correct",
             "policy_density", "policy_color", "policy_noise",
+            "timing_crop_ms", "timing_formula_ms", "timing_calib_ms", "timing_total_ms",
         ]
         writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
         writer.writeheader()

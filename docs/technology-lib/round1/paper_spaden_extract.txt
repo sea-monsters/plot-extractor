@@ -1,0 +1,12 @@
+=== SpaDen (2308.01971) ===
+Heading: Saleem Ahmed†(✉)[0000-0001-8648-9625](https://orcid.org/0000-0001-8648-9625 "ORCID identifier")Pengyu Yan†[0000-0003-1584-2350](https://orcid.org/0000-0003-1584-2350 "ORCID identifier")David Doermann[
+
+Abstract:
+
+
+Introduction:
+Data visualizations are effective constructs to efficiently convey knowledge in documents. Most documents consist of semantically structured textual content and complementary visualizations in the form of figures, generic infographics, technical diagrams, charts, etc. Our work focuses on the problem of reconstructing tabular data used to plot the visualization, given the image and structural information as input. We focus on the family of visualizations called charts, specifically from the scientific literature.
+
+### 1.1 Charts
+
+Charts are visual representations of data composed of simple abstract shapes arranged to have a semantic meaning. They are often used to make it easier to understand large amounts of data and to see patterns and trends. Charts can represent many types of data, including numerical, categorical, and time-based data. Standard chart types include bar, line, scatter, and box plots. The elements of a chart are the visual components used to represent data. These can i

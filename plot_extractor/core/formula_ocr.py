@@ -73,6 +73,7 @@ def formula_ocr_available() -> bool:
 # Pre-compiled patterns for common log-scale LaTeX outputs
 _RE_10_POW = re.compile(r"10\s*\^\s*\{(-?\d+)\}")
 _RE_10_POW_SIMPLE = re.compile(r"10\s*\^\s*(-?\d+)")
+_RE_SPLIT_10_POW = re.compile(r"1\D{0,24}0\s*\^\s*\{?(-?\d+)\}?")
 _RE_TIMES_10_POW = re.compile(r"[×xX]\\?times\s*10\s*\^\s*\{(-?\d+)\}")
 _RE_SCI = re.compile(r"(\d+\.?\d*)\s*[eE]\s*([+-]?\d+)")
 _RE_PLAIN_NUM = re.compile(r"^\s*(\d+\.?\d*)\s*$")
@@ -98,6 +99,13 @@ def parse_latex_value(latex: str) -> Optional[float]:
 
     # 10^N (without braces)
     m = _RE_10_POW_SIMPLE.search(latex)
+    if m:
+        return float(10 ** int(m.group(1)))
+
+    # FormulaOCR sometimes emits table/aligned fragments where ``10^{N}``
+    # is split into ``1 ... 0^{N}``; recover the value without trusting the
+    # surrounding layout markup.
+    m = _RE_SPLIT_10_POW.search(latex)
     if m:
         return float(10 ** int(m.group(1)))
 
@@ -135,7 +143,7 @@ def score_latex_log_notation(latex: str) -> float:
 
     score = 0.0
 
-    if _RE_10_POW.search(latex) or _RE_10_POW_SIMPLE.search(latex):
+    if _RE_10_POW.search(latex) or _RE_10_POW_SIMPLE.search(latex) or _RE_SPLIT_10_POW.search(latex):
         score += 0.60
     if _RE_TIMES_10_POW.search(latex):
         score += 0.20

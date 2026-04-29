@@ -1,0 +1,854 @@
+{
+  "status": "success",
+  "total_count": 55,
+  "result": [
+    {
+      "arxiv_id": "2512.14040",
+      "score": 14.050246,
+      "title": "ChartAgent: A Chart Understanding Framework with Tool Integrated Reasoning",
+      "tldr": "This paper introduces ChartAgent, a chart understanding framework addressing the limitation of MLLMs in handling unannotated charts by using Tool-Integrated Reasoning to decompose tasks into observable steps and provide traceable evidence, achieving SOTA performance on chart QA tasks.",
+      "abstract": "With their high information density and intuitive readability, charts have become the de facto medium for data analysis and communication across disciplines. Recent multimodal large language models (MLLMs) have made notable progress in automated chart understanding, yet they remain heavily dependent on explicit textual annotations and the performance degrades markedly when key numerals are absent. To address this limitation, we introduce ChartAgent, a chart understanding framework grounded in Tool-Integrated Reasoning (TIR). Inspired by human cognition, ChartAgent decomposes complex chart analysis into a sequence of observable, replayable steps. Supporting this architecture is an extensible, modular tool library comprising more than a dozen core tools, such as keyelement detection, instance segmentation, and optical character recognition (OCR), which the agent dynamically orchestrates to achieve systematic visual parsing across diverse chart types. Leveraging TIRs transparency and verifiability, ChartAgent moves beyond the black box paradigm by standardizing and consolidating intermediate outputs into a structured Evidence Package, providing traceable and reproducible support for final conclusions. Experiments show that ChartAgent substantially improves robustness under sparse annotation settings, offering a practical path toward trustworthy and extensible systems for chart understanding.",
+      "authors": [
+        {
+          "name": "Xiang Li",
+          "orgs": [
+            "5"
+          ]
+        },
+        {
+          "name": "Jing Yuan",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Yi Chen",
+          "orgs": [
+            "234"
+          ]
+        },
+        {
+          "name": "Jian Xu",
+          "orgs": [
+            "23"
+          ]
+        },
+        {
+          "name": "Xinming Wang",
+          "orgs": [
+            "School of Computer Science, Fudan University"
+          ]
+        },
+        {
+          "name": "Boran Wang",
+          "orgs": [
+            "Department of Computer Science, Tsinghua University"
+          ]
+        },
+        {
+          "name": "Chenglin Liu",
+          "orgs": [
+            "School of Information Science and Engineering, Central South University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.14040v1",
+      "date": "2025-12-16",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2112.09357",
+      "score": 12.4145775,
+      "title": "Interpreting Audiograms with Multi-stage Neural Networks",
+      "tldr": "This paper addresses the challenge of accurately interpreting audiograms to extract precise hearing level data, which is crucial for tuning hearing aids; it proposes a Multi-stage Audiogram Interpretation Network (MAIN) with three stages for detection, rectification, and coordinate projection, achieving 84% test accuracy and 94% of tuples within ±5 dB HL error; this method enables reliable automated audiogram interpretation, improving accessibility and efficiency in hearing aid fitting.",
+      "abstract": "Audiograms are a particular type of line charts representing individuals' hearing level at various frequencies. They are used by audiologists to diagnose hearing loss, and further select and tune appropriate hearing aids for customers. There have been several projects such as Autoaudio that aim to accelerate this process through means of machine learning. But all existing models at their best can only detect audiograms in images and classify them into general categories. They are unable to extract hearing level information from detected audiograms by interpreting the marks, axis, and lines. To address this issue, we propose a Multi-stage Audiogram Interpretation Network (MAIN) that directly reads hearing level data from photos of audiograms. We also established Open Audiogram, an open dataset of audiogram images with annotations of marks and axes on which we trained and evaluated our proposed model. Experiments show that our model is feasible and reliable.",
+      "authors": [
+        {
+          "name": "Shufan Li",
+          "orgs": [
+            "Orka Labs Inc."
+          ]
+        },
+        {
+          "name": "Congxi Lu",
+          "orgs": [
+            "Orka Labs Inc."
+          ]
+        },
+        {
+          "name": "Linkai Li",
+          "orgs": [
+            "Orka Labs Inc."
+          ]
+        },
+        {
+          "name": "Jirong Duan",
+          "orgs": [
+            "ENT&Audiology Center",
+            "Xinhua Hospital*",
+            "&Punan Hospital"
+          ]
+        },
+        {
+          "name": "Xinping Fu",
+          "orgs": [
+            "Ear Institute",
+            "University College London"
+          ]
+        },
+        {
+          "name": "Haoshuai Zhou",
+          "orgs": [
+            "Orka Labs Inc."
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2112.09357v1",
+      "date": "2021-12-17T07:27:39Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.CV",
+        "cs.SD",
+        "eess.AS"
+      ]
+    },
+    {
+      "arxiv_id": "2310.17814",
+      "score": 11.799001,
+      "title": "DIVI: Dynamically Interactive Visualization",
+      "tldr": "This paper presents DIVI, a novel approach for dynamically orchestrating interactions in static visualizations by deconstructing SVG charts to infer metadata and enable cross-tool interaction, contributing a three-part model, a taxonomy for interactions, and SVG deconstruction techniques; results show usability with 13 participants and support dynamic multi-view and cross-tool linking.",
+      "abstract": "Dynamically Interactive Visualization (DIVI) is a novel approach for orchestrating interactions within and across static visualizations. DIVI deconstructs Scalable Vector Graphics charts at runtime to infer content and coordinate user input, decoupling interaction from specification logic. This decoupling allows interactions to extend and compose freely across different tools, chart types, and analysis goals. DIVI exploits positional relations of marks to detect chart components such as axes and legends, reconstruct scales and view encodings, and infer data fields. DIVI then enumerates candidate transformations across inferred data to perform linking between views. To support dynamic interaction without prior specification, we introduce a taxonomy that formalizes the space of standard interactions by chart element, interaction type, and input event. We demonstrate DIVI's usefulness for rapid data exploration and analysis through a usability study with 13 participants and a diverse gallery of dynamically interactive visualizations, including single chart, multi-view, and cross-tool configurations.",
+      "authors": [
+        {
+          "name": "Luke S. Snyder",
+          "orgs": []
+        },
+        {
+          "name": "Jeffrey Heer",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2310.17814v2",
+      "date": "2023-10-26T23:24:35Z",
+      "citation_count": 12,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2603.28583",
+      "score": 11.728824,
+      "title": "Navigating the Mirage: A Dual-Path Agentic Framework for Robust Misleading Chart Question Answering",
+      "tldr": "This paper presents ChartCynics, a dual-path agentic framework for robust misleading chart QA, addressing the challenge of detecting visual deception in charts by decoupling perception from verification; it employs diagnostic vision and OCR-driven data paths with a two-stage training protocol to enhance logical consistency and accuracy; evaluations show 74.43% accuracy on benchmarks, outperforming existing models by ~29%.",
+      "abstract": "Despite the success of Vision-Language Models (VLMs), misleading charts remain a significant challenge due to their deceptive visual structures and distorted data representations. We present ChartCynics, an agentic dual-path framework designed to unmask visual deception via a \"skeptical\" reasoning paradigm. Unlike holistic models, ChartCynics decouples perception from verification: a Diagnostic Vision Path captures structural anomalies (e.g., inverted axes) through strategic ROI cropping, while an OCR-Driven Data Path ensures numerical grounding. To resolve cross-modal conflicts, we introduce an Agentic Summarizer optimized via a two-stage protocol: Oracle-Informed SFT for reasoning distillation and Deception-Aware GRPO for adversarial alignment. This pipeline effectively penalizes visual traps and enforces logical consistency. Evaluations on two benchmarks show that ChartCynics achieves 74.43% and 64.55% accuracy, providing an absolute performance boost of ~29% over the Qwen3-VL-8B backbone, outperforming state-of-the-art proprietary models. Our results demonstrate that specialized agentic workflows can grant smaller open-source models superior robustness, establishing a new foundation for trustworthy chart interpretation.",
+      "authors": [
+        {
+          "name": "Yanjie Zhang",
+          "orgs": [
+            "HKUST, China"
+          ]
+        },
+        {
+          "name": "Yafei Li",
+          "orgs": [
+            "HKUST, China"
+          ]
+        },
+        {
+          "name": "Rui Sheng",
+          "orgs": [
+            "HKUST, China"
+          ]
+        },
+        {
+          "name": "Zixin Chen",
+          "orgs": [
+            "HKUST, China"
+          ]
+        },
+        {
+          "name": "Yanna Lin",
+          "orgs": [
+            "HKUST, China"
+          ]
+        },
+        {
+          "name": "Huamin Qu",
+          "orgs": [
+            "HKUST, China"
+          ]
+        },
+        {
+          "name": "Lei Chen",
+          "orgs": [
+            "HKUST",
+            "HKUST(GZ)"
+          ]
+        },
+        {
+          "name": "Yushi Sun",
+          "orgs": [
+            "HKUST"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2603.28583v1",
+      "date": "2026-03-30",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.MM"
+      ]
+    },
+    {
+      "arxiv_id": "2410.22492",
+      "score": 11.706119,
+      "title": "RealCQA-V2 : Visual Premise Proving A Manual COT Dataset for Charts",
+      "tldr": "This paper introduces Visual Premise Proving (VPP) as a task to evaluate sequential reasoning in chart question answering, addressing the gap in assessing model reasoning over accuracy; it proposes VPP and Manual-COT dataset with 10 million pairs, and finds models excel in reasoning (27%) over structure (19%) and data retrieval (14%), highlighting the need for balanced evaluation of visual and logical comprehension.",
+      "abstract": "We introduce Visual Premise Proving (VPP), a novel task tailored to refine the process of chart question answering by deconstructing it into a series of logical premises. Each of these premises represents an essential step in comprehending a chart's content and deriving logical conclusions, thereby providing a granular look at a model's reasoning abilities. This approach represents a departure from conventional accuracy-based evaluation methods, emphasizing the model's ability to sequentially validate each premise and ideally mimic human analytical processes. A model adept at reasoning is expected to demonstrate proficiency in both data retrieval and the structural understanding of charts, suggesting a synergy between these competencies. However, in our zero-shot study using the sophisticated MATCHA model on a scientific chart question answering dataset, an intriguing pattern emerged. The model showcased superior performance in chart reasoning (27\\%) over chart structure (19\\%) and data retrieval (14\\%). This performance gap suggests that models might more readily generalize reasoning capabilities across datasets, benefiting from consistent mathematical and linguistic semantics, even when challenged by changes in the visual domain that complicate structure comprehension and data retrieval. Furthermore, the efficacy of using accuracy of binary QA for evaluating chart reasoning comes into question if models can deduce correct answers without parsing chart data or structure. VPP highlights the importance of integrating reasoning with visual comprehension to enhance model performance in chart analysis, pushing for a balanced approach in evaluating visual data interpretation capabilities.",
+      "authors": [
+        {
+          "name": "Saleem Ahmed",
+          "orgs": [
+            "CSE @ UB"
+          ]
+        },
+        {
+          "name": "Srirangaraj Setlur",
+          "orgs": [
+            "CSE @ UB"
+          ]
+        },
+        {
+          "name": "Venu Govindaraju",
+          "orgs": [
+            "CSE @ UB"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2410.22492v2",
+      "date": "2024-10-29T19:32:53Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI"
+      ]
+    },
+    {
+      "arxiv_id": "1906.11906",
+      "score": 11.415875,
+      "title": "Data Extraction from Charts via Single Deep Neural Network",
+      "tldr": "This paper presents a deep learning model for automatic data extraction from bar and pie charts, addressing the challenge of handling complex object relations and varying chart types, by combining object detection, text recognition, and component matching; it introduces a single model for bar charts and a specialized model for pie charts with RNN-based angle detection, achieving 79.4% and 88.0% accuracy on simulated charts, but degrading to 57.5% and 62.3% on out-of-domain data, offering improved automation for business data management.",
+      "abstract": "Automatic data extraction from charts is challenging for two reasons: there exist many relations among objects in a chart, which is not a common consideration in general computer vision problems; and different types of charts may not be processed by the same model. To address these problems, we propose a framework of a single deep neural network, which consists of object detection, text recognition and object matching modules. The framework handles both bar and pie charts, and it may also be extended to other types of charts by slight revisions and by augmenting the training data. Our model performs successfully on 79.4% of test simulated bar charts and 88.0% of test simulated pie charts, while for charts outside of the training domain it degrades for 57.5% and 62.3%, respectively.",
+      "authors": [
+        {
+          "name": "Xiaoyi Liu",
+          "orgs": []
+        },
+        {
+          "name": "Diego Klabjan",
+          "orgs": []
+        },
+        {
+          "name": "Patrick N Bless",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1906.11906v1",
+      "date": "2019-06-06T21:54:50Z",
+      "citation_count": 60,
+      "categories": [
+        "cs.CL",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2303.14476",
+      "score": 11.397106,
+      "title": "A Spatial-Constraint Model for Manipulating Static Visualizations",
+      "tldr": "This paper proposes a spatial-constraint model for enabling interactive manipulation of static visualizations, addressing the gap in interactivity of static visualizations by introducing a physical-based approach with gravity, support, collision, and fixation constraints; the model facilitates intuitive transitions and supports diverse interactions like reordering and filtering, achieving effective user engagement in real-world scenarios.",
+      "abstract": "We propose a spatial-constraint approach for modeling spatial-based interactions and enabling interactive visualizations, which involves the manipulation of visualizations through selection, filtering, navigation, arrangement, and aggregation. We proposes a system that activates static visualizations by adding intelligent interactions, which is achieved by associating static visual objects with forces. Our force-directed technique facilitates smooth animated transitions of the visualizations between different interaction states. We showcase the effectiveness of our technique through usage scenarios that involve activating visualizations in real-world settings.",
+      "authors": [
+        {
+          "name": "Can Liu",
+          "orgs": [
+            "Peking University, China"
+          ]
+        },
+        {
+          "name": "Yu Zhang",
+          "orgs": [
+            "University of Oxford, UK"
+          ]
+        },
+        {
+          "name": "Cong Wu",
+          "orgs": [
+            "Peking University, China"
+          ]
+        },
+        {
+          "name": "Xiaoru Yuan",
+          "orgs": [
+            "Peking University",
+            "China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2303.14476v2",
+      "date": "2023-03-25T14:09:18Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2107.08296",
+      "score": 11.387022,
+      "title": "Calibrating the scan statistic with size-dependent critical values: heuristics, methodology and computation",
+      "tldr": "This paper addresses the challenge of detecting signals of varying spatial extent using the scan statistic, aiming to overcome the loss of power for large signals by employing size-dependent critical values; it reviews methodologies, presents fast algorithms for computing scan statistics, and highlights their implications for improving detection efficiency in multivariate settings without increasing computational complexity.",
+      "abstract": "It is known that the scan statistic with variable window size favors the detection of signals with small spatial extent and there is a corresponding loss of power for signals with large spatial extent. Recent results have shown that this loss is not inevitable: Using critical values that depend on the size of the window allows optimal detection for all signal sizes simultaneously, so there is no substantial price to pay for not knowing the correct window size and for scanning with a variable window size. This paper gives a review of the heuristics and methodology for such size-dependent critical values, their applications to various settings including the multivariate case, and recent results about fast algorithms for computing scan statistics.",
+      "authors": [
+        {
+          "name": "Guenther Walther",
+          "orgs": [
+            "Department of Statistics, Stanford University",
+            "Stanford University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2107.08296v2",
+      "date": "2021-07-17T18:00:13Z",
+      "citation_count": 3,
+      "categories": [
+        "stat.ME"
+      ]
+    },
+    {
+      "arxiv_id": "2508.21675",
+      "score": 11.295962,
+      "title": "Is this chart lying to me? Automating the detection of misleading visualizations",
+      "tldr": "This paper addresses the detection of misleading visualizations in data visualization, aiming to combat misinformation by identifying design rule violations; it introduces Misviz (2,604 real-world visualizations annotated with 12 misleaders) and Misviz-synth (57,665 synthetic visualizations), and evaluates MLLMs, rule-based linters, and classifiers; findings show MLLMs excel on real-world data while linters and classifiers outperform on synthetic data.",
+      "abstract": "Misleading visualizations are a potent driver of misinformation on social media and the web. By violating chart design principles, they distort data and lead readers to draw inaccurate conclusions. Prior work has shown that both humans and multimodal large language models (MLLMs) are frequently deceived by such visualizations. Automatically detecting misleading visualizations and identifying the specific design rules they violate could help protect readers and reduce the spread of misinformation. However, the training and evaluation of AI models has been limited by the absence of large, diverse, and openly available datasets. In this work, we introduce Misviz, a benchmark of 2,604 real-world visualizations annotated with 12 types of misleaders. To support model training, we also create Misviz-synth, a synthetic dataset of 57,665 visualizations generated using Matplotlib and based on real-world data tables. We perform a comprehensive evaluation on both datasets using state-of-the-art MLLMs, rule-based systems, and image-axis classifiers. Our results reveal that the task remains highly challenging. We release Misviz, Misviz-synth, and the accompanying code.",
+      "authors": [
+        {
+          "name": "Jonathan Tonglet",
+          "orgs": [
+            "Ubiquitous Knowledge Processing Lab (UKP Lab), Department of Computer Science, TU Darmstadt",
+            "National Research Center for Applied Cybersecurity ATHENE"
+          ]
+        },
+        {
+          "name": "Jan Zimny",
+          "orgs": [
+            "Ubiquitous Knowledge Processing Lab (UKP Lab), Department of Computer Science, TU Darmstadt",
+            "National Research Center for Applied Cybersecurity ATHENE"
+          ]
+        },
+        {
+          "name": "Tinne Tuytelaars",
+          "orgs": [
+            "Ubiquitous Knowledge Processing Lab (UKP Lab), Department of Computer Science, TU Darmstadt",
+            "National Research Center for Applied Cybersecurity ATHENE"
+          ]
+        },
+        {
+          "name": "Iryna Gurevych",
+          "orgs": [
+            "Ubiquitous Knowledge Processing Lab (UKP Lab), Department of Computer Science, TU Darmstadt and National Research Center for Applied Cybersecurity ATHENE"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2508.21675v3",
+      "date": "2025-08-29",
+      "citation_count": 1,
+      "categories": [
+        "cs.CL",
+        "cs.CV",
+        "cs.GR"
+      ]
+    },
+    {
+      "arxiv_id": "2506.21762",
+      "score": 11.246381,
+      "title": "ViStruct: Simulating Expert-Like Reasoning Through Task Decomposition and Visual Attention Cues",
+      "tldr": "This paper introduces ViStruct, an automated pipeline that simulates expert-like reasoning in data visualization by decomposing tasks into structured steps and highlighting relevant chart regions, addressing the gap in modeling implicit expert strategies; it leverages large language and vision-language models to achieve this, offering a replicable model validated on 45 tasks across 12 chart types with expert validation; results show ViStruct produces interpretable and expert-aligned reasoning sequences, aiding in the development of more transparent visualization tools.",
+      "abstract": "Data visualization tasks often require multi-step reasoning, and the interpretive strategies experts use, such as decomposing complex goals into smaller subtasks and selectively attending to key chart regions are rarely made explicit. ViStruct is an automated pipeline that simulates these expert behaviours by breaking high-level visual questions into structured analytic steps and highlighting semantically relevant chart areas. Leveraging large language and vision-language models, ViStruct identifies chart components, maps subtasks to spatial regions, and presents visual attention cues to externalize expert-like reasoning flows. While not designed for direct novice instruction, ViStruct provides a replicable model of expert interpretation that can inform the development of future visual literacy tools. We evaluate the system on 45 tasks across 12 chart types and validate its outputs with trained visualization users, confirming its ability to produce interpretable and expert-aligned reasoning sequences.",
+      "authors": [
+        {
+          "name": "Oliver Huang",
+          "orgs": []
+        },
+        {
+          "name": "Carolina Nobre",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2506.21762v1",
+      "date": "2025-06-26T20:40:20Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2204.09548",
+      "score": 11.18216,
+      "title": "Misinformed by Visualization: What Do We Learn From Misinformative Visualizations?",
+      "tldr": "This survey reviews misleading visualizations, identifying 74 types of issues and proposing a taxonomy, and highlights four research directions to address misinformation through understanding, detection, and prevention.",
+      "abstract": "Data visualization is powerful in persuading an audience. However, when it is done poorly or maliciously, a visualization may become misleading or even deceiving. Visualizations give further strength to the dissemination of misinformation on the Internet. The visualization research community has long been aware of visualizations that misinform the audience, mostly associated with the terms \"lie\" and \"deceptive.\" Still, these discussions have focused only on a handful of cases. To better understand the landscape of misleading visualizations, we open-coded over one thousand real-world visualizations that have been reported as misleading. From these examples, we discovered 74 types of issues and formed a taxonomy of misleading elements in visualizations. We found four directions that the research community can follow to widen the discussion on misleading visualizations: (1) informal fallacies in visualizations, (2) exploiting conventions and data literacy, (3) deceptive tricks in uncommon charts, and (4) understanding the designers' dilemma. This work lays the groundwork for these research directions, especially in understanding, detecting, and preventing them.",
+      "authors": [
+        {
+          "name": "Leo Yu-Ho Lo",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Ayush Gupta",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Kento Shigyo",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Aoyu Wu",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Enrico Bertini",
+          "orgs": [
+            "Northeastern University"
+          ]
+        },
+        {
+          "name": "Huamin Qu",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2204.09548v1",
+      "date": "2022-04-20T15:35:52Z",
+      "citation_count": 61,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2308.01979",
+      "score": 11.076656,
+      "title": "RealCQA: Scientific Chart Question Answering as a Test-bed for First-Order Logic",
+      "tldr": "This paper addresses the challenge of chart visual question-answering in scientific literature, aiming to evaluate models' first-order logic capabilities through a real-world dataset and novel answer types, introducing RealCQA with structured and unstructured list answers and showing improved accuracy in reasoning tasks; it contributes a benchmark for assessing logical reasoning in chart QA and advances formal logic verification for neural networks.",
+      "abstract": "We present a comprehensive study of chart visual question-answering(QA) task, to address the challenges faced in comprehending and extracting data from chart visualizations within documents. Despite efforts to tackle this problem using synthetic charts, solutions are limited by the shortage of annotated real-world data. To fill this gap, we introduce a benchmark and dataset for chart visual QA on real-world charts, offering a systematic analysis of the task and a novel taxonomy for template-based chart question creation. Our contribution includes the introduction of a new answer type, 'list', with both ranked and unranked variations. Our study is conducted on a real-world chart dataset from scientific literature, showcasing higher visual complexity compared to other works. Our focus is on template-based QA and how it can serve as a standard for evaluating the first-order logic capabilities of models. The results of our experiments, conducted on a real-world out-of-distribution dataset, provide a robust evaluation of large-scale pre-trained models and advance the field of chart visual QA and formal logic verification for neural networks in general.",
+      "authors": [
+        {
+          "name": "Saleem Ahmed",
+          "orgs": []
+        },
+        {
+          "name": "Bhavin Jawade",
+          "orgs": []
+        },
+        {
+          "name": "Shubham Pandey",
+          "orgs": []
+        },
+        {
+          "name": "Srirangaraj Setlur",
+          "orgs": []
+        },
+        {
+          "name": "Venu Govindaraju",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2308.01979v1",
+      "date": "2023-08-03T18:21:38Z",
+      "citation_count": 8,
+      "categories": [
+        "cs.CV",
+        "cs.LO"
+      ]
+    },
+    {
+      "arxiv_id": "2512.19173",
+      "score": 11.004576,
+      "title": "CycleChart: A Unified Consistency-Based Learning Framework for Bidirectional Chart Understanding and Generation",
+      "tldr": "This paper introduces CycleChart, a consistency-based learning framework for bidirectional chart understanding and generation, addressing the lack of unified semantic understanding across chart tasks; it employs a generate-parse consistency objective and a multi-task dataset to improve cross-task generalization, achieving strong results on chart generation, parsing, and question answering through a closed cycle of generation, parsing, and reasoning.",
+      "abstract": "Current chart-specific tasks, such as chart question answering, chart parsing, and chart generation, are typically studied in isolation, preventing models from learning the shared semantics that link chart generation and interpretation. We introduce CycleChart, a consistency-based learning framework for bidirectional chart understanding and generation. CycleChart adopts a schema-centric formulation as a common interface across tasks. We construct a consistent multi-task dataset, where each chart sample includes aligned annotations for schema prediction, data parsing, and question answering. To learn cross-directional chart semantics, CycleChart introduces a generate-parse consistency objective: the model generates a chart schema from a table and a textual query, then learns to recover the schema and data from the generated chart, enforcing semantic alignment across directions. CycleChart achieves strong results on chart generation, chart parsing, and chart question answering, demonstrating improved cross-task generalization and marking a step toward more general chart understanding models.",
+      "authors": [
+        {
+          "name": "Dazhen Deng",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Sen Yang",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Yuchen He",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Yuan Tian",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Yingcai Wu",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.19173v1",
+      "date": "2025-12-22",
+      "citation_count": 0,
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2511.19773",
+      "score": 10.7867775,
+      "title": "Scaling Agentic Reinforcement Learning for Tool-Integrated Reasoning in VLMs",
+      "tldr": "This paper introduces VISTA-Gym, a scalable training environment for enhancing tool-integrated visual reasoning in VLMs, addressing the gap in multi-step visual interaction capabilities; it employs agentic reinforcement learning with a unified tool interface and diverse tasks, contributing a framework that improves performance by 9.51%-18.72% over state-of-the-art models on VQA benchmarks.",
+      "abstract": "While recent vision-language models (VLMs) demonstrate strong image understanding, their ability to \"think with images\", i.e., to reason through multi-step visual interactions, remains limited. We introduce VISTA-Gym, a scalable training environment for incentivizing tool-integrated visual reasoning capabilities in VLMs. VISTA-Gym unifies diverse real-world multimodal reasoning tasks (7 tasks from 13 datasets in total) with a standardized interface for visual tools (e.g., grounding, parsing), executable interaction loops, verifiable feedback signals, and efficient trajectory logging, enabling visual agentic reinforcement learning at scale. While recent VLMs exhibit strong text-only reasoning, both proprietary and open-source models still struggle with tool selection, invocation, and coordination. With VISTA-Gym, we train VISTA-R1 to interleave tool-use with agentic reasoning via multi-turn trajectory sampling and end-to-end reinforcement learning. Extensive experiments across 11 public reasoning-intensive VQA benchmarks show that VISTA-R1-8B outperforms state-of-the-art baselines with similar sizes by 9.51%-18.72%, demonstrating VISTA-Gym as an effective training ground to unlock the tool-integrated reasoning capabilities for VLMs.",
+      "authors": [
+        {
+          "name": "Yue Yu",
+          "orgs": [
+            "Georgia Tech"
+          ]
+        },
+        {
+          "name": "Yuchen Zhuang",
+          "orgs": [
+            "Georgia Tech"
+          ]
+        },
+        {
+          "name": "Yi Fang",
+          "orgs": [
+            "Virginia Tech"
+          ]
+        },
+        {
+          "name": "Zhengzhong Tu",
+          "orgs": [
+            "TAMU"
+          ]
+        },
+        {
+          "name": "Wenqi Shi",
+          "orgs": [
+            "UT Southwestern Medical Center"
+          ]
+        },
+        {
+          "name": "Charles Fleming",
+          "orgs": [
+            "Cisco"
+          ]
+        },
+        {
+          "name": "Carl Yang",
+          "orgs": [
+            "Emory University"
+          ]
+        },
+        {
+          "name": "Wenxuan Zhang",
+          "orgs": [
+            "KAUST"
+          ]
+        },
+        {
+          "name": "Mohamed Elhoseiny",
+          "orgs": [
+            "KAUST"
+          ]
+        },
+        {
+          "name": "Gaurav Srivastava",
+          "orgs": [
+            "Virginia Tech"
+          ]
+        },
+        {
+          "name": "Meng Lu",
+          "orgs": [
+            "Virginia Tech"
+          ]
+        },
+        {
+          "name": "Yang Xie",
+          "orgs": [
+            "UT Southwestern Medical Center"
+          ]
+        },
+        {
+          "name": "Guanghua Xiao",
+          "orgs": [
+            "UT Southwestern Medical Center"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2511.19773v1",
+      "date": "2025-11-24",
+      "citation_count": 6,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2403.06693",
+      "score": 10.785055,
+      "title": "Chart4Blind: An Intelligent Interface for Chart Accessibility Conversion",
+      "tldr": "This paper presents Chart4Blind, an intelligent interface addressing the challenge of making line charts accessible to blind and visually impaired individuals by converting bitmap images into SVG, CSV, and text formats; it introduces a user-friendly system with deep learning models for efficient conversion and achieves a 90% System Usability Scale rating; results show sighted users can make charts accessible in 4 minutes on average.",
+      "abstract": "In a world driven by data visualization, ensuring the inclusive accessibility of charts for Blind and Visually Impaired (BVI) individuals remains a significant challenge. Charts are usually presented as raster graphics without textual and visual metadata needed for an equivalent exploration experience for BVI people. Additionally, converting these charts into accessible formats requires considerable effort from sighted individuals. Digitizing charts with metadata extraction is just one aspect of the issue; transforming it into accessible modalities, such as tactile graphics, presents another difficulty. To address these disparities, we propose Chart4Blind, an intelligent user interface that converts bitmap image representations of line charts into universally accessible formats. Chart4Blind achieves this transformation by generating Scalable Vector Graphics (SVG), Comma-Separated Values (CSV), and alternative text exports, all comply with established accessibility standards. Through interviews and a formal user study, we demonstrate that even inexperienced sighted users can make charts accessible in an average of 4 minutes using Chart4Blind, achieving a System Usability Scale rating of 90%. In comparison to existing approaches, Chart4Blind provides a comprehensive solution, generating end-to-end accessible SVGs suitable for assistive technologies such as embossed prints (papers and laser cut), 2D tactile displays, and screen readers. For additional information, including open-source codes and demos, please visit our project page https://moured.github.io/chart4blind/.",
+      "authors": [
+        {
+          "name": "Omar Moured",
+          "orgs": [
+            "CVHCI",
+            "ACCESS@KIT",
+            "Karlsruhe Institute of Technology",
+            "Germany"
+          ]
+        },
+        {
+          "name": "Morris Baumgarten-Egemole",
+          "orgs": [
+            "ACCESS@KIT",
+            "Karlsruhe Institute of Technology",
+            "Germany"
+          ]
+        },
+        {
+          "name": "Alina Roitberg",
+          "orgs": [
+            "Institut für Künstliche Intelligenz",
+            "Universität Stuttgart",
+            "Germany"
+          ]
+        },
+        {
+          "name": "Thorsten Schwarz",
+          "orgs": [
+            "ACCESS@KIT",
+            "Karlsruhe Institute of Technology",
+            "Germany"
+          ]
+        },
+        {
+          "name": "Rainer Stiefelhagen",
+          "orgs": [
+            "CVHCI",
+            "ACCESS@KIT",
+            "Karlsruhe Institute of Technology",
+            "Germany"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2403.06693v2",
+      "date": "2024-03-11T13:07:46Z",
+      "citation_count": 20,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2603.08413",
+      "score": 4.9064507,
+      "title": "Geometrically Constrained Outlier Synthesis",
+      "tldr": "This paper addresses the challenge of out-of-distribution (OOD) robustness in image classification by introducing Geometrically Constrained Outlier Synthesis (GCOS), which generates synthetic outliers in the feature space respecting the learned manifold structure, and proposes a contrastive regularization objective to improve separation between in-distribution and OOD samples, achieving better performance on near-OOD benchmarks and enabling conformal OOD inference with formal error guarantees.",
+      "abstract": "Deep neural networks for image classification often exhibit overconfidence on out-of-distribution (OOD) samples. To address this, we introduce Geometrically Constrained Outlier Synthesis (GCOS), a training-time regularization framework aimed at improving OOD robustness during inference. GCOS addresses a limitation of prior synthesis methods by generating virtual outliers in the hidden feature space that respect the learned manifold structure of in-distribution (ID) data. The synthesis proceeds in two stages: (i) a dominant-variance subspace extracted from the training features identifies geometrically informed, off-manifold directions; (ii) a conformally-inspired shell, defined by the empirical quantiles of a nonconformity score from a calibration set, adaptively controls the synthesis magnitude to produce boundary samples. The shell ensures that generated outliers are neither trivially detectable nor indistinguishable from in-distribution data, facilitating smoother learning of robust features. This is combined with a contrastive regularization objective that promotes separability of ID and OOD samples in a chosen score space, such as Mahalanobis or energy-based. Experiments demonstrate that GCOS outperforms state-of-the-art methods using standard energy-based inference on near-OOD benchmarks, defined as tasks where outliers share the same semantic domain as in-distribution data. As an exploratory extension, the framework naturally transitions to conformal OOD inference, which translates uncertainty scores into statistically valid p-values and enables thresholds with formal error guarantees, providing a pathway toward more predictable and reliable OOD detection.",
+      "authors": [
+        {
+          "name": "Daniil Karzanov",
+          "orgs": [
+            "12"
+          ]
+        },
+        {
+          "name": "Marcin Detyniecki",
+          "orgs": [
+            "13",
+            "4"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2603.08413v1",
+      "date": "2026-03-09",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2511.12388",
+      "score": 4.5562177,
+      "title": "CEDL: Centre-Enhanced Discriminative Learning for Anomaly Detection",
+      "tldr": "This paper addresses the challenge of generalising supervised anomaly detection beyond training distributions by proposing CEDL, a framework that integrates geometric normality into discriminative learning via a radial logit centred on normal samples, enabling interpretable anomaly scoring without post-hoc calibration; it reparameterises sigmoid-derived logits using distance to the normal centroid, achieving competitive performance across tabular, time-series, and image data.",
+      "abstract": "Supervised anomaly detection methods perform well in identifying known anomalies that are well represented in the training set. However, they often struggle to generalise beyond the training distribution due to decision boundaries that lack a clear definition of normality. Existing approaches typically address this by regularising the representation space during training, leading to separate optimisation in latent and label spaces. The learned normality is therefore not directly utilised at inference, and their anomaly scores often fall within arbitrary ranges that require explicit mapping or calibration for probabilistic interpretation. To achieve unified learning of geometric normality and label discrimination, we propose Centre-Enhanced Discriminative Learning (CEDL), a novel supervised anomaly detection framework that embeds geometric normality directly into the discriminative objective. CEDL reparameterises the conventional sigmoid-derived prediction logit through a centre-based radial distance function, unifying geometric and discriminative learning in a single end-to-end formulation. This design enables interpretable, geometry-aware anomaly scoring without post-hoc thresholding or reference calibration. Extensive experiments on tabular, time-series, and image data demonstrate that CEDL achieves competitive and balanced performance across diverse real-world anomaly detection tasks, validating its effectiveness and broad applicability.",
+      "authors": [
+        {
+          "name": "Charu C. Aggarwal",
+          "orgs": [
+            "IBM US"
+          ]
+        },
+        {
+          "name": "Geoffrey I. Webb",
+          "orgs": [
+            "Monash University"
+          ]
+        },
+        {
+          "name": "Qizhou Wang",
+          "orgs": []
+        },
+        {
+          "name": "Ehsan Abbasnejad",
+          "orgs": [
+            "Monash University"
+          ]
+        },
+        {
+          "name": "Mahsa Salehi",
+          "orgs": [
+            "Monash University"
+          ]
+        },
+        {
+          "name": "Zahra Zamanzadeh Darban",
+          "orgs": [
+            "Monash University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2511.12388v1",
+      "date": "2025-11-15",
+      "citation_count": 0,
+      "categories": [
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "1005.1647",
+      "score": 3.8786268,
+      "title": "Detection of a Pseudobulge Hidden Inside the \"Box-Shaped Bulge\" of NGC 4565",
+      "tldr": "This paper investigates the structure of NGC 4565, challenging the assumption that its box-shaped bulge is a classical bulge, and instead identifies a pseudobulge hidden within the bar using Hubble and Spitzer images, finding a pseudobulge-to-total luminosity ratio of PB/T = 0.06 ± 0.01, revealing that edge-on galaxies' B/T ratios may be overestimated, suggesting many galaxies may lack classical bulges and challenging hierarchical clustering models.",
+      "abstract": "Numerical simulations show that box-shaped bulges of edge-on galaxies are not bulges: they are bars seen side-on.  Therefore the two components that are seen in edge-on Sb galaxies such as NGC 4565 are a disk and a bar.  But face-on SBb galaxies always show a disk, a bar, and a (pseudo)bulge.  Where is the (pseudo)bulge in NGC 4565?  We use archival Hubble Space Telescope H-band images and Spitzer Space Telescope 3.6 micron wavelength images, both calibrated to 2MASS K_s band, to penetrate the prominent dust lane in NGC 4565.  We find a high surface brightness, central stellar component that is clearly distinct from the boxy bar and from the disk.  Its brightness profile is a Sersic function with index n = 1.55 +- 0.07 along the major axis and 1.33 +- 0.12 along the minor axis.  Therefore it is a pseudobulge.  It  is much less luminous than the boxy bar, so the true pseudobulge-to-total luminosity ratio of the galaxy is  PB/T = 0.06 +- 0.01, much less than the previously believed value of B/T = 0.4 for the boxy bulge.  We infer that published B/T luminosity ratios of edge-on galaxies with boxy bulges have been overestimated. Therefore, more galaxies than we thought contain little or no evidence of a merger-built classical bulge.  From a formation point of view, NGC 4565 is a giant, pure-disk galaxy.  This presents a challenge to our picture of galaxy formation by hierarchical clustering: it is difficult to grow galaxies as big as NGC 4565 without also making big classical bulges.",
+      "authors": [
+        {
+          "name": "John Kormendy",
+          "orgs": [
+            "Department of Astronomy, University of Texas at Austin, 1 University Station C1400, Austin, TX 78712-0259, USA"
+          ]
+        },
+        {
+          "name": "John C. Barentine",
+          "orgs": [
+            "Department of Astronomy, University of Texas at Austin, 1 University Station C1400, Austin, TX 78712-0259, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1005.1647v1",
+      "date": "2010-05-10T20:00:09Z",
+      "citation_count": 37,
+      "categories": [
+        "astro-ph.CO",
+        "astro-ph.GA"
+      ]
+    },
+    {
+      "arxiv_id": "1711.08747",
+      "score": 3.7138407,
+      "title": "Finite sample change point inference and identification for high-dimensional mean vectors",
+      "tldr": "This paper addresses change point inference and identification for high-dimensional mean vectors, aiming to test for and estimate the location of a change point in the presence of arbitrary dependence structures and high dimensionality; it introduces a Gaussian multiplier bootstrap method for calibrating CUSUM test statistics, providing a fully data-dependent test with strong theoretical guarantees and achieving minimax separation rates; empirical results show agreement with theoretical findings, demonstrating the effectiveness of the bootstrap-assisted approach in finite samples.",
+      "abstract": "Cumulative sum (CUSUM) statistics are widely used in the change point inference and identification. For the problem of testing for existence of a change point in an independent sample generated from the mean-shift model, we introduce a Gaussian multiplier bootstrap to calibrate critical values of the CUSUM test statistics in high dimensions. The proposed bootstrap CUSUM test is fully data-dependent and it has strong theoretical guarantees under arbitrary dependence structures and mild moment conditions. Specifically, we show that with a boundary removal parameter the bootstrap CUSUM test enjoys the uniform validity in size under the null and it achieves the minimax separation rate under the sparse alternatives when the dimension $p$ can be larger than the sample size $n$.\n  Once a change point is detected, we estimate the change point location by maximizing the $\\ell^{\\infty}$-norm of the generalized CUSUM statistics at two different weighting scales corresponding to covariance stationary and non-stationary CUSUM statistics. For both estimators, we derive their rates of convergence and show that dimension impacts the rates only through logarithmic factors, which implies that consistency of the CUSUM estimators is possible when $p$ is much larger than $n$. In the presence of multiple change points, we propose a principled bootstrap-assisted binary segmentation (BABS) algorithm to dynamically adjust the change point detection rule and recursively estimate their locations. We derive its rate of convergence under suitable signal separation and strength conditions.\n  The results derived in this paper are non-asymptotic and we provide extensive simulation studies to assess the finite sample performance. The empirical evidence shows an encouraging agreement with our theoretical results.",
+      "authors": [
+        {
+          "name": "Mengjia Yu",
+          "orgs": [
+            "Department of Statistics, University of Illinois at Urbana-Champaign, 725 S. Wright Street, Champaign, IL 61820, USA"
+          ]
+        },
+        {
+          "name": "Xiaohui Chen",
+          "orgs": [
+            "Department of Statistics, University of Illinois at Urbana-Champaign, 725 S. Wright Street, Champaign, IL 61820, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1711.08747v5",
+      "date": "2017-11-23T15:55:38Z",
+      "citation_count": 45,
+      "categories": [
+        "math.ST",
+        "stat.ME",
+        "stat.TH"
+      ]
+    },
+    {
+      "arxiv_id": "2601.19022",
+      "score": 3.2475016,
+      "title": "EVEREST: An Evidential, Tail-Aware Transformer for Rare-Event Time-Series Forecasting",
+      "tldr": "This paper addresses rare-event forecasting in multivariate time-series by introducing EVEREST, a transformer architecture that integrates attention bottlenecks, evidential uncertainty estimation, and extreme-value modeling to achieve state-of-the-art TSS of 0.973/0.970/0.966 at 24/48/72-hour horizons for C-class flares, with strong calibration and efficient deployment.",
+      "abstract": "Forecasting rare events in multivariate time-series data is challenging due to severe class imbalance, long-range dependencies, and distributional uncertainty. We introduce EVEREST, a transformer-based architecture for probabilistic rare-event forecasting that delivers calibrated predictions and tail-aware risk estimation, with auxiliary interpretability via attention-based signal attribution. EVEREST integrates four components: (i) a learnable attention bottleneck for soft aggregation of temporal dynamics; (ii) an evidential head for estimating aleatoric and epistemic uncertainty via a Normal--Inverse--Gamma distribution; (iii) an extreme-value head that models tail risk using a Generalized Pareto Distribution; and (iv) a lightweight precursor head for early-event detection. These modules are jointly optimized with a composite loss (focal loss, evidential NLL, and a tail-sensitive EVT penalty) and act only at training time; deployment uses a single classification head with no inference overhead (approximately 0.81M parameters). On a decade of space-weather data, EVEREST achieves state-of-the-art True Skill Statistic (TSS) of 0.973/0.970/0.966 at 24/48/72-hour horizons for C-class flares. The model is compact, efficient to train on commodity hardware, and applicable to high-stakes domains such as industrial monitoring, weather, and satellite diagnostics. Limitations include reliance on fixed-length inputs and exclusion of image-based modalities, motivating future extensions to streaming and multimodal forecasting.",
+      "authors": [
+        {
+          "name": "Antanas Žilinskas",
+          "orgs": [
+            "Imperial College London"
+          ]
+        },
+        {
+          "name": "Robert N. Shorten",
+          "orgs": [
+            "Imperial College London"
+          ]
+        },
+        {
+          "name": "Jakub Marecek",
+          "orgs": [
+            "Czech Technical University in Prague, Faculty of Electrical Engineering"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2601.19022v2",
+      "date": "2026-01-26",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,736 @@
+{
+  "status": "success",
+  "total_count": 41,
+  "result": [
+    {
+      "arxiv_id": "2604.14545",
+      "score": 13.581637,
+      "title": "CT-VIR: Continuous-Time Visual-Inertial-Ranging Fusion for Indoor Localization with Sparse Anchors",
+      "tldr": "This paper proposes a spline-based continuous-time VIR fusion framework for indoor localization with sparse anchors, addressing the challenge of long-term drift and geometric degeneration in VIO by integrating UWB ranging measurements and virtual anchors, achieving accurate and robust localization compared to existing methods.",
+      "abstract": "Visual-inertial odometry (VIO) is widely used for mobile robot localization, but its long-term accuracy degrades without global constraints. Incorporating ranging sensors such as ultra-wideband (UWB) can mitigate drift; however, high-accuracy ranging usually requires well-deployed anchors, which is difficult to ensure in narrow or low-power environments. Moreover, most existing visual-inertial-ranging (VIR) fusion methods rely on discrete time-based filtering or optimization, making it difficult to balance positioning accuracy, trajectory consistency, and fusion efficiency under asynchronous multi-sensor sampling. To address these issues, we propose a spline-based continuous-time state estimation method for VIR fusion localization. In the preprocessing stage, VIO motion priors and UWB ranging measurements are used to construct virtual anchors and reject outliers, thereby alleviating geometric degeneration and improving range reliability. In the estimation stage, the pose trajectory is parameterized in continuous time using a B-spline, while inertial, visual, and ranging constraints are formulated as factors in a sliding-window graph. The spline control points, together with a small set of auxiliary parameters, are then jointly optimized to obtain a continuous-time trajectory estimate. Evaluations on public datasets and real-world experiments demonstrate the effectiveness and practical potential of the proposed approach.",
+      "authors": [
+        {
+          "name": "Yu-An Liu",
+          "orgs": [
+            "National Chiao Tung University"
+          ]
+        },
+        {
+          "name": "Li Zhang",
+          "orgs": [
+            "National Chiao Tung University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2604.14545v1",
+      "date": "2026-04-16",
+      "citation_count": 0,
+      "categories": [
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2602.01268",
+      "score": 12.713333,
+      "title": "OASIS-DC: Generalizable Depth Completion via Output-level Alignment of Sparse-Integrated Monocular Pseudo Depth",
+      "tldr": "This paper addresses the challenge of depth completion in robotics and autonomous driving by introducing OASIS-DC, a method that aligns sparse range measurements with monocular pseudo depth outputs to create a metric prior, enabling accurate depth estimation with few labeled samples and without feature-level coupling to foundation models. The approach uses a Poisson formulation with hard constraints for pseudo-depth prior construction and a lightweight refinement network that learns only residual corrections, achieving sharp edges and stable performance under data scarcity. Empirical results on KITTI and NYUv2 demonstrate effective generalization in few-shot regimes without large curated validation sets.",
+      "abstract": "Recent monocular foundation models excel at zero-shot depth estimation, yet their outputs are inherently relative rather than metric, limiting direct use in robotics and autonomous driving. We leverage the fact that relative depth preserves global layout and boundaries: by calibrating it with sparse range measurements, we transform it into a pseudo metric depth prior. Building on this prior, we design a refinement network that follows the prior where reliable and deviates where necessary, enabling accurate metric predictions from very few labeled samples. The resulting system is particularly effective when curated validation data are unavailable, sustaining stable scale and sharp edges across few-shot regimes. These findings suggest that coupling foundation priors with sparse anchors is a practical route to robust, deployment-ready depth completion under real-world label scarcity.",
+      "authors": [
+        {
+          "name": "Jhonghyun An",
+          "orgs": [
+            "Vehicle Intelligence Perception Lab (VIPLAB)",
+            "Gachon University"
+          ]
+        },
+        {
+          "name": "Jaehyeon Cho",
+          "orgs": [
+            "Vehicle Intelligence Perception Lab (VIPLAB)",
+            "Gachon University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.01268v1",
+      "date": "2026-02-01",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2604.13476",
+      "score": 11.930479,
+      "title": "RobotPan: A 360$^\\circ$ Surround-View Robotic Vision System for Embodied Perception",
+      "tldr": "This paper addresses the challenge of surround-view perception in robotics, aiming to improve navigation and manipulation in human-in-the-loop settings by overcoming limitations of narrow forward-facing views and manual camera switching; it introduces RobotPan, a feed-forward framework using six cameras and LiDAR to generate metric-scaled 3D Gaussians for real-time rendering and reconstruction, achieving competitive quality with fewer Gaussians; experiments demonstrate its effectiveness for practical real-time embodied deployment.",
+      "abstract": "Surround-view perception is increasingly important for robotic navigation and loco-manipulation, especially in human-in-the-loop settings such as teleoperation, data collection, and emergency takeover. However, current robotic visual interfaces are often limited to narrow forward-facing views, or, when multiple on-board cameras are available, require cumbersome manual switching that interrupts the operator's workflow. Both configurations suffer from motion-induced jitter that causes simulator sickness in head-mounted displays. We introduce a surround-view robotic vision system that combines six cameras with LiDAR to provide full 360$^\\circ$ visual coverage, while meeting the geometric and real-time constraints of embodied deployment. We further present \\textsc{RobotPan}, a feed-forward framework that predicts \\emph{metric-scaled} and \\emph{compact} 3D Gaussians from calibrated sparse-view inputs for real-time rendering, reconstruction, and streaming. \\textsc{RobotPan} lifts multi-view features into a unified spherical coordinate representation and decodes Gaussians using hierarchical spherical voxel priors, allocating fine resolution near the robot and coarser resolution at larger radii to reduce computational redundancy without sacrificing fidelity. To support long sequences, our online fusion updates dynamic content while preventing unbounded growth in static regions by selectively updating appearance. Finally, we release a multi-sensor dataset tailored to 360$^\\circ$ novel view synthesis and metric 3D reconstruction for robotics, covering navigation, manipulation, and locomotion on real platforms. Experiments show that \\textsc{RobotPan} achieves competitive quality against prior feed-forward reconstruction and view-synthesis methods while producing substantially fewer Gaussians, enabling practical real-time embodied deployment. Project website: https://robotpan.github.io/",
+      "authors": [
+        {
+          "name": "Jiahao Ma",
+          "orgs": []
+        },
+        {
+          "name": "Qiang Zhang",
+          "orgs": []
+        },
+        {
+          "name": "Peiran Liu",
+          "orgs": []
+        },
+        {
+          "name": "Jiahao Ma",
+          "orgs": []
+        },
+        {
+          "name": "Qiang Zhang",
+          "orgs": []
+        },
+        {
+          "name": "Peiran Liu",
+          "orgs": []
+        },
+        {
+          "name": "Jiahao Ma",
+          "orgs": []
+        },
+        {
+          "name": "Qiang Zhang",
+          "orgs": []
+        },
+        {
+          "name": "Peiran Liu",
+          "orgs": []
+        },
+        {
+          "name": "Jiahao Ma",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Qiang Zhang",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Peiran Liu",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Jiahao Ma",
+          "orgs": [
+            "University of Science and Technology of China"
+          ]
+        },
+        {
+          "name": "Qiang Zhang",
+          "orgs": [
+            "University of Science and Technology of China"
+          ]
+        },
+        {
+          "name": "Peiran Liu",
+          "orgs": [
+            "University of Science and Technology of China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2604.13476v1",
+      "date": "2026-04-15",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2112.04510",
+      "score": 11.904413,
+      "title": "A Comprehensive Measurement of the Local Value of the Hubble Constant with 1 km/s/Mpc Uncertainty from the Hubble Space Telescope and the SH0ES Team",
+      "tldr": "This paper addresses the Hubble tension by measuring the Hubble constant with 1 km/s/Mpc uncertainty using HST and SH0ES data, employing Cepheids calibrated geometrically from Gaia, masers, and DEBs; it contributes a baseline H0=73.04+-1.04 km/s/Mpc and finds a 5-sigma discrepancy with Planck+LCDM predictions.",
+      "abstract": "We report observations from HST of Cepheids in the hosts of 42 SNe Ia used to calibrate the Hubble constant (H0). These include all suitable SNe Ia in the last 40 years at z<0.01, measured with >1000 orbits, more than doubling the sample whose size limits the precision of H0. The Cepheids are calibrated geometrically from Gaia EDR3 parallaxes, masers in N4258 (here tripling that Cepheid sample), and DEBs in the LMC. The Cepheids were measured with the same WFC3 instrument and filters (F555W, F814W, F160W) to negate zeropoint errors.\n  We present multiple verifications of Cepheid photometry and tests of background determinations that show measurements are accurate in the presence of crowding. The SNe calibrate the mag-z relation from the new Pantheon+ compilation, accounting here for covariance between all SN data, with host properties and SN surveys matched to negate differences. We decrease the uncertainty in H0 to 1 km/s/Mpc with systematics. We present a comprehensive set of ~70 analysis variants to explore the sensitivity of H0 to selections of anchors, SN surveys, z range, variations in the analysis of dust, metallicity, form of the P-L relation, SN color, flows, sample bifurcations, and simultaneous measurement of H(z).\n  Our baseline result from the Cepheid-SN sample is H0=73.04+-1.04 km/s/Mpc, which includes systematics and lies near the median of all analysis variants. We demonstrate consistency with measures from HST of the TRGB between SN hosts and NGC 4258 with Cepheids and together these yield 72.53+-0.99. Including high-z SN Ia we find H0=73.30+-1.04 with q0=-0.51+-0.024. We find a 5-sigma difference with H0 predicted by Planck+LCDM, with no indication this arises from measurement errors or analysis variations considered to date. The source of this now long-standing discrepancy between direct and cosmological routes to determining the Hubble constant remains unknown.",
+      "authors": [
+        {
+          "name": "ADAM G. RIESS",
+          "orgs": [
+            "Space Telescope Science Institute, 3700 San Martin Drive, Baltimore, MD 21218, USA"
+          ]
+        },
+        {
+          "name": "WENLONG YUAN",
+          "orgs": [
+            "Department of Physics and Astronomy, Johns Hopkins University, Baltimore, MD 21218, USA"
+          ]
+        },
+        {
+          "name": "LUCAS M. MACRI",
+          "orgs": [
+            "George P. and Cynthia W. Mitchell Institute for Fundamental Physics and Astronomy, Department of Physics & Astronomy, Texas A&M University, College Station, TX 77843, USA"
+          ]
+        },
+        {
+          "name": "DAN SCOLNIC",
+          "orgs": [
+            "Department of Physics, Duke University, Durham, NC 27708, USA"
+          ]
+        },
+        {
+          "name": "Dillon Brout",
+          "orgs": [
+            "Center for Astrophysics, Harvard & Smithsonian, 60 Garden St., Cambridge, MA 02138, USA"
+          ]
+        },
+        {
+          "name": "Stefano Casertano",
+          "orgs": [
+            "Space Telescope Science Institute, 3700 San Martin Drive, Baltimore, MD 21218, USA"
+          ]
+        },
+        {
+          "name": "David O. Jones",
+          "orgs": [
+            "Einstein Fellow, Department of Astronomy & Astrophysics, University of California, Santa Cruz, CA 95064, USA"
+          ]
+        },
+        {
+          "name": "Yukei Murakami",
+          "orgs": [
+            "Department of Physics and Astronomy, Johns Hopkins University, Baltimore, MD 21218, USA"
+          ]
+        },
+        {
+          "name": "Louise Breuval",
+          "orgs": [
+            "LESIA, Observatoire de Paris, Université PSL, CNRS, Sorbonne Université, Université de Paris, 5 place Jules Janssen, F-92195 Meudon, France"
+          ]
+        },
+        {
+          "name": "Thomas G. Brink",
+          "orgs": [
+            "Department of Astronomy, University of California, Berkeley, CA 94720-3411, USA"
+          ]
+        },
+        {
+          "name": "Alexei V. Filippenko",
+          "orgs": [
+            "Department of Astronomy, University of California, Berkeley, CA 94720-3411, USA",
+            "Miller Institute for Basic Research in Science, University of California, Berkeley, CA 94720, USA"
+          ]
+        },
+        {
+          "name": "Samantha Hoffmann",
+          "orgs": [
+            "Space Telescope Science Institute, 3700 San Martin Drive, Baltimore, MD 21218, USA"
+          ]
+        },
+        {
+          "name": "Saurabh W. Jha",
+          "orgs": [
+            "Department of Physics and Astronomy, Rutgers, the State University of New Jersey, Piscataway, NJ 08854, USA"
+          ]
+        },
+        {
+          "name": "W. D'Arcy Kenworthy",
+          "orgs": [
+            "Department of Physics and Astronomy, Johns Hopkins University, Baltimore, MD 21218, USA"
+          ]
+        },
+        {
+          "name": "Gagandeep S. Anand",
+          "orgs": [
+            "Space Telescope Science Institute, 3700 San Martin Drive, Baltimore, MD 21218, USA"
+          ]
+        },
+        {
+          "name": "John Mackenty",
+          "orgs": [
+            "Space Telescope Science Institute, 3700 San Martin Drive, Baltimore, MD 21218, USA"
+          ]
+        },
+        {
+          "name": "Benjamin E. Stahl",
+          "orgs": [
+            "Department of Astronomy, University of California, Berkeley, CA 94720-3411, USA"
+          ]
+        },
+        {
+          "name": "Weikang Zheng",
+          "orgs": [
+            "Department of Astronomy, University of California, Berkeley, CA 94720-3411, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2112.04510v3",
+      "date": "2021-12-08T19:00:02Z",
+      "citation_count": 1662,
+      "categories": [
+        "astro-ph.CO"
+      ]
+    },
+    {
+      "arxiv_id": "2512.05765",
+      "score": 11.884031,
+      "title": "The Missing Layer of AGI: From Pattern Alchemy to Coordination Physics",
+      "tldr": "This paper argues that LLMs are a necessary System-1 substrate for AGI, but require a System-2 coordination layer to enable reliable reasoning, introducing UCCT and MACI to model and implement bounded coordination through semantic anchoring, with findings showing that goal-directed behavior emerges when the anchoring score $ S = \\rho_d - d_r - \\gamma \\log k $ surpasses a critical threshold.",
+      "abstract": "Influential critiques argue that Large Language Models (LLMs) are a dead end for AGI: \"mere pattern matchers\" structurally incapable of reasoning or planning. We argue this conclusion misidentifies the bottleneck: it confuses the ocean with the net. Pattern repositories are the necessary System-1 substrate; the missing component is a System-2 coordination layer that selects, constrains, and binds these patterns. We formalize this layer via UCCT, a theory of semantic anchoring that models reasoning as a phase transition governed by effective support (rho_d), representational mismatch (d_r), and an adaptive anchoring budget (gamma log k). Under this lens, ungrounded generation is simply an unbaited retrieval of the substrate's maximum likelihood prior, while \"reasoning\" emerges when anchors shift the posterior toward goal-directed constraints. We translate UCCT into architecture with MACI, a coordination stack that implements baiting (behavior-modulated debate), filtering (Socratic judging), and persistence (transactional memory). By reframing common objections as testable coordination failures, we argue that the path to AGI runs through LLMs, not around them.",
+      "authors": [
+        {
+          "name": "Edward Y. Chang",
+          "orgs": [
+            "Stanford University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.05765v1",
+      "date": "2025-12-05",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2506.16669",
+      "score": 11.576908,
+      "title": "FLRW Kinematic-Induced Measurement of the Hubble Constant from Cosmic Chronometer and Redshift Drift Observations",
+      "tldr": "This paper addresses the Hubble constant tension by proposing a geometric embedding method to directly determine $H_0$ using Cosmic Chronometer and Sandage-Loeb datasets, leveraging the FLRW kinematic relation to transform redshift misalignment into observable constraints; it introduces a model-independent approach that achieves 1.9% precision with $H_0 = 66.26 \\pm 1.26$ km s$^{-1}$ Mpc$^{-1}$, offering a robust alternative to existing methods with reduced systematic biases.",
+      "abstract": "We present a geometric embedding method that exploits the exact kinematic relation $\\dot{z} = H_0(1 + z) - H(z)$ to transform redshift misalignment between Cosmic Chronometer (CC) and Sandage-Loeb (SL) datasets into fundamental constraints in observable space. The approach recognizes that $H_0$ encodes the orientation of the FLRW observational plane defined by $(z, H(z), \\dot{z})$ coordinates, enabling direct algebraic determination without parametric assumptions or interpolation schemes. Validation using available CC measurements and forecasted redshift drift data from FAST, CHIME, SKA, and ELT demonstrates 1.9\\% precision for optimal data combinations, yielding $H_0 = 66.26 \\pm 1.26$ km s$^{-1}$ Mpc$^{-1}$ while maintaining complete cosmological model independence. While no actual SL measurements currently exist, requiring us to rely on simulations for validation, our geometric constraints show superior resilience against sparse redshift coverage compared to Gaussian Process (GP) methods, which exhibit systematic biases and large uncertainties when datasets lack substantial overlap. This kinematic framework establishes geometric embedding as a robust tool for precision cosmological measurements, offering a fundamentally different approach to $H_0$ determination through pure observational analysis based on FLRW kinematic principles. The full potential of this method awaits implementation with real SL measurements from next-generation facilities.",
+      "authors": [
+        {
+          "name": "Kang Jiao",
+          "orgs": [
+            "Institute for Astrophysics, School of Physics, Zhengzhou University, Zhengzhou 450001, China"
+          ]
+        },
+        {
+          "name": "Tong-Jie Zhang",
+          "orgs": [
+            "Institute for Frontiers in Astronomy and Astrophysics, Beijing Normal University, Beijing 102206, China",
+            "School of Physics and Astronomy, Beijing Normal University, Beijing 100875, China"
+          ]
+        },
+        {
+          "name": "Liang Gao",
+          "orgs": [
+            "Institute for Astrophysics, School of Physics, Zhengzhou University, Zhengzhou 450001, China"
+          ]
+        },
+        {
+          "name": "Yun Chen",
+          "orgs": [
+            "National Astronomical Observatories, Chinese Academy of Sciences, Beijing 100101, China",
+            "College of Astronomy and Space Sciences, University of Chinese Academy of Sciences, Beijing, 100049, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2506.16669v2",
+      "date": "2025-06-20T00:57:46Z",
+      "citation_count": 0,
+      "categories": [
+        "astro-ph.CO"
+      ]
+    },
+    {
+      "arxiv_id": "2509.16331",
+      "score": 11.561897,
+      "title": "A joint 1% calibration of the RR Lyrae & type-II Cepheid Leavitt laws yields homogeneous distances to 93 Galactic globular clusters",
+      "tldr": "This paper addresses the calibration of the Leavitt laws for RR Lyrae and type-II Cepheid stars to improve distance measurements to Galactic globular clusters, using Gaia data to achieve 1.0% and 1.3% accuracy for RRab and T2Cep respectively; it employs a global fit with trigonometric parallaxes and photometry, providing homogeneous distances to 93 GCs and insights into metallicity effects; findings suggest potential chemical inhomogeneity within clusters and support the use of these stars as standard candles for cosmology.",
+      "abstract": "Recent work has established large samples of astrometrically confirmed RR Lyrae and type-II Cepheid members of Galactic globular clusters (GCs). Any given GC can contain multiple such stars at once, notably RR Lyrae stars pulsating in the fundamental mode (RRab) or the first overtone (RRc), and type-II Cepheids (T2Cep) of BL Her and W Vir types. Here, we present the first joint calibration of the Leavitt laws (LLs) exhibited by 802 RRab, 345 RRc, and 21 T2Cep stars anchored to trigonometric parallaxes. Using the third data release of the ESA Gaia mission (GDR3), we have calibrated the intercepts of the RRab and RRc Leavitt laws in the reddening-free Gaia Wesenheit magnitude to better than 1.0% in distance, and that of T2Cep to 1.3%, using a global fit to all data. The absolute scale is set by 37 nearby GCs with high-accuracy parallaxes while 56 additional GCs provide constraints on LL slopes as well as the LL intercept differences of RRc and T2Cep relative to RRab stars. Our global fit yields homogeneous high-accuracy distances of 93 GCs that show no evidence of bias for Gaia parallaxes of distant GCs. Control of systematics was demonstrated by 31 alternative fit variants, notably involving different treatments of metallicity effects, as well as by Markov Chain Monte Carlo analysis. Our results suggest that photometric metallicities of RR Lyrae stars require further improvements while also exhibiting possible signs of intra-cluster chemical inhomogeneity. This work lays the foundation for exploiting RRab, RRc, and T2Cep stars as high-accuracy standard candles for near-field cosmology and the extragalactic distance scale.",
+      "authors": [
+        {
+          "name": "Richard I. Anderson",
+          "orgs": [
+            "École Polytechnique Fédérale de Lausanne (EPFL)"
+          ]
+        },
+        {
+          "name": "Giordano Viviani",
+          "orgs": []
+        },
+        {
+          "name": "Bastian Lengen",
+          "orgs": [
+            "École Polytechnique Fédérale de Lausanne (EPFL)"
+          ]
+        },
+        {
+          "name": "Mauricio Cruz Reyes",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2509.16331v1",
+      "date": "2025-09-19",
+      "citation_count": 1,
+      "categories": [
+        "astro-ph.GA",
+        "astro-ph.SR"
+      ]
+    },
+    {
+      "arxiv_id": "2202.01470",
+      "score": 11.537572,
+      "title": "Towards 3D Scene Reconstruction from Locally Scale-Aligned Monocular Video Depth",
+      "tldr": "This paper addresses the problem of 3D scene reconstruction from monocular video depth by resolving scale and shift inconsistencies across frames, which hinder accurate metric depth recovery and reconstruction; it proposes a locally weighted linear regression method to recover scale and shift with sparse anchor points, achieving up to 50% performance improvement over state-of-the-art methods and enabling robust 3D reconstruction through geometric consistency.",
+      "abstract": "Existing monocular depth estimation methods have achieved excellent robustness in diverse scenes, but they can only retrieve affine-invariant depth, up to an unknown scale and shift. However, in some video-based scenarios such as video depth estimation and 3D scene reconstruction from a video, the unknown scale and shift residing in per-frame prediction may cause the depth inconsistency. To solve this problem, we propose a locally weighted linear regression method to recover the scale and shift with very sparse anchor points, which ensures the scale consistency along consecutive frames. Extensive experiments show that our method can boost the performance of existing state-of-the-art approaches by 50% at most over several zero-shot benchmarks. Besides, we merge over 6.3 million RGBD images to train strong and robust depth models. Our produced ResNet50-backbone model even outperforms the state-of-the-art DPT ViT-Large model. Combining with geometry-based reconstruction methods, we formulate a new dense 3D scene reconstruction pipeline, which benefits from both the scale consistency of sparse points and the robustness of monocular methods. By performing the simple per-frame prediction over a video, the accurate 3D scene shape can be recovered.",
+      "authors": [
+        {
+          "name": "Guangkai Xu",
+          "orgs": [
+            "University of Science and Technology of China"
+          ]
+        },
+        {
+          "name": "Wei Yin",
+          "orgs": [
+            "DJI Technology"
+          ]
+        },
+        {
+          "name": "Hao Chen",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Chunhua Shen",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Kai Cheng",
+          "orgs": [
+            "University of Science and Technology of China"
+          ]
+        },
+        {
+          "name": "Feng Wu",
+          "orgs": [
+            "University of Science and Technology of China"
+          ]
+        },
+        {
+          "name": "Feng Zhao",
+          "orgs": [
+            "University of Science and Technology of China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2202.01470v4",
+      "date": "2022-02-03T08:52:54Z",
+      "citation_count": 14,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2509.06685",
+      "score": 11.4542885,
+      "title": "MOGS: Monocular Object-guided Gaussian Splatting in Large Scenes",
+      "tldr": "This paper addresses the challenge of monocular 3D Gaussian Splatting in large scenes by proposing MOGS, which uses sparse visual-inertial cues and shape priors to generate dense metric depth, reducing training time by 30.4% and memory consumption by 19.8% while achieving LiDAR-level rendering quality.",
+      "abstract": "Recent advances in 3D Gaussian Splatting (3DGS) deliver striking photorealism, and extending it to large scenes opens new opportunities for semantic reasoning and prediction in applications such as autonomous driving. Today's state-of-the-art systems for large scenes primarily originate from LiDAR-based pipelines that utilize long-range depth sensing. However, they require costly high-channel sensors whose dense point clouds strain memory and computation, limiting scalability, fleet deployment, and optimization speed. We present MOGS, a monocular 3DGS framework that replaces active LiDAR depth with object-anchored, metrized dense depth derived from sparse visual-inertial (VI) structure-from-motion (SfM) cues. Our key idea is to exploit image semantics to hypothesize per-object shape priors, anchor them with sparse but metrically reliable SfM points, and propagate the resulting metric constraints across each object to produce dense depth. To address two key challenges, i.e., insufficient SfM coverage within objects and cross-object geometric inconsistency, MOGS introduces (1) a multi-scale shape consensus module that adaptively merges small segments into coarse objects best supported by SfM and fits them with parametric shape models, and (2) a cross-object depth refinement module that optimizes per-pixel depth under a combinatorial objective combining geometric consistency, prior anchoring, and edge-aware smoothness. Experiments on public datasets show that, with a low-cost VI sensor suite, MOGS reduces training time by up to 30.4% and memory consumption by 19.8%, while achieving high-quality rendering competitive with costly LiDAR-based approaches in large scenes.",
+      "authors": [
+        {
+          "name": "Mozi Chen",
+          "orgs": [
+            "University of Science and Technology of China"
+          ]
+        },
+        {
+          "name": "Kezhong Liu",
+          "orgs": [
+            "University of Science and Technology of China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2509.06685v4",
+      "date": "2025-09-08",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2602.21535",
+      "score": 11.416069,
+      "title": "Pseudo-View Enhancement via Confidence Fusion for Unposed Sparse-View Reconstruction",
+      "tldr": "This paper addresses the challenge of high-quality 3D outdoor reconstruction from unposed sparse views, aiming to improve geometric consistency and completeness by overcoming limitations in pseudo-view synthesis and Gaussian optimization; it introduces a bidirectional pseudo frame restoration method with a lightweight deblur model and confidence mask inference, along with a scene perception Gaussian management strategy based on depth-density metrics; experiments show substantial improvements in reconstruction accuracy, completeness, and visual consistency over existing methods.",
+      "abstract": "3D scene reconstruction under unposed sparse viewpoints is a highly challenging yet practically important problem, especially in outdoor scenes due to complex lighting and scale variation. With extremely limited input views, directly utilizing diffusion model to synthesize pseudo frames will introduce unreasonable geometry, which will harm the final reconstruction quality. To address these issues, we propose a novel framework for sparse-view outdoor reconstruction that achieves high-quality results through bidirectional pseudo frame restoration and scene perception Gaussian management. Specifically, we introduce a bidirectional pseudo frame restoration method that restores missing content by diffusion-based synthesis guided by adjacent frames with a lightweight pseudo-view deblur model and confidence mask inference algorithm. Then we propose a scene perception Gaussian management strategy that optimize Gaussians based on joint depth-density information. These designs significantly enhance reconstruction completeness, suppress floating artifacts and improve overall geometric consistency under extreme view sparsity. Experiments on outdoor benchmarks demonstrate substantial gains over existing methods in both fidelity and stability.",
+      "authors": [
+        {
+          "name": "Hao Wang",
+          "orgs": [
+            "The Hong Kong University of Science and Technology (Guangzhou)"
+          ]
+        },
+        {
+          "name": "Sicheng Yu",
+          "orgs": [
+            "The Hong Kong University of Science and Technology (Guangzhou)"
+          ]
+        },
+        {
+          "name": "Yu Hu",
+          "orgs": [
+            "The Hong Kong University of Science and Technology (Guangzhou)"
+          ]
+        },
+        {
+          "name": "Beizhen Zhao",
+          "orgs": [
+            "The Hong Kong University of Science and Technology (Guangzhou)"
+          ]
+        },
+        {
+          "name": "Guanzhi Ding",
+          "orgs": [
+            "The Hong Kong University of Science and Technology (Guangzhou)"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.21535v1",
+      "date": "2026-02-25",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2603.26638",
+      "score": 11.4046135,
+      "title": "Drive-Through 3D Vehicle Exterior Reconstruction via Dynamic-Scene SfM and Distortion-Aware Gaussian Splatting",
+      "tldr": "This paper addresses the challenge of high-fidelity 3D vehicle exterior reconstruction in dynamic drive-through environments, aiming to improve buyer confidence in online automotive marketplaces by enabling interactive 3D inspections; it proposes an end-to-end pipeline combining dynamic-scene segmentation, distortion-aware Gaussian Splatting, and rig-aware SfM optimization, achieving a PSNR of 28.66 dB and an SSIM of 0.89; the results offer a scalable, cost-effective solution for real-world automotive inspection without controlled studio infrastructure.",
+      "abstract": "High-fidelity 3D reconstruction of vehicle exteriors improves buyer confidence in online automotive marketplaces, but generating these models in cluttered dealership drive-throughs presents severe technical challenges. Unlike static-scene photogrammetry, this setting features a dynamic vehicle moving against heavily cluttered, static backgrounds. This problem is further compounded by wide-angle lens distortion, specular automotive paint, and non-rigid wheel rotations that violate classical epipolar constraints. We propose an end-to-end pipeline utilizing a two-pillar camera rig. First, we resolve dynamic-scene ambiguities by coupling SAM 3 for instance segmentation with motion-gating to cleanly isolate the moving vehicle, explicitly masking out non-rigid wheels to enforce strict epipolar geometry. Second, we extract robust correspondences directly on raw, distorted 4K imagery using the RoMa v2 learned matcher guided by semantic confidence masks. Third, these matches are integrated into a rig-aware SfM optimization that utilizes CAD-derived relative pose priors to eliminate scale drift. Finally, we use a distortion-aware 3D Gaussian Splatting framework (3DGUT) coupled with a stochastic Markov Chain Monte Carlo (MCMC) densification strategy to render reflective surfaces. Evaluations on 25 real-world vehicles across 10 dealerships demonstrate that our full pipeline achieves a PSNR of 28.66 dB, an SSIM of 0.89, and an LPIPS of 0.21 on held-out views, representing a 3.85 dB improvement over standard 3D-GS, delivering inspection-grade interactive 3D models without controlled studio infrastructure.",
+      "authors": [
+        {
+          "name": "Nitin Kulkarni",
+          "orgs": [
+            "ACV Auctions",
+            "University at Buffalo"
+          ]
+        },
+        {
+          "name": "Akhil Devarashetti",
+          "orgs": [
+            "ACV Auctions",
+            "University at Buffalo"
+          ]
+        },
+        {
+          "name": "Charlie Cluss",
+          "orgs": [
+            "ACV Auctions",
+            "University at Buffalo"
+          ]
+        },
+        {
+          "name": "Livio Forte",
+          "orgs": [
+            "University at Buffalo, Buffalo, NY, USA"
+          ]
+        },
+        {
+          "name": "Philip Schneider",
+          "orgs": [
+            "ACV Auctions, Buffalo, NY, USA"
+          ]
+        },
+        {
+          "name": "Chunming Qiao",
+          "orgs": [
+            "University at Buffalo, Buffalo, NY, USA"
+          ]
+        },
+        {
+          "name": "Alina Vereshchaka",
+          "orgs": [
+            "University at Buffalo, Buffalo, NY, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2603.26638v1",
+      "date": "2026-03-27",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2601.05394",
+      "score": 11.35904,
+      "title": "Sketch&Patch++: Efficient Structure-Aware 3D Gaussian Representation",
+      "tldr": "This paper proposes Sketch&Patch++ to address the challenge of efficient 3D Gaussian representation in immersive applications by categorizing Gaussians into high-frequency SketchGS and low-frequency PatchGS; it introduces a hierarchical clustering and refinement framework with multi-criteria density analysis and quality-driven adaptation; the method achieves 1.74 dB PSNR improvement, 6.7% SSIM increase, and 41.4% LPIPS reduction while compressing indoor scenes to 0.5% of original size.",
+      "abstract": "We observe that Gaussians exhibit distinct roles and characteristics analogous to traditional artistic techniques -- like how artists first sketch outlines before filling in broader areas with color, some Gaussians capture high-frequency features such as edges and contours, while others represent broader, smoother regions analogous to brush strokes that add volume and depth. Based on this observation, we propose a hybrid representation that categorizes Gaussians into (i) Sketch Gaussians, which represent high-frequency, boundary-defining features, and (ii) Patch Gaussians, which cover low-frequency, smooth regions. This semantic separation naturally enables layered progressive streaming, where the compact Sketch Gaussians establish the structural skeleton before Patch Gaussians incrementally refine volumetric detail.\n  In this work, we extend our previous method to arbitrary 3D scenes by proposing a novel hierarchical adaptive categorization framework that operates directly on the 3DGS representation. Our approach employs multi-criteria density-based clustering, combined with adaptive quality-driven refinement. This method eliminates dependency on external 3D line primitives while ensuring optimal parametric encoding effectiveness. Our comprehensive evaluation across diverse scenes, including both man-made and natural environments, demonstrates that our method achieves up to 1.74 dB improvement in PSNR, 6.7% in SSIM, and 41.4% in LPIPS at equivalent model sizes compared to uniform pruning baselines. For indoor scenes, our method can maintain visual quality with only 0.5\\% of the original model size. This structure-aware representation enables efficient storage, adaptive streaming, and rendering of high-fidelity 3D content across bandwidth-constrained networks and resource-limited devices.",
+      "authors": [
+        {
+          "name": "Yuang Shi",
+          "orgs": [
+            "National University of Singapore"
+          ]
+        },
+        {
+          "name": "Géraldine Morin",
+          "orgs": [
+            "IRIT - Université de Toulouse"
+          ]
+        },
+        {
+          "name": "Simone Gasparini",
+          "orgs": [
+            "IRIT - Université de Toulouse"
+          ]
+        },
+        {
+          "name": "Wei Tsang Ooi",
+          "orgs": [
+            "National University of Singapore"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2601.05394v2",
+      "date": "2026-01-08",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV",
+        "cs.GR",
+        "cs.MM",
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "2507.16406",
+      "score": 11.331743,
+      "title": "Sparse-View 3D Reconstruction: Recent Advances and Open Challenges",
+      "tldr": "This paper addresses sparse-view 3D reconstruction, a critical challenge in robotics and AR/VR where limited image overlap hinders traditional methods like SfM and MVS; it reviews advances in neural implicit models, explicit point-cloud approaches, and hybrid frameworks, highlighting improvements in accuracy and efficiency with methods like NeRF and 3D Gaussian Splatting; findings show trade-offs between accuracy, efficiency, and generalization, with ongoing challenges in domain generalization and pose-free reconstruction.",
+      "abstract": "Sparse-view 3D reconstruction is essential for applications in which dense image acquisition is impractical, such as robotics, augmented/virtual reality (AR/VR), and autonomous systems. In these settings, minimal image overlap prevents reliable correspondence matching, causing traditional methods, such as structure-from-motion (SfM) and multiview stereo (MVS), to fail. This survey reviews the latest advances in neural implicit models (e.g., NeRF and its regularized versions), explicit point-cloud-based approaches (e.g., 3D Gaussian Splatting), and hybrid frameworks that leverage priors from diffusion and vision foundation models (VFMs).We analyze how geometric regularization, explicit shape modeling, and generative inference are used to mitigate artifacts such as floaters and pose ambiguities in sparse-view settings. Comparative results on standard benchmarks reveal key trade-offs between the reconstruction accuracy, efficiency, and generalization. Unlike previous reviews, our survey provides a unified perspective on geometry-based, neural implicit, and generative (diffusion-based) methods. We highlight the persistent challenges in domain generalization and pose-free reconstruction and outline future directions for developing 3D-native generative priors and achieving real-time, unconstrained sparse-view reconstruction.",
+      "authors": [
+        {
+          "name": "Tanveer Younis",
+          "orgs": [
+            "Shenzhen Institute of Advanced Technology, Chinese Academy of Sciences",
+            "Shenzhen VisuCA Key Lab, Shenzhen, China"
+          ]
+        },
+        {
+          "name": "Zhanglin Cheng",
+          "orgs": [
+            "Shenzhen Institute of Advanced Technology, Chinese Academy of Sciences",
+            "Shenzhen VisuCA Key Lab, Shenzhen, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2507.16406v1",
+      "date": "2025-07-22T09:57:28Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2511.13011",
+      "score": 11.259435,
+      "title": "Beyond Darkness: Thermal-Supervised 3D Gaussian Splatting for Low-Light Novel View Synthesis",
+      "tldr": "This paper addresses low-light novel view synthesis by introducing DTGS, a framework combining Retinex-inspired illumination decomposition with thermal-guided 3D Gaussian Splatting to achieve radiometric consistency and geometric fidelity, outperforming baselines in extreme low-light conditions with superior color stability and structural coherence.",
+      "abstract": "Under extremely low-light conditions, novel view synthesis (NVS) faces severe degradation in terms of geometry, color consistency, and radiometric stability. Standard 3D Gaussian Splatting (3DGS) pipelines fail when applied directly to underexposed inputs, as independent enhancement across views causes illumination inconsistencies and geometric distortion. To address this, we present DTGS, a unified framework that tightly couples Retinex-inspired illumination decomposition with thermal-guided 3D Gaussian Splatting for illumination-invariant reconstruction. Unlike prior approaches that treat enhancement as a pre-processing step, DTGS performs joint optimization across enhancement, geometry, and thermal supervision through a cyclic enhancement-reconstruction mechanism. A thermal supervisory branch stabilizes both color restoration and geometry learning by dynamically balancing enhancement, structural, and thermal losses. Moreover, a Retinex-based decomposition module embedded within the 3DGS loop provides physically interpretable reflectance-illumination separation, ensuring consistent color and texture across viewpoints. To evaluate our method, we construct RGBT-LOW, a new multi-view low-light thermal dataset capturing severe illumination degradation. Extensive experiments show that DTGS significantly outperforms existing low-light enhancement and 3D reconstruction baselines, achieving superior radiometric consistency, geometric fidelity, and color stability under extreme illumination.",
+      "authors": [
+        {
+          "name": "Jia Wang",
+          "orgs": [
+            "Beijing University of Posts and Telecommunications"
+          ]
+        },
+        {
+          "name": "Zhaofeng He",
+          "orgs": [
+            "Beijing University of Posts and Telecommunications"
+          ]
+        },
+        {
+          "name": "Liuyu Xiang",
+          "orgs": [
+            "Beijing University of Posts and Telecommunications"
+          ]
+        },
+        {
+          "name": "Chen Zou",
+          "orgs": [
+            "Beijing University of Posts and Telecommunications"
+          ]
+        },
+        {
+          "name": "Dianyun Wang",
+          "orgs": [
+            "Beijing University of Posts and Telecommunications"
+          ]
+        },
+        {
+          "name": "Qingsen Ma",
+          "orgs": [
+            "Beijing University of Posts and Telecommunications"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2511.13011v1",
+      "date": "2025-11-17",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2407.19763",
+      "score": 6.516536,
+      "title": "TeleOR: Real-time Telemedicine System for Full-Scene Operating Room",
+      "tldr": "This paper presents TeleOR, a real-time telemedicine system for full-scene operating room reconstruction addressing challenges in remote surgery through dynamic self-calibration, selective reconstruction, and viewport-adaptive transmission; it contributes innovative methods for real-time, high-fidelity OR scene reconstruction under bandwidth constraints; experiments on the 4D-OR dataset show TeleOR achieves high-quality reconstructions and maintains real-time performance even in limited bandwidth scenarios.",
+      "abstract": "The advent of telemedicine represents a transformative development in leveraging technology to extend the reach of specialized medical expertise to remote surgeries, a field where the immediacy of expert guidance is paramount. However, the intricate dynamics of Operating Room (OR) scene pose unique challenges for telemedicine, particularly in achieving high-fidelity, real-time scene reconstruction and transmission amidst obstructions and bandwidth limitations. This paper introduces TeleOR, a pioneering system designed to address these challenges through real-time OR scene reconstruction for Tele-intervention. TeleOR distinguishes itself with three innovative approaches: dynamic self-calibration, which leverages inherent scene features for calibration without the need for preset markers, allowing for obstacle avoidance and real-time camera adjustment; selective OR reconstruction, focusing on dynamically changing scene segments to reduce reconstruction complexity; and viewport-adaptive transmission, optimizing data transmission based on real-time client feedback to efficiently deliver high-quality 3D reconstructions within bandwidth constraints. Comprehensive experiments on the 4D-OR surgical scene dataset demostrate the superiority and applicability of TeleOR, illuminating the potential to revolutionize tele-interventions by overcoming the spatial and technical barriers inherent in remote surgical guidance.",
+      "authors": [
+        {
+          "name": "Yixuan Wu",
+          "orgs": [
+            "School of Public Health, Zhejiang University, China",
+            "State Key Laboratory of Transvascular Implantation Devices of The Second Affiliated Hospital, Zhejiang University School of Medicine, China",
+            "Institute of Wenzhou, Zhejiang University, China"
+          ]
+        },
+        {
+          "name": "Kaiyuan Hu",
+          "orgs": [
+            "School of Science and Engineering, The Chinese University of Hong Kong, Shenzhen, China"
+          ]
+        },
+        {
+          "name": "Qian Shao",
+          "orgs": [
+            "College of Computer Science and Technology, Zhejiang University, China"
+          ]
+        },
+        {
+          "name": "Danny Z. Chen",
+          "orgs": [
+            "Department of Computer Science and Engineering, University of Notre Dame, USA"
+          ]
+        },
+        {
+          "name": "Jian Wu",
+          "orgs": [
+            "School of Public Health, Zhejiang University, China",
+            "State Key Laboratory of Transvascular Implantation Devices of The Second Affiliated Hospital, Zhejiang University School of Medicine, China",
+            "Institute of Wenzhou, Zhejiang University, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2407.19763v1",
+      "date": "2024-07-29T07:56:11Z",
+      "citation_count": 5,
+      "categories": [
+        "cs.CV",
+        "eess.IV"
+      ]
+    }
+  ]
+}

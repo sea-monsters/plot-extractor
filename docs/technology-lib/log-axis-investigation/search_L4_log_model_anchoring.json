@@ -1,0 +1,843 @@
+{
+  "status": "success",
+  "total_count": 41,
+  "result": [
+    {
+      "arxiv_id": "2604.11344",
+      "score": 11.060866,
+      "title": "Geometry-Aware Localized Watermarking for Copyright Protection in Embedding-as-a-Service",
+      "tldr": "This paper addresses the robustness-utility-verifiability tension in EaaS watermarking by proposing GeoMark, a geometry-aware localized framework that decouples triggering from attribution, achieving improved verification stability and low false-positive risk (0.5% false positive rate) across four benchmark datasets.",
+      "abstract": "Embedding-as-a-Service (EaaS) has become an important semantic infrastructure for natural language and multimedia applications, but it is highly vulnerable to model stealing and copyright infringement. Existing EaaS watermarking methods face a fundamental robustness--utility--verifiability tension: trigger-based methods are fragile to paraphrasing, transformation-based methods are sensitive to dimensional perturbation, and region-based methods may incur false positives due to coincidental geometric affinity.\n  To address this problem, we propose GeoMark, a geometry-aware localized watermarking framework for EaaS copyright protection. GeoMark uses a natural in-manifold embedding as a shared watermark target, constructs geometry-separated anchors with explicit target--anchor margins, and activates watermark injection only within adaptive local neighborhoods. This design decouples where watermarking is triggered from what ownership is attributed to, achieving localized triggering and centralized attribution.\n  Experiments on four benchmark datasets show that GeoMark preserves downstream utility and geometric fidelity while maintaining robust copyright verification under paraphrasing, dimensional perturbation, and CSE (Clustering, Selection, Elimination) attacks, with improved verification stability and low false-positive risk.",
+      "authors": [
+        {
+          "name": "Zhimin Chen",
+          "orgs": [
+            "School of Computer Science and Engineering, Sun Yat-sen University"
+          ]
+        },
+        {
+          "name": "Xiaojie Liang",
+          "orgs": [
+            "School of Computer Science and Engineering, Sun Yat-sen University"
+          ]
+        },
+        {
+          "name": "Wenbo Xu",
+          "orgs": [
+            "School of Computer Science and Engineering, Sun Yat-sen University"
+          ]
+        },
+        {
+          "name": "Yuxuan Liu",
+          "orgs": [
+            "School of Computer Science and Engineering, Sun Yat-sen University",
+            "Guangzhou, China"
+          ]
+        },
+        {
+          "name": "Wei Lu",
+          "orgs": [
+            "School of Computer Science and Engineering, Sun Yat-sen University",
+            "Guangzhou, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2604.11344v1",
+      "date": "2026-04-13",
+      "citation_count": 0,
+      "categories": [
+        "cs.CL",
+        "cs.CR"
+      ]
+    },
+    {
+      "arxiv_id": "2602.12164",
+      "score": 10.54225,
+      "title": "Sci-CoE: Co-evolving Scientific Reasoning LLMs via Geometric Consensus with Sparse Supervision",
+      "tldr": "This paper introduces Sci-CoE, a co-evolving framework for scientific reasoning that addresses the challenge of self-evolution without supervision by integrating a Solver and Verifier within an LLM, using a geometric reward mechanism to enhance reliability and diversity; experiments show improved reasoning accuracy and robustness across scientific domains.",
+      "abstract": "Large language models (LLMs) have demonstrated exceptional reasoning capabilities, and co-evolving paradigms have shown promising results in domains such as code and math. However, in scientific reasoning tasks, these models remain fragile due to unreliable solution evaluation and limited diversity in verification strategies. In this work, we propose Sci-CoE, a two-stage scientific co-evolving framework that enables models to self-evolve as both solver and verifier through a transition from sparse supervision to unsupervised learning. In the first stage, the model uses a small set of annotated data to establish fundamental correctness judgment anchors for the Verifier. In the second stage, we introduce a geometric reward mechanism that jointly considers consensus, reliability, and diversity, driving large-scale self-iteration on unlabeled data. Experiments on several general scientific benchmarks demonstrate that Sci-CoE enhances complex reasoning capabilities and exhibits strong scalability, facilitating the construction of more robust and diverse evaluation systems. Codes are available at https://github.com/InternScience/Sci-CoE.",
+      "authors": [
+        {
+          "name": "Songtao Huang",
+          "orgs": [
+            "Microsoft Research Asia"
+          ]
+        },
+        {
+          "name": "Xiaohan He",
+          "orgs": [
+            "Microsoft Research Asia"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.12164v1",
+      "date": "2026-02-12",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI"
+      ]
+    },
+    {
+      "arxiv_id": "2510.07313",
+      "score": 10.136627,
+      "title": "WristWorld: Generating Wrist-Views via 4D World Models for Robotic Manipulation",
+      "tldr": "This paper addresses the gap in wrist-view data for VLA models by proposing WristWorld, a 4D world model that generates geometrically and temporally consistent wrist-view videos from anchor views, achieving 3.81% improvement in task completion on Calvin and closing 42.4% of the anchor-wrist performance gap through a two-stage framework with SPC loss and CLIP-encoded features.",
+      "abstract": "Wrist-view observations are crucial for VLA models as they capture fine-grained hand-object interactions that directly enhance manipulation performance. Yet large-scale datasets rarely include such recordings, resulting in a substantial gap between abundant anchor views and scarce wrist views. Existing world models cannot bridge this gap, as they require a wrist-view first frame and thus fail to generate wrist-view videos from anchor views alone. Amid this gap, recent visual geometry models such as VGGT emerge with geometric and cross-view priors that make it possible to address extreme viewpoint shifts. Inspired by these insights, we propose WristWorld, the first 4D world model that generates wrist-view videos solely from anchor views. WristWorld operates in two stages: (i) Reconstruction, which extends VGGT and incorporates our Spatial Projection Consistency (SPC) Loss to estimate geometrically consistent wrist-view poses and 4D point clouds; (ii) Generation, which employs our video generation model to synthesize temporally coherent wrist-view videos from the reconstructed perspective. Experiments on Droid, Calvin, and Franka Panda demonstrate state-of-the-art video generation with superior spatial consistency, while also improving VLA performance, raising the average task completion length on Calvin by 3.81% and closing 42.4% of the anchor-wrist view gap.",
+      "authors": [
+        {
+          "name": "Zezhong Qian",
+          "orgs": [
+            "State Key Laboratory of Multimedia Information Processing",
+            "School of Computer Science",
+            "Peking University"
+          ]
+        },
+        {
+          "name": "Xiaowei Chi",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Yuming Li",
+          "orgs": [
+            "State Key Laboratory of Multimedia Information Processing",
+            "School of Computer Science",
+            "Peking University"
+          ]
+        },
+        {
+          "name": "Shizun Wang",
+          "orgs": [
+            "National University of Singapore"
+          ]
+        },
+        {
+          "name": "Zhiyuan Qin",
+          "orgs": [
+            "Beijing Innovation Center of Humanoid Robotics"
+          ]
+        },
+        {
+          "name": "Xiaozhu Ju",
+          "orgs": [
+            "Beijing Innovation Center of Humanoid Robotics"
+          ]
+        },
+        {
+          "name": "Sirui Han",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Shanghang Zhang",
+          "orgs": [
+            "State Key Laboratory of Multimedia Information Processing, School of Computer Science, Peking University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2510.07313v1",
+      "date": "2025-10-08",
+      "citation_count": 4,
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2111.06899",
+      "score": 10.033468,
+      "title": "RR Lyrae-based Distances for 39 Nearby Dwarf Galaxies Calibrated to Gaia eDR3",
+      "tldr": "This paper addresses the heterogeneous distances to nearby dwarf galaxies by providing uniform RR Lyrae-based distances to 39 galaxies using a Bayesian hierarchical model anchored to Gaia eDR3 parallaxes, improving precision by ~2-3 times and reducing distance moduli by ~0.05 mag compared to literature values, offering a versatile framework for local Universe cartography.",
+      "abstract": "We provide uniform RR Lyrae-based distances to 39 dwarf galaxies in and around the Local Group. We determine distances based on a Bayesian hierarchical model that uses periods and magnitudes of published RR Lyrae in dwarf galaxies and is anchored to well-studied Milky Way (MW) RR Lyrae with spectroscopic metallicities and Gaia eDR3 parallaxes. Gaia eDR3 parallaxes for the anchor sample are a factor of 2, on average, more precise than DR2 parallaxes, and allow for a much better constrained period-luminosity-metallicity relation. While $\\sim75$% of our distances are within 1-$\\sigma$ of recent literature RR Lyrae distances, our distances are also $\\sim2$-$3$ times more precise than literature distances, on average. On average, our distances are $\\sim0.05$ mag closer than literature distances, as well as $\\sim0.06$ mag closer than distances derived using a theoretical period-luminosity-metallicity relation. These discrepancies are largely due to our eDR3 parallax anchor. We show that the Hipparcos-anchored RR Lyrae distance scale of Carretta et al. (2000) over-predicts distances to MW RR Lyrae by $\\sim0.05$ mag. The largest uncertainties in our distances are (i) the lack of direct metallicity measurements for RR Lyrae and (ii) the heterogeneity of published RR Lyrae photometry. We provide simple formulae to place new dwarf galaxies with RR Lyrae on a common distance scale with this work. We provide public code that can easily incorporate additional galaxies and data from future surveys, providing a versatile framework for cartography of the local Universe with RR Lyrae.",
+      "authors": [
+        {
+          "name": "Pranav Nagarajan",
+          "orgs": [
+            "Department of Astronomy, University of California, Berkeley, Berkeley, CA, 94720, USA"
+          ]
+        },
+        {
+          "name": "Daniel R. Weisz",
+          "orgs": [
+            "Department of Astronomy, University of California, Berkeley, Berkeley, CA, 94720, USA"
+          ]
+        },
+        {
+          "name": "Kareem El-Badry",
+          "orgs": [
+            "Center for Astrophysics | Harvard & Smithsonian, 60 Garden Street, Cambridge, MA 02138, USA",
+            "Harvard Society of Fellows, 78 Mount Auburn Street, Cambridge, MA 02138"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2111.06899v2",
+      "date": "2021-11-12T19:00:03Z",
+      "citation_count": 18,
+      "categories": [
+        "astro-ph.GA",
+        "astro-ph.SR"
+      ]
+    },
+    {
+      "arxiv_id": "2602.05508",
+      "score": 9.971262,
+      "title": "VGGT-Motion: Motion-Aware Calibration-Free Monocular SLAM for Long-Range Consistency",
+      "tldr": "This paper presents VGGT-Motion, a calibration-free monocular SLAM system addressing scale drift and computational inefficiency in long-range sequences by using motion-aware submap construction, anchor-driven Sim(3) registration, and lightweight pose graph optimization, achieving 85–95% trajectory error reduction and 18–36× speedup over existing methods.",
+      "abstract": "Despite recent progress in calibration-free monocular SLAM via 3D vision foundation models, scale drift remains severe on long sequences. Motion-agnostic partitioning breaks contextual coherence and causes zero-motion drift, while conventional geometric alignment is computationally expensive. To address these issues, we propose VGGT-Motion, a calibration-free SLAM system for efficient and robust global consistency over kilometer-scale trajectories. Specifically, we first propose a motion-aware submap construction mechanism that uses optical flow to guide adaptive partitioning, prune static redundancy, and encapsulate turns for stable local geometry. We then design an anchor-driven direct Sim(3) registration strategy. By exploiting context-balanced anchors, it achieves search-free, pixel-wise dense alignment and efficient loop closure without costly feature matching. Finally, a lightweight submap-level pose graph optimization enforces global consistency with linear complexity, enabling scalable long-range operation. Experiments show that VGGT-Motion markedly improves trajectory accuracy and efficiency, achieving state-of-the-art performance in zero-shot, long-range calibration-free monocular SLAM.",
+      "authors": [
+        {
+          "name": "Chen Zhang",
+          "orgs": [
+            "University of Science and Technology of China"
+          ]
+        },
+        {
+          "name": "Wenbing Tao",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Qingshan Xu",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Zhuang Xiong",
+          "orgs": [
+            "Tsinghua University",
+            "Beijing Institute of Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.05508v1",
+      "date": "2026-02-05",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2512.21911",
+      "score": 9.960756,
+      "title": "Accelerate Speculative Decoding with Sparse Computation in Verification",
+      "tldr": "This paper addresses the computational bottleneck in speculative decoding by proposing a sparse verification framework that sparsifies attention, FFN, and MoE components, achieving significant efficiency gains with stable accuracy across long-context and reasoning tasks.",
+      "abstract": "Speculative decoding accelerates autoregressive language model inference by verifying multiple draft tokens in parallel. However, the verification stage often becomes the dominant computational bottleneck, especially for long-context inputs and mixture-of-experts (MoE) models. Existing sparsification methods are designed primarily for standard token-by-token autoregressive decoding to remove substantial computational redundancy in LLMs. This work systematically adopts different sparse methods on the verification stage of the speculative decoding and identifies structured redundancy across multiple dimensions. Based on these observations, we propose a sparse verification framework that jointly sparsifies attention, FFN, and MoE components during the verification stage to reduce the dominant computation cost. The framework further incorporates an inter-draft token and inter-layer retrieval reuse strategy to further reduce redundant computation without introducing additional training. Extensive experiments across summarization, question answering, and mathematical reasoning datasets demonstrate that the proposed methods achieve favorable efficiency-accuracy trade-offs, while maintaining stable acceptance length.",
+      "authors": [
+        {
+          "name": "Min Zhang",
+          "orgs": [
+            "Key Laboratory of Data Intelligence and Advanced Computing, Soochow University"
+          ]
+        },
+        {
+          "name": "Jikai Wang",
+          "orgs": [
+            "Key Laboratory of Data Intelligence and Advanced Computing, Soochow University"
+          ]
+        },
+        {
+          "name": "Juntao Li",
+          "orgs": [
+            "Key Laboratory of Data Intelligence and Advanced Computing, Soochow University"
+          ]
+        },
+        {
+          "name": "Xunliang Cai",
+          "orgs": [
+            "Meituan"
+          ]
+        },
+        {
+          "name": "Yuxuan Hu",
+          "orgs": [
+            "Meituan"
+          ]
+        },
+        {
+          "name": "Yuchen Xie",
+          "orgs": [
+            "Meituan"
+          ]
+        },
+        {
+          "name": "Yerui Sun",
+          "orgs": [
+            "Meituan"
+          ]
+        },
+        {
+          "name": "Jianchao Tan",
+          "orgs": [
+            "Meituan"
+          ]
+        },
+        {
+          "name": "Jiayu Qin",
+          "orgs": [
+            "Meituan"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.21911v1",
+      "date": "2025-12-26",
+      "citation_count": 0,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2604.19792",
+      "score": 9.730741,
+      "title": "OpenCLAW-P2P v6.0: Resilient Multi-Layer Persistence, Live Reference Verification, and Production-Scale Evaluation of Decentralized AI Peer Review",
+      "tldr": "This paper presents OpenCLAW-P2P v6.0, a decentralized AI peer review platform addressing data resilience and reference integrity gaps by introducing multi-layer persistence with zero paper loss, live reference verification with >85% citation accuracy, and a recovery protocol salvaging 25 lost papers, while retaining v5.0's multi-LLM scoring and tribunal system for scalable scientific evaluation.",
+      "abstract": "This paper presents OpenCLAW-P2P v6.0, a comprehensive evolution of the decentralized collective-intelligence platform in which autonomous AI agents publish, peer-review, score, and iteratively improve scientific research papers without any human gatekeeper. Building on v5.0 foundations -- tribunal-gated publishing, multi-LLM granular scoring, calibrated deception detection, the Silicon Chess-Grid FSM, and the AETHER containerized inference engine -- this release introduces four major new subsystems: (1) a multi-layer paper persistence architecture with four storage tiers (in-memory cache, Cloudflare R2, Gun.js, GitHub) ensuring zero paper loss across redeployments; (2) a multi-layer retrieval cascade with automatic backfill reducing lookup latency from >3s to <50ms; (3) live reference verification querying CrossRef, arXiv, and Semantic Scholar during scoring to detect fabricated citations with >85% accuracy; and (4) a scientific API proxy providing rate-limited cached access to seven public databases. The platform operates with 14 real autonomous agents producing 50+ scored papers (word counts 2,072-4,073, leaderboard scores 6.4-8.1) alongside 23 labeled simulated citizens. We present honest production statistics, failure-mode analysis, a paper recovery protocol that salvaged 25 lost papers, and lessons learned from operating the system at scale. All pre-existing subsystems -- 17-judge multi-LLM scoring, 14-rule calibration with 8 deception detectors, tribunal cognitive examination, Proof of Value consensus, Laws-of-Form eigenform verification, and tau-normalized agent coordination -- are retained and further hardened. All code is open-source at https://github.com/Agnuxo1/p2pclaw-mcp-server.",
+      "authors": [
+        {
+          "name": "Francisco Angulo de Lafuente",
+          "orgs": [
+            "Independent AI Researcher & Science Fiction Writer"
+          ]
+        },
+        {
+          "name": "Teerth Sharma",
+          "orgs": [
+            "Bachelor of Technology (AI), Manipal University Jaipur, India"
+          ]
+        },
+        {
+          "name": "Vladimir Veselov",
+          "orgs": [
+            "Moscow Institute of Electronic Technology (MIET), Russia"
+          ]
+        },
+        {
+          "name": "Seid Mohammed Abdu",
+          "orgs": [
+            "Moscow Institute of Electronic Technology (MIET)",
+            "Russia"
+          ]
+        },
+        {
+          "name": "Nirmal Tej Kumar",
+          "orgs": [
+            "Dept. of Computer Science, Woldia University",
+            "Ethiopia"
+          ]
+        },
+        {
+          "name": "Guillermo Perry",
+          "orgs": [
+            "University of Texas at Dallas (UTD)",
+            "Dallas, TX, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2604.19792v1",
+      "date": "2026-04-06",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.DC",
+        "cs.MA",
+        "cs.NE"
+      ]
+    },
+    {
+      "arxiv_id": "2602.19766",
+      "score": 9.727875,
+      "title": "One2Scene: Geometric Consistent Explorable 3D Scene Generation from a Single Image",
+      "tldr": "This paper addresses the challenge of generating explorable 3D scenes from a single image, aiming to overcome geometric distortions and limited exploration in existing methods; it introduces One2Scene, which uses a feed-forward Gaussian Splatting network with bidirectional fusion for 3D scaffold construction and a Dual-LoRA strategy for novel view synthesis; experiments show One2Scene outperforms state-of-the-art methods in depth estimation and scene generation with high photorealism and geometric accuracy.",
+      "abstract": "Generating explorable 3D scenes from a single image is a highly challenging problem in 3D vision. Existing methods struggle to support free exploration, often producing severe geometric distortions and noisy artifacts when the viewpoint moves far from the original perspective. We introduce \\textbf{One2Scene}, an effective framework that decomposes this ill-posed problem into three tractable sub-tasks to enable immersive explorable scene generation. We first use a panorama generator to produce anchor views from a single input image as initialization. Then, we lift these 2D anchors into an explicit 3D geometric scaffold via a generalizable, feed-forward Gaussian Splatting network. Instead of treating the panorama as a single image for reconstruction, we project it into multiple sparse anchor views and reformulate the reconstruction task as multi-view stereo matching, which allows us to leverage robust geometric priors learned from large-scale multi-view datasets. A bidirectional feature fusion module is used to enforce cross-view consistency, yielding an efficient and geometrically reliable scaffold. Finally, the scaffold serves as a strong prior for a novel view generator to produce photorealistic and geometrically accurate views at arbitrary cameras. By explicitly conditioning on a 3D-consistent scaffold to perform reconstruction, One2Scene works stably under large camera motions, supporting immersive scene exploration. Extensive experiments show that One2Scene substantially outperforms state-of-the-art methods in panorama depth estimation, feed-forward 360{\\deg} reconstruction, and explorable 3D scene generation. Code and models will be released.",
+      "authors": [
+        {
+          "name": "Lei Zhang",
+          "orgs": [
+            "The Hong Kong Polytechnic University"
+          ]
+        },
+        {
+          "name": "Pengfei Wang",
+          "orgs": [
+            "The Hong Kong Polytechnic University"
+          ]
+        },
+        {
+          "name": "Zhiyuan Ma",
+          "orgs": [
+            "The Hong Kong Polytechnic University"
+          ]
+        },
+        {
+          "name": "Yanjun Guo",
+          "orgs": [
+            "The Hong Kong Polytechnic University"
+          ]
+        },
+        {
+          "name": "Guowen Zhang",
+          "orgs": [
+            "The Hong Kong Polytechnic University"
+          ]
+        },
+        {
+          "name": "Liyi Chen",
+          "orgs": [
+            "The Hong Kong Polytechnic University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.19766v1",
+      "date": "2026-02-23",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2508.16802",
+      "score": 9.705775,
+      "title": "Anchor-MoE: A Mean-Anchored Mixture of Experts For Probabilistic Regression",
+      "tldr": "This paper introduces Anchor-MoE, a probabilistic regression framework addressing the challenge of modeling uncertainty and improving point accuracy by combining a gradient-boosted anchor with mixture-density-network experts, achieving state-of-the-art results on UCI datasets with RMSE and NLL improvements over NGBoost; it provides theoretical guarantees on minimax-optimal $L^2$ risk and generalization gaps; the approach is modular, allowing for flexible extensions and post-hoc calibration.",
+      "abstract": "Regression under uncertainty is fundamental across science and engineering. We present an Anchored Mixture of Experts (Anchor-MoE), a model that handles both probabilistic and point regression. For simplicity, we use a tuned gradient-boosting model to furnish the anchor mean; however, any off-the-shelf point regressor can serve as the anchor. The anchor prediction is projected into a latent space, where a learnable metric-window kernel scores locality and a soft router dispatches each sample to a small set of mixture-density-network experts; the experts produce a heteroscedastic correction and predictive variance. We train by minimizing negative log-likelihood, and on a disjoint calibration split fit a post-hoc linear map on predicted means to improve point accuracy. On the theory side, assuming a H\\\\\"older smooth regression function of order~$\\\\alpha$ and fixed Lipschitz partition-of-unity weights with bounded overlap, we show that Anchor-MoE attains the minimax-optimal $L^2$ risk rate $O\\\\!\\\\big(N^{-2\\\\alpha/(2\\\\alpha+d)}\\\\big)$. In addition, the CRPS test generalization gap scales as $\\\\widetilde{O}\\\\!\\\\Big(\\\\sqrt{(\\\\log(Mh)+P+K)/N}\\\\Big)$; it is logarithmic in $Mh$ and scales as the square root in $P$ and $K$. Under bounded-overlap routing, $K$ can be replaced by $k$, and any dependence on a latent dimension is absorbed into $P$. Under uniformly bounded means and variances, an analogous $\\\\widetilde{O}\\\\!\\\\big(\\\\sqrt{(\\\\log(Mh)+P+K)/N}\\\\big)$ scaling holds for the test NLL up to constants. Empirically, across standard UCI regressions, Anchor-MoE consistently matches or surpasses the strong NGBoost baseline in RMSE and NLL; on several datasets it achieves new state-of-the-art probabilistic regression results on our benchmark suite. Code is available at https://github.com/BaozhuoSU/Probabilistic_Regression.",
+      "authors": [
+        {
+          "name": "Baozhuo Su",
+          "orgs": [
+            "Institut Polytechnique de Paris",
+            "Linkconn Electronics Co., Ltd"
+          ]
+        },
+        {
+          "name": "Zhengxian Qu",
+          "orgs": [
+            "Aerie Intelligent Technology Corp"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2508.16802v1",
+      "date": "2025-08-22",
+      "citation_count": 0,
+      "categories": [
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2506.15560",
+      "score": 9.678562,
+      "title": "RaCalNet: Radar Calibration Network for Sparse-Supervised Metric Depth Estimation",
+      "tldr": "This paper presents RaCalNet, a radar-guided depth estimation framework addressing the need for dense LiDAR supervision in metric depth estimation, by using sparse LiDAR to refine radar measurements and achieve comparable performance with a 34.89% RMSE reduction; it employs a Radar Recalibration module with cross-modal attention and a Metric Depth Optimization module for accurate depth inference; the results demonstrate superior visual quality and metric accuracy with sparse supervision.",
+      "abstract": "Dense depth estimation using millimeter-wave radar typically requires dense LiDAR supervision, generated via multi-frame projection and interpolation, for guiding the learning of accurate depth from sparse radar measurements and RGB images. However, this paradigm is both costly and data-intensive. To address this, we propose RaCalNet, a novel framework that eliminates the need for dense supervision by using sparse LiDAR to supervise the learning of refined radar measurements, resulting in a supervision density of merely around 1\\% compared to dense-supervised methods. RaCalNet is composed of two key modules. The Radar Recalibration module performs radar point screening and pixel-wise displacement refinement, producing accurate and reliable depth priors from sparse radar inputs. These priors are then used by the Metric Depth Optimization module, which learns to infer scene-level scale priors and fuses them with monocular depth predictions to achieve metrically accurate outputs. This modular design enhances structural consistency and preserves fine-grained geometric details. Despite relying solely on sparse supervision, RaCalNet produces depth maps with clear object contours and fine-grained textures, demonstrating superior visual quality compared to state-of-the-art dense-supervised methods. Quantitatively, it achieves performance comparable to existing methods on the ZJU-4DRadarCam dataset and yields a 34.89\\% RMSE reduction in real-world deployment scenarios. We plan to gradually release the code and models in the future at https://github.com/818slam/RaCalNet.git.",
+      "authors": [
+        {
+          "name": "Xingrui Qin",
+          "orgs": [
+            "School of Automation and Intelligent Sensing, Institute of Medical Robotics, Shanghai Jiao Tong University, Shanghai 200240, China",
+            "Key Laboratory of System Control and Information Processing, Ministry of Education of China, Shanghai 200240, China"
+          ]
+        },
+        {
+          "name": "Wentao Zhao",
+          "orgs": [
+            "School of Automation and Intelligent Sensing, Institute of Medical Robotics, Shanghai Jiao Tong University, Shanghai 200240, China",
+            "Key Laboratory of System Control and Information Processing, Ministry of Education of China, Shanghai 200240, China"
+          ]
+        },
+        {
+          "name": "Chuan Cao",
+          "orgs": [
+            "School of Automation and Intelligent Sensing, Institute of Medical Robotics, Shanghai Jiao Tong University, Shanghai 200240, China",
+            "Key Laboratory of System Control and Information Processing, Ministry of Education of China, Shanghai 200240, China"
+          ]
+        },
+        {
+          "name": "Yihe Niu",
+          "orgs": [
+            "School of Mathematical Sciences, Shanghai Jiao Tong University, Shanghai, China"
+          ]
+        },
+        {
+          "name": "Tianchen Deng",
+          "orgs": [
+            "School of Automation and Intelligent Sensing, Institute of Medical Robotics, Shanghai Jiao Tong University, Shanghai 200240, China",
+            "Key Laboratory of System Control and Information Processing, Ministry of Education of China, Shanghai 200240, China"
+          ]
+        },
+        {
+          "name": "Houcheng Jiang",
+          "orgs": [
+            "South China University of Technology, Guangzhou, China"
+          ]
+        },
+        {
+          "name": "Rui Guo",
+          "orgs": [
+            "State Grid Intelligence Technology CO., LTD"
+          ]
+        },
+        {
+          "name": "Jingchuan Wang",
+          "orgs": [
+            "School of Automation and Intelligent Sensing, Institute of Medical Robotics, Shanghai Jiao Tong University, Shanghai 200240, China",
+            "Key Laboratory of System Control and Information Processing, Ministry of Education of China, Shanghai 200240, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2506.15560v2",
+      "date": "2025-06-18T15:35:16Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2510.20726",
+      "score": 9.642193,
+      "title": "AutoScape: Geometry-Consistent Long-Horizon Scene Generation",
+      "tldr": "This paper addresses the challenge of long-horizon 3D-consistent driving scene generation by proposing AutoScape, which uses a hierarchical RGB-D diffusion model with joint modeling, geometry conditioning, and warp-consistent guidance to generate high-quality 20-second videos with FID and FVD improvements of 48.6% and 43.0%, respectively, over prior methods.",
+      "abstract": "This paper proposes AutoScape, a long-horizon driving scene generation framework. At its core is a novel RGB-D diffusion model that iteratively generates sparse, geometrically consistent keyframes, serving as reliable anchors for the scene's appearance and geometry. To maintain long-range geometric consistency, the model 1) jointly handles image and depth in a shared latent space, 2) explicitly conditions on the existing scene geometry (i.e., rendered point clouds) from previously generated keyframes, and 3) steers the sampling process with a warp-consistent guidance. Given high-quality RGB-D keyframes, a video diffusion model then interpolates between them to produce dense and coherent video frames. AutoScape generates realistic and geometrically consistent driving videos of over 20 seconds, improving the long-horizon FID and FVD scores over the prior state-of-the-art by 48.6\\\\% and 43.0\\\\%, respectively.",
+      "authors": [
+        {
+          "name": "Manmohan Chandraker",
+          "orgs": [
+            "NEC Labs America",
+            "UC San Diego"
+          ]
+        },
+        {
+          "name": "Ying Wu",
+          "orgs": [
+            "Northwestern University"
+          ]
+        },
+        {
+          "name": "Jiacheng Chen",
+          "orgs": [
+            "Simon Fraser University"
+          ]
+        },
+        {
+          "name": "Bingbing Zhuang",
+          "orgs": [
+            "Northwestern University"
+          ]
+        },
+        {
+          "name": "Mingfu Liang",
+          "orgs": [
+            "NEC Labs America"
+          ]
+        },
+        {
+          "name": "Jong-Chyi Su",
+          "orgs": [
+            "NEC Labs America"
+          ]
+        },
+        {
+          "name": "Sparsh Garg",
+          "orgs": [
+            "NEC Labs America"
+          ]
+        },
+        {
+          "name": "Ziyu Jiang",
+          "orgs": [
+            "Simon Fraser University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2510.20726v1",
+      "date": "2025-10-23",
+      "citation_count": 2,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2604.08967",
+      "score": 9.595455,
+      "title": "AudioGS: Spectrogram-Based Audio Gaussian Splatting for Sound Field Reconstruction",
+      "tldr": "This paper introduces AudioGS, a visual-free framework for sound field reconstruction using spectrogram-based Audio Gaussians to address the challenge of synthesizing high-fidelity binaural audio from sparse observations, as existing methods struggle with capturing fine-grained acoustic structures; it employs a dual Spherical Harmonic parameterization and geometry-guided distance attenuation to explicitly model the sound field, contributing an explicit representation and improving reconstruction quality by reducing MAG by over 14% and DPAM by approximately 25% compared to visual-guided baselines.",
+      "abstract": "Spatial audio is fundamental to immersive virtual experiences, yet synthesizing high-fidelity binaural audio from sparse observations remains a significant challenge. Existing methods typically rely on implicit neural representations conditioned on visual priors, which often struggle to capture fine-grained acoustic structures. Inspired by 3D Gaussian Splatting (3DGS), we introduce AudioGS, a novel visual-free framework that explicitly encodes the sound field as a set of Audio Gaussians based on spectrograms. AudioGS associates each time-frequency bin with an Audio Gaussian equipped with dual Spherical Harmonic (SH) coefficients and a decay coefficient. For a target pose, we render binaural audio by evaluating the SH field to capture directionality, incorporating geometry-guided distance attenuation and phase correction, and reconstructing the waveform. Experiments on the Replay-NVAS dataset demonstrate that AudioGS successfully captures complex spatial cues and outperforms state-of-the-art visual-dependent baselines. Specifically, AudioGS reduces the magnitude reconstruction error (MAG) by over 14% and reduces the perceptual quality metric (DPAM) by approximately 25% compared to the best performing visual-guided method.",
+      "authors": [
+        {
+          "name": "Chunhao Bi",
+          "orgs": [
+            "School of Electronic Information and Electrical Engineering, Shanghai Jiao Tong University, Shanghai, China"
+          ]
+        },
+        {
+          "name": "Houqiang Zhong",
+          "orgs": [
+            "School of Electronic Information and Electrical Engineering, Shanghai Jiao Tong University, Shanghai, China"
+          ]
+        },
+        {
+          "name": "Zhixin Xu",
+          "orgs": [
+            "Institute of Cultural and Creative Industry, Shanghai Jiao Tong University, Shanghai, China"
+          ]
+        },
+        {
+          "name": "Li Song",
+          "orgs": [
+            "School of Electronic Information and Electrical Engineering, Shanghai Jiao Tong University, Shanghai, China"
+          ]
+        },
+        {
+          "name": "Zhengxue Cheng",
+          "orgs": [
+            "School of Electronic Information and Electrical Engineering, Shanghai Jiao Tong University, Shanghai, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2604.08967v1",
+      "date": "2026-04-10",
+      "citation_count": 0,
+      "categories": [
+        "cs.SD"
+      ]
+    },
+    {
+      "arxiv_id": "2603.26638",
+      "score": 9.573814,
+      "title": "Drive-Through 3D Vehicle Exterior Reconstruction via Dynamic-Scene SfM and Distortion-Aware Gaussian Splatting",
+      "tldr": "This paper addresses the challenge of high-fidelity 3D vehicle exterior reconstruction in dynamic drive-through environments, aiming to improve buyer confidence in online automotive marketplaces by enabling interactive 3D inspections; it proposes an end-to-end pipeline combining dynamic-scene segmentation, distortion-aware Gaussian Splatting, and rig-aware SfM optimization, achieving a PSNR of 28.66 dB and an SSIM of 0.89; the results offer a scalable, cost-effective solution for real-world automotive inspection without controlled studio infrastructure.",
+      "abstract": "High-fidelity 3D reconstruction of vehicle exteriors improves buyer confidence in online automotive marketplaces, but generating these models in cluttered dealership drive-throughs presents severe technical challenges. Unlike static-scene photogrammetry, this setting features a dynamic vehicle moving against heavily cluttered, static backgrounds. This problem is further compounded by wide-angle lens distortion, specular automotive paint, and non-rigid wheel rotations that violate classical epipolar constraints. We propose an end-to-end pipeline utilizing a two-pillar camera rig. First, we resolve dynamic-scene ambiguities by coupling SAM 3 for instance segmentation with motion-gating to cleanly isolate the moving vehicle, explicitly masking out non-rigid wheels to enforce strict epipolar geometry. Second, we extract robust correspondences directly on raw, distorted 4K imagery using the RoMa v2 learned matcher guided by semantic confidence masks. Third, these matches are integrated into a rig-aware SfM optimization that utilizes CAD-derived relative pose priors to eliminate scale drift. Finally, we use a distortion-aware 3D Gaussian Splatting framework (3DGUT) coupled with a stochastic Markov Chain Monte Carlo (MCMC) densification strategy to render reflective surfaces. Evaluations on 25 real-world vehicles across 10 dealerships demonstrate that our full pipeline achieves a PSNR of 28.66 dB, an SSIM of 0.89, and an LPIPS of 0.21 on held-out views, representing a 3.85 dB improvement over standard 3D-GS, delivering inspection-grade interactive 3D models without controlled studio infrastructure.",
+      "authors": [
+        {
+          "name": "Nitin Kulkarni",
+          "orgs": [
+            "ACV Auctions",
+            "University at Buffalo"
+          ]
+        },
+        {
+          "name": "Akhil Devarashetti",
+          "orgs": [
+            "ACV Auctions",
+            "University at Buffalo"
+          ]
+        },
+        {
+          "name": "Charlie Cluss",
+          "orgs": [
+            "ACV Auctions",
+            "University at Buffalo"
+          ]
+        },
+        {
+          "name": "Livio Forte",
+          "orgs": [
+            "University at Buffalo, Buffalo, NY, USA"
+          ]
+        },
+        {
+          "name": "Philip Schneider",
+          "orgs": [
+            "ACV Auctions, Buffalo, NY, USA"
+          ]
+        },
+        {
+          "name": "Chunming Qiao",
+          "orgs": [
+            "University at Buffalo, Buffalo, NY, USA"
+          ]
+        },
+        {
+          "name": "Alina Vereshchaka",
+          "orgs": [
+            "University at Buffalo, Buffalo, NY, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2603.26638v1",
+      "date": "2026-03-27",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2603.17178",
+      "score": 9.546299,
+      "title": "Patient4D: Temporally Consistent Patient Body Mesh Recovery from Monocular Operating Room Video",
+      "tldr": "This paper addresses the challenge of recovering temporally consistent 3D body meshes from monocular surgical video, where patients are static but occluded and viewed from moving cameras; it introduces Patient4D, a stationarity-constrained pipeline using Pose Locking and Rigid Fallback to enforce consistency; it achieves a 0.75 mean IoU under surgical drape occlusion, reducing failure frames from 30.5% to 1.3% compared to baselines.",
+      "abstract": "Recovering a dense 3D body mesh from monocular video remains challenging under occlusion from draping and continuously moving camera viewpoints. This configuration arises in surgical augmented reality (AR), where an anesthetized patient lies under surgical draping while a surgeon's head-mounted camera continuously changes viewpoint. Existing human mesh recovery (HMR) methods are typically trained on upright, moving subjects captured from relatively stable cameras, leading to performance degradation under such conditions. To address this, we present Patient4D, a stationarity-constrained reconstruction pipeline that explicitly exploits the stationarity prior. The pipeline combines image-level foundation models for perception with lightweight geometric mechanisms that enforce temporal consistency across frames. Two key components enable robust reconstruction: Pose Locking, which anchors pose parameters using stable keyframes, and Rigid Fallback, which recovers meshes under severe occlusion through silhouette-guided rigid alignment. Together, these mechanisms stabilize predictions while remaining compatible with off-the-shelf HMR models. We evaluate Patient4D on 4,680 synthetic surgical sequences and three public HMR video benchmarks. Under surgical drape occlusion, Patient4D achieves a 0.75 mean IoU, reducing failure frames from 30.5% to 1.3% compared to the best baseline. Our findings demonstrate that exploiting stationarity priors can substantially improve monocular reconstruction in clinical AR scenarios.",
+      "authors": [
+        {
+          "name": "Mingxiao Tu",
+          "orgs": [
+            "University of Sydney"
+          ]
+        },
+        {
+          "name": "Hoijoon Jung",
+          "orgs": [
+            "University of Sydney"
+          ]
+        },
+        {
+          "name": "Alireza Moghadam",
+          "orgs": [
+            "University of Sydney"
+          ]
+        },
+        {
+          "name": "Andre Kyme",
+          "orgs": [
+            "University of Sydney"
+          ]
+        },
+        {
+          "name": "Jinman Kim",
+          "orgs": [
+            "University of Sydney"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2603.17178v1",
+      "date": "2026-03-17",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2604.14144",
+      "score": 9.524124,
+      "title": "SpatialEvo: Self-Evolving Spatial Intelligence via Deterministic Geometric Environments",
+      "tldr": "This paper addresses the challenge of continuous improvement in 3D spatial reasoning by proposing SpatialEvo, a self-evolving framework that leverages deterministic geometric environments to compute exact ground truth from 3D scenes, enabling zero-noise dynamic curriculum learning and achieving the highest average scores at both 3B and 7B scales.",
+      "abstract": "Spatial reasoning over three-dimensional scenes is a core capability for embodied intelligence, yet continuous model improvement remains bottlenecked by the cost of geometric annotation. The self-evolving paradigm offers a promising path, but its reliance on model consensus to construct pseudo-labels causes training to reinforce rather than correct the model's own geometric errors. We identify a property unique to 3D spatial reasoning that circumvents this limitation: ground truth is a deterministic consequence of the underlying geometry, computable exactly from point clouds and camera poses without any model involvement. Building on this insight, we present SpatialEvo, a self-evolving framework for 3D spatial reasoning, centered on the Deterministic Geometric Environment (DGE). The DGE formalizes 16 spatial reasoning task categories under explicit geometric validation rules and converts unannotated 3D scenes into zero-noise interactive oracles, replacing model consensus with objective physical feedback. A single shared-parameter policy co-evolves across questioner and solver roles under DGE constraints: the questioner generates physically valid spatial questions grounded in scene observations, while the solver derives precise answers against DGE-verified ground truth. A task-adaptive scheduler endogenously concentrates training on the model's weakest categories, producing a dynamic curriculum without manual design. Experiments across nine benchmarks demonstrate that SpatialEvo achieves the highest average score at both 3B and 7B scales, with consistent gains on spatial reasoning benchmarks and no degradation on general visual understanding.",
+      "authors": [
+        {
+          "name": "Dingming Li",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Yingxiu Zhao",
+          "orgs": [
+            "StepFun"
+          ]
+        },
+        {
+          "name": "Xinrui Cheng",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Kangheng Lin",
+          "orgs": [
+            "StepFun"
+          ]
+        },
+        {
+          "name": "Hongbo Peng",
+          "orgs": [
+            "StepFun"
+          ]
+        },
+        {
+          "name": "Hongxing Li",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Zixuan Wang",
+          "orgs": [
+            "StepFun"
+          ]
+        },
+        {
+          "name": "Yuhong Dai",
+          "orgs": [
+            "StepFun"
+          ]
+        },
+        {
+          "name": "Haodong Li",
+          "orgs": [
+            "StepFun"
+          ]
+        },
+        {
+          "name": "Jia Wang",
+          "orgs": [
+            "StepFun"
+          ]
+        },
+        {
+          "name": "Yukang Shi",
+          "orgs": [
+            "StepFun"
+          ]
+        },
+        {
+          "name": "Liang Zhao",
+          "orgs": [
+            "StepFun"
+          ]
+        },
+        {
+          "name": "Jianjian Sun",
+          "orgs": [
+            "StepFun"
+          ]
+        },
+        {
+          "name": "Zheng Ge",
+          "orgs": [
+            "StepFun"
+          ]
+        },
+        {
+          "name": "Xiangyu Zhang",
+          "orgs": [
+            "StepFun"
+          ]
+        },
+        {
+          "name": "Weiming Lu",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Jun Xiao",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Yueting Zhuang",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Yongliang Shen",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2604.14144v1",
+      "date": "2026-04-15",
+      "citation_count": 0,
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ]
+    }
+  ]
+}

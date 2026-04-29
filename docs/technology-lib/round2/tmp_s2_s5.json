@@ -1,0 +1,1073 @@
+{
+  "status": "success",
+  "total_count": 70,
+  "result": [
+    {
+      "arxiv_id": "2112.09357",
+      "score": 17.404877,
+      "title": "Interpreting Audiograms with Multi-stage Neural Networks",
+      "tldr": "This paper addresses the challenge of accurately interpreting audiograms to extract precise hearing level data, which is crucial for tuning hearing aids; it proposes a Multi-stage Audiogram Interpretation Network (MAIN) with three stages for detection, rectification, and coordinate projection, achieving 84% test accuracy and 94% of tuples within ±5 dB HL error; this method enables reliable automated audiogram interpretation, improving accessibility and efficiency in hearing aid fitting.",
+      "abstract": "Audiograms are a particular type of line charts representing individuals' hearing level at various frequencies. They are used by audiologists to diagnose hearing loss, and further select and tune appropriate hearing aids for customers. There have been several projects such as Autoaudio that aim to accelerate this process through means of machine learning. But all existing models at their best can only detect audiograms in images and classify them into general categories. They are unable to extract hearing level information from detected audiograms by interpreting the marks, axis, and lines. To address this issue, we propose a Multi-stage Audiogram Interpretation Network (MAIN) that directly reads hearing level data from photos of audiograms. We also established Open Audiogram, an open dataset of audiogram images with annotations of marks and axes on which we trained and evaluated our proposed model. Experiments show that our model is feasible and reliable.",
+      "authors": [
+        {
+          "name": "Shufan Li",
+          "orgs": [
+            "Orka Labs Inc."
+          ]
+        },
+        {
+          "name": "Congxi Lu",
+          "orgs": [
+            "Orka Labs Inc."
+          ]
+        },
+        {
+          "name": "Linkai Li",
+          "orgs": [
+            "Orka Labs Inc."
+          ]
+        },
+        {
+          "name": "Jirong Duan",
+          "orgs": [
+            "ENT&Audiology Center",
+            "Xinhua Hospital*",
+            "&Punan Hospital"
+          ]
+        },
+        {
+          "name": "Xinping Fu",
+          "orgs": [
+            "Ear Institute",
+            "University College London"
+          ]
+        },
+        {
+          "name": "Haoshuai Zhou",
+          "orgs": [
+            "Orka Labs Inc."
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2112.09357v1",
+      "date": "2021-12-17T07:27:39Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.CV",
+        "cs.SD",
+        "eess.AS"
+      ]
+    },
+    {
+      "arxiv_id": "1704.06687",
+      "score": 15.419901,
+      "title": "Scatteract: Automated extraction of data from scatter plots",
+      "tldr": "This paper addresses the challenge of automatically extracting numerical data from scatter plots, aiming to facilitate further analysis by converting pixel coordinates to chart coordinates; it uses deep learning for object detection and OCR combined with robust regression for coordinate mapping, introducing a fully automated system that achieves 89% success in data extraction; the findings demonstrate effective data retrieval with robustness to OCR errors, advancing automated chart analysis and enabling broader applications in data processing and visualization.",
+      "abstract": "Charts are an excellent way to convey patterns and trends in data, but they do not facilitate further modeling of the data or close inspection of individual data points. We present a fully automated system for extracting the numerical values of data points from images of scatter plots. We use deep learning techniques to identify the key components of the chart, and optical character recognition together with robust regression to map from pixels to the coordinate system of the chart. We focus on scatter plots with linear scales, which already have several interesting challenges. Previous work has done fully automatic extraction for other types of charts, but to our knowledge this is the first approach that is fully automatic for scatter plots. Our method performs well, achieving successful data extraction on 89% of the plots in our test set.",
+      "authors": [
+        {
+          "name": "Mathieu Cliche",
+          "orgs": []
+        },
+        {
+          "name": "David Rosenberg",
+          "orgs": []
+        },
+        {
+          "name": "Dhruv Madeka",
+          "orgs": []
+        },
+        {
+          "name": "Connie Yee",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1704.06687v1",
+      "date": "2017-04-21T19:25:32Z",
+      "citation_count": 75,
+      "categories": [
+        "cs.CV",
+        "cs.IR",
+        "stat.ML"
+      ]
+    },
+    {
+      "arxiv_id": "1906.11906",
+      "score": 15.071852,
+      "title": "Data Extraction from Charts via Single Deep Neural Network",
+      "tldr": "This paper presents a deep learning model for automatic data extraction from bar and pie charts, addressing the challenge of handling complex object relations and varying chart types, by combining object detection, text recognition, and component matching; it introduces a single model for bar charts and a specialized model for pie charts with RNN-based angle detection, achieving 79.4% and 88.0% accuracy on simulated charts, but degrading to 57.5% and 62.3% on out-of-domain data, offering improved automation for business data management.",
+      "abstract": "Automatic data extraction from charts is challenging for two reasons: there exist many relations among objects in a chart, which is not a common consideration in general computer vision problems; and different types of charts may not be processed by the same model. To address these problems, we propose a framework of a single deep neural network, which consists of object detection, text recognition and object matching modules. The framework handles both bar and pie charts, and it may also be extended to other types of charts by slight revisions and by augmenting the training data. Our model performs successfully on 79.4% of test simulated bar charts and 88.0% of test simulated pie charts, while for charts outside of the training domain it degrades for 57.5% and 62.3%, respectively.",
+      "authors": [
+        {
+          "name": "Xiaoyi Liu",
+          "orgs": []
+        },
+        {
+          "name": "Diego Klabjan",
+          "orgs": []
+        },
+        {
+          "name": "Patrick N Bless",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1906.11906v1",
+      "date": "2019-06-06T21:54:50Z",
+      "citation_count": 60,
+      "categories": [
+        "cs.CL",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2010.02319",
+      "score": 13.203372,
+      "title": "Tensor Fields for Data Extraction from Chart Images: Bar Charts and Scatter Plots",
+      "tldr": "This paper addresses the challenge of data extraction from bar charts and scatter plots by proposing a computational model using positive semidefinite second-order tensor fields, contributing a method for degenerate point extraction to automate levels A1 and A2 of Kimura's statistical ability scheme, showing tensor voting effectively extracts data with high accuracy for these chart types.",
+      "abstract": "Charts are an essential part of both graphicacy (graphical literacy), and statistical literacy. As chart understanding has become increasingly relevant in data science, automating chart analysis by processing raster images of the charts has become a significant problem. Automated chart reading involves data extraction and contextual understanding of the data from chart images. In this paper, we perform the first step of determining the computational model of chart images for data extraction for selected chart types, namely, bar charts, and scatter plots. We demonstrate the use of positive semidefinite second-order tensor fields as an effective model. We identify an appropriate tensor field as the model and propose a methodology for the use of its degenerate point extraction for data extraction from chart images. Our results show that tensor voting is effective for data extraction from bar charts and scatter plots, and histograms, as a special case of bar charts.",
+      "authors": [
+        {
+          "name": "Jaya Sreevalsan-Nair",
+          "orgs": [
+            "Graphics-Visualization-Computing Lab",
+            "International Institute of Information Technology Bangalore",
+            "Karnataka 560100, India"
+          ]
+        },
+        {
+          "name": "Komal Dadhich",
+          "orgs": [
+            "Graphics-Visualization-Computing Lab",
+            "International Institute of Information Technology Bangalore",
+            "Karnataka 560100, India"
+          ]
+        },
+        {
+          "name": "Siri Chandana Daggubati",
+          "orgs": [
+            "Graphics-Visualization-Computing Lab",
+            "International Institute of Information Technology Bangalore",
+            "Karnataka 560100, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2010.02319v1",
+      "date": "2020-10-05T20:19:40Z",
+      "citation_count": 12,
+      "categories": [
+        "cs.CV",
+        "cs.GR",
+        "cs.NA",
+        "math.NA"
+      ]
+    },
+    {
+      "arxiv_id": "2111.14103",
+      "score": 13.17574,
+      "title": "CHARTER: heatmap-based multi-type chart data extraction",
+      "tldr": "This paper addresses the challenge of extracting tabular data from diverse chart types in documents, proposing a heatmap-based detection system that improves precision for non-rectangular charts like pie and line plots, and introduces novel algorithms for label matching and data extraction, achieving state-of-the-art results on benchmark datasets.",
+      "abstract": "The digital conversion of information stored in documents is a great source of knowledge. In contrast to the documents text, the conversion of the embedded documents graphics, such as charts and plots, has been much less explored. We present a method and a system for end-to-end conversion of document charts into machine readable tabular data format, which can be easily stored and analyzed in the digital domain. Our approach extracts and analyses charts along with their graphical elements and supporting structures such as legends, axes, titles, and captions. Our detection system is based on neural networks, trained solely on synthetic data, eliminating the limiting factor of data collection. As opposed to previous methods, which detect graphical elements using bounding-boxes, our networks feature auxiliary domain specific heatmaps prediction enabling the precise detection of pie charts, line and scatter plots which do not fit the rectangular bounding-box presumption. Qualitative and quantitative results show high robustness and precision, improving upon previous works on popular benchmarks",
+      "authors": [
+        {
+          "name": "Joseph Shtok",
+          "orgs": [
+            "IBM Research AI",
+            "Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Sivan Harary",
+          "orgs": [
+            "IBM Research AI",
+            "Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Ophir Azulai",
+          "orgs": [
+            "IBM Research AI",
+            "Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Adi Raz Goldfarb",
+          "orgs": [
+            "IBM Research AI",
+            "Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Assaf Arbelle",
+          "orgs": [
+            "IBM Research AI, Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Leonid Karlinsky",
+          "orgs": [
+            "IBM Research AI, Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2111.14103v1",
+      "date": "2021-11-28T11:01:21Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2011.04137",
+      "score": 13.130136,
+      "title": "Automated data extraction of bar chart raster images",
+      "tldr": "This paper proposes an automated data extraction pipeline for bar chart raster images in medical research, addressing the challenge of efficiently extracting data from figures to support meta-analysis, particularly in AMD studies; it introduces a multistep approach combining figure extraction, text detection, and image disassembly with optical character recognition, achieving 91.8% agreement with manual extraction and 88.6% accuracy for Y-tick values; results show high accuracy in most categories but highlight issues with OCR errors and suggest potential improvements through deep learning models.",
+      "abstract": "Objective: To develop software utilizing optical character recognition toward the automatic extraction of data from bar charts for meta-analysis. Methods: We utilized a multistep data extraction approach that included figure extraction, text detection, and image disassembly. PubMed Central papers that were processed in this manner included clinical trials regarding macular degeneration, a disease causing blindness with a heavy disease burden and many clinical trials. Bar chart characteristics were extracted in both an automated and manual fashion. These two approaches were then compared for accuracy. These characteristics were then compared using a Bland-Altman analysis. Results: Based on Bland-Altman analysis, 91.8% of data points were within the limits of agreement. By comparing our automated data extraction with manual data extraction, automated data extraction yielded the following accuracies: X-axis labels 79.5%, Y-tick values 88.6%, Y-axis label 88.6%, Bar value <5% error 88.0%. Discussion: Based on our analysis, we achieved an agreement between automated data extraction and manual data extraction. A major source of error was the incorrect delineation of 7s as 2s by optical character recognition library. We also would benefit from adding redundancy checks in the form of a deep neural network to boost our bar detection accuracy. Further refinements to this method are justified to extract tabulated and line graph data to facilitate automated data gathering for meta-analysis.",
+      "authors": [
+        {
+          "name": "Alex Carderas",
+          "orgs": [
+            "Department of Computer Science, Donald Bren School of Information and Computer Sciences, University of California, Irvine, Irvine, California, United States"
+          ]
+        },
+        {
+          "name": "Ye Yuan",
+          "orgs": [
+            "Department of Computer Science, Donald Bren School of Information and Computer Sciences, University of California, Irvine, Irvine, California, United States"
+          ]
+        },
+        {
+          "name": "Itamar Livnat",
+          "orgs": [
+            "Department of Ophthalmology, Gavin Herbert Eye Institute, University of California, Irvine, Irvine, California, United States"
+          ]
+        },
+        {
+          "name": "Rosita Saul",
+          "orgs": [
+            "Department of Biological Sciences, Schmid College of Science and Technology, Chapman University, Orange, California, United States"
+          ]
+        },
+        {
+          "name": "Gabrielle Montes De Oca",
+          "orgs": [
+            "Department of Biological Sciences, Schmid College of Science and Technology, Chapman University, Orange, California, United States"
+          ]
+        },
+        {
+          "name": "Kai Zheng",
+          "orgs": [
+            "Department of Informatics, Donald Bren School of Information and Computer Sciences, University of California, Irvine, Irvine, California, United States"
+          ]
+        },
+        {
+          "name": "Andrew W. Browne",
+          "orgs": [
+            "Department of Ophthalmology, Gavin Herbert Eye Institute, University of California, Irvine, Irvine, California, United States"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2011.04137v1",
+      "date": "2020-11-09T01:45:36Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.IR"
+      ]
+    },
+    {
+      "arxiv_id": "2305.04151",
+      "score": 13.087677,
+      "title": "Context-Aware Chart Element Detection",
+      "tldr": "This paper addresses the challenge of context-aware chart element detection, where accurate identification of non-plot elements is crucial for automated chart data extraction; it proposes CACHED, a method integrating local-global context fusion with Cascade R-CNN, introducing a refined 18-class categorization and achieving state-of-the-art results on the PMC dataset.",
+      "abstract": "As a prerequisite of chart data extraction, the accurate detection of chart basic elements is essential and mandatory. In contrast to object detection in the general image domain, chart element detection relies heavily on context information as charts are highly structured data visualization formats. To address this, we propose a novel method CACHED, which stands for Context-Aware Chart Element Detection, by integrating a local-global context fusion module consisting of visual context enhancement and positional context encoding with the Cascade R-CNN framework. To improve the generalization of our method for broader applicability, we refine the existing chart element categorization and standardized 18 classes for chart basic elements, excluding plot elements. Our CACHED method, with the updated category of chart elements, achieves state-of-the-art performance in our experiments, underscoring the importance of context in chart element detection. Extending our method to the bar plot detection task, we obtain the best result on the PMC test dataset.",
+      "authors": [
+        {
+          "name": "Pengyu Yan",
+          "orgs": [
+            "Department of Computer Science and Engineering, University at Buffalo, Buffalo, NY"
+          ]
+        },
+        {
+          "name": "Saleem Ahmed",
+          "orgs": [
+            "Department of Computer Science and Engineering, University at Buffalo, Buffalo, NY"
+          ]
+        },
+        {
+          "name": "David Doermann",
+          "orgs": [
+            "Department of Computer Science and Engineering, University at Buffalo, Buffalo, NY"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2305.04151v2",
+      "date": "2023-05-07T00:08:39Z",
+      "citation_count": 8,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2308.11788",
+      "score": 12.688517,
+      "title": "An extensible point-based method for data chart value detection",
+      "tldr": "This paper addresses the challenge of extracting values from scientific bar charts by proposing an extensible point-based method using a point proposal network, achieving 0.8705 F1 accuracy on real charts and 0.9810 F1 on synthetic ones, with implications for scalable data extraction from visualized scientific literature.",
+      "abstract": "We present an extensible method for identifying semantic points to reverse engineer (i.e. extract the values of) data charts, particularly those in scientific articles. Our method uses a point proposal network (akin to region proposal networks for object detection) to directly predict the position of points of interest in a chart, and it is readily extensible to multiple chart types and chart elements. We focus on complex bar charts in the scientific literature, on which our model is able to detect salient points with an accuracy of 0.8705 F1 (@1.5-cell max deviation); it achieves 0.9810 F1 on synthetically-generated charts similar to those used in prior works. We also explore training exclusively on synthetic data with novel augmentations, reaching surprisingly competent performance in this way (0.6621 F1) on real charts with widely varying appearance, and we further demonstrate our unchanged method applied directly to synthetic pie charts (0.8343 F1). Datasets, trained models, and evaluation code are available at https://github.com/BNLNLP/PPN_model.",
+      "authors": [
+        {
+          "name": "Carlos Soto",
+          "orgs": []
+        },
+        {
+          "name": "Shinjae Yoo",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2308.11788v1",
+      "date": "2023-08-22T21:03:58Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1911.09054",
+      "score": 12.311308,
+      "title": "Robust Lane Marking Detection Algorithm Using Drivable Area Segmentation and Extended SLT",
+      "tldr": "This paper addresses the challenge of robust lane marking detection in autonomous driving systems by proposing an algorithm that combines drivable area segmentation and an extended symmetrical local threshold (SLT) method, achieving 91% accuracy on the KITTI dataset through noise reduction and efficient feature extraction.",
+      "abstract": "In this paper, a robust lane detection algorithm is proposed, where the vertical road profile of the road is estimated using dynamic programming from the v-disparity map and, based on the estimated profile, the road area is segmented. Since the lane markings are on the road area and any feature point above the ground will be a noise source for the lane detection, a mask is created for the road area to remove some of the noise for lane detection. The estimated mask is multiplied by the lane feature map in a bird's eye view (BEV). The lane feature points are extracted by using an extended version of symmetrical local threshold (SLT), which not only considers dark light dark transition (DLD) of the lane markings, like (SLT), but also considers parallelism on the lane marking borders. The segmentation then uses only the feature points that are on the road area. A maximum of two linear lane markings are detected using an efficient 1D Hough transform. Then, the detected linear lane markings are used to create a region of interest (ROI) for parabolic lane detection. Finally, based on the estimated region of interest, parabolic lane models are fitted using robust fitting. Due to the robust lane feature extraction and road area segmentation, the proposed algorithm robustly detects lane markings and achieves lane marking detection with an accuracy of 91% when tested on a sequence from the KITTI dataset.",
+      "authors": [
+        {
+          "name": "Umar Ozgunalp",
+          "orgs": [
+            "Electrical and Electronics Engineering, Cyprus International University, North Cyprus, Turkey"
+          ]
+        },
+        {
+          "name": "Rui Fan",
+          "orgs": [
+            "Department of Electronic and Computer Engineering, the Hong Kong University of Science and Technology, Hong Kong SAR, China",
+            "Hangzhou ATG Intelligent Technology Co. Ltd., Hangzhou, China"
+          ]
+        },
+        {
+          "name": "Shanshan Cheng",
+          "orgs": [
+            "Guolu Gaoke Engineering Technology Institute Co. Ltd., Beijing, China"
+          ]
+        },
+        {
+          "name": "Yuxiang Sun",
+          "orgs": [
+            "Robotics and Multiperception Laboratory, Robotics Institute, the Hong Kong University of Science and Technology, Hong Kong SAR, China"
+          ]
+        },
+        {
+          "name": "Weixun Zuo",
+          "orgs": [
+            "Robotics and Multiperception Laboratory, Robotics Institute, the Hong Kong University of Science and Technology, Hong Kong SAR, China"
+          ]
+        },
+        {
+          "name": "Yilong Zhu",
+          "orgs": [
+            "Robotics and Multiperception Laboratory, Robotics Institute, the Hong Kong University of Science and Technology, Hong Kong SAR, China"
+          ]
+        },
+        {
+          "name": "Bohuan Xue",
+          "orgs": [
+            "Robotics and Multiperception Laboratory, Robotics Institute, the Hong Kong University of Science and Technology, Hong Kong SAR, China"
+          ]
+        },
+        {
+          "name": "Qing Liang",
+          "orgs": [
+            "Robotics and Multiperception Laboratory, Robotics Institute, the Hong Kong University of Science and Technology, Hong Kong SAR, China"
+          ]
+        },
+        {
+          "name": "Ming Liu",
+          "orgs": [
+            "Robotics and Multiperception Laboratory, Robotics Institute, the Hong Kong University of Science and Technology, Hong Kong SAR, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1911.09054v1",
+      "date": "2019-11-20T17:34:31Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2409.01577",
+      "score": 12.282239,
+      "title": "EvoChart: A Benchmark and a Self-Training Approach Towards Real-World Chart Understanding",
+      "tldr": "This paper addresses the gap in real-world chart understanding by introducing EvoChart, a self-training method for generating synthetic chart data and EvoChart-QA, a benchmark with 650 real-world charts and 1250 questions, showing that EvoChart achieves 54.2% accuracy on EvoChart-QA and outperforms existing methods, highlighting the need for diverse and realistic chart datasets.",
+      "abstract": "Chart understanding enables automated data analysis for humans, which requires models to achieve highly accurate visual comprehension. While existing Visual Language Models (VLMs) have shown progress in chart understanding, the lack of high-quality training data and comprehensive evaluation benchmarks hinders VLM chart comprehension. In this paper, we introduce EvoChart, a novel self-training method for generating synthetic chart data to enhance VLMs' capabilities in real-world chart comprehension. We also propose EvoChart-QA, a noval benchmark for measuring models' chart comprehension abilities in real-world scenarios. Specifically, EvoChart is a unique self-training data synthesis approach that simultaneously produces high-quality training corpus and a high-performance chart understanding model. EvoChart-QA consists of 650 distinct real-world charts collected from 140 different websites and 1,250 expert-curated questions that focus on chart understanding. Experimental results on various open-source and proprietary VLMs tested on EvoChart-QA demonstrate that even the best proprietary model, GPT-4o, achieves only 49.8% accuracy. Moreover, the EvoChart method significantly boosts the performance of open-source VLMs on real-world chart understanding tasks, achieving 54.2% accuracy on EvoChart-QA.",
+      "authors": [
+        {
+          "name": "Muye Huang",
+          "orgs": [
+            "1",
+            "2"
+          ]
+        },
+        {
+          "name": "Han Lai",
+          "orgs": [
+            "1",
+            "2"
+          ]
+        },
+        {
+          "name": "Xinyu Zhang",
+          "orgs": [
+            "1",
+            "3"
+          ]
+        },
+        {
+          "name": "Wenjun Wu",
+          "orgs": [
+            "1",
+            "3"
+          ]
+        },
+        {
+          "name": "Jie Ma",
+          "orgs": []
+        },
+        {
+          "name": "Lingling Zhang",
+          "orgs": []
+        },
+        {
+          "name": "Jun Liu",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2409.01577v2",
+      "date": "2024-09-03T03:23:00Z",
+      "citation_count": 25,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2408.16123",
+      "score": 12.088909,
+      "title": "ChartEye: A Deep Learning Framework for Chart Information Extraction",
+      "tldr": "This paper presents a deep learning framework for chart information extraction, addressing the challenge of automated chart understanding by improving chart-type classification, text detection, and text-role classification through hierarchical vision transformers, YOLOv7, and Super Resolution GANs, achieving F1-scores of 0.97, 0.91, and a mean Average Precision of 0.95, offering a generic solution for diverse chart types with enhanced text recognition.",
+      "abstract": "The widespread use of charts and infographics as a means of data visualization in various domains has inspired recent research in automated chart understanding. However, information extraction from chart images is a complex multitasked process due to style variations and, as a consequence, it is challenging to design an end-to-end system. In this study, we propose a deep learning-based framework that provides a solution for key steps in the chart information extraction pipeline. The proposed framework utilizes hierarchal vision transformers for the tasks of chart-type and text-role classification, while YOLOv7 for text detection. The detected text is then enhanced using Super Resolution Generative Adversarial Networks to improve the recognition output of the OCR. Experimental results on a benchmark dataset show that our proposed framework achieves excellent performance at every stage with F1-scores of 0.97 for chart-type classification, 0.91 for text-role classification, and a mean Average Precision of 0.95 for text detection.",
+      "authors": [
+        {
+          "name": "Osama Mustafa",
+          "orgs": [
+            "Center of Excellence in AI",
+            "Bahria University",
+            "Islamabad, Pakistan"
+          ]
+        },
+        {
+          "name": "Muhammad Khizer Ali",
+          "orgs": [
+            "Center of Excellence in AI",
+            "Bahria University",
+            "Islamabad, Pakistan"
+          ]
+        },
+        {
+          "name": "Momina Moetesum",
+          "orgs": [
+            "School of Electrical Engineering and Computer Science",
+            "National University of Sciences and Technology (NUST)",
+            "Islamabad, Pakistan"
+          ]
+        },
+        {
+          "name": "Imran Siddiqi",
+          "orgs": [
+            "Xynoptik Pty Limited",
+            "Melborne, VIC, Australia"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2408.16123v1",
+      "date": "2024-08-28T20:22:39Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "1510.01041",
+      "score": 12.056707,
+      "title": "GPU-Based Computation of 2D Least Median of Squares with Applications to Fast and Robust Line Detection",
+      "tldr": "This paper addresses the challenge of efficiently computing the 2D Least Median of Squares (LMS) estimator, a robust regression method with high breakdown point, by developing a GPU-based algorithm to overcome its high computational complexity of Ω(n²), contributing a faster CUDA implementation and demonstrating its application to improve line detection in noisy images.",
+      "abstract": "The 2D Least Median of Squares (LMS) is a popular tool in robust regression because of its high breakdown point: up to half of the input data can be contaminated with outliers without affecting the accuracy of the LMS estimator. The complexity of 2D LMS estimation has been shown to be $\\Omega(n^2)$ where $n$ is the total number of points. This high theoretical complexity along with the availability of graphics processing units (GPU) motivates the development of a fast, parallel, GPU-based algorithm for LMS computation. We present a CUDA based algorithm for LMS computation and show it to be much faster than the optimal state of the art single threaded CPU algorithm. We begin by describing the proposed method and analyzing its performance. We then demonstrate how it can be used to modify the well-known Hough Transform (HT) in order to efficiently detect image lines in noisy images. Our method is compared with standard HT-based line detection methods and shown to overcome their shortcomings in terms of both efficiency and accuracy.",
+      "authors": [
+        {
+          "name": "Gil Shapira",
+          "orgs": [
+            "University of Southern California, Information Sciences Institute, CA, USA"
+          ]
+        },
+        {
+          "name": "Tal Hassner",
+          "orgs": [
+            "Department of Mathematics and Computer Science, The Open University of Israel, Israel"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1510.01041v1",
+      "date": "2015-10-05T06:38:03Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2510.04514",
+      "score": 12.033683,
+      "title": "ChartAgent: A Multimodal Agent for Visually Grounded Reasoning in Complex Chart Question Answering",
+      "tldr": "This paper introduces ChartAgent, a novel agentic framework for chart visual question answering that addresses the challenge of unannotated charts by using visual reasoning and specialized tools, achieving state-of-the-art accuracy with 16.07% absolute gain overall and 17.31% on numeric queries, and demonstrating effectiveness across diverse chart types and reasoning complexities.",
+      "abstract": "Recent multimodal LLMs have shown promise in chart-based visual question answering, but their performance declines sharply on unannotated charts-those requiring precise visual interpretation rather than relying on textual shortcuts. To address this, we introduce ChartAgent, a novel agentic framework that explicitly performs visual reasoning directly within the chart's spatial domain. Unlike textual chain-of-thought reasoning, ChartAgent iteratively decomposes queries into visual subtasks and actively manipulates and interacts with chart images through specialized actions such as drawing annotations, cropping regions (e.g., segmenting pie slices, isolating bars), and localizing axes, using a library of chart-specific vision tools to fulfill each subtask. This iterative reasoning process closely mirrors human cognitive strategies for chart comprehension. ChartAgent achieves state-of-the-art accuracy on the ChartBench and ChartX benchmarks, surpassing prior methods by up to 16.07% absolute gain overall and 17.31% on unannotated, numerically intensive queries. Furthermore, our analyses show that ChartAgent is (a) effective across diverse chart types, (b) achieves the highest scores across varying visual and reasoning complexity levels, and (c) serves as a plug-and-play framework that boosts performance across diverse underlying LLMs. Our work is among the first to demonstrate visually grounded reasoning for chart understanding using tool-augmented multimodal agents.",
+      "authors": [
+        {
+          "name": "Rachneet Kaur",
+          "orgs": [
+            "J.P. Morgan AI Research"
+          ]
+        },
+        {
+          "name": "Nishan Srishankar",
+          "orgs": [
+            "J.P. Morgan AI Research"
+          ]
+        },
+        {
+          "name": "Zhen Zeng",
+          "orgs": [
+            "J.P. Morgan AI Research"
+          ]
+        },
+        {
+          "name": "Sumitra Ganesh",
+          "orgs": [
+            "J.P. Morgan AI Research"
+          ]
+        },
+        {
+          "name": "Manuela Veloso",
+          "orgs": [
+            "J.P. Morgan AI Research"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2510.04514v2",
+      "date": "2025-10-06",
+      "citation_count": 1,
+      "categories": [
+        "cs.AI",
+        "cs.CE",
+        "cs.CL",
+        "cs.CV",
+        "stat.ME"
+      ]
+    },
+    {
+      "arxiv_id": "2303.14476",
+      "score": 11.993617,
+      "title": "A Spatial-Constraint Model for Manipulating Static Visualizations",
+      "tldr": "This paper proposes a spatial-constraint model for enabling interactive manipulation of static visualizations, addressing the gap in interactivity of static visualizations by introducing a physical-based approach with gravity, support, collision, and fixation constraints; the model facilitates intuitive transitions and supports diverse interactions like reordering and filtering, achieving effective user engagement in real-world scenarios.",
+      "abstract": "We propose a spatial-constraint approach for modeling spatial-based interactions and enabling interactive visualizations, which involves the manipulation of visualizations through selection, filtering, navigation, arrangement, and aggregation. We proposes a system that activates static visualizations by adding intelligent interactions, which is achieved by associating static visual objects with forces. Our force-directed technique facilitates smooth animated transitions of the visualizations between different interaction states. We showcase the effectiveness of our technique through usage scenarios that involve activating visualizations in real-world settings.",
+      "authors": [
+        {
+          "name": "Can Liu",
+          "orgs": [
+            "Peking University, China"
+          ]
+        },
+        {
+          "name": "Yu Zhang",
+          "orgs": [
+            "University of Oxford, UK"
+          ]
+        },
+        {
+          "name": "Cong Wu",
+          "orgs": [
+            "Peking University, China"
+          ]
+        },
+        {
+          "name": "Xiaoru Yuan",
+          "orgs": [
+            "Peking University",
+            "China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2303.14476v2",
+      "date": "2023-03-25T14:09:18Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2204.09548",
+      "score": 11.911706,
+      "title": "Misinformed by Visualization: What Do We Learn From Misinformative Visualizations?",
+      "tldr": "This survey reviews misleading visualizations, identifying 74 types of issues and proposing a taxonomy, and highlights four research directions to address misinformation through understanding, detection, and prevention.",
+      "abstract": "Data visualization is powerful in persuading an audience. However, when it is done poorly or maliciously, a visualization may become misleading or even deceiving. Visualizations give further strength to the dissemination of misinformation on the Internet. The visualization research community has long been aware of visualizations that misinform the audience, mostly associated with the terms \"lie\" and \"deceptive.\" Still, these discussions have focused only on a handful of cases. To better understand the landscape of misleading visualizations, we open-coded over one thousand real-world visualizations that have been reported as misleading. From these examples, we discovered 74 types of issues and formed a taxonomy of misleading elements in visualizations. We found four directions that the research community can follow to widen the discussion on misleading visualizations: (1) informal fallacies in visualizations, (2) exploiting conventions and data literacy, (3) deceptive tricks in uncommon charts, and (4) understanding the designers' dilemma. This work lays the groundwork for these research directions, especially in understanding, detecting, and preventing them.",
+      "authors": [
+        {
+          "name": "Leo Yu-Ho Lo",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Ayush Gupta",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Kento Shigyo",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Aoyu Wu",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Enrico Bertini",
+          "orgs": [
+            "Northeastern University"
+          ]
+        },
+        {
+          "name": "Huamin Qu",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2204.09548v1",
+      "date": "2022-04-20T15:35:52Z",
+      "citation_count": 61,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2507.07077",
+      "score": 11.908196,
+      "title": "Reading a Ruler in the Wild",
+      "tldr": "This paper addresses the challenge of accurate scale estimation from rulers in real-world conditions, proposing RulerNet which reformulates ruler reading as a geometric keypoint detection task with distortion-invariant annotations and a lightweight model for efficient parameter regression; experiments show RulerNet achieves accurate, consistent, and efficient scale estimates across diverse rulers and imaging conditions, enabling robust measurement in critical domains like medicine and e-commerce.",
+      "abstract": "Accurately converting pixel measurements into absolute real-world dimensions remains a fundamental challenge in computer vision and limits progress in key applications such as biomedicine, forensics, nutritional analysis, and e-commerce. We introduce RulerNet, a deep learning framework that robustly infers scale \"in the wild\" by reformulating ruler reading as a unified keypoint-detection problem and by representing the ruler with geometric-progression parameters that are invariant to perspective transformations. Unlike traditional methods that rely on handcrafted thresholds or rigid, ruler-specific pipelines, RulerNet directly localizes centimeter marks using a distortion-invariant annotation and training strategy, enabling strong generalization across diverse ruler types and imaging conditions while mitigating data scarcity. We also present a scalable synthetic-data pipeline that combines graphics-based ruler generation with ControlNet to add photorealistic context, greatly increasing training diversity and improving performance. To further enhance robustness and efficiency, we propose DeepGP, a lightweight feed-forward network that regresses geometric-progression parameters from noisy marks and eliminates iterative optimization, enabling real-time scale estimation on mobile or edge devices. Experiments show that RulerNet delivers accurate, consistent, and efficient scale estimates under challenging real-world conditions. These results underscore its utility as a generalizable measurement tool and its potential for integration with other vision components for automated, scale-aware analysis in high-impact domains. A live demo is available at https://huggingface.co/spaces/ymp5078/RulerNet-Demo.",
+      "authors": [
+        {
+          "name": "Yimu Pan",
+          "orgs": [
+            "Data Science and Artificial Intelligence Area, College of Information Sciences and Technology, The Pennsylvania State University, University Park, PA, 16802, USA"
+          ]
+        },
+        {
+          "name": "Manas Mehta",
+          "orgs": [
+            "Data Science and Artificial Intelligence Area, College of Information Sciences and Technology, The Pennsylvania State University, University Park, PA, 16802, USA"
+          ]
+        },
+        {
+          "name": "Gwen Sincerbeaux",
+          "orgs": [
+            "Department of Nutritional Sciences, College of Health and Human Development, The Pennsylvania State University, University Park, PA, 16802, USA"
+          ]
+        },
+        {
+          "name": "Alison D. Gernand",
+          "orgs": [
+            "Department of Nutritional Sciences, College of Health and Human Development, The Pennsylvania State University, University Park, PA, 16802, USA",
+            "Huck Institutes of the Life Sciences, The Pennsylvania State University, University Park, PA, 16802, USA"
+          ]
+        },
+        {
+          "name": "James Z. Wang",
+          "orgs": [
+            "Data Science and Artificial Intelligence Area, College of Information Sciences and Technology, The Pennsylvania State University, University Park, PA, 16802, USA",
+            "Huck Institutes of the Life Sciences, The Pennsylvania State University, University Park, PA, 16802, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2507.07077v1",
+      "date": "2025-07-09T17:35:58Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2402.14579",
+      "score": 11.9075985,
+      "title": "Text Role Classification in Scientific Charts Using Multimodal Transformers",
+      "tldr": "This paper addresses text role classification in scientific charts, aiming to improve the accuracy of identifying semantic roles of text elements in charts, which is crucial for enhancing the comprehensibility and completeness of scientific figures; it proposes finetuning LayoutLMv3 and UDOP on multimodal data, achieving an F1-macro score of 82.87 on ICPR22 and demonstrating robustness and generalizability across datasets; findings show LayoutLMv3 outperforms UDOP, with data augmentation and balancing improving performance on some datasets.",
+      "abstract": "Text role classification involves classifying the semantic role of textual elements within scientific charts. For this task, we propose to finetune two pretrained multimodal document layout analysis models, LayoutLMv3 and UDOP, on chart datasets. The transformers utilize the three modalities of text, image, and layout as input. We further investigate whether data augmentation and balancing methods help the performance of the models. The models are evaluated on various chart datasets, and results show that LayoutLMv3 outperforms UDOP in all experiments. LayoutLMv3 achieves the highest F1-macro score of 82.87 on the ICPR22 test dataset, beating the best-performing model from the ICPR22 CHART-Infographics challenge. Moreover, the robustness of the models is tested on a synthetic noisy dataset ICPR22-N. Finally, the generalizability of the models is evaluated on three chart datasets, CHIME-R, DeGruyter, and EconBiz, for which we added labels for the text roles. Findings indicate that even in cases where there is limited training data, transformers can be used with the help of data augmentation and balancing methods. The source code and datasets are available on GitHub under https://github.com/hjkimk/text-role-classification",
+      "authors": [
+        {
+          "name": "Hye Jin Kim",
+          "orgs": [
+            "Universität Ulm",
+            "Ulm",
+            "Germany"
+          ]
+        },
+        {
+          "name": "Nicolas Lell",
+          "orgs": [
+            "Universität Ulm",
+            "Ulm",
+            "Germany"
+          ]
+        },
+        {
+          "name": "Ansgar Scherp",
+          "orgs": [
+            "Universität Ulm",
+            "Ulm",
+            "Germany"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2402.14579v1",
+      "date": "2024-02-08T13:21:44Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CL",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2504.16114",
+      "score": 11.896591,
+      "title": "Persistence-based Hough Transform for Line Detection",
+      "tldr": "This paper addresses the problem of line detection in computer vision, where traditional Hough transform is limited by noise sensitivity and threshold dependency, proposing a method using persistent homology to identify peaks in Hough space, contributing a novel integration of topological data analysis for improved robustness and stability, showing significant performance gains on synthetic data with enhanced noise resistance.",
+      "abstract": "The Hough transform is a popular and classical technique in computer vision for the detection of lines (or more general objects). It maps a pixel into a dual space -- the Hough space: each pixel is mapped to the set of lines through this pixel, which forms a curve in Hough space. The detection of lines then becomes a voting process to find those lines that received many votes by pixels. However, this voting is done by thresholding, which is susceptible to noise and other artifacts.\n  In this work, we present an alternative voting technique to detect peaks in the Hough space based on persistent homology, which very naturally addresses limitations of simple thresholding. Experiments on synthetic data show that our method significantly outperforms the original method, while also demonstrating enhanced robustness.\n  This work seeks to inspire future research in two key directions. First, we highlight the untapped potential of Topological Data Analysis techniques and advocate for their broader integration into existing methods, including well-established ones. Secondly, we initiate a discussion on the mathematical stability of the Hough transform, encouraging exploration of mathematically grounded improvements to enhance its robustness.",
+      "authors": [
+        {
+          "name": "Johannes Ferner",
+          "orgs": [
+            "Department for Information Technologies and Digitalisation",
+            "Josef Ressel Centre for Intelligent and Secure Industrial Automation",
+            "Salzburg University of Applied Sciences"
+          ]
+        },
+        {
+          "name": "Stefan Huber",
+          "orgs": [
+            "Department for Information Technologies and Digitalisation",
+            "Josef Ressel Centre for Intelligent and Secure Industrial Automation",
+            "Salzburg University of Applied Sciences"
+          ]
+        },
+        {
+          "name": "Saverio Messineo",
+          "orgs": [
+            "Department for Information Technologies and Digitalisation",
+            "Josef Ressel Centre for Intelligent and Secure Industrial Automation",
+            "Salzburg University of Applied Sciences"
+          ]
+        },
+        {
+          "name": "Angel Pop",
+          "orgs": [
+            "Department for Information Technologies and Digitalisation",
+            "Josef Ressel Centre for Intelligent and Secure Industrial Automation",
+            "Salzburg University of Applied Sciences"
+          ]
+        },
+        {
+          "name": "Martin Uray",
+          "orgs": [
+            "Department for Information Technologies and Digitalisation",
+            "Josef Ressel Centre for Intelligent and Secure Industrial Automation, Salzburg University of Applied Sciences, Puch bei Hallein, Austria"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2504.16114v2",
+      "date": "2025-04-18T10:00:08Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1609.05283",
+      "score": 11.855171,
+      "title": "Converting Basic D3 Charts into Reusable Style Templates",
+      "tldr": "This paper presents a method to convert basic D3 charts into reusable style templates, enabling new data to be visualized in the style of the original chart by ranking perceptual effectiveness of mappings and matching important data fields; it contributes an algorithm for template creation and application, extending deconstruction techniques and demonstrating effectiveness through diverse dataset applications.",
+      "abstract": "We present a technique for converting a basic D3 chart into a reusable style template. Then, given a new data source we can apply the style template to generate a chart that depicts the new data, but in the style of the template. To construct the style template we first deconstruct the input D3 chart to recover its underlying structure: the data, the marks and the mappings that describe how the marks encode the data. We then rank the perceptual effectiveness of the deconstructed mappings. To apply the resulting style template to a new data source we first obtain importance ranks for each new data field. We then adjust the template mappings to depict the source data by matching the most important data fields to the most perceptually effective mappings. We show how the style templates can be applied to source data in the form of either a data table or another D3 chart. While our implementation focuses on generating templates for basic chart types (e.g. variants of bar charts, line charts, dot plots, scatterplots, etc.), these are the most commonly used chart types today. Users can easily find such basic D3 charts on the Web, turn them into templates, and immediately see how their own data would look in the visual style (e.g. colors, shapes, fonts, etc.) of the templates. We demonstrate the effectiveness of our approach by applying a diverse set of style templates to a variety of source datasets.",
+      "authors": [
+        {
+          "name": "Jonathan Harper",
+          "orgs": []
+        },
+        {
+          "name": "Maneesh Agrawala",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1609.05283v3",
+      "date": "2016-09-17T05:08:24Z",
+      "citation_count": 65,
+      "categories": [
+        "cs.GR",
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "1312.1683",
+      "score": 11.83911,
+      "title": "Face Recognition using Hough Peaks extracted from the significant blocks of the Gradient Image",
+      "tldr": "This paper proposes a face recognition method using Hough peaks from significant blocks of the binary gradient image, addressing the challenge of robust recognition under varying illumination, pose, and expression; it introduces a novel approach with dimension reduction via significant block extraction and Hough peak selection, achieving 93.3%, 88.5%, and 99% accuracy on FRAV2D, FERET, and ORL databases respectively, demonstrating its effectiveness in real-world scenarios.",
+      "abstract": "This paper proposes a new technique for automatic face recognition using integrated peaks of the Hough transformed significant blocks of the binary gradient image. In this approach firstly the gradient of an image is calculated and a threshold is set to obtain a binary gradient image, which is less sensitive to noise and illumination changes. Secondly, significant blocks are extracted from the absolute gradient image, to extract pertinent information with the idea of dimension reduction. Finally the best fitted Hough peaks are extracted from the Hough transformed significant blocks for efficient face recognition. Then these Hough peaks are concatenated together, which are used as feature in classification process. The efficiency of the proposed method is demonstrated by the experiment on 1100 images from the FRAV2D face database, 2200 images from the FERET database, where the images vary in pose, expression, illumination and scale and 400 images from the ORL face database, where the images slightly vary in pose. Our method has shown 93.3%, 88.5% and 99% recognition accuracy for the FRAV2D, FERET and the ORL database respectively.",
+      "authors": [
+        {
+          "name": "Arindam Kar",
+          "orgs": [
+            "Indian Statistical Institute, Kolkata-700108, India"
+          ]
+        },
+        {
+          "name": "Debotosh Bhattacharjee",
+          "orgs": [
+            "Department of Computer Science and Engineering, Jadavpur University, Kolkata- 700032, India"
+          ]
+        },
+        {
+          "name": "Dipak Kumar Basu",
+          "orgs": [
+            "Department of Computer Science and Engineering, Jadavpur University, Kolkata- 700032, India"
+          ]
+        },
+        {
+          "name": "Mita Nasipuri",
+          "orgs": [
+            "Department of Computer Science and Engineering, Jadavpur University, Kolkata- 700032, India"
+          ]
+        },
+        {
+          "name": "Mahantapas Kundu",
+          "orgs": [
+            "Department of Computer Science and Engineering, Jadavpur University, Kolkata- 700032, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1312.1683v1",
+      "date": "2013-12-05T12:09:48Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2310.17814",
+      "score": 11.832843,
+      "title": "DIVI: Dynamically Interactive Visualization",
+      "tldr": "This paper presents DIVI, a novel approach for dynamically orchestrating interactions in static visualizations by deconstructing SVG charts to infer metadata and enable cross-tool interaction, contributing a three-part model, a taxonomy for interactions, and SVG deconstruction techniques; results show usability with 13 participants and support dynamic multi-view and cross-tool linking.",
+      "abstract": "Dynamically Interactive Visualization (DIVI) is a novel approach for orchestrating interactions within and across static visualizations. DIVI deconstructs Scalable Vector Graphics charts at runtime to infer content and coordinate user input, decoupling interaction from specification logic. This decoupling allows interactions to extend and compose freely across different tools, chart types, and analysis goals. DIVI exploits positional relations of marks to detect chart components such as axes and legends, reconstruct scales and view encodings, and infer data fields. DIVI then enumerates candidate transformations across inferred data to perform linking between views. To support dynamic interaction without prior specification, we introduce a taxonomy that formalizes the space of standard interactions by chart element, interaction type, and input event. We demonstrate DIVI's usefulness for rapid data exploration and analysis through a usability study with 13 participants and a diverse gallery of dynamically interactive visualizations, including single chart, multi-view, and cross-tool configurations.",
+      "authors": [
+        {
+          "name": "Luke S. Snyder",
+          "orgs": []
+        },
+        {
+          "name": "Jeffrey Heer",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2310.17814v2",
+      "date": "2023-10-26T23:24:35Z",
+      "citation_count": 12,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "1401.6393",
+      "score": 7.0030966,
+      "title": "Automatic Detection of Calibration Grids in Time-of-Flight Images",
+      "tldr": "This paper proposes a Hough-based method for detecting calibration grids in low-resolution time-of-flight images, improving detection accuracy and variety of poses over OpenCV by using gradient orientation to establish coordinate systems and sweep-line analysis, achieving significantly better results with no loss of geometric accuracy.",
+      "abstract": "It is convenient to calibrate time-of-flight cameras by established methods, using images of a chequerboard pattern. The low resolution of the amplitude image, however, makes it difficult to detect the board reliably. Heuristic detection methods, based on connected image-components, perform very poorly on this data. An alternative, geometrically-principled method is introduced here, based on the Hough transform. The projection of a chequerboard is represented by two pencils of lines, which are identified as oriented clusters in the gradient-data of the image. A projective Hough transform is applied to each of the two clusters, in axis-aligned coordinates. The range of each transform is properly bounded, because the corresponding gradient vectors are approximately parallel. Each of the two transforms contains a series of collinear peaks; one for every line in the given pencil. This pattern is easily detected, by sweeping a dual line through the transform. The proposed Hough-based method is compared to the standard OpenCV detection routine, by application to several hundred time-of-flight images. It is shown that the new method detects significantly more calibration boards, over a greater variety of poses, without any overall loss of accuracy. This conclusion is based on an analysis of both geometric and photometric error.",
+      "authors": [
+        {
+          "name": "Miles Hansard",
+          "orgs": [
+            "INRIA Grenoble Rhône-Alpes, 38330 Montbonnot Saint-Martin, France",
+            "School of Electronic Engineering and Computer Science, Queen Mary, University of London, Mile End Road, United Kingdom"
+          ]
+        },
+        {
+          "name": "Radu Horaud",
+          "orgs": [
+            "INRIA Grenoble Rhône-Alpes, 38330 Montbonnot Saint-Martin, France"
+          ]
+        },
+        {
+          "name": "Michel Amat",
+          "orgs": [
+            "INRIA Grenoble Rhône-Alpes, 38330 Montbonnot Saint-Martin, France",
+            "SuperSonic Imagine, 510 Rue René Descartes, 13857 Aix-en-Provence, France"
+          ]
+        },
+        {
+          "name": "Georgios Evangelidis",
+          "orgs": [
+            "INRIA Grenoble Rhône-Alpes, 38330 Montbonnot Saint-Martin, France"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1401.6393v1",
+      "date": "2014-01-24T16:25:56Z",
+      "citation_count": 27,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "math/0503668",
+      "score": 6.972929,
+      "title": "The Hough transform estimator",
+      "tldr": "This paper studies the Hough transform estimator in computer vision, addressing the challenge of line detection in noisy images by analyzing its asymptotic properties and robustness, contributing strong consistency, slower convergence rates but higher breakdown point compared to regression methods, and finding implications for robust statistical modeling and multiple line detection.",
+      "abstract": "This article pursues a statistical study of the Hough transform, the celebrated computer vision algorithm used to detect the presence of lines in a noisy image. We first study asymptotic properties of the Hough transform estimator, whose objective is to find the line that ``best'' fits a set of planar points. In particular, we establish strong consistency and rates of convergence, and characterize the limiting distribution of the Hough transform estimator. While the convergence rates are seen to be slower than those found in some standard regression methods, the Hough transform estimator is shown to be more robust as measured by its breakdown point. We next study the Hough transform in the context of the problem of detecting multiple lines. This is addressed via the framework of excess mass functionals and modality testing. Throughout, several numerical examples help illustrate various properties of the estimator. Relations between the Hough transform and more mainstream statistical paradigms and methods are discussed as well.",
+      "authors": [
+        {
+          "name": "Alexander Goldenshluger",
+          "orgs": []
+        },
+        {
+          "name": "Assaf Zeevi",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/math/0503668v1",
+      "date": "2005-03-29",
+      "citation_count": 72,
+      "categories": [
+        "math.ST",
+        "stat.TH"
+      ]
+    },
+    {
+      "arxiv_id": "2108.06432",
+      "score": 6.56521,
+      "title": "Soccer line mark segmentation and classification with stochastic watershed transform",
+      "tldr": "This paper addresses the challenge of accurately segmenting and classifying soccer line marks in augmented reality applications, proposing a stochastic watershed transform for robust segmentation and a viewpoint-independent classification method for straight lines and ellipses, achieving higher accuracy than existing approaches on a database of 60 annotated images.",
+      "abstract": "Augmented reality applications are beginning to change the way sports are broadcast, providing richer experiences and valuable insights to fans. The first step of augmented reality systems is camera calibration, possibly based on detecting the line markings of the playing field. Most existing proposals for line detection rely on edge detection and Hough transform, but radial distortion and extraneous edges cause inaccurate or spurious detections of line markings. We propose a novel strategy to automatically and accurately segment and classify line markings. First, line points are segmented thanks to a stochastic watershed transform that is robust to radial distortions, since it makes no assumptions about line straightness, and is unaffected by the presence of players or the ball. The line points are then linked to primitive structures (straight lines and ellipses) thanks to a very efficient procedure that makes no assumptions about the number of primitives that appear in each image. The strategy has been tested on a new and public database composed by 60 annotated images from matches in five stadiums. The results obtained have proven that the proposed strategy is more robust and accurate than existing approaches, achieving successful line mark detection even in challenging conditions.",
+      "authors": [
+        {
+          "name": "Daniel Berjón",
+          "orgs": [
+            "Information Processing and Telecommunications Center — Universidad Politécnica de Madrid, Av. Complutense, 30, Madrid, 28029, Spain"
+          ]
+        },
+        {
+          "name": "Carlos Cuevas",
+          "orgs": [
+            "Information Processing and Telecommunications Center — Universidad Politécnica de Madrid, Av. Complutense, 30, Madrid, 28029, Spain"
+          ]
+        },
+        {
+          "name": "Narciso García",
+          "orgs": [
+            "Information Processing and Telecommunications Center — Universidad Politécnica de Madrid, Av. Complutense, 30, Madrid, 28029, Spain"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2108.06432v2",
+      "date": "2021-08-14T00:51:12Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2407.19461",
+      "score": 5.737796,
+      "title": "Automated Detection of Satellite Trails in Ground-Based Observations Using U-Net and Hough Transform",
+      "tldr": "This paper addresses the challenge of satellite trails interfering with ground-based astronomical observations by introducing ASTA, a method combining U-Net and Probabilistic Hough Transform for automated detection, contributing a reliable and reproducible approach; it was trained on 178 MeerLICHT images with manual annotations and validated on 20,000 image patches, achieving effective identification of satellite trails across 200,000 images, with results cross-referenced against public catalogs to confirm accuracy.",
+      "abstract": "The expansion of satellite constellations poses a significant challenge to optical ground-based astronomical observations, as satellite trails degrade observational data and compromise research quality. Addressing these challenges requires developing robust detection methods to enhance data processing pipelines, creating a reliable approach for detecting and analyzing satellite trails that can be easily reproduced and applied by other observatories and data processing groups. Our method, called ASTA (Automated Satellite Tracking for Astronomy), combines deep learning and computer vision techniques for effective satellite trail detection. It employs a U-Net based deep learning network to initially detect trails, followed by a Probabilistic Hough Transform to refine the output. ASTA's U-Net model was trained on a dataset with manually labelled full-field MeerLICHT images prepared using the LABKIT annotation tool, ensuring high-quality and precise annotations. This annotation process was crucial for the model to learn and generalize the characteristics of satellite trails effectively. Furthermore, the user-friendly LABKIT tool facilitated quick and efficient data refinements, streamlining the overall model development process. ASTA's performance was evaluated on a test set of 20,000 image patches, both with and without satellite trails, to rigorously assess its precision and recall. Additionally, ASTA was applied to approximately 200,000 full-field MeerLICHT images, demonstrating its effectiveness in identifying and characterizing satellite trails. The software's results were validated by cross-referencing detected trails with known public satellite catalogs, confirming its reliability and showcasing its ability to uncover previously untracked objects.",
+      "authors": [
+        {
+          "name": "F. Stoppa",
+          "orgs": [
+            "Department of Astrophysics/IMAPP, Radboud University, PO Box 9010, 6500 GL Nijmegen, The Netherlands",
+            "Department of Mathematics/IMAPP, Radboud University, PO Box 9010, 6500 GL Nijmegen, The Netherlands"
+          ]
+        },
+        {
+          "name": "P.J. Groot",
+          "orgs": [
+            "Department of Astrophysics/IMAPP, Radboud University, PO Box 9010, 6500 GL Nijmegen, The Netherlands",
+            "Department of Astronomy and Inter-University Institute for Data Intensive Astronomy, University of Cape Town, Private Bag X3, Rondebosch, 7701, South Africa",
+            "South African Astronomical Observatory, P.O. Box 9, Observatory, 7935, South Africa"
+          ]
+        },
+        {
+          "name": "R. Stuik",
+          "orgs": [
+            "Leiden Observatory, Leiden University, Postbus 9513, 2300 RA Leiden, The Netherlands"
+          ]
+        },
+        {
+          "name": "P. Vreeswijk",
+          "orgs": [
+            "Department of Astrophysics/IMAPP, Radboud University, PO Box 9010, 6500 GL Nijmegen, The Netherlands"
+          ]
+        },
+        {
+          "name": "S. Bloemen",
+          "orgs": [
+            "Department of Astrophysics/IMAPP, Radboud University, PO Box 9010, 6500 GL Nijmegen, The Netherlands"
+          ]
+        },
+        {
+          "name": "D.L.A. Pieterse",
+          "orgs": [
+            "Department of Astrophysics/IMAPP, Radboud University, PO Box 9010, 6500 GL Nijmegen, The Netherlands"
+          ]
+        },
+        {
+          "name": "P.A. Woudt",
+          "orgs": [
+            "Department of Astronomy and Inter-University Institute for Data Intensive Astronomy, University of Cape Town, Private Bag X3, Rondebosch, 7701, South Africa"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2407.19461v1",
+      "date": "2024-07-28T10:49:04Z",
+      "citation_count": 2,
+      "categories": [
+        "astro-ph.IM"
+      ]
+    }
+  ]
+}

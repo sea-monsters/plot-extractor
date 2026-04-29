@@ -1,0 +1,558 @@
+{
+  "status": "success",
+  "total_count": 42,
+  "result": [
+    {
+      "arxiv_id": "2102.01330",
+      "score": 13.9397335,
+      "title": "AI4VIS: Survey on Artificial Intelligence Approaches for Data Visualization",
+      "tldr": "This survey reviews AI approaches for data visualization, covering representation, tasks, and methods with a unified taxonomy, highlighting common challenges and future research directions in managing and exploiting visualization data.",
+      "abstract": "Visualizations themselves have become a data format. Akin to other data formats such as text and images, visualizations are increasingly created, stored, shared, and (re-)used with artificial intelligence (AI) techniques. In this survey, we probe the underlying vision of formalizing visualizations as an emerging data format and review the recent advance in applying AI techniques to visualization data (AI4VIS). We define visualization data as the digital representations of visualizations in computers and focus on data visualization (e.g., charts and infographics). We build our survey upon a corpus spanning ten different fields in computer science with an eye toward identifying important common interests. Our resulting taxonomy is organized around WHAT is visualization data and its representation, WHY and HOW to apply AI to visualization data. We highlight a set of common tasks that researchers apply to the visualization data and present a detailed discussion of AI approaches developed to accomplish those tasks. Drawing upon our literature review, we discuss several important research questions surrounding the management and exploitation of visualization data, as well as the role of AI in support of those processes. We make the list of surveyed papers and related material available online at ai4vis.github.io.",
+      "authors": [
+        {
+          "name": "Aoyu Wu",
+          "orgs": []
+        },
+        {
+          "name": "Yun Wang",
+          "orgs": []
+        },
+        {
+          "name": "Xinhuan Shu",
+          "orgs": []
+        },
+        {
+          "name": "Dominik Moritz",
+          "orgs": []
+        },
+        {
+          "name": "Weiwei Cui",
+          "orgs": []
+        },
+        {
+          "name": "Haidong Zhang",
+          "orgs": []
+        },
+        {
+          "name": "Dongmei Zhang",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2102.01330v2",
+      "date": "2021-02-02T06:14:51Z",
+      "citation_count": 163,
+      "categories": [
+        "cs.GR",
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2009.02491",
+      "score": 13.725055,
+      "title": "Reverse-engineering Bar Charts Using Neural Networks",
+      "tldr": "This paper addresses the problem of reverse-engineering bar charts to extract textual and numeric information, which is crucial for applications requiring underlying data; it proposes a neural network-based method combining Faster-RCNN for textual extraction and an encoder-decoder framework with attention mechanism for numeric extraction, achieving F1 scores of 0.89 and 0.80, and accuracies of 0.91 and 0.78 on synthetic and real-world datasets respectively.",
+      "abstract": "Reverse-engineering bar charts extracts textual and numeric information from the visual representations of bar charts to support application scenarios that require the underlying information. In this paper, we propose a neural network-based method for reverse-engineering bar charts. We adopt a neural network-based object detection model to simultaneously localize and classify textual information. This approach improves the efficiency of textual information extraction. We design an encoder-decoder framework that integrates convolutional and recurrent neural networks to extract numeric information. We further introduce an attention mechanism into the framework to achieve high accuracy and robustness. Synthetic and real-world datasets are used to evaluate the effectiveness of the method. To the best of our knowledge, this work takes the lead in constructing a complete neural network-based method of reverse-engineering bar charts.",
+      "authors": [
+        {
+          "name": "Fangfang Zhou",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yong Zhao",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Wenjiang Chen",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yijing Tan",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yaqi Xu",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yi Chen",
+          "orgs": [
+            "Beijing Key Laboratory of Big Data Technology for Food Safety, Beijing Technology and Business University, Beijing, China"
+          ]
+        },
+        {
+          "name": "Chao Liu",
+          "orgs": [
+            "Institute of Systems Engineering, Academy of Military Sciences, Beijing, China"
+          ]
+        },
+        {
+          "name": "Ying Zhao",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China",
+            "Rail Data Research and Application Key Laboratory of Hunan Province, Changsha, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2009.02491v1",
+      "date": "2020-09-05T08:14:35Z",
+      "citation_count": 34,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2407.16351",
+      "score": 12.777256,
+      "title": "Datasets of Visualization for Machine Learning",
+      "tldr": "This survey reviews visualization datasets for machine learning, highlighting their diversity, challenges in standardization and scalability, and proposing a what-why-how framework for categorization and comparison.",
+      "abstract": "Datasets of visualization play a crucial role in automating data-driven visualization pipelines, serving as the foundation for supervised model training and algorithm benchmarking. In this paper, we survey the literature on visualization datasets and provide a comprehensive overview of existing visualization datasets, including their data types, formats, supported tasks, and openness. We propose a what-why-how model for visualization datasets, considering the content of the dataset (what), the supported tasks (why), and the dataset construction process (how). This model provides a clear understanding of the diversity and complexity of visualization datasets. Additionally, we highlight the challenges faced by existing visualization datasets, including the lack of standardization in data types and formats and the limited availability of large-scale datasets. To address these challenges, we suggest future research directions.",
+      "authors": [
+        {
+          "name": "Can Liu",
+          "orgs": []
+        },
+        {
+          "name": "Ruike Jiang",
+          "orgs": []
+        },
+        {
+          "name": "Shaocong Tan",
+          "orgs": []
+        },
+        {
+          "name": "Jiacheng Yu",
+          "orgs": []
+        },
+        {
+          "name": "Chaofan Yang",
+          "orgs": []
+        },
+        {
+          "name": "Hanning Shao",
+          "orgs": []
+        },
+        {
+          "name": "Xiaoru Yuan",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2407.16351v1",
+      "date": "2024-07-23T09:52:39Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "1807.07449",
+      "score": 12.37655,
+      "title": "CNNs based Viewpoint Estimation for Volume Visualization",
+      "tldr": "This paper addresses the challenge of viewpoint estimation in volume visualization by proposing a CNN-based method to guide users in selecting optimal viewpoints, contributing an overfit-resistant rendering pipeline and category-specific classification network, and demonstrating its application in analyzing expert viewpoints and suggesting semantically meaningful optimal viewpoints for different volumes and transfer functions.",
+      "abstract": "Viewpoint estimation from 2D rendered images is helpful in understanding how users select viewpoints for volume visualization and guiding users to select better viewpoints based on previous visualizations. In this paper, we propose a viewpoint estimation method based on Convolutional Neural Networks (CNNs) for volume visualization. We first design an overfit-resistant image rendering pipeline to generate the training images with accurate viewpoint annotations, and then train a category-specific viewpoint classification network to estimate the viewpoint for the given rendered image. Our method can achieve good performance on images rendered with different transfer functions and rendering parameters in several categories. We apply our model to recover the viewpoints of the rendered images in publications, and show how experts look at volumes. We also introduce a CNN feature-based image similarity measure for similarity voting based viewpoint selection, which can suggest semantically meaningful optimal viewpoints for different volumes and transfer functions.",
+      "authors": [
+        {
+          "name": "Neng Shi",
+          "orgs": [
+            "State Key Lab of CAD&CG, Zhejiang University",
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Yubo Tao",
+          "orgs": [
+            "State Key Lab of CAD&CG, Zhejiang University",
+            "Zhejiang University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1807.07449v3",
+      "date": "2018-07-19T14:08:45Z",
+      "citation_count": 24,
+      "categories": [
+        "cs.GR"
+      ]
+    },
+    {
+      "arxiv_id": "2512.07864",
+      "score": 12.12172,
+      "title": "Pattern Recognition of Ozone-Depleting Substance Exports in Global Trade Data",
+      "tldr": "This paper presents a multi-modal unsupervised learning framework to detect illicit ODS exports in global trade data, addressing the challenge of identifying hidden smuggling patterns in large customs datasets; it combines K-Means clustering, Isolation Forest, and IQR for anomaly detection, and Heuristic Flagging to identify suspicious descriptions, successfully flagging 1,351 price outliers and 1,288 high-priority shipments; findings show high-priority commodities have distinct value-to-weight ratios, validated by SHAP analysis and correlated with real-world regulatory impacts.",
+      "abstract": "New methods are needed to monitor environmental treaties, like the Montreal Protocol, by reviewing large, complex customs datasets. This paper introduces a framework using unsupervised machine learning to systematically detect suspicious trade patterns and highlight activities for review. Our methodology, applied to 100,000 trade records, combines several ML techniques. Unsupervised Clustering (K-Means) discovers natural trade archetypes based on shipment value and weight. Anomaly Detection (Isolation Forest and IQR) identifies rare \"mega-trades\" and shipments with commercially unusual price-per-kilogram values. This is supplemented by Heuristic Flagging to find tactics like vague shipment descriptions. These layers are combined into a priority score, which successfully identified 1,351 price outliers and 1,288 high-priority shipments for customs review. A key finding is that high-priority commodities show a different and more valuable value-to-weight ratio than general goods. This was validated using Explainable AI (SHAP), which confirmed vague descriptions and high value as the most significant risk predictors. The model's sensitivity was validated by its detection of a massive spike in \"mega-trades\" in early 2021, correlating directly with the real-world regulatory impact of the US AIM Act. This work presents a repeatable unsupervised learning pipeline to turn raw trade data into prioritized, usable intelligence for regulatory groups.",
+      "authors": [
+        {
+          "name": "Muhammad Sukri Bin Ramli",
+          "orgs": [
+            "Asia School of Business"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.07864v1",
+      "date": "2025-11-26",
+      "citation_count": 0,
+      "categories": [
+        "cs.LG",
+        "econ.EM",
+        "econ.GN",
+        "q-fin.EC"
+      ]
+    },
+    {
+      "arxiv_id": "2602.09337",
+      "score": 11.841371,
+      "title": "Kyrtos: A methodology for automatic deep analysis of graphic charts with curves in technical documents",
+      "tldr": "This paper presents a methodology for automatic deep analysis of graphic charts with curves in technical documents, addressing the gap in accurate curve recognition and semantic understanding by using clustering-based processing and attributed graphs to capture structural and behavioral features, contributing a novel framework for converting chart information into SPN graphs with high structural similarity accuracy.",
+      "abstract": "Deep Understanding of Technical Documents (DUTD) has become a very attractive field with great potential due to large amounts of accumulated documents and the valuable knowledge contained in them. In addition, the holistic understanding of technical documents depends on the accurate analysis of its particular modalities, such as graphics, tables, diagrams, text, etc. and their associations. In this paper, we introduce the Kyrtos methodology for the automatic recognition and analysis of charts with curves in graphics images of technical documents. The recognition processing part adopts a clustering based approach to recognize middle-points that delimit the line-segments that construct the illustrated curves. The analysis processing part parses the extracted line-segments of curves to capture behavioral features such as direction, trend and etc. These associations assist the conversion of recognized segments' relations into attributed graphs, for the preservation of the curves' structural characteristics. The graph relations are also are expressed into natural language (NL) text sentences, enriching the document's text and facilitating their conversion into Stochastic Petri-net (SPN) graphs, which depict the internal functionality represented in the chart image. Extensive evaluation results demonstrate the accuracy of Kyrtos' recognition and analysis methods by measuring the structural similarity between input chart curves and the approximations generated by Kyrtos for charts with multiple functions.",
+      "authors": [
+        {
+          "name": "Michail S. Alexiou",
+          "orgs": [
+            "Kennesaw State University"
+          ]
+        },
+        {
+          "name": "Nikolaos G. Bourbakis",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.09337v1",
+      "date": "2026-02-10",
+      "citation_count": 2,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2410.09761",
+      "score": 11.566286,
+      "title": "ChartKG: A Knowledge-Graph-Based Representation for Chart Images",
+      "tldr": "This paper proposes ChartKG, a knowledge-graph-based representation for chart images to address the gap in unified and explainable chart knowledge mining, using a framework integrating CNNs, YOLOv5, OCR, and rule-based methods to extract visual elements and semantic relations, demonstrating effectiveness through case studies and evaluations on object recognition and OCR.",
+      "abstract": "Chart images, such as bar charts, pie charts, and line charts, are explosively produced due to the wide usage of data visualizations. Accordingly, knowledge mining from chart images is becoming increasingly important, which can benefit downstream tasks like chart retrieval and knowledge graph completion. However, existing methods for chart knowledge mining mainly focus on converting chart images into raw data and often ignore their visual encodings and semantic meanings, which can result in information loss for many downstream tasks. In this paper, we propose ChartKG, a novel knowledge graph (KG) based representation for chart images, which can model the visual elements in a chart image and semantic relations among them including visual encodings and visual insights in a unified manner. Further, we develop a general framework to convert chart images to the proposed KG-based representation. It integrates a series of image processing techniques to identify visual elements and relations, e.g., CNNs to classify charts, yolov5 and optical character recognition to parse charts, and rule-based methods to construct graphs. We present four cases to illustrate how our knowledge-graph-based representation can model the detailed visual elements and semantic relations in charts, and further demonstrate how our approach can benefit downstream applications such as semantic-aware chart retrieval and chart question answering. We also conduct quantitative evaluations to assess the two fundamental building blocks of our chart-to-KG framework, i.e., object recognition and optical character recognition. The results provide support for the usefulness and effectiveness of ChartKG.",
+      "authors": [
+        {
+          "name": "Zhiguang Zhou",
+          "orgs": [
+            "School of Media and Design, Hangzhou Dianzi University",
+            "Hangzhou Dianzi University"
+          ]
+        },
+        {
+          "name": "Haoxuan Wang",
+          "orgs": [
+            "Big Data Visualization and Human Computer Collaborative Intelligent Laboratory, Hangzhou Dianzi University",
+            "Hangzhou Dianzi University"
+          ]
+        },
+        {
+          "name": "Zhengqing Zhao",
+          "orgs": [
+            "Big Data Visualization and Human Computer Collaborative Intelligent Laboratory, Hangzhou Dianzi University",
+            "Hangzhou Dianzi University"
+          ]
+        },
+        {
+          "name": "Fengling Zheng",
+          "orgs": [
+            "Big Data Visualization and Human Computer Collaborative Intelligent Laboratory, Hangzhou Dianzi University",
+            "Hangzhou Dianzi University"
+          ]
+        },
+        {
+          "name": "Yongheng Wang",
+          "orgs": [
+            "Research Center of Big Data Intelligence, Zhejiang Lab, Hangzhou, China"
+          ]
+        },
+        {
+          "name": "Wei Chen",
+          "orgs": [
+            "State Key Lab of CAD&CG, Zhejiang University"
+          ]
+        },
+        {
+          "name": "Yong Wang",
+          "orgs": [
+            "College of Computing and Data Science, Nanyang Technological University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2410.09761v1",
+      "date": "2024-10-13T07:38:44Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.AI",
+        "cs.IR"
+      ]
+    },
+    {
+      "arxiv_id": "2602.10138",
+      "score": 11.541845,
+      "title": "Multimodal Information Fusion for Chart Understanding: A Survey of MLLMs -- Evolution, Limitations, and Cognitive Enhancement",
+      "tldr": "This paper reviews MLLMs in chart understanding, addressing the challenge of integrating visual and textual data in charts and the limitations of existing models, contributing a structured taxonomy of datasets and methodologies, and highlighting advancements in alignment techniques and cognitive enhancement strategies.",
+      "abstract": "Chart understanding is a quintessential information fusion task, requiring the seamless integration of graphical and textual data to extract meaning. The advent of Multimodal Large Language Models (MLLMs) has revolutionized this domain, yet the landscape of MLLM-based chart analysis remains fragmented and lacks systematic organization. This survey provides a comprehensive roadmap of this nascent frontier by structuring the domain's core components. We begin by analyzing the fundamental challenges of fusing visual and linguistic information in charts. We then categorize downstream tasks and datasets, introducing a novel taxonomy of canonical and non-canonical benchmarks to highlight the field's expanding scope. Subsequently, we present a comprehensive evolution of methodologies, tracing the progression from classic deep learning techniques to state-of-the-art MLLM paradigms that leverage sophisticated fusion strategies. By critically examining the limitations of current models, particularly their perceptual and reasoning deficits, we identify promising future directions, including advanced alignment techniques and reinforcement learning for cognitive enhancement. This survey aims to equip researchers and practitioners with a structured understanding of how MLLMs are transforming chart information fusion and to catalyze progress toward more robust and reliable systems.",
+      "authors": [
+        {
+          "name": "Tao Wang",
+          "orgs": []
+        },
+        {
+          "name": "Jian Zhao",
+          "orgs": []
+        },
+        {
+          "name": "Jiancheng Lv",
+          "orgs": []
+        },
+        {
+          "name": "Zhihang Yi",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.10138v1",
+      "date": "2026-02-08",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "1811.11623",
+      "score": 11.207994,
+      "title": "Large Scale Audio-Visual Video Analytics Platform for Forensic Investigations of Terroristic Attacks",
+      "tldr": "This paper presents a large-scale audio-visual video analytics platform to aid forensic investigations of terroristic attacks by addressing the challenge of analyzing thousands of hours of video footage, proposing a scalable architecture integrating acoustic and visual analysis modules with novel audio event detection and similarity search techniques, and demonstrating its effectiveness in rapidly identifying relevant video sequences and suspects through efficient content indexing and fusion.",
+      "abstract": "The forensic investigation of a terrorist attack poses a huge challenge to the investigative authorities, as several thousand hours of video footage need to be spotted. To assist law enforcement agencies (LEA) in identifying suspects and securing evidences, we present a platform which fuses information of surveillance cameras and video uploads from eyewitnesses. The platform integrates analytical modules for different input-modalities on a scalable architecture. Videos are analyzed according their acoustic and visual content. Specifically, Audio Event Detection is applied to index the content according to attack-specific acoustic concepts. Audio similarity search is utilized to identify similar video sequences recorded from different perspectives. Visual object detection and tracking are used to index the content according to relevant concepts. The heterogeneous results of the analytical modules are fused into a distributed index of visual and acoustic concepts to facilitate rapid start of investigations, following traits and investigating witness reports.",
+      "authors": [
+        {
+          "name": "Alexander Schindler",
+          "orgs": [
+            "Center for Digital Safety and Security, AIT Austrian Institute of Technology GmbH, Vienna 1210, Austria"
+          ]
+        },
+        {
+          "name": "Martin Boyer",
+          "orgs": [
+            "Center for Digital Safety and Security, AIT Austrian Institute of Technology GmbH, Vienna 1210, Austria"
+          ]
+        },
+        {
+          "name": "Andrew Lindley",
+          "orgs": [
+            "Center for Digital Safety and Security, AIT Austrian Institute of Technology GmbH, Vienna 1210, Austria"
+          ]
+        },
+        {
+          "name": "David Schreiber",
+          "orgs": [
+            "Center for Digital Safety and Security, AIT Austrian Institute of Technology GmbH, Vienna 1210, Austria"
+          ]
+        },
+        {
+          "name": "Thomas Philipp",
+          "orgs": [
+            "LIquA - Linzer Institut für qualitative Analysen",
+            "Linz 4020, Austria"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1811.11623v1",
+      "date": "2018-11-28T15:22:03Z",
+      "citation_count": 9,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2508.04679",
+      "score": 11.087919,
+      "title": "MisVisFix: An Interactive Dashboard for Detecting, Explaining, and Correcting Misleading Visualizations using Large Language Models",
+      "tldr": "This paper presents MisVisFix, an interactive dashboard leveraging LLMs to detect, explain, and correct misleading visualizations, addressing the gap in practical tools for comprehensive visualization analysis; it proposes an end-to-end system with novel annotation techniques and adaptive learning mechanisms; results show 96% issue detection accuracy across 74 misinformation types, demonstrating effective support for visualization literacy and trustworthy data communication.",
+      "abstract": "Misleading visualizations pose a significant challenge to accurate data interpretation. While recent research has explored the use of Large Language Models (LLMs) for detecting such misinformation, practical tools that also support explanation and correction remain limited. We present MisVisFix, an interactive dashboard that leverages both Claude and GPT models to support the full workflow of detecting, explaining, and correcting misleading visualizations. MisVisFix correctly identifies 96% of visualization issues and addresses all 74 known visualization misinformation types, classifying them as major, minor, or potential concerns. It provides detailed explanations, actionable suggestions, and automatically generates corrected charts. An interactive chat interface allows users to ask about specific chart elements or request modifications. The dashboard adapts to newly emerging misinformation strategies through targeted user interactions. User studies with visualization experts and developers of fact-checking tools show that MisVisFix accurately identifies issues and offers useful suggestions for improvement. By transforming LLM-based detection into an accessible, interactive platform, MisVisFix advances visualization literacy and supports more trustworthy data communication.",
+      "authors": [
+        {
+          "name": "Amit Kumar Das",
+          "orgs": []
+        },
+        {
+          "name": "Klaus Mueller",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2508.04679v1",
+      "date": "2025-08-06T17:45:11Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2307.07119",
+      "score": 11.059574,
+      "title": "DataAssist: A Machine Learning Approach to Data Cleaning and Preparation",
+      "tldr": "This paper presents DataAssist, a machine learning-based data cleaning and preparation tool addressing the gap in automated data quality improvement, by integrating exploratory data analysis and cleaning steps, reducing data cleansing time by over 50%, and offering a unified platform for handling missing values, outliers, duplicates, and inconsistencies.",
+      "abstract": "Current automated machine learning (ML) tools are model-centric, focusing on model selection and parameter optimization. However, the majority of the time in data analysis is devoted to data cleaning and wrangling, for which limited tools are available. Here we present DataAssist, an automated data preparation and cleaning platform that enhances dataset quality using ML-informed methods. We show that DataAssist provides a pipeline for exploratory data analysis and data cleaning, including generating visualization for user-selected variables, unifying data annotation, suggesting anomaly removal, and preprocessing data. The exported dataset can be readily integrated with other autoML tools or user-specified model for downstream analysis. Our data-centric tool is applicable to a variety of fields, including economics, business, and forecasting applications saving over 50% time of the time spent on data cleansing and preparation.",
+      "authors": [
+        {
+          "name": "Kartikay Goyle",
+          "orgs": [
+            "Department of Electrical and Computer Engineering",
+            "University of Toronto"
+          ]
+        },
+        {
+          "name": "Quin Xie",
+          "orgs": [
+            "Department of Medical Biophysics",
+            "University of Toronto"
+          ]
+        },
+        {
+          "name": "Vakul Goyle",
+          "orgs": [
+            "School of Computer Science and Engineering",
+            "Nanyang Technological University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2307.07119v2",
+      "date": "2023-07-14T01:50:53Z",
+      "citation_count": 19,
+      "categories": [
+        "cs.AI",
+        "cs.DB",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2310.17814",
+      "score": 10.964455,
+      "title": "DIVI: Dynamically Interactive Visualization",
+      "tldr": "This paper presents DIVI, a novel approach for dynamically orchestrating interactions in static visualizations by deconstructing SVG charts to infer metadata and enable cross-tool interaction, contributing a three-part model, a taxonomy for interactions, and SVG deconstruction techniques; results show usability with 13 participants and support dynamic multi-view and cross-tool linking.",
+      "abstract": "Dynamically Interactive Visualization (DIVI) is a novel approach for orchestrating interactions within and across static visualizations. DIVI deconstructs Scalable Vector Graphics charts at runtime to infer content and coordinate user input, decoupling interaction from specification logic. This decoupling allows interactions to extend and compose freely across different tools, chart types, and analysis goals. DIVI exploits positional relations of marks to detect chart components such as axes and legends, reconstruct scales and view encodings, and infer data fields. DIVI then enumerates candidate transformations across inferred data to perform linking between views. To support dynamic interaction without prior specification, we introduce a taxonomy that formalizes the space of standard interactions by chart element, interaction type, and input event. We demonstrate DIVI's usefulness for rapid data exploration and analysis through a usability study with 13 participants and a diverse gallery of dynamically interactive visualizations, including single chart, multi-view, and cross-tool configurations.",
+      "authors": [
+        {
+          "name": "Luke S. Snyder",
+          "orgs": []
+        },
+        {
+          "name": "Jeffrey Heer",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2310.17814v2",
+      "date": "2023-10-26T23:24:35Z",
+      "citation_count": 12,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2011.09130",
+      "score": 5.5133,
+      "title": "Visual Drift Detection for Sequence Data Analysis of Business Processes",
+      "tldr": "This paper addresses the challenge of detecting and visualizing process drift in business processes, proposing a system called Visual Drift Detection (VDD) that offers fine-granular analysis and visualization techniques, achieving an average F-score of 0.96 on synthetic data and identifying all drift types in real-world logs, thereby enhancing process monitoring and analysis.",
+      "abstract": "Event sequence data is increasingly available in various application domains, such as business process management, software engineering, or medical pathways. Processes in these domains are typically represented as process diagrams or flow charts. So far, various techniques have been developed for automatically generating such diagrams from event sequence data. An open challenge is the visual analysis of drift phenomena when processes change over time. In this paper, we address this research gap. Our contribution is a system for fine-granular process drift detection and corresponding visualizations for event logs of executed business processes. We evaluated our system both on synthetic and real-world data. On synthetic logs, we achieved an average F-score of 0.96 and outperformed all the state-of-the-art methods. On real-world logs, we identified all types of process drifts in a comprehensive manner. Finally, we conducted a user study highlighting that our visualizations are easy to use and useful as perceived by process mining experts. In this way, our work contributes to research on process mining, event sequence analysis, and visualization of temporal data.",
+      "authors": [
+        {
+          "name": "Anton Yeshchenko",
+          "orgs": []
+        },
+        {
+          "name": "Claudio Di Ciccio",
+          "orgs": []
+        },
+        {
+          "name": "Jan Mendling",
+          "orgs": []
+        },
+        {
+          "name": "Artem Polyvyanyy",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2011.09130v4",
+      "date": "2020-11-17T17:14:33Z",
+      "citation_count": 31,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2011.07313",
+      "score": 5.110853,
+      "title": "Classification of Reverse-Engineered Class Diagram and Forward-Engineered Class Diagram using Machine Learning",
+      "tldr": "This paper proposes a supervised machine learning classifier to distinguish between Forward-Engineered and Reverse-Engineered Class Diagrams using a dataset of 999 manually labeled diagrams, contributing feature selection, algorithm comparison, and a ground truth dataset, achieving high accuracy with Random Forest as the best model.",
+      "abstract": "UML Class diagram is very important to visualize the whole software we are working on and helps understand the whole system in the easiest way possible by showing the system classes, its attributes, methods, and relations with other objects. In the real world, there are two types of Class diagram engineers work with namely 1) Forward Engineered Class Diagram (FwCD) which are hand-made as part of the forward-looking development process, and 2). Reverse Engineered Class Diagram (RECD) which are those diagrams that are reverse engineered from the source code. In the software industry while working with new open software projects it is important to know which type of class diagram it is. Which UML diagram was used in a particular project is an important factor to be known? To solve this problem, we propose to build a classifier that can classify a UML diagram into FwCD or RECD. We propose to solve this problem by using a supervised Machine Learning technique. The approach in this involves analyzing the features that are useful in classifying class diagrams. Different Machine Learning models are used in this process and the Random Forest algorithm has proved to be the best out of all. Performance testing was done on 999 Class diagrams.",
+      "authors": [
+        {
+          "name": "Kaushil Mangaroliya",
+          "orgs": [
+            "Department of Computer Science and Engineering",
+            "Institute of Technology, Nirma University",
+            "Ahmedabad, India"
+          ]
+        },
+        {
+          "name": "Het Patel",
+          "orgs": [
+            "Department of Computer Science and Engineering",
+            "Institute of Technology, Nirma University",
+            "Ahmedabad, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2011.07313v1",
+      "date": "2020-11-14T14:56:26Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.LG",
+        "cs.SE"
+      ]
+    },
+    {
+      "arxiv_id": "2603.12522",
+      "score": 4.869171,
+      "title": "LLM BiasScope: A Real-Time Bias Analysis Platform for Comparative LLM Evaluation",
+      "tldr": "This paper presents LLM BiasScope, a real-time bias analysis platform for comparing LLM outputs across multiple providers, addressing the gap in tools for interactive, comparative bias evaluation by enabling side-by-side analysis with integrated bias detection and visualization; it uses a two-stage pipeline for sentence-level bias detection and classification, offering insights into bias patterns across models; findings show the system supports real-time streaming and exportable reports, enhancing transparency and informed decision-making in LLM deployment.",
+      "abstract": "As large language models (LLMs) are deployed widely, detecting and understanding bias in their outputs is critical. We present LLM BiasScope, a web application for side-by-side comparison of LLM outputs with real-time bias analysis. The system supports multiple providers (Google Gemini, DeepSeek, MiniMax, Mistral, Meituan, Meta Llama) and enables researchers and practitioners to compare models on the same prompts while analyzing bias patterns. LLM BiasScope uses a two-stage bias detection pipeline: sentence-level bias detection followed by bias type classification for biased sentences. The analysis runs automatically on both user prompts and model responses, providing statistics, visualizations, and detailed breakdowns of bias types. The interface displays two models side-by-side with synchronized streaming responses, per-model bias summaries, and a comparison view highlighting differences in bias distributions. The system is built on Next.js with React, integrates Hugging Face inference endpoints for bias detection, and uses the Vercel AI SDK for multi-provider LLM access. Features include real-time streaming, export to JSON/PDF, and interactive visualizations (bar charts, radar charts) for bias analysis. LLM BiasScope is available as an open-source web application, providing a practical tool for bias evaluation and comparative analysis of LLM behaviour.",
+      "authors": [
+        {
+          "name": "Himel Ghosh",
+          "orgs": [
+            "Technical University of Munich",
+            "Sapienza University of Rome"
+          ]
+        },
+        {
+          "name": "Nick Elias Werner",
+          "orgs": [
+            "Technical University of Munich"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2603.12522v1",
+      "date": "2026-03-12",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CY",
+        "cs.HC"
+      ]
+    }
+  ]
+}

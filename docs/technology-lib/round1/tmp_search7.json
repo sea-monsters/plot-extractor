@@ -1,0 +1,777 @@
+{
+  "status": "success",
+  "total_count": 49,
+  "result": [
+    {
+      "arxiv_id": "1708.05081",
+      "score": 12.648529,
+      "title": "Importance of Image Enhancement Techniques in Color Image Segmentation: A Comprehensive and Comparative Study",
+      "tldr": "This paper investigates the importance of image enhancement techniques in color image segmentation, addressing the problem of miss-classifications and over-segmentation due to degraded image quality; it proposes a comparative study of enhancement methods in HSV and LAB color spaces, contributing novel approaches like BSB-CLAHE; results show improved segmentation accuracy with HSV and LAB color spaces, highlighting their effectiveness in enhancing image quality for better segmentation outcomes.",
+      "abstract": "Color image segmentation is a very emerging research topic in the area of color image analysis and pattern recognition. Many state-of-the-art algorithms have been developed for this purpose. But, often the segmentation results of these algorithms seem to be suffering from miss-classifications and over-segmentation. The reasons behind these are the degradation of image quality during the acquisition, transmission and color space conversion. So, here arises the need of an efficient image enhancement technique which can remove the redundant pixels or noises from the color image before proceeding for final segmentation. In this paper, an effort has been made to study and analyze different image enhancement techniques and thereby finding out the better one for color image segmentation. Also, this comparative study is done on two well-known color spaces HSV and LAB separately to find out which color space supports segmentation task more efficiently with respect to those enhancement techniques.",
+      "authors": [
+        {
+          "name": "Dibya Jyoti Bora",
+          "orgs": [
+            "Department of Computer Science and Applications Barkatullah University, Bhopal, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1708.05081v1",
+      "date": "2017-08-09T13:35:20Z",
+      "citation_count": 56,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1810.00871",
+      "score": 12.321228,
+      "title": "Automatic Skin Lesion Segmentation Using GrabCut in HSV Colour Space",
+      "tldr": "This paper addresses the challenge of automatic skin lesion segmentation in dermoscopic images, proposing the use of GrabCut in HSV color space to improve accuracy with minimal human interaction, contributing a novel approach for efficient and effective segmentation; it achieves an average Jaccard Index of 0.71 on 1000 ISIC 2017 images, demonstrating significant performance in aiding early skin cancer diagnosis.",
+      "abstract": "Skin lesion segmentation is one of the first steps towards automatic Computer-Aided Diagnosis of skin cancer. Vast variety in the appearance of the skin lesion makes this task very challenging. The contribution of this paper is to apply a power foreground extraction technique called GrabCut for automatic skin lesion segmentation with minimal human interaction in HSV color space. Preprocessing was performed for removing the outer black border. Jaccard Index was measured to evaluate the performance of the segmentation method. On average, 0.71 Jaccard Index was achieved on 1000 images from ISIC challenge 2017 Training Dataset.",
+      "authors": [
+        {
+          "name": "Fakrul Islam Tushar",
+          "orgs": [
+            "University of Burgundy (France)",
+            "University of Cassino (Italy)",
+            "University of Girona (Spain)"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1810.00871v1",
+      "date": "2018-09-30T01:30:43Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2602.09337",
+      "score": 11.851197,
+      "title": "Kyrtos: A methodology for automatic deep analysis of graphic charts with curves in technical documents",
+      "tldr": "This paper presents a methodology for automatic deep analysis of graphic charts with curves in technical documents, addressing the gap in accurate curve recognition and semantic understanding by using clustering-based processing and attributed graphs to capture structural and behavioral features, contributing a novel framework for converting chart information into SPN graphs with high structural similarity accuracy.",
+      "abstract": "Deep Understanding of Technical Documents (DUTD) has become a very attractive field with great potential due to large amounts of accumulated documents and the valuable knowledge contained in them. In addition, the holistic understanding of technical documents depends on the accurate analysis of its particular modalities, such as graphics, tables, diagrams, text, etc. and their associations. In this paper, we introduce the Kyrtos methodology for the automatic recognition and analysis of charts with curves in graphics images of technical documents. The recognition processing part adopts a clustering based approach to recognize middle-points that delimit the line-segments that construct the illustrated curves. The analysis processing part parses the extracted line-segments of curves to capture behavioral features such as direction, trend and etc. These associations assist the conversion of recognized segments' relations into attributed graphs, for the preservation of the curves' structural characteristics. The graph relations are also are expressed into natural language (NL) text sentences, enriching the document's text and facilitating their conversion into Stochastic Petri-net (SPN) graphs, which depict the internal functionality represented in the chart image. Extensive evaluation results demonstrate the accuracy of Kyrtos' recognition and analysis methods by measuring the structural similarity between input chart curves and the approximations generated by Kyrtos for charts with multiple functions.",
+      "authors": [
+        {
+          "name": "Michail S. Alexiou",
+          "orgs": [
+            "Kennesaw State University"
+          ]
+        },
+        {
+          "name": "Nikolaos G. Bourbakis",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.09337v1",
+      "date": "2026-02-10",
+      "citation_count": 2,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1405.0174",
+      "score": 11.555913,
+      "title": "VSCAN: An Enhanced Video Summarization using Density-based Spatial Clustering",
+      "tldr": "This paper addresses the challenge of video summarization by proposing VSCAN, a method that uses a modified DBSCAN algorithm with color and texture features to overcome limitations of existing approaches, contributing an enhanced evaluation method that considers both features, and finds that VSCAN produces higher quality summaries than other methods.",
+      "abstract": "In this paper, we present VSCAN, a novel approach for generating static video summaries. This approach is based on a modified DBSCAN clustering algorithm to summarize the video content utilizing both color and texture features of the video frames. The paper also introduces an enhanced evaluation method that depends on color and texture features. Video Summaries generated by VSCAN are compared with summaries generated by other approaches found in the literature and those created by users. Experimental results indicate that the video summaries generated by VSCAN have a higher quality than those generated by other approaches.",
+      "authors": [
+        {
+          "name": "Karim M. Mohamed",
+          "orgs": []
+        },
+        {
+          "name": "Mohamed A. Ismail",
+          "orgs": []
+        },
+        {
+          "name": "Nagia M. Ghanem",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1405.0174v1",
+      "date": "2014-05-01T14:36:35Z",
+      "citation_count": 78,
+      "categories": [
+        "cs.CV",
+        "cs.MM"
+      ]
+    },
+    {
+      "arxiv_id": "1703.00087",
+      "score": 11.444217,
+      "title": "Supervised Saliency Map Driven Segmentation of the Lesions in Dermoscopic Images",
+      "tldr": "This paper proposes a supervised saliency map driven segmentation framework for lesion detection in dermoscopic images, addressing challenges like color inconstancy and hair occlusion, which hinder accurate segmentation; it introduces mDRFI, an enhanced saliency detection method with new regional features and a thresholding algorithm for pseudo-background regions; experimental results on three datasets show improved performance over conventional methods, achieving comparable results to deep learning-based approaches.",
+      "abstract": "Lesion segmentation is the first step in most automatic melanoma recognition systems. Deficiencies and difficulties in dermoscopic images such as color inconstancy, hair occlusion, dark corners and color charts make lesion segmentation an intricate task. In order to detect the lesion in the presence of these problems, we propose a supervised saliency detection method tailored for dermoscopic images based on the discriminative regional feature integration (DRFI). DRFI method incorporates multi-level segmentation, regional contrast, property, background descriptors, and a random forest regressor to create saliency scores for each region in the image. In our improved saliency detection method, mDRFI, we have added some new features to regional property descriptors. Also, in order to achieve more robust regional background descriptors, a thresholding algorithm is proposed to obtain a new pseudo-background region. Findings reveal that mDRFI is superior to DRFI in detecting the lesion as the salient object in dermoscopic images. The proposed overall lesion segmentation framework uses detected saliency map to construct an initial mask of the lesion through thresholding and post-processing operations. The initial mask is then evolving in a level set framework to fit better on the lesion's boundaries. The results of evaluation tests on three public datasets show that our proposed segmentation method outperforms the other conventional state-of-the-art segmentation algorithms and its performance is comparable with most recent approaches that are based on deep convolutional neural networks.",
+      "authors": [
+        {
+          "name": "Mostafa Jahanifar",
+          "orgs": []
+        },
+        {
+          "name": "Neda Zamani Tajeddin",
+          "orgs": []
+        },
+        {
+          "name": "Babak Mohammadzadeh Asl",
+          "orgs": []
+        },
+        {
+          "name": "Ali Gooya",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1703.00087v4",
+      "date": "2017-02-28T23:27:25Z",
+      "citation_count": 65,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2512.14040",
+      "score": 11.436383,
+      "title": "ChartAgent: A Chart Understanding Framework with Tool Integrated Reasoning",
+      "tldr": "This paper introduces ChartAgent, a chart understanding framework addressing the limitation of MLLMs in handling unannotated charts by using Tool-Integrated Reasoning to decompose tasks into observable steps and provide traceable evidence, achieving SOTA performance on chart QA tasks.",
+      "abstract": "With their high information density and intuitive readability, charts have become the de facto medium for data analysis and communication across disciplines. Recent multimodal large language models (MLLMs) have made notable progress in automated chart understanding, yet they remain heavily dependent on explicit textual annotations and the performance degrades markedly when key numerals are absent. To address this limitation, we introduce ChartAgent, a chart understanding framework grounded in Tool-Integrated Reasoning (TIR). Inspired by human cognition, ChartAgent decomposes complex chart analysis into a sequence of observable, replayable steps. Supporting this architecture is an extensible, modular tool library comprising more than a dozen core tools, such as keyelement detection, instance segmentation, and optical character recognition (OCR), which the agent dynamically orchestrates to achieve systematic visual parsing across diverse chart types. Leveraging TIRs transparency and verifiability, ChartAgent moves beyond the black box paradigm by standardizing and consolidating intermediate outputs into a structured Evidence Package, providing traceable and reproducible support for final conclusions. Experiments show that ChartAgent substantially improves robustness under sparse annotation settings, offering a practical path toward trustworthy and extensible systems for chart understanding.",
+      "authors": [
+        {
+          "name": "Xiang Li",
+          "orgs": [
+            "5"
+          ]
+        },
+        {
+          "name": "Jing Yuan",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Yi Chen",
+          "orgs": [
+            "234"
+          ]
+        },
+        {
+          "name": "Jian Xu",
+          "orgs": [
+            "23"
+          ]
+        },
+        {
+          "name": "Xinming Wang",
+          "orgs": [
+            "School of Computer Science, Fudan University"
+          ]
+        },
+        {
+          "name": "Boran Wang",
+          "orgs": [
+            "Department of Computer Science, Tsinghua University"
+          ]
+        },
+        {
+          "name": "Chenglin Liu",
+          "orgs": [
+            "School of Information Science and Engineering, Central South University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.14040v1",
+      "date": "2025-12-16",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2105.11277",
+      "score": 11.221077,
+      "title": "What is the State of the Art of Computer Vision-Assisted Cytology? A Systematic Literature Review",
+      "tldr": "This paper reviews the state of computer vision in cytology, identifying a gap in high-quality datasets and maturity of methods for clinical use, finding that deep learning dominates (70 papers) with Papanicolaou staining (130 papers) and Dice Similarity Coefficient (38 papers) as prevalent, and highlighting the potential for tele-cytology and improved diagnostic efficiency.",
+      "abstract": "Cytology is a low-cost and non-invasive diagnostic procedure employed to support the diagnosis of a broad range of pathologies. Computer Vision technologies, by automatically generating quantitative and objective descriptions of examinations' contents, can help minimize the chances of misdiagnoses and shorten the time required for analysis. To identify the state-of-art of computer vision techniques currently applied to cytology, we conducted a Systematic Literature Review. We analyzed papers published in the last 5 years. The initial search was executed in September 2020 and resulted in 431 articles. After applying the inclusion/exclusion criteria, 157 papers remained, which we analyzed to build a picture of the tendencies and problems present in this research area, highlighting the computer vision methods, staining techniques, evaluation metrics, and the availability of the used datasets and computer code. As a result, we identified that the most used methods in the analyzed works are deep learning-based (70 papers), while fewer works employ classic computer vision only (101 papers). The most recurrent metric used for classification and object detection was the accuracy (33 papers and 5 papers), while for segmentation it was the Dice Similarity Coefficient (38 papers). Regarding staining techniques, Papanicolaou was the most employed one (130 papers), followed by H&E (20 papers) and Feulgen (5 papers). Twelve of the datasets used in the papers are publicly available, with the DTU/Herlev dataset being the most used one. We conclude that there still is a lack of high-quality datasets for many types of stains and most of the works are not mature enough to be applied in a daily clinical diagnostic routine. We also identified a growing tendency towards adopting deep learning-based approaches as the methods of choice.",
+      "authors": [
+        {
+          "name": "André Victória Matias",
+          "orgs": [
+            "Department of Informatics and Statistics, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Automation and Systems Department, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Department of Pathology, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Clinical Analyses Department, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Brazilian Institute for Digital Convergence, Federal University of Santa Catarina, Florianópolis, Brazil"
+          ]
+        },
+        {
+          "name": "João Gustavo Atkinson Amorim",
+          "orgs": [
+            "Department of Informatics and Statistics, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Automation and Systems Department, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Department of Pathology, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Clinical Analyses Department, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Brazilian Institute for Digital Convergence, Federal University of Santa Catarina, Florianópolis, Brazil"
+          ]
+        },
+        {
+          "name": "Luiz Antonio Buschetto Macarini",
+          "orgs": [
+            "Department of Informatics and Statistics, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Automation and Systems Department, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Department of Pathology, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Clinical Analyses Department, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Brazilian Institute for Digital Convergence, Federal University of Santa Catarina, Florianópolis, Brazil"
+          ]
+        },
+        {
+          "name": "Allan Cerentini",
+          "orgs": [
+            "Department of Informatics and Statistics, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Automation and Systems Department, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Department of Pathology, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Clinical Analyses Department, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Brazilian Institute for Digital Convergence, Federal University of Santa Catarina, Florianópolis, Brazil"
+          ]
+        },
+        {
+          "name": "Alexandre Sherlley Casimiro Onofre",
+          "orgs": [
+            "Automation and Systems Department, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Brazilian Institute for Digital Convergence, Federal University of Santa Catarina, Florianópolis, Brazil"
+          ]
+        },
+        {
+          "name": "Fabiana Botelho de Miranda Onofre",
+          "orgs": [
+            "Automation and Systems Department, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Brazilian Institute for Digital Convergence, Federal University of Santa Catarina, Florianópolis, Brazil"
+          ]
+        },
+        {
+          "name": "Felipe Perozzo Daltoé",
+          "orgs": [
+            "Automation and Systems Department, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Brazilian Institute for Digital Convergence, Federal University of Santa Catarina, Florianópolis, Brazil"
+          ]
+        },
+        {
+          "name": "Marcelo Ricardo Stemmer",
+          "orgs": [
+            "Automation and Systems Department, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Brazilian Institute for Digital Convergence, Federal University of Santa Catarina, Florianópolis, Brazil"
+          ]
+        },
+        {
+          "name": "Aldo von Wangenheim",
+          "orgs": [
+            "Department of Informatics and Statistics, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Automation and Systems Department, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Department of Pathology, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Clinical Analyses Department, Federal University of Santa Catarina, Florianópolis, Brazil",
+            "Brazilian Institute for Digital Convergence, Federal University of Santa Catarina, Florianópolis, Brazil"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2105.11277v1",
+      "date": "2021-05-24T13:50:45Z",
+      "citation_count": 22,
+      "categories": [
+        "cs.CV",
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "1710.01248",
+      "score": 11.207493,
+      "title": "Skin Lesion Segmentation: U-Nets versus Clustering",
+      "tldr": "This paper addresses the challenge of skin lesion segmentation in dermatology, aiming to improve diagnostic accuracy by comparing U-Nets with a clustering approach, as accurate segmentation is critical for early melanoma detection; it employs U-Nets with histogram equalization preprocessing and C-Means clustering, finding that U-Nets achieved a significantly higher Jaccard Index (0.85 vs. 0.68) than clustering; the results highlight the effectiveness of U-Nets for CPU-based segmentation in resource-limited settings.",
+      "abstract": "Many automatic skin lesion diagnosis systems use segmentation as a preprocessing step to diagnose skin conditions because skin lesion shape, border irregularity, and size can influence the likelihood of malignancy. This paper presents, examines and compares two different approaches to skin lesion segmentation. The first approach uses U-Nets and introduces a histogram equalization based preprocessing step. The second approach is a C-Means clustering based approach that is much simpler to implement and faster to execute. The Jaccard Index between the algorithm output and hand segmented images by dermatologists is used to evaluate the proposed algorithms. While many recently proposed deep neural networks to segment skin lesions require a significant amount of computational power for training (i.e., computer with GPUs), the main objective of this paper is to present methods that can be used with only a CPU. This severely limits, for example, the number of training instances that can be presented to the U-Net. Comparing the two proposed algorithms, U-Nets achieved a significantly higher Jaccard Index compared to the clustering approach. Moreover, using the histogram equalization for preprocessing step significantly improved the U-Net segmentation results.",
+      "authors": [
+        {
+          "name": "Bill S. Lin",
+          "orgs": [
+            "Department of Mechanical and Mechatronics, University of Waterloo, Waterloo, Canada"
+          ]
+        },
+        {
+          "name": "Kevin Michael",
+          "orgs": [
+            "Department of Systems Design Engineering, University of Waterloo, Waterloo, Canada"
+          ]
+        },
+        {
+          "name": "Shivam Kalra",
+          "orgs": [
+            "KIMIA Lab, University of Waterloo, Waterloo, Canada"
+          ]
+        },
+        {
+          "name": "H.R. Tizhoosh",
+          "orgs": [
+            "Department of Mechanical and Mechatronics, University of Waterloo, Waterloo, Canada",
+            "Department of Systems Design Engineering, University of Waterloo, Waterloo, Canada",
+            "KIMIA Lab, University of Waterloo, Waterloo, Canada"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1710.01248v1",
+      "date": "2017-09-27T22:46:29Z",
+      "citation_count": 96,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1906.03339",
+      "score": 11.189511,
+      "title": "next-gen-scraPy: Extracting NFL Tracking Data from Images to Evaluate Quarterbacks and Pass Defenses",
+      "tldr": "This paper addresses the gap in public access to NFL tracking data by introducing next-gen-scraPy, an image processing tool that extracts pass location and metadata from NGS charts, and analyzes spatial performance using GAMs and empirical Bayesian methods to develop the CPAE metric, which closely matches the NFL's proprietary metric.",
+      "abstract": "The NFL collects detailed tracking data capturing the location of all players and the ball during each play. Although the raw form of this data is not publicly available, the NFL releases a set of aggregated statistics via their Next Gen Stats (NGS) platform. They also provide charts showing the locations of pass attempts and outcomes for individual quarterbacks. Our work aims to partially close the gap between what data is available privately (to NFL teams) and publicly, and our contribution is twofold. First, we introduce an image processing tool designed specifically for extracting the raw data from the NGS pass charts. We extract the pass outcome, coordinates, and other metadata. Second, we analyze the resulting dataset, examining the spatial tendencies and performances of individual quarterbacks and defenses. We use a generalized additive model for completion percentages by field location. We introduce a Naive Bayes approach for estimating the 2-D completion percentage surfaces of individual teams and quarterbacks, and we provide a one-number summary, completion percentage above expectation (CPAE), for evaluating quarterbacks and team defenses. We find that our pass location data closely matches the NFL's tracking data, and that our CPAE metric closely matches the NFL's proprietary CPAE metric.",
+      "authors": [
+        {
+          "name": "Sarah Mallepalle",
+          "orgs": [
+            "Department of Statistics & Data Science, Carnegie Mellon University"
+          ]
+        },
+        {
+          "name": "Ronald Yurko",
+          "orgs": [
+            "Department of Statistics & Data Science, Carnegie Mellon University"
+          ]
+        },
+        {
+          "name": "Konstantinos Pelechronis",
+          "orgs": [
+            "School of Computing and Information, University of Pittsburgh"
+          ]
+        },
+        {
+          "name": "Samuel L. Ventura",
+          "orgs": [
+            "Department of Statistics & Data Science, Carnegie Mellon University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1906.03339v2",
+      "date": "2019-06-07T21:38:35Z",
+      "citation_count": 0,
+      "categories": [
+        "stat.AP"
+      ]
+    },
+    {
+      "arxiv_id": "1506.01472",
+      "score": 11.155046,
+      "title": "Comparing the Performance of L*A*B* and HSV Color Spaces with Respect to Color Image Segmentation",
+      "tldr": "This paper compares L*A*B* and HSV color spaces for color image segmentation, finding HSV performs better with lower MSE and higher PSNR, addressing the importance of color space selection in improving segmentation accuracy and reducing noise.",
+      "abstract": "Color image segmentation is a very emerging topic for image processing research. Since it has the ability to present the result in a way that is much more close to the human yes perceive, so todays more research is going on this area. Choosing a proper color space is a very important issue for color image segmentation process. Generally LAB and HSV are the two frequently chosen color spaces. In this paper a comparative analysis is performed between these two color spaces with respect to color image segmentation. For measuring their performance, we consider the parameters: mse and psnr . It is found that HSV color space is performing better than LAB.",
+      "authors": [
+        {
+          "name": "Dibya Jyoti Bora",
+          "orgs": [
+            "Department of Computer Science & Applications, Barkatullah University, Bhopal, India"
+          ]
+        },
+        {
+          "name": "Anil Kumar Gupta",
+          "orgs": [
+            "Department of Computer Science & Applications, Barkatullah University, Bhopal, India"
+          ]
+        },
+        {
+          "name": "Fayaz Ahmad Khan",
+          "orgs": [
+            "Department of Computer Science & Applications, Barkatullah University, Bhopal, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1506.01472v1",
+      "date": "2015-06-04T06:37:14Z",
+      "citation_count": 161,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1802.01116",
+      "score": 11.15333,
+      "title": "Object Sorting Using a Global Texture-Shape 3D Feature Descriptor",
+      "tldr": "This paper proposes a global texture-shape 3D feature descriptor to improve object recognition and sorting in warehouses, addressing the limitation of CVFH in distinguishing objects with similar geometrical features; it extends CVFH with texture and color information, achieving better recognition performance than CVFH on public datasets and real scenes; the descriptor is integrated into an object recognition and grasping system, enhancing its ability to perform sorting tasks effectively.",
+      "abstract": "Object recognition and grasping plays a key role in robotic systems, especially for the autonomous robots to implement object sorting tasks in a warehouse. In this paper, we present a global texture-shape 3D feature descriptor which can be utilized in a system of object recognition and grasping, and can perform object sorting tasks well. Our proposed descriptor stems from the clustered viewpoint feature histogram (CVFH), which relies on the geometrical information of the whole 3D object surface only, and can not perform well in recognizing the objects with similar geometrical information. Therefore, we extend the CVFH descriptor with texture and color information to generate a new global 3D feature descriptor. The proposed descriptor is evaluated in tasks of recognizing and classifying 3D objects by applying multi-class support vector machines (SVM) in both public 3D image dataset and real scenes. The results of evaluation show that the proposed descriptor achieves a significant better performance for object recognition compared with the original CVFH. Then, the proposed descriptor is applied in our object recognition and grasping system, showing that the proposed descriptor helps the system implement the object recognition, object grasping and object sorting tasks well.",
+      "authors": [
+        {
+          "name": "Zhun Fan",
+          "orgs": []
+        },
+        {
+          "name": "Zhongxing Li",
+          "orgs": []
+        },
+        {
+          "name": "Benzhang Qiu",
+          "orgs": []
+        },
+        {
+          "name": "Wenji Li",
+          "orgs": []
+        },
+        {
+          "name": "Jianye Hu",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Alex Noel Josephraj",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Heping Chen",
+          "orgs": [
+            "2"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1802.01116v3",
+      "date": "2018-02-04T12:35:49Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "1710.06473",
+      "score": 11.116813,
+      "title": "Superpixels Based Marker Tracking Vs. Hue Thresholding In Rodent Biomechanics Application",
+      "tldr": "This paper addresses the challenge of accurately tracking markers on rodents for gait analysis, aiming to improve kinematic studies in neuroscience and biomechanics by overcoming manual tracking limitations; it proposes SLIC superpixels segmentation and hue thresholding methods, demonstrating that SLIC superpixels provide more reliable segmentation based on color and spatial information; the results show superior performance of the SLIC method, offering a more efficient and accurate approach for automatic marker tracking in high-frame-rate video sequences.",
+      "abstract": "Examining locomotion has improved our basic understanding of motor control and aided in treating motor impairment. Mice and rats are premier models of human disease and increasingly the model systems of choice for basic neuroscience. High frame rates (250 Hz) are needed to quantify the kinematics of these running rodents. Manual tracking, especially for multiple markers, becomes time-consuming and impossible for large sample sizes. Therefore, the need for automatic segmentation of these markers has grown in recent years. We propose two methods to segment and track these markers: first, using SLIC superpixels segmentation with a tracker based on position, speed, shape, and color information of the segmented region in the previous frame; second, using a thresholding on hue channel following up with the same tracker. The comparison showed that the SLIC superpixels method was superior because the segmentation was more reliable and based on both color and spatial information.",
+      "authors": [
+        {
+          "name": "Omid Haji Maghsoudi",
+          "orgs": [
+            "Spence Lab., Bioengineering",
+            "Temple University",
+            "Philadelphia, PA, USA, 19122"
+          ]
+        },
+        {
+          "name": "A. Vahedipour Tabrizi",
+          "orgs": [
+            "Spence Lab., Bioengineering",
+            "Temple University",
+            "Philadelphia, PA, USA, 19122"
+          ]
+        },
+        {
+          "name": "Benjamin Robertson",
+          "orgs": [
+            "Spence Lab., Bioengineering",
+            "Temple University",
+            "Philadelphia, PA, USA, 19122"
+          ]
+        },
+        {
+          "name": "Andrew Spence",
+          "orgs": [
+            "Spence Lab., Bioengineering",
+            "Temple University",
+            "Philadelphia, PA, USA, 19122"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1710.06473v4",
+      "date": "2017-10-17T19:08:29Z",
+      "citation_count": 25,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2102.04515",
+      "score": 11.026351,
+      "title": "Leaf Image-based Plant Disease Identification using Color and Texture Features",
+      "tldr": "This paper presents a leaf image-based plant disease identification system using color and texture features, addressing the problem of delayed and inaccurate disease detection which causes significant yield loss; it proposes a feature-based approach with six color and twenty-two texture features, achieving 98.79% accuracy on 10-fold cross-validation and 82.47% on a self-collected dataset, offering a portable and accurate solution for automated disease identification.",
+      "abstract": "Identification of plant disease is usually done through visual inspection or during laboratory examination which causes delays resulting in yield loss by the time identification is complete. On the other hand, complex deep learning models perform the task with reasonable performance but due to their large size and high computational requirements, they are not suited to mobile and handheld devices. Our proposed approach contributes automated identification of plant diseases which follows a sequence of steps involving pre-processing, segmentation of diseased leaf area, calculation of features based on the Gray-Level Co-occurrence Matrix (GLCM), feature selection and classification. In this study, six color features and twenty-two texture features have been calculated. Support vector machines is used to perform one-vs-one classification of plant disease. The proposed model of disease identification provides an accuracy of 98.79% with a standard deviation of 0.57 on 10-fold cross-validation. The accuracy on a self-collected dataset is 82.47% for disease identification and 91.40% for healthy and diseased classification. The reported performance measures are better or comparable to the existing approaches and highest among the feature-based methods, presenting it as the most suitable method to automated leaf-based plant disease identification. This prototype system can be extended by adding more disease categories or targeting specific crop or disease categories.",
+      "authors": [
+        {
+          "name": "Nisar Ahmed",
+          "orgs": []
+        },
+        {
+          "name": "Hafiz Muhammad Shahzad Asif",
+          "orgs": []
+        },
+        {
+          "name": "Gulshan Saleem",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2102.04515v1",
+      "date": "2021-02-08T20:32:56Z",
+      "citation_count": 99,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2411.19447",
+      "score": 11.025389,
+      "title": "Adaptive Interactive Segmentation for Multimodal Medical Imaging via Selection Engine",
+      "tldr": "This paper addresses the challenge of multi-modal medical image segmentation by proposing SISeg, a strategy-driven model that integrates an Adaptive Frame Selection Engine (AFSE) to enhance adaptability and efficiency, achieving robust performance across 7 modalities on 10 datasets.",
+      "abstract": "In medical image analysis, achieving fast, efficient, and accurate segmentation is essential for automated diagnosis and treatment. Although recent advancements in deep learning have significantly improved segmentation accuracy, current models often face challenges in adaptability and generalization, particularly when processing multi-modal medical imaging data. These limitations stem from the substantial variations between imaging modalities and the inherent complexity of medical data. To address these challenges, we propose the Strategy-driven Interactive Segmentation Model (SISeg), built on SAM2, which enhances segmentation performance across various medical imaging modalities by integrating a selection engine. To mitigate memory bottlenecks and optimize prompt frame selection during the inference of 2D image sequences, we developed an automated system, the Adaptive Frame Selection Engine (AFSE). This system dynamically selects the optimal prompt frames without requiring extensive prior medical knowledge and enhances the interpretability of the model's inference process through an interactive feedback mechanism. We conducted extensive experiments on 10 datasets covering 7 representative medical imaging modalities, demonstrating the SISeg model's robust adaptability and generalization in multi-modal tasks. The project page and code will be available at: [URL].",
+      "authors": [
+        {
+          "name": "Zhi Li",
+          "orgs": [
+            "Hangzhou Dianzi University, Hangzhou, China"
+          ]
+        },
+        {
+          "name": "Kai Zhao",
+          "orgs": [
+            "Department of Neurosurgery, First Medical Center, Chinese PLA General Hospital, Beijing, China"
+          ]
+        },
+        {
+          "name": "Yaqi Wang",
+          "orgs": [
+            "Communication University of Zhejiang, Hangzhou, China"
+          ]
+        },
+        {
+          "name": "Shuai Wang",
+          "orgs": [
+            "Hangzhou Dianzi University, Hangzhou, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2411.19447v1",
+      "date": "2024-11-29T03:08:28Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "1612.06259",
+      "score": 11.015213,
+      "title": "Photo-Quality Evaluation based on Computational Aesthetics: Review of Feature Extraction Techniques",
+      "tldr": "This paper reviews feature extraction techniques in Computational Aesthetics to evaluate photo quality, addressing the gap in systematically categorizing features by implementation complexity for real-world applications; it employs a taxonomy of features based on their technical difficulty and integrates machine learning results, contributing insights into feature effectiveness and highlighting unexplored areas for future research.",
+      "abstract": "Researchers try to model the aesthetic quality of photographs into low and high- level features, drawing inspiration from art theory, psychology and marketing. We attempt to describe every feature extraction measure employed in the above process. The contribution of this literature review is the taxonomy of each feature by its implementation complexity, considering real-world applications and integration in mobile apps and digital cameras. Also, we discuss the machine learning results along with some unexplored research areas as future work.",
+      "authors": [
+        {
+          "name": "Dimitris Spathis",
+          "orgs": [
+            "Department of Informatics, Aristotle University of Thessaloniki, Greece"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1612.06259v1",
+      "date": "2016-12-19T16:41:24Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1909.09414",
+      "score": 10.992006,
+      "title": "Weakly Supervised Semantic Segmentation Using Constrained Dominant Sets",
+      "tldr": "This paper addresses weakly supervised semantic segmentation by exploring Constrained Dominant Sets (CDS) for generating full mask predictions from scribbles, aiming to reduce the cost of pixel-level annotations; it proposes using CDS for multi-label segmentation and compares its performance with existing methods on PASCAL VOC 2012; experimental results show CDS yields higher-quality mask predictions compared to other techniques.",
+      "abstract": "The availability of large-scale data sets is an essential pre-requisite for deep learning based semantic segmentation schemes. Since obtaining pixel-level labels is extremely expensive, supervising deep semantic segmentation networks using low-cost weak annotations has been an attractive research problem in recent years. In this work, we explore the potential of Constrained Dominant Sets (CDS) for generating multi-labeled full mask predictions to train a fully convolutional network (FCN) for semantic segmentation. Our experimental results show that using CDS's yields higher-quality mask predictions compared to methods that have been adopted in the literature for the same purpose.",
+      "authors": [
+        {
+          "name": "Sinem Aslan",
+          "orgs": [
+            "DAIS, Ca' Foscari University of Venice, Italy",
+            "ECLT, Ca' Foscari University of Venice, Italy",
+            "International Computer Institute, Ege University, Izmir, Turkey"
+          ]
+        },
+        {
+          "name": "Marcello Pelillo",
+          "orgs": [
+            "DAIS, Ca' Foscari University of Venice, Italy",
+            "ECLT, Ca' Foscari University of Venice, Italy"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1909.09414v1",
+      "date": "2019-09-20T10:32:48Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2103.00741",
+      "score": 10.883478,
+      "title": "Deep Colormap Extraction from Visualizations",
+      "tldr": "This paper addresses the challenge of automatically extracting colormaps from visualizations, aiming to improve color design in data visualization by overcoming limitations of existing heuristic methods; it employs a deep neural network trained on a dataset of 64K visualizations, using an atrous spatial pyramid pooling module and refinement techniques to predict discrete or continuous colormaps, achieving superior performance on synthetic and real-world data; the method enables applications like color transfer and remapping, enhancing visualization analysis and design.",
+      "abstract": "This work presents a new approach based on deep learning to automatically extract colormaps from visualizations. After summarizing colors in an input visualization image as a Lab color histogram, we pass the histogram to a pre-trained deep neural network, which learns to predict the colormap that produces the visualization. To train the network, we create a new dataset of 64K visualizations that cover a wide variety of data distributions, chart types, and colormaps. The network adopts an atrous spatial pyramid pooling module to capture color features at multiple scales in the input color histograms. We then classify the predicted colormap as discrete or continuous and refine the predicted colormap based on its color histogram. Quantitative comparisons to existing methods show the superior performance of our approach on both synthetic and real-world visualizations. We further demonstrate the utility of our method with two use cases,i.e., color transfer and color remapping.",
+      "authors": [
+        {
+          "name": "Lin-Ping Yuan",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Wei Zeng",
+          "orgs": [
+            "Shenzhen Institutes of Advanced Technology, Chinese Academy of Sciences"
+          ]
+        },
+        {
+          "name": "Siwei Fu",
+          "orgs": [
+            "Zhejiang Lab"
+          ]
+        },
+        {
+          "name": "Zhiliang Zeng",
+          "orgs": [
+            "Chinese University of Hong Kong"
+          ]
+        },
+        {
+          "name": "Haotian Li",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Chi-Wing Fu",
+          "orgs": [
+            "Chinese University of Hong Kong"
+          ]
+        },
+        {
+          "name": "Huamin Qu",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2103.00741v1",
+      "date": "2021-03-01T04:15:37Z",
+      "citation_count": 25,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "1704.02492",
+      "score": 10.858842,
+      "title": "Metric Learning in Codebook Generation of Bag-of-Words for Person Re-identification",
+      "tldr": "This paper addresses person re-identification by integrating metric learning into codebook generation of Bag-of-Words models, aiming to improve discriminative feature representation; it uses Mahalanobis distance learning with KISSME to cluster visual words, introducing a novel approach that combines local and global metric learning; experiments show it outperforms state-of-the-art on VIPeR, PRID450S, and Market1501 benchmarks.",
+      "abstract": "Person re-identification is generally divided into two part: first how to represent a pedestrian by discriminative visual descriptors and second how to compare them by suitable distance metrics. Conventional methods isolate these two parts, the first part usually unsupervised and the second part supervised. The Bag-of-Words (BoW) model is a widely used image representing descriptor in part one. Its codebook is simply generated by clustering visual features in Euclidian space. In this paper, we propose to use part two metric learning techniques in the codebook generation phase of BoW. In particular, the proposed codebook is clustered under Mahalanobis distance which is learned supervised. Extensive experiments prove that our proposed method is effective. With several low level features extracted on superpixel and fused together, our method outperforms state-of-the-art on person re-identification benchmarks including VIPeR, PRID450S, and Market1501.",
+      "authors": [
+        {
+          "name": "Lu Tian",
+          "orgs": [
+            "Department of Electronic Engineering, Tsinghua University, Beijing, 100084 China"
+          ]
+        },
+        {
+          "name": "Shengjin Wang",
+          "orgs": [
+            "Department of Electronic Engineering, Tsinghua University, Beijing, 100084 China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1704.02492v2",
+      "date": "2017-04-08T13:11:12Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1406.4216",
+      "score": 7.683118,
+      "title": "Person Re-identification by Local Maximal Occurrence Representation and Metric Learning",
+      "tldr": "This paper addresses person re-identification, aiming to improve robustness against illumination and viewpoint changes, by proposing LOMO feature representation and XQDA metric learning, which achieve rank-1 identification rate improvements of 2.2%, 4.88%, 28.91%, and 31.55% on four databases.",
+      "abstract": "Person re-identification is an important technique towards automatic search of a person's presence in a surveillance video. Two fundamental problems are critical for person re-identification, feature representation and metric learning. An effective feature representation should be robust to illumination and viewpoint changes, and a discriminant metric should be learned to match various person images. In this paper, we propose an effective feature representation called Local Maximal Occurrence (LOMO), and a subspace and metric learning method called Cross-view Quadratic Discriminant Analysis (XQDA). The LOMO feature analyzes the horizontal occurrence of local features, and maximizes the occurrence to make a stable representation against viewpoint changes. Besides, to handle illumination variations, we apply the Retinex transform and a scale invariant texture operator. To learn a discriminant metric, we propose to learn a discriminant low dimensional subspace by cross-view quadratic discriminant analysis, and simultaneously, a QDA metric is learned on the derived subspace. We also present a practical computation method for XQDA, as well as its regularization. Experiments on four challenging person re-identification databases, VIPeR, QMUL GRID, CUHK Campus, and CUHK03, show that the proposed method improves the state-of-the-art rank-1 identification rates by 2.2%, 4.88%, 28.91%, and 31.55% on the four databases, respectively.",
+      "authors": [
+        {
+          "name": "Shengcai Liao",
+          "orgs": [
+            "Center for Biometrics and Security Research, National Laboratory of Pattern Recognition",
+            "Institute of Automation, Chinese Academy of Sciences"
+          ]
+        },
+        {
+          "name": "Yang Hu",
+          "orgs": [
+            "Center for Biometrics and Security Research, National Laboratory of Pattern Recognition",
+            "Institute of Automation, Chinese Academy of Sciences"
+          ]
+        },
+        {
+          "name": "Xiangyu Zhu",
+          "orgs": [
+            "Center for Biometrics and Security Research, National Laboratory of Pattern Recognition",
+            "Institute of Automation, Chinese Academy of Sciences"
+          ]
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Stan Z. Li",
+          "orgs": [
+            "Center for Biometrics and Security Research, National Laboratory of Pattern Recognition",
+            "Institute of Automation, Chinese Academy of Sciences, 95 Zhongguancun East Road, Beijing 100190, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1406.4216v2",
+      "date": "2014-06-17T01:53:37Z",
+      "citation_count": 18,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1004.5049",
+      "score": 7.240992,
+      "title": "The Burbea-Rao and Bhattacharyya centroids",
+      "tldr": "This paper studies Burbea-Rao and Bhattacharyya centroids in information theory, addressing the need for efficient computation of centroids in exponential families by linking them to Burbea-Rao divergences; it introduces skew Burbea-Rao divergences and an iterative algorithm for approximating centroids with guaranteed convergence; findings show the algorithm outperforms existing methods for multivariate Gaussians in clustering applications.",
+      "abstract": "We study the centroid with respect to the class of information-theoretic Burbea-Rao divergences that generalize the celebrated Jensen-Shannon divergence by measuring the non-negative Jensen difference induced by a strictly convex and differentiable function. Although those Burbea-Rao divergences are symmetric by construction, they are not metric since they fail to satisfy the triangle inequality. We first explain how a particular symmetrization of Bregman divergences called Jensen-Bregman distances yields exactly those Burbea-Rao divergences. We then proceed by defining skew Burbea-Rao divergences, and show that skew Burbea-Rao divergences amount in limit cases to compute Bregman divergences. We then prove that Burbea-Rao centroids are unique, and can be arbitrarily finely approximated by a generic iterative concave-convex optimization algorithm with guaranteed convergence property. In the second part of the paper, we consider the Bhattacharyya distance that is commonly used to measure overlapping degree of probability distributions. We show that Bhattacharyya distances on members of the same statistical exponential family amount to calculate a Burbea-Rao divergence in disguise. Thus we get an efficient algorithm for computing the Bhattacharyya centroid of a set of parametric distributions belonging to the same exponential families, improving over former specialized methods found in the literature that were limited to univariate or \"diagonal\" multivariate Gaussians. To illustrate the performance of our Bhattacharyya/Burbea-Rao centroid algorithm, we present experimental performance results for $k$-means and hierarchical clustering methods of Gaussian mixture models.",
+      "authors": [
+        {
+          "name": "Frank Nielsen",
+          "orgs": [
+            "Department of Fundamental Research of Sony Computer Science Laboratories, Inc., Tokyo, Japan",
+            "Computer Science Department (LIX) of École Polytechnique, Palaiseau, France"
+          ]
+        },
+        {
+          "name": "Sylvain Boltz",
+          "orgs": [
+            "Computer Science Department (LIX) of École Polytechnique, Palaiseau, France"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1004.5049v3",
+      "date": "2010-04-28T14:54:53Z",
+      "citation_count": 171,
+      "categories": [
+        "cs.CG",
+        "cs.IT",
+        "math.IT"
+      ]
+    }
+  ]
+}

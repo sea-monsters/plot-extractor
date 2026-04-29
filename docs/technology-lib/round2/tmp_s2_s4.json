@@ -1,0 +1,965 @@
+{
+  "status": "success",
+  "total_count": 74,
+  "result": [
+    {
+      "arxiv_id": "2105.02039",
+      "score": 10.900402,
+      "title": "Towards an efficient framework for Data Extraction from Chart Images",
+      "tldr": "This paper addresses the challenge of data extraction from chart images, aiming to improve accuracy in detecting plot elements and converting them into semantic data, as precise localization is critical for chart analysis; it employs deep learning methods, including a fully convolutional network with feature fusion for point detection and a similarity network for legend matching, contributing a robust framework with enhanced precision; experimental results show effective performance on real-world datasets, providing a baseline for future research.",
+      "abstract": "In this paper, we fill the research gap by adopting state-of-the-art computer vision techniques for the data extraction stage in a data mining system. As shown in Fig.1, this stage contains two subtasks, namely, plot element detection and data conversion. For building a robust box detector, we comprehensively compare different deep learning-based methods and find a suitable method to detect box with high precision. For building a robust point detector, a fully convolutional network with feature fusion module is adopted, which can distinguish close points compared to traditional methods. The proposed system can effectively handle various chart data without making heuristic assumptions. For data conversion, we translate the detected element into data with semantic value. A network is proposed to measure feature similarities between legends and detected elements in the legend matching phase. Furthermore, we provide a baseline on the competition of Harvesting raw tables from Infographics. Some key factors have been found to improve the performance of each stage. Experimental results demonstrate the effectiveness of the proposed system.",
+      "authors": [
+        {
+          "name": "Weihong Ma",
+          "orgs": []
+        },
+        {
+          "name": "Hesuo Zhang",
+          "orgs": []
+        },
+        {
+          "name": "Shuang Yan",
+          "orgs": []
+        },
+        {
+          "name": "Guangshun Yao",
+          "orgs": []
+        },
+        {
+          "name": "Yichao Huang",
+          "orgs": []
+        },
+        {
+          "name": "Hui Li",
+          "orgs": []
+        },
+        {
+          "name": "Yaqiang Wu",
+          "orgs": []
+        },
+        {
+          "name": "Lianwen Jin",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2105.02039v1",
+      "date": "2021-05-05T13:18:53Z",
+      "citation_count": 18,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1405.7626",
+      "score": 10.3570795,
+      "title": "Classification of Basmati Rice Grain Variety using Image Processing and Principal Component Analysis",
+      "tldr": "This paper addresses the classification of Basmati rice grain varieties, which is crucial for quality control and market differentiation, by proposing a Principal Component Analysis (PCA) based image processing approach, contributing a novel method for dimensionality reduction and feature extraction; experimental results show effective classification across various samples, implying practical utility in agricultural and food industry applications.",
+      "abstract": "All important decisions about the variety of rice grain end product are based on the different features of rice grain.There are various methods available for classification of basmati rice. This paper proposed a new principal component analysis based approach for classification of different variety of basmati rice. The experimental result shows the effectiveness of the proposed methodology for various samples of different variety of basmati rice.",
+      "authors": [
+        {
+          "name": "Rubi Kambo",
+          "orgs": [
+            "M.Tech Scholar, Department Of Computer Science and Engg., CSVTU University Rungta College of Engg. & Technology, Bhilai (C.G), INDIA"
+          ]
+        },
+        {
+          "name": "Amit Yerpude",
+          "orgs": [
+            "Associate Professor, Department Of Computer Science and Engg., CSVTU University Rungta College of Engg. & Technology, Bhilai (C.G), INDIA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1405.7626v1",
+      "date": "2014-05-29T17:41:06Z",
+      "citation_count": 46,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2509.15589",
+      "score": 10.3203335,
+      "title": "Process-Driven Visual Analysis of Cybersecurity Capture the Flag Exercises",
+      "tldr": "This paper presents a process-driven visual analysis framework for cybersecurity Capture the Flag (CTF) exercises, proposing an open-source dashboard that uses multivariate network visualizations and clustering to enhance learning analytics, addressing the challenge of analyzing complex trainee behavior in supervised CTF games; it introduces a method combining process mining with visual analytics to uncover behavioral patterns and improve training design; empirical results show the dashboard effectively reveals engagement issues and process variations, supporting better post-training analysis and design adjustments.",
+      "abstract": "Hands-on training sessions become a standard way to develop and increase knowledge in cybersecurity. As practical cybersecurity exercises are strongly process-oriented with knowledge-intensive processes, process mining techniques and models can help enhance learning analytics tools. The design of our open-source analytical dashboard is backed by guidelines for visualizing multivariate networks complemented with temporal views and clustering. The design aligns with the requirements for post-training analysis of a special subset of cybersecurity exercises -- supervised Capture the Flag games. Usability is demonstrated in a case study using trainees' engagement measurement to reveal potential flaws in training design or organization.",
+      "authors": [
+        {
+          "name": "Radek Ošlejšek",
+          "orgs": [
+            "Masaryk University, Faculty of Informatics, Botanicka 68a, Brno, 60200, Czech Republic"
+          ]
+        },
+        {
+          "name": "Radoslav Chudovsky",
+          "orgs": [
+            "Masaryk University, Faculty of Informatics, Botanicka 68a, Brno, 60200, Czech Republic"
+          ]
+        },
+        {
+          "name": "Martin Macak",
+          "orgs": [
+            "Masaryk University, Faculty of Informatics, Botanicka 68a, Brno, 60200, Czech Republic"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2509.15589v2",
+      "date": "2025-09-19T04:42:33Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2512.01017",
+      "score": 10.000196,
+      "title": "ChartAnchor: Chart Grounding with Structural-Semantic Fidelity",
+      "tldr": "This paper addresses the challenge of chart grounding in multimodal large language models (MLLMs), aiming to improve structured chart comprehension by evaluating both visual and numerical fidelity; it introduces ChartAnchor, a benchmark with 8k+ chart-table-code triples across 30 types, featuring two complementary tasks and a multi-level evaluation framework; experiments reveal critical limitations in numerical precision and code synthesis, highlighting the need for structured reasoning in MLLMs.",
+      "abstract": "Recent advances in multimodal large language models (MLLMs) highlight the need for benchmarks that rigorously evaluate structured chart comprehension. Chart grounding refers to the bidirectional alignment between a chart's visual appearance and its structured semantics. This task requires models to produce a symbolic specification that faithfully captures the chart's visual and structural intent, while also recovering the underlying tabular data with precise values and relationships. Chart grounding directly reflects a model's capabilities in numerical reasoning, multimodal alignment, and structural reconstruction, and has several important real-world applications. Existing benchmarks, constrained by narrow chart diversity, isolated tasks, and incomplete evaluation frameworks, fail to holistically assess grounding. To address this, we propose ChartAnchor, a comprehensive benchmark of 8k+ chart-table-code triples spanning 30 chart types drawn from diverse real-world and augmented sources. ChartAnchor introduces two complementary tasks: chart-to-code generation and controlled chart-to-table reconstruction, enabling cross-validation of visual and numerical fidelity. A multi-level evaluation framework integrates semantic validation, stylistic analysis, and perceptual metrics to assess both structural and content-level correctness. Extensive experiments on MLLMs reveal critical limitations in numerical precision and code synthesis, emphasizing the need for structured reasoning beyond surface-level perception. By unifying symbolic and data-driven grounding, ChartAnchor establishes a rigorous foundation for chart grounding, offering meaningful insights for advancing MLLMs in scientific, financial, and industrial domains.",
+      "authors": [
+        {
+          "name": "Xinhang Li",
+          "orgs": [
+            "Baidu Research",
+            "USTC"
+          ]
+        },
+        {
+          "name": "Jingbo Zhou",
+          "orgs": [
+            "Baidu Research",
+            "USTC"
+          ]
+        },
+        {
+          "name": "Tong Xu",
+          "orgs": [
+            "USTC"
+          ]
+        },
+        {
+          "name": "Pengfei Luo",
+          "orgs": [
+            "Baidu Research",
+            "USTC"
+          ]
+        },
+        {
+          "name": "Yixiong Xiao",
+          "orgs": [
+            "Baidu Research"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.01017v3",
+      "date": "2025-11-30",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI"
+      ]
+    },
+    {
+      "arxiv_id": "2406.09175",
+      "score": 9.962218,
+      "title": "ReMI: A Dataset for Reasoning with Multiple Images",
+      "tldr": "This paper introduces ReMI, a dataset for multi-image reasoning in LLMs, addressing the gap in evaluating multi-modal reasoning capabilities; it uses a comprehensive benchmark with 13 tasks across diverse domains and properties, contributing to understanding model strengths and weaknesses in multi-image reasoning; findings show substantial performance gaps between models and humans, with models performing better when images are processed separately.",
+      "abstract": "With the continuous advancement of large language models (LLMs), it is essential to create new benchmarks to effectively evaluate their expanding capabilities and identify areas for improvement. This work focuses on multi-image reasoning, an emerging capability in state-of-the-art LLMs. We introduce ReMI, a dataset designed to assess LLMs' ability to Reason with Multiple Images. This dataset encompasses a diverse range of tasks, spanning various reasoning domains such as math, physics, logic, code, table/chart understanding, and spatial and temporal reasoning. It also covers a broad spectrum of characteristics found in multi-image reasoning scenarios. We have benchmarked several cutting-edge LLMs using ReMI and found a substantial gap between their performance and human-level proficiency. This highlights the challenges in multi-image reasoning and the need for further research. Our analysis also reveals the strengths and weaknesses of different models, shedding light on the types of reasoning that are currently attainable and areas where future models require improvement. To foster further research in this area, we are releasing ReMI publicly: https://huggingface.co/datasets/mehrankazemi/ReMI.",
+      "authors": [
+        {
+          "name": "Mehran Kazemi",
+          "orgs": [
+            "Google DeepMind"
+          ]
+        },
+        {
+          "name": "Nishanth Dikkala",
+          "orgs": [
+            "Google Research"
+          ]
+        },
+        {
+          "name": "Ankit Anand",
+          "orgs": [
+            "Google DeepMind"
+          ]
+        },
+        {
+          "name": "Petar Devic",
+          "orgs": [
+            "Google"
+          ]
+        },
+        {
+          "name": "Ishita Dasgupta",
+          "orgs": [
+            "Google DeepMind"
+          ]
+        },
+        {
+          "name": "Fangyu Liu",
+          "orgs": [
+            "Google DeepMind"
+          ]
+        },
+        {
+          "name": "Bahare Fatemi",
+          "orgs": [
+            "Google Research"
+          ]
+        },
+        {
+          "name": "Pranjal Awasthi",
+          "orgs": [
+            "Google Research"
+          ]
+        },
+        {
+          "name": "Dee Guo",
+          "orgs": [
+            "Google Research"
+          ]
+        },
+        {
+          "name": "Sreenivas Gollapudi",
+          "orgs": [
+            "Google Research"
+          ]
+        },
+        {
+          "name": "Ahmed Qureshi",
+          "orgs": [
+            "Google"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2406.09175v1",
+      "date": "2024-06-13T14:37:04Z",
+      "citation_count": 27,
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2303.13798",
+      "score": 9.889155,
+      "title": "2D Floor Plan Segmentation Based on Down-sampling",
+      "tldr": "This paper addresses 2D floor plan segmentation in cluttered environments, aiming to improve computational efficiency and robustness for real-world applications; it introduces a down-sampling-based method with heuristic merging rules, offering a fast, automatic, and open-source solution; experimental results show effective segmentation on cluttered robot-generated maps and benchmarks.",
+      "abstract": "In recent years, floor plan segmentation has gained significant attention due to its wide range of applications in floor plan reconstruction and robotics. In this paper, we propose a novel 2D floor plan segmentation technique based on a down-sampling approach. Our method employs continuous down-sampling on a floor plan to maintain its structural information while reducing its complexity. We demonstrate the effectiveness of our approach by presenting results obtained from both cluttered floor plans generated by a vacuum cleaning robot in unknown environments and a benchmark of floor plans. Our technique considerably reduces the computational and implementation complexity of floor plan segmentation, making it more suitable for real-world applications. Additionally, we discuss the appropriate metric for evaluating segmentation results. Overall, our approach yields promising results for 2D floor plan segmentation in cluttered environments.",
+      "authors": [
+        {
+          "name": "Mohammadreza Sharif",
+          "orgs": [
+            "Neato Robotics, 50 Rio Robles, San Jose, CA"
+          ]
+        },
+        {
+          "name": "Kiran Mohan",
+          "orgs": [
+            "Neato Robotics, 50 Rio Robles, San Jose, CA"
+          ]
+        },
+        {
+          "name": "Sarath Suvarna",
+          "orgs": [
+            "Neato Robotics, 50 Rio Robles, San Jose, CA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2303.13798v1",
+      "date": "2023-03-24T04:39:50Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "1404.7748",
+      "score": 9.878584,
+      "title": "A graph-based mathematical morphology reader",
+      "tldr": "This survey provides a unified overview of graph-based mathematical morphology, reviewing key concepts and methods from diverse research, highlighting its active development and fragmented nature.",
+      "abstract": "This survey paper aims at providing a \"literary\" anthology of mathematical morphology on graphs. It describes in the English language many ideas stemming from a large number of different papers, hence providing a unified view of an active and diverse field of research.",
+      "authors": [
+        {
+          "name": "Laurent Najman",
+          "orgs": [
+            "Université Paris-Est",
+            "Laboratoire d'Informatique Gaspard-Monge",
+            "Équipe A3SI",
+            "ESIEE Paris"
+          ]
+        },
+        {
+          "name": "Jean Cousty",
+          "orgs": [
+            "Université Paris-Est",
+            "Laboratoire d'Informatique Gaspard-Monge",
+            "Équipe A3SI",
+            "ESIEE Paris"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1404.7748v1",
+      "date": "2014-04-30T14:54:19Z",
+      "citation_count": 49,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2202.09020",
+      "score": 9.852268,
+      "title": "A Comprehensive Survey with Quantitative Comparison of Image Analysis Methods for Microorganism Biovolume Measurements",
+      "tldr": "This survey provides a quantitative comparison of image analysis methods for microorganism biovolume measurements, reviewing 62 articles grouped by segmentation techniques, offering a systematic taxonomy and highlighting trends in digital image processing applications for microbial analysis.",
+      "abstract": "With the acceleration of urbanization and living standards, microorganisms play increasingly important roles in industrial production, bio-technique, and food safety testing. Microorganism biovolume measurements are one of the essential parts of microbial analysis. However, traditional manual measurement methods are time-consuming and challenging to measure the characteristics precisely. With the development of digital image processing techniques, the characteristics of the microbial population can be detected and quantified. The changing trend can be adjusted in time and provided a basis for the improvement. The applications of the microorganism biovolume measurement method have developed since the 1980s. More than 62 articles are reviewed in this study, and the articles are grouped by digital image segmentation methods with periods. This study has high research significance and application value, which can be referred to microbial researchers to have a comprehensive understanding of microorganism biovolume measurements using digital image analysis methods and potential applications.",
+      "authors": [
+        {
+          "name": "Jiawei Zhang",
+          "orgs": []
+        },
+        {
+          "name": "Chen Li",
+          "orgs": []
+        },
+        {
+          "name": "Md Mamunur Rahaman",
+          "orgs": []
+        },
+        {
+          "name": "Yudong Yao",
+          "orgs": []
+        },
+        {
+          "name": "Pingli Ma",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Jinghua Zhang",
+          "orgs": [
+            "1",
+            "5"
+          ]
+        },
+        {
+          "name": "Xin Zhao",
+          "orgs": [
+            "3"
+          ]
+        },
+        {
+          "name": "Marcin Grzegorzek",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2202.09020v2",
+      "date": "2022-02-18T04:58:04Z",
+      "citation_count": 16,
+      "categories": [
+        "cs.CV",
+        "eess.IV",
+        "q-bio.QM"
+      ]
+    },
+    {
+      "arxiv_id": "1307.6544",
+      "score": 9.846961,
+      "title": "Veni Vidi Vici, A Three-Phase Scenario For Parameter Space Analysis in Image Analysis and Visualization",
+      "tldr": "This paper addresses the challenge of parameter space analysis in image analysis, where algorithms are highly parameterized and lack standard visualization methods, impacting efficiency in biomedical research; it proposes an interactive visualization technique called Veni Vidi Vici, inspired by computable functions numbering, enabling users to explore parameter-output relationships; empirical results from a case study demonstrate its effectiveness in reducing user involvement and enhancing algorithm workflow understanding.",
+      "abstract": "Automatic analysis of the enormous sets of images is a critical task in life sciences. This faces many challenges such as: algorithms are highly parameterized, significant human input is intertwined, and lacking a standard meta-visualization approach. This paper proposes an alternative iterative approach for optimizing input parameters, saving time by minimizing the user involvement, and allowing for understanding the workflow of algorithms and discovering new ones. The main focus is on developing an interactive visualization technique that enables users to analyze the relationships between sampled input parameters and corresponding output. This technique is implemented as a prototype called Veni Vidi Vici, or \"I came, I saw, I conquered.\" This strategy is inspired by the mathematical formulas of numbering computable functions and is developed atop ImageJ, a scientific image processing program. A case study is presented to investigate the proposed framework. Finally, the paper explores some potential future issues in the application of the proposed approach in parameter space analysis in visualization.",
+      "authors": [
+        {
+          "name": "M. A. El-Dosuky",
+          "orgs": [
+            "Computer sciences Department, Faculty of Computers and Information, P.D.Box 35516, Mansoura University, Egypt"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1307.6544v1",
+      "date": "2013-07-17T04:49:24Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "0706.2788",
+      "score": 9.833436,
+      "title": "A Cosmic Watershed: the WVF Void Detection Technique",
+      "tldr": "This paper introduces the Watershed Void Finder (WVF), an objective void detection technique based on the watershed transform, designed to trace the hierarchical structure of voids in the Cosmic Web, addressing the challenge of identifying voids and their boundaries without prior assumptions about their shape or size, and demonstrating its ability to accurately retrieve void size and distribution in Voronoi models.",
+      "abstract": "On megaparsec scales the Universe is permeated by an intricate filigree of clusters, filaments, sheets and voids, the Cosmic Web. For the understanding of its dynamical and hierarchical history it is crucial to identify objectively its complex morphological components. One of the most characteristic aspects is that of the dominant underdense Voids, the product of a hierarchical process driven by the collapse of minor voids in addition to the merging of large ones. In this study we present an objective void finder technique which involves a minimum of assumptions about the scale, structure and shape of voids. Our void finding method, the Watershed Void Finder (WVF), is based upon the Watershed Transform, a well-known technique for the segmentation of images. Importantly, the technique has the potential to trace the existing manifestations of a void hierarchy. The basic watershed transform is augmented by a variety of correction procedures to remove spurious structure resulting from sampling noise. This study contains a detailed description of the WVF. We demonstrate how it is able to trace and identify, relatively parameter free, voids and their surrounding (filamentary and planar) boundaries. We test the technique on a set of Kinematic Voronoi models, heuristic spatial models for a cellular distribution of matter. Comparison of the WVF segmentations of low noise and high noise Voronoi models with the quantitatively known spatial characteristics of the intrinsic Voronoi tessellation shows that the size and shape of the voids are succesfully retrieved. WVF manages to even reproduce the full void size distribution function.",
+      "authors": [
+        {
+          "name": "Erwin Platen",
+          "orgs": [
+            "Kapteyn Astronomical Institute, University of Groningen, P.O. Box 800, 9700 AV, Groningen, The Netherlands"
+          ]
+        },
+        {
+          "name": "Rien van de Weygaert",
+          "orgs": [
+            "Kapteyn Astronomical Institute, University of Groningen, P.O. Box 800, 9700 AV, Groningen, The Netherlands"
+          ]
+        },
+        {
+          "name": "Bernard J.T. Jones",
+          "orgs": [
+            "Kapteyn Astronomical Institute, University of Groningen, P.O. Box 800, 9700 AV, Groningen, The Netherlands"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/0706.2788v1",
+      "date": "2007-06-19T14:05:42Z",
+      "citation_count": 225,
+      "categories": [
+        "astro-ph"
+      ]
+    },
+    {
+      "arxiv_id": "2407.14506",
+      "score": 9.719837,
+      "title": "On Pre-training of Multimodal Language Models Customized for Chart Understanding",
+      "tldr": "This paper addresses the challenge of improving Multimodal Large Language Models' (MLLMs) comprehension of scientific charts by addressing the gap between image-caption pre-training and chart-QA data, introducing CHOPINLLM with three key contributions: (1) incorporating raw data values in pre-training, (2) replacing images with text during fine-tuning to enhance reasoning, and (3) requiring data extraction before answering questions, achieving strong performance across annotated and unannotated charts.",
+      "abstract": "Recent studies customizing Multimodal Large Language Models (MLLMs) for domain-specific tasks have yielded promising results, especially in the field of scientific chart comprehension. These studies generally utilize visual instruction tuning with specialized datasets to enhance question and answer (QA) accuracy within the chart domain. However, they often neglect the fundamental discrepancy between natural image-caption pre-training data and digital chart image-QA data, particularly in the models' capacity to extract underlying numeric values from charts. This paper tackles this oversight by exploring the training processes necessary to improve MLLMs' comprehension of charts. We present three key findings: (1) Incorporating raw data values in alignment pre-training markedly improves comprehension of chart data. (2) Replacing images with their textual representation randomly during end-to-end fine-tuning transfer the language reasoning capability to chart interpretation skills. (3) Requiring the model to first extract the underlying chart data and then answer the question in the fine-tuning can further improve the accuracy. Consequently, we introduce CHOPINLLM, an MLLM tailored for in-depth chart comprehension. CHOPINLLM effectively interprets various types of charts, including unannotated ones, while maintaining robust reasoning abilities. Furthermore, we establish a new benchmark to evaluate MLLMs' understanding of different chart types across various comprehension levels. Experimental results show that CHOPINLLM exhibits strong performance in understanding both annotated and unannotated charts across a wide range of types.",
+      "authors": [
+        {
+          "name": "Wan-Cyuan Fan",
+          "orgs": [
+            "UBC",
+            "Vector Institute for AI",
+            "CIFAR AI Chair"
+          ]
+        },
+        {
+          "name": "Yen-Chun Chen",
+          "orgs": [
+            "Microsoft"
+          ]
+        },
+        {
+          "name": "Mengchen Liu",
+          "orgs": [
+            "Microsoft"
+          ]
+        },
+        {
+          "name": "Lu Yuan",
+          "orgs": [
+            "Microsoft"
+          ]
+        },
+        {
+          "name": "Leonid Sigal",
+          "orgs": [
+            "UBC",
+            "Vector Institute for AI",
+            "CIFAR AI Chair"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2407.14506v3",
+      "date": "2024-07-19T17:58:36Z",
+      "citation_count": 14,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1502.05906",
+      "score": 9.690598,
+      "title": "Converting ECG and other paper legated biomedical maps into digital signals",
+      "tldr": "This paper presents a Matlab-based digital signal processing tool for converting legated paper biomedical maps, such as ECG and EEG, into digital signals at low cost, addressing the gap in affordable analog-to-digital conversion for legacy medical data; the proposed method enables efficient digitization of analog biomedical signals without dedicated hardware, contributing a software-based solution for modernizing medical facilities; empirical results show fast and effective digitalization of ECG and EEG charts, enhancing patient data management and accessibility.",
+      "abstract": "This paper presents a digital signal processing tool developed using MatlabTM, which provides a very low-cost and effective strategy for analog-to-digital conversion of legated paper biomedical maps without requiring dedicated hardware. This software-based approach is particularly helpful for digitalizing biomedical signals acquired from analogical devices equipped with a plottingter. Albeit signals used in biomedical diagnosis are the primary concern, this imaging processing tool is suitable to modernize facilities in a non-expensive way. Legated paper ECG and EEG charts can be fast and efficiently digitalized in order to be added in existing up-to-date medical data banks, improving the follow-up of patients.",
+      "authors": [
+        {
+          "name": "A.R. Gomes e Silva",
+          "orgs": [
+            "Federal University of Pernambuco - UFPE",
+            "Signal Processing Group"
+          ]
+        },
+        {
+          "name": "H.M. de Oliveira",
+          "orgs": [
+            "Federal University of Pernambuco - UFPE",
+            "Signal Processing Group"
+          ]
+        },
+        {
+          "name": "R.D. Lins",
+          "orgs": [
+            "Federal University of Pernambuco - UFPE",
+            "Signal Processing Group"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1502.05906v2",
+      "date": "2015-02-20T15:35:27Z",
+      "citation_count": 14,
+      "categories": [
+        "cs.OH"
+      ]
+    },
+    {
+      "arxiv_id": "2509.14989",
+      "score": 9.619814,
+      "title": "UCorr: Wire Detection and Depth Estimation for Autonomous Drones",
+      "tldr": "This paper addresses the challenge of wire detection and depth estimation for autonomous drones, aiming to enhance safety in complex environments by improving obstacle avoidance; it introduces UCorr, a monocular end-to-end model with a temporal correlation layer, which outperforms existing methods and introduces a novel depth evaluation metric; empirical results show superior performance in wire detection and depth estimation, with implications for safer and more efficient drone navigation.",
+      "abstract": "In the realm of fully autonomous drones, the accurate detection of obstacles is paramount to ensure safe navigation and prevent collisions. Among these challenges, the detection of wires stands out due to their slender profile, which poses a unique and intricate problem. To address this issue, we present an innovative solution in the form of a monocular end-to-end model for wire segmentation and depth estimation. Our approach leverages a temporal correlation layer trained on synthetic data, providing the model with the ability to effectively tackle the complex joint task of wire detection and depth estimation. We demonstrate the superiority of our proposed method over existing competitive approaches in the joint task of wire detection and depth estimation. Our results underscore the potential of our model to enhance the safety and precision of autonomous drones, shedding light on its promising applications in real-world scenarios.",
+      "authors": [
+        {
+          "name": "Benedikt Kolbeinsson",
+          "orgs": [
+            "Imperial College London"
+          ]
+        },
+        {
+          "name": "Krystian Mikolajczyk",
+          "orgs": [
+            "Imperial College London"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2509.14989v1",
+      "date": "2025-09-18T14:21:52Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2603.14209",
+      "score": 9.570202,
+      "title": "ChArtist: Generating Pictorial Charts with Unified Spatial and Subject Control",
+      "tldr": "This paper presents ChArtist, a domain-specific diffusion model for generating pictorial charts that addresses the challenge of balancing data faithfulness and visual aesthetics in chart creation, by introducing spatial and subject-driven control mechanisms; it employs a skeleton-based representation and Spatially-Gated Attention to enhance control interaction, and introduces CHARTIST-30K, a dataset of 30,000 triplets, along with a unified data accuracy metric to evaluate generated charts.",
+      "abstract": "A pictorial chart is an effective medium for visual storytelling, seamlessly integrating visual elements with data charts. However, creating such images is challenging because the flexibility of visual elements often conflicts with the rigidity of chart structures. This process thus requires a creative deformation that maintains both data faithfulness and visual aesthetics. Current methods that extract dense structural cues from natural images (e.g., edge or depth maps) are ill-suited as conditioning signals for pictorial chart generation. We present ChArtist, a domain-specific diffusion model for generating pictorial charts automatically, offering two distinct types of control: 1) spatial control that aligns well with the chart structure, and 2) subject-driven control that respects the visual characteristics of a reference image. To achieve this, we introduce a skeleton-based spatial control representation. This representation encodes only the data-encoding information of the chart, allowing for the easy incorporation of reference visuals without a rigid outline constraint. We implement our method based on the Diffusion Transformer (DiT) and leverage an adaptive position encoding mechanism to manage these two controls. We further introduce Spatially Gated Attention to modulate the interaction between spatial control and subject control. To support the fine-tuning of pre-trained models for this task, we created a large-scale dataset of 30,000 triplets (skeleton, reference image, pictorial chart). We also propose a unified data accuracy metric to evaluate the data faithfulness of the generated charts. We believe this work demonstrates that current generative models can achieve data-driven visual storytelling by moving beyond general-purpose conditions to task-specific representations. Project page: https://chartist-ai.github.io/.",
+      "authors": [
+        {
+          "name": "Shishi Xiao",
+          "orgs": [
+            "Brown University"
+          ]
+        },
+        {
+          "name": "Tongyu Zhou",
+          "orgs": [
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "David H. Laidlaw",
+          "orgs": [
+            "Brown University"
+          ]
+        },
+        {
+          "name": "Gromit Yeuk-Yin Chan",
+          "orgs": [
+            "Adobe Research"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2603.14209v1",
+      "date": "2026-03-15",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2510.08449",
+      "score": 9.516673,
+      "title": "Hierarchical Spatial Algorithms for High-Resolution Image Quantization and Feature Extraction",
+      "tldr": "This paper presents a hierarchical spatial image processing framework for high-resolution image quantization and feature extraction, addressing the need for deterministic and efficient preprocessing in computer vision by introducing grayscale quantization, color enhancement, sharpening, and geometric feature extraction techniques; it employs stepwise intensity transformation, histogram equalization in RGB and YCrCb color spaces, 3×3 convolution kernels, and bidirectional pipelines achieving 76.10% and 74.80% accuracy; the framework demonstrates robust performance with 81.87% similarity in cue isolation tasks.",
+      "abstract": "This study introduces a modular framework for spatial image processing, integrating grayscale quantization, color and brightness enhancement, image sharpening, bidirectional transformation pipelines, and geometric feature extraction. A stepwise intensity transformation quantizes grayscale images into eight discrete levels, producing a posterization effect that simplifies representation while preserving structural detail. Color enhancement is achieved via histogram equalization in both RGB and YCrCb color spaces, with the latter improving contrast while maintaining chrominance fidelity. Brightness adjustment is implemented through HSV value-channel manipulation, and image sharpening is performed using a 3 * 3 convolution kernel to enhance high-frequency details. A bidirectional transformation pipeline that integrates unsharp masking, gamma correction, and noise amplification achieved accuracy levels of 76.10% and 74.80% for the forward and reverse processes, respectively. Geometric feature extraction employed Canny edge detection, Hough-based line estimation (e.g., 51.50{\\\\deg} for billiard cue alignment), Harris corner detection, and morphological window localization. Cue isolation further yielded 81.87\\\\% similarity against ground truth images. Experimental evaluation across diverse datasets demonstrates robust and deterministic performance, highlighting its potential for real-time image analysis and computer vision.",
+      "authors": [
+        {
+          "name": "Noor Islam S. Mohammad",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2510.08449v1",
+      "date": "2025-10-09",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1210.5856",
+      "score": 9.485015,
+      "title": "Digitization of Sp\\\"orer's sunspot drawings",
+      "tldr": "This paper digitizes and processes Spörer's sunspot drawings to address the gap in historical solar dynamo data, employing geometrical correction and morphological image processing to enable precise position determination, area measurement, and tilt angle analysis of active regions over 450 solar rotation periods, contributing to improved understanding of solar activity patterns.",
+      "abstract": "Much of our knowledge about the solar dynamo is based on sunspot observations. It is thus desirable to extend the set of positional and morphological data of sunspots into the past. Gustav Sp\\\"orer observed in Germany from Anklam (1861-1873) and Potsdam (1874-1894). He left detailed prints of sunspot groups, which we digitized and processed to mitigate artifacts left in the print by the passage of time. After careful geometrical correction, the sunspot data are now available as synoptic charts for almost 450 solar rotation periods. Individual sunspot positions can thus be precisely determined and spot areas can be accurately measured using morphological image processing techniques. These methods also allow us to determine tilt angles of active regions (Joy's law) and to assess the complexity of an active region.",
+      "authors": [
+        {
+          "name": "Andrea Diercke",
+          "orgs": [
+            "Leibniz-Institut für Astrophysik Potsdam",
+            "Institut für Physik und Astronomie, Universität Potsdam"
+          ]
+        },
+        {
+          "name": "Rainer Arlt",
+          "orgs": [
+            "Leibniz-Institut für Astrophysik Potsdam"
+          ]
+        },
+        {
+          "name": "Carsten Denker",
+          "orgs": [
+            "Leibniz-Institut für Astrophysik Potsdam"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1210.5856v1",
+      "date": "2012-10-22T10:13:03Z",
+      "citation_count": 1,
+      "categories": [
+        "astro-ph.SR"
+      ]
+    },
+    {
+      "arxiv_id": "1709.05495",
+      "score": 9.4746275,
+      "title": "The Multiscale Bowler-Hat Transform for Blood Vessel Enhancement in Retinal Images",
+      "tldr": "This paper proposes the Multiscale Bowler-Hat Transform for enhancing blood vessels in retinal images, addressing the challenge of robust vessel detection in noisy and low-contrast scenarios, which is critical for retinopathy diagnosis; the method combines mathematical morphology with multiscale structuring elements to detect vessel-like structures, introducing a novel enhancement approach without prior training; experimental results show high-quality vessel enhancement on synthetic and real retinal datasets, demonstrating its effectiveness in detecting fine vessels while maintaining robustness at junctions.",
+      "abstract": "Enhancement, followed by segmentation, quantification and modelling, of blood vessels in retinal images plays an essential role in computer-aid retinopathy diagnosis. In this paper, we introduce a new vessel enhancement method which is the bowler-hat transform based on mathematical morphology. The proposed method combines different structuring elements to detect innate features of vessel-like structures. We evaluate the proposed method qualitatively and quantitatively, and compare it with the existing, state-of-the-art methods using both synthetic and real datasets. Our results show that the proposed method achieves high-quality vessel-like structure enhancement in both synthetic examples and in clinically relevant retinal images, and is shown to be able to detect fine vessels while remaining robust at junctions.",
+      "authors": [
+        {
+          "name": "Cigdem Sazak",
+          "orgs": [
+            "Department of Computer Science Durham University, UK"
+          ]
+        },
+        {
+          "name": "Carl J. Nelson",
+          "orgs": [
+            "School of Physics and Astronomy Glasgow University, UK"
+          ]
+        },
+        {
+          "name": "Boguslaw Obara",
+          "orgs": [
+            "Department of Computer Science Durham University, UK"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1709.05495v3",
+      "date": "2017-09-16T11:00:33Z",
+      "citation_count": 71,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1612.07003",
+      "score": 9.455343,
+      "title": "Image biomarker standardisation initiative",
+      "tldr": "This paper addresses the lack of consensus guidelines for high-throughput image biomarker extraction by providing standardised nomenclature, benchmark datasets, and processing schemes, enabling reproducible radiomic analysis with defined feature calculation methods and reference values.",
+      "abstract": "The image biomarker standardisation initiative (IBSI) is an independent international collaboration which works towards standardising the extraction of image biomarkers from acquired imaging for the purpose of high-throughput quantitative image analysis (radiomics). Lack of reproducibility and validation of high-throughput quantitative image analysis studies is considered to be a major challenge for the field. Part of this challenge lies in the scantiness of consensus-based guidelines and definitions for the process of translating acquired imaging into high-throughput image biomarkers. The IBSI therefore seeks to provide image biomarker nomenclature and definitions, benchmark data sets, and benchmark values to verify image processing and image biomarker calculations, as well as reporting guidelines, for high-throughput image analysis.",
+      "authors": [],
+      "url": "https://arxiv.org/pdf/1612.07003v11",
+      "date": "2016-12-21T08:04:31Z",
+      "citation_count": 2578,
+      "categories": [
+        "cs.CV",
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "1907.04112",
+      "score": 9.383909,
+      "title": "Multiscale Visual Drilldown for the Analysis of Large Ensembles of Multi-Body Protein Complexes",
+      "tldr": "This paper presents a multiscale visual drilldown approach for analyzing large ensembles of multi-body protein complexes, addressing the challenge of efficiently exploring and filtering thousands of possible spatial configurations, which is critical for understanding protein function and interactions; the proposed method uses interactively linked 2D and 3D views across hierarchy levels with selection/filtering operations and a dedicated filter interface to track and revert exploration steps; results show effective exploration on case studies conducted with proteomic experts.",
+      "abstract": "When studying multi-body protein complexes, biochemists use computational tools that can suggest hundreds or thousands of their possible spatial configurations. However, it is not feasible to experimentally verify more than only a very small subset of them. In this paper, we propose a novel multiscale visual drilldown approach that was designed in tight collaboration with proteomic experts, enabling a systematic exploration of the configuration space. Our approach takes advantage of the hierarchical structure of the data -- from the whole ensemble of protein complex configurations to the individual configurations, their contact interfaces, and the interacting amino acids. Our new solution is based on interactively linked 2D and 3D views for individual hierarchy levels and at each level, we offer a set of selection and filtering operations enabling the user to narrow down the number of configurations that need to be manually scrutinized. Furthermore, we offer a dedicated filter interface, which provides the users with an overview of the applied filtering operations and enables them to examine their impact on the explored ensemble. This way, we maintain the history of the exploration process and thus enable the user to return to an earlier point of the exploration. We demonstrate the effectiveness of our approach on two case studies conducted by collaborating proteomic experts.",
+      "authors": [
+        {
+          "name": "Katarína Furmanová",
+          "orgs": []
+        },
+        {
+          "name": "Adam Jurčík",
+          "orgs": []
+        },
+        {
+          "name": "Barbora Kozlíková",
+          "orgs": []
+        },
+        {
+          "name": "Helwig Hauser",
+          "orgs": []
+        },
+        {
+          "name": "Jan Byška",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1907.04112v1",
+      "date": "2019-07-09T12:31:31Z",
+      "citation_count": 5,
+      "categories": [
+        "cs.HC",
+        "q-bio.BM"
+      ]
+    },
+    {
+      "arxiv_id": "2408.03503",
+      "score": 9.298983,
+      "title": "Opening the Black Box of 3D Reconstruction Error Analysis with VECTOR",
+      "tldr": "This paper addresses the challenge of 3D reconstruction error analysis in stereo reconstruction bundle adjustment, aiming to improve error inspection for terrain reconstruction in space exploration; it introduces VECTOR, a visual analysis tool developed with NASA JPL to debug and enhance Mars 2020 mission terrain reconstructions by providing visibility into feature locations, camera poses, and 3D points.",
+      "abstract": "Reconstruction of 3D scenes from 2D images is a technical challenge that impacts domains from Earth and planetary sciences and space exploration to augmented and virtual reality. Typically, reconstruction algorithms first identify common features across images and then minimize reconstruction errors after estimating the shape of the terrain. This bundle adjustment (BA) step optimizes around a single, simplifying scalar value that obfuscates many possible causes of reconstruction errors (e.g., initial estimate of the position and orientation of the camera, lighting conditions, ease of feature detection in the terrain). Reconstruction errors can lead to inaccurate scientific inferences or endanger a spacecraft exploring a remote environment. To address this challenge, we present VECTOR, a visual analysis tool that improves error inspection for stereo reconstruction BA. VECTOR provides analysts with previously unavailable visibility into feature locations, camera pose, and computed 3D points. VECTOR was developed in partnership with the Perseverance Mars Rover and Ingenuity Mars Helicopter terrain reconstruction team at the NASA Jet Propulsion Laboratory. We report on how this tool was used to debug and improve terrain reconstruction for the Mars 2020 mission.",
+      "authors": [
+        {
+          "name": "Racquel Fygenson",
+          "orgs": [
+            "Northeastern University"
+          ]
+        },
+        {
+          "name": "Kazi Jawad",
+          "orgs": [
+            "Wētā FX"
+          ]
+        },
+        {
+          "name": "Isabel Li",
+          "orgs": [
+            "Art Center College of Design"
+          ]
+        },
+        {
+          "name": "Francois Ayoub",
+          "orgs": [
+            "Jet Propulsion Laboratory",
+            "California Institute of Technology"
+          ]
+        },
+        {
+          "name": "Robert G. Deen",
+          "orgs": [
+            "Jet Propulsion Laboratory",
+            "California Institute of Technology"
+          ]
+        },
+        {
+          "name": "Scott Davidoff",
+          "orgs": [
+            "Jet Propulsion Laboratory",
+            "California Institute of Technology"
+          ]
+        },
+        {
+          "name": "Dominik Moritz",
+          "orgs": [
+            "Carnegie Mellon University"
+          ]
+        },
+        {
+          "name": "Mauricio Hess-Flores",
+          "orgs": [
+            "Jet Propulsion Laboratory",
+            "California Institute of Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2408.03503v1",
+      "date": "2024-08-07T02:03:32Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2009.03115",
+      "score": 9.273787,
+      "title": "Githru: Visual Analytics for Understanding Software Development History Through Git Metadata Analysis",
+      "tldr": "This paper presents Githru, an interactive visual analytics system for understanding software development history through Git metadata analysis, addressing the gap in scalable and effective tools for exploring large Git commit graphs; it proposes novel techniques including graph reconstruction, clustering, and Context-Preserving Squash Merge to abstract Git graphs and provides interactive views for overview and comparison; results show improved task completion time compared to existing tools in user studies.",
+      "abstract": "Git metadata contains rich information for developers to understand the overall context of a large software development project. Thus it can help new developers, managers, and testers understand the history of development without needing to dig into a large pile of unfamiliar source code. However, the current tools for Git visualization are not adequate to analyze and explore the metadata: They focus mainly on improving the usability of Git commands instead of on helping users understand the development history. Furthermore, they do not scale for large and complex Git commit graphs, which can play an important role in understanding the overall development history. In this paper, we present Githru, an interactive visual analytics system that enables developers to effectively understand the context of development history through the interactive exploration of Git metadata. We design an interactive visual encoding idiom to represent a large Git graph in a scalable manner while preserving the topological structures in the Git graph. To enable scalable exploration of a large Git commit graph, we propose novel techniques (graph reconstruction, clustering, and Context-Preserving Squash Merge (CSM) methods) to abstract a large-scale Git commit graph. Based on these Git commit graph abstraction techniques, Githru provides an interactive summary view to help users gain an overview of the development history and a comparison view in which users can compare different clusters of commits. The efficacy of Githru has been demonstrated by case studies with domain experts using real-world, in-house datasets from a large software development team at a major international IT company. A controlled user study with 12 developers comparing Githru to previous tools also confirms the effectiveness of Githru in terms of task completion time.",
+      "authors": [
+        {
+          "name": "Youngtaek Kim",
+          "orgs": []
+        },
+        {
+          "name": "Jaeyoung Kim",
+          "orgs": []
+        },
+        {
+          "name": "Hyeon Jeon",
+          "orgs": []
+        },
+        {
+          "name": "Young-Ho Kim",
+          "orgs": []
+        },
+        {
+          "name": "Hyunjoo Song",
+          "orgs": []
+        },
+        {
+          "name": "Bohyoung Kim",
+          "orgs": []
+        },
+        {
+          "name": "Jinwook Seo",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2009.03115v2",
+      "date": "2020-09-07T14:06:59Z",
+      "citation_count": 33,
+      "categories": [
+        "cs.HC",
+        "cs.SE"
+      ]
+    },
+    {
+      "arxiv_id": "2501.04424",
+      "score": 9.256348,
+      "title": "NSA: Neuro-symbolic ARC Challenge",
+      "tldr": "This paper proposes a neuro-symbolic approach combining a transformer for proposal generation with combinatorial search using an extended domain-specific language to address the ARC challenge, where current ML and combinatorial methods fall short; the method surpasses state-of-the-art results by 27% on the ARC evaluation set and demonstrates effective solution finding through transformer-guided search; the findings highlight the potential of integrating ML and symbolic reasoning for complex visual reasoning tasks.",
+      "abstract": "The Abstraction and Reasoning Corpus (ARC) evaluates general reasoning capabilities that are difficult for both machine learning models and combinatorial search methods. We propose a neuro-symbolic approach that combines a transformer for proposal generation with combinatorial search using a domain-specific language. The transformer narrows the search space by proposing promising search directions, which allows the combinatorial search to find the actual solution in short time. We pre-train the trainsformer with synthetically generated data. During test-time we generate additional task-specific training tasks and fine-tune our model. Our results surpass comparable state of the art on the ARC evaluation set by 27% and compare favourably on the ARC train set. We make our code and dataset publicly available at https://github.com/Batorskq/NSA.",
+      "authors": [
+        {
+          "name": "Paweł Batorski",
+          "orgs": [
+            "Heinrich Heine Universität Düsseldorf"
+          ]
+        },
+        {
+          "name": "Jannik Brinkmann",
+          "orgs": [
+            "University of Mannheim"
+          ]
+        },
+        {
+          "name": "Paul Swoboda",
+          "orgs": [
+            "Heinrich Heine Universität Düsseldorf"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2501.04424v1",
+      "date": "2025-01-08T11:17:40Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2507.09713",
+      "score": 9.24918,
+      "title": "A New Wireless Image Transmission System Using Code Index Modulation and Image Enhancement for High-Rate Next Generation Networks",
+      "tldr": "This paper addresses the challenge of high-rate and reliable wireless image transmission in next-generation networks by proposing a CIM-IT system that uses code index modulation and QAM for improved spectral efficiency, energy efficiency, and lower bit error rate compared to traditional systems, with significant image enhancement filters applied to mitigate channel degradation.",
+      "abstract": "With the development of wireless network technologies, the wireless image transmission area has become prominent. The need for high resolution, data traffic density, widespread use of multimedia applications, and the importance of high rate and reliable image transmission in medical and military fields necessitate the design of novel and high-performance wireless image transmission systems. This paper proposes a code index modulation (CIM)-based image transmission (CIM-IT) system that utilizes spreading code index and quadrature amplitude modulation (QAM) symbol for image transmission over a wireless channel. The proposed CIM-IT system maps bits to each pixel value of the image to be transmitted and transmits these bits over a wireless channel using a single-input and multiple-output system comprising code index modulation and QAM techniques. At the receiver, the active spreading code index and the selected QAM symbol are estimated using a despreading-based maximum likelihood detector, and the corresponding bits are obtained. The image conveyed from the transmitter is then reconstructed at the receiver side using the pixel values corresponding to the bits. The obtained noisy image is enhanced using important enhancement filters. In addition, an advanced filter is proposed to improve the transmitted degraded image with optimum results. Furthermore, error performance, spectral efficiency, energy efficiency, and throughputof the CIM-IT system are performed and the results are compared with traditional wireless communication techniques.",
+      "authors": [
+        {
+          "name": "Burak Ahmet Ozden",
+          "orgs": [
+            "Department of Electrical and Electronics Engineering, Istanbul Medeniyet University, Uskudar, 34857, Istanbul, Turkey",
+            "Department of Computer Engineering, Yildiz Technical University, Davutpasa, 34220, Istanbul, Turkey"
+          ]
+        },
+        {
+          "name": "Erdogan Aydin",
+          "orgs": [
+            "Department of Electrical and Electronics Engineering, Istanbul Medeniyet University, Uskudar, 34857, Istanbul, Turkey"
+          ]
+        },
+        {
+          "name": "Ahmet Elbir",
+          "orgs": [
+            "Department of Computer Engineering, Yildiz Technical University, Davutpasa, 34220, Istanbul, Turkey"
+          ]
+        },
+        {
+          "name": "Filiz Gurkan",
+          "orgs": [
+            "Department of Electrical and Electronics Engineering, Istanbul Medeniyet University, Uskudar, 34857, Istanbul, Turkey"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2507.09713v1",
+      "date": "2025-07-13T17:16:13Z",
+      "citation_count": 2,
+      "categories": [
+        "eess.SP"
+      ]
+    },
+    {
+      "arxiv_id": "2010.03378",
+      "score": 9.2304945,
+      "title": "Descriptive analysis of computational methods for automating mammograms with practical applications",
+      "tldr": "This paper addresses the challenge of improving breast cancer detection through computational methods for mammogram analysis, focusing on automation and practical applications; it employs image preprocessing, feature extraction, and benchmark corpora development to enhance accuracy and efficiency in mammography; findings highlight the importance of these techniques in advancing medical imaging research and clinical practice.",
+      "abstract": "Mammography is a vital screening technique for early revealing and identification of breast cancer in order to assist to decrease mortality rate. Practical applications of mammograms are not limited to breast cancer revealing, identification ,but include task based lens design, image compression, image classification, content based image retrieval and a host of others. Mammography computational analysis methods are a useful tool for specialists to reveal hidden features and extract significant information in mammograms. Digital mammograms are mammography images available along with the conventional screen-film mammography to make automation of mammograms easier. In this paper, we descriptively discuss computational advancement in digital mammograms to serve as a compass for research and practice in the domain of computational mammography and related fields. The discussion focuses on research aiming at a variety of applications and automations of mammograms. It covers different perspectives on image pre-processing, feature extraction, application of mammograms, screen-film mammogram, digital mammogram and development of benchmark corpora for experimenting with digital mammograms.",
+      "authors": [
+        {
+          "name": "A. Bhale",
+          "orgs": [
+            "Transcend Research Consultancy, Pune, Maharashtra, India"
+          ]
+        },
+        {
+          "name": "M. Joshi",
+          "orgs": [
+            "School of Computer Sciences, North Maharashtra University, Jalgaon, Maharashtra, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2010.03378v1",
+      "date": "2020-10-06T05:40:26Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV",
+        "cs.LG",
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "1507.07096",
+      "score": 5.9810514,
+      "title": "Thinning Algorithm Using Hypergraph Based Morphological Operators",
+      "tldr": "This paper addresses the challenge of line object recognition in image processing by introducing a hypergraph-based morphological thinning algorithm, which improves skeleton accuracy through novel dilation, erosion, opening, and closing operations, contributing a new method for noise reduction and error prevention in image preprocessing.",
+      "abstract": "The object recognition is a complex problem in the image processing. Mathematical morphology is Shape oriented operations, that simplify image data, preserving their essential shape characteristics and eliminating irrelevancies. This paper briefly describes morphological operators using hypergraph and its applications for thinning algorithms. The morphological operators using hypergraph method is used to preventing errors and irregularities in skeleton, and is an important step recognizing line objects. The morphological operators using hypergraph such as dilation, erosion, opening, closing is a novel approach in image processing and it act as a filter remove the noise and errors in the images.",
+      "authors": [
+        {
+          "name": "R. P. Prakash",
+          "orgs": [
+            "Computer Science and Engineering",
+            "College Of Engineering",
+            "Karunagappally, India"
+          ]
+        },
+        {
+          "name": "Keerthana S. Prakash",
+          "orgs": [
+            "Computer Science and Engineering",
+            "College Of Engineering",
+            "Karunagappally, India"
+          ]
+        },
+        {
+          "name": "V. P. Binu",
+          "orgs": [
+            "Computer Science and Engineering",
+            "College Of Engineering",
+            "Karunagappally, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1507.07096v1",
+      "date": "2015-07-25T11:50:11Z",
+      "citation_count": 5,
+      "categories": [
+        "cs.CV"
+      ]
+    }
+  ]
+}

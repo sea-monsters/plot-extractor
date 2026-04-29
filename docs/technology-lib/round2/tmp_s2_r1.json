@@ -1,0 +1,752 @@
+{
+  "status": "success",
+  "total_count": 57,
+  "result": [
+    {
+      "arxiv_id": "1802.05902",
+      "score": 12.419493,
+      "title": "A complete hand-drawn sketch vectorization framework",
+      "tldr": "This paper addresses the challenge of vectorizing hand-drawn sketches for fashion and creative workflows, proposing a complete framework that outperforms state-of-the-art methods by using a multi-resolution Pearson's cross correlation line extraction and an unbiased thinning algorithm, leading to precise 1-pixel lines and fewer control points in Bezier splines, with feedback from Adidas designers confirming its efficiency and accuracy.",
+      "abstract": "Vectorizing hand-drawn sketches is a challenging task, which is of paramount importance for creating CAD vectorized versions for the fashion and creative workflows. This paper proposes a complete framework that automatically transforms noisy and complex hand-drawn sketches with different stroke types in a precise, reliable and highly-simplified vectorized model. The proposed framework includes a novel line extraction algorithm based on a multi-resolution application of Pearson's cross correlation and a new unbiased thinning algorithm that can get rid of scribbles and variable-width strokes to obtain clean 1-pixel lines. Other contributions include variants of pruning, merging and edge linking procedures to post-process the obtained paths. Finally, a modification of the original Schneider's vectorization algorithm is designed to obtain fewer control points in the resulting Bezier splines. All the proposed steps of the framework have been extensively tested and compared with state-of-the-art algorithms, showing (both qualitatively and quantitatively) its outperformance.",
+      "authors": [
+        {
+          "name": "Luca Donati",
+          "orgs": [
+            "University of Parma",
+            "Parco Area delle Scienze, 181/A, Parma, 43124, Italy"
+          ]
+        },
+        {
+          "name": "Simone Cesano",
+          "orgs": [
+            "Adidas AG",
+            "Adi-Dassler-Strasse 1, Herzogenaurach, 91074, Germany"
+          ]
+        },
+        {
+          "name": "Andrea Prati",
+          "orgs": [
+            "University of Parma",
+            "Parco Area delle Scienze, 181/A, Parma, 43124, Italy"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1802.05902v1",
+      "date": "2018-02-16T11:47:05Z",
+      "citation_count": 29,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1601.04699",
+      "score": 12.112199,
+      "title": "Topology-faithful nonparametric estimation and tracking of bulk interface networks",
+      "tldr": "This paper presents a nonparametric filtering technique for estimating interface geometry in bulk materials, addressing the need for explicit treatment of topological features in microstructural analysis; it uses a hierarchy-based approach with Laplacian smoothing optimized internally, contributing a novel front-tracking algorithm for interface transport; it demonstrates improved accuracy in estimating geometric primitives and grain boundary networks, with implications for microstructure simulation and characterization.",
+      "abstract": "The main focus of this paper is a nonparametric filtering technique for the estimation of interface geometry in bulk materials obtainable from modern imaging measurements. The filtering methodology relies on an assumed hierarchy of topological features present in a typical interface network, such as foam interfaces and grain boundary networks in polycrystalline materials. Each type of topological feature is treated in order of rank in the hierarchy, with the lower-level feature being filtered subject to the positional constraints imposed by the higher-level features. Such a scheme is an alternative to existing surface smoothing/estimation techniques in microstructural materials science, in which the explicit treatment of different elements of the network topology is absent, or at best arbitrarily parameterized. We describe the ramifications of this technique in the usual microstructural applications in which the computation of important physical quantities is predicated on the precise estimation of the interface features. As an additional application, we describe a novel front-tracking algorithm for quantifying the transport of such interfaces.",
+      "authors": [
+        {
+          "name": "S. Maddali",
+          "orgs": [
+            "Dept. of Physics, Carnegie Mellon University, Pittsburgh PA 15213 (USA)"
+          ]
+        },
+        {
+          "name": "Shlomo Ta'asan",
+          "orgs": [
+            "Dept. of Mathematical Sciences, Carnegie Mellon University, Pittsburgh PA 15217 (USA)"
+          ]
+        },
+        {
+          "name": "Robert M. Suter",
+          "orgs": [
+            "Dept. of Physics, Carnegie Mellon University, Pittsburgh PA 15213 (USA)",
+            "Dept. of Materials Science and Engineering, Carnegie Mellon University, Pittsburgh PA 15213 (USA)"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1601.04699v4",
+      "date": "2016-01-17T23:17:50Z",
+      "citation_count": 3,
+      "categories": [
+        "cond-mat.mtrl-sci",
+        "physics.data-an"
+      ]
+    },
+    {
+      "arxiv_id": "2212.00290",
+      "score": 12.017933,
+      "title": "Component Segmentation of Engineering Drawings Using Graph Convolutional Networks",
+      "tldr": "This paper addresses the challenge of semantic segmentation in engineering drawings by developing a graph convolutional network framework that improves component type identification through vectorization and graph-based analysis, contributing a novel method for automated drawing interpretation with superior performance compared to existing image and graph-based segmentation methods.",
+      "abstract": "We present a data-driven framework to automate the vectorization and machine interpretation of 2D engineering part drawings. In industrial settings, most manufacturing engineers still rely on manual reads to identify the topological and manufacturing requirements from drawings submitted by designers. The interpretation process is laborious and time-consuming, which severely inhibits the efficiency of part quotation and manufacturing tasks. While recent advances in image-based computer vision methods have demonstrated great potential in interpreting natural images through semantic segmentation approaches, the application of such methods in parsing engineering technical drawings into semantically accurate components remains a significant challenge. The severe pixel sparsity in engineering drawings also restricts the effective featurization of image-based data-driven methods. To overcome these challenges, we propose a deep learning based framework that predicts the semantic type of each vectorized component. Taking a raster image as input, we vectorize all components through thinning, stroke tracing, and cubic bezier fitting. Then a graph of such components is generated based on the connectivity between the components. Finally, a graph convolutional neural network is trained on this graph data to identify the semantic type of each component. We test our framework in the context of semantic segmentation of text, dimension and, contour components in engineering drawings. Results show that our method yields the best performance compared to recent image, and graph-based segmentation methods.",
+      "authors": [
+        {
+          "name": "Wentai Zhang",
+          "orgs": [
+            "Department of Mechanical Engineering, Carnegie Mellon University, Pittsburgh, PA, 15213, USA"
+          ]
+        },
+        {
+          "name": "Joe Joseph",
+          "orgs": [
+            "Department of Mechanical Engineering, Carnegie Mellon University, Pittsburgh, PA, 15213, USA"
+          ]
+        },
+        {
+          "name": "Yue Yin",
+          "orgs": [
+            "Department of Mechanical Engineering, Carnegie Mellon University, Pittsburgh, PA, 15213, USA"
+          ]
+        },
+        {
+          "name": "Liuyue Xie",
+          "orgs": [
+            "Department of Mechanical Engineering, Carnegie Mellon University, Pittsburgh, PA, 15213, USA"
+          ]
+        },
+        {
+          "name": "Tomotake Furuhata",
+          "orgs": [
+            "Department of Mechanical Engineering, Carnegie Mellon University, Pittsburgh, PA, 15213, USA"
+          ]
+        },
+        {
+          "name": "Soji Yamakawa",
+          "orgs": [
+            "Department of Mechanical Engineering, Carnegie Mellon University, Pittsburgh, PA, 15213, USA"
+          ]
+        },
+        {
+          "name": "Kenji Shimada",
+          "orgs": [
+            "Department of Mechanical Engineering, Carnegie Mellon University, Pittsburgh, PA, 15213, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2212.00290v2",
+      "date": "2022-12-01T05:31:07Z",
+      "citation_count": 22,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "1710.01802",
+      "score": 11.918267,
+      "title": "Automatic Structural Scene Digitalization",
+      "tldr": "This paper presents an automatic system for analyzing CAD floor plans to detect structural components, addressing the gap in efficient and accurate floor plan analysis, by combining rule-based filtering and image-processing recovery methods, achieving high accuracy and real-time performance, with results evaluated on a public platform showing over ten thousand daily uses and high user satisfaction.",
+      "abstract": "In this paper, we present an automatic system for the analysis and labeling of structural scenes, floor plan drawings in Computer-aided Design (CAD) format. The proposed system applies a fusion strategy to detect and recognize various components of CAD floor plans, such as walls, doors, windows and other ambiguous assets. Technically, a general rule-based filter parsing method is fist adopted to extract effective information from the original floor plan. Then, an image-processing based recovery method is employed to correct information extracted in the first step. Our proposed method is fully automatic and real-time. Such analysis system provides high accuracy and is also evaluated on a public website that, on average, archives more than ten thousands effective uses per day and reaches a relatively high satisfaction rate.",
+      "authors": [
+        {
+          "name": "Rui Tang",
+          "orgs": [
+            "Kujiale.com, Hangzhou, China",
+            "Centre for the Analysis of Motion, Entertainment Research and Applications, University of Bath, UK"
+          ]
+        },
+        {
+          "name": "Yuhan Wang",
+          "orgs": [
+            "Kujiale.com, Hangzhou, China"
+          ]
+        },
+        {
+          "name": "Darren Cosker",
+          "orgs": [
+            "Centre for the Analysis of Motion, Entertainment Research and Applications, University of Bath, UK"
+          ]
+        },
+        {
+          "name": "Wenbin Li",
+          "orgs": [
+            "Department of Computing, Imperial College London, UK"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1710.01802v1",
+      "date": "2017-09-19T22:57:31Z",
+      "citation_count": 72,
+      "categories": [
+        "cs.DL",
+        "cs.GR"
+      ]
+    },
+    {
+      "arxiv_id": "2302.13694",
+      "score": 11.912776,
+      "title": "DLOFTBs -- Fast Tracking of Deformable Linear Objects with B-splines",
+      "tldr": "This paper presents a fast DLO tracking algorithm using B-splines for deformable linear objects, addressing the challenge of accurate and real-time shape reconstruction in complex scenarios, by achieving 40 ms processing time and outperforming state-of-the-art methods in accuracy; it introduces a novel non-iterative approach that handles occlusions, self-intersections, and multiple DLOs without prior knowledge; the results enable efficient robotic manipulation and have implications for applications like automatic wiring and surgical suturing.",
+      "abstract": "While manipulating rigid objects is an extensively explored research topic, deformable linear object (DLO) manipulation seems significantly underdeveloped. A potential reason for this is the inherent difficulty in describing and observing the state of the DLO as its geometry changes during manipulation. This paper proposes an algorithm for fast-tracking the shape of a DLO based on the masked image. Having no prior knowledge about the tracked object, the proposed method finds a reliable representation of the shape of the tracked object within tens of milliseconds. This algorithm's main idea is to first skeletonize the DLO mask image, walk through the parts of the DLO skeleton, arrange the segments into an ordered path, and finally fit a B-spline into it. Experiments show that our solution outperforms the State-of-the-Art approaches in DLO's shape reconstruction accuracy and algorithm running time and can handle challenging scenarios such as severe occlusions, self-intersections, and multiple DLOs in a single image.",
+      "authors": [
+        {
+          "name": "Piotr Kicki",
+          "orgs": [
+            "Institute of Robotics and Machine Intelligence, Poznan University of Technology, Poznan, Poland"
+          ]
+        },
+        {
+          "name": "Amadeusz Szymko",
+          "orgs": [
+            "Institute of Robotics and Machine Intelligence, Poznan University of Technology, Poznan, Poland"
+          ]
+        },
+        {
+          "name": "Krzysztof Walas",
+          "orgs": [
+            "Institute of Robotics and Machine Intelligence, Poznan University of Technology, Poznan, Poland"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2302.13694v2",
+      "date": "2023-02-27T11:54:04Z",
+      "citation_count": 18,
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2411.18898",
+      "score": 11.880878,
+      "title": "Textured As-Is BIM via GIS-informed Point Cloud Segmentation",
+      "tldr": "This paper addresses the challenge of creating semantically rich as-is BIM models for railway projects by integrating GIS data with point cloud segmentation, proposing a modified 2DPASS DNN model trained on open data sources to achieve cost savings and enable textured IFC models, demonstrating potential for automated alignment estimation and UV-mapped textured meshes in early planning phases.",
+      "abstract": "Creating as-is models from scratch is to this day still a time- and money-consuming task due to its high manual effort. Therefore, projects, especially those with a big spatial extent, could profit from automating the process of creating semantically rich 3D geometries from surveying data such as Point Cloud Data (PCD). An automation can be achieved by using Machine and Deep Learning Models for object recognition and semantic segmentation of PCD. As PCDs do not usually include more than the mere position and RGB colour values of points, tapping into semantically enriched Geoinformation System (GIS) data can be used to enhance the process of creating meaningful as-is models. This paper presents a methodology, an implementation framework and a proof of concept for the automated generation of GIS-informed and BIM-ready as-is Building Information Models (BIM) for railway projects. The results show a high potential for cost savings and reveal the unemployed resources of freely accessible GIS data within.",
+      "authors": [
+        {
+          "name": "Mohamed S. H. Alabassy",
+          "orgs": [
+            "Bauhaus University Weimar, Faculty of Civil and Environmental Engineering, Chair of Construction Chemistry and Polymer Materials"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2411.18898v1",
+      "date": "2024-11-28T04:13:08Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2406.03194",
+      "score": 11.833978,
+      "title": "Writing Order Recovery in Complex and Long Static Handwriting",
+      "tldr": "This paper addresses the challenge of recovering writing order in complex and long static handwriting, where existing methods lack a common evaluation metric and struggle with trajectory clusters; it proposes a novel system using multiscale strategies to resolve clusters and select pen-down order, achieving competitive results across three databases, thereby improving trajectory recovery for applications like velocity estimation and neurodegenerative disorder screening.",
+      "abstract": "The order in which the trajectory is executed is a powerful source of information for recognizers. However, there is still no general approach for recovering the trajectory of complex and long handwriting from static images. Complex specimens can result in multiple pen-downs and in a high number of trajectory crossings yielding agglomerations of pixels (also known as clusters). While the scientific literature describes a wide range of approaches for recovering the writing order in handwriting, these approaches nevertheless lack a common evaluation metric. In this paper, we introduce a new system to estimate the order recovery of thinned static trajectories, which allows to effectively resolve the clusters and select the order of the executed pen-downs. We evaluate how knowing the starting points of the pen-downs affects the quality of the recovered writing. Once the stability and sensitivity of the system is analyzed, we describe a series of experiments with three publicly available databases, showing competitive results in all cases. We expect the proposed system, whose code is made publicly available to the research community, to reduce potential confusion when the order of complex trajectories are recovered, and this will in turn make the trajectories recovered to be viable for further applications, such as velocity estimation.",
+      "authors": [
+        {
+          "name": "Moises Diaz",
+          "orgs": []
+        },
+        {
+          "name": "Gioele Crispo",
+          "orgs": []
+        },
+        {
+          "name": "Antonio Parziale",
+          "orgs": []
+        },
+        {
+          "name": "Angelo Marcelli",
+          "orgs": []
+        },
+        {
+          "name": "Miguel A. Ferrer",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2406.03194v1",
+      "date": "2024-06-05T12:23:17Z",
+      "citation_count": 11,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2512.11356",
+      "score": 11.702348,
+      "title": "Prior-Enhanced Gaussian Splatting for Dynamic Scene Reconstruction from Casual Video",
+      "tldr": "This paper addresses dynamic scene reconstruction from monocular videos by enhancing prior quality to overcome limitations in thin structure representation and motion coherence, introducing a pipeline with object-depth loss and scaffold-projection loss that improves reconstruction fidelity and visual quality over existing methods.",
+      "abstract": "We introduce a fully automatic pipeline for dynamic scene reconstruction from casually captured monocular RGB videos. Rather than designing a new scene representation, we enhance the priors that drive Dynamic Gaussian Splatting. Video segmentation combined with epipolar-error maps yields object-level masks that closely follow thin structures; these masks (i) guide an object-depth loss that sharpens the consistent video depth, and (ii) support skeleton-based sampling plus mask-guided re-identification to produce reliable, comprehensive 2-D tracks. Two additional objectives embed the refined priors in the reconstruction stage: a virtual-view depth loss removes floaters, and a scaffold-projection loss ties motion nodes to the tracks, preserving fine geometry and coherent motion. The resulting system surpasses previous monocular dynamic scene reconstruction methods and delivers visibly superior renderings",
+      "authors": [
+        {
+          "name": "Brian Curless",
+          "orgs": [
+            "University of Washington",
+            "Seattle",
+            "Washington"
+          ]
+        },
+        {
+          "name": "Yu-Lun Liu",
+          "orgs": [
+            "National Yang Ming Chiao Tung University",
+            "Hsinchu City"
+          ]
+        },
+        {
+          "name": "Ying-Huan Chen",
+          "orgs": [
+            "National Yang Ming Chiao Tung University",
+            "Hsinchu City"
+          ]
+        },
+        {
+          "name": "Meng-Li Shih",
+          "orgs": [
+            "University of Washington",
+            "Seattle",
+            "Washington"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.11356v1",
+      "date": "2025-12-12",
+      "citation_count": 4,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2311.10539",
+      "score": 11.271454,
+      "title": "ToSkA: Topological Skeleton Analysis for Network-Based Shape Representation and Evaluation of Objects from Cells to Death Stars",
+      "tldr": "This paper presents a topological skeleton analysis method for shape representation and evaluation of complex objects, addressing the limitations of traditional shape descriptors by circumventing surface area approximation and enabling robust, parameter-free classification; it uses network science metrics and spatial feature embedding to create object profiles, introducing a flexible tool for analyzing biological and physical shapes with high precision; findings show the method effectively identifies segmentation errors and differentiates experimental phenotypes through network features.",
+      "abstract": "Shape analysis and classification are popular methods for biologists, biophysicists and mathematicians investigating relationships between object function and form. Classic shape descriptors, such as sphericity, can be powerful but may be insufficient for more complex shapes. Here, we present 'napari-toska' a topological skeleton based method to analyze complex objects by representing their shape asymmetries as networks. Using global neighborhood principles, classic network science metrics and spatial feature embedding we create instance segmentation object profiles to be used for immediate or downstream classification. napari-toska can also follow temporal dynamics and identify network features capable of differentiating between experimental phenotypes. We incorporated the capacity to measure absolute spatial features of objects to bring in aspects of scale. Furthermore, napari-toska identifies certain segmentation errors through the emergence or loss of network cycles. Combined, napari-toska functions allow for flexible and in-depth shape profiling of intricate shapes often observed in biological and physical settings where robust, yet precise, system configuration is essential to downstream processes.",
+      "authors": [
+        {
+          "name": "Allyson Quinn Ryan",
+          "orgs": [
+            "Max Planck Institute for Molecular Cell Biology and Genetics",
+            "Center for Systems Biology Dresden",
+            "Cluster of Excellence Physics of Life"
+          ]
+        },
+        {
+          "name": "Johannes Soltwedel",
+          "orgs": [
+            "Cluster of Excellence Physics of Life"
+          ]
+        },
+        {
+          "name": "Carl D. Modes",
+          "orgs": [
+            "Max Planck Institute for Molecular Cell Biology and Genetics",
+            "Center for Systems Biology Dresden",
+            "Cluster of Excellence Physics of Life"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2311.10539v3",
+      "date": "2023-11-17T14:06:10Z",
+      "citation_count": 1,
+      "categories": [
+        "physics.bio-ph",
+        "q-bio.QM"
+      ]
+    },
+    {
+      "arxiv_id": "2501.05717",
+      "score": 11.258002,
+      "title": "Zero-shot Shark Tracking and Biometrics from Aerial Imagery",
+      "tldr": "This paper addresses the challenge of analyzing aerial imagery of sharks for biometrics and tracking, aiming to reduce human effort and improve accuracy in marine ecology studies; it introduces FLAIR, a zero-shot method using SAM2 and CLIP for segmentation and biometric extraction, outperforming existing models with a Dice score of 0.81 and enabling automatic measurement of length and tailbeat frequency.",
+      "abstract": "The recent widespread adoption of drones for studying marine animals provides opportunities for deriving biological information from aerial imagery. The large scale of imagery data acquired from drones is well suited for machine learning (ML) analysis. Development of ML models for analyzing marine animal aerial imagery has followed the classical paradigm of training, testing, and deploying a new model for each dataset, requiring significant time, human effort, and ML expertise. We introduce Frame Level ALIgment and tRacking (FLAIR), which leverages the video understanding of Segment Anything Model 2 (SAM2) and the vision-language capabilities of Contrastive Language-Image Pre-training (CLIP). FLAIR takes a drone video as input and outputs segmentation masks of the species of interest across the video. Notably, FLAIR leverages a zero-shot approach, eliminating the need for labeled data, training a new model, or fine-tuning an existing model to generalize to other species. With a dataset of 18,000 drone images of Pacific nurse sharks, we trained state-of-the-art object detection models to compare against FLAIR. We show that FLAIR massively outperforms these object detectors and performs competitively against two human-in-the-loop methods for prompting SAM2, achieving a Dice score of 0.81. FLAIR readily generalizes to other shark species without additional human effort and can be combined with novel heuristics to automatically extract relevant information including length and tailbeat frequency. FLAIR has significant potential to accelerate aerial imagery analysis workflows, requiring markedly less human effort and expertise than traditional machine learning workflows, while achieving superior accuracy. By reducing the effort required for aerial imagery analysis, FLAIR allows scientists to spend more time interpreting results and deriving insights about marine ecosystems.",
+      "authors": [
+        {
+          "name": "Chinmay K. Lalgudi",
+          "orgs": [
+            "Stanford University",
+            "Stanford, CA, USA"
+          ]
+        },
+        {
+          "name": "Mark E. Leone",
+          "orgs": [
+            "Stanford University",
+            "Stanford, CA, USA"
+          ]
+        },
+        {
+          "name": "Jaden V. Clark",
+          "orgs": [
+            "Stanford University",
+            "Stanford, CA, USA"
+          ]
+        },
+        {
+          "name": "Sergio Madrigal-Mora",
+          "orgs": [
+            "Flinders University",
+            "Adelaide, SA, Australia"
+          ]
+        },
+        {
+          "name": "Mario Espinoza",
+          "orgs": [
+            "Centro de Investigación en Ciencias del Mar y Limnología",
+            "Universidad de Costa Rica",
+            "San José, Costa Rica"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2501.05717v1",
+      "date": "2025-01-10T05:29:09Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "q-bio.QM"
+      ]
+    },
+    {
+      "arxiv_id": "1303.6367",
+      "score": 11.237324,
+      "title": "Development of an Advanced Automated Method for Solar Filament Recognition and Its Scientific Application to a Solar Cycle of MLSO H\\alpha\\ Data",
+      "tldr": "This paper presents an automated method for solar filament detection and tracing using Canny edge-detection and morphological operators, addressing the need for efficient analysis of Hα data; it contributes a robust algorithm capable of determining filament properties and daily evolution; it finds that 60% of filaments at latitudes >50° migrate poleward with high velocities, revealing distinct latitudinal migration trends in Solar Cycle 23.",
+      "abstract": "We developed a method to automatically detect and trace solar filaments in H\\alpha\\ full-disk images. The program is able not only to recognize filaments and determine their properties, such as the position, the area, the spine, and other relevant parameters, but also to trace the daily evolution of the filaments. The program consists of three steps: First, preprocessing is applied to correct the original images; Second, the Canny edge-detection method is used to detect filaments; Third, filament properties are recognized through the morphological operators. To test the algorithm, we applied it to the observations from the Mauna Loa Solar Observatory (MLSO), and the program is demonstrated to be robust and efficient. H\\alpha\\ images obtained by MLSO from 1998 to 2009 are analyzed, and a butterfly diagram of filaments is obtained. It shows that the latitudinal migration of solar filaments has three trends in the Solar Cycle 23: The drift velocity was fast from 1998 to the solar maximum; After the solar maximum, it became relatively slow. After 2006, the migration became divergent, signifying the solar minimum. About 60% filaments with the latitudes larger than $50^{\\circ}$ migrate towards the polar regions with relatively high velocities, and the latitudinal migrating speeds in the northern and the southern hemispheres do not differ significantly in the Solar Cycle 23.",
+      "authors": [
+        {
+          "name": "Q. Hao",
+          "orgs": []
+        },
+        {
+          "name": "C. Fang",
+          "orgs": []
+        },
+        {
+          "name": "P. F. Chen",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1303.6367v1",
+      "date": "2013-03-26T02:23:29Z",
+      "citation_count": 35,
+      "categories": [
+        "astro-ph.SR"
+      ]
+    },
+    {
+      "arxiv_id": "1811.01547",
+      "score": 11.148129,
+      "title": "Incrementally Building Topology Graphs via Distance Maps",
+      "tldr": "This paper proposes an incremental topological map building framework using distance maps for mobile robots, addressing the inefficiency of grid maps in large-scale environments; it introduces a distance map-based method with skeleton extraction and topological graph generation, enabling incremental updates without reprocessing old data; experiments show the framework effectively grows topological maps from raw sensor data, improving efficiency and scalability.",
+      "abstract": "Mapping is an essential task for mobile robots and topological representation often works as a basis for the various applications. In this paper, a novel framework that can build topological maps incrementally is proposed. The algorithm is using a distance map, and in our framework the topological map can grow as we append more sensor data to the map. To demonstrate our algorithm, we show the result of the distance map based method on several popular maps and run the incremental framework with raw sensor data to have a growing topological map, as an example of a robot exploring the environment.",
+      "authors": [],
+      "url": "https://arxiv.org/pdf/1811.01547v3",
+      "date": "2018-11-05T08:17:54Z",
+      "citation_count": 8,
+      "categories": [
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "1512.06559",
+      "score": 11.03855,
+      "title": "Analysis of Vessel Connectivities in Retinal Images by Cortically Inspired Spectral Clustering",
+      "tldr": "This paper addresses the challenge of analyzing vessel connectivities in retinal images to improve early diagnosis of diseases like diabetes and hypertension, by proposing a cortically inspired spectral clustering method based on the Fokker-Planck equation and intensity features, which successfully identifies vessel hierarchies and overcomes connectivity issues in junctions and crossings.",
+      "abstract": "Retinal images provide early signs of diabetic retinopathy, glaucoma, and hypertension. These signs can be investigated based on microaneurysms or smaller vessels. The diagnostic biomarkers are the change of vessel widths and angles especially at junctions, which are investigated using the vessel segmentation or tracking. Vessel paths may also be interrupted; crossings and bifurcations may be disconnected. This paper addresses a novel contextual method based on the geometry of the primary visual cortex (V1) to study these difficulties. We have analyzed the specific problems at junctions with a connectivity kernel obtained as the fundamental solution of the Fokker-Planck equation, which is usually used to represent the geometrical structure of multi-orientation cortical connectivity. Using the spectral clustering on a large local affinity matrix constructed by both the connectivity kernel and the feature of intensity, the vessels are identified successfully in a hierarchical topology each representing an individual perceptual unit.",
+      "authors": [
+        {
+          "name": "Marta Favali",
+          "orgs": []
+        },
+        {
+          "name": "Samaneh Abbasi-Sureshjani",
+          "orgs": []
+        },
+        {
+          "name": "Bart ter Haar Romeny",
+          "orgs": []
+        },
+        {
+          "name": "Alessandro Sarti",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1512.06559v2",
+      "date": "2015-12-21T10:09:23Z",
+      "citation_count": 31,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1909.11620",
+      "score": 11.035697,
+      "title": "Manufacturability Oriented Model Correction and Build Direction Optimization for Additive Manufacturing",
+      "tldr": "This paper addresses the challenge of making 3D models manufacturable for additive manufacturing by correcting geometric constraints and optimizing build direction, introducing a topology-aware model correction method, a meso-skeleton construction approach, and a build orientation optimization algorithm, achieving accurate approximations with minimal modifications validated through 3D printing.",
+      "abstract": "We introduce a method to analyze and modify a shape to make it manufacturable for a given additive manufacturing (AM) process. Different AM technologies, process parameters or materials introduce geometric constraints on what is manufacturable or not. Given an input 3D model and minimum printable feature size dictated by the manufacturing process characteristics and parameters, our algorithm generates a corrected geometry that is printable with the intended AM process. A key issue in model correction for manufacturability is the identification of critical features that are affected by the printing process. To address this challenge, we propose a topology aware approach to construct the allowable space for a print head to traverse during the 3D printing process. Combined with our build orientation optimization algorithm, the amount of modifications performed on the shape is kept at minimum while providing an accurate approximation of the as-manufactured part. We demonstrate our method on a variety of 3D models and validate it by 3D printing the results.",
+      "authors": [
+        {
+          "name": "Erva Ulu",
+          "orgs": [
+            "Palo Alto Research Center"
+          ]
+        },
+        {
+          "name": "Nurcan Gecer Ulu",
+          "orgs": [
+            "Palo Alto Research Center"
+          ]
+        },
+        {
+          "name": "Walter Hsiao",
+          "orgs": [
+            "Palo Alto Research Center"
+          ]
+        },
+        {
+          "name": "Saigopal Nelaturi",
+          "orgs": [
+            "Palo Alto Research Center"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1909.11620v1",
+      "date": "2019-09-19T20:44:37Z",
+      "citation_count": 13,
+      "categories": [
+        "cs.CG",
+        "cs.GR"
+      ]
+    },
+    {
+      "arxiv_id": "1912.05099",
+      "score": 11.011737,
+      "title": "RoboCoDraw: Robotic Avatar Drawing with GAN-based Style Transfer and Time-efficient Path Optimization",
+      "tldr": "This paper presents RoboCoDraw, a real-time robotic drawing system addressing the gap in interactive and entertaining robotic face drawing by converting real human faces to cartoon avatars using AvatarGAN, a two-stream CycleGAN model, and optimizing drawing paths with RKGA for time efficiency, resulting in a system that preserves facial features and enhances user engagement.",
+      "abstract": "Robotic drawing has become increasingly popular as an entertainment and interactive tool. In this paper we present RoboCoDraw, a real-time collaborative robot-based drawing system that draws stylized human face sketches interactively in front of human users, by using the Generative Adversarial Network (GAN)-based style transfer and a Random-Key Genetic Algorithm (RKGA)-based path optimization. The proposed RoboCoDraw system takes a real human face image as input, converts it to a stylized avatar, then draws it with a robotic arm. A core component in this system is the Avatar-GAN proposed by us, which generates a cartoon avatar face image from a real human face. AvatarGAN is trained with unpaired face and avatar images only and can generate avatar images of much better likeness with human face images in comparison with the vanilla CycleGAN. After the avatar image is generated, it is fed to a line extraction algorithm and converted to sketches. An RKGA-based path optimization algorithm is applied to find a time-efficient robotic drawing path to be executed by the robotic arm. We demonstrate the capability of RoboCoDraw on various face images using a lightweight, safe collaborative robot UR5.",
+      "authors": [
+        {
+          "name": "Tianying Wang",
+          "orgs": [
+            "Artificial Intelligence Initiative, A*STAR"
+          ]
+        },
+        {
+          "name": "Wei Qi Toh",
+          "orgs": [
+            "Artificial Intelligence Initiative, A*STAR"
+          ]
+        },
+        {
+          "name": "Hao Zhang",
+          "orgs": [
+            "Artificial Intelligence Initiative, A*STAR"
+          ]
+        },
+        {
+          "name": "Xiuchao Sui",
+          "orgs": [
+            "Artificial Intelligence Initiative, A*STAR"
+          ]
+        },
+        {
+          "name": "Shaohua Li",
+          "orgs": [
+            "Artificial Intelligence Initiative, A*STAR",
+            "Institute of High Performance Computing, A*STAR"
+          ]
+        },
+        {
+          "name": "Yong Liu",
+          "orgs": [
+            "Artificial Intelligence Initiative, A*STAR",
+            "Institute of High Performance Computing, A*STAR"
+          ]
+        },
+        {
+          "name": "Wei Jing",
+          "orgs": [
+            "Artificial Intelligence Initiative, A*STAR",
+            "Institute of Information Research, A*STAR"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1912.05099v1",
+      "date": "2019-12-11T03:20:54Z",
+      "citation_count": 31,
+      "categories": [
+        "cs.GR",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "1402.4936",
+      "score": 10.879626,
+      "title": "Enhanced Secure Algorithm for Fingerprint Recognition",
+      "tldr": "This paper addresses the problem of improving fingerprint recognition accuracy and security by proposing a fast thinning algorithm and a minutiae-based matching technique, which achieve 98% recognition accuracy with 2% EER, and demonstrate robustness under noise and compression, enhancing secure data transmission in fingerprint systems.",
+      "abstract": "Fingerprint recognition requires a minimal effort from the user, does not capture other information than strictly necessary for the recognition process, and provides relatively good performance. A critical step in fingerprint identification system is thinning of the input fingerprint image. The performance of a minutiae extraction algorithm relies heavily on the quality of the thinning algorithm. So, a fast fingerprint thinning algorithm is proposed. The algorithm works directly on the gray-scale image as binarization of fingerprint causes many spurious minutiae and also removes many important features. The performance of the thinning algorithm is evaluated and experimental results show that the proposed thinning algorithm is both fast and accurate. A new minutiae-based fingerprint matching technique is proposed. The main idea is that each fingerprint is represented by a minutiae table of just two columns in the database. The number of different minutiae types (terminations and bifurcations) found in each track of a certain width around the core point of the fingerprint is recorded in this table. Each row in the table represents a certain track, in the first column, the number of terminations in each track is recorded, in the second column, the number of bifurcations in each track is recorded. The algorithm is rotation and translation invariant, and needs less storage size. Experimental results show that recognition accuracy is 98%, with Equal Error Rate (EER) of 2%. Finally, the integrity of the data transmission via communication channels must be secure all the way from the scanner to the application. After applying Gaussian noise addition, and JPEG compression with high and moderate quality factors on the watermarked fingerprint images, recognition accuracy decreases slightly to reach 96%.",
+      "authors": [
+        {
+          "name": "Amira Mohammad Abdel-Mawgoud Saleh",
+          "orgs": [
+            "Ain Shams University",
+            "Faculty of Engineering",
+            "Computer and Systems Engineering Department"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1402.4936v1",
+      "date": "2014-02-20T09:19:17Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2204.06675",
+      "score": 10.857715,
+      "title": "Geometric Understanding of Sketches",
+      "tldr": "This paper addresses the geometric understanding of sketches, proposing a two-step pipeline for 2D graph interpretation with sub-pixel accuracy and a data-driven approach for 3D sketch completion without explicit 3D data, achieving results validated through user interfaces and robot replication; it contributes novel methods for structured inference and conditional image-to-image translation with synthetic data.",
+      "abstract": "Sketching is used as a ubiquitous tool of expression by novices and experts alike. In this thesis I explore two methods that help a system provide a geometric machine-understanding of sketches, and in-turn help a user accomplish a downstream task.\n  The first work deals with interpretation of a 2D-line drawing as a graph structure, and also illustrates its effectiveness through its physical reconstruction by a robot. We setup a two-step pipeline to solve the problem. Formerly, we estimate the vertices of the graph with sub-pixel level accuracy. We achieve this using a combination of deep convolutional neural networks learned under a supervised setting for pixel-level estimation followed by the connected component analysis for clustering. Later we follow it up with a feedback-loop-based edge estimation method. To complement the graph-interpretation, we further perform data-interchange to a robot legible ASCII format, and thus teach a robot to replicate a line drawing.\n  In the second work, we test the 3D-geometric understanding of a sketch-based system without explicit access to the information about 3D-geometry. The objective is to complete a contour-like sketch of a 3D-object, with illumination and texture information. We propose a data-driven approach to learn a conditional distribution modelled as deep convolutional neural networks to be trained under an adversarial setting; and we validate it against a human-in-the-loop. The method itself is further supported by synthetic data generation using constructive solid geometry following a standard graphics pipeline. In order to validate the efficacy of our method, we design a user-interface plugged into a popular sketch-based workflow, and setup a simple task-based exercise, for an artist. Thereafter, we also discover that form-exploration is an additional utility of our application.",
+      "authors": [
+        {
+          "name": "Raghav Brahmadesam Venkataramaiyer",
+          "orgs": [
+            "Department of Design",
+            "Indian Institute of Technology Kanpur",
+            "Kanpur 208016"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2204.06675v1",
+      "date": "2022-04-13T23:55:51Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV",
+        "cs.GR",
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2604.20123",
+      "score": 10.73439,
+      "title": "Topology-Aware Skeleton Detection via Lighthouse-Guided Structured Inference",
+      "tldr": "This paper addresses the challenge of skeleton detection by improving structural continuity and integrity through a dual-branch collaborative framework and lighthouse-guided topology completion, achieving better connectivity and robustness on public benchmarks.",
+      "abstract": "In natural images, object skeletons are used to represent geometric shapes. However, even slight variations in pose or movement can cause noticeable changes in skeleton structure, increasing the difficulty of detecting the skeleton and often resulting in discontinuous skeletons. Existing methods primarily focus on point-level skeleton point detection and overlook the importance of structural continuity in recovering complete skeletons. To address this issue, we propose Lighthouse-Skel, a topology-aware skeleton detection method via lighthouse-guided structured inference. Specifically, we introduce a dual-branch collaborative detection framework that jointly learns skeleton confidence field and structural anchors, including endpoints and junction points. The spatial distributions learned by the point branch guide the network to focus on topologically vulnerable regions, which improves the accuracy of skeleton detection. Based on the learned skeleton confidence field, we further propose a lighthouse-guided topology completion strategy, which uses detected junction points and breakpoints as lighthouses to reconnect discontinuous skeleton segments along low-cost paths, thereby improving skeleton continuity and structural integrity. Experimental results on four public datasets demonstrate that the proposed method achieves competitive detection accuracy while substantially improving skeleton connectivity and structural integrity.",
+      "authors": [
+        {
+          "name": "Daoyong Fu",
+          "orgs": [
+            "Nanjing University of Information Science and Technology"
+          ]
+        },
+        {
+          "name": "Xiang Zhang",
+          "orgs": [
+            "Nanjing University of Information Science and Technology"
+          ]
+        },
+        {
+          "name": "Zhaohuan Zhan",
+          "orgs": [
+            "Shenzhen MSU-BIT University"
+          ]
+        },
+        {
+          "name": "Fan Yang",
+          "orgs": [
+            "Sichuan University"
+          ]
+        },
+        {
+          "name": "Ke Yang",
+          "orgs": [
+            "Eindhoven University of Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2604.20123v1",
+      "date": "2026-04-22",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1202.2072",
+      "score": 10.71543,
+      "title": "Automation of the filament tracking in the framework of the HELIO project",
+      "tldr": "This paper presents a method for automatically tracking solar filaments using Hα images, addressing the challenge of tracking filaments due to their unpredictable behavior, by employing a curve-matching algorithm in a co-rotating reference frame to calculate probabilities of filament continuity; it contributes an automated technique validated on a representative sample with reliable results, enhancing data processing in the HELIO project's HFC catalogue.",
+      "abstract": "We present a new method to automatically track filaments over the solar disk. The filaments are first detected on Meudon Spectroheliograph H{\\alpha} images of the Sun, applying the technique developed by Fuller, Aboudarham, and Bentley (Solar phys. 227, 61, 2005). This technique combines cleaning processes, image segmentation based on region growing, and morphological parameter ex- traction, including the determination of filament skeletons. The coordinates of the skeleton pixels, given in a heliocentric system, are then converted to a more appropriate reference frame that follows the rotation of the Sun surface. In such a frame, a co-rotating filament is always located around the same position, and its skeletons (extracted from each image) are thus spatially close, forming a group of adjacent features. In a third step, the shape of each skeleton is compared with its neighbours using a curve-matching algorithm. This step will permit us to define the probability [P ] that two close filaments in the co-rotating frame are actually the same one observed on two different images. At the end, the pairs of features, for which the corresponding probability is greater than a threshold value, are associated using tracking identification indexes.On a representative sample of filaments, the good agreement between automated and manual tracking confirms the reliability of the technique to be applied on large data sets. Especially, this code is already used in the framework of the Heliophysics Integrated Observatory (HELIO) to populate a catalogue dedicated to solar and heliospheric features (HFC). An extension of this method to others filament observations, and possibly the sunspots, faculae, and coronal holes tracking can be also envisaged.",
+      "authors": [
+        {
+          "name": "Xavier Bonnin",
+          "orgs": [
+            "LESIA, Observatoire de Paris, CNRS, UPMC, Université Paris-Diderot"
+          ]
+        },
+        {
+          "name": "Jean Aboudarham",
+          "orgs": [
+            "LESIA, Observatoire de Paris, CNRS, UPMC, Université Paris-Diderot"
+          ]
+        },
+        {
+          "name": "Nicolas Fuller",
+          "orgs": [
+            "LESIA, Observatoire de Paris, CNRS, UPMC, Université Paris-Diderot"
+          ]
+        },
+        {
+          "name": "Andre Csillaghy",
+          "orgs": [
+            "Institute of 4D Technologies, FHNW"
+          ]
+        },
+        {
+          "name": "Robert D. Bentley",
+          "orgs": [
+            "MSSL, University College London, Hombury St. Mary, Dorking, Surrey RH5 6NT, U.K."
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1202.2072v2",
+      "date": "2012-02-09T18:23:41Z",
+      "citation_count": 10,
+      "categories": [
+        "astro-ph.SR"
+      ]
+    },
+    {
+      "arxiv_id": "2509.06618",
+      "score": 10.704392,
+      "title": "Semi-automated image analysis of Cellulose Nanofibrils using Machine learning segmentation and Morphological thinning",
+      "tldr": "This paper addresses the challenge of measuring morphology of branched cellulose nanofibrils (CNFs) by developing the FACT framework using machine learning segmentation and morphological thinning, offering faster and unbiased analysis compared to manual methods; it employs Weka and U-Net for segmentation and calculates fibril width with high accuracy, matching manual measurements; the framework enables multiple measurements per fibril in complex networks, improving statistical relevance and reducing analyst bias.",
+      "abstract": "Reliable and rapid morphology measurement of cellulose nanofibrils (CNFs) with a high level of branching and entanglement is crucial for quality control, grade definition, and investigating morphology-performance relationships in various applications. An image analysis framework, Fibril Analysis for Cellulose Technology (FACT), which utilizes machine learning (ML) segmentation and morphological thinning, was developed to measure the fibril width distribution of cellulose nanofibers (CNFs) from negative contrast scanning electron microscopy (NegC-SEM) images. The high-contrast and wide magnification range of NegC-SEM imaging enabled the capture of micro- and nanoscopic hierarchical branching structures of CNFs. Two ML approaches [Weka and U-Net] were used to create detailed binary segmentation of grayscale NegC-SEM images, critical for the width analysis. Morphological thinning was applied to the binary image to produce a 1-pixel-wide skeleton of the CNF fibril structure. Subsequently, the distance between the skeleton and the original fibril edge was used to calculate fibril width. The FACT framework was optimized and validated with idealized geometric and hierarchical branched structures. FACT effectively performed segmentation, skeletonization, and fibril width measurement of these CNF morphologies. FACT width results were comparable with manual measurements. In the manual method, a single measurement is made per fibril. In contrast, FACT simultaneously makes multiple measurements along each fibril within the entire CNF branched network structure. The advantage of FACT is that complicated branching and network CNF structures can be measured without imparting any analyst bias in fibril selection and measurement. Additionally, once the ML model is trained, each image can be analyzed in under 5 minutes.",
+      "authors": [
+        {
+          "name": "Carlos Baez",
+          "orgs": [
+            "The Forest Products Laboratory, USDA Forest Service, Madison, WI 53726, USA"
+          ]
+        },
+        {
+          "name": "Udita Ringania",
+          "orgs": [
+            "Chemical and Biomolecular Engineering, Georgia Institute of Technology, Atlanta, GA 30332, USA"
+          ]
+        },
+        {
+          "name": "Saad Bhamla",
+          "orgs": [
+            "Chemical and Biomolecular Engineering, Georgia Institute of Technology, Atlanta, GA 30332, USA"
+          ]
+        },
+        {
+          "name": "Robert J. Moon",
+          "orgs": [
+            "The Forest Products Laboratory, USDA Forest Service, Madison, WI 53726, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2509.06618v1",
+      "date": "2025-09-08T12:36:41Z",
+      "citation_count": 0,
+      "categories": [
+        "physics.bio-ph"
+      ]
+    }
+  ]
+}

@@ -106,6 +106,36 @@ def _fix_log_superscript_ocr(
     return labeled_ticks
 
 
+def _force_log_superscript_ocr(
+    labeled_ticks: List[Tuple[int, Optional[float]]],
+) -> List[Tuple[int, Optional[float]]]:
+    """Rewrite common Tesseract superscript flattening once log notation is confirmed.
+
+    Unlike ``_fix_log_superscript_ocr`` this does not require a majority
+    pattern.  It is used only after FormulaOCR has already provided log
+    evidence on the same axis, so every 100+n / 10+n label can be interpreted
+    as 10^n at its original tick anchor.
+    """
+    fixed = []
+    for pixel, value in labeled_ticks:
+        if value is None:
+            fixed.append((pixel, value))
+            continue
+        if 100 <= value <= 110:
+            fixed.append((pixel, 10.0 ** int(round(value - 100))))
+        elif 10 <= value <= 19:
+            fixed.append((pixel, 10.0 ** int(round(value - 10))))
+        elif value > 0:
+            log10 = np.log10(value)
+            if abs(log10 - round(log10)) < 0.02:
+                fixed.append((pixel, value))
+            else:
+                fixed.append((pixel, None))
+        else:
+            fixed.append((pixel, None))
+    return fixed
+
+
 @dataclass
 class CalibratedAxis:
     axis: Axis
@@ -157,17 +187,19 @@ def calibrate_axis(
     formula_batch_requested: int = 0,
     formula_batch_returned: int = 0,
     formula_batch_ms: float = 0.0,
+    apply_log_superscript_fix: bool = True,
 ) -> Optional[CalibratedAxis]:
     """Build a calibrated axis from detected ticks and their labels."""
     # Gate log superscript fix behind visual log-scale detection.
     # When is_log is pre-computed (cross-axis detection), skip internal check.
     if is_log is None and image is not None:
         is_log = should_treat_as_log(image, axis)
-    if is_log:
+    if is_log and apply_log_superscript_fix:
         labeled_ticks = _fix_log_superscript_ocr(labeled_ticks)
 
     # Filter ticks with valid numeric labels
     valid = [(p, v) for p, v in labeled_ticks if v is not None]
+    used_heuristic_fallback = False
 
     # For log-preferred axes, discard non-positive values (they break log fit)
     if preferred_type == "log":
@@ -183,6 +215,7 @@ def calibrate_axis(
         synthetic_valid = _build_heuristic_ticks(axis)
         if len(synthetic_valid) >= 2:
             valid = synthetic_valid
+            used_heuristic_fallback = True
 
     pixels = np.array([p for p, _ in valid], dtype=float)
     values = np.array([v for _, v in valid], dtype=float)
@@ -242,7 +275,7 @@ def calibrate_axis(
         inverted=inverted,
         tick_map=valid,
         residual=residual,
-        tick_source=tick_source,
+        tick_source="heuristic" if used_heuristic_fallback else tick_source,
         anchor_count=anchor_count,
         formula_anchor_count=formula_anchor_count,
         formula_log_score=formula_log_score,
@@ -302,6 +335,121 @@ def _build_heuristic_ticks(axis):
         values = values[::-1]
 
     return list(zip(ticks, values))
+
+
+def _build_formula_generated_log_ticks(axis, anchors) -> List[Tuple[int, Optional[float]]]:
+    """Generate a full log tick sequence from FormulaOCR exponent anchors.
+
+    FormulaOCR values are authoritative, but one Formula label only fixes one
+    absolute point.  With a single formula anchor, Tesseract is used only to
+    infer additional exponent candidates such as ``100`` -> ``10^0`` or
+    ``103`` -> ``10^3``; its numeric value is never used directly.
+    """
+    tick_pixels = sorted([int(t[0]) for t in (axis.ticks or [])])
+    if len(tick_pixels) < 2:
+        return []
+
+    for anchor in anchors:
+        formula_value = getattr(anchor, "formula_value", None)
+        exponent = None
+        if formula_value is not None and formula_value > 0:
+            log10 = np.log10(formula_value)
+            if abs(log10 - round(log10)) < 0.02:
+                exponent = int(round(log10))
+        anchor._formula_exponent = exponent  # pylint: disable=protected-access
+
+    exponent_anchors = []
+    for anchor in anchors:
+        exponent = getattr(anchor, "_formula_exponent", None)
+        if exponent is not None:
+            exponent_anchors.append((int(anchor.tick_pixel), int(exponent), "formula"))
+
+    for anchor in anchors:
+        value = getattr(anchor, "tesseract_value", None)
+        if value is None:
+            continue
+        exponent = None
+        if 100 <= value <= 110:
+            exponent = int(round(value - 100))
+        elif 10 <= value <= 19:
+            exponent = int(round(value - 10))
+        elif value > 0:
+            log10 = np.log10(value)
+            if abs(log10 - round(log10)) < 0.02:
+                exponent = int(round(log10))
+        if exponent is not None:
+            exponent_anchors.append((int(anchor.tick_pixel), int(exponent), "tesseract_hint"))
+
+    formula_count = sum(1 for _p, _e, source in exponent_anchors if source == "formula")
+    unique = {}
+    for pixel, exponent, source in exponent_anchors:
+        old = unique.get(pixel)
+        if old is None or source == "formula":
+            unique[pixel] = (exponent, source)
+    exponent_anchors = [(pixel, exp, source) for pixel, (exp, source) in unique.items()]
+
+    if formula_count < 1 or len(exponent_anchors) < 2:
+        return []
+
+    # Need at least two distinct exponent anchors to determine range/step.
+    # With only one Formula anchor, the defining pair must include it; two
+    # Tesseract hints alone are not allowed to determine the whole axis.
+    pairs = []
+    for i, (p1, e1, _s1) in enumerate(exponent_anchors):
+        for p2, e2, s2 in exponent_anchors[i + 1:]:
+            if p1 == p2 or e1 == e2:
+                continue
+            s1 = exponent_anchors[i][2]
+            if formula_count < 2 and s1 != "formula" and s2 != "formula":
+                continue
+            pairs.append((p1, e1, s1, p2, e2, s2))
+    if not pairs:
+        return []
+
+    ticks = np.array(tick_pixels, dtype=float)
+    best = None
+    best_error = float("inf")
+    for p1, e1, _s1, p2, e2, _s2 in pairs:
+        slope = (e2 - e1) / (p2 - p1)
+        intercept = e1 - slope * p1
+        formula_errors = []
+        hint_errors = []
+        for pixel, exponent, _source in exponent_anchors:
+            error = abs((slope * pixel + intercept) - exponent)
+            if _source == "formula":
+                formula_errors.append(error)
+            else:
+                hint_errors.append(error)
+        if formula_errors and max(formula_errors) > 0.2:
+            continue
+        if hint_errors and float(np.mean(hint_errors)) > 0.8:
+            continue
+        error = (
+            float(np.mean(formula_errors)) * 2.0
+            + (float(np.mean(hint_errors)) if hint_errors else 0.0)
+        )
+        if error < best_error:
+            best_error = error
+            best = (slope, intercept)
+
+    if best is None or best_error > 0.9:
+        return []
+
+    slope, intercept = best
+    generated_exponents = slope * ticks + intercept
+    if not np.all(np.isfinite(generated_exponents)):
+        return []
+    if float(np.ptp(generated_exponents)) > 8.0:
+        return []
+    if axis.direction == "x" and slope < 0:
+        return []
+    if axis.direction == "y" and slope > 0:
+        return []
+
+    generated = []
+    for pixel, exponent in zip(ticks, generated_exponents):
+        generated.append((int(pixel), float(10.0 ** exponent)))
+    return generated
 
 
 def _crop_axis_region(image: np.ndarray, axis: Axis, padding: int = 20) -> np.ndarray:
@@ -524,7 +672,7 @@ def _score_formula_anchor_candidate(axis: Axis, anchor, anchor_idx: int, total: 
     text = (getattr(anchor, "tesseract_text", "") or "").strip()
     source = getattr(anchor, "source", "")
 
-    if source == "synthetic" and value is None and not text:
+    if not _anchor_has_label_evidence(anchor):
         return -1.0
 
     if value is None:
@@ -568,6 +716,26 @@ def _score_formula_anchor_candidate(axis: Axis, anchor, anchor_idx: int, total: 
     return score
 
 
+def _anchor_has_label_evidence(anchor) -> bool:
+    """Return True when an anchor represents a visible labeled tick.
+
+    Dense axes can contain many unlabeled minor ticks.  Those ticks still
+    matter geometrically, but they must not dilute axis-type evidence or be
+    sent to FormulaOCR as if they carried text.
+    """
+    if anchor is None:
+        return False
+    if getattr(anchor, "tesseract_value", None) is not None:
+        return True
+    text = (getattr(anchor, "tesseract_text", "") or "").strip()
+    if text and any(ch.isdigit() for ch in text):
+        return True
+    if getattr(anchor, "formula_value", None) is not None:
+        return True
+    latex = (getattr(anchor, "formula_latex", "") or "").strip()
+    return bool(latex)
+
+
 def _select_formula_anchor_indices(
     axis: Axis,
     anchors,
@@ -582,7 +750,9 @@ def _select_formula_anchor_indices(
     if not scored:
         return []
 
-    # Bucket by position to preserve coverage across the axis span.
+    # Bucket by position to preserve coverage across the axis span.  This is
+    # intentionally conservative: pure high-score selection can pair labels
+    # that look OCR-friendly but imply the wrong axis direction.
     buckets = {0: [], 1: [], 2: []}
     for idx, score in scored:
         rel_pos = _axis_relative_position(axis, int(anchors[idx].tick_pixel))
@@ -620,13 +790,155 @@ def _should_use_formula_label_values(
     values keeps the batch planner selective while still allowing sparse
     axes to fall back to FormulaOCR when tesseract is missing.
     """
-    if formula_log_score < 0.55:
+    if formula_log_score < 0.3:
         return False
     if formula_anchor_count < 2:
         return False
     if formula_value_count < 2:
         return False
     return True
+
+
+def _should_use_formula_log_hint(
+    formula_anchor_count: int,
+    formula_value_count: int,
+    formula_log_score: float,
+) -> bool:
+    """Require repeated formula evidence before changing the axis scale."""
+    return _should_use_formula_label_values(
+        formula_anchor_count,
+        formula_value_count,
+        formula_log_score,
+    )
+
+
+def _candidate_calibration_score(
+    cal: CalibratedAxis,
+    valid_count: int,
+    formula_log_score: float,
+) -> float:
+    """Rank per-source axis candidates without trusting one OCR source blindly."""
+    score = valid_count * 8.0
+
+    if cal.residual < 1:
+        score += 45
+    elif cal.residual < 10:
+        score += 35
+    elif cal.residual < 100:
+        score += 20
+    elif cal.residual < 1000:
+        score += 5
+    else:
+        score -= 30
+
+    if cal.tick_source == "formula":
+        score += 50 if formula_log_score >= 0.3 else -10
+    elif cal.tick_source == "fused":
+        score += 30 if cal.formula_anchor_count >= 2 else 5 if cal.formula_anchor_count > 0 else 0
+        score += 20 if formula_log_score >= 0.3 else 0
+    elif cal.tick_source == "tesseract":
+        score += 8
+    elif cal.tick_source == "heuristic":
+        score -= 20
+
+    if cal.axis_type == "log" and formula_log_score >= 0.3:
+        score += 15
+
+    return score
+
+
+def _select_best_ocr_calibration(
+    axis: Axis,
+    candidate_maps: list[tuple[str, list[tuple[int, Optional[float]]]]],
+    image,
+    policy,
+    axis_preferred: str | None,
+    is_log: bool,
+    formula_anchor_count: int,
+    formula_log_score: float,
+    formula_selected_count: int,
+    axis_anchor_stats: dict,
+    formula_plan: Any,
+    formula_batch_stats,
+) -> Optional[CalibratedAxis]:
+    """Calibrate multiple OCR maps and keep the lowest-risk candidate."""
+    best_cal = None
+    best_score = -1e9
+    tesseract_residual = None
+
+    for source, labeled in candidate_maps:
+        valid_count = sum(1 for _, value in labeled if value is not None)
+        if source != "heuristic" and valid_count < 2:
+            continue
+
+        cal = calibrate_axis(
+            axis,
+            labeled,
+            image=image,
+            policy=policy,
+            preferred_type=axis_preferred,
+            is_log=is_log,
+            tick_source=source,
+            anchor_count=axis_anchor_stats.get("anchor_count", 0),
+            formula_anchor_count=formula_anchor_count,
+            formula_log_score=formula_log_score,
+            formula_selected_count=formula_selected_count,
+            tesseract_anchor_count=axis_anchor_stats.get("tesseract_count", 0),
+            label_anchor_count=axis_anchor_stats.get("label_count", 0),
+            formula_batch_candidate_count=formula_plan.requested_count if formula_plan else 0,
+            formula_batch_kept_count=formula_plan.kept_count if formula_plan else 0,
+            formula_batch_chunks=formula_batch_stats.chunks if formula_batch_stats else 0,
+            formula_batch_requested=formula_batch_stats.requested if formula_batch_stats else 0,
+            formula_batch_returned=formula_batch_stats.returned if formula_batch_stats else 0,
+            formula_batch_ms=formula_batch_stats.elapsed_ms if formula_batch_stats else 0.0,
+            apply_log_superscript_fix=(source == "tesseract" or (source == "fused" and formula_anchor_count >= 2)),
+        )
+        if cal is None:
+            continue
+        if source == "tesseract":
+            tesseract_residual = cal.residual
+
+        # FormulaOCR returns a parsed value for the specific crop anchor.  For
+        # superscript/log labels this is more authoritative than tesseract's
+        # flattened text at the same anchor, so prefer the fused map unless it
+        # produces a clearly worse fit.
+        if (
+            source == "fused"
+            and formula_anchor_count < 2
+            and tesseract_residual is not None
+            and cal.residual > (tesseract_residual * 1.2 + 0.1)
+        ):
+            continue
+        if source == "fused" and formula_anchor_count >= 2:
+            tesseract_values = None
+            for other_source, other_labeled in candidate_maps:
+                if other_source == "tesseract":
+                    tesseract_values = {
+                        int(pixel): value for pixel, value in other_labeled if value is not None
+                    }
+                    break
+            if tesseract_values:
+                changed_values = 0
+                for pixel, value in labeled:
+                    if value is None:
+                        continue
+                    old_value = tesseract_values.get(int(pixel))
+                    if old_value is not None and abs(float(old_value) - float(value)) > 1e-9:
+                        changed_values += 1
+                if changed_values:
+                    candidate_score = _candidate_calibration_score(cal, valid_count, formula_log_score)
+                    candidate_score += changed_values * 25.0
+                    if candidate_score > best_score:
+                        best_score = candidate_score
+                        best_cal = cal
+                    continue
+
+        candidate_score = _candidate_calibration_score(cal, valid_count, formula_log_score)
+        if candidate_score > best_score:
+            best_score = candidate_score
+            best_cal = cal
+
+    return best_cal
 
 
 @dataclass
@@ -728,6 +1040,8 @@ def prepare_formula_label_context(
                 image, axis, cross_axis_log=prior_x_log,
                 log_notation_score=log_notation_scores.get(id(axis), 0.0),
             )
+            if log_x_prob > 0.25:
+                x_log[id(axis)] = True
         else:
             x_log[id(axis)] = False
 
@@ -741,11 +1055,12 @@ def prepare_formula_label_context(
                 image, axis, cross_axis_log=any_x_log or prior_y_log,
                 log_notation_score=log_notation_scores.get(id(axis), 0.0),
             )
+            if log_y_prob > 0.25:
+                y_log[id(axis)] = True
         else:
             y_log[id(axis)] = False
 
     axis_is_log = {**x_log, **y_log}
-
     axis_anchor_map: dict[int, list] = {}
     axis_anchor_meta: dict[int, dict[str, Any]] = {}
     formula_plan = FormulaBatchPlan(
@@ -762,11 +1077,16 @@ def prepare_formula_label_context(
             axis_anchor_map[id(axis)] = anchors
 
             tesseract_count = sum(1 for anchor in anchors if anchor.tesseract_value is not None)
-            label_count = sum(1 for anchor in anchors if anchor.label_bbox != (0, 0, 0, 0))
+            label_count = sum(1 for anchor in anchors if _anchor_has_label_evidence(anchor))
+            geometry_label_count = sum(
+                1 for anchor in anchors
+                if anchor.label_bbox != (0, 0, 0, 0)
+            )
             axis_anchor_meta[id(axis)] = {
                 "anchor_count": len(anchors),
                 "tesseract_count": tesseract_count,
                 "label_count": label_count,
+                "geometry_label_count": geometry_label_count,
                 "selected_count": 0,
                 "formula_log_score": 0.0,
                 "selected_indices": [],
@@ -807,28 +1127,38 @@ def _plan_formula_batch_requests(
     max_total_crops: int | None = None,
 ) -> FormulaBatchPlan:
     """Build a small, score-ranked FormulaOCR batch plan."""
-    staged: list[tuple[int, FormulaBatchRequest]] = []
+    staged: list[tuple[int, bool, FormulaBatchRequest]] = []
     request_pos = 0
+    primary_directions = {
+        axis.direction for axis in axes
+        if axis.side in ("bottom", "left")
+    }
 
     for axis in axes:
         anchors = axis_anchor_map.get(id(axis), [])
         if not anchors:
             continue
+        if axis.side in ("top", "right") and axis.direction in primary_directions:
+            continue
 
         is_axis_log = axis_is_log.get(id(axis), False)
         tesseract_count = sum(1 for anchor in anchors if getattr(anchor, "tesseract_value", None) is not None)
-        label_count = sum(1 for anchor in anchors if getattr(anchor, "label_bbox", (0, 0, 0, 0)) != (0, 0, 0, 0))
+        label_count = sum(1 for anchor in anchors if _anchor_has_label_evidence(anchor))
 
-        needs_formula = is_axis_log
-        if not needs_formula and axis.direction == "y" and tesseract_count < 3:
-            needs_formula = True
-        if not needs_formula and tesseract_count == 0 and label_count > 0:
-            needs_formula = True
+        # Use unified gate function (Docling's is_processable pattern)
+        from plot_extractor.core.label_crop_planner import is_processable_for_formula  # pylint: disable=import-outside-toplevel
+        needs_formula = is_processable_for_formula(
+            axis_is_log=is_axis_log,
+            tesseract_count=tesseract_count,
+            label_count=label_count,
+            anchors=anchors,
+        )
         if not needs_formula:
             continue
 
+        sparse_or_suspicious = tesseract_count < 3 or tesseract_count < max(3, int(label_count * 0.6))
         if is_axis_log:
-            max_crops = 1 if tesseract_count >= 2 else 2
+            max_crops = 3 if sparse_or_suspicious else 2
         elif axis.direction == "y" and tesseract_count < 3:
             max_crops = 1
         else:
@@ -842,6 +1172,7 @@ def _plan_formula_batch_requests(
             staged.append(
                 (
                     request_pos,
+                    is_axis_log,
                     FormulaBatchRequest(
                         axis_id=id(axis),
                         anchor_idx=anchor_idx,
@@ -857,7 +1188,7 @@ def _plan_formula_batch_requests(
         max_total_crops = 4 if any(axis_is_log.values()) else 2
 
     if requested_count <= max_total_crops:
-        requests = [req for _, req in staged]
+        requests = [req for _, _, req in staged]
         return FormulaBatchPlan(
             requests=requests,
             requested_count=requested_count,
@@ -866,10 +1197,27 @@ def _plan_formula_batch_requests(
             batch_size_hint=requested_count,
         )
 
-    keep_positions = {
-        pos for pos, _ in sorted(staged, key=lambda item: item[1].score, reverse=True)[:max_total_crops]
-    }
-    requests = [req for pos, req in staged if pos in keep_positions]
+    keep_positions: set[int] = set()
+    log_axis_best: dict[int, tuple[int, FormulaBatchRequest]] = {}
+    for pos, is_log, req in staged:
+        if not is_log:
+            continue
+        old = log_axis_best.get(req.axis_id)
+        if old is None or req.score > old[1].score:
+            log_axis_best[req.axis_id] = (pos, req)
+    for pos, _req in sorted(log_axis_best.values(), key=lambda item: item[1].score, reverse=True):
+        if len(keep_positions) >= max_total_crops:
+            break
+        keep_positions.add(pos)
+    for pos, _is_log, _req in sorted(
+        staged,
+        key=lambda item: (1 if item[1] else 0, item[2].score),
+        reverse=True,
+    ):
+        if len(keep_positions) >= max_total_crops:
+            break
+        keep_positions.add(pos)
+    requests = [req for pos, _is_log, req in staged if pos in keep_positions]
     return FormulaBatchPlan(
         requests=requests,
         requested_count=requested_count,
@@ -929,6 +1277,8 @@ def calibrate_all_axes(
                 image, axis, cross_axis_log=prior_x_log,
                 log_notation_score=log_notation_scores.get(id(axis), 0.0),
             )
+            if log_x_prob > 0.25:
+                x_log[id(axis)] = True
         else:
             x_log[id(axis)] = False
 
@@ -942,6 +1292,8 @@ def calibrate_all_axes(
                 image, axis, cross_axis_log=any_x_log or prior_y_log,
                 log_notation_score=log_notation_scores.get(id(axis), 0.0),
             )
+            if log_y_prob > 0.25:
+                y_log[id(axis)] = True
         else:
             y_log[id(axis)] = False
 
@@ -996,26 +1348,22 @@ def calibrate_all_axes(
         formula_batch_candidate_count = formula_plan.requested_count if formula_plan else 0
         formula_batch_kept_count = formula_plan.kept_count if formula_plan else 0
         formula_batch_chunks = formula_batch_stats.chunks if formula_batch_stats else 0
-        strong_formula_log = formula_log_score >= 0.55 and formula_value_count > 0
         use_formula_label_values = _should_use_formula_label_values(
             formula_anchor_count,
             formula_value_count,
             formula_log_score,
         )
-        tick_source = (
-            "formula"
-            if use_formula_label_values
-            else "fused"
-            if formula_anchor_count > 0 and axis_anchor_stats.get("tesseract_count", 0) > 0
-            else "tesseract"
-            if axis_anchor_stats.get("tesseract_count", 0) > 0
-            else "heuristic"
+        strong_formula_log = _should_use_formula_log_hint(
+            formula_anchor_count,
+            formula_value_count,
+            formula_log_score,
         )
-
         if use_ocr:
             anchors = axis_anchor_map.get(id(axis), [])
             if anchors:
-                labeled = []
+                tesseract_labeled = []
+                formula_labeled = []
+                fused_labeled = []
                 for anchor_idx, anchor in enumerate(anchors):
                     formula_key = (id(axis), anchor_idx)
                     formula_latex, formula_value = formula_request_results.get(formula_key, (None, None))
@@ -1024,56 +1372,106 @@ def calibrate_all_axes(
                     if formula_value is not None:
                         anchor.formula_value = formula_value
 
-                    if anchor.formula_value is not None and (
-                        use_formula_label_values or anchor.tesseract_value is None
-                    ):
-                        labeled.append((anchor.tick_pixel, anchor.formula_value))
-                        anchor.source = "fused" if anchor.tesseract_value is not None else "formula"
+                    tesseract_labeled.append((anchor.tick_pixel, anchor.tesseract_value))
+                    formula_labeled.append((anchor.tick_pixel, anchor.formula_value))
+                    fused_value = anchor.formula_value if anchor.formula_value is not None else anchor.tesseract_value
+                    fused_labeled.append((anchor.tick_pixel, fused_value))
+                    if anchor.formula_value is not None and anchor.tesseract_value is not None:
+                        anchor.source = "fused"
+                    elif anchor.formula_value is not None:
+                        anchor.source = "formula"
+                    elif anchor.tesseract_value is not None:
+                        anchor.source = "tesseract"
                     else:
-                        labeled.append((anchor.tick_pixel, anchor.tesseract_value))
-                        anchor.source = "tesseract" if anchor.tesseract_value is not None else "missing"
-            else:
-                labeled = [(p, None) for p in tick_pixels]
-        else:
-            labeled = [(p, None) for p in tick_pixels]
+                        anchor.source = "missing"
 
-        valid_count = sum(1 for _, v in labeled if v is not None)
+                if is_log:
+                    tesseract_for_fusion = _fix_log_superscript_ocr(tesseract_labeled)
+                else:
+                    tesseract_for_fusion = tesseract_labeled
+                if formula_log_score >= 0.3 and formula_value_count >= 1:
+                    tesseract_for_fusion = _force_log_superscript_ocr(tesseract_for_fusion)
+                corrected_tesseract_by_tick = {
+                    int(pixel): value for pixel, value in tesseract_for_fusion if value is not None
+                }
+                fused_labeled = []
+                for anchor_idx, anchor in enumerate(anchors):
+                    if anchor.formula_value is not None:
+                        fused_value = anchor.formula_value
+                    else:
+                        fused_value = corrected_tesseract_by_tick.get(
+                            int(anchor.tick_pixel),
+                            anchor.tesseract_value,
+                        )
+                    fused_labeled.append((anchor.tick_pixel, fused_value))
+
+                # Use fixed priority table for candidate selection
+                from plot_extractor.core.label_crop_planner import build_candidate_maps  # pylint: disable=import-outside-toplevel
+                candidate_maps = build_candidate_maps(
+                    formula_log_score=formula_log_score,
+                    formula_value_count=formula_value_count,
+                    formula_anchor_count=formula_anchor_count,
+                    tesseract_count=axis_anchor_stats.get("tesseract_count", 0),
+                    label_count=axis_anchor_stats.get("label_count", 0),
+                    anchors=anchors,
+                    formula_labeled=formula_labeled,
+                    fused_labeled=fused_labeled,
+                    tesseract_labeled=tesseract_labeled,
+                    axis=axis,
+                )
+                # Handle formula_generated side effects
+                if candidate_maps and candidate_maps[0][0] == "formula_generated":
+                    is_log = True
+                    axis_preferred = "log"
+                    # Fill in the actual generated ticks
+                    if not candidate_maps[0][1]:
+                        generated = _build_formula_generated_log_ticks(axis, anchors)
+                        candidate_maps[0] = ("formula_generated", generated)
+                        if not generated:
+                            # Fall back to heuristic
+                            candidate_maps = [("heuristic", [])]
+                if not candidate_maps:
+                    candidate_maps = [("heuristic", [])]
+            else:
+                candidate_maps = [("heuristic", [(p, None) for p in tick_pixels])]
+        else:
+            candidate_maps = [("heuristic", [(p, None) for p in tick_pixels])]
+
+        primary_labeled = candidate_maps[0][1] if candidate_maps else []
+        valid_count = sum(1 for _, v in primary_labeled if v is not None)
 
         # LLM fallback when OCR yields insufficient labels
         if use_llm:
             n_ticks = len(tick_pixels)
             if valid_count < 2 or (n_ticks >= 6 and valid_count < n_ticks * 0.4):
-                enhanced = _llm_enhance_axis_labels(image, axis, labeled)
+                enhanced = _llm_enhance_axis_labels(image, axis, primary_labeled)
                 if enhanced is not None:
-                    labeled = enhanced
-                    valid_count = sum(1 for _, v in labeled if v is not None)
+                    candidate_maps = [("llm", enhanced)]
+                    valid_count = sum(1 for _, v in enhanced if v is not None)
 
         if strong_formula_log:
             is_log = True
             axis_preferred = "log"
 
-        cal = calibrate_axis(
-            axis, labeled, image=image, policy=policy, preferred_type=axis_preferred,
-            is_log=is_log,
-            tick_source=tick_source,
-            anchor_count=axis_anchor_stats.get("anchor_count", 0),
-            formula_anchor_count=formula_anchor_count,
-            formula_log_score=formula_log_score,
-            formula_selected_count=formula_selected_count,
-            tesseract_anchor_count=axis_anchor_stats.get("tesseract_count", 0),
-            label_anchor_count=axis_anchor_stats.get("label_count", 0),
-            formula_batch_candidate_count=formula_batch_candidate_count,
-            formula_batch_kept_count=formula_batch_kept_count,
-            formula_batch_chunks=formula_batch_chunks,
-            formula_batch_requested=formula_batch_requested,
-            formula_batch_returned=formula_batch_returned,
-            formula_batch_ms=formula_batch_ms,
+        cal = _select_best_ocr_calibration(
+            axis,
+            candidate_maps,
+            image,
+            policy,
+            axis_preferred,
+            is_log,
+            formula_anchor_count,
+            formula_log_score,
+            formula_selected_count,
+            axis_anchor_stats,
+            formula_plan,
+            formula_batch_stats,
         )
         if cal is None:
             cal = calibrate_axis(
                 axis, [], image=image, policy=policy, preferred_type=axis_preferred,
                 is_log=is_log,
-                tick_source=tick_source,
+                tick_source="heuristic",
                 anchor_count=axis_anchor_stats.get("anchor_count", 0),
                 formula_anchor_count=formula_anchor_count,
                 formula_log_score=formula_log_score,

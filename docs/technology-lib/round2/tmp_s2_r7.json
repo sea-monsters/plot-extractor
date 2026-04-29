@@ -1,0 +1,832 @@
+{
+  "status": "success",
+  "total_count": 57,
+  "result": [
+    {
+      "arxiv_id": "2105.05434",
+      "score": 9.361276,
+      "title": "A novel feed rate scheduling method based on Sigmoid function with chord error and kinematics constraints",
+      "tldr": "This paper proposes a novel feed rate scheduling method based on Sigmoid function with chord error and kinematics constraints to address the challenge of generating smooth and efficient feed rate profiles in CNC machining, which is crucial for improving machining efficiency and quality; the method uses a two-step screening approach to identify breaking points and generates Sigmoid-based feed rate profiles for each block, offering a more concise and efficient solution compared to polynomial and trigonometric methods; simulations on two NURBS curves show improved performance in terms of machining efficiency.",
+      "abstract": "In high speed CNC (Compute Numerical Control) machining, the feed rate scheduling has played an important role to ensure machining quality and machining efficiency. In this paper, a novel feed rate scheduling method is proposed for generating smooth feed rate profile conveniently with the consideration of both geometric error and kinematic error. First, a relationship between feed rate value and chord error is applied to determine the feed rate curve. Then, breaking points, which can split whole curve into several blocks, can be found out using proposed two step screening method. For every block, a feed rate profile based on the Sigmoid function is generated. With the consideration of kinematic limitation and machining efficiency, a time-optimal feed rate adjustment algorithm is proposed to further adjust feed rate value at breaking points. After planning feed rate profile for each block, all blocks feed rate profile will be connected smoothly. The resulting feed rate profile is more concise compared with the polynomial profile and more efficient compared with the trigonometric profile. Finally, simulations with two free-form NURBS curves are conducted and comparison with the sine-curve method are carried out to verify the feasibility and applicability of the proposed method.",
+      "authors": [
+        {
+          "name": "Hexiong Li",
+          "orgs": [
+            "Key Laboratory of Mathematics, Informatics and Behavioral Semantics (LMIB), School of Mathematics Science, Beihang University, Beijing, China",
+            "Peng Cheng Laboratory, Shenzhen, Guangdong, China"
+          ]
+        },
+        {
+          "name": "Xin Jiang",
+          "orgs": [
+            "Key Laboratory of Mathematics, Informatics and Behavioral Semantics (LMIB), School of Mathematics Science, Beihang University, Beijing, China",
+            "Peng Cheng Laboratory, Shenzhen, Guangdong, China",
+            "Beijing Advanced Innovation Center for Big Data and Brain Computing (BDBC), Beihang University, Beijing, China"
+          ]
+        },
+        {
+          "name": "Guanying Huo",
+          "orgs": [
+            "Key Laboratory of Mathematics, Informatics and Behavioral Semantics (LMIB), School of Mathematics Science, Beihang University, Beijing, China",
+            "Peng Cheng Laboratory, Shenzhen, Guangdong, China"
+          ]
+        },
+        {
+          "name": "Bolun Wang",
+          "orgs": [
+            "Key Laboratory of Mathematics, Informatics and Behavioral Semantics (LMIB), School of Mathematics Science, Beihang University, Beijing, China",
+            "Peng Cheng Laboratory, Shenzhen, Guangdong, China"
+          ]
+        },
+        {
+          "name": "Yifei Hu",
+          "orgs": [
+            "Key Laboratory of Mathematics, Informatics and Behavioral Semantics (LMIB), School of Mathematics Science, Beihang University, Beijing, China",
+            "Peng Cheng Laboratory, Shenzhen, Guangdong, China"
+          ]
+        },
+        {
+          "name": "Zhiming Zheng",
+          "orgs": [
+            "Key Laboratory of Mathematics, Informatics and Behavioral Semantics (LMIB), School of Mathematics Science, Beihang University, Beijing, China",
+            "Peng Cheng Laboratory, Shenzhen, Guangdong, China",
+            "Beijing Advanced Innovation Center for Big Data and Brain Computing (BDBC), Beihang University, Beijing, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2105.05434v1",
+      "date": "2021-05-12T05:16:36Z",
+      "citation_count": 20,
+      "categories": [
+        "cs.SY",
+        "eess.SY"
+      ]
+    },
+    {
+      "arxiv_id": "1705.01032",
+      "score": 9.323856,
+      "title": "Hermite-Birkhoff interpolation on scattered data on the sphere and other manifolds",
+      "tldr": "This paper addresses Hermite-Birkhoff interpolation on scattered data on the sphere and other manifolds, aiming to improve approximations in geoscientific applications by avoiding linear systems; it introduces basis functions dependent on geodesic distances, orthonormal with zero derivatives up to a certain order, and coefficients as incomplete Taylor expansions, contributing a direct interpolation method; numerical tests demonstrate performance on surfaces, showing effectiveness for data recovery on manifolds.",
+      "abstract": "The Hermite-Birkhoff interpolation problem of a function given on arbitrarily distributed points on the sphere and other manifolds is considered. Each proposed interpolant is expressed as a linear combination of basis functions, the combination coefficients being incomplete Taylor expansions of the interpolated function at the interpolation points. The basis functions depend on the geodesic distance, are orthonormal with respect to the point-evaluation functionals, and have all derivatives equal zero up to a certain order at the interpolation points. A remarkable feature of such interpolants, which belong to the class of partition of unity methods, is that their construction does not require solving linear systems. Numerical tests are given to show the interpolation performance.",
+      "authors": [
+        {
+          "name": "Giampietro Allasia",
+          "orgs": [
+            "Department of Mathematics “G. Peano”, University of Torino"
+          ]
+        },
+        {
+          "name": "Roberto Cavoretto",
+          "orgs": [
+            "Department of Mathematics “G. Peano”, University of Torino"
+          ]
+        },
+        {
+          "name": "Alessandra De Rossi",
+          "orgs": [
+            "Department of Mathematics “G. Peano”, University of Torino"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1705.01032v1",
+      "date": "2017-05-02T15:43:38Z",
+      "citation_count": 29,
+      "categories": [
+        "math.NA"
+      ]
+    },
+    {
+      "arxiv_id": "2504.02511",
+      "score": 9.319663,
+      "title": "Analytical Discovery of Manifold with Machine Learning",
+      "tldr": "This paper addresses the challenge of providing a global analytical description of high-dimensional data manifolds and characterizing their local spatial structures, crucial for anomaly detection and interpretation; it introduces GAMLA, a framework using auto-encoding with two-round training to derive global coordinates and explicit manifold descriptions, offering computational efficiency and geometric property calculations; experiments show GAMLA effectively captures local structures, enhancing anomaly detection and providing interpretable insights.",
+      "abstract": "Understanding low-dimensional structures within high-dimensional data is crucial for visualization, interpretation, and denoising in complex datasets. Despite the advancements in manifold learning techniques, key challenges-such as limited global insight and the lack of interpretable analytical descriptions-remain unresolved. In this work, we introduce a novel framework, GAMLA (Global Analytical Manifold Learning using Auto-encoding). GAMLA employs a two-round training process within an auto-encoding framework to derive both character and complementary representations for the underlying manifold. With the character representation, the manifold is represented by a parametric function which unfold the manifold to provide a global coordinate. While with the complementary representation, an approximate explicit manifold description is developed, offering a global and analytical representation of smooth manifolds underlying high-dimensional datasets. This enables the analytical derivation of geometric properties such as curvature and normal vectors. Moreover, we find the two representations together decompose the whole latent space and can thus characterize the local spatial structure surrounding the manifold, proving particularly effective in anomaly detection and categorization. Through extensive experiments on benchmark datasets and real-world applications, GAMLA demonstrates its ability to achieve computational efficiency and interpretability while providing precise geometric and structural insights. This framework bridges the gap between data-driven manifold learning and analytical geometry, presenting a versatile tool for exploring the intrinsic properties of complex data sets.",
+      "authors": [
+        {
+          "name": "Yafei Shen",
+          "orgs": [
+            "School of Mathematical Sciences, Soochow University, Suzhou 215006, China"
+          ]
+        },
+        {
+          "name": "Huan-Fei Ma",
+          "orgs": [
+            "School of Mathematical Sciences, Soochow University, Suzhou 215006, China"
+          ]
+        },
+        {
+          "name": "Ling Yang",
+          "orgs": [
+            "School of Mathematical Sciences, Soochow University, Suzhou 215006, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2504.02511v1",
+      "date": "2025-04-03T11:53:00Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.LG",
+        "stat.ML"
+      ]
+    },
+    {
+      "arxiv_id": "1501.02946",
+      "score": 9.152421,
+      "title": "Computational Realization of a Non-Equidistant Grid Sampling in Photoacoustics with a Non-Uniform FFT",
+      "tldr": "This paper addresses the challenge of improving photoacoustic image reconstruction by using non-uniform sensor arrangements and non-uniform fast Fourier transform (NUFFT) methods, offering enhanced resolution and efficiency compared to standard FFT approaches, with axial resolution improvements of up to 170% and reduced reconstruction time by 35%.",
+      "abstract": "To obtain the initial pressure from the collected data on a planar sensor arrangement in Photoacoustic tomography, there exists an exact analytic frequency domain reconstruction formula. An efficient realization of this formula needs to cope with the evaluation of the datas Fourier transform on a non-equispaced mesh. In this paper, we use the non-uniform fast Fourier transform to handle this issue and show its feasibility in 3D experiments. This is done in comparison to the standard approach that uses polynomial interpolation. Moreover, we investigate the effect and the utility of flexible sensor location on the quality of photoacoustic image reconstruction. The computational realization is accomplished by the use of a multi-dimensional non-uniform fast Fourier algorithm, where non-uniform data sampling is performed both in frequency and spatial domain. We show that with appropriate sampling the imaging quality can be significantly improved. Reconstructions with synthetic and real data show the superiority of this method.",
+      "authors": [
+        {
+          "name": "Julian Schmid",
+          "orgs": [
+            "Computational Science Center, University of Vienna, Oskar-Morgenstern-Platz 1, 1090 Vienna, Austria"
+          ]
+        },
+        {
+          "name": "Thomas Glatz",
+          "orgs": [
+            "Computational Science Center, University of Vienna, Oskar-Morgenstern-Platz 1, 1090 Vienna, Austria"
+          ]
+        },
+        {
+          "name": "Behrooz Zabihian",
+          "orgs": [
+            "Center for Medical Physics and Biomedical Engineering, Medical University of Vienna, Waehringer Guertel 18-20, 1090 Vienna, Austria"
+          ]
+        },
+        {
+          "name": "Wolfgang Drexler",
+          "orgs": [
+            "Center for Medical Physics and Biomedical Engineering, Medical University of Vienna, Waehringer Guertel 18-20, 1090 Vienna, Austria"
+          ]
+        },
+        {
+          "name": "Otmar Scherzer",
+          "orgs": [
+            "Computational Science Center, University of Vienna, Oskar-Morgenstern-Platz 1, 1090 Vienna, Austria",
+            "Radon Institute of Computational and Applied Mathematics, Austrian Academy of Sciences, Altenberger Str. 69, 4040 Linz, Austria"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1501.02946v1",
+      "date": "2015-01-13T10:33:19Z",
+      "citation_count": 1,
+      "categories": [
+        "math.NA"
+      ]
+    },
+    {
+      "arxiv_id": "1401.0113",
+      "score": 9.086959,
+      "title": "Connectivity-preserving Geometry Images",
+      "tldr": "This paper proposes connectivity-preserving geometry images (CGIMs) to address the reconstruction errors in traditional geometry images by preserving mesh connectivity and vertex-set with round-off errors, introducing an efficient parametrization-free algorithm and achieving better reconstruction precision and detail preservation in lossy compression with PSNR improvements.",
+      "abstract": "We propose connectivity-preserving geometry images (CGIMs), which map a three-dimensional mesh onto a rectangular regular array of an image, such that the reconstructed mesh produces no sampling errors, but merely round-off errors. We obtain a V-matrix with respect to the original mesh, whose elements are vertices of the mesh, which intrinsically preserves the vertex-set and the connectivity of the original mesh in the sense of allowing round-off errors. We generate a CGIM array by using the Cartesian coordinates of corresponding vertices of the V-matrix. To reconstruct a mesh, we obtain a vertex-set and an edge-set by collecting all the elements with different pixels, and all different pairwise adjacent elements from the CGIM array respectively. Compared with traditional geometry images, CGIMs achieve minimum reconstruction errors with an efficient parametrization-free algorithm via elementary permutation techniques. We apply CGIMs to lossy compression of meshes, and the experimental results show that CGIMs perform well in reconstruction precision and detail preservation.",
+      "authors": [
+        {
+          "name": "Shaofan Wang",
+          "orgs": [
+            "Beijing Key Laboratory of Multimedia Intelligent Software Technology",
+            "College of Metropolitan Transportation",
+            "Beijing University of Technology",
+            "Beijing 100124, China"
+          ]
+        },
+        {
+          "name": "Dehui Kong",
+          "orgs": [
+            "Beijing Key Laboratory of Multimedia Intelligent Software Technology",
+            "College of Metropolitan Transportation",
+            "Beijing University of Technology",
+            "Beijing 100124, China"
+          ]
+        },
+        {
+          "name": "Juan Xue",
+          "orgs": [
+            "Beijing Key Laboratory of Multimedia Intelligent Software Technology",
+            "College of Metropolitan Transportation",
+            "Beijing University of Technology",
+            "Beijing 100124, China"
+          ]
+        },
+        {
+          "name": "Min Xu",
+          "orgs": [
+            "School of Mathematical Sciences, Dalian University of Technology, Dalian 116085, China"
+          ]
+        },
+        {
+          "name": "Baocai Yin",
+          "orgs": [
+            "Beijing Key Laboratory of Multimedia Intelligent Software Technology, College of Metropolitan Transportation, Beijing University of Technology, Beijing 100124, China"
+          ]
+        },
+        {
+          "name": "Hubert Roth",
+          "orgs": [
+            "Institute of Automatic Control Engineering, University of Siegen, Siegen 57068, Germany"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1401.0113v3",
+      "date": "2013-12-31T08:50:03Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.GR"
+      ]
+    },
+    {
+      "arxiv_id": "2309.09911",
+      "score": 9.0208,
+      "title": "Neural Parametric Surfaces for Shape Modeling",
+      "tldr": "This paper introduces Neural Parametric Surfaces, a novel method for modeling complex shapes using arbitrary n-sided patches with G^0 continuity and achieving G^1 continuity through a learnable feature complex and MLP-encoded mapping function; it offers greater flexibility than traditional parametric surfaces and enables high-fidelity surface fitting and shape interpolation from noisy data.",
+      "abstract": "The recent surge of utilizing deep neural networks for geometric processing and shape modeling has opened up exciting avenues. However, there is a conspicuous lack of research efforts on using powerful neural representations to extend the capabilities of parametric surfaces, which are the prevalent surface representations in product design, CAD/CAM, and computer animation. We present Neural Parametric Surfaces, the first piecewise neural surface representation that allows coarse patch layouts of arbitrary $n$-sided surface patches to model complex surface geometries with high precision, offering greater flexibility over traditional parametric surfaces. By construction, this new surface representation guarantees $G^0$ continuity between adjacent patches and empirically achieves $G^1$ continuity, which cannot be attained by existing neural patch-based methods. The key ingredient of our neural parametric surface is a learnable feature complex $\\mathcal{C}$ that is embedded in a high-dimensional space $\\mathbb{R}^D$ and topologically equivalent to the patch layout of the surface; each face cell of the complex is defined by interpolating feature vectors at its vertices. The learned feature complex is mapped by an MLP-encoded function $f:\\mathcal{C} \\rightarrow \\mathcal{S}$ to produce the neural parametric surface $\\mathcal{S}$. We present a surface fitting algorithm that optimizes the feature complex $\\mathcal{C}$ and trains the neural mapping $f$ to reconstruct given target shapes with high accuracy. We further show that the proposed representation along with a compact-size neural net can learn a plausible shape space from a shape collection, which can be used for shape interpolation or shape completion from noisy and incomplete input data. Extensive experiments show that neural parametric surfaces offer greater modeling capabilities than traditional parametric surfaces.",
+      "authors": [
+        {
+          "name": "Lei Yang",
+          "orgs": [
+            "The University of Hong Kong",
+            "TransGP",
+            "Hong Kong SAR, China"
+          ]
+        },
+        {
+          "name": "Yongqing Liang",
+          "orgs": [
+            "Texas A&M University",
+            "College station, TX, USA"
+          ]
+        },
+        {
+          "name": "Xin Li",
+          "orgs": [
+            "Texas A&M University",
+            "College station, TX, USA"
+          ]
+        },
+        {
+          "name": "Guying Lin",
+          "orgs": [
+            "The University of Hong Kong",
+            "Hong Kong SAR, China"
+          ]
+        },
+        {
+          "name": "Alla Sheffer",
+          "orgs": [
+            "University of British Columbia",
+            "Vancouver, Canada"
+          ]
+        },
+        {
+          "name": "Scott Schaefer",
+          "orgs": [
+            "Texas A&M University",
+            "College station, TX, USA"
+          ]
+        },
+        {
+          "name": "Wenping Wang",
+          "orgs": [
+            "Texas A&M University",
+            "College station, TX, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2309.09911v1",
+      "date": "2023-09-18T16:21:50Z",
+      "citation_count": 8,
+      "categories": [
+        "cs.GR"
+      ]
+    },
+    {
+      "arxiv_id": "2105.02353",
+      "score": 8.997618,
+      "title": "Arbitrary-order intrinsic virtual element method for elliptic equations on surfaces",
+      "tldr": "This paper introduces an arbitrary-order intrinsic virtual element method for solving elliptic surface PDEs, addressing the challenge of high-order surface approximation by using intrinsic geometry and covariant formulations, contributing a novel approach that enables high-order accuracy on polygonal meshes; numerical experiments show the method's effectiveness and robustness on triangular and polygonal meshes, with convergence properties extending straightforwardly to surface problems.",
+      "abstract": "We develop a geometrically intrinsic formulation of the arbitrary-order Virtual Element Method (VEM) on polygonal cells for the numerical solution of elliptic surface partial differential equations (PDEs). The PDE is first written in covariant form using an appropriate local reference system. The knowledge of the local parametrization allows us to consider the two-dimensional VEM scheme, without any explicit approximation of the surface geometry. The theoretical properties of the classical VEM are extended to our framework by taking into consideration the highly anisotropic character of the final discretization. These properties are extensively tested on triangular and polygonal meshes using a manufactured solution. The limitations of the scheme are verified as functions of the regularity of the surface and its approximation.",
+      "authors": [
+        {
+          "name": "Elena Bachini",
+          "orgs": [
+            "Department of Mathematics “Tullio Levi-Civita”, University of Padua, Italy",
+            "Institute of Scientific Computing, Department of Mathematics, TU Dresden, Germany"
+          ]
+        },
+        {
+          "name": "Gianmarco Manzini",
+          "orgs": [
+            "Istituto di Matematica Applicata e Tecnologie Informatiche - CNR Pavia, Italy"
+          ]
+        },
+        {
+          "name": "Mario Putti",
+          "orgs": [
+            "Department of Mathematics “Tullio Levi-Civita”, University of Padua, Italy"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2105.02353v1",
+      "date": "2021-05-05T22:24:06Z",
+      "citation_count": 11,
+      "categories": [
+        "cs.NA",
+        "math.NA"
+      ]
+    },
+    {
+      "arxiv_id": "2003.04577",
+      "score": 8.970736,
+      "title": "Balanced truncation for parametric linear systems using interpolation of Gramians: a comparison of algebraic and geometric approaches",
+      "tldr": "This paper addresses parametric model order reduction by comparing algebraic and geometric approaches for interpolating Gramians, aiming to preserve their symmetric positive semidefinite property and reduce computational cost; it proposes two methods: one using linear combinations of data Gramians and another performing interpolation on a fixed-rank manifold; numerical comparisons on two benchmark problems show the geometric approach maintains consistent rank and improves efficiency.",
+      "abstract": "When balanced truncation is used for model order reduction, one has to solve a pair of Lyapunov equations for two Gramians and uses them to construct a reduced-order model. Although advances in solving such equations have been made, it is still the most expensive step of this reduction method. Parametric model order reduction aims to determine reduced-order models for parameter-dependent systems. Popular techniques for parametric model order reduction rely on interpolation. Nevertheless, the interpolation of Gramians is rarely mentioned, most probably due to the fact that Gramians are symmetric positive semidefinite matrices, a property that should be preserved by the interpolation method. In this contribution, we propose and compare two approaches for Gramian interpolation. In the first approach, the interpolated Gramian is computed as a linear combination of the data Gramians with positive coefficients. Even though positive semidefiniteness is guaranteed in this method, the rank of the interpolated Gramian can be significantly larger than that of the data Gramians. The second approach aims to tackle this issue by performing the interpolation on the manifold of fixed-rank positive semidefinite matrices. The results of the interpolation step are then used to construct parametric reduced-order models, which are compared numerically on two benchmark problems.",
+      "authors": [
+        {
+          "name": "Nguyen Thanh Son",
+          "orgs": []
+        },
+        {
+          "name": "Pierre-Yves Gousenbourger",
+          "orgs": []
+        },
+        {
+          "name": "Estelle Massart",
+          "orgs": []
+        },
+        {
+          "name": "Tatjana Stykel",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2003.04577v1",
+      "date": "2020-03-10T08:41:17Z",
+      "citation_count": 8,
+      "categories": [
+        "cs.NA",
+        "math.DS",
+        "math.NA"
+      ]
+    },
+    {
+      "arxiv_id": "2006.13782",
+      "score": 8.950886,
+      "title": "Neural Splines: Fitting 3D Surfaces with Infinitely-Wide Neural Networks",
+      "tldr": "This paper presents Neural Splines, a kernel-based method for 3D surface reconstruction that outperforms existing techniques and Poisson Surface Reconstruction by leveraging infinitely-wide ReLU networks, offering explicit RKHS norms and generalizing cubic spline interpolation to higher dimensions; it achieves state-of-the-art results with linear parameter scaling and avoids gradient descent, enabling efficient and scalable surface reconstruction.",
+      "abstract": "We present Neural Splines, a technique for 3D surface reconstruction that is based on random feature kernels arising from infinitely-wide shallow ReLU networks. Our method achieves state-of-the-art results, outperforming recent neural network-based techniques and widely used Poisson Surface Reconstruction (which, as we demonstrate, can also be viewed as a type of kernel method). Because our approach is based on a simple kernel formulation, it is easy to analyze and can be accelerated by general techniques designed for kernel-based learning. We provide explicit analytical expressions for our kernel and argue that our formulation can be seen as a generalization of cubic spline interpolation to higher dimensions. In particular, the RKHS norm associated with Neural Splines biases toward smooth interpolants.",
+      "authors": [
+        {
+          "name": "Francis Williams",
+          "orgs": [
+            "New York University"
+          ]
+        },
+        {
+          "name": "Matthew Trager",
+          "orgs": [
+            "New York University",
+            "Amazon"
+          ]
+        },
+        {
+          "name": "Joan Bruna",
+          "orgs": [
+            "New York University"
+          ]
+        },
+        {
+          "name": "Denis Zorin",
+          "orgs": [
+            "New York University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2006.13782v3",
+      "date": "2020-06-24T14:54:59Z",
+      "citation_count": 76,
+      "categories": [
+        "cs.CV",
+        "cs.GR"
+      ]
+    },
+    {
+      "arxiv_id": "2205.11767",
+      "score": 8.921609,
+      "title": "Charting Galactic Accelerations with Stellar Streams and Machine Learning",
+      "tldr": "This paper presents a data-driven method using machine learning to reconstruct the galactic acceleration field from stellar streams, addressing the gap in accurately modeling complex gravitational potentials without prior assumptions; it employs a neural network to fit stream data and estimate acceleration vectors, offering a flexible approach that enables accurate recovery of potential parameters in simulated triaxial logarithmic halos; findings show the method successfully recovers ground-truth potential parameters, with implications for improving dark matter distribution mapping and potential reconstruction in astrophysics.",
+      "abstract": "We present a data-driven method for reconstructing the galactic acceleration field from phase-space measurements of stellar streams. Our approach is based on a flexible and differentiable fit to the stream in phase-space, enabling a direct estimate of the acceleration vector along the stream. Reconstruction of the local acceleration field can be applied independently to each of several streams, allowing us to sample the acceleration field due to the underlying galactic potential across a range of scales. Our approach is methodologically different from previous works, since a model for the gravitational potential does not need to be adopted beforehand. Instead, our flexible neural-network-based model treats the stream as a collection of orbits with a locally similar mixture of energies, rather than assuming that the stream delineates a single stellar orbit. Accordingly, our approach allows for distinct regions of the stream to have different mean energies, as is the case for real stellar streams. Once the acceleration vector is sampled along the stream, standard analytic models for the galactic potential can then be rapidly constrained. We find our method recovers the correct parameters for a ground-truth triaxial logarithmic halo potential when applied to simulated stellar streams. Alternatively, we demonstrate that a flexible potential can be constrained with a neural network, though standard multipole expansions can also be constrained. Our approach is applicable to simple and complicated gravitational potentials alike, and enables potential reconstruction from a fully data-driven standpoint using measurements of slowly phase-mixing tidal debris.",
+      "authors": [
+        {
+          "name": "Jacob Nibauer",
+          "orgs": [
+            "Department of Astrophysical Sciences, Princeton University, Princeton, NJ 08544, USA"
+          ]
+        },
+        {
+          "name": "Vasily Belokurov",
+          "orgs": [
+            "Institute of Astronomy, Madingley Rd, Cambridge, CB3 0HA, UK",
+            "Center for Computational Astrophysics, Flatiron Institute, 162 5th Avenue, New York, NY 10010, USA"
+          ]
+        },
+        {
+          "name": "Miles Cranmer",
+          "orgs": [
+            "Department of Astrophysical Sciences, Princeton University, Princeton, NJ 08544, USA"
+          ]
+        },
+        {
+          "name": "Shirley Ho",
+          "orgs": [
+            "Center for Computational Astrophysics, Flatiron Institute, 162 5th Avenue, New York, NY 10010, USA",
+            "New York University, New York, NY 10010, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2205.11767v3",
+      "date": "2022-05-24T04:05:55Z",
+      "citation_count": 7,
+      "categories": [
+        "astro-ph.GA",
+        "astro-ph.IM"
+      ]
+    },
+    {
+      "arxiv_id": "2506.18017",
+      "score": 8.760643,
+      "title": "Auto-Regressive Surface Cutting",
+      "tldr": "This paper addresses the challenge of semantically coherent surface cutting in computer graphics, aiming to improve UV parameterization and 3D segmentation by generating artist-style cutting seams; it introduces SeamGPT, an auto-regressive transformer model trained on 560K artist-cut meshes, achieving state-of-the-art performance on UV unwrapping benchmarks; experiments show SeamGPT produces clean boundaries for part decomposition, enhancing existing 3D segmentation tools.",
+      "abstract": "Surface cutting is a fundamental task in computer graphics, with applications in UV parameterization, texture mapping, and mesh decomposition. However, existing methods often produce technically valid but overly fragmented atlases that lack semantic coherence. We introduce SeamGPT, an auto-regressive model that generates cutting seams by mimicking professional workflows. Our key technical innovation lies in formulating surface cutting as a next token prediction task: sample point clouds on mesh vertices and edges, encode them as shape conditions, and employ a GPT-style transformer to sequentially predict seam segments with quantized 3D coordinates. Our approach achieves exceptional performance on UV unwrapping benchmarks containing both manifold and non-manifold meshes, including artist-created, and 3D-scanned models. In addition, it enhances existing 3D segmentation tools by providing clean boundaries for part decomposition.",
+      "authors": [
+        {
+          "name": "Yang Li",
+          "orgs": [
+            "Tencent Hunyuan"
+          ]
+        },
+        {
+          "name": "Victor Cheung",
+          "orgs": [
+            "Tencent Hunyuan"
+          ]
+        },
+        {
+          "name": "Xinhai Liu",
+          "orgs": [
+            "Tencent Hunyuan"
+          ]
+        },
+        {
+          "name": "Yuguang Chen",
+          "orgs": [
+            "SYSU"
+          ]
+        },
+        {
+          "name": "Zhongjin Luo",
+          "orgs": [
+            "CUHKSZ"
+          ]
+        },
+        {
+          "name": "Biwen Lei",
+          "orgs": [
+            "Tencent Hunyuan"
+          ]
+        },
+        {
+          "name": "Haohan Weng",
+          "orgs": [
+            "SCUT"
+          ]
+        },
+        {
+          "name": "Zibo Zhao",
+          "orgs": [
+            "Tencent Hunyuan",
+            "ShanghaiTech"
+          ]
+        },
+        {
+          "name": "Jingwei Huang",
+          "orgs": [
+            "Tencent Hunyuan"
+          ]
+        },
+        {
+          "name": "Zhuo Chen",
+          "orgs": [
+            "Tencent Hunyuan"
+          ]
+        },
+        {
+          "name": "Chunchao Guo",
+          "orgs": [
+            "Tencent Hunyuan"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2506.18017v1",
+      "date": "2025-06-22T12:53:07Z",
+      "citation_count": 5,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.GR"
+      ]
+    },
+    {
+      "arxiv_id": "1911.10414",
+      "score": 8.709284,
+      "title": "SAL: Sign Agnostic Learning of Shapes from Raw Data",
+      "tldr": "This paper introduces SAL, a method for learning implicit shape representations from raw unsigned geometric data, addressing the challenge of surface reconstruction without requiring signed ground-truth functions, and achieves state-of-the-art results on point cloud reconstruction and human shape space learning from raw scans.",
+      "abstract": "Recently, neural networks have been used as implicit representations for surface reconstruction, modelling, learning, and generation. So far, training neural networks to be implicit representations of surfaces required training data sampled from a ground-truth signed implicit functions such as signed distance or occupancy functions, which are notoriously hard to compute.\n  In this paper we introduce Sign Agnostic Learning (SAL), a deep learning approach for learning implicit shape representations directly from raw, unsigned geometric data, such as point clouds and triangle soups.\n  We have tested SAL on the challenging problem of surface reconstruction from an un-oriented point cloud, as well as end-to-end human shape space learning directly from raw scans dataset, and achieved state of the art reconstructions compared to current approaches. We believe SAL opens the door to many geometric deep learning applications with real-world data, alleviating the usual painstaking, often manual pre-process.",
+      "authors": [
+        {
+          "name": "Matan Atzmon",
+          "orgs": [
+            "Weizmann Institute of Science"
+          ]
+        },
+        {
+          "name": "Yaron Lipman",
+          "orgs": [
+            "Weizmann Institute of Science"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1911.10414v2",
+      "date": "2019-11-23T20:18:29Z",
+      "citation_count": 577,
+      "categories": [
+        "cs.CV",
+        "cs.GR",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2212.01963",
+      "score": 8.6842985,
+      "title": "Spherical Essentially Non-Oscillatory (SENO) Interpolation",
+      "tldr": "This paper addresses the interpolation on $\\mathbb{S}^2$ by developing SIDER-$n$ and SENO methods to handle high-order reconstructions and reduce spurious oscillations, contributing systematic high-order interpolants and a non-oscillatory approach for applications requiring smoothness; numerical examples demonstrate their accuracy and effectiveness in handling kinks and discontinuities.",
+      "abstract": "We develop two new ideas for interpolation on $\\mathbb{S}^2$. In this first part, we will introduce a simple interpolation method named \\textit{Spherical Interpolation of orDER} $n$ (SIDER-$n$) that gives a $C^{n}$ interpolant given $n \\geq 2$. The idea generalizes the construction of the B\\'{e}zier curves developed for $\\mathbb{R}$. The second part incorporates the ENO philosophy and develops a new \\textit{Spherical Essentially Non-Oscillatory} (SENO) interpolation method. When the underlying curve on $\\mathbb{S}^2$ has kinks or sharp discontinuity in the higher derivatives, our proposed approach can reduce spurious oscillations in the high-order reconstruction. We will give multiple examples to demonstrate the accuracy and effectiveness of the proposed approaches.",
+      "authors": [
+        {
+          "name": "Ki Wai Fong",
+          "orgs": [
+            "Department of Mathematics, the Hong Kong University of Science and Technology",
+            "Clear Water Bay, Hong Kong"
+          ]
+        },
+        {
+          "name": "Shingyu Leung",
+          "orgs": [
+            "Department of Mathematics, the Hong Kong University of Science and Technology",
+            "Clear Water Bay, Hong Kong"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2212.01963v1",
+      "date": "2022-12-05T00:36:07Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.NA",
+        "math.NA"
+      ]
+    },
+    {
+      "arxiv_id": "2502.03754",
+      "score": 8.659679,
+      "title": "Parametric reduced-order modeling and mode sensitivity of actuated cylinder flow from a matrix manifold perspective",
+      "tldr": "This paper addresses the challenge of parametric reduced-order modeling (ROM) for fluid flows by analyzing how POD modes and their subspace vary with flow parameters, using matrix manifolds to quantify sensitivity and construct a ROM with low computational cost, finding that subspace sensitivity inversely correlates with the Roshko number and reconstruction error is linked to subspace estimation accuracy.",
+      "abstract": "We present a framework for parametric proper orthogonal decomposition (POD)-Galerkin reduced-order modeling (ROM) of fluid flows that accommodates variations in flow parameters and control inputs. As an initial step, to explore how the locally optimal POD modes vary with parameter changes, we demonstrate a sensitivity analysis of POD modes and their spanned subspace, respectively rooted in Stiefel and Grassmann manifolds. The sensitivity analysis, by defining distance between POD modes for different parameters, is applied to the flow around a rotating cylinder with varying Reynolds numbers and rotation rates. The sensitivity of the subspace spanned by POD modes to parameter changes is represented by a tangent vector on the Grassmann manifold. For the cylinder case, the inverse of the subspace sensitivity on the Grassmann manifold is proportional to the Roshko number, highlighting the connection between geometric properties and flow physics. Furthermore, the Reynolds number at which the subspace sensitivity approaches infinity corresponds to the lower bound at which the characteristic frequency of the K\\'arm\\'an vortex street exists (Noack & Eckelmann, JFM, 1994). From the Stiefel manifold perspective, sensitivity modes are derived to represent the flow field sensitivity, comprising the sensitivities of the POD modes and expansion coefficients. The temporal evolution of the flow field sensitivity is represented by superposing the sensitivity modes. Lastly, we devise a parametric POD-Galerkin ROM based on subspace interpolation on the Grassmann manifold. The reconstruction error of the ROM is intimately linked to the subspace-estimation error, which is in turn closely related to subspace sensitivity.",
+      "authors": [
+        {
+          "name": "Shintaro Sato",
+          "orgs": [
+            "Department of Aerospace Engineering, Tohoku University, Aramaki-aza-Aoba 6-6-01, Aoba-ku, Sendai 980-8579, Japan"
+          ]
+        },
+        {
+          "name": "Oliver T. Schmidt",
+          "orgs": [
+            "Department of Mechanical and Aerospace Engineering, University of California San Diego, CA 92093, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2502.03754v1",
+      "date": "2025-02-06T03:30:41Z",
+      "citation_count": 3,
+      "categories": [
+        "physics.flu-dyn"
+      ]
+    },
+    {
+      "arxiv_id": "2004.04242",
+      "score": 8.653333,
+      "title": "Deep Manifold Prior",
+      "tldr": "This paper presents a deep manifold prior for generating smooth surfaces using gradient descent with random initialization, addressing the gap in understanding how network architectures affect surface properties; it employs deep neural networks and Gaussian process analysis, contributing a regularization method that improves reconstruction quality and reduces overlaps; it achieves better results than baselines in point cloud denoising and interpolation without training data.",
+      "abstract": "We present a prior for manifold structured data, such as surfaces of 3D shapes, where deep neural networks are adopted to reconstruct a target shape using gradient descent starting from a random initialization. We show that surfaces generated this way are smooth, with limiting behavior characterized by Gaussian processes, and we mathematically derive such properties for fully-connected as well as convolutional networks. We demonstrate our method in a variety of manifold reconstruction applications, such as point cloud denoising and interpolation, achieving considerably better results against competitive baselines while requiring no training data. We also show that when training data is available, our method allows developing alternate parametrizations of surfaces under the framework of AtlasNet, leading to a compact network architecture and better reconstruction results on standard image to shape reconstruction benchmarks.",
+      "authors": [
+        {
+          "name": "Matheus Gadelha",
+          "orgs": [
+            "University of Massachusetts Amherst"
+          ]
+        },
+        {
+          "name": "Rui Wang",
+          "orgs": [
+            "University of Massachusetts Amherst"
+          ]
+        },
+        {
+          "name": "Subhransu Maji",
+          "orgs": [
+            "University of Massachusetts Amherst"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2004.04242v1",
+      "date": "2020-04-08T20:47:56Z",
+      "citation_count": 17,
+      "categories": [
+        "cs.CV",
+        "cs.GR"
+      ]
+    },
+    {
+      "arxiv_id": "2102.00264",
+      "score": 8.574639,
+      "title": "Atlas Generative Models and Geodesic Interpolation",
+      "tldr": "This paper introduces Atlas Generative Models (AGMs), a class of generative models with hybrid discrete-continuous latent spaces that estimate an atlas on data manifolds, addressing the limitation of single latent spaces in representing non-Euclidean topologies; it proposes a graph-based geodesic interpolation method for AGMs, enabling continuous interpolation in discontinuous latent spaces, and demonstrates its effectiveness through experiments on MNIST data.",
+      "abstract": "Generative neural networks have a well recognized ability to estimate underlying manifold structure of high dimensional data. However, if a single latent space is used, it is not possible to faithfully represent a manifold with topology different from Euclidean space. In this work we define the general class of Atlas Generative Models (AGMs), models with hybrid discrete-continuous latent space that estimate an atlas on the underlying data manifold together with a partition of unity on the data space. We identify existing examples of models from various popular generative paradigms that fit into this class. Due to the atlas interpretation, ideas from non-linear latent space analysis and statistics, e.g. geodesic interpolation, which has previously only been investigated for models with simply connected latent spaces, may be extended to the entire class of AGMs in a natural way. We exemplify this by generalizing an algorithm for graph based geodesic interpolation to the setting of AGMs, and verify its performance experimentally.",
+      "authors": [
+        {
+          "name": "Jakob Stolberg-Larsen",
+          "orgs": [
+            "Department of Computer Science",
+            "University of Copenhagen"
+          ]
+        },
+        {
+          "name": "Stefan Sommer",
+          "orgs": [
+            "Department of Computer Science",
+            "University of Copenhagen"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2102.00264v2",
+      "date": "2021-01-30T16:35:25Z",
+      "citation_count": 7,
+      "categories": [
+        "cs.CV",
+        "cs.LG",
+        "math.GT"
+      ]
+    },
+    {
+      "arxiv_id": "2110.07478",
+      "score": 8.554401,
+      "title": "Inferring Manifolds From Noisy Data Using Gaussian Processes",
+      "tldr": "This paper addresses the challenge of inferring lower-dimensional manifolds from noisy high-dimensional data, proposing a method that uses Gaussian processes for probabilistic manifold reconstruction and denoising, contributing a novel approach that enables interpolation and provides denoised points with probability distributions, demonstrating effectiveness on 86 wheat spectra in $\\mathbb{R}^{701}$.",
+      "abstract": "In analyzing complex datasets, it is often of interest to infer lower dimensional structure underlying the higher dimensional observations. As a flexible class of nonlinear structures, it is common to focus on Riemannian manifolds. Most existing manifold learning algorithms replace the original data with lower dimensional coordinates without providing an estimate of the manifold in the observation space or using the manifold to denoise the original data. This article proposes a new methodology for addressing these problems, allowing interpolation of the estimated manifold between fitted data points. The proposed approach is motivated by novel theoretical properties of local covariance matrices constructed from noisy samples on a manifold. Our results enable us to turn a global manifold reconstruction problem into a local regression problem, allowing application of Gaussian processes for probabilistic manifold reconstruction. In addition to theory justifying the algorithm, we provide simulated and real data examples to illustrate the performance.",
+      "authors": [
+        {
+          "name": "David B Dunson",
+          "orgs": [
+            "Department of Statistical Science",
+            "Duke University, Durham, NC"
+          ]
+        },
+        {
+          "name": "Nan Wu",
+          "orgs": [
+            "Department of Mathematical Sciences",
+            "The University of Texas at Dallas, Richardson, TX"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2110.07478v3",
+      "date": "2021-10-14T15:50:38Z",
+      "citation_count": 18,
+      "categories": [
+        "cs.LG",
+        "stat.ML"
+      ]
+    },
+    {
+      "arxiv_id": "1811.10943",
+      "score": 8.497179,
+      "title": "Deep Geometric Prior for Surface Reconstruction",
+      "tldr": "This paper addresses the challenge of surface reconstruction from point clouds by proposing a deep geometric prior using overfitted neural networks with Wasserstein distance, contributing a manifold atlas approach that outperforms existing methods in both quantitative and visual quality on standard benchmarks.",
+      "abstract": "The reconstruction of a discrete surface from a point cloud is a fundamental geometry processing problem that has been studied for decades, with many methods developed. We propose the use of a deep neural network as a geometric prior for surface reconstruction. Specifically, we overfit a neural network representing a local chart parameterization to part of an input point cloud using the Wasserstein distance as a measure of approximation. By jointly fitting many such networks to overlapping parts of the point cloud, while enforcing a consistency condition, we compute a manifold atlas. By sampling this atlas, we can produce a dense reconstruction of the surface approximating the input cloud. The entire procedure does not require any training data or explicit regularization, yet, we show that it is able to perform remarkably well: not introducing typical overfitting artifacts, and approximating sharp features closely at the same time. We experimentally show that this geometric prior produces good results for both man-made objects containing sharp features and smoother organic objects, as well as noisy inputs. We compare our method with a number of well-known reconstruction methods on a standard surface reconstruction benchmark.",
+      "authors": [
+        {
+          "name": "Francis Williams",
+          "orgs": [
+            "New York University"
+          ]
+        },
+        {
+          "name": "Teseo Schneider",
+          "orgs": [
+            "New York University"
+          ]
+        },
+        {
+          "name": "Claudio Silva",
+          "orgs": [
+            "New York University"
+          ]
+        },
+        {
+          "name": "Denis Zorin",
+          "orgs": [
+            "New York University"
+          ]
+        },
+        {
+          "name": "Joan Bruna",
+          "orgs": [
+            "New York University"
+          ]
+        },
+        {
+          "name": "Daniele Panozzo",
+          "orgs": [
+            "New York University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1811.10943v2",
+      "date": "2018-11-27T12:50:46Z",
+      "citation_count": 213,
+      "categories": [
+        "cs.CV",
+        "cs.GR",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2205.04356",
+      "score": 8.46216,
+      "title": "Seamless Integration of Analysis and Design: Automatic CAD Reconstruction of Post-Analysis Geometries",
+      "tldr": "This paper addresses the challenge of CAD reconstruction from post-analysis geometries, where existing methods rely on spline fitting but fail to preserve design features; it proposes a novel approach that reuses initial CAD splines and applies global deformation to achieve precise reconstructions even from defeatured meshes, enabling seamless integration between CAD and CAE with high accuracy.",
+      "abstract": "A key step during industrial design is the passing of design information from computer aided design (CAD) to analysis tools (CAE) and vice versa. Here, one is faced with a severe incompatibility in geometry representation: While CAD is usually based on surface representations, analysis mostly relies on volumetric representations. The forward pass, i.e., converting CAD data to computational meshes, is well understood and established. However, the same does not hold for the inverse direction, i.e., CAD reconstruction of deformed geometries resulting, e.g., from shape optimization. The few reconstruction methods reported mainly rely on spline fitting, in particular methods that rely on creating new splines simililar to shape reconstruction from 3D imaging. In contrast, this paper studies a novel approach that reuses the CAD data given in the initial design. We show that this concept leads to precise shape reconstructions while also preserving the initial notion of features defined during design. Furthermore, reusing the initial CAD representation reduces the shape reconstruction problem to a shape modification problem. We study this unique feature and show that it enables the reconstruction of CAD data from computational meshes by composing each spline in the initial CAD data with a single, global deformation spline. While post-processing is needed for use in current CAD software, this novel approach not only allows creating watertight models, but also enables reconstructing complete CAD models even from defeatured computational meshes.",
+      "authors": [
+        {
+          "name": "Sebastian Hube",
+          "orgs": [
+            "Chair for Computational Analysis of Technical Systems (CATS)",
+            "RWTH Aachen University"
+          ]
+        },
+        {
+          "name": "Roxana Pohlmann",
+          "orgs": [
+            "Institute of Lightweight Design and Structural Biomechanics (E317)",
+            "TU Wien"
+          ]
+        },
+        {
+          "name": "Stefanie Elgeti",
+          "orgs": [
+            "Institute of Lightweight Design and Structural Biomechanics (E317)",
+            "TU Wien"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2205.04356v3",
+      "date": "2022-05-09T14:58:58Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CE"
+      ]
+    },
+    {
+      "arxiv_id": "0706.2955",
+      "score": 7.1373315,
+      "title": "Thue equations and torsion groups of elliptic curves",
+      "tldr": "This paper addresses the characterization of rational torsion subgroups of elliptic curves with points of order greater than 4, by linking them to solutions of Thue equations, introducing homogeneous polynomials $F_n, G_n$ for $n \\in \\{5,7,8,9\\}$ such that $6^4A = F_n$ and $6^6B = G_n$, and showing that the number of non-isomorphic curves with a point of order $n$ and discriminant $\\Delta$ is bounded by an integer depending only on the number of prime factors of $\\Delta$.",
+      "abstract": "A new characterization of rational torsion subgroups of elliptic curves is found, for points of order greater than 4, through the existence of solution for systems of Thue equations.",
+      "authors": [
+        {
+          "name": "Irene García–Selfa",
+          "orgs": []
+        },
+        {
+          "name": "José M. Tornero",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/0706.2955v1",
+      "date": "2007-06-20T10:16:28Z",
+      "citation_count": 7,
+      "categories": [
+        "math.NT"
+      ]
+    }
+  ]
+}

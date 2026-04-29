@@ -1,0 +1,881 @@
+{
+  "status": "success",
+  "total_count": 58,
+  "result": [
+    {
+      "arxiv_id": "2602.01741",
+      "score": 9.766334,
+      "title": "Tail-Aware Post-Training Quantization for 3D Geometry Models",
+      "tldr": "This paper addresses the challenge of efficient post-training quantization for 3D geometry models, aiming to overcome calibration fragility, interval-search cost, and error accumulation in 3D transformers; it introduces TAPTQ with a progressive calibration strategy, ternary-search-based interval optimization reducing complexity from O(N) to O(log N), and TRE-Guided Compensation improving accuracy while reducing calibration time; experiments show TAPTQ outperforms state-of-the-art methods on VGGT and Pi3 benchmarks.",
+      "abstract": "The burgeoning complexity and scale of 3D geometry models pose significant challenges for deployment on resource-constrained platforms. While Post-Training Quantization (PTQ) enables efficient inference without retraining, conventional methods, primarily optimized for 2D Vision Transformers, fail to transfer effectively to 3D models due to intricate feature distributions and prohibitive calibration overhead. To address these challenges, we propose TAPTQ, a Tail-Aware Post-Training Quantization pipeline specifically engineered for 3D geometric learning. Our contribution is threefold: (1) To overcome the data-scale bottleneck in 3D datasets, we develop a progressive coarse-to-fine calibration construction strategy that constructs a highly compact subset to achieve both statistical purity and geometric representativeness. (2) We reformulate the quantization interval search as an optimization problem and introduce a ternary-search-based solver, reducing the computational complexity from $\\mathcal{O}(N)$ to $\\mathcal{O}(\\log N)$ for accelerated deployment. (3) To mitigate quantization error accumulation, we propose TRE-Guided Module-wise Compensation, which utilizes a Tail Relative Error (TRE) metric to adaptively identify and rectify distortions in modules sensitive to long-tailed activation outliers. Extensive experiments on the VGGT and Pi3 benchmarks demonstrate that TAPTQ consistently outperforms state-of-the-art PTQ methods in accuracy while significantly reducing calibration time. The code will be released soon.",
+      "authors": [
+        {
+          "name": "Bin Chen",
+          "orgs": [
+            "Microsoft Research Asia"
+          ]
+        },
+        {
+          "name": "Zhi Wang",
+          "orgs": [
+            "Microsoft Research Asia"
+          ]
+        },
+        {
+          "name": "Chen Tang",
+          "orgs": [
+            "Microsoft Research Asia"
+          ]
+        },
+        {
+          "name": "Jiawei Li",
+          "orgs": [
+            "Microsoft Research Asia"
+          ]
+        },
+        {
+          "name": "Shu-Tao Xia",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Shuzhao Xie",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Weixiang Zhang",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Ke Yang",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Sicheng Pan",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.01741v1",
+      "date": "2026-02-02",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2412.08800",
+      "score": 9.685848,
+      "title": "A Hybrid Framework for Statistical Feature Selection and Image-Based Noise-Defect Detection",
+      "tldr": "This paper presents a hybrid framework combining statistical feature selection and classification techniques to address the challenge of distinguishing surface defects from noise in industrial imaging, improving detection accuracy and reducing false positives by maximizing separation between true defects and noise using 55 features and methods like Fisher's criterion, with implications for enhancing automated inspection systems.",
+      "abstract": "In industrial imaging, accurately detecting and distinguishing surface defects from noise is critical and challenging, particularly in complex environments with noisy data. This paper presents a hybrid framework that integrates both statistical feature selection and classification techniques to improve defect detection accuracy while minimizing false positives. The motivation of the system is based on the generation of scalar scores that represent the likelihood that a region of interest (ROI) is classified as a defect or noise. We present around 55 distinguished features that are extracted from industrial images, which are then analyzed using statistical methods such as Fisher separation, chi-squared test, and variance analysis. These techniques identify the most discriminative features, focusing on maximizing the separation between true defects and noise. Fisher's criterion ensures robust, real-time performance for automated systems. This statistical framework opens up multiple avenues for application, functioning as a standalone assessment module or as an a posteriori enhancement to machine learning classifiers. The framework can be implemented as a black-box module that applies to existing classifiers, providing an adaptable layer of quality control and optimizing predictions by leveraging intuitive feature extraction strategies, emphasizing the rationale behind feature significance and the statistical rigor of feature selection. By integrating these methods with flexible machine learning applications, the proposed framework improves detection accuracy and reduces false positives and misclassifications, especially in complex, noisy environments.",
+      "authors": [
+        {
+          "name": "Alejandro Garnung Menéndez",
+          "orgs": [
+            "University of Oviedo",
+            "Gijón Polytechnic School of Engineering",
+            "Asturias",
+            "España"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2412.08800v1",
+      "date": "2024-12-11T22:12:21Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV",
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "2510.15971",
+      "score": 9.672853,
+      "title": "A Graph-Attentive LSTM Model for Malicious URL Detection",
+      "tldr": "This paper addresses the challenge of detecting malicious URLs in cybersecurity by proposing a GNN-GAT-LSTM hybrid model that combines graph neural networks, graph attention networks, and long short-term memory networks to extract structural and sequential patterns from URL data, contributing an efficient and scalable solution with 98.06% test accuracy on 651,191 URLs classified into four categories, demonstrating strong potential for real-world applications.",
+      "abstract": "Malicious URLs pose significant security risks as they facilitate phishing attacks, distribute malware, and empower attackers to deface websites. Blacklist detection methods fail to identify new or obfuscated URLs because they depend on pre-existing patterns. This work presents a hybrid deep learning model named GNN-GAT-LSTM that combines Graph Neural Networks (GNNs) with Graph Attention Networks (GATs) and Long Short-Term Memory (LSTM) networks. The proposed architecture extracts both the structural and sequential patterns of the features from data. The model transforms URLs into graphs through a process where characters become nodes that connect through edges. It applies one-hot encoding to represent node features. The model received training and testing data from a collection of 651,191 URLs, which were classified into benign, phishing, defacement, and malware categories. The preprocessing stage included both feature engineering and data balancing techniques, which addressed the class imbalance issue to enhance model learning. The GNN-GAT-LSTM model achieved outstanding performance through its test accuracy of 0.9806 and its weighted F1-score of 0.9804. It showed excellent precision and recall performance across most classes, particularly for benign and defacement URLs. Overall, the model provides an efficient and scalable system for detecting malicious URLs while demonstrating strong potential for real-world cybersecurity applications.",
+      "authors": [
+        {
+          "name": "Imtiaz Parvez",
+          "orgs": [
+            "Department of Computer Science, Utah Valley University, 800 W University Pkwy, Orem, UT 84058, USA"
+          ]
+        },
+        {
+          "name": "Kazi Abdullah Al Arafat",
+          "orgs": [
+            "Department of Electrical and Electronic Engineering, Dhaka University of Engineering & Technology, Gazipur, Bangladesh"
+          ]
+        },
+        {
+          "name": "Kayd Craig",
+          "orgs": [
+            "Department of Computer Science, Utah Valley University, 800 W University Pkwy, Orem, UT 84058, USA"
+          ]
+        },
+        {
+          "name": "Bryce Shepard",
+          "orgs": [
+            "Department of Computer Science, Utah Valley University, 800 W University Pkwy, Orem, UT 84058, USA"
+          ]
+        },
+        {
+          "name": "Md. Ifthekhar Hossain",
+          "orgs": [
+            "Department of Computer Science and Engineering, Atish Dipankar University of Science and Technology, Dhaka, Bangladesh"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2510.15971v1",
+      "date": "2025-10-12",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CR"
+      ]
+    },
+    {
+      "arxiv_id": "1912.00938",
+      "score": 9.562802,
+      "title": "Speaker detection in the wild: Lessons learned from JSALT 2019",
+      "tldr": "This paper addresses speaker detection in adverse environments using single microphones, focusing on improving performance through diarization, and finds that diarization significantly enhances detection accuracy, with error rates up to 60% higher without it; it introduces modules for voice activity detection, noise handling, and clustering improvement, contributing to better understanding and benchmarking of speaker detection systems in real-world scenarios.",
+      "abstract": "This paper presents the problems and solutions addressed at the JSALT workshop when using a single microphone for speaker detection in adverse scenarios. The main focus was to tackle a wide range of conditions that go from meetings to wild speech. We describe the research threads we explored and a set of modules that was successful for these scenarios. The ultimate goal was to explore speaker detection; but our first finding was that an effective diarization improves detection, and not having a diarization stage impoverishes the performance. All the different configurations of our research agree on this fact and follow a main backbone that includes diarization as a previous stage. With this backbone, we analyzed the following problems: voice activity detection, how to deal with noisy signals, domain mismatch, how to improve the clustering; and the overall impact of previous stages in the final speaker detection. In this paper, we show partial results for speaker diarizarion to have a better understanding of the problem and we present the final results for speaker detection.",
+      "authors": [
+        {
+          "name": "Paola Garcia",
+          "orgs": [
+            "Center for Language and Speech Processing, The Johns Hopkins University, Baltimore, USA"
+          ]
+        },
+        {
+          "name": "Jesús Villalba",
+          "orgs": [
+            "Center for Language and Speech Processing, The Johns Hopkins University, Baltimore, USA"
+          ]
+        },
+        {
+          "name": "Hervé Bredin",
+          "orgs": [
+            "LIMSI, CNRS, Univ. Paris-Sud, Université Paris-Saclay, Orsay, France"
+          ]
+        },
+        {
+          "name": "Jun Du",
+          "orgs": [
+            "University of Science and Technology of China, Hefei, China"
+          ]
+        },
+        {
+          "name": "Diego Castan",
+          "orgs": [
+            "Speech Technology and Research Laboratory, SRI International, California, USA"
+          ]
+        },
+        {
+          "name": "Alejandrina Cristia",
+          "orgs": [
+            "Cognitive Machine Learning, ENS/INRIA/PSL, PSL Research University, Paris, France"
+          ]
+        },
+        {
+          "name": "Latané Bullock",
+          "orgs": [
+            "Rice University, Houston, USA"
+          ]
+        },
+        {
+          "name": "Koji Okabe",
+          "orgs": [
+            "NEC Corporation, Japan"
+          ]
+        },
+        {
+          "name": "Phani Sankar Nidadavolu",
+          "orgs": [
+            "Center for Language and Speech Processing, The Johns Hopkins University, Baltimore, USA"
+          ]
+        },
+        {
+          "name": "Saurabh Kataria",
+          "orgs": [
+            "Center for Language and Speech Processing, The Johns Hopkins University, Baltimore, USA"
+          ]
+        },
+        {
+          "name": "Sizhu Chen",
+          "orgs": [
+            "University of California, San Diego"
+          ]
+        },
+        {
+          "name": "Leo Galmant",
+          "orgs": [
+            "LIMSI, CNRS, Univ. Paris-Sud, Université Paris-Saclay, Orsay, France"
+          ]
+        },
+        {
+          "name": "Marvin Lavechin",
+          "orgs": [
+            "Cognitive Machine Learning, ENS/INRIA/PSL, PSL Research University, Paris, France"
+          ]
+        },
+        {
+          "name": "Lei Sun",
+          "orgs": [
+            "University of Science and Technology of China, Hefei, China"
+          ]
+        },
+        {
+          "name": "Marie-Philippe Gill",
+          "orgs": [
+            "École de Technologie Supérieure, Université du Québec, Montreal, Canada"
+          ]
+        },
+        {
+          "name": "Bar Ben-Yair",
+          "orgs": [
+            "Center for Language and Speech Processing, The Johns Hopkins University, Baltimore, USA"
+          ]
+        },
+        {
+          "name": "Sajjad Abdoli",
+          "orgs": [
+            "École de Technologie Supérieure, Université du Québec, Montreal, Canada"
+          ]
+        },
+        {
+          "name": "Xin Wang",
+          "orgs": [
+            "University of Science and Technology of China, Hefei, China"
+          ]
+        },
+        {
+          "name": "Wassim Bouaziz",
+          "orgs": [
+            "Cognitive Machine Learning, ENS/INRIA/PSL, PSL Research University, Paris, France"
+          ]
+        },
+        {
+          "name": "Hadrien Titeux",
+          "orgs": [
+            "Cognitive Machine Learning, ENS/INRIA/PSL, PSL Research University, Paris, France"
+          ]
+        },
+        {
+          "name": "Emmanuel Dupoux",
+          "orgs": [
+            "Cognitive Machine Learning, ENS/CNRS/EHESS/INRIA/PSL, PSL Research University, Paris, France"
+          ]
+        },
+        {
+          "name": "Kong Aik Lee",
+          "orgs": [
+            "NEC Corporation, Japan"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1912.00938v1",
+      "date": "2019-12-02T17:07:56Z",
+      "citation_count": 31,
+      "categories": [
+        "cs.SD",
+        "eess.AS"
+      ]
+    },
+    {
+      "arxiv_id": "2508.17011",
+      "score": 9.530986,
+      "title": "A Survey of Deep Learning-based Point Cloud Denoising",
+      "tldr": "This survey provides a comprehensive review of deep learning-based point cloud denoising methods, organizing them via supervision level and modeling perspective with a unified taxonomy, and highlights architectural trends, benchmark evaluations, and future research directions in this rapidly evolving field.",
+      "abstract": "Accurate 3D geometry acquisition is essential for a wide range of applications, such as computer graphics, autonomous driving, robotics, and augmented reality. However, raw point clouds acquired in real-world environments are often corrupted with noise due to various factors such as sensor, lighting, material, environment etc, which reduces geometric fidelity and degrades downstream performance. Point cloud denoising is a fundamental problem, aiming to recover clean point sets while preserving underlying structures. Classical optimization-based methods, guided by hand-crafted filters or geometric priors, have been extensively studied but struggle to handle diverse and complex noise patterns. Recent deep learning approaches leverage neural network architectures to learn distinctive representations and demonstrate strong outcomes, particularly on complex and large-scale point clouds. Provided these significant advances, this survey provides a comprehensive and up-to-date review of deep learning-based point cloud denoising methods up to August 2025. We organize the literature from two perspectives: (1) supervision level (supervised vs. unsupervised), and (2) modeling perspective, proposing a functional taxonomy that unifies diverse approaches by their denoising principles. We further analyze architectural trends both structurally and chronologically, establish a unified benchmark with consistent training settings, and evaluate methods in terms of denoising quality, surface fidelity, point distribution, and computational efficiency. Finally, we discuss open challenges and outline directions for future research in this rapidly evolving field.",
+      "authors": [
+        {
+          "name": "Jinxi Wang",
+          "orgs": []
+        },
+        {
+          "name": "Ben Fei",
+          "orgs": []
+        },
+        {
+          "name": "Dasith de Silva Edirimuni",
+          "orgs": []
+        },
+        {
+          "name": "Zheng Liu",
+          "orgs": []
+        },
+        {
+          "name": "Ying He",
+          "orgs": []
+        },
+        {
+          "name": "Xuequan Lu",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2508.17011v1",
+      "date": "2025-08-23T12:53:24Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV",
+        "cs.GR"
+      ]
+    },
+    {
+      "arxiv_id": "2512.09069",
+      "score": 9.470165,
+      "title": "KD-OCT: Efficient Knowledge Distillation for Clinical-Grade Retinal OCT Classification",
+      "tldr": "This paper addresses the challenge of efficient retinal OCT classification for AMD screening by proposing KD-OCT, a knowledge distillation framework that compresses a ConvNeXtV2-Large teacher model into an EfficientNet-B2 student, achieving near-teacher accuracy with 25.5× fewer parameters and enabling edge deployment.",
+      "abstract": "Age-related macular degeneration (AMD) and choroidal neovascularization (CNV)-related conditions are leading causes of vision loss worldwide, with optical coherence tomography (OCT) serving as a cornerstone for early detection and management. However, deploying state-of-the-art deep learning models like ConvNeXtV2-Large in clinical settings is hindered by their computational demands. Therefore, it is desirable to develop efficient models that maintain high diagnostic performance while enabling real-time deployment. In this study, a novel knowledge distillation framework, termed KD-OCT, is proposed to compress a high-performance ConvNeXtV2-Large teacher model, enhanced with advanced augmentations, stochastic weight averaging, and focal loss, into a lightweight EfficientNet-B2 student for classifying normal, drusen, and CNV cases. KD-OCT employs real-time distillation with a combined loss balancing soft teacher knowledge transfer and hard ground-truth supervision. The effectiveness of the proposed method is evaluated on the Noor Eye Hospital (NEH) dataset using patient-level cross-validation. Experimental results demonstrate that KD-OCT outperforms comparable multi-scale or feature-fusion OCT classifiers in efficiency-accuracy balance, achieving near-teacher performance with substantial reductions in model size and inference time. Despite the compression, the student model exceeds most existing frameworks, facilitating edge deployment for AMD screening. Code is available at https://github.com/erfan-nourbakhsh/KD-OCT.",
+      "authors": [
+        {
+          "name": "Erfan Nourbakhsh",
+          "orgs": [
+            "Artificial Intelligence Department",
+            "University of Isfahan"
+          ]
+        },
+        {
+          "name": "Nasrin Sanjari",
+          "orgs": [
+            "Labbafinejad Hospital",
+            "Shahid Beheshti University of Medical Science"
+          ]
+        },
+        {
+          "name": "Ali Nourbakhsh",
+          "orgs": [
+            "Department of Mechanical Engineering",
+            "Isfahan University of Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.09069v2",
+      "date": "2025-12-09",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2403.14497",
+      "score": 9.43193,
+      "title": "MULDE: Multiscale Log-Density Estimation via Denoising Score Matching for Video Anomaly Detection",
+      "tldr": "This paper proposes MULDE, a multiscale log-density estimation method via denoising score matching for video anomaly detection, addressing the challenge of detecting anomalies without labeled examples by modeling the distribution of normal video features; it introduces a regularized multiscale approach and combines anomaly indicators across noise levels with a Gaussian mixture model; experiments show state-of-the-art performance on five benchmarks in both object-centric and frame-centric setups.",
+      "abstract": "We propose a novel approach to video anomaly detection: we treat feature vectors extracted from videos as realizations of a random variable with a fixed distribution and model this distribution with a neural network. This lets us estimate the likelihood of test videos and detect video anomalies by thresholding the likelihood estimates. We train our video anomaly detector using a modification of denoising score matching, a method that injects training data with noise to facilitate modeling its distribution. To eliminate hyperparameter selection, we model the distribution of noisy video features across a range of noise levels and introduce a regularizer that tends to align the models for different levels of noise. At test time, we combine anomaly indications at multiple noise scales with a Gaussian mixture model. Running our video anomaly detector induces minimal delays as inference requires merely extracting the features and forward-propagating them through a shallow neural network and a Gaussian mixture model. Our experiments on five popular video anomaly detection benchmarks demonstrate state-of-the-art performance, both in the object-centric and in the frame-centric setup.",
+      "authors": [
+        {
+          "name": "Jakub Micorek",
+          "orgs": [
+            "Graz University of Technology, Austria"
+          ]
+        },
+        {
+          "name": "Horst Possegger",
+          "orgs": [
+            "Graz University of Technology, Austria"
+          ]
+        },
+        {
+          "name": "Dominik Narnhofer",
+          "orgs": [
+            "Graz University of Technology, Austria"
+          ]
+        },
+        {
+          "name": "Horst Bischof",
+          "orgs": [
+            "Graz University of Technology, Austria"
+          ]
+        },
+        {
+          "name": "Mateusz Kozinski",
+          "orgs": [
+            "Graz University of Technology, Austria"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2403.14497v1",
+      "date": "2024-03-21T15:46:19Z",
+      "citation_count": 28,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2410.03600",
+      "score": 9.369651,
+      "title": "Efficiently Identifying Watermarked Segments in Mixed-Source Texts",
+      "tldr": "This paper addresses the challenge of identifying watermark segments in mixed-source texts, aiming to improve detection accuracy and efficiency in scenarios where only specific sections of long documents are watermarked; it proposes two novel methods—Geometric Cover Detection and Adaptive Online Learning—to achieve efficient and precise localization, outperforming baselines with an average IoU score over 0.55.",
+      "abstract": "Text watermarks in large language models (LLMs) are increasingly used to detect synthetic text, mitigating misuse cases like fake news and academic dishonesty. While existing watermarking detection techniques primarily focus on classifying entire documents as watermarked or not, they often neglect the common scenario of identifying individual watermark segments within longer, mixed-source documents. Drawing inspiration from plagiarism detection systems, we propose two novel methods for partial watermark detection. First, we develop a geometry cover detection framework aimed at determining whether there is a watermark segment in long text. Second, we introduce an adaptive online learning algorithm to pinpoint the precise location of watermark segments within the text. Evaluated on three popular watermarking techniques (KGW-Watermark, Unigram-Watermark, and Gumbel-Watermark), our approach achieves high accuracy, significantly outperforming baseline methods. Moreover, our framework is adaptable to other watermarking techniques, offering new insights for precise watermark detection. Our code is publicly available at https://github.com/XuandongZhao/llm-watermark-location",
+      "authors": [
+        {
+          "name": "Xuandong Zhao",
+          "orgs": [
+            "UC Berkeley"
+          ]
+        },
+        {
+          "name": "Chenwen Liao",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Yu-Xiang Wang",
+          "orgs": [
+            "UC San Diego"
+          ]
+        },
+        {
+          "name": "Lei Li",
+          "orgs": [
+            "Carnegie Mellon University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2410.03600v2",
+      "date": "2024-10-04T16:58:41Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2511.20839",
+      "score": 9.313412,
+      "title": "Primal: A Unified Deterministic Framework for Quasi-Orthogonal Hashing and Manifold Learning",
+      "tldr": "This paper introduces Primal, a deterministic feature mapping framework addressing the challenge of constructing quasi-orthogonal, reproducible vector representations in machine learning, by leveraging prime square roots' number-theoretic independence to create non-repeating phase trajectories; it proposes StaticPrime and DynamicPrime algorithms, offering a unified approach with a single parameter $\\sigma$ for tunable manifold learning and hashing; empirical results show superior orthogonality retention and distribution tightness compared to Gaussian baselines.",
+      "abstract": "We present Primal, a deterministic feature mapping framework that harnesses the number-theoretic independence of prime square roots to construct robust, tunable vector representations. Diverging from standard stochastic projections (e.g., Random Fourier Features), our method exploits the Besicovitch property to create irrational frequency modulations that guarantee infinite non-repeating phase trajectories. We formalize two distinct algorithmic variants: (1) StaticPrime, a sequence generation method that produces temporal position encodings empirically approaching the theoretical Welch bound for quasi-orthogonality; and (2) DynamicPrime, a tunable projection layer for input-dependent feature mapping. A central novelty of the dynamic framework is its ability to unify two disparate mathematical utility classes through a single scaling parameter {\\sigma}. In the low-frequency regime, the method acts as an isometric kernel map, effectively linearizing non-convex geometries (e.g., spirals) to enable high-fidelity signal reconstruction and compressive sensing. Conversely, the high-frequency regime induces chaotic phase wrapping, transforming the projection into a maximum-entropy one-way hash suitable for Hyperdimensional Computing and privacy-preserving Split Learning. Empirical evaluations demonstrate that our framework yields superior orthogonality retention and distribution tightness compared to normalized Gaussian baselines, establishing it as a computationally efficient, mathematically rigorous alternative to random matrix projections. The code is available at https://github.com/VladimerKhasia/primal",
+      "authors": [
+        {
+          "name": "Vladimer Khasia",
+          "orgs": [
+            "Independent Researcher"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2511.20839v1",
+      "date": "2025-11-25",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2602.06507",
+      "score": 9.188559,
+      "title": "FloorplanVLM: A Vision-Language Model for Floorplan Vectorization",
+      "tldr": "This paper introduces FloorplanVLM, a vision-language model for floorplan vectorization addressing the challenge of converting raster images into structured geometric primitives with topological consistency, by reformulating the task as an image-conditioned sequence modeling problem and introducing a scalable data engine and benchmark; it contributes an end-to-end sequence modeling framework, a large-scale dataset (Floorplan-2M) and high-fidelity subset (Floorplan-HQ-300K), and achieves 92.52% external-wall IoU on FPBench-2K, demonstrating robust generalization across complex layouts.",
+      "abstract": "Converting raster floorplans into engineering-grade vector graphics is challenging due to complex topology and strict geometric constraints. To address this, we present FloorplanVLM, a unified framework that reformulates floorplan vectorization as an image-conditioned sequence modeling task. Unlike pixel-based methods that rely on fragile heuristics or query-based transformers that generate fragmented rooms, our model directly outputs structured JSON sequences representing the global topology. This 'pixels-to-sequence' paradigm enables the precise and holistic constraint satisfaction of complex geometries, such as slanted walls and curved arcs. To support this data-hungry approach, we introduce a scalable data engine: we construct a large-scale dataset (Floorplan-2M) and a high-fidelity subset (Floorplan-HQ-300K) to balance geometric diversity and pixel-level precision. We then employ a progressive training strategy, using Supervised Fine-Tuning (SFT) for structural grounding and quality annealing, followed by Group Relative Policy Optimization (GRPO) for strict geometric alignment. To standardize evaluation on complex layouts, we establish and open-source FPBench-2K. Evaluated on this rigorous benchmark, FloorplanVLM demonstrates exceptional structural validity, achieving $\\textbf{92.52%}$ external-wall IoU and robust generalization across non-Manhattan architectures.",
+      "authors": [
+        {
+          "name": "Yue Yang",
+          "orgs": [
+            "Beike"
+          ]
+        },
+        {
+          "name": "Yulong Li",
+          "orgs": [
+            "Beike"
+          ]
+        },
+        {
+          "name": "Ziming Yang",
+          "orgs": [
+            "Beike"
+          ]
+        },
+        {
+          "name": "Yuanqing Liu",
+          "orgs": [
+            "Beike"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.06507v1",
+      "date": "2026-02-06",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2406.05605",
+      "score": 9.179702,
+      "title": "Deep Learning to Predict Glaucoma Progression using Structural Changes in the Eye",
+      "tldr": "This paper addresses the challenge of glaucoma progression detection by developing novel deep learning models using OCT scans, introducing weakly-supervised and semi-supervised time-series learning approaches to improve prediction accuracy, and demonstrating superior performance over existing methods in identifying structural-functional changes associated with glaucoma progression.",
+      "abstract": "Glaucoma is a chronic eye disease characterized by optic neuropathy, leading to irreversible vision loss. It progresses gradually, often remaining undiagnosed until advanced stages. Early detection is crucial to monitor atrophy and develop treatment strategies to prevent further vision impairment. Data-centric methods have enabled computer-aided algorithms for precise glaucoma diagnosis.\\\n  In this study, we use deep learning models to identify complex disease traits and progression criteria, detecting subtle changes indicative of glaucoma. We explore the structure-function relationship in glaucoma progression and predict functional impairment from structural eye deterioration. We analyze statistical and machine learning methods, including deep learning techniques with optical coherence tomography (OCT) scans for accurate progression prediction.\\\n  Addressing challenges like age variability, data imbalances, and noisy labels, we develop novel semi-supervised time-series algorithms:\\\n  1. Weakly-Supervised Time-Series Learning: We create a CNN-LSTM model to encode spatiotemporal features from OCT scans. This approach uses age-related progression and positive-unlabeled data to establish robust pseudo-progression criteria, bypassing gold-standard labels.\\\n  2. Semi-Supervised Time-Series Learning: Using labels from Guided Progression Analysis (GPA) in a contrastive learning scheme, the CNN-LSTM architecture learns from potentially mislabeled data to improve prediction accuracy.\\\n  Our methods outperform conventional and state-of-the-art techniques.",
+      "authors": [
+        {
+          "name": "Sayan Mandal",
+          "orgs": [
+            "Duke University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2406.05605v1",
+      "date": "2024-06-09",
+      "citation_count": 1,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2507.07077",
+      "score": 9.147066,
+      "title": "Reading a Ruler in the Wild",
+      "tldr": "This paper addresses the challenge of accurate scale estimation from rulers in real-world conditions, proposing RulerNet which reformulates ruler reading as a geometric keypoint detection task with distortion-invariant annotations and a lightweight model for efficient parameter regression; experiments show RulerNet achieves accurate, consistent, and efficient scale estimates across diverse rulers and imaging conditions, enabling robust measurement in critical domains like medicine and e-commerce.",
+      "abstract": "Accurately converting pixel measurements into absolute real-world dimensions remains a fundamental challenge in computer vision and limits progress in key applications such as biomedicine, forensics, nutritional analysis, and e-commerce. We introduce RulerNet, a deep learning framework that robustly infers scale \"in the wild\" by reformulating ruler reading as a unified keypoint-detection problem and by representing the ruler with geometric-progression parameters that are invariant to perspective transformations. Unlike traditional methods that rely on handcrafted thresholds or rigid, ruler-specific pipelines, RulerNet directly localizes centimeter marks using a distortion-invariant annotation and training strategy, enabling strong generalization across diverse ruler types and imaging conditions while mitigating data scarcity. We also present a scalable synthetic-data pipeline that combines graphics-based ruler generation with ControlNet to add photorealistic context, greatly increasing training diversity and improving performance. To further enhance robustness and efficiency, we propose DeepGP, a lightweight feed-forward network that regresses geometric-progression parameters from noisy marks and eliminates iterative optimization, enabling real-time scale estimation on mobile or edge devices. Experiments show that RulerNet delivers accurate, consistent, and efficient scale estimates under challenging real-world conditions. These results underscore its utility as a generalizable measurement tool and its potential for integration with other vision components for automated, scale-aware analysis in high-impact domains. A live demo is available at https://huggingface.co/spaces/ymp5078/RulerNet-Demo.",
+      "authors": [
+        {
+          "name": "Yimu Pan",
+          "orgs": [
+            "Data Science and Artificial Intelligence Area, College of Information Sciences and Technology, The Pennsylvania State University, University Park, PA, 16802, USA"
+          ]
+        },
+        {
+          "name": "Manas Mehta",
+          "orgs": [
+            "Data Science and Artificial Intelligence Area, College of Information Sciences and Technology, The Pennsylvania State University, University Park, PA, 16802, USA"
+          ]
+        },
+        {
+          "name": "Gwen Sincerbeaux",
+          "orgs": [
+            "Department of Nutritional Sciences, College of Health and Human Development, The Pennsylvania State University, University Park, PA, 16802, USA"
+          ]
+        },
+        {
+          "name": "Alison D. Gernand",
+          "orgs": [
+            "Department of Nutritional Sciences, College of Health and Human Development, The Pennsylvania State University, University Park, PA, 16802, USA",
+            "Huck Institutes of the Life Sciences, The Pennsylvania State University, University Park, PA, 16802, USA"
+          ]
+        },
+        {
+          "name": "James Z. Wang",
+          "orgs": [
+            "Data Science and Artificial Intelligence Area, College of Information Sciences and Technology, The Pennsylvania State University, University Park, PA, 16802, USA",
+            "Huck Institutes of the Life Sciences, The Pennsylvania State University, University Park, PA, 16802, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2507.07077v1",
+      "date": "2025-07-09T17:35:58Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2603.13182",
+      "score": 9.128395,
+      "title": "Diffusion-Based Feature Denoising and Using NNMF for Robust Brain Tumor Classification",
+      "tldr": "This paper proposes a robust brain tumor classification framework combining NNMF for interpretable feature extraction, lightweight CNNs, and diffusion-based denoising to enhance adversarial robustness, achieving competitive accuracy and significant improvements in robustness against adversarial attacks as measured by AutoAttack.",
+      "abstract": "Brain tumor classification from magnetic resonance imaging, which is also known as MRI, plays a sensitive role in computer-assisted diagnosis systems. In recent years, deep learning models have achieved high classification accuracy. However, their sensitivity to adversarial perturbations has become an important reliability concern in medical applications. This study suggests a robust brain tumor classification framework that combines Non-Negative Matrix Factorization (NNMF or NMF), lightweight convolutional neural networks (CNNs), and diffusion-based feature purification. Initially, MRI images are preprocessed and converted into a non-negative data matrix, from which compact and interpretable NNMF feature representations are extracted. Statistical metrics, including AUC, Cohen's d, and p-values, are used to rank and choose the most discriminative components. Then, a lightweight CNN classifier is trained directly on the selected feature groups. To improve adversarial robustness, a diffusion-based feature-space purification module is introduced. A forward noise method followed by a learned denoiser network is used before classification. System performance is estimated using both clean accuracy and robust accuracy under powerful adversarial attacks created by AutoAttack. The experimental results show that the proposed framework achieves competitive classification performance while significantly enhancing robustness against adversarial perturbations.The findings presuppose that combining interpretable NNMF-based representations with a lightweight deep approach and diffusion-based defense technique supplies an effective and reliable solution for medical image classification under adversarial conditions.",
+      "authors": [
+        {
+          "name": "Hiba Adil Al-kharsan",
+          "orgs": [
+            "Doctoral School of Computer Science, University of Szeged"
+          ]
+        },
+        {
+          "name": "Róbert Rajkó",
+          "orgs": [
+            "University Research and Innovation Center (EKIK), Obuda University",
+            "Academic Staff, Doctoral School of Computer Science, University of Szeged"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2603.13182v1",
+      "date": "2026-03-13",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1503.08565",
+      "score": 9.087224,
+      "title": "Detection of Geometric Structures by an Optimally Subsampled Shearlet System in Noisy Digital Images",
+      "tldr": "This paper addresses the detection of geometric structures in noisy digital images using an optimally subsampled shearlet system, aiming to reduce computational complexity while maintaining detection accuracy, as it shows subsampling reduces system size from O(n⁴) to O(n² log(n)) without affecting detection performance.",
+      "abstract": "We provide a statistical analysis of the ability of digitized continuous shearlet systems to detect objects embedded in white noise. We analyze the possibility to subsample the shearlet transform and obtain a subset of significantly reduced cardinality that can still yield statistically optimal detection results.",
+      "authors": [
+        {
+          "name": "Philipp Petersen",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1503.08565v3",
+      "date": "2015-03-30T07:04:03Z",
+      "citation_count": 0,
+      "categories": [
+        "math.FA"
+      ]
+    },
+    {
+      "arxiv_id": "1709.02480",
+      "score": 9.086775,
+      "title": "Fine-Grained Car Detection for Visual Census Estimation",
+      "tldr": "This paper addresses the challenge of socioeconomic analysis using computer vision by developing a fine-grained car detection system from Google Street View images to predict income, crime rates, and other city attributes, contributing a dataset of 2657 car classes and achieving a 0.82 correlation with income data, offering new insights into urban demographics and policy planning.",
+      "abstract": "Targeted socioeconomic policies require an accurate understanding of a country's demographic makeup. To that end, the United States spends more than 1 billion dollars a year gathering census data such as race, gender, education, occupation and unemployment rates. Compared to the traditional method of collecting surveys across many years which is costly and labor intensive, data-driven, machine learning driven approaches are cheaper and faster--with the potential ability to detect trends in close to real time. In this work, we leverage the ubiquity of Google Street View images and develop a computer vision pipeline to predict income, per capita carbon emission, crime rates and other city attributes from a single source of publicly available visual data. We first detect cars in 50 million images across 200 of the largest US cities and train a model to predict demographic attributes using the detected cars. To facilitate our work, we have collected the largest and most challenging fine-grained dataset reported to date consisting of over 2600 classes of cars comprised of images from Google Street View and other web sources, classified by car experts to account for even the most subtle of visual differences. We use this data to construct the largest scale fine-grained detection system reported to date. Our prediction results correlate well with ground truth income data (r=0.82), Massachusetts department of vehicle registration, and sources investigating crime rates, income segregation, per capita carbon emission, and other market research. Finally, we learn interesting relationships between cars and neighborhoods allowing us to perform the first large scale sociological analysis of cities using computer vision techniques.",
+      "authors": [
+        {
+          "name": "Timnit Gebru",
+          "orgs": [
+            "Department of Computer Science, Stanford University"
+          ]
+        },
+        {
+          "name": "Jonathan Krause",
+          "orgs": [
+            "Department of Computer Science, Stanford University"
+          ]
+        },
+        {
+          "name": "Yilun Wang",
+          "orgs": [
+            "Department of Computer Science, Stanford University"
+          ]
+        },
+        {
+          "name": "Duyun Chen",
+          "orgs": [
+            "Department of Computer Science, Stanford University"
+          ]
+        },
+        {
+          "name": "Jia Deng",
+          "orgs": [
+            "Department of Computer Science, University of Michigan"
+          ]
+        },
+        {
+          "name": "Li Fei-Fei",
+          "orgs": [
+            "Department of Computer Science, Stanford University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1709.02480v1",
+      "date": "2017-09-07T22:56:21Z",
+      "citation_count": 138,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2504.08526",
+      "score": 9.085885,
+      "title": "Hallucination, reliability, and the role of generative AI in science",
+      "tldr": "This paper addresses the role of generative AI in science, focusing on the issue of hallucinations and their impact on scientific reliability, arguing that corrosive hallucinations, which are misleading and resistant to anticipation, can be mitigated through structured workflows and error screening, thereby enabling reliable scientific contributions.",
+      "abstract": "Generative AI is increasingly used in scientific domains, from protein folding to climate modeling. But these models produce distinctive errors known as hallucinations - outputs that are incorrect yet superficially plausible. Worse, some arguments suggest that hallucinations are an inevitable consequence of the mechanisms underlying generative inference. Fortunately, such arguments rely on a conception of hallucination defined solely with respect to internal properties of the model, rather than in reference to the empirical target system. This conception fails to distinguish epistemically benign errors from those that threaten scientific inference. I introduce the concept of corrosive hallucination to capture the epistemically troubling subclass: misrepresentations that are substantively misleading and resistant to systematic anticipation. I argue that although corrosive hallucinations do pose a threat to scientific reliability, they are not inevitable. Scientific workflows such as those surrounding AlphaFold and GenCast, both of which serve as case studies, can neutralize their effects by imposing theoretical constraints during training, and by strategically screening for errors at inference time. When embedded in such workflows, generative AI can reliably contribute to scientific knowledge.",
+      "authors": [
+        {
+          "name": "Charles Rathkopf",
+          "orgs": [
+            "Forschungszentrum Jülich",
+            "Institute for Brain and Behavior (INM-7)"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2504.08526v1",
+      "date": "2025-04-11T13:38:56Z",
+      "citation_count": 8,
+      "categories": [
+        "cs.AI",
+        "cs.CY"
+      ]
+    },
+    {
+      "arxiv_id": "2411.18602",
+      "score": 9.066684,
+      "title": "Evaluating and Improving the Effectiveness of Synthetic Chest X-Rays for Medical Image Analysis",
+      "tldr": "This paper investigates improving synthetic chest X-ray generation for medical image analysis by using a latent diffusion model conditioned on text prompts and segmentation masks, contributing methods to enhance classification and segmentation performance with synthetic data, finding a maximum classification F1 score improvement of 0.150453 and Dice score improvement of 0.14575.",
+      "abstract": "Purpose: To explore best-practice approaches for generating synthetic chest X-ray images and augmenting medical imaging datasets to optimize the performance of deep learning models in downstream tasks like classification and segmentation. Materials and Methods: We utilized a latent diffusion model to condition the generation of synthetic chest X-rays on text prompts and/or segmentation masks. We explored methods like using a proxy model and using radiologist feedback to improve the quality of synthetic data. These synthetic images were then generated from relevant disease information or geometrically transformed segmentation masks and added to ground truth training set images from the CheXpert, CANDID-PTX, SIIM, and RSNA Pneumonia datasets to measure improvements in classification and segmentation model performance on the test sets. F1 and Dice scores were used to evaluate classification and segmentation respectively. One-tailed t-tests with Bonferroni correction assessed the statistical significance of performance improvements with synthetic data. Results: Across all experiments, the synthetic data we generated resulted in a maximum mean classification F1 score improvement of 0.150453 (CI: 0.099108-0.201798; P=0.0031) compared to using only real data. For segmentation, the maximum Dice score improvement was 0.14575 (CI: 0.108267-0.183233; P=0.0064). Conclusion: Best practices for generating synthetic chest X-ray images for downstream tasks include conditioning on single-disease labels or geometrically transformed segmentation masks, as well as potentially using proxy modeling for fine-tuning such generations.",
+      "authors": [
+        {
+          "name": "Eva Prakash",
+          "orgs": [
+            "Stanford University, Stanford, CA, USA"
+          ]
+        },
+        {
+          "name": "Jeya Maria Jose Valanarasu",
+          "orgs": [
+            "Stanford University, Stanford, CA, USA"
+          ]
+        },
+        {
+          "name": "Zhihong Chen",
+          "orgs": [
+            "Stanford University, Stanford, CA, USA"
+          ]
+        },
+        {
+          "name": "Eduardo Pontes Reis",
+          "orgs": [
+            "Stanford University, Stanford, CA, USA"
+          ]
+        },
+        {
+          "name": "Andrew Johnston",
+          "orgs": [
+            "Stanford University, Stanford, CA, USA"
+          ]
+        },
+        {
+          "name": "Anuj Pareek",
+          "orgs": [
+            "Stanford University, Stanford, CA, USA"
+          ]
+        },
+        {
+          "name": "Christian Bluethgen",
+          "orgs": [
+            "Stanford University, Stanford, CA, USA"
+          ]
+        },
+        {
+          "name": "Sergios Gatidis",
+          "orgs": [
+            "Stanford University, Stanford, CA, USA"
+          ]
+        },
+        {
+          "name": "Cameron Olsen",
+          "orgs": [
+            "Stanford University, Stanford, CA, USA"
+          ]
+        },
+        {
+          "name": "Akshay Chaudhari",
+          "orgs": [
+            "Stanford University, Stanford, CA, USA"
+          ]
+        },
+        {
+          "name": "Andrew Ng",
+          "orgs": [
+            "Stanford University, Stanford, CA, USA"
+          ]
+        },
+        {
+          "name": "Curtis Langlotz",
+          "orgs": [
+            "Stanford University, Stanford, CA, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2411.18602v1",
+      "date": "2024-11-27T18:47:09Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.CV",
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "1208.3035",
+      "score": 9.028219,
+      "title": "On the future of astrostatistics: statistical foundations and statistical practice",
+      "tldr": "This paper addresses the future of astrostatistics by exploring statistical foundations and practices, emphasizing the need for integrated analytical frameworks to support discovery chains in astronomical data analysis, with contributions including Bayesian/frequentist synthesis, multilevel models, and multiple testing, and implications for improving survey design and data interpretation in astronomy.",
+      "abstract": "This paper summarizes a presentation for a panel discussion on \"The Future of Astrostatistics\" held at the Statistical Challenges in Modern Astronomy V conference at Pennsylvania State University in June 2011. I argue that the emerging needs of astrostatistics may both motivate and benefit from fundamental developments in statistics. I highlight some recent work within statistics on fundamental topics relevant to astrostatistical practice, including the Bayesian/frequentist debate (and ideas for a synthesis), multilevel models, and multiple testing. As an important direction for future work in statistics, I emphasize that astronomers need a statistical framework that explicitly supports unfolding chains of discovery, with acquisition, cataloging, and modeling of data not seen as isolated tasks, but rather as parts of an ongoing, integrated sequence of analyses, with information and uncertainty propagating forward and backward through the chain. A prototypical example is surveying of astronomical populations, where source detection, demographic modeling, and the design of survey instruments and strategies all interact.",
+      "authors": [
+        {
+          "name": "Thomas J. Loredo",
+          "orgs": [
+            "Center for Radiophysics & Space Research, Cornell University, Ithaca, NY 14853-6801"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1208.3035v1",
+      "date": "2012-08-15T06:03:01Z",
+      "citation_count": 2,
+      "categories": [
+        "astro-ph.IM",
+        "stat.AP"
+      ]
+    },
+    {
+      "arxiv_id": "2506.14986",
+      "score": 9.014916,
+      "title": "Early Prediction of Multiple Sclerosis Disability Progression via Multimodal Foundation Model Benchmarks",
+      "tldr": "This paper addresses the challenge of early multiple sclerosis disability progression prediction by integrating sparse clinical data with digital biomarkers using multimodal foundation models, demonstrating improved performance (AUROC 0.63) through a custom transformer architecture that outperforms unimodal approaches, offering insights for more accurate prognostics in complex diseases.",
+      "abstract": "Early multiple sclerosis (MS) disability progression prediction is challenging due to disease heterogeneity. This work predicts 48- and 72-week disability using sparse baseline clinical data and 12 weeks of daily digital Floodlight data from the CONSONANCE clinical trial. We employed state-of-the-art tabular and time-series foundation models (FMs), a custom multimodal attention-based transformer, and machine learning methods. Despite the difficulty of early prediction (AUROC 0.63), integrating digital data via advanced models improved performance over clinical data alone. A transformer model using unimodal embeddings from the Moment FM yielded the best result, but our multimodal transformer consistently outperformed its unimodal counterpart, confirming the advantages of combining clinical with digital data. Our findings demonstrate the promise of FMs and multimodal approaches to extract predictive signals from complex and diverse clinical and digital life sciences data (e.g., imaging, omics), enabling more accurate prognostics for MS and potentially other complex diseases.",
+      "authors": [
+        {
+          "name": "Maxime Usdin",
+          "orgs": [
+            "Genentech, Inc, South San Francisco, CA, USA"
+          ]
+        },
+        {
+          "name": "Lito Kriara",
+          "orgs": [
+            "F. Hoffmann-La Roche Ltd., Basel, Switzerland"
+          ]
+        },
+        {
+          "name": "Licinio Craveiro",
+          "orgs": [
+            "F. Hoffmann-La Roche Ltd., Basel, Switzerland"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2506.14986v1",
+      "date": "2025-06-17T21:37:45Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2511.05878",
+      "score": 8.996792,
+      "title": "FusionLog: Cross-System Log-based Anomaly Detection via Fusion of General and Proprietary Knowledge",
+      "tldr": "This paper addresses the challenge of cross-system log-based anomaly detection by identifying the gap in leveraging both general and proprietary knowledge, proposes FusionLog which uses semantic routing and collaborative knowledge distillation to fuse these knowledge types, and achieves over 90% F1-score on three public datasets under zero-label conditions.",
+      "abstract": "Log-based anomaly detection is critical for ensuring the stability and reliability of web systems. One of the key problems in this task is the lack of sufficient labeled logs, which limits the rapid deployment in new systems. Existing works usually leverage large-scale labeled logs from a mature web system and a small amount of labeled logs from a new system, using transfer learning to extract and generalize general knowledge across both domains. However, these methods focus solely on the transfer of general knowledge and neglect the disparity and potential mismatch between such knowledge and the proprietary knowledge of target system, thus constraining performance. To address this limitation, we propose FusionLog, a novel zero-label cross-system log-based anomaly detection method that effectively achieves the fusion of general and proprietary knowledge, enabling cross-system generalization without any labeled target logs. Specifically, we first design a training-free router based on semantic similarity that dynamically partitions unlabeled target logs into 'general logs' and 'proprietary logs.' For general logs, FusionLog employs a small model based on system-agnostic representation meta-learning for direct training and inference, inheriting the general anomaly patterns shared between the source and target systems. For proprietary logs, we iteratively generate pseudo-labels and fine-tune the small model using multi-round collaborative knowledge distillation and fusion based on large language model (LLM) and small model (SM) to enhance its capability to recognize anomaly patterns specific to the target system. Experimental results on three public log datasets from different systems show that FusionLog achieves over 90% F1-score under a fully zero-label setting, significantly outperforming state-of-the-art cross-system log-based anomaly detection methods.",
+      "authors": [
+        {
+          "name": "Tong Jia",
+          "orgs": []
+        },
+        {
+          "name": "Xinlong Zhao",
+          "orgs": []
+        },
+        {
+          "name": "Minghua He",
+          "orgs": []
+        },
+        {
+          "name": "Xixuan Yang and Ying Li",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2511.05878v2",
+      "date": "2025-11-08",
+      "citation_count": 0,
+      "categories": [
+        "cs.LG",
+        "cs.SE"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,874 @@
+{
+  "status": "success",
+  "total_count": 44,
+  "result": [
+    {
+      "arxiv_id": "1906.11906",
+      "score": 13.832451,
+      "title": "Data Extraction from Charts via Single Deep Neural Network",
+      "tldr": "This paper presents a deep learning model for automatic data extraction from bar and pie charts, addressing the challenge of handling complex object relations and varying chart types, by combining object detection, text recognition, and component matching; it introduces a single model for bar charts and a specialized model for pie charts with RNN-based angle detection, achieving 79.4% and 88.0% accuracy on simulated charts, but degrading to 57.5% and 62.3% on out-of-domain data, offering improved automation for business data management.",
+      "abstract": "Automatic data extraction from charts is challenging for two reasons: there exist many relations among objects in a chart, which is not a common consideration in general computer vision problems; and different types of charts may not be processed by the same model. To address these problems, we propose a framework of a single deep neural network, which consists of object detection, text recognition and object matching modules. The framework handles both bar and pie charts, and it may also be extended to other types of charts by slight revisions and by augmenting the training data. Our model performs successfully on 79.4% of test simulated bar charts and 88.0% of test simulated pie charts, while for charts outside of the training domain it degrades for 57.5% and 62.3%, respectively.",
+      "authors": [
+        {
+          "name": "Xiaoyi Liu",
+          "orgs": []
+        },
+        {
+          "name": "Diego Klabjan",
+          "orgs": []
+        },
+        {
+          "name": "Patrick N Bless",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1906.11906v1",
+      "date": "2019-06-06T21:54:50Z",
+      "citation_count": 60,
+      "categories": [
+        "cs.CL",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2510.04514",
+      "score": 13.169183,
+      "title": "ChartAgent: A Multimodal Agent for Visually Grounded Reasoning in Complex Chart Question Answering",
+      "tldr": "This paper introduces ChartAgent, a novel agentic framework for chart visual question answering that addresses the challenge of unannotated charts by using visual reasoning and specialized tools, achieving state-of-the-art accuracy with 16.07% absolute gain overall and 17.31% on numeric queries, and demonstrating effectiveness across diverse chart types and reasoning complexities.",
+      "abstract": "Recent multimodal LLMs have shown promise in chart-based visual question answering, but their performance declines sharply on unannotated charts-those requiring precise visual interpretation rather than relying on textual shortcuts. To address this, we introduce ChartAgent, a novel agentic framework that explicitly performs visual reasoning directly within the chart's spatial domain. Unlike textual chain-of-thought reasoning, ChartAgent iteratively decomposes queries into visual subtasks and actively manipulates and interacts with chart images through specialized actions such as drawing annotations, cropping regions (e.g., segmenting pie slices, isolating bars), and localizing axes, using a library of chart-specific vision tools to fulfill each subtask. This iterative reasoning process closely mirrors human cognitive strategies for chart comprehension. ChartAgent achieves state-of-the-art accuracy on the ChartBench and ChartX benchmarks, surpassing prior methods by up to 16.07% absolute gain overall and 17.31% on unannotated, numerically intensive queries. Furthermore, our analyses show that ChartAgent is (a) effective across diverse chart types, (b) achieves the highest scores across varying visual and reasoning complexity levels, and (c) serves as a plug-and-play framework that boosts performance across diverse underlying LLMs. Our work is among the first to demonstrate visually grounded reasoning for chart understanding using tool-augmented multimodal agents.",
+      "authors": [
+        {
+          "name": "Rachneet Kaur",
+          "orgs": [
+            "J.P. Morgan AI Research"
+          ]
+        },
+        {
+          "name": "Nishan Srishankar",
+          "orgs": [
+            "J.P. Morgan AI Research"
+          ]
+        },
+        {
+          "name": "Zhen Zeng",
+          "orgs": [
+            "J.P. Morgan AI Research"
+          ]
+        },
+        {
+          "name": "Sumitra Ganesh",
+          "orgs": [
+            "J.P. Morgan AI Research"
+          ]
+        },
+        {
+          "name": "Manuela Veloso",
+          "orgs": [
+            "J.P. Morgan AI Research"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2510.04514v2",
+      "date": "2025-10-06",
+      "citation_count": 1,
+      "categories": [
+        "cs.AI",
+        "cs.CE",
+        "cs.CL",
+        "cs.CV",
+        "stat.ME"
+      ]
+    },
+    {
+      "arxiv_id": "1812.10636",
+      "score": 12.84802,
+      "title": "Chart-Text: A Fully Automated Chart Image Descriptor",
+      "tldr": "This paper presents Chart-Text, a fully automated system for generating textual descriptions of chart images, addressing the challenge of creating standardized Alt-Text for visually impaired users; it proposes a method combining chart classification and data extraction with accuracies of 99.72% and 78.9%, respectively, significantly improving accessibility and productivity for content creators.",
+      "abstract": "Images greatly help in understanding, interpreting and visualizing data. Adding textual description to images is the first and foremost principle of web accessibility. Visually impaired users using screen readers will use these textual descriptions to get better understanding of images present in digital contents. In this paper, we propose Chart-Text a novel fully automated system that creates textual description of chart images. Given a PNG image of a chart, our Chart-Text system creates a complete textual description of it. First, the system classifies the type of chart and then it detects and classifies the labels and texts in the charts. Finally, it uses specific image processing algorithms to extract relevant information from the chart images. Our proposed system achieves an accuracy of 99.72% in classifying the charts and an accuracy of 78.9% in extracting the data and creating the corresponding textual description.",
+      "authors": [
+        {
+          "name": "Abhijit Balaji",
+          "orgs": [
+            "SPi Technologies India Private Limited"
+          ]
+        },
+        {
+          "name": "Thuvaarakkesh Ramanathan",
+          "orgs": [
+            "SPi Technologies India Private Limited"
+          ]
+        },
+        {
+          "name": "Venkateshwarlu Sonathi",
+          "orgs": [
+            "SPi Technologies India Private Limited"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1812.10636v1",
+      "date": "2018-12-27T05:52:06Z",
+      "citation_count": 61,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2111.14103",
+      "score": 12.847751,
+      "title": "CHARTER: heatmap-based multi-type chart data extraction",
+      "tldr": "This paper addresses the challenge of extracting tabular data from diverse chart types in documents, proposing a heatmap-based detection system that improves precision for non-rectangular charts like pie and line plots, and introduces novel algorithms for label matching and data extraction, achieving state-of-the-art results on benchmark datasets.",
+      "abstract": "The digital conversion of information stored in documents is a great source of knowledge. In contrast to the documents text, the conversion of the embedded documents graphics, such as charts and plots, has been much less explored. We present a method and a system for end-to-end conversion of document charts into machine readable tabular data format, which can be easily stored and analyzed in the digital domain. Our approach extracts and analyses charts along with their graphical elements and supporting structures such as legends, axes, titles, and captions. Our detection system is based on neural networks, trained solely on synthetic data, eliminating the limiting factor of data collection. As opposed to previous methods, which detect graphical elements using bounding-boxes, our networks feature auxiliary domain specific heatmaps prediction enabling the precise detection of pie charts, line and scatter plots which do not fit the rectangular bounding-box presumption. Qualitative and quantitative results show high robustness and precision, improving upon previous works on popular benchmarks",
+      "authors": [
+        {
+          "name": "Joseph Shtok",
+          "orgs": [
+            "IBM Research AI",
+            "Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Sivan Harary",
+          "orgs": [
+            "IBM Research AI",
+            "Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Ophir Azulai",
+          "orgs": [
+            "IBM Research AI",
+            "Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Adi Raz Goldfarb",
+          "orgs": [
+            "IBM Research AI",
+            "Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Assaf Arbelle",
+          "orgs": [
+            "IBM Research AI, Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Leonid Karlinsky",
+          "orgs": [
+            "IBM Research AI, Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2111.14103v1",
+      "date": "2021-11-28T11:01:21Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2308.01971",
+      "score": 12.783625,
+      "title": "SpaDen : Sparse and Dense Keypoint Estimation for Real-World Chart Understanding",
+      "tldr": "This paper addresses the challenge of real-world chart data extraction by introducing SpaDen, a model that combines sparse and dense keypoint estimation with self-attention and deep metric learning to segment and reconstruct chart components, achieving improved accuracy through post-processing thresholds and extensive experimental evaluation.",
+      "abstract": "We introduce a novel bottom-up approach for the extraction of chart data. Our model utilizes images of charts as inputs and learns to detect keypoints (KP), which are used to reconstruct the components within the plot area. Our novelty lies in detecting a fusion of continuous and discrete KP as predicted heatmaps. A combination of sparse and dense per-pixel objectives coupled with a uni-modal self-attention-based feature-fusion layer is applied to learn KP embeddings. Further leveraging deep metric learning for unsupervised clustering, allows us to segment the chart plot area into various objects. By further matching the chart components to the legend, we are able to obtain the data series names. A post-processing threshold is applied to the KP embeddings to refine the object reconstructions and improve accuracy. Our extensive experiments include an evaluation of different modules for KP estimation and the combination of deep layer aggregation and corner pooling approaches. The results of our experiments provide extensive evaluation for the task of real-world chart data extraction.",
+      "authors": [
+        {
+          "name": "Saleem Ahmed",
+          "orgs": []
+        },
+        {
+          "name": "Pengyu Yan",
+          "orgs": []
+        },
+        {
+          "name": "David Doermann",
+          "orgs": []
+        },
+        {
+          "name": "Srirangaraj Setlur",
+          "orgs": []
+        },
+        {
+          "name": "Venu Govindaraju",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2308.01971v1",
+      "date": "2023-08-03T18:03:42Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2308.11788",
+      "score": 12.731121,
+      "title": "An extensible point-based method for data chart value detection",
+      "tldr": "This paper addresses the challenge of extracting values from scientific bar charts by proposing an extensible point-based method using a point proposal network, achieving 0.8705 F1 accuracy on real charts and 0.9810 F1 on synthetic ones, with implications for scalable data extraction from visualized scientific literature.",
+      "abstract": "We present an extensible method for identifying semantic points to reverse engineer (i.e. extract the values of) data charts, particularly those in scientific articles. Our method uses a point proposal network (akin to region proposal networks for object detection) to directly predict the position of points of interest in a chart, and it is readily extensible to multiple chart types and chart elements. We focus on complex bar charts in the scientific literature, on which our model is able to detect salient points with an accuracy of 0.8705 F1 (@1.5-cell max deviation); it achieves 0.9810 F1 on synthetically-generated charts similar to those used in prior works. We also explore training exclusively on synthetic data with novel augmentations, reaching surprisingly competent performance in this way (0.6621 F1) on real charts with widely varying appearance, and we further demonstrate our unchanged method applied directly to synthetic pie charts (0.8343 F1). Datasets, trained models, and evaluation code are available at https://github.com/BNLNLP/PPN_model.",
+      "authors": [
+        {
+          "name": "Carlos Soto",
+          "orgs": []
+        },
+        {
+          "name": "Shinjae Yoo",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2308.11788v1",
+      "date": "2023-08-22T21:03:58Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2105.02039",
+      "score": 12.358744,
+      "title": "Towards an efficient framework for Data Extraction from Chart Images",
+      "tldr": "This paper addresses the challenge of data extraction from chart images, aiming to improve accuracy in detecting plot elements and converting them into semantic data, as precise localization is critical for chart analysis; it employs deep learning methods, including a fully convolutional network with feature fusion for point detection and a similarity network for legend matching, contributing a robust framework with enhanced precision; experimental results show effective performance on real-world datasets, providing a baseline for future research.",
+      "abstract": "In this paper, we fill the research gap by adopting state-of-the-art computer vision techniques for the data extraction stage in a data mining system. As shown in Fig.1, this stage contains two subtasks, namely, plot element detection and data conversion. For building a robust box detector, we comprehensively compare different deep learning-based methods and find a suitable method to detect box with high precision. For building a robust point detector, a fully convolutional network with feature fusion module is adopted, which can distinguish close points compared to traditional methods. The proposed system can effectively handle various chart data without making heuristic assumptions. For data conversion, we translate the detected element into data with semantic value. A network is proposed to measure feature similarities between legends and detected elements in the legend matching phase. Furthermore, we provide a baseline on the competition of Harvesting raw tables from Infographics. Some key factors have been found to improve the performance of each stage. Experimental results demonstrate the effectiveness of the proposed system.",
+      "authors": [
+        {
+          "name": "Weihong Ma",
+          "orgs": []
+        },
+        {
+          "name": "Hesuo Zhang",
+          "orgs": []
+        },
+        {
+          "name": "Shuang Yan",
+          "orgs": []
+        },
+        {
+          "name": "Guangshun Yao",
+          "orgs": []
+        },
+        {
+          "name": "Yichao Huang",
+          "orgs": []
+        },
+        {
+          "name": "Hui Li",
+          "orgs": []
+        },
+        {
+          "name": "Yaqiang Wu",
+          "orgs": []
+        },
+        {
+          "name": "Lianwen Jin",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2105.02039v1",
+      "date": "2021-05-05T13:18:53Z",
+      "citation_count": 18,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2410.09761",
+      "score": 12.216962,
+      "title": "ChartKG: A Knowledge-Graph-Based Representation for Chart Images",
+      "tldr": "This paper proposes ChartKG, a knowledge-graph-based representation for chart images to address the gap in unified and explainable chart knowledge mining, using a framework integrating CNNs, YOLOv5, OCR, and rule-based methods to extract visual elements and semantic relations, demonstrating effectiveness through case studies and evaluations on object recognition and OCR.",
+      "abstract": "Chart images, such as bar charts, pie charts, and line charts, are explosively produced due to the wide usage of data visualizations. Accordingly, knowledge mining from chart images is becoming increasingly important, which can benefit downstream tasks like chart retrieval and knowledge graph completion. However, existing methods for chart knowledge mining mainly focus on converting chart images into raw data and often ignore their visual encodings and semantic meanings, which can result in information loss for many downstream tasks. In this paper, we propose ChartKG, a novel knowledge graph (KG) based representation for chart images, which can model the visual elements in a chart image and semantic relations among them including visual encodings and visual insights in a unified manner. Further, we develop a general framework to convert chart images to the proposed KG-based representation. It integrates a series of image processing techniques to identify visual elements and relations, e.g., CNNs to classify charts, yolov5 and optical character recognition to parse charts, and rule-based methods to construct graphs. We present four cases to illustrate how our knowledge-graph-based representation can model the detailed visual elements and semantic relations in charts, and further demonstrate how our approach can benefit downstream applications such as semantic-aware chart retrieval and chart question answering. We also conduct quantitative evaluations to assess the two fundamental building blocks of our chart-to-KG framework, i.e., object recognition and optical character recognition. The results provide support for the usefulness and effectiveness of ChartKG.",
+      "authors": [
+        {
+          "name": "Zhiguang Zhou",
+          "orgs": [
+            "School of Media and Design, Hangzhou Dianzi University",
+            "Hangzhou Dianzi University"
+          ]
+        },
+        {
+          "name": "Haoxuan Wang",
+          "orgs": [
+            "Big Data Visualization and Human Computer Collaborative Intelligent Laboratory, Hangzhou Dianzi University",
+            "Hangzhou Dianzi University"
+          ]
+        },
+        {
+          "name": "Zhengqing Zhao",
+          "orgs": [
+            "Big Data Visualization and Human Computer Collaborative Intelligent Laboratory, Hangzhou Dianzi University",
+            "Hangzhou Dianzi University"
+          ]
+        },
+        {
+          "name": "Fengling Zheng",
+          "orgs": [
+            "Big Data Visualization and Human Computer Collaborative Intelligent Laboratory, Hangzhou Dianzi University",
+            "Hangzhou Dianzi University"
+          ]
+        },
+        {
+          "name": "Yongheng Wang",
+          "orgs": [
+            "Research Center of Big Data Intelligence, Zhejiang Lab, Hangzhou, China"
+          ]
+        },
+        {
+          "name": "Wei Chen",
+          "orgs": [
+            "State Key Lab of CAD&CG, Zhejiang University"
+          ]
+        },
+        {
+          "name": "Yong Wang",
+          "orgs": [
+            "College of Computing and Data Science, Nanyang Technological University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2410.09761v1",
+      "date": "2024-10-13T07:38:44Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.AI",
+        "cs.IR"
+      ]
+    },
+    {
+      "arxiv_id": "1911.09375",
+      "score": 12.115145,
+      "title": "ChartNet: Visual Reasoning over Statistical Charts using MAC-Networks",
+      "tldr": "This paper addresses the challenge of visual reasoning over statistical charts for visually impaired users, proposing ChartNet which uses MAC-Networks to predict both in-vocabulary and out-of-vocabulary answers by replacing classification with regression; it introduces a new dataset with bar and pie charts and corresponding question-answer pairs, achieving superior performance compared to state-of-the-art methods in visual reasoning tasks.",
+      "abstract": "Despite the improvements in perception accuracies brought about via deep learning, developing systems combining accurate visual perception with the ability to reason over the visual percepts remains extremely challenging. A particular application area of interest from an accessibility perspective is that of reasoning over statistical charts such as bar and pie charts. To this end, we formulate the problem of reasoning over statistical charts as a classification task using MAC-Networks to give answers from a predefined vocabulary of generic answers. Additionally, we enhance the capabilities of MAC-Networks to give chart-specific answers to open-ended questions by replacing the classification layer by a regression layer to localize the textual answers present over the images. We call our network ChartNet, and demonstrate its efficacy on predicting both in vocabulary and out of vocabulary answers. To test our methods, we generated our own dataset of statistical chart images and corresponding question answer pairs. Results show that ChartNet consistently outperform other state-of-the-art methods on reasoning over these questions and may be a viable candidate for applications containing images of statistical charts.",
+      "authors": [
+        {
+          "name": "Monika Sharma",
+          "orgs": [
+            "TCS Research, New Delhi, India"
+          ]
+        },
+        {
+          "name": "Shikha Gupta",
+          "orgs": [
+            "School of Computing and EE, Indian Institute of Mandi, H.P., India"
+          ]
+        },
+        {
+          "name": "Arindam Chowdhury",
+          "orgs": [
+            "TCS Research, New Delhi, India"
+          ]
+        },
+        {
+          "name": "Lovekesh Vig",
+          "orgs": [
+            "TCS Research, New Delhi, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1911.09375v1",
+      "date": "2019-11-21T10:03:25Z",
+      "citation_count": 10,
+      "categories": [
+        "cs.CL",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2504.09764",
+      "score": 11.933529,
+      "title": "Socratic Chart: Cooperating Multiple Agents for Robust SVG Chart Understanding",
+      "tldr": "This paper addresses the challenge of true visual understanding in chart reasoning by proposing Socratic Chart, a framework that converts chart images into SVG representations using a multi-agent pipeline with specialized agents for attribute extraction and an agent-critic for validation, which outperforms existing models by improving accuracy in capturing chart primitives and reasoning performance, with results showing up to 30% performance drop in baseline models under label removal and perturbations.",
+      "abstract": "Multimodal Large Language Models (MLLMs) have shown remarkable versatility but face challenges in demonstrating true visual understanding, particularly in chart reasoning tasks. Existing benchmarks like ChartQA reveal significant reliance on text-based shortcuts and probabilistic pattern-matching rather than genuine visual reasoning. To rigorously evaluate visual reasoning, we introduce a more challenging test scenario by removing textual labels and introducing chart perturbations in the ChartQA dataset. Under these conditions, models like GPT-4o and Gemini-2.0 Pro experience up to a 30% performance drop, underscoring their limitations. To address these challenges, we propose Socratic Chart, a new framework that transforms chart images into Scalable Vector Graphics (SVG) representations, enabling MLLMs to integrate textual and visual modalities for enhanced chart understanding. Socratic Chart employs a multi-agent pipeline with specialized agent-generators to extract primitive chart attributes (e.g., bar heights, line coordinates) and an agent-critic to validate results, ensuring high-fidelity symbolic representations. Our framework surpasses state-of-the-art models in accurately capturing chart primitives and improving reasoning performance, establishing a robust pathway for advancing MLLM visual understanding.",
+      "authors": [
+        {
+          "name": "Yuyang Ji",
+          "orgs": [
+            "University of Illinois at Urbana-Champaign"
+          ]
+        },
+        {
+          "name": "Haohan Wang",
+          "orgs": [
+            "University of Illinois at Urbana-Champaign"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2504.09764v1",
+      "date": "2025-04-14T00:07:39Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2505.19360",
+      "score": 11.902103,
+      "title": "ChartLens: Fine-grained Visual Attribution in Charts",
+      "tldr": "This paper addresses the challenge of hallucinations in multimodal large language models by introducing Post-Hoc Fine-grained Visual Attribution for Charts, proposing ChartLens and ChartVA-Eval, which improve fine-grained attributions by 26-66% and provide a benchmark for evaluating chart attribution systems.",
+      "abstract": "The growing capabilities of multimodal large language models (MLLMs) have advanced tasks like chart understanding. However, these models often suffer from hallucinations, where generated text sequences conflict with the provided visual data. To address this, we introduce Post-Hoc Visual Attribution for Charts, which identifies fine-grained chart elements that validate a given chart-associated response. We propose ChartLens, a novel chart attribution algorithm that uses segmentation-based techniques to identify chart objects and employs set-of-marks prompting with MLLMs for fine-grained visual attribution. Additionally, we present ChartVA-Eval, a benchmark with synthetic and real-world charts from diverse domains like finance, policy, and economics, featuring fine-grained attribution annotations. Our evaluations show that ChartLens improves fine-grained attributions by 26-66%.",
+      "authors": [
+        {
+          "name": "Manan Suri",
+          "orgs": [
+            "University of Maryland, College Park",
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Puneet Mathur",
+          "orgs": [
+            "University of Maryland, College Park",
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Nedim Lipka",
+          "orgs": [
+            "University of Maryland, College Park",
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Franck Dernoncourt",
+          "orgs": [
+            "University of Maryland, College Park",
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Ryan A. Rossi",
+          "orgs": [
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "Dinesh Manocha",
+          "orgs": [
+            "University of Maryland, College Park"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2505.19360v1",
+      "date": "2025-05-25T23:17:32Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2307.02065",
+      "score": 11.897719,
+      "title": "Line Graphics Digitization: A Step Towards Full Automation",
+      "tldr": "This paper addresses the under-explored task of fine-grained visual understanding of mathematical graphics, introducing the Line Graphics (LG) dataset with 520 images from 450 documents, annotated for 10 categories, and benchmarks 7 models achieving 67.56% mIoU, highlighting challenges in spine and title recognition, with implications for automated document digitization and accessibility.",
+      "abstract": "The digitization of documents allows for wider accessibility and reproducibility. While automatic digitization of document layout and text content has been a long-standing focus of research, this problem in regard to graphical elements, such as statistical plots, has been under-explored. In this paper, we introduce the task of fine-grained visual understanding of mathematical graphics and present the Line Graphics (LG) dataset, which includes pixel-wise annotations of 5 coarse and 10 fine-grained categories. Our dataset covers 520 images of mathematical graphics collected from 450 documents from different disciplines. Our proposed dataset can support two different computer vision tasks, i.e., semantic segmentation and object detection. To benchmark our LG dataset, we explore 7 state-of-the-art models. To foster further research on the digitization of statistical graphs, we will make the dataset, code, and models publicly available to the community.",
+      "authors": [
+        {
+          "name": "Omar Moured",
+          "orgs": []
+        },
+        {
+          "name": "Jiaming Zhang",
+          "orgs": []
+        },
+        {
+          "name": "Alina Roitberg",
+          "orgs": []
+        },
+        {
+          "name": "Thorsten Schwarz",
+          "orgs": []
+        },
+        {
+          "name": "Rainer Stiefelhagen",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2307.02065v1",
+      "date": "2023-07-05T07:08:58Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2501.04303",
+      "score": 11.872184,
+      "title": "Graph-Based Multimodal Contrastive Learning for Chart Question Answering",
+      "tldr": "This paper addresses the challenge of ChartQA by proposing a graph-based multimodal contrastive learning framework that integrates visual and textual graphs, contributing a novel method for aligning modalities and enhancing zero-shot performance on benchmarks like ChartQA and OpenCQA with significant performance improvements, while highlighting the limitations of MLLMs through CoT prompting.",
+      "abstract": "Chart question answering (ChartQA) is challenged by the heterogeneous composition of chart elements and the subtle data patterns they encode. This work introduces a novel joint multimodal scene graph framework that explicitly models the relationships among chart components and their underlying structures. The framework integrates both visual and textual graphs to capture structural and semantic characteristics, while a graph contrastive learning strategy aligns node representations across modalities enabling their seamless incorporation into a transformer decoder as soft prompts. Moreover, a set of tailored Chain of Thought (CoT) prompts is proposed to enhance multimodal large language models (MLLMs) in zero-s ot scenarios by mitigating hallucinations. Extensive evaluations on benchmarks including ChartQA, OpenCQA, and ChartX demonstrate significant performance improvements and validate the efficacy of the proposed approach.",
+      "authors": [
+        {
+          "name": "Yue Dai",
+          "orgs": [
+            "The University of Western Australia",
+            "P.O. Box 1212",
+            "Perth",
+            "Western Australia",
+            "Australia",
+            "43017-6221"
+          ]
+        },
+        {
+          "name": "Soyeon Caren Han",
+          "orgs": [
+            "The University of Melbourne",
+            "1 Thørväld Circle",
+            "Melbourne",
+            "Australia"
+          ]
+        },
+        {
+          "name": "Wei Liu",
+          "orgs": [
+            "The University of Western Australia",
+            "1 Thørväld Circle",
+            "Perth",
+            "Australia"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2501.04303v2",
+      "date": "2025-01-08T06:27:07Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2009.02491",
+      "score": 11.858024,
+      "title": "Reverse-engineering Bar Charts Using Neural Networks",
+      "tldr": "This paper addresses the problem of reverse-engineering bar charts to extract textual and numeric information, which is crucial for applications requiring underlying data; it proposes a neural network-based method combining Faster-RCNN for textual extraction and an encoder-decoder framework with attention mechanism for numeric extraction, achieving F1 scores of 0.89 and 0.80, and accuracies of 0.91 and 0.78 on synthetic and real-world datasets respectively.",
+      "abstract": "Reverse-engineering bar charts extracts textual and numeric information from the visual representations of bar charts to support application scenarios that require the underlying information. In this paper, we propose a neural network-based method for reverse-engineering bar charts. We adopt a neural network-based object detection model to simultaneously localize and classify textual information. This approach improves the efficiency of textual information extraction. We design an encoder-decoder framework that integrates convolutional and recurrent neural networks to extract numeric information. We further introduce an attention mechanism into the framework to achieve high accuracy and robustness. Synthetic and real-world datasets are used to evaluate the effectiveness of the method. To the best of our knowledge, this work takes the lead in constructing a complete neural network-based method of reverse-engineering bar charts.",
+      "authors": [
+        {
+          "name": "Fangfang Zhou",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yong Zhao",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Wenjiang Chen",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yijing Tan",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yaqi Xu",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yi Chen",
+          "orgs": [
+            "Beijing Key Laboratory of Big Data Technology for Food Safety, Beijing Technology and Business University, Beijing, China"
+          ]
+        },
+        {
+          "name": "Chao Liu",
+          "orgs": [
+            "Institute of Systems Engineering, Academy of Military Sciences, Beijing, China"
+          ]
+        },
+        {
+          "name": "Ying Zhao",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China",
+            "Rail Data Research and Application Key Laboratory of Hunan Province, Changsha, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2009.02491v1",
+      "date": "2020-09-05T08:14:35Z",
+      "citation_count": 34,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2211.08863",
+      "score": 11.731757,
+      "title": "ChartParser: Automatic Chart Parsing for Print-Impaired",
+      "tldr": "This paper addresses the challenge of making bar charts accessible to print-impaired individuals by proposing ChartParser, an automated pipeline using deep learning, OCR, and image processing to extract and classify charts, with contributions including robust parsing of legends and color-based data association, and findings demonstrating its viability on real-world datasets.",
+      "abstract": "Infographics are often an integral component of scientific documents for reporting qualitative or quantitative findings as they make it much simpler to comprehend the underlying complex information. However, their interpretation continues to be a challenge for the blind, low-vision, and other print-impaired (BLV) individuals. In this paper, we propose ChartParser, a fully automated pipeline that leverages deep learning, OCR, and image processing techniques to extract all figures from a research paper, classify them into various chart categories (bar chart, line chart, etc.) and obtain relevant information from them, specifically bar charts (including horizontal, vertical, stacked horizontal and stacked vertical charts) which already have several exciting challenges. Finally, we present the retrieved content in a tabular format that is screen-reader friendly and accessible to the BLV users. We present a thorough evaluation of our approach by applying our pipeline to sample real-world annotated bar charts from research papers.",
+      "authors": [
+        {
+          "name": "Anukriti Kumar",
+          "orgs": []
+        },
+        {
+          "name": "Tanuja Ganu",
+          "orgs": []
+        },
+        {
+          "name": "Saikat Guha",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2211.08863v1",
+      "date": "2022-11-16T12:19:10Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.CV",
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "1907.13550",
+      "score": 11.699867,
+      "title": "Towards Automated Infographic Design: Deep Learning-based Auto-Extraction of Extensible Timeline",
+      "tldr": "This paper addresses the challenge of automated infographic design by proposing a deep learning-based method to extract extensible timeline templates from bitmap images, contributing a multi-task DNN for deconstruction and a pipeline with Non-Maximum Merging, Redundancy Recover, and DL GrabCut for reconstruction; it evaluates the approach on 4296 synthesized and 393 real-world images, demonstrating effective template extraction that enables data-driven timeline generation.",
+      "abstract": "Designers need to consider not only perceptual effectiveness but also visual styles when creating an infographic. This process can be difficult and time consuming for professional designers, not to mention non-expert users, leading to the demand for automated infographics design. As a first step, we focus on timeline infographics, which have been widely used for centuries. We contribute an end-to-end approach that automatically extracts an extensible timeline template from a bitmap image. Our approach adopts a deconstruction and reconstruction paradigm. At the deconstruction stage, we propose a multi-task deep neural network that simultaneously parses two kinds of information from a bitmap timeline: 1) the global information, i.e., the representation, scale, layout, and orientation of the timeline, and 2) the local information, i.e., the location, category, and pixels of each visual element on the timeline. At the reconstruction stage, we propose a pipeline with three techniques, i.e., Non-Maximum Merging, Redundancy Recover, and DL GrabCut, to extract an extensible template from the infographic, by utilizing the deconstruction results. To evaluate the effectiveness of our approach, we synthesize a timeline dataset (4296 images) and collect a real-world timeline dataset (393 images) from the Internet. We first report quantitative evaluation results of our approach over the two datasets. Then, we present examples of automatically extracted templates and timelines automatically generated based on these templates to qualitatively demonstrate the performance. The results confirm that our approach can effectively extract extensible templates from real-world timeline infographics.",
+      "authors": [
+        {
+          "name": "Chen Zhu-Tian",
+          "orgs": []
+        },
+        {
+          "name": "Yun Wang",
+          "orgs": []
+        },
+        {
+          "name": "Qianwen Wang",
+          "orgs": []
+        },
+        {
+          "name": "Yong Wang",
+          "orgs": []
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Huamin Qu",
+          "orgs": [
+            "University of Washington"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1907.13550v3",
+      "date": "2019-07-31T15:20:33Z",
+      "citation_count": 89,
+      "categories": [
+        "cs.GR",
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "1909.00997",
+      "score": 8.551827,
+      "title": "PlotQA: Reasoning over Scientific Plots",
+      "tldr": "This paper addresses the gap in existing datasets for plot reasoning by introducing PlotQA, a dataset with 28.9 million question-answer pairs over 224,377 real-world plots, where 80.76% of questions have open-vocabulary answers; it proposes a hybrid model combining classification and structured table QA, achieving 22.52% accuracy on PlotQA and 58% on DVQA, significantly improving over previous methods.",
+      "abstract": "Existing synthetic datasets (FigureQA, DVQA) for reasoning over plots do not contain variability in data labels, real-valued data, or complex reasoning questions. Consequently, proposed models for these datasets do not fully address the challenge of reasoning over plots. In particular, they assume that the answer comes either from a small fixed size vocabulary or from a bounding box within the image. However, in practice, this is an unrealistic assumption because many questions require reasoning and thus have real-valued answers which appear neither in a small fixed size vocabulary nor in the image. In this work, we aim to bridge this gap between existing datasets and real-world plots. Specifically, we propose PlotQA with 28.9 million question-answer pairs over 224,377 plots on data from real-world sources and questions based on crowd-sourced question templates. Further, 80.76% of the out-of-vocabulary (OOV) questions in PlotQA have answers that are not in a fixed vocabulary. Analysis of existing models on PlotQA reveals that they cannot deal with OOV questions: their overall accuracy on our dataset is in single digits. This is not surprising given that these models were not designed for such questions. As a step towards a more holistic model which can address fixed vocabulary as well as OOV questions, we propose a hybrid approach: Specific questions are answered by choosing the answer from a fixed vocabulary or by extracting it from a predicted bounding box in the plot, while other questions are answered with a table question-answering engine which is fed with a structured table generated by detecting visual elements from the image. On the existing DVQA dataset, our model has an accuracy of 58%, significantly improving on the highest reported accuracy of 46%. On PlotQA, our model has an accuracy of 22.52%, which is significantly better than state of the art models.",
+      "authors": [
+        {
+          "name": "Nitesh Methani",
+          "orgs": [
+            "Department of Computer Science and Engineering",
+            "Robert Bosch Centre for Data Science and AI (RBC-DSAI)",
+            "Indian Institute of Technology Madras, Chennai, India"
+          ]
+        },
+        {
+          "name": "Pritha Ganguly",
+          "orgs": [
+            "Department of Computer Science and Engineering",
+            "Robert Bosch Centre for Data Science and AI (RBC-DSAI)",
+            "Indian Institute of Technology Madras, Chennai, India"
+          ]
+        },
+        {
+          "name": "Mitesh M. Khapra",
+          "orgs": [
+            "Department of Computer Science and Engineering",
+            "Robert Bosch Centre for Data Science and AI (RBC-DSAI)",
+            "Indian Institute of Technology Madras, Chennai, India"
+          ]
+        },
+        {
+          "name": "Pratyush Kumar",
+          "orgs": [
+            "Department of Computer Science and Engineering",
+            "Robert Bosch Centre for Data Science and AI (RBC-DSAI)",
+            "Indian Institute of Technology Madras, Chennai, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1909.00997v3",
+      "date": "2019-09-03T08:23:51Z",
+      "citation_count": 372,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1708.02002",
+      "score": 7.452022,
+      "title": "Focal Loss for Dense Object Detection",
+      "tldr": "This paper addresses the challenge of improving one-stage object detectors' accuracy by tackling class imbalance, proposing Focal Loss to focus on hard examples and outperforming two-stage detectors with RetinaNet achieving 39.1 COCO AP while maintaining efficiency.",
+      "abstract": "The highest accuracy object detectors to date are based on a two-stage approach popularized by R-CNN, where a classifier is applied to a sparse set of candidate object locations. In contrast, one-stage detectors that are applied over a regular, dense sampling of possible object locations have the potential to be faster and simpler, but have trailed the accuracy of two-stage detectors thus far. In this paper, we investigate why this is the case. We discover that the extreme foreground-background class imbalance encountered during training of dense detectors is the central cause. We propose to address this class imbalance by reshaping the standard cross entropy loss such that it down-weights the loss assigned to well-classified examples. Our novel Focal Loss focuses training on a sparse set of hard examples and prevents the vast number of easy negatives from overwhelming the detector during training. To evaluate the effectiveness of our loss, we design and train a simple dense detector we call RetinaNet. Our results show that when trained with the focal loss, RetinaNet is able to match the speed of previous one-stage detectors while surpassing the accuracy of all existing state-of-the-art two-stage detectors. Code is at: https://github.com/facebookresearch/Detectron.",
+      "authors": [
+        {
+          "name": "Tsung-Yi Lin",
+          "orgs": [
+            "Facebook AI Research (FAIR)"
+          ]
+        },
+        {
+          "name": "Priya Goyal",
+          "orgs": [
+            "Facebook AI Research (FAIR)"
+          ]
+        },
+        {
+          "name": "Ross Girshick",
+          "orgs": [
+            "Facebook AI Research (FAIR)"
+          ]
+        },
+        {
+          "name": "Kaiming He",
+          "orgs": [
+            "Facebook AI Research (FAIR)"
+          ]
+        },
+        {
+          "name": "Piotr Dollár",
+          "orgs": [
+            "Facebook AI Research (FAIR)"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1708.02002v2",
+      "date": "2017-08-07T06:32:42Z",
+      "citation_count": 3172,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1612.03144",
+      "score": 7.452022,
+      "title": "Feature Pyramid Networks for Object Detection",
+      "tldr": "This paper addresses the challenge of multi-scale object detection in computer vision by proposing a Feature Pyramid Network (FPN) that leverages the inherent pyramidal hierarchy of deep convolutional networks, achieving state-of-the-art results on the COCO benchmark with a 2.3 point improvement in Average Precision and 8.0 point increase in Average Recall, while maintaining fast inference at 5 FPS.",
+      "abstract": "Feature pyramids are a basic component in recognition systems for detecting objects at different scales. But recent deep learning object detectors have avoided pyramid representations, in part because they are compute and memory intensive. In this paper, we exploit the inherent multi-scale, pyramidal hierarchy of deep convolutional networks to construct feature pyramids with marginal extra cost. A top-down architecture with lateral connections is developed for building high-level semantic feature maps at all scales. This architecture, called a Feature Pyramid Network (FPN), shows significant improvement as a generic feature extractor in several applications. Using FPN in a basic Faster R-CNN system, our method achieves state-of-the-art single-model results on the COCO detection benchmark without bells and whistles, surpassing all existing single-model entries including those from the COCO 2016 challenge winners. In addition, our method can run at 5 FPS on a GPU and thus is a practical and accurate solution to multi-scale object detection. Code will be made publicly available.",
+      "authors": [
+        {
+          "name": "Tsung-Yi Lin",
+          "orgs": [
+            "Facebook AI Research (FAIR)",
+            "Cornell University",
+            "Cornell Tech"
+          ]
+        },
+        {
+          "name": "Piotr Dollár",
+          "orgs": [
+            "Facebook AI Research (FAIR)"
+          ]
+        },
+        {
+          "name": "Ross Girshick",
+          "orgs": [
+            "Facebook AI Research (FAIR)"
+          ]
+        },
+        {
+          "name": "Kaiming He",
+          "orgs": [
+            "Facebook AI Research (FAIR)"
+          ]
+        },
+        {
+          "name": "Bharath Hariharan",
+          "orgs": [
+            "Facebook AI Research (FAIR)"
+          ]
+        },
+        {
+          "name": "Serge Belongie",
+          "orgs": [
+            "Cornell University and Cornell Tech"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1612.03144v2",
+      "date": "2016-12-09T19:55:54Z",
+      "citation_count": 25985,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2010.02319",
+      "score": 6.9972215,
+      "title": "Tensor Fields for Data Extraction from Chart Images: Bar Charts and Scatter Plots",
+      "tldr": "This paper addresses the challenge of data extraction from bar charts and scatter plots by proposing a computational model using positive semidefinite second-order tensor fields, contributing a method for degenerate point extraction to automate levels A1 and A2 of Kimura's statistical ability scheme, showing tensor voting effectively extracts data with high accuracy for these chart types.",
+      "abstract": "Charts are an essential part of both graphicacy (graphical literacy), and statistical literacy. As chart understanding has become increasingly relevant in data science, automating chart analysis by processing raster images of the charts has become a significant problem. Automated chart reading involves data extraction and contextual understanding of the data from chart images. In this paper, we perform the first step of determining the computational model of chart images for data extraction for selected chart types, namely, bar charts, and scatter plots. We demonstrate the use of positive semidefinite second-order tensor fields as an effective model. We identify an appropriate tensor field as the model and propose a methodology for the use of its degenerate point extraction for data extraction from chart images. Our results show that tensor voting is effective for data extraction from bar charts and scatter plots, and histograms, as a special case of bar charts.",
+      "authors": [
+        {
+          "name": "Jaya Sreevalsan-Nair",
+          "orgs": [
+            "Graphics-Visualization-Computing Lab",
+            "International Institute of Information Technology Bangalore",
+            "Karnataka 560100, India"
+          ]
+        },
+        {
+          "name": "Komal Dadhich",
+          "orgs": [
+            "Graphics-Visualization-Computing Lab",
+            "International Institute of Information Technology Bangalore",
+            "Karnataka 560100, India"
+          ]
+        },
+        {
+          "name": "Siri Chandana Daggubati",
+          "orgs": [
+            "Graphics-Visualization-Computing Lab",
+            "International Institute of Information Technology Bangalore",
+            "Karnataka 560100, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2010.02319v1",
+      "date": "2020-10-05T20:19:40Z",
+      "citation_count": 12,
+      "categories": [
+        "cs.CV",
+        "cs.GR",
+        "cs.NA",
+        "math.NA"
+      ]
+    }
+  ]
+}

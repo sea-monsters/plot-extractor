@@ -1,0 +1,1190 @@
+{
+  "status": "success",
+  "total_count": 68,
+  "result": [
+    {
+      "arxiv_id": "2109.15099",
+      "score": 11.408143,
+      "title": "PP-LCNet: A Lightweight CPU Convolutional Neural Network",
+      "tldr": "This paper addresses the challenge of improving accuracy of lightweight CNNs on CPU without increasing latency, proposing PP-LCNet with MKLDNN acceleration and novel design strategies, achieving higher accuracy than previous models with the same inference time on Intel CPUs.",
+      "abstract": "We propose a lightweight CPU network based on the MKLDNN acceleration strategy, named PP-LCNet, which improves the performance of lightweight models on multiple tasks. This paper lists technologies which can improve network accuracy while the latency is almost constant. With these improvements, the accuracy of PP-LCNet can greatly surpass the previous network structure with the same inference time for classification. As shown in Figure 1, it outperforms the most state-of-the-art models. And for downstream tasks of computer vision, it also performs very well, such as object detection, semantic segmentation, etc. All our experiments are implemented based on PaddlePaddle. Code and pretrained models are available at PaddleClas.",
+      "authors": [
+        {
+          "name": "Cheng Cui",
+          "orgs": [
+            "Baidu Inc."
+          ]
+        },
+        {
+          "name": "Tingquan Gao",
+          "orgs": [
+            "Baidu Inc."
+          ]
+        },
+        {
+          "name": "Shengyu Wei",
+          "orgs": [
+            "Baidu Inc."
+          ]
+        },
+        {
+          "name": "Yuning Du",
+          "orgs": [
+            "Baidu Inc."
+          ]
+        },
+        {
+          "name": "Ruoyu Guo",
+          "orgs": [
+            "Baidu Inc."
+          ]
+        },
+        {
+          "name": "Shuilong Dong",
+          "orgs": [
+            "Baidu Inc."
+          ]
+        },
+        {
+          "name": "Bin Lu",
+          "orgs": [
+            "Baidu Inc."
+          ]
+        },
+        {
+          "name": "Ying Zhou",
+          "orgs": [
+            "Baidu Inc."
+          ]
+        },
+        {
+          "name": "Xueying Lv",
+          "orgs": [
+            "Baidu Inc."
+          ]
+        },
+        {
+          "name": "Qiwen Liu",
+          "orgs": [
+            "Baidu Inc."
+          ]
+        },
+        {
+          "name": "Xiaoguang Hu",
+          "orgs": [
+            "Baidu Inc."
+          ]
+        },
+        {
+          "name": "Dianhai Yu",
+          "orgs": [
+            "Baidu Inc."
+          ]
+        },
+        {
+          "name": "Yanjun Ma",
+          "orgs": [
+            "Baidu Inc."
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2109.15099v1",
+      "date": "2021-09-17T11:35:32Z",
+      "citation_count": 168,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2108.06608",
+      "score": 10.910805,
+      "title": "Real-Time Multi-Modal Semantic Fusion on Unmanned Aerial Vehicles",
+      "tldr": "This paper presents a UAV system for real-time multi-modal semantic fusion, addressing the challenge of efficient semantic scene understanding in dynamic environments, which is critical for disaster response; it proposes a late fusion approach combining LiDAR, RGB, and thermal data using lightweight CNNs and embedded accelerators, contributing novel onboard processing and integration into an allocentric map; experimental results show $\\approx\\,$9$\\,$Hz semantic inference with fused segmentation masks and labeled point clouds, enhancing situational awareness and robust perception.",
+      "abstract": "Unmanned aerial vehicles (UAVs) equipped with multiple complementary sensors have tremendous potential for fast autonomous or remote-controlled semantic scene analysis, e.g., for disaster examination. In this work, we propose a UAV system for real-time semantic inference and fusion of multiple sensor modalities. Semantic segmentation of LiDAR scans and RGB images, as well as object detection on RGB and thermal images, run online onboard the UAV computer using lightweight CNN architectures and embedded inference accelerators. We follow a late fusion approach where semantic information from multiple modalities augments 3D point clouds and image segmentation masks while also generating an allocentric semantic map. Our system provides augmented semantic images and point clouds with $\\approx\\,$9$\\,$Hz. We evaluate the integrated system in real-world experiments in an urban environment.",
+      "authors": [
+        {
+          "name": "Simon Bultmann",
+          "orgs": []
+        },
+        {
+          "name": "Jan Quenzel",
+          "orgs": []
+        },
+        {
+          "name": "Sven Behnke",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2108.06608v1",
+      "date": "2021-08-14T20:16:08Z",
+      "citation_count": 27,
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2506.00667",
+      "score": 10.775795,
+      "title": "Scene Detection Policies and Keyframe Extraction Strategies for Large-Scale Video Analysis",
+      "tldr": "This paper addresses the challenge of scene segmentation and keyframe extraction in diverse video types, proposing an adaptive framework that dynamically selects segmentation policies based on video length and employs a composite metric for keyframe selection, contributing a scalable solution that processes thousands of hours of video weekly and offers improved generalizability and efficiency across domains.",
+      "abstract": "Robust scene segmentation and keyframe extraction are essential preprocessing steps in video understanding pipelines, supporting tasks such as indexing, summarization, and semantic retrieval. However, existing methods often lack generalizability across diverse video types and durations. We present a unified, adaptive framework for automatic scene detection and keyframe selection that handles formats ranging from short-form media to long-form films, archival content, and surveillance footage. Our system dynamically selects segmentation policies based on video length: adaptive thresholding for short videos, hybrid strategies for mid-length ones, and interval-based splitting for extended recordings. This ensures consistent granularity and efficient processing across domains. For keyframe selection, we employ a lightweight module that scores sampled frames using a composite metric of sharpness, luminance, and temporal spread, avoiding complex saliency models while ensuring visual relevance. Designed for high-throughput workflows, the system is deployed in a commercial video analysis platform and has processed content from media, education, research, and security domains. It offers a scalable and interpretable solution suitable for downstream applications such as UI previews, embedding pipelines, and content filtering. We discuss practical implementation details and outline future enhancements, including audio-aware segmentation and reinforcement-learned frame scoring.",
+      "authors": [
+        {
+          "name": "Vasilii Korolkov",
+          "orgs": [
+            "Binat, Inc."
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2506.00667v1",
+      "date": "2025-05-31T18:37:21Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV",
+        "cs.MM"
+      ]
+    },
+    {
+      "arxiv_id": "2603.07630",
+      "score": 10.733587,
+      "title": "Real-Time Glottis Detection Framework via Spatial-decoupled Feature Learning for Nasal Transnasal Intubation",
+      "tldr": "This paper addresses the challenge of real-time glottis detection in nasotracheal intubation, aiming to improve emergency airway management by overcoming computational limitations of existing systems; it proposes Mobile GlottisNet, a lightweight framework using dynamic thresholding, adaptive feature decoupling, and hierarchical weighting to achieve 62 FPS on devices and 33 FPS on edge platforms with a 5MB model size; the findings show enhanced accuracy and efficiency for clinical deployment in resource-constrained settings.",
+      "abstract": "Nasotracheal intubation (NTI) is a vital procedure in emergency airway management, where rapid and accurate glottis detection is essential to ensure patient safety. However, existing machine assisted visual detection systems often rely on high performance computational resources and suffer from significant inference delays, which limits their applicability in time critical and resource constrained scenarios. To overcome these limitations, we propose Mobile GlottisNet, a lightweight and efficient glottis detection framework designed for real time inference on embedded and edge devices. The model incorporates structural awareness and spatial alignment mechanisms, enabling robust glottis localization under complex anatomical and visual conditions. We implement a hierarchical dynamic thresholding strategy to enhance sample assignment, and introduce an adaptive feature decoupling module based on deformable convolution to support dynamic spatial reconstruction. A cross layer dynamic weighting scheme further facilitates the fusion of semantic and detail features across multiple scales. Experimental results demonstrate that the model, with a size of only 5MB on both our PID dataset and Clinical datasets, achieves inference speeds of over 62 FPS on devices and 33 FPS on edge platforms, showing great potential in the application of emergency NTI.",
+      "authors": [
+        {
+          "name": "Jinyu Liu",
+          "orgs": [
+            "Hubei Key Laboratory of Modern Manufacturing Quality Engineering, Hubei University of Technology"
+          ]
+        },
+        {
+          "name": "Gaoyang Zhang",
+          "orgs": [
+            "Hubei Key Laboratory of Modern Manufacturing Quality Engineering, Hubei University of Technology"
+          ]
+        },
+        {
+          "name": "Yang Zhou",
+          "orgs": [
+            "School of Mechanical Science and Engineering, Huazhong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Ruoyi Hao",
+          "orgs": [
+            "Department of Electronic Engineering, The Chinese University of Hong Kong"
+          ]
+        },
+        {
+          "name": "Yang Zhang",
+          "orgs": [
+            "Hubei Key Laboratory of Modern Manufacturing Quality Engineering, Hubei University of Technology, Nanhu Avenue 28, Wuhan, 430068, Hubei, China",
+            "Key Laboratory of Symbolic Computation and Knowledge Engineering, Ministry of Education, Jilin University, Changchun, 130012, Jilin, China",
+            "National Key Laboratory for Novel Software Technology, Nanjing University, Hankou Road 22, Nanjing, 210023, Jiangsu, China"
+          ]
+        },
+        {
+          "name": "Hongliang Ren",
+          "orgs": [
+            "Department of Electronic Engineering, The Chinese University of Hong Kong, Shatin, Hong Kong"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2603.07630v1",
+      "date": "2026-03-08",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2509.22307",
+      "score": 10.714675,
+      "title": "Johnson-Lindenstrauss Lemma Guided Network for Efficient 3D Medical Segmentation",
+      "tldr": "This paper addresses the efficiency/robustness conflict in lightweight 3D medical segmentation by proposing VeloxSeg, which combines Paired Window Attention and Johnson-Lindenstrauss lemma-guided convolution for efficient feature extraction and multimodal interaction, achieving a 26% Dice improvement and 11x GPU throughput increase.",
+      "abstract": "Lightweight 3D medical image segmentation remains constrained by a fundamental \"efficiency / robustness conflict\", particularly when processing complex anatomical structures and heterogeneous modalities. In this paper, we study how to redesign the framework based on the characteristics of high-dimensional 3D images, and explore data synergy to overcome the fragile representation of lightweight methods. Our approach, VeloxSeg, begins with a deployable and extensible dual-stream CNN-Transformer architecture composed of Paired Window Attention (PWA) and Johnson-Lindenstrauss lemma-guided convolution (JLC). For each 3D image, we invoke a \"glance-and-focus\" principle, where PWA rapidly retrieves multi-scale information, and JLC ensures robust local feature extraction with minimal parameters, significantly enhancing the model's ability to operate with low computational budget. Followed by an extension of the dual-stream architecture that incorporates modal interaction into the multi-scale image-retrieval process, VeloxSeg efficiently models heterogeneous modalities. Finally, Spatially Decoupled Knowledge Transfer (SDKT) via Gram matrices injects the texture prior extracted by a self-supervised network into the segmentation network, yielding stronger representations than baselines at no extra inference cost. Experimental results on multimodal benchmarks show that VeloxSeg achieves a 26% Dice improvement, alongside increasing GPU throughput by 11x and CPU by 48x. Codes are available at https://github.com/JinPLu/VeloxSeg.",
+      "authors": [
+        {
+          "name": "Jinpeng Lu",
+          "orgs": [
+            "University of Science and Technology of China"
+          ]
+        },
+        {
+          "name": "Linghan Cai",
+          "orgs": [
+            "Dresden University of Technology"
+          ]
+        },
+        {
+          "name": "Yinda Chen",
+          "orgs": [
+            "University of Science and Technology of China"
+          ]
+        },
+        {
+          "name": "Guo Tang",
+          "orgs": [
+            "Harbin Institute of Technology, Shenzhen"
+          ]
+        },
+        {
+          "name": "Songhan Jiang",
+          "orgs": [
+            "Harbin Institute of Technology, Shenzhen"
+          ]
+        },
+        {
+          "name": "Haoyuan Shi",
+          "orgs": [
+            "University of Science and Technology of China"
+          ]
+        },
+        {
+          "name": "Zhiwei Xiong",
+          "orgs": [
+            "University of Science and Technology of China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2509.22307v1",
+      "date": "2025-09-26T13:12:43Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2505.22195",
+      "score": 10.5328245,
+      "title": "S2AFormer: Strip Self-Attention for Efficient Vision Transformer",
+      "tldr": "This paper proposes S2AFormer, an efficient Vision Transformer addressing the computational inefficiency of self-attention by introducing Strip Self-Attention (SSA) and Hybrid Perception Blocks (HPBs), achieving 78.9% Top-1 accuracy with 6.5M parameters and 786 MMACs on ImageNet-1k, outperforming existing methods in efficiency and performance.",
+      "abstract": "Vision Transformer (ViT) has made significant advancements in computer vision, thanks to its token mixer's sophisticated ability to capture global dependencies between all tokens. However, the quadratic growth in computational demands as the number of tokens increases limits its practical efficiency. Although recent methods have combined the strengths of convolutions and self-attention to achieve better trade-offs, the expensive pairwise token affinity and complex matrix operations inherent in self-attention remain a bottleneck. To address this challenge, we propose S2AFormer, an efficient Vision Transformer architecture featuring novel Strip Self-Attention (SSA). We design simple yet effective Hybrid Perception Blocks (HPBs) to effectively integrate the local perception capabilities of CNNs with the global context modeling of Transformer's attention mechanisms. A key innovation of SSA lies in its reduction of the spatial dimensions of $K$ and $V$, while compressing the channel dimensions of $Q$ and $K$. This design significantly reduces computational overhead while preserving accuracy, striking an optimal balance between efficiency and effectiveness. We evaluate the robustness and efficiency of S2AFormer through extensive experiments on multiple vision benchmarks, including ImageNet-1k for image classification, ADE20k for semantic segmentation, and COCO for object detection and instance segmentation. Results demonstrate that S2AFormer achieves significant accuracy gains with superior efficiency in both GPU and non-GPU environments, making it a strong candidate for efficient vision Transformers.",
+      "authors": [
+        {
+          "name": "Guoan Xu",
+          "orgs": [
+            "Faculty of Engineering and Information Technology, University of Technology Sydney, Sydney, NSW 2007, Australia"
+          ]
+        },
+        {
+          "name": "Wenfeng Huang",
+          "orgs": [
+            "Faculty of Engineering and Information Technology, University of Technology Sydney, Sydney, NSW 2007, Australia"
+          ]
+        },
+        {
+          "name": "Wenjing Jia",
+          "orgs": [
+            "Faculty of Engineering and Information Technology, University of Technology Sydney, Sydney, NSW 2007, Australia"
+          ]
+        },
+        {
+          "name": "Jiamao Li",
+          "orgs": [
+            "Bionic Vision System Laboratory, State Key Laboratory of Transducer Technology, Shanghai Institute of Microsystem and Information Technology, Chinese Academy of Sciences, Shanghai 200050, China"
+          ]
+        },
+        {
+          "name": "Guangwei Gao",
+          "orgs": [
+            "Institute of Advanced Technology, Nanjing University of Posts and Telecommunications, Nanjing 210023, China",
+            "Key Laboratory of Artificial Intelligence, Ministry of Education, Shanghai 200240, China"
+          ]
+        },
+        {
+          "name": "Guo-Jun Qi",
+          "orgs": [
+            "Research Center for Industries of the Future and the School of Engineering, Westlake University, Hangzhou 310024, China",
+            "OPPO Research, Seattle, WA 98101 USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2505.22195v2",
+      "date": "2025-05-28",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2512.00385",
+      "score": 10.511372,
+      "title": "EZ-SP: Fast and Lightweight Superpoint-Based 3D Segmentation",
+      "tldr": "This paper introduces EZ-SP, a fast and lightweight superpoint-based 3D segmentation method addressing the inefficiency of CPU-bound partitioning in semantic segmentation, by proposing a GPU-accelerated, learnable partitioning algorithm that achieves 13× faster processing and 120× fewer parameters than prior methods, with results matching point-based SOTA accuracy across three domains and enabling real-time inference on large-scale point clouds.",
+      "abstract": "Superpoint-based pipelines provide an efficient alternative to point- or voxel-based 3D semantic segmentation, but are often bottlenecked by their CPU-bound partition step. We propose a learnable, fully GPU partitioning algorithm that generates geometrically and semantically coherent superpoints 13$\\times$ faster than prior methods. Our module is compact (under 60k parameters), trains in under 20 minutes with a differentiable surrogate loss, and requires no handcrafted features. Combine with a lightweight superpoint classifier, the full pipeline fits in $<$2 MB of VRAM, scales to multi-million-point scenes, and supports real-time inference. With 72$\\times$ faster inference and 120$\\times$ fewer parameters, EZ-SP matches the accuracy of point-based SOTA models across three domains: indoor scans (S3DIS), autonomous driving (KITTI-360), and aerial LiDAR (DALES). Code and pretrained models are accessible at github.com/drprojects/superpoint_transformer.",
+      "authors": [
+        {
+          "name": "Loic Landrieu",
+          "orgs": [
+            "LIGM, ENPC, IP Paris, Univ Gustave Eiffel, CNRS, Marne-la-Vallee, France"
+          ]
+        },
+        {
+          "name": "Damien Robert",
+          "orgs": [
+            "DM3L, University of Zurich, Zurich, Switzerland"
+          ]
+        },
+        {
+          "name": "Louis Geist",
+          "orgs": [
+            "LIGM, ENPC, IP Paris, Univ Gustave Eiffel, CNRS, Marne-la-Vallee, France"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.00385v1",
+      "date": "2025-11-29",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2401.11492",
+      "score": 10.492107,
+      "title": "Edge-Enabled Real-time Railway Track Segmentation",
+      "tldr": "This paper addresses the challenge of real-time railway track segmentation on edge devices, proposing a lightweight algorithm optimized through Ghost convolution, a lightweight detection head, and quantization techniques, achieving 83.3% accuracy and 25 FPS on Jetson Nano, thereby enabling efficient and secure on-device processing for railway safety and automation.",
+      "abstract": "Accurate and rapid railway track segmentation can assist automatic train driving and is a key step in early warning to fixed or moving obstacles on the railway track. However, certain existing algorithms tailored for track segmentation often struggle to meet the requirements of real-time and efficiency on resource-constrained edge devices. Considering this challenge, we propose an edge-enabled real-time railway track segmentation algorithm, which is optimized to be suitable for edge applications by optimizing the network structure and quantizing the model after training. Initially, Ghost convolution is introduced to reduce the complexity of the backbone, thereby achieving the extraction of key information of the interested region at a lower cost. To further reduce the model complexity and calculation, a new lightweight detection head is proposed to achieve the best balance between accuracy and efficiency. Subsequently, we introduce quantization techniques to map the model's floating-point weights and activation values into lower bit-width fixed-point representations, reducing computational demands and memory footprint, ultimately accelerating the model's inference. Finally, we draw inspiration from GPU parallel programming principles to expedite the pre-processing and post-processing stages of the algorithm by doing parallel processing. The approach is evaluated with public and challenging dataset RailSem19 and tested on Jetson Nano. Experimental results demonstrate that our enhanced algorithm achieves an accuracy level of 83.3% while achieving a real-time inference rate of 25 frames per second when the input size is 480x480, thereby effectively meeting the requirements for real-time and high-efficiency operation.",
+      "authors": [
+        {
+          "name": "Chenglin Chen",
+          "orgs": []
+        },
+        {
+          "name": "Fei Wang",
+          "orgs": []
+        },
+        {
+          "name": "Min Yang",
+          "orgs": []
+        },
+        {
+          "name": "Yong Qin",
+          "orgs": []
+        },
+        {
+          "name": "Yun Bai",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2401.11492v1",
+      "date": "2024-01-21T13:45:52Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2411.15941",
+      "score": 10.46312,
+      "title": "MobileMamba: Lightweight Multi-Receptive Visual Mamba Network",
+      "tldr": "This paper addresses the challenge of efficient visual processing in resource-constrained environments by proposing MobileMamba, a lightweight framework that balances performance and efficiency through a three-stage network and MRFFI module; it introduces a Multi-Receptive Field Feature Interaction module with WTE-Mamba, MK-DeConv, and Eliminate Redundant Identity components to enhance multi-scale perception and high-frequency detail extraction; MobileMamba achieves 83.6% Top-1 accuracy, is 21× faster than LocalVim, and improves performance on downstream tasks with up to +56% throughput increase.",
+      "abstract": "Previous research on lightweight models has primarily focused on CNNs and Transformer-based designs. CNNs, with their local receptive fields, struggle to capture long-range dependencies, while Transformers, despite their global modeling capabilities, are limited by quadratic computational complexity in high-resolution scenarios. Recently, state-space models have gained popularity in the visual domain due to their linear computational complexity. Despite their low FLOPs, current lightweight Mamba-based models exhibit suboptimal throughput. In this work, we propose the MobileMamba framework, which balances efficiency and performance. We design a three-stage network to enhance inference speed significantly. At a fine-grained level, we introduce the Multi-Receptive Field Feature Interaction(MRFFI) module, comprising the Long-Range Wavelet Transform-Enhanced Mamba(WTE-Mamba), Efficient Multi-Kernel Depthwise Convolution(MK-DeConv), and Eliminate Redundant Identity components. This module integrates multi-receptive field information and enhances high-frequency detail extraction. Additionally, we employ training and testing strategies to further improve performance and efficiency. MobileMamba achieves up to 83.6% on Top-1, surpassing existing state-of-the-art methods which is maximum x21 faster than LocalVim on GPU. Extensive experiments on high-resolution downstream tasks demonstrate that MobileMamba surpasses current efficient models, achieving an optimal balance between speed and accuracy.",
+      "authors": [
+        {
+          "name": "Haoyang He",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Jiangning Zhang",
+          "orgs": [
+            "Zhejiang University",
+            "Youtu Lab, Tencent"
+          ]
+        },
+        {
+          "name": "Yuxuan Cai",
+          "orgs": [
+            "Huazhong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Hongxu Chen",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Xiaobin Hu",
+          "orgs": [
+            "Youtu Lab, Tencent",
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Zhenye Gan",
+          "orgs": [
+            "Youtu Lab, Tencent",
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Yabiao Wang",
+          "orgs": [
+            "Youtu Lab, Tencent",
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Chengjie Wang",
+          "orgs": [
+            "Youtu Lab, Tencent",
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Yunsheng Wu",
+          "orgs": [
+            "Youtu Lab, Tencent"
+          ]
+        },
+        {
+          "name": "Lei Xie",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2411.15941v1",
+      "date": "2024-11-24T18:01:05Z",
+      "citation_count": 51,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2503.17877",
+      "score": 10.437708,
+      "title": "IceBench: A Benchmark for Deep Learning based Sea Ice Type Classification",
+      "tldr": "This paper introduces IceBench, a benchmark for deep learning-based sea ice type classification, addressing the lack of standardized evaluation frameworks; it leverages the AI4Arctic dataset, compares pixel- and patch-based methods, and investigates model transferability, data downscaling, and preprocessing strategies through extensive experiments.",
+      "abstract": "Sea ice plays a critical role in the global climate system and maritime operations, making timely and accurate classification essential. However, traditional manual methods are time-consuming, costly, and have inherent biases. Automating sea ice type classification addresses these challenges by enabling faster, more consistent, and scalable analysis. While both traditional and deep learning approaches have been explored, deep learning models offer a promising direction for improving efficiency and consistency in sea ice classification. However, the absence of a standardized benchmark and comparative study prevents a clear consensus on the best-performing models. To bridge this gap, we introduce \\textit{IceBench}, a comprehensive benchmarking framework for sea ice type classification. Our key contributions are threefold: First, we establish the IceBench benchmarking framework which leverages the existing AI4Arctic Sea Ice Challenge dataset as a standardized dataset, incorporates a comprehensive set of evaluation metrics, and includes representative models from the entire spectrum of sea ice type classification methods categorized in two distinct groups, namely, pixel-based classification methods and patch-based classification methods. IceBench is open-source and allows for convenient integration and evaluation of other sea ice type classification methods; hence, facilitating comparative evaluation of new methods and improving reproducibility in the field. Second, we conduct an in-depth comparative study on representative models to assess their strengths and limitations, providing insights for both practitioners and researchers. Third, we leverage IceBench for systematic experiments addressing key research questions on model transferability across seasons (time) and locations (space), data downscaling, and preprocessing strategies.",
+      "authors": [
+        {
+          "name": "Samira Alkaee Taleghan",
+          "orgs": []
+        },
+        {
+          "name": "Andrew P. Barrett",
+          "orgs": []
+        },
+        {
+          "name": "Walter N. Meier",
+          "orgs": []
+        },
+        {
+          "name": "Farnoush Banaei-Kashani",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2503.17877v1",
+      "date": "2025-03-22T23:14:50Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "1702.07386",
+      "score": 10.432365,
+      "title": "Toward Streaming Synapse Detection with Compositional ConvNets",
+      "tldr": "This paper addresses the challenge of synapse detection in connectomics, aiming to improve accuracy and speed for deriving connectivity graphs; it uses compositional ConvNets to model membranes, clefts, and vesicles with lighter networks and rules-based heuristics; it achieves 7% higher recall and 5% higher F1-score than previous methods and reconstructs a 245 GB connectome in 9.7 hours.",
+      "abstract": "Connectomics is an emerging field in neuroscience that aims to reconstruct the 3-dimensional morphology of neurons from electron microscopy (EM) images. Recent studies have successfully demonstrated the use of convolutional neural networks (ConvNets) for segmenting cell membranes to individuate neurons. However, there has been comparatively little success in high-throughput identification of the intercellular synaptic connections required for deriving connectivity graphs.\n  In this study, we take a compositional approach to segmenting synapses, modeling them explicitly as an intercellular cleft co-located with an asymmetric vesicle density along a cell membrane. Instead of requiring a deep network to learn all natural combinations of this compositionality, we train lighter networks to model the simpler marginal distributions of membranes, clefts and vesicles from just 100 electron microscopy samples. These feature maps are then combined with simple rules-based heuristics derived from prior biological knowledge.\n  Our approach to synapse detection is both more accurate than previous state-of-the-art (7% higher recall and 5% higher F1-score) and yields a 20-fold speed-up compared to the previous fastest implementations. We demonstrate by reconstructing the first complete, directed connectome from the largest available anisotropic microscopy dataset (245 GB) of mouse somatosensory cortex (S1) in just 9.7 hours on a single shared-memory CPU system. We believe that this work marks an important step toward the goal of a microscope-pace streaming connectomics pipeline.",
+      "authors": [
+        {
+          "name": "Shibani Santurkar",
+          "orgs": [
+            "Massachusetts Institute of Technology"
+          ]
+        },
+        {
+          "name": "David Budden",
+          "orgs": [
+            "Massachusetts Institute of Technology"
+          ]
+        },
+        {
+          "name": "Alexander Matveev",
+          "orgs": [
+            "Massachusetts Institute of Technology"
+          ]
+        },
+        {
+          "name": "Heather Berlin",
+          "orgs": [
+            "Massachusetts Institute of Technology"
+          ]
+        },
+        {
+          "name": "Hayk Saribekyan",
+          "orgs": [
+            "Massachusetts Institute of Technology"
+          ]
+        },
+        {
+          "name": "Yaron Meirovitch",
+          "orgs": [
+            "Massachusetts Institute of Technology"
+          ]
+        },
+        {
+          "name": "Nir Shavit",
+          "orgs": [
+            "Massachusetts Institute of Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1702.07386v1",
+      "date": "2017-02-23T20:48:13Z",
+      "citation_count": 11,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2601.09258",
+      "score": 10.372887,
+      "title": "LatencyPrism: Online Non-intrusive Latency Sculpting for SLO-Guaranteed LLM Inference",
+      "tldr": "This paper presents LatencyPrism, a non-intrusive system for real-time latency monitoring in LLM inference, addressing the challenge of ensuring SLO compliance in distributed environments; it uses cross-stack semantic profiling and event-driven temporal modeling to achieve 0.98 F1-score anomaly detection and enables efficient online monitoring with low overhead; its findings demonstrate improved operational reliability and faster root cause analysis in production settings.",
+      "abstract": "LLM inference latency critically determines user experience and operational costs, directly impacting throughput under SLO constraints. Even brief latency spikes degrade service quality despite acceptable average performance. However, distributed inference environments featuring diverse software frameworks and XPU architectures combined with dynamic workloads make latency analysis challenging. Constrained by intrusive designs that necessitate service restarts or even suspension, and by hardware-bound implementations that fail to adapt to heterogeneous inference environments, existing AI profiling methods are often inadequate for real-time production analysis.\n  We present LatencyPrism, the first zero-intrusion multi-platform latency sculpting system. It aims to break down the inference latency across pipeline, proactively alert on inference latency anomalies, and guarantee adherence to SLOs, all without requiring code modifications or service restarts. LatencyPrism has been deployed across thousands of XPUs for over six months. It enables low-overhead real-time monitoring at batch level with alerts triggered in milliseconds. This approach distinguishes between workload-driven latency variations and anomalies indicating underlying issues with an F1-score of 0.98. We also conduct extensive experiments and investigations into root cause analysis to demonstrate LatencyPrism's capability. Furthermore, we introduce the first LLM anomaly simulation toolkit to facilitate future research in robust and predictable inference systems.",
+      "authors": [
+        {
+          "name": "Yin Du",
+          "orgs": [
+            "Alibaba Cloud Computing"
+          ]
+        },
+        {
+          "name": "Danyang Zhang",
+          "orgs": [
+            "Alibaba Cloud Computing"
+          ]
+        },
+        {
+          "name": "Tianyao Zhou",
+          "orgs": [
+            "Xi’an Jiaotong University",
+            "Alibaba Cloud Computing"
+          ]
+        },
+        {
+          "name": "Jiayi Ren",
+          "orgs": [
+            "Alibaba Cloud Computing"
+          ]
+        },
+        {
+          "name": "Haizhu Zhou",
+          "orgs": [
+            "Alibaba Cloud Computing"
+          ]
+        },
+        {
+          "name": "Xiayu Sun",
+          "orgs": [
+            "Alibaba Cloud Computing"
+          ]
+        },
+        {
+          "name": "Ruiyan Ma",
+          "orgs": [
+            "Alibaba Cloud Computing"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2601.09258v2",
+      "date": "2026-01-14",
+      "citation_count": 0,
+      "categories": [
+        "cs.DC",
+        "cs.LG",
+        "cs.OS"
+      ]
+    },
+    {
+      "arxiv_id": "2407.16990",
+      "score": 10.372713,
+      "title": "Region-based Content Enhancement for Efficient Video Analytics at the Edge",
+      "tldr": "This paper addresses the challenge of efficient video analytics at the edge by proposing region-based content enhancement to improve accuracy and throughput, introducing RegenHance with three core contributions: macroblock-level region importance prediction, region-aware enhancement using a greedy algorithm, and profile-based resource allocation; experiments show RegenHance improves accuracy by 10-19% and achieves 2-3x throughput compared to state-of-the-art methods.",
+      "abstract": "Video analytics is widespread in various applications serving our society. Recent advances of content enhancement in video analytics offer significant benefits for the bandwidth saving and accuracy improvement. However, existing content-enhanced video analytics systems are excessively computationally expensive and provide extremely low throughput. In this paper, we present region-based content enhancement, that enhances only the important regions in videos, to improve analytical accuracy. Our system, RegenHance, enables high-accuracy and high-throughput video analytics at the edge by 1) a macroblock-based region importance predictor that identifies the important regions fast and precisely, 2) a region-aware enhancer that stitches sparsely distributed regions into dense tensors and enhances them efficiently, and 3) a profile-based execution planer that allocates appropriate resources for enhancement and analytics components. We prototype RegenHance on five heterogeneous edge devices. Experiments on two analytical tasks reveal that region-based enhancement improves the overall accuracy of 10-19% and achieves 2-3x throughput compared to the state-of-the-art frame-based enhancement methods.",
+      "authors": [
+        {
+          "name": "Weijun Wang",
+          "orgs": [
+            "Institute for AI Industry Research (AIR), Tsinghua University"
+          ]
+        },
+        {
+          "name": "Liang Mi",
+          "orgs": [
+            "State Key Laboratory for Novel Software Technology, Nanjing University"
+          ]
+        },
+        {
+          "name": "Shaowei Cen",
+          "orgs": [
+            "State Key Laboratory for Novel Software Technology, Nanjing University"
+          ]
+        },
+        {
+          "name": "Haipeng Dai",
+          "orgs": [
+            "State Key Laboratory for Novel Software Technology, Nanjing University"
+          ]
+        },
+        {
+          "name": "Yuanchun Li",
+          "orgs": [
+            "Institute for AI Industry Research (AIR), Tsinghua University"
+          ]
+        },
+        {
+          "name": "Xiaoming Fu",
+          "orgs": [
+            "Institute of Computer Science, University of Göttingen"
+          ]
+        },
+        {
+          "name": "Yunxin Liu",
+          "orgs": [
+            "Institute for AI Industry Research (AIR), Tsinghua University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2407.16990v6",
+      "date": "2024-07-24T04:17:32Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.NI"
+      ]
+    },
+    {
+      "arxiv_id": "2504.03654",
+      "score": 10.36385,
+      "title": "PointSplit: Towards On-device 3D Object Detection with Heterogeneous Low-power Accelerators",
+      "tldr": "This paper addresses the challenge of on-device 3D object detection using heterogeneous low-power accelerators, aiming to enable real-time, privacy-preserving applications; it proposes PointSplit, a framework combining 2D semantics-aware point sampling, parallelized 3D feature extraction, and role-based group-wise quantization; experiments show PointSplit is 24.7 times faster with similar accuracy compared to GPU-only baselines on SUN RGB-D and Scannet V2.",
+      "abstract": "Running deep learning models on resource-constrained edge devices has drawn significant attention due to its fast response, privacy preservation, and robust operation regardless of Internet connectivity. While these devices already cope with various intelligent tasks, the latest edge devices that are equipped with multiple types of low-power accelerators (i.e., both mobile GPU and NPU) can bring another opportunity; a task that used to be too heavy for an edge device in the single-accelerator world might become viable in the upcoming heterogeneous-accelerator world.To realize the potential in the context of 3D object detection, we identify several technical challenges and propose PointSplit, a novel 3D object detection framework for multi-accelerator edge devices that addresses the problems. Specifically, our PointSplit design includes (1) 2D semantics-aware biased point sampling, (2) parallelized 3D feature extraction, and (3) role-based group-wise quantization. We implement PointSplit on TensorFlow Lite and evaluate it on a customized hardware platform comprising both mobile GPU and EdgeTPU. Experimental results on representative RGB-D datasets, SUN RGB-D and Scannet V2, demonstrate that PointSplit on a multi-accelerator device is 24.7 times faster with similar accuracy compared to the full-precision, 2D-3D fusion-based 3D detector on a GPU-only device.",
+      "authors": [
+        {
+          "name": "Keondo Park",
+          "orgs": [
+            "Graduate School of Data Science, Seoul National University",
+            "Seoul",
+            "Republic of Korea"
+          ]
+        },
+        {
+          "name": "You Rim Choi",
+          "orgs": [
+            "Graduate School of Data Science, Seoul National University",
+            "Seoul",
+            "Republic of Korea"
+          ]
+        },
+        {
+          "name": "Inhoe Lee",
+          "orgs": [
+            "Graduate School of Data Science, Seoul National University",
+            "Seoul",
+            "Republic of Korea"
+          ]
+        },
+        {
+          "name": "Hyung-Sin Kim",
+          "orgs": [
+            "Graduate School of Data Science, Seoul National University",
+            "Seoul",
+            "Republic of Korea"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2504.03654v1",
+      "date": "2025-03-04T07:17:04Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.DC"
+      ]
+    },
+    {
+      "arxiv_id": "2508.16884",
+      "score": 10.273745,
+      "title": "A Lightweight Convolution and Vision Transformer integrated model with Multi-scale Self-attention Mechanism",
+      "tldr": "This paper proposes a lightweight model integrating convolution and vision transformer with sparse attention to address the computational inefficiency and weak local feature modeling of ViT, contributing a Sparsely Aggregated Attention module and Channel-Interactive Feed-Forward Network, achieving Top-1 accuracies of 76.3% and 79.6% on ImageNet-1K with 0.8 and 1.3 GFLOPs respectively, offering efficient solutions for real-world vision tasks.",
+      "abstract": "Vision Transformer (ViT) has prevailed in computer vision tasks due to its strong long-range dependency modelling ability. \\textcolor{blue}{However, its large model size and weak local feature modeling ability hinder its application in real scenarios. To balance computation efficiency and performance in downstream vision tasks, we propose an efficient ViT model with sparse attention (dubbed SAEViT) and convolution blocks. Specifically, a Sparsely Aggregated Attention (SAA) module has been proposed to perform adaptive sparse sampling and recover the feature map via deconvolution operation,} which significantly reduces the computational complexity of attention operations. In addition, a Channel-Interactive Feed-Forward Network (CIFFN) layer is developed to enhance inter-channel information exchange through feature decomposition and redistribution, which mitigates the redundancy in traditional feed-forward networks (FFN). Finally, a hierarchical pyramid structure with embedded depth-wise separable convolutional blocks (DWSConv) is devised to further strengthen convolutional features. Extensive experiments on mainstream datasets show that SAEViT achieves Top-1 accuracies of 76.3\\% and 79.6\\% on the ImageNet-1K classification task with only 0.8 GFLOPs and 1.3 GFLOPs, respectively, demonstrating a lightweight solution for fundamental vision tasks.",
+      "authors": [
+        {
+          "name": "Yi Zhang",
+          "orgs": [
+            "Department of Computer Science, Sichuan University, China",
+            "Intelligent Policing Key Laboratory of Sichuan Province, Luzhou, China"
+          ]
+        },
+        {
+          "name": "Lingxiao Wei",
+          "orgs": [
+            "School of Computer Science, Nanyang Technological University, Singapore"
+          ]
+        },
+        {
+          "name": "Bowei Zhang",
+          "orgs": [
+            "Sichuan Police College"
+          ]
+        },
+        {
+          "name": "Ziwei Liu",
+          "orgs": []
+        },
+        {
+          "name": "Kai Yi",
+          "orgs": [
+            "Department of Computer Science, Sichuan University, China",
+            "Intelligent Policing Key Laboratory of Sichuan Province, Luzhou, China"
+          ]
+        },
+        {
+          "name": "Shu Hu",
+          "orgs": [
+            "Department of Computer Science, Sichuan University, China",
+            "Intelligent Policing Key Laboratory of Sichuan Province, Luzhou, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2508.16884v2",
+      "date": "2025-08-23T03:05:34Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.CV",
+        "cs.NE"
+      ]
+    },
+    {
+      "arxiv_id": "2506.22593",
+      "score": 10.259229,
+      "title": "Pixels-to-Graph: Real-time Integration of Building Information Models and Scene Graphs for Semantic-Geometric Human-Robot Understanding",
+      "tldr": "This paper presents a real-time method for integrating Building Information Models and scene graphs to enhance human-robot understanding in autonomous exploration, addressing the need for human-readable semantic representations in resource-constrained environments; it uses a lightweight CPU-only framework with image inpainting and space partitioning to generate structured scene graphs from pixels and LiDAR maps, contributing a real-time approach, robustness to sensor noise, and online/offline operation modes; experiments show the method enables accurate 2D top-down mapping and 3D structure segmentation, improving situational awareness for critical applications.",
+      "abstract": "Autonomous robots are increasingly playing key roles as support platforms for human operators in high-risk, dangerous applications. To accomplish challenging tasks, an efficient human-robot cooperation and understanding is required. While typically robotic planning leverages 3D geometric information, human operators are accustomed to a high-level compact representation of the environment, like top-down 2D maps representing the Building Information Model (BIM). 3D scene graphs have emerged as a powerful tool to bridge the gap between human readable 2D BIM and the robot 3D maps. In this work, we introduce Pixels-to-Graph (Pix2G), a novel lightweight method to generate structured scene graphs from image pixels and LiDAR maps in real-time for the autonomous exploration of unknown environments on resource-constrained robot platforms. To satisfy onboard compute constraints, the framework is designed to perform all operation on CPU only. The method output are a de-noised 2D top-down environment map and a structure-segmented 3D pointcloud which are seamlessly connected using a multi-layer graph abstracting information from object-level up to the building-level. The proposed method is quantitatively and qualitatively evaluated during real-world experiments performed using the NASA JPL NeBula-Spot legged robot to autonomously explore and map cluttered garage and urban office like environments in real-time.",
+      "authors": [
+        {
+          "name": "Antonello Longo",
+          "orgs": [
+            "NASA Jet Propulsion Laboratory, California Institute of Technology, Pasadena, CA, USA",
+            "Department of Electrical And Information Engineering, Polytechnic University of Bari, Italy"
+          ]
+        },
+        {
+          "name": "Chanyoung Chung",
+          "orgs": [
+            "Field AI, Mission Viejo CA, USA"
+          ]
+        },
+        {
+          "name": "Matteo Palieri",
+          "orgs": [
+            "Field AI, Mission Viejo CA, USA"
+          ]
+        },
+        {
+          "name": "Sung-Kyun Kim",
+          "orgs": [
+            "Field AI, Mission Viejo CA, USA"
+          ]
+        },
+        {
+          "name": "Ali Agha",
+          "orgs": [
+            "Field AI, Mission Viejo CA, USA",
+            "NASA Jet Propulsion Laboratory, California Institute of Technology, Pasadena, CA, USA"
+          ]
+        },
+        {
+          "name": "Cataldo Guaragnella",
+          "orgs": [
+            "Department of Electrical And Information Engineering, Polytechnic University of Bari, Italy",
+            "NASA Jet Propulsion Laboratory, California Institute of Technology, Pasadena, CA, USA"
+          ]
+        },
+        {
+          "name": "Shehryar Khattak",
+          "orgs": [
+            "NASA Jet Propulsion Laboratory, California Institute of Technology, Pasadena, CA, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2506.22593v1",
+      "date": "2025-06-27T19:23:31Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2602.20709",
+      "score": 10.248678,
+      "title": "Onboard-Targeted Segmentation of Straylight in Space Camera Sensors",
+      "tldr": "This paper presents an onboard-compatible AI-based semantic segmentation method for straylight in space camera sensors, addressing the challenge of fault detection in resource-constrained spacecraft environments by leveraging pre-training on Flare7k++ and a custom dataset, achieving effective segmentation of straylight effects to enhance mission safety and reliability.",
+      "abstract": "This study details an artificial intelligence (AI)-based methodology for the semantic segmentation of space camera faults. Specifically, we address the segmentation of straylight effects induced by solar presence around the camera's Field of View (FoV). Anomalous images are sourced from our published dataset. Our approach emphasizes generalization across diverse flare textures, leveraging pre-training on a public dataset (Flare7k++) including flares in various non-space contexts to mitigate the scarcity of realistic space-specific data. A DeepLabV3 model with MobileNetV3 backbone performs the segmentation task. The model design targets deployment in spacecraft resource-constrained hardware. Finally, based on a proposed interface between our model and the onboard navigation pipeline, we develop custom metrics to assess the model's performance in the system-level context.",
+      "authors": [
+        {
+          "name": "Riccardo Gallon",
+          "orgs": []
+        },
+        {
+          "name": "Fabian Schiemenz",
+          "orgs": []
+        },
+        {
+          "name": "Alessandra Menicucci",
+          "orgs": []
+        },
+        {
+          "name": "Eberhard Gill",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.20709v1",
+      "date": "2026-02-24",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2604.08028",
+      "score": 10.143413,
+      "title": "A Comparative Study of Semantic Log Representations for Software Log-based Anomaly Detection",
+      "tldr": "This paper investigates semantic log representation methods for software log-based anomaly detection, identifying an effectiveness-efficiency trade-off between static embeddings and BERT-based methods under CPU deployment, and proposes QTyBERT, which achieves comparable or better detection effectiveness than BERT with up to 21.53% improvement and over 94% reduction in generation time.",
+      "abstract": "Recent deep learning (DL) methods for log anomaly detection increasingly rely on semantic log representation methods that convert the textual content of log events into vector embeddings as input to DL models. However, these DL methods are typically evaluated as end-to-end pipelines, while the impact of different semantic representation methods is not well understood. In this paper, we benchmark widely used semantic log representation methods, including static word embedding methods (Word2Vec, GloVe, and FastText) and the BERT-based contextual embedding method, across diverse DL models for log-event level anomaly detection on three publicly available log datasets: BGL, Thunderbird, and Spirit. We identify an effectiveness--efficiency trade off under CPU deployment settings: the BERT-based method is more effective, but incurs substantially longer log embedding generation time, limiting its practicality; static word embedding methods are efficient but are generally less effective and may yield insufficient detection performance. Motivated by this finding, we propose QTyBERT, a novel semantic log representation method that better balances this trade-off. QTyBERT uses SysBE, a lightweight BERT variant with system-specific quantization, to efficiently encode log events into vector embeddings on CPUs, and leverages CroSysEh to enhance the semantic expressiveness of these log embeddings. CroSysEh is trained unsupervisedly using unlabeled logs from multiple systems to capture the underlying semantic structure of the BERT model's embedding space. We evaluate QTyBERT against existing semantic log representation methods. Our results show that, for the DL models, using QTyBERT-generated log embeddings achieves detection effectiveness comparable to or better than BERT-generated log embeddings, while bringing log embedding generation time closer to that of static word embedding methods.",
+      "authors": [
+        {
+          "name": "Yuqing Wang",
+          "orgs": [
+            "University of Helsinki"
+          ]
+        },
+        {
+          "name": "Ying Song",
+          "orgs": [
+            "University of Helsinki"
+          ]
+        },
+        {
+          "name": "Xiaozhou Li",
+          "orgs": [
+            "Free University of Bozen-Bolzano"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2604.08028v1",
+      "date": "2026-04-09",
+      "citation_count": 0,
+      "categories": [
+        "cs.SE"
+      ]
+    },
+    {
+      "arxiv_id": "2206.04040",
+      "score": 10.065934,
+      "title": "MobileOne: An Improved One millisecond Mobile Backbone",
+      "tldr": "This paper addresses the challenge of improving mobile neural network efficiency by focusing on latency, presenting MobileOne, an architecture achieving under 1 ms inference on iPhone12 with 75.9% top-1 accuracy on ImageNet, and showing it outperforms existing models in latency and accuracy across multiple tasks.",
+      "abstract": "Efficient neural network backbones for mobile devices are often optimized for metrics such as FLOPs or parameter count. However, these metrics may not correlate well with latency of the network when deployed on a mobile device. Therefore, we perform extensive analysis of different metrics by deploying several mobile-friendly networks on a mobile device. We identify and analyze architectural and optimization bottlenecks in recent efficient neural networks and provide ways to mitigate these bottlenecks. To this end, we design an efficient backbone MobileOne, with variants achieving an inference time under 1 ms on an iPhone12 with 75.9% top-1 accuracy on ImageNet. We show that MobileOne achieves state-of-the-art performance within the efficient architectures while being many times faster on mobile. Our best model obtains similar performance on ImageNet as MobileFormer while being 38x faster. Our model obtains 2.3% better top-1 accuracy on ImageNet than EfficientNet at similar latency. Furthermore, we show that our model generalizes to multiple tasks - image classification, object detection, and semantic segmentation with significant improvements in latency and accuracy as compared to existing efficient architectures when deployed on a mobile device. Code and models are available at https://github.com/apple/ml-mobileone",
+      "authors": [
+        {
+          "name": "Pavan Kumar Anasosalu Vasu",
+          "orgs": [
+            "Apple"
+          ]
+        },
+        {
+          "name": "James Gabriel",
+          "orgs": [
+            "Apple"
+          ]
+        },
+        {
+          "name": "Jeff Zhu",
+          "orgs": [
+            "Apple"
+          ]
+        },
+        {
+          "name": "Oncel Tuzel",
+          "orgs": [
+            "Apple"
+          ]
+        },
+        {
+          "name": "Anurag Ranjan",
+          "orgs": [
+            "Apple"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2206.04040v2",
+      "date": "2022-06-08T17:55:11Z",
+      "citation_count": 268,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2511.17442",
+      "score": 10.0467,
+      "title": "REMSA: An LLM Agent for Foundation Model Selection in Remote Sensing",
+      "tldr": "This paper addresses the challenge of selecting appropriate remote sensing foundation models (RSFMs) by introducing RS-FMD, a structured database of over 150 RSFMs, and REMSA, an LLM agent that automates selection through natural language queries, dense retrieval, and in-context ranking, achieving 900 configurations across 75 expert-verified scenarios.",
+      "abstract": "Foundation Models (FMs) are increasingly used in remote sensing (RS) for tasks such as environmental monitoring, disaster assessment, and land-use mapping. These models include unimodal vision encoders trained on a single data modality and multimodal architectures trained on combinations of SAR, multispectral, hyperspectral, and image-text data. They support diverse RS tasks including semantic segmentation, image classification, change detection, and visual question answering. However, selecting an appropriate remote sensing foundation model (RSFM) remains difficult due to scattered documentation, heterogeneous formats, and varied deployment constraints. We introduce the RSFM Database (RS-FMD), a structured resource covering over 150 RSFMs spanning multiple data modalities, resolutions, and learning paradigms. Built on RS-FMD, we present REMSA, the first LLM-based agent for automated RSFM selection from natural language queries. REMSA interprets user requirements, resolves missing constraints, ranks candidate models using in-context learning, and provides transparent justifications. We also propose a benchmark of 75 expert-verified RS query scenarios, producing 900 configurations under an expert-centered evaluation protocol. REMSA outperforms several baselines, including naive agents, dense retrieval, and unstructured RAG-based LLMs. It operates entirely on publicly available metadata and does not access private or sensitive data.",
+      "authors": [],
+      "url": "https://arxiv.org/abs/2511.17442v1",
+      "date": "2025-11-21",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2507.10775",
+      "score": 9.991551,
+      "title": "A New Dataset and Performance Benchmark for Real-time Spacecraft Segmentation in Onboard Flight Computers",
+      "tldr": "This paper introduces a new dataset (SwiM) for real-time spacecraft segmentation in onboard flight computers, addressing the lack of diverse annotated data and hardware-constrained benchmarks; it uses NASA's TTALOS pipeline and YOLOv8/YOLOv11 models to achieve a Dice score of 0.92, Hausdorff distance of 0.69, and inference time of 0.5 seconds, providing a benchmark for future research in autonomous spacecraft inspection.",
+      "abstract": "Spacecraft deployed in outer space are routinely subjected to various forms of damage due to exposure to hazardous environments. In addition, there are significant risks to the subsequent process of in-space repairs through human extravehicular activity or robotic manipulation, incurring substantial operational costs. Recent developments in image segmentation could enable the development of reliable and cost-effective autonomous inspection systems. While these models often require large amounts of training data to achieve satisfactory results, publicly available annotated spacecraft segmentation data are very scarce. Here, we present a new dataset of nearly 64k annotated spacecraft images that was created using real spacecraft models, superimposed on a mixture of real and synthetic backgrounds generated using NASA's TTALOS pipeline. To mimic camera distortions and noise in real-world image acquisition, we also added different types of noise and distortion to the images. Finally, we finetuned YOLOv8 and YOLOv11 segmentation models to generate performance benchmarks for the dataset under well-defined hardware and inference time constraints to mimic real-world image segmentation challenges for real-time onboard applications in space on NASA's inspector spacecraft. The resulting models, when tested under these constraints, achieved a Dice score of 0.92, Hausdorff distance of 0.69, and an inference time of about 0.5 second. The dataset and models for performance benchmark are available at https://github.com/RiceD2KLab/SWiM.",
+      "authors": [
+        {
+          "name": "Jeffrey Joan Sam",
+          "orgs": [
+            "Department of Computer Science, Rice University, Houston TX, USA"
+          ]
+        },
+        {
+          "name": "Janhavi Sathe",
+          "orgs": [
+            "Department of Computer Science, Rice University, Houston TX, USA"
+          ]
+        },
+        {
+          "name": "Nikhil Chigali",
+          "orgs": [
+            "Department of Computer Science, Rice University, Houston TX, USA"
+          ]
+        },
+        {
+          "name": "Naman Gupta",
+          "orgs": [
+            "Department of Computer Science, Rice University, Houston TX, USA"
+          ]
+        },
+        {
+          "name": "Radhey Ruparel",
+          "orgs": [
+            "Department of Computer Science, Rice University, Houston TX, USA"
+          ]
+        },
+        {
+          "name": "Yicheng Jiang",
+          "orgs": [
+            "Department of Computer Science, Rice University, Houston TX, USA"
+          ]
+        },
+        {
+          "name": "Janmajay Singh",
+          "orgs": [
+            "Department of Computer Science, Rice University, Houston TX, USA"
+          ]
+        },
+        {
+          "name": "James W. Berck",
+          "orgs": [
+            "R5 Spacecraft Project, NASA, Houston TX, USA"
+          ]
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Arko Barman",
+          "orgs": [
+            "Data to Knowledge Lab, Rice University, Houston TX, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2507.10775v1",
+      "date": "2025-07-14T20:02:40Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "2408.15628",
+      "score": 9.978605,
+      "title": "CSAD: Unsupervised Component Segmentation for Logical Anomaly Detection",
+      "tldr": "This paper addresses the gap in logical anomaly detection by developing an unsupervised component segmentation technique using foundation models to generate pseudo-labels, contributing a Patch Histogram and LGST module for detecting positional and quantity anomalies, achieving a detection AUROC of 95.3% with lower latency and higher throughput.",
+      "abstract": "To improve logical anomaly detection, some previous works have integrated segmentation techniques with conventional anomaly detection methods. Although these methods are effective, they frequently lead to unsatisfactory segmentation results and require manual annotations. To address these drawbacks, we develop an unsupervised component segmentation technique that leverages foundation models to autonomously generate training labels for a lightweight segmentation network without human labeling. Integrating this new segmentation technique with our proposed Patch Histogram module and the Local-Global Student-Teacher (LGST) module, we achieve a detection AUROC of 95.3% in the MVTec LOCO AD dataset, which surpasses previous SOTA methods. Furthermore, our proposed method provides lower latency and higher throughput than most existing approaches.",
+      "authors": [
+        {
+          "name": "Yu-Hsuan Hsieh",
+          "orgs": []
+        },
+        {
+          "name": "Shang-Hong Lai",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2408.15628v2",
+      "date": "2024-08-28T08:27:41Z",
+      "citation_count": 9,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2603.18284",
+      "score": 9.975592,
+      "title": "Offload or Overload: A Platform Measurement Study of Mobile Robotic Manipulation Workloads",
+      "tldr": "This paper investigates the tradeoffs in mobile robotic manipulation workloads across onboard, edge, and cloud GPU platforms, addressing the challenge of computational cost and efficiency; it uses a measurement study with diverse robots and GPUs to analyze performance, power consumption, and network constraints; findings show onboard GPUs face memory limitations and slower execution times, while offloading introduces latency and bandwidth issues, with multiplexing offering opportunities but requiring careful resource management.",
+      "abstract": "Mobile robotic manipulation--the ability of robots to navigate spaces and interact with objects--is a core capability of physical AI. Foundation models have led to breakthroughs in their performance, but at a significant computational cost. We present the first measurement study of mobile robotic manipulation workloads across onboard, edge, and cloud GPU platforms. We find that the full workload stack is infeasible to run on smaller onboard GPUs, while larger onboard GPUs drain robot batteries several hours faster. Offloading alleviates these constraints but introduces its own challenges, as additional network latency degrades task accuracy, and the bandwidth requirement makes naive cloud offloading impractical. Finally, we quantify opportunities and pitfalls of sharing compute across robot fleets. We believe our measurement study will be crucial to designing inference systems for mobile robots.",
+      "authors": [
+        {
+          "name": "Sara Pohland",
+          "orgs": [
+            "UC Berkeley"
+          ]
+        },
+        {
+          "name": "Xenofon Foukas",
+          "orgs": [
+            "Microsoft Corp."
+          ]
+        },
+        {
+          "name": "Ganesh Ananthanarayanan",
+          "orgs": [
+            "Microsoft Corp."
+          ]
+        },
+        {
+          "name": "Andrey Kolobov",
+          "orgs": [
+            "Microsoft Corp."
+          ]
+        },
+        {
+          "name": "Sanjeev Mehrotra",
+          "orgs": [
+            "Microsoft Corp."
+          ]
+        },
+        {
+          "name": "Bozidar Radunovic",
+          "orgs": [
+            "Microsoft Corp."
+          ]
+        },
+        {
+          "name": "Ankit Verma",
+          "orgs": [
+            "Microsoft Corp."
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2603.18284v1",
+      "date": "2026-03-18",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.NI",
+        "cs.RO",
+        "cs.SY",
+        "eess.SY"
+      ]
+    },
+    {
+      "arxiv_id": "1606.02147",
+      "score": 6.962355,
+      "title": "ENet: A Deep Neural Network Architecture for Real-Time Semantic Segmentation",
+      "tldr": "This paper introduces ENet, a novel deep neural network architecture designed for real-time semantic segmentation on low-power devices, addressing the problem of high computational cost and latency in existing models; it proposes an encoder-decoder structure with efficient layers and no post-processing, achieving up to 18× faster speed, 75× fewer FLOPs, and comparable accuracy on CamVid, Cityscapes, and SUN datasets.",
+      "abstract": "The ability to perform pixel-wise semantic segmentation in real-time is of paramount importance in mobile applications. Recent deep neural networks aimed at this task have the disadvantage of requiring a large number of floating point operations and have long run-times that hinder their usability. In this paper, we propose a novel deep neural network architecture named ENet (efficient neural network), created specifically for tasks requiring low latency operation. ENet is up to 18$\\times$ faster, requires 75$\\times$ less FLOPs, has 79$\\times$ less parameters, and provides similar or better accuracy to existing models. We have tested it on CamVid, Cityscapes and SUN datasets and report on comparisons with existing state-of-the-art methods, and the trade-offs between accuracy and processing time of a network. We present performance measurements of the proposed architecture on embedded systems and suggest possible software improvements that could make ENet even faster.",
+      "authors": [
+        {
+          "name": "Adam Paszke",
+          "orgs": [
+            "Faculty of Mathematics, Informatics and Mechanics",
+            "University of Warsaw, Poland"
+          ]
+        },
+        {
+          "name": "Abhishek Chaurasia",
+          "orgs": [
+            "Electrical and Computer Engineering",
+            "Purdue University, USA"
+          ]
+        },
+        {
+          "name": "Sangpil Kim",
+          "orgs": [
+            "Electrical and Computer Engineering",
+            "Purdue University, USA"
+          ]
+        },
+        {
+          "name": "Eugenio Culurciello",
+          "orgs": [
+            "Electrical and Computer Engineering",
+            "Purdue University, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1606.02147v1",
+      "date": "2016-06-07T14:09:27Z",
+      "citation_count": 2294,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1411.4038",
+      "score": 6.499587,
+      "title": "Fully Convolutional Networks for Semantic Segmentation",
+      "tldr": "This paper addresses semantic segmentation by developing fully convolutional networks (FCNs) that achieve state-of-the-art results on PASCAL VOC (62.2% mean IU), NYUDv2, and SIFT Flow, using end-to-end training and a novel skip architecture combining deep semantic and shallow appearance features, offering efficient inference and improved accuracy over prior methods.",
+      "abstract": "Convolutional networks are powerful visual models that yield hierarchies of features. We show that convolutional networks by themselves, trained end-to-end, pixels-to-pixels, exceed the state-of-the-art in semantic segmentation. Our key insight is to build \"fully convolutional\" networks that take input of arbitrary size and produce correspondingly-sized output with efficient inference and learning. We define and detail the space of fully convolutional networks, explain their application to spatially dense prediction tasks, and draw connections to prior models. We adapt contemporary classification networks (AlexNet, the VGG net, and GoogLeNet) into fully convolutional networks and transfer their learned representations by fine-tuning to the segmentation task. We then define a novel architecture that combines semantic information from a deep, coarse layer with appearance information from a shallow, fine layer to produce accurate and detailed segmentations. Our fully convolutional network achieves state-of-the-art segmentation of PASCAL VOC (20% relative improvement to 62.2% mean IU on 2012), NYUDv2, and SIFT Flow, while inference takes one third of a second for a typical image.",
+      "authors": [
+        {
+          "name": "Jonathan Long",
+          "orgs": [
+            "UC Berkeley"
+          ]
+        },
+        {
+          "name": "Evan Shelhamer",
+          "orgs": [
+            "UC Berkeley"
+          ]
+        },
+        {
+          "name": "Trevor Darrell",
+          "orgs": [
+            "UC Berkeley"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1411.4038v2",
+      "date": "2014-11-14T20:46:03Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    }
+  ]
+}

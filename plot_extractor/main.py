@@ -2,6 +2,7 @@
 import argparse
 import csv
 import json
+import time
 from dataclasses import dataclass
 from typing import Any
 from pathlib import Path
@@ -18,6 +19,7 @@ from plot_extractor.core.plot_rebuilder import rebuild_plot
 from plot_extractor.core.chart_type_guesser import extract_all_features, guess_chart_type
 from plot_extractor.core.llm_policy_router import compute_llm_enhanced_policy
 from plot_extractor.core.formula_batch_queue import FormulaBatchQueue, FormulaQueueRequest
+from plot_extractor.core.label_crop_planner import StageTiming
 from plot_extractor.utils.ssim_compare import compare_images
 from plot_extractor.layout.panel_split import detect_panel_boundaries, Panel
 
@@ -34,7 +36,7 @@ class _PreparedPanelBatch:
     formula_context: FormulaLabelContext | None
 
 
-def _build_diagnostics(calibrated_axes, data, plot_bounds, is_scatter, has_grid):
+def _build_diagnostics(calibrated_axes, data, plot_bounds, is_scatter, has_grid, stage_timing=None):
     """Summarize extraction internals without affecting behavior."""
     axes = []
     for ca in calibrated_axes:
@@ -86,6 +88,7 @@ def _build_diagnostics(calibrated_axes, data, plot_bounds, is_scatter, has_grid)
         "is_scatter": bool(is_scatter),
         "has_grid": bool(has_grid),
         "series": series,
+        "stage_timing": stage_timing.to_dict() if stage_timing else StageTiming().to_dict(),
     }
 
 
@@ -100,6 +103,8 @@ def _extract_from_panel(
     final_type_probs=None,
 ):
     """Run extraction pipeline on a single panel."""
+    total_start = time.perf_counter()
+    stage_timing = StageTiming()
     raw_image = panel.image
 
     # Preprocess with policy-driven noise strategy
@@ -132,11 +137,60 @@ def _extract_from_panel(
         print(f"[{image_path.name} Panel {panel.panel_id}] No axes detected.")
         return None
 
+    formula_context = None
+    formula_request_results = None
+    formula_batch_stats = None
+    if use_ocr:
+        crop_start = time.perf_counter()
+        formula_context = prepare_formula_label_context(
+            axes,
+            image,
+            policy=policy,
+            use_ocr=use_ocr,
+            type_probs=final_type_probs,
+            formula_batch_max_crops=formula_batch_max_crops,
+        )
+        stage_timing.crop_planning_ms = (time.perf_counter() - crop_start) * 1000.0
+        if formula_context.formula_plan.requests:
+            formula_start = time.perf_counter()
+            queue = FormulaBatchQueue(batch_size=16)
+            for idx, req in enumerate(formula_context.formula_plan.requests):
+                queue.add(
+                    FormulaQueueRequest(
+                        request_id=f"{image_path.stem}:p{panel.panel_id}:label:{req.axis_id}:{req.anchor_idx}:{idx}",
+                        crop=req.crop,
+                        metadata={
+                            "axis_id": req.axis_id,
+                            "anchor_idx": req.anchor_idx,
+                        },
+                    )
+                )
+            queue_results = queue.run() if len(queue) else {}
+            formula_batch_stats = queue.last_stats()
+            stage_timing.formula_infer_ms = (time.perf_counter() - formula_start) * 1000.0
+            formula_request_results = {}
+            for result in queue_results.values():
+                meta = result.metadata or {}
+                axis_id = meta.get("axis_id")
+                anchor_idx = meta.get("anchor_idx")
+                if axis_id is None or anchor_idx is None:
+                    continue
+                formula_request_results[(int(axis_id), int(anchor_idx))] = (
+                    result.latex,
+                    result.value,
+                )
+
     # Calibrate axes
+    cal_start = time.perf_counter()
     calibrated = calibrate_all_axes(
         axes, image, policy=policy, use_ocr=use_ocr, use_llm=use_llm,
         type_probs=final_type_probs, formula_batch_max_crops=formula_batch_max_crops,
+        formula_context=formula_context,
+        formula_request_results=formula_request_results,
+        formula_batch_stats=formula_batch_stats,
     )
+    stage_timing.calibrate_ms = (time.perf_counter() - cal_start) * 1000.0
+    stage_timing.total_ms = (time.perf_counter() - total_start) * 1000.0
     if not calibrated:
         print(f"[{image_path.name} Panel {panel.panel_id}] Axis calibration failed.")
         return None
@@ -160,6 +214,7 @@ def _extract_from_panel(
         "is_scatter": is_scatter,
         "has_grid": has_grid,
         "plot_bounds": plot_bounds,
+        "stage_timing": stage_timing,
     }
 
 
@@ -383,9 +438,11 @@ def extract_from_images_batched(
             plot_bounds = single_result["plot_bounds"]
             is_scatter = single_result["is_scatter"]
             has_grid = single_result["has_grid"]
+            panel_stage_timing = single_result.get("stage_timing")
         else:
             data = {}
             calibrated = []
+            panel_stage_timing = None
             for pr in panel_results:
                 panel_id = pr["panel_id"]
                 for series_name, series_data in pr["data"].items():
@@ -430,7 +487,7 @@ def extract_from_images_batched(
             ssim_cropped = compare_images(image_path, rebuilt_path, crop_box=plot_bounds)
             print(f"[{image_path.name}] SSIM full: {ssim_score:.4f}, SSIM crop: {ssim_cropped:.4f}")
 
-        diagnostics = _build_diagnostics(calibrated, data, plot_bounds, is_scatter, has_grid)
+        diagnostics = _build_diagnostics(calibrated, data, plot_bounds, is_scatter, has_grid, stage_timing=panel_stage_timing)
         results.append({
             "image_path": image_path,
             "data": data,
@@ -501,10 +558,12 @@ def extract_from_image(
         plot_bounds = single_result["plot_bounds"]
         is_scatter = single_result["is_scatter"]
         has_grid = single_result["has_grid"]
+        single_stage_timing = single_result.get("stage_timing")
     else:
         # Multi-panel: merge series with panel prefix
         data = {}
         calibrated = []
+        single_stage_timing = None
         for pr in panel_results:
             panel_id = pr["panel_id"]
             for series_name, series_data in pr["data"].items():
@@ -542,7 +601,7 @@ def extract_from_image(
         ssim_cropped = compare_images(image_path, rebuilt_path, crop_box=plot_bounds)
         print(f"[{image_path.name}] SSIM full: {ssim_score:.4f}, SSIM crop: {ssim_cropped:.4f}")
 
-    diagnostics = _build_diagnostics(calibrated, data, plot_bounds, is_scatter, has_grid)
+    diagnostics = _build_diagnostics(calibrated, data, plot_bounds, is_scatter, has_grid, stage_timing=single_stage_timing)
 
     return {
         "data": data,

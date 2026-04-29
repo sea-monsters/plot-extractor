@@ -1,0 +1,758 @@
+{
+  "status": "success",
+  "total_count": 55,
+  "result": [
+    {
+      "arxiv_id": "2112.09357",
+      "score": 11.861696,
+      "title": "Interpreting Audiograms with Multi-stage Neural Networks",
+      "tldr": "This paper addresses the challenge of accurately interpreting audiograms to extract precise hearing level data, which is crucial for tuning hearing aids; it proposes a Multi-stage Audiogram Interpretation Network (MAIN) with three stages for detection, rectification, and coordinate projection, achieving 84% test accuracy and 94% of tuples within ±5 dB HL error; this method enables reliable automated audiogram interpretation, improving accessibility and efficiency in hearing aid fitting.",
+      "abstract": "Audiograms are a particular type of line charts representing individuals' hearing level at various frequencies. They are used by audiologists to diagnose hearing loss, and further select and tune appropriate hearing aids for customers. There have been several projects such as Autoaudio that aim to accelerate this process through means of machine learning. But all existing models at their best can only detect audiograms in images and classify them into general categories. They are unable to extract hearing level information from detected audiograms by interpreting the marks, axis, and lines. To address this issue, we propose a Multi-stage Audiogram Interpretation Network (MAIN) that directly reads hearing level data from photos of audiograms. We also established Open Audiogram, an open dataset of audiogram images with annotations of marks and axes on which we trained and evaluated our proposed model. Experiments show that our model is feasible and reliable.",
+      "authors": [
+        {
+          "name": "Shufan Li",
+          "orgs": [
+            "Orka Labs Inc."
+          ]
+        },
+        {
+          "name": "Congxi Lu",
+          "orgs": [
+            "Orka Labs Inc."
+          ]
+        },
+        {
+          "name": "Linkai Li",
+          "orgs": [
+            "Orka Labs Inc."
+          ]
+        },
+        {
+          "name": "Jirong Duan",
+          "orgs": [
+            "ENT&Audiology Center",
+            "Xinhua Hospital*",
+            "&Punan Hospital"
+          ]
+        },
+        {
+          "name": "Xinping Fu",
+          "orgs": [
+            "Ear Institute",
+            "University College London"
+          ]
+        },
+        {
+          "name": "Haoshuai Zhou",
+          "orgs": [
+            "Orka Labs Inc."
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2112.09357v1",
+      "date": "2021-12-17T07:27:39Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.CV",
+        "cs.SD",
+        "eess.AS"
+      ]
+    },
+    {
+      "arxiv_id": "1704.06687",
+      "score": 11.769755,
+      "title": "Scatteract: Automated extraction of data from scatter plots",
+      "tldr": "This paper addresses the challenge of automatically extracting numerical data from scatter plots, aiming to facilitate further analysis by converting pixel coordinates to chart coordinates; it uses deep learning for object detection and OCR combined with robust regression for coordinate mapping, introducing a fully automated system that achieves 89% success in data extraction; the findings demonstrate effective data retrieval with robustness to OCR errors, advancing automated chart analysis and enabling broader applications in data processing and visualization.",
+      "abstract": "Charts are an excellent way to convey patterns and trends in data, but they do not facilitate further modeling of the data or close inspection of individual data points. We present a fully automated system for extracting the numerical values of data points from images of scatter plots. We use deep learning techniques to identify the key components of the chart, and optical character recognition together with robust regression to map from pixels to the coordinate system of the chart. We focus on scatter plots with linear scales, which already have several interesting challenges. Previous work has done fully automatic extraction for other types of charts, but to our knowledge this is the first approach that is fully automatic for scatter plots. Our method performs well, achieving successful data extraction on 89% of the plots in our test set.",
+      "authors": [
+        {
+          "name": "Mathieu Cliche",
+          "orgs": []
+        },
+        {
+          "name": "David Rosenberg",
+          "orgs": []
+        },
+        {
+          "name": "Dhruv Madeka",
+          "orgs": []
+        },
+        {
+          "name": "Connie Yee",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1704.06687v1",
+      "date": "2017-04-21T19:25:32Z",
+      "citation_count": 75,
+      "categories": [
+        "cs.CV",
+        "cs.IR",
+        "stat.ML"
+      ]
+    },
+    {
+      "arxiv_id": "2308.01979",
+      "score": 11.757124,
+      "title": "RealCQA: Scientific Chart Question Answering as a Test-bed for First-Order Logic",
+      "tldr": "This paper addresses the challenge of chart visual question-answering in scientific literature, aiming to evaluate models' first-order logic capabilities through a real-world dataset and novel answer types, introducing RealCQA with structured and unstructured list answers and showing improved accuracy in reasoning tasks; it contributes a benchmark for assessing logical reasoning in chart QA and advances formal logic verification for neural networks.",
+      "abstract": "We present a comprehensive study of chart visual question-answering(QA) task, to address the challenges faced in comprehending and extracting data from chart visualizations within documents. Despite efforts to tackle this problem using synthetic charts, solutions are limited by the shortage of annotated real-world data. To fill this gap, we introduce a benchmark and dataset for chart visual QA on real-world charts, offering a systematic analysis of the task and a novel taxonomy for template-based chart question creation. Our contribution includes the introduction of a new answer type, 'list', with both ranked and unranked variations. Our study is conducted on a real-world chart dataset from scientific literature, showcasing higher visual complexity compared to other works. Our focus is on template-based QA and how it can serve as a standard for evaluating the first-order logic capabilities of models. The results of our experiments, conducted on a real-world out-of-distribution dataset, provide a robust evaluation of large-scale pre-trained models and advance the field of chart visual QA and formal logic verification for neural networks in general.",
+      "authors": [
+        {
+          "name": "Saleem Ahmed",
+          "orgs": []
+        },
+        {
+          "name": "Bhavin Jawade",
+          "orgs": []
+        },
+        {
+          "name": "Shubham Pandey",
+          "orgs": []
+        },
+        {
+          "name": "Srirangaraj Setlur",
+          "orgs": []
+        },
+        {
+          "name": "Venu Govindaraju",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2308.01979v1",
+      "date": "2023-08-03T18:21:38Z",
+      "citation_count": 8,
+      "categories": [
+        "cs.CV",
+        "cs.LO"
+      ]
+    },
+    {
+      "arxiv_id": "2305.04151",
+      "score": 11.714827,
+      "title": "Context-Aware Chart Element Detection",
+      "tldr": "This paper addresses the challenge of context-aware chart element detection, where accurate identification of non-plot elements is crucial for automated chart data extraction; it proposes CACHED, a method integrating local-global context fusion with Cascade R-CNN, introducing a refined 18-class categorization and achieving state-of-the-art results on the PMC dataset.",
+      "abstract": "As a prerequisite of chart data extraction, the accurate detection of chart basic elements is essential and mandatory. In contrast to object detection in the general image domain, chart element detection relies heavily on context information as charts are highly structured data visualization formats. To address this, we propose a novel method CACHED, which stands for Context-Aware Chart Element Detection, by integrating a local-global context fusion module consisting of visual context enhancement and positional context encoding with the Cascade R-CNN framework. To improve the generalization of our method for broader applicability, we refine the existing chart element categorization and standardized 18 classes for chart basic elements, excluding plot elements. Our CACHED method, with the updated category of chart elements, achieves state-of-the-art performance in our experiments, underscoring the importance of context in chart element detection. Extending our method to the bar plot detection task, we obtain the best result on the PMC test dataset.",
+      "authors": [
+        {
+          "name": "Pengyu Yan",
+          "orgs": [
+            "Department of Computer Science and Engineering, University at Buffalo, Buffalo, NY"
+          ]
+        },
+        {
+          "name": "Saleem Ahmed",
+          "orgs": [
+            "Department of Computer Science and Engineering, University at Buffalo, Buffalo, NY"
+          ]
+        },
+        {
+          "name": "David Doermann",
+          "orgs": [
+            "Department of Computer Science and Engineering, University at Buffalo, Buffalo, NY"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2305.04151v2",
+      "date": "2023-05-07T00:08:39Z",
+      "citation_count": 8,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2410.22492",
+      "score": 11.555068,
+      "title": "RealCQA-V2 : Visual Premise Proving A Manual COT Dataset for Charts",
+      "tldr": "This paper introduces Visual Premise Proving (VPP) as a task to evaluate sequential reasoning in chart question answering, addressing the gap in assessing model reasoning over accuracy; it proposes VPP and Manual-COT dataset with 10 million pairs, and finds models excel in reasoning (27%) over structure (19%) and data retrieval (14%), highlighting the need for balanced evaluation of visual and logical comprehension.",
+      "abstract": "We introduce Visual Premise Proving (VPP), a novel task tailored to refine the process of chart question answering by deconstructing it into a series of logical premises. Each of these premises represents an essential step in comprehending a chart's content and deriving logical conclusions, thereby providing a granular look at a model's reasoning abilities. This approach represents a departure from conventional accuracy-based evaluation methods, emphasizing the model's ability to sequentially validate each premise and ideally mimic human analytical processes. A model adept at reasoning is expected to demonstrate proficiency in both data retrieval and the structural understanding of charts, suggesting a synergy between these competencies. However, in our zero-shot study using the sophisticated MATCHA model on a scientific chart question answering dataset, an intriguing pattern emerged. The model showcased superior performance in chart reasoning (27\\%) over chart structure (19\\%) and data retrieval (14\\%). This performance gap suggests that models might more readily generalize reasoning capabilities across datasets, benefiting from consistent mathematical and linguistic semantics, even when challenged by changes in the visual domain that complicate structure comprehension and data retrieval. Furthermore, the efficacy of using accuracy of binary QA for evaluating chart reasoning comes into question if models can deduce correct answers without parsing chart data or structure. VPP highlights the importance of integrating reasoning with visual comprehension to enhance model performance in chart analysis, pushing for a balanced approach in evaluating visual data interpretation capabilities.",
+      "authors": [
+        {
+          "name": "Saleem Ahmed",
+          "orgs": [
+            "CSE @ UB"
+          ]
+        },
+        {
+          "name": "Srirangaraj Setlur",
+          "orgs": [
+            "CSE @ UB"
+          ]
+        },
+        {
+          "name": "Venu Govindaraju",
+          "orgs": [
+            "CSE @ UB"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2410.22492v2",
+      "date": "2024-10-29T19:32:53Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI"
+      ]
+    },
+    {
+      "arxiv_id": "1906.11906",
+      "score": 11.248981,
+      "title": "Data Extraction from Charts via Single Deep Neural Network",
+      "tldr": "This paper presents a deep learning model for automatic data extraction from bar and pie charts, addressing the challenge of handling complex object relations and varying chart types, by combining object detection, text recognition, and component matching; it introduces a single model for bar charts and a specialized model for pie charts with RNN-based angle detection, achieving 79.4% and 88.0% accuracy on simulated charts, but degrading to 57.5% and 62.3% on out-of-domain data, offering improved automation for business data management.",
+      "abstract": "Automatic data extraction from charts is challenging for two reasons: there exist many relations among objects in a chart, which is not a common consideration in general computer vision problems; and different types of charts may not be processed by the same model. To address these problems, we propose a framework of a single deep neural network, which consists of object detection, text recognition and object matching modules. The framework handles both bar and pie charts, and it may also be extended to other types of charts by slight revisions and by augmenting the training data. Our model performs successfully on 79.4% of test simulated bar charts and 88.0% of test simulated pie charts, while for charts outside of the training domain it degrades for 57.5% and 62.3%, respectively.",
+      "authors": [
+        {
+          "name": "Xiaoyi Liu",
+          "orgs": []
+        },
+        {
+          "name": "Diego Klabjan",
+          "orgs": []
+        },
+        {
+          "name": "Patrick N Bless",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1906.11906v1",
+      "date": "2019-06-06T21:54:50Z",
+      "citation_count": 60,
+      "categories": [
+        "cs.CL",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2211.08863",
+      "score": 11.236652,
+      "title": "ChartParser: Automatic Chart Parsing for Print-Impaired",
+      "tldr": "This paper addresses the challenge of making bar charts accessible to print-impaired individuals by proposing ChartParser, an automated pipeline using deep learning, OCR, and image processing to extract and classify charts, with contributions including robust parsing of legends and color-based data association, and findings demonstrating its viability on real-world datasets.",
+      "abstract": "Infographics are often an integral component of scientific documents for reporting qualitative or quantitative findings as they make it much simpler to comprehend the underlying complex information. However, their interpretation continues to be a challenge for the blind, low-vision, and other print-impaired (BLV) individuals. In this paper, we propose ChartParser, a fully automated pipeline that leverages deep learning, OCR, and image processing techniques to extract all figures from a research paper, classify them into various chart categories (bar chart, line chart, etc.) and obtain relevant information from them, specifically bar charts (including horizontal, vertical, stacked horizontal and stacked vertical charts) which already have several exciting challenges. Finally, we present the retrieved content in a tabular format that is screen-reader friendly and accessible to the BLV users. We present a thorough evaluation of our approach by applying our pipeline to sample real-world annotated bar charts from research papers.",
+      "authors": [
+        {
+          "name": "Anukriti Kumar",
+          "orgs": []
+        },
+        {
+          "name": "Tanuja Ganu",
+          "orgs": []
+        },
+        {
+          "name": "Saikat Guha",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2211.08863v1",
+      "date": "2022-11-16T12:19:10Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.CV",
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "1812.10636",
+      "score": 11.166157,
+      "title": "Chart-Text: A Fully Automated Chart Image Descriptor",
+      "tldr": "This paper presents Chart-Text, a fully automated system for generating textual descriptions of chart images, addressing the challenge of creating standardized Alt-Text for visually impaired users; it proposes a method combining chart classification and data extraction with accuracies of 99.72% and 78.9%, respectively, significantly improving accessibility and productivity for content creators.",
+      "abstract": "Images greatly help in understanding, interpreting and visualizing data. Adding textual description to images is the first and foremost principle of web accessibility. Visually impaired users using screen readers will use these textual descriptions to get better understanding of images present in digital contents. In this paper, we propose Chart-Text a novel fully automated system that creates textual description of chart images. Given a PNG image of a chart, our Chart-Text system creates a complete textual description of it. First, the system classifies the type of chart and then it detects and classifies the labels and texts in the charts. Finally, it uses specific image processing algorithms to extract relevant information from the chart images. Our proposed system achieves an accuracy of 99.72% in classifying the charts and an accuracy of 78.9% in extracting the data and creating the corresponding textual description.",
+      "authors": [
+        {
+          "name": "Abhijit Balaji",
+          "orgs": [
+            "SPi Technologies India Private Limited"
+          ]
+        },
+        {
+          "name": "Thuvaarakkesh Ramanathan",
+          "orgs": [
+            "SPi Technologies India Private Limited"
+          ]
+        },
+        {
+          "name": "Venkateshwarlu Sonathi",
+          "orgs": [
+            "SPi Technologies India Private Limited"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1812.10636v1",
+      "date": "2018-12-27T05:52:06Z",
+      "citation_count": 61,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2408.16123",
+      "score": 11.144662,
+      "title": "ChartEye: A Deep Learning Framework for Chart Information Extraction",
+      "tldr": "This paper presents a deep learning framework for chart information extraction, addressing the challenge of automated chart understanding by improving chart-type classification, text detection, and text-role classification through hierarchical vision transformers, YOLOv7, and Super Resolution GANs, achieving F1-scores of 0.97, 0.91, and a mean Average Precision of 0.95, offering a generic solution for diverse chart types with enhanced text recognition.",
+      "abstract": "The widespread use of charts and infographics as a means of data visualization in various domains has inspired recent research in automated chart understanding. However, information extraction from chart images is a complex multitasked process due to style variations and, as a consequence, it is challenging to design an end-to-end system. In this study, we propose a deep learning-based framework that provides a solution for key steps in the chart information extraction pipeline. The proposed framework utilizes hierarchal vision transformers for the tasks of chart-type and text-role classification, while YOLOv7 for text detection. The detected text is then enhanced using Super Resolution Generative Adversarial Networks to improve the recognition output of the OCR. Experimental results on a benchmark dataset show that our proposed framework achieves excellent performance at every stage with F1-scores of 0.97 for chart-type classification, 0.91 for text-role classification, and a mean Average Precision of 0.95 for text detection.",
+      "authors": [
+        {
+          "name": "Osama Mustafa",
+          "orgs": [
+            "Center of Excellence in AI",
+            "Bahria University",
+            "Islamabad, Pakistan"
+          ]
+        },
+        {
+          "name": "Muhammad Khizer Ali",
+          "orgs": [
+            "Center of Excellence in AI",
+            "Bahria University",
+            "Islamabad, Pakistan"
+          ]
+        },
+        {
+          "name": "Momina Moetesum",
+          "orgs": [
+            "School of Electrical Engineering and Computer Science",
+            "National University of Sciences and Technology (NUST)",
+            "Islamabad, Pakistan"
+          ]
+        },
+        {
+          "name": "Imran Siddiqi",
+          "orgs": [
+            "Xynoptik Pty Limited",
+            "Melborne, VIC, Australia"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2408.16123v1",
+      "date": "2024-08-28T20:22:39Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2602.09337",
+      "score": 11.140615,
+      "title": "Kyrtos: A methodology for automatic deep analysis of graphic charts with curves in technical documents",
+      "tldr": "This paper presents a methodology for automatic deep analysis of graphic charts with curves in technical documents, addressing the gap in accurate curve recognition and semantic understanding by using clustering-based processing and attributed graphs to capture structural and behavioral features, contributing a novel framework for converting chart information into SPN graphs with high structural similarity accuracy.",
+      "abstract": "Deep Understanding of Technical Documents (DUTD) has become a very attractive field with great potential due to large amounts of accumulated documents and the valuable knowledge contained in them. In addition, the holistic understanding of technical documents depends on the accurate analysis of its particular modalities, such as graphics, tables, diagrams, text, etc. and their associations. In this paper, we introduce the Kyrtos methodology for the automatic recognition and analysis of charts with curves in graphics images of technical documents. The recognition processing part adopts a clustering based approach to recognize middle-points that delimit the line-segments that construct the illustrated curves. The analysis processing part parses the extracted line-segments of curves to capture behavioral features such as direction, trend and etc. These associations assist the conversion of recognized segments' relations into attributed graphs, for the preservation of the curves' structural characteristics. The graph relations are also are expressed into natural language (NL) text sentences, enriching the document's text and facilitating their conversion into Stochastic Petri-net (SPN) graphs, which depict the internal functionality represented in the chart image. Extensive evaluation results demonstrate the accuracy of Kyrtos' recognition and analysis methods by measuring the structural similarity between input chart curves and the approximations generated by Kyrtos for charts with multiple functions.",
+      "authors": [
+        {
+          "name": "Michail S. Alexiou",
+          "orgs": [
+            "Kennesaw State University"
+          ]
+        },
+        {
+          "name": "Nikolaos G. Bourbakis",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.09337v1",
+      "date": "2026-02-10",
+      "citation_count": 2,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2503.00149",
+      "score": 11.101434,
+      "title": "Tactile Vega-Lite: Rapidly Prototyping Tactile Charts with Smart Defaults",
+      "tldr": "This paper introduces Tactile Vega-Lite (TVL), a tool for rapidly prototyping tactile charts that addresses the complexity and time-consuming nature of current tactile design workflows by providing smart defaults and domain-specific abstractions, enabling both non-experts and experts to create guideline-compliant tactile charts efficiently; TVL's core contributions include tactile-specific encoding channels, braille support, predefined textures and line styles, and customizable defaults; user studies show TVL improves consistency and efficiency with predefined options while allowing customization, enhancing accessibility for BLV readers.",
+      "abstract": "Tactile charts are essential for conveying data to blind and low vision (BLV) readers but are difficult for designers to construct. Non-expert designers face barriers to entry due to complex guidelines, while experts struggle with fragmented and time-consuming workflows that involve extensive customization. Inspired by formative interviews with expert tactile graphics designers, we created Tactile Vega-Lite (TVL): an extension of Vega-Lite that offers tactile-specific abstractions and synthesizes existing guidelines into a series of smart defaults. Predefined stylistic choices enable non-experts to produce guideline-compliant tactile charts quickly. Expert users can override defaults to tailor customizations for their intended audience. In a user study with 12 tactile graphics creators, we show that Tactile Vega-Lite enhances flexibility and consistency by automating tasks like adjusting spacing and translating braille while accelerating iterations through pre-defined textures and line styles. Through expert critique, we also learn more about tactile chart design best practices and design decisions.",
+      "authors": [
+        {
+          "name": "Mengzhu (Katie) Chen",
+          "orgs": [
+            "CSAIL",
+            "Massachusetts Institute of Technology",
+            "Cambridge, Massachusetts, USA"
+          ]
+        },
+        {
+          "name": "Isabella Pedraza Pineros",
+          "orgs": []
+        },
+        {
+          "name": "Arvind Satyanarayan",
+          "orgs": [
+            "CSAIL",
+            "Massachusetts Institute of Technology",
+            "Cambridge, Massachusetts, USA"
+          ]
+        },
+        {
+          "name": "Jonathan Zong",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2503.00149v2",
+      "date": "2025-02-28T19:56:29Z",
+      "citation_count": 8,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2308.11788",
+      "score": 10.92012,
+      "title": "An extensible point-based method for data chart value detection",
+      "tldr": "This paper addresses the challenge of extracting values from scientific bar charts by proposing an extensible point-based method using a point proposal network, achieving 0.8705 F1 accuracy on real charts and 0.9810 F1 on synthetic ones, with implications for scalable data extraction from visualized scientific literature.",
+      "abstract": "We present an extensible method for identifying semantic points to reverse engineer (i.e. extract the values of) data charts, particularly those in scientific articles. Our method uses a point proposal network (akin to region proposal networks for object detection) to directly predict the position of points of interest in a chart, and it is readily extensible to multiple chart types and chart elements. We focus on complex bar charts in the scientific literature, on which our model is able to detect salient points with an accuracy of 0.8705 F1 (@1.5-cell max deviation); it achieves 0.9810 F1 on synthetically-generated charts similar to those used in prior works. We also explore training exclusively on synthetic data with novel augmentations, reaching surprisingly competent performance in this way (0.6621 F1) on real charts with widely varying appearance, and we further demonstrate our unchanged method applied directly to synthetic pie charts (0.8343 F1). Datasets, trained models, and evaluation code are available at https://github.com/BNLNLP/PPN_model.",
+      "authors": [
+        {
+          "name": "Carlos Soto",
+          "orgs": []
+        },
+        {
+          "name": "Shinjae Yoo",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2308.11788v1",
+      "date": "2023-08-22T21:03:58Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2512.14040",
+      "score": 10.848283,
+      "title": "ChartAgent: A Chart Understanding Framework with Tool Integrated Reasoning",
+      "tldr": "This paper introduces ChartAgent, a chart understanding framework addressing the limitation of MLLMs in handling unannotated charts by using Tool-Integrated Reasoning to decompose tasks into observable steps and provide traceable evidence, achieving SOTA performance on chart QA tasks.",
+      "abstract": "With their high information density and intuitive readability, charts have become the de facto medium for data analysis and communication across disciplines. Recent multimodal large language models (MLLMs) have made notable progress in automated chart understanding, yet they remain heavily dependent on explicit textual annotations and the performance degrades markedly when key numerals are absent. To address this limitation, we introduce ChartAgent, a chart understanding framework grounded in Tool-Integrated Reasoning (TIR). Inspired by human cognition, ChartAgent decomposes complex chart analysis into a sequence of observable, replayable steps. Supporting this architecture is an extensible, modular tool library comprising more than a dozen core tools, such as keyelement detection, instance segmentation, and optical character recognition (OCR), which the agent dynamically orchestrates to achieve systematic visual parsing across diverse chart types. Leveraging TIRs transparency and verifiability, ChartAgent moves beyond the black box paradigm by standardizing and consolidating intermediate outputs into a structured Evidence Package, providing traceable and reproducible support for final conclusions. Experiments show that ChartAgent substantially improves robustness under sparse annotation settings, offering a practical path toward trustworthy and extensible systems for chart understanding.",
+      "authors": [
+        {
+          "name": "Xiang Li",
+          "orgs": [
+            "5"
+          ]
+        },
+        {
+          "name": "Jing Yuan",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Yi Chen",
+          "orgs": [
+            "234"
+          ]
+        },
+        {
+          "name": "Jian Xu",
+          "orgs": [
+            "23"
+          ]
+        },
+        {
+          "name": "Xinming Wang",
+          "orgs": [
+            "School of Computer Science, Fudan University"
+          ]
+        },
+        {
+          "name": "Boran Wang",
+          "orgs": [
+            "Department of Computer Science, Tsinghua University"
+          ]
+        },
+        {
+          "name": "Chenglin Liu",
+          "orgs": [
+            "School of Information Science and Engineering, Central South University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.14040v1",
+      "date": "2025-12-16",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2204.09548",
+      "score": 10.79986,
+      "title": "Misinformed by Visualization: What Do We Learn From Misinformative Visualizations?",
+      "tldr": "This survey reviews misleading visualizations, identifying 74 types of issues and proposing a taxonomy, and highlights four research directions to address misinformation through understanding, detection, and prevention.",
+      "abstract": "Data visualization is powerful in persuading an audience. However, when it is done poorly or maliciously, a visualization may become misleading or even deceiving. Visualizations give further strength to the dissemination of misinformation on the Internet. The visualization research community has long been aware of visualizations that misinform the audience, mostly associated with the terms \"lie\" and \"deceptive.\" Still, these discussions have focused only on a handful of cases. To better understand the landscape of misleading visualizations, we open-coded over one thousand real-world visualizations that have been reported as misleading. From these examples, we discovered 74 types of issues and formed a taxonomy of misleading elements in visualizations. We found four directions that the research community can follow to widen the discussion on misleading visualizations: (1) informal fallacies in visualizations, (2) exploiting conventions and data literacy, (3) deceptive tricks in uncommon charts, and (4) understanding the designers' dilemma. This work lays the groundwork for these research directions, especially in understanding, detecting, and preventing them.",
+      "authors": [
+        {
+          "name": "Leo Yu-Ho Lo",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Ayush Gupta",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Kento Shigyo",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Aoyu Wu",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        },
+        {
+          "name": "Enrico Bertini",
+          "orgs": [
+            "Northeastern University"
+          ]
+        },
+        {
+          "name": "Huamin Qu",
+          "orgs": [
+            "Hong Kong University of Science and Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2204.09548v1",
+      "date": "2022-04-20T15:35:52Z",
+      "citation_count": 61,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2310.17814",
+      "score": 10.77649,
+      "title": "DIVI: Dynamically Interactive Visualization",
+      "tldr": "This paper presents DIVI, a novel approach for dynamically orchestrating interactions in static visualizations by deconstructing SVG charts to infer metadata and enable cross-tool interaction, contributing a three-part model, a taxonomy for interactions, and SVG deconstruction techniques; results show usability with 13 participants and support dynamic multi-view and cross-tool linking.",
+      "abstract": "Dynamically Interactive Visualization (DIVI) is a novel approach for orchestrating interactions within and across static visualizations. DIVI deconstructs Scalable Vector Graphics charts at runtime to infer content and coordinate user input, decoupling interaction from specification logic. This decoupling allows interactions to extend and compose freely across different tools, chart types, and analysis goals. DIVI exploits positional relations of marks to detect chart components such as axes and legends, reconstruct scales and view encodings, and infer data fields. DIVI then enumerates candidate transformations across inferred data to perform linking between views. To support dynamic interaction without prior specification, we introduce a taxonomy that formalizes the space of standard interactions by chart element, interaction type, and input event. We demonstrate DIVI's usefulness for rapid data exploration and analysis through a usability study with 13 participants and a diverse gallery of dynamically interactive visualizations, including single chart, multi-view, and cross-tool configurations.",
+      "authors": [
+        {
+          "name": "Luke S. Snyder",
+          "orgs": []
+        },
+        {
+          "name": "Jeffrey Heer",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2310.17814v2",
+      "date": "2023-10-26T23:24:35Z",
+      "citation_count": 12,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2011.04137",
+      "score": 10.652342,
+      "title": "Automated data extraction of bar chart raster images",
+      "tldr": "This paper proposes an automated data extraction pipeline for bar chart raster images in medical research, addressing the challenge of efficiently extracting data from figures to support meta-analysis, particularly in AMD studies; it introduces a multistep approach combining figure extraction, text detection, and image disassembly with optical character recognition, achieving 91.8% agreement with manual extraction and 88.6% accuracy for Y-tick values; results show high accuracy in most categories but highlight issues with OCR errors and suggest potential improvements through deep learning models.",
+      "abstract": "Objective: To develop software utilizing optical character recognition toward the automatic extraction of data from bar charts for meta-analysis. Methods: We utilized a multistep data extraction approach that included figure extraction, text detection, and image disassembly. PubMed Central papers that were processed in this manner included clinical trials regarding macular degeneration, a disease causing blindness with a heavy disease burden and many clinical trials. Bar chart characteristics were extracted in both an automated and manual fashion. These two approaches were then compared for accuracy. These characteristics were then compared using a Bland-Altman analysis. Results: Based on Bland-Altman analysis, 91.8% of data points were within the limits of agreement. By comparing our automated data extraction with manual data extraction, automated data extraction yielded the following accuracies: X-axis labels 79.5%, Y-tick values 88.6%, Y-axis label 88.6%, Bar value <5% error 88.0%. Discussion: Based on our analysis, we achieved an agreement between automated data extraction and manual data extraction. A major source of error was the incorrect delineation of 7s as 2s by optical character recognition library. We also would benefit from adding redundancy checks in the form of a deep neural network to boost our bar detection accuracy. Further refinements to this method are justified to extract tabulated and line graph data to facilitate automated data gathering for meta-analysis.",
+      "authors": [
+        {
+          "name": "Alex Carderas",
+          "orgs": [
+            "Department of Computer Science, Donald Bren School of Information and Computer Sciences, University of California, Irvine, Irvine, California, United States"
+          ]
+        },
+        {
+          "name": "Ye Yuan",
+          "orgs": [
+            "Department of Computer Science, Donald Bren School of Information and Computer Sciences, University of California, Irvine, Irvine, California, United States"
+          ]
+        },
+        {
+          "name": "Itamar Livnat",
+          "orgs": [
+            "Department of Ophthalmology, Gavin Herbert Eye Institute, University of California, Irvine, Irvine, California, United States"
+          ]
+        },
+        {
+          "name": "Rosita Saul",
+          "orgs": [
+            "Department of Biological Sciences, Schmid College of Science and Technology, Chapman University, Orange, California, United States"
+          ]
+        },
+        {
+          "name": "Gabrielle Montes De Oca",
+          "orgs": [
+            "Department of Biological Sciences, Schmid College of Science and Technology, Chapman University, Orange, California, United States"
+          ]
+        },
+        {
+          "name": "Kai Zheng",
+          "orgs": [
+            "Department of Informatics, Donald Bren School of Information and Computer Sciences, University of California, Irvine, Irvine, California, United States"
+          ]
+        },
+        {
+          "name": "Andrew W. Browne",
+          "orgs": [
+            "Department of Ophthalmology, Gavin Herbert Eye Institute, University of California, Irvine, Irvine, California, United States"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2011.04137v1",
+      "date": "2020-11-09T01:45:36Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.IR"
+      ]
+    },
+    {
+      "arxiv_id": "2303.14476",
+      "score": 10.639153,
+      "title": "A Spatial-Constraint Model for Manipulating Static Visualizations",
+      "tldr": "This paper proposes a spatial-constraint model for enabling interactive manipulation of static visualizations, addressing the gap in interactivity of static visualizations by introducing a physical-based approach with gravity, support, collision, and fixation constraints; the model facilitates intuitive transitions and supports diverse interactions like reordering and filtering, achieving effective user engagement in real-world scenarios.",
+      "abstract": "We propose a spatial-constraint approach for modeling spatial-based interactions and enabling interactive visualizations, which involves the manipulation of visualizations through selection, filtering, navigation, arrangement, and aggregation. We proposes a system that activates static visualizations by adding intelligent interactions, which is achieved by associating static visual objects with forces. Our force-directed technique facilitates smooth animated transitions of the visualizations between different interaction states. We showcase the effectiveness of our technique through usage scenarios that involve activating visualizations in real-world settings.",
+      "authors": [
+        {
+          "name": "Can Liu",
+          "orgs": [
+            "Peking University, China"
+          ]
+        },
+        {
+          "name": "Yu Zhang",
+          "orgs": [
+            "University of Oxford, UK"
+          ]
+        },
+        {
+          "name": "Cong Wu",
+          "orgs": [
+            "Peking University, China"
+          ]
+        },
+        {
+          "name": "Xiaoru Yuan",
+          "orgs": [
+            "Peking University",
+            "China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2303.14476v2",
+      "date": "2023-03-25T14:09:18Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "1906.07637",
+      "score": 4.8549967,
+      "title": "Periphery Plots for Contextualizing Heterogeneous Time-Based Charts",
+      "tldr": "This paper addresses the challenge of visualizing heterogeneous time-based data across multiple scales, proposing periphery plots as a framework for multi-resolution context augmentation with contributions including a framework, toolkit, and use cases demonstrating improved analysis of temporal patterns.",
+      "abstract": "Patterns in temporal data can often be found across different scales, such as days, weeks, and months, making effective visualization of time-based data challenging. Here we propose a new approach for providing focus and context in time-based charts to enable interpretation of patterns across time scales. Our approach employs a focus zone with a time and a second axis, that can either represent quantities or categories, as well as a set of adjacent periphery plots that can aggregate data along the time, value, or both dimensions. We present a framework for periphery plots and describe two use cases that demonstrate the utility of our approach.",
+      "authors": [
+        {
+          "name": "Bryce Morrow",
+          "orgs": []
+        },
+        {
+          "name": "Trevor Manz",
+          "orgs": []
+        },
+        {
+          "name": "Arlene E. Chung",
+          "orgs": []
+        },
+        {
+          "name": "Nils Gehlenborg",
+          "orgs": []
+        },
+        {
+          "name": "David Gotz",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1906.07637v2",
+      "date": "2019-06-18T15:17:52Z",
+      "citation_count": 16,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2601.07921",
+      "score": 4.3808985,
+      "title": "Charting the Flavour Structure of Dark Matter",
+      "tldr": "This paper investigates the flavour structure of $t$-channel thermal dark matter, addressing the question of what flavour configurations remain compatible with current experimental bounds, by employing flavour symmetries and their breaking patterns to systematically explore hypotheses and analyze benchmark scenarios, revealing that viable models must deviate only slightly from flavour-symmetric limits.",
+      "abstract": "What flavour structure of $t$-channel thermal dark matter remains compatible with current flavour physics and direct detection bounds? We broadly chart the space of hypotheses using the framework of flavour symmetries and their breaking patterns. We then focus on scenarios in which the fermionic dark matter and its scalar mediator are flavour singlets, falling into the class of rank-1 flavour violation. For two representative benchmarks, quarkphilic ($q_L$) and leptophilic ($e_R$), we perform a comprehensive phenomenological analysis, fitting the relic abundance and examining the interplay among flavour observables, direct detection, and collider searches. Our results quantify the allowed deviations from flavour-symmetric limits and assess the discovery prospects in future flavour and direct detection experiments.",
+      "authors": [
+        {
+          "name": "Admir Greljo",
+          "orgs": [
+            "Department of Physics, University of Basel"
+          ]
+        },
+        {
+          "name": "Simone Biondini",
+          "orgs": [
+            "Institute of Physics, University of Freiburg"
+          ]
+        },
+        {
+          "name": "Alessandro Valenti",
+          "orgs": [
+            "Department of Physics, University of Basel"
+          ]
+        },
+        {
+          "name": "Xavier Ponce Díaz",
+          "orgs": [
+            "Department of Physics, University of Basel"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2601.07921v1",
+      "date": "2026-01-12",
+      "citation_count": 0,
+      "categories": [
+        "astro-ph.CO",
+        "hep-ex",
+        "hep-ph",
+        "hep-th"
+      ]
+    },
+    {
+      "arxiv_id": "2604.16282",
+      "score": 3.9637675,
+      "title": "Geometric regularization of autoencoders via observed stochastic dynamics",
+      "tldr": "This paper addresses the challenge of learning geometrically regularized autoencoders for stochastic dynamical systems by introducing a three-stage pipeline with coordinate-invariant losses, achieving a generalization rate comparable to Sobolev $H^1$ training and reducing radial MFPT error by 50--70% in experiments.",
+      "abstract": "Stochastic dynamical systems with slow or metastable behavior evolve, on long time scales, on an unknown low-dimensional manifold in high-dimensional ambient space. Building a reduced simulator from short-burst ambient ensembles is a long-standing problem: local-chart methods like ATLAS suffer from exponential landmark scaling and per-step reprojection, while autoencoder alternatives leave tangent-bundle geometry poorly constrained, and the errors propagate into the learned drift and diffusion. We observe that the ambient covariance~$\\Lambda$ already encodes coordinate-invariant tangent-space information, its range spanning the tangent bundle. Using this, we construct a tangent-bundle penalty and an inverse-consistency penalty for a three-stage pipeline (chart learning, latent drift, latent diffusion) that learns a single nonlinear chart and the latent SDE. The penalties induce a function-space metric, the $\\rho$-metric, strictly weaker than the Sobolev $H^1$ norm yet achieving the same chart-quality generalization rate up to logarithmic factors. For the drift, we derive an encoder-pullback target via It\\^o's formula on the learned encoder and prove a bias decomposition showing the standard decoder-side formula carries systematic error for any imperfect chart. Under a $W^{2,\\infty}$ chart-convergence assumption, chart-level error propagates controllably to weak convergence of the ambient dynamics and to convergence of radial mean first-passage times. Experiments on four surfaces embedded in up to $201$ ambient dimensions reduce radial MFPT error by $50$--$70\\%$ under rotation dynamics and achieve the lowest inter-well MFPT error on most surface--transition pairs under metastable M\\\"uller--Brown Langevin dynamics, while reducing end-to-end ambient coefficient errors by up to an order of magnitude relative to an unregularized autoencoder.",
+      "authors": [
+        {
+          "name": "Sean Hill",
+          "orgs": [
+            "University of California, Berkeley"
+          ]
+        },
+        {
+          "name": "Felix X.-F. Ye",
+          "orgs": [
+            "Stanford University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2604.16282v1",
+      "date": "2026-04-17",
+      "citation_count": 0,
+      "categories": [
+        "cs.LG",
+        "math.DS",
+        "math.PR"
+      ]
+    }
+  ]
+}

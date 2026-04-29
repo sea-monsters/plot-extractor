@@ -1,0 +1,88 @@
+=== Line Graphics Digitization (2307.02065) ===
+
+--- heading ---
+Omar Moured1122Jiaming Zhang11Alina Roitberg11Thorsten Schwarz22Rainer Stiefelhagen1122
+
+--- Introduction ---
+With the rapid growth of information available online111[https://www.statista.com/statistics/871513/worldwide-data-created/](https://www.statista.com/statistics/871513/worldwide-data-created/ ""), access to knowledge has never been easier.
+However, as the volume of information continues to grow, there is a need for more efficient ways to extract useful information from documents such as papers and presentation slides.
+This is particularly important for individuals with special needs, such as visually impaired individuals*[[23](#bib.bib23 "")]*, for whom traditional methods of accessing information may not be feasible.
+
+<img src='x2.png' alt='Refer to caption' title='' width='461' height='207' />
+
+*Figure 2: Diverse mathematical graphics covered in our Line Graphics (LG) dataset, including 100 bar charts (a), 320 line graphics (b, d-f) and 100 scatter plots (c). These samples pose significant challenges for existing document analysis methods.*
+
+During courses, graphs are a vital supplement to lecturers’ speech as they effectively summarize complex data or visualize mathematical functions.
+However, one downside of this medium is the difficulty of automatic information extraction, as graphs contain very fine-grained elements, such as fine lines, small numbers or axes descriptions, while the traditional document analysis frameworks focus on coarse structures within complete pages*[[9](#bib.bib9 ""), [34](#bib.bib34 ""), [5](#bib.bib5 "")]* or slides*[[19](#bib.bib19 ""), [18](#bi
+
+--- Related Work ---
+### 2.1 Document Graphics Analysis
+
+Visual document analysis is a well-studied research area, mostly focusing on text*[[27](#bib.bib27 ""), [21](#bib.bib21 "")]* and layout analysis*[[5](#bib.bib5 ""), [4](#bib.bib4 ""), [10](#bib.bib10 "")]* of complete pages originating from scientific papers*[[7](#bib.bib7 ""), [14](#bib.bib14 "")]*, presentation slides*[[19](#bib.bib19 "")]*, magazines*[[10](#bib.bib10 "")]*, historical handwritten documents*[[5](#bib.bib5 ""), [4](#bib.bib4 "")]* or receipts*[[21](#bib.bib21 "")]*.
+In comparison, the research of chart analysis is more limited, with an
+overview of the existing approaches provided by*[[13](#bib.bib13 "")]*.
+In particular, several learning-based methods have been used for (1) localizing and extracting charts from pages*[[9](#bib.bib9 ""), [24](#bib.bib24 ""), [31](#bib.bib31 "")]*, or (2) harvesting text and tabular data from charts*[[8](#bib.bib8 ""), [25](#bib.bib25 ""), [28](#bib.bib28 ""), [14](#bib.bib14 "")]*.
+Seweryn et. al.*[[30](#bib.bib30 "")]* propose a framework covering chart classification, detection of essential elements, and generation of textual descriptions of four chart types (lines, dot lines, vertical bar plots and horizontal bar plots). *[[7](#bib.bib7 "")]* focuses on exploring the semantic content of alt text in accessibility publications, revealing that the quality of author-written alt text is mixed. The authors also provide a dataset of such alt text to aid the development of tools for better auth
+
+--- LG Dataset ---
+In this paper, we present the first segmentation dataset to analyze line charts and keep pace with the advancements in the AI community. Our dataset contains $520$ mathematical graphics extracted manually from 450 documents. Among these, 7238 human annotated instances. The goal is to facilitate automatic visual understanding of mathematical charts by offering a suitable and challenging benchmark. Next, we provide a comprehensive description of the data collection and annotation process, followed by a thorough analysis of the dataset’s features and characteristics.
+
+<img src='x3.png' alt='Refer to caption' title='' width='461' height='158' />
+
+*Figure 3: Statistical distribution of documents in our dataset grouped by different disciplines. Our dataset was collected from 18 distinct disciplines from formal-, social and natural sciences as well as humanities and professions.*
+
+### 3.1 Data Collection and Annotation
+
+#### 3.1.1 Classes.
+
+To ensure a comprehensive and robust labelling process, we set out to categorize line chart pixels into 5 coarse and 10 fine-grained classes. The primary focus was on creating fine-grained categories that offer a wide range of variations and challenges for further analysis. This was achieved through a thorough review of charts by three annotators with research experience, who identified the most frequent and critical object types encountered in such charts. Based on this review, as well as an inspection of related work, we arrived at 10 relevant 
+
+--- Experiments ---
+### 4.1 Implementation Details
+
+We perform experiments utilizing both Jittor and Pytorch. Our implementation is based on the MMsegmentation222[https://github.com/open-mmlab/mmsegmentation](https://github.com/open-mmlab/mmsegmentation "") library and the models were trained on an A40 GPU with an input resolution of (2048, 1024). Our evaluation metric is Mean Intersection over Union (mIoU). During training, we applied common data augmentation techniques such as random flipping, scaling (ranging from 0.5 to 2), and cropping. The batch size was set to 8 with an initial learning rate of $6e{-}5$, using a poly-learning rate decay policy. The models were trained for 50K iterations. For testing, we employed a single-scale flip strategy to ensure fairness in comparison.
+To understand the choice of models, we further analyze the properties of the selected models in conjunction with our proposed line graphic segmentation task.
+
+### 4.2 Baselines
+
+We consider 7 state-of-the-art semantic segmentation models for this task:
+
+MobileNetV3 *[[20](#bib.bib20 "")]* is designed for image segmentation in both high and low-resource environments. It incorporates the depthwise separable convolution from MobileNetV1 and the Inverted Residual with Linear Disability from MobileNetV2 to balance accuracy and computational cost. Additionally, the model introduces the V3 lightweight attention mechanism, which enhances its ability to selectively focus on important features. These improvements make MobileNetV
+
+--- Evaluation ---
+### 5.1 Quantitative Results
+
+In Table[4](#S5.T4 "Table 4 ‣ 5.1 Quantitative Results ‣ 5 Evaluation ‣ Line Graphics Digitization: A Step Towards Full Automation"), the efficiency-oriented CNN model MobileNetV3 with only $1.14$M parameters obtains $56.22\%$ mIoU score on the proposed LG dataset. The high-resolution model HRNet has $57.60\%$ in mIoU and the DeepLabv3+ model has $61.64\%$, but both have parameter ${>}60$M. We found that the PSPNet with pyramid pooling module in the architectural design can achieve better results with $62.04\%$. In Table[4](#S5.T4 "Table 4 ‣ 5.1 Quantitative Results ‣ 5 Evaluation ‣ Line Graphics Digitization: A Step Towards Full Automation"), the recent Transformer-based models achieve relatively better results than the CNN-based models. For example, the SegFormer model with pyramid architecture and with $81.97$M parameters can obtain $65.59\%$ in mIoU with a ${+}3.55\%$ gain compared to PSPNet. The Swin Transformer with hierarchical design and shifted windows has $66.61\%$ in mIoU, but it has the highest number of parameters. However, the state-of-the-art CNN-based SegNeXt utilizes multi-scale convolutional attention to evoke spatial attention, leading to the highest mIoU score of $67.56\%$ in our LG dataset. Furthermore, the SegNeXt achieve 4 top scores on 5 coarse classes, including Title, Spine, Label and Legend. Besides, it obtains 6 top scores out of 10 fine classes, which are xtitle, ytitle, xpsine, yspine, xlabel, and legend. The results
+
+--- Conclusion ---
+In conclusion, this paper presents the first line plot dataset for multi-task deep learning, providing support for object detection, semantic segmentation, and instance-level segmentation. Our comprehensive evaluations of state-of-the-art segmentation models demonstrate the potential for an end-to-end solution.
+Moreover, this work has the potential to greatly improve accessibility for visually impaired and blind individuals. The ability to accurately detect and recognize mathematical graphics could lead to more accessible educational materials and support the digitization of mathematical information.
+We are actively working to expand the scope of the dataset by including more types of mathematical graphics and incorporating instances relationship into the metadata. This will continue to drive advancements in this field and enable further research into the digitization of mathematical graphics.
+
+Acknowledgments. This work was supported in part by the European Union’s Horizon $2020$ research and innovation program under the Marie Sklodowska-Curie Grant No.$861166$, in part by the Ministry of Science, Research and the Arts of Baden-Württemberg (MWK) through the Cooperative Graduate School Accessibility through AI-based Assistive Technology (KATE) under Grant BW6-03, and in part by the Federal Ministry of Education and Research (BMBF) through a fellowship within the IFI programme of the German Academic Exchange Service (DAAD). This work was partially performed on the HoreKa super
+
+--- References ---
+* [1]Amin, A., Shiu, R.: Page segmentation and classification utilizing bottom-up
+approach. International Journal of Image and Graphics 1(02),
+345–361 (2001)
+* [2]Bajić, F., Orel, O., Habijan, M.: A multi-purpose shallow convolutional
+neural network for chart images. Sensors 22(20), 7695 (2022)
+* [3]Breuel, T.M.: Robust, simple page segmentation using hybrid convolutional
+mdlstm networks. In: 2017 14th IAPR international conference on document
+analysis and recognition (ICDAR). vol. 1, pp. 733–740. IEEE (2017)
+* [4]Chen, K., Seuret, M., Hennebert, J., Ingold, R.: Convolutional neural networks
+for page segmentation of historical document images. In: 2017 14th IAPR
+International Conference on Document Analysis and Recognition (ICDAR).
+vol. 1, pp. 965–970. IEEE (2017)
+* [5]Chen, K., Seuret, M., Liwicki, M., Hennebert, J., Ingold, R.: Page segmentation
+of historical document images with convolutional autoencoders. In: 2015 13th
+International Conference on Document Analysis and Recognition (ICDAR). pp.
+1011–1015. IEEE (2015)
+* [6]Chen, L.C., Zhu, Y., Papandreou, G., Schroff, F., Adam, H.: Encoder-decoder
+with atrous separable convolution for semantic image segmentation. In: ECCV
+(2018)
+* [7]Chintalapati, S., Bragg, J., Wang, L.L.: A dataset of alt texts from hci
+publications: Analyses and uses towards producing more descriptive alt texts
+of data visualizations in scientific papers. arXiv preprint arXiv:2209.13718
+(2022)
+* [8]Choi, J., Jung, S., Park, D.G., Choo, J., Elmqvist, N.: V

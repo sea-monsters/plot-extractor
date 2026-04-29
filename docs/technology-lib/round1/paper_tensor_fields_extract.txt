@@ -1,0 +1,84 @@
+=== Tensor Fields (2010.02319) ===
+
+--- heading ---
+Jaya Sreevalsan-Nair Komal Dadhich Siri Chandana Daggubati  
+Graphics-Visualization-Computing Lab,  
+International Institute of Information Technology Bangalore, Karnataka 560100, India  
+http://www.iiitb.ac.in/gvcl  
+  
+This is a peer-reviewed article, accepted for publication, prior to its camera-ready version, in  
+"Topological Methods in Visualization: Theory, Software and Applications,"  
+Ingrid Hotz, Talha Bin Masood, Filip Sadlo, and Julien Tierny (Eds.). Springer-Verlag,jnair@iiitb.ac.in
+
+--- Introduction ---
+Charts fall in the intersection of graphicacy (graphical literacy), and statistical literacy. The recent popularity of statistical analysis in data science and ubiquitousness of learning algorithms have made chart graphicacy relevant. Chart comprehension is an outcome of chart graphicacy. Students often face difficulties in comprehending new chart types when learning new concepts in the visual representation of data, e.g., grouped bar charts*[[1](#bib.bib1 "")]*. Chart images embedded in documents, articles and books often become
+strenuous to analyze further due to unavailability of source data. Each entity in a grouped bar corresponds to an ordered proximal placement of a group of category-wise bars. Such charts give better communicative signals of (inter-category, intra-entity) trends or relations than those of (intra-category, inter-entity)*[[1](#bib.bib1 "")]*. In an example of different academic years (category) grouped together for different subjects (entity) (Figure[1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ Tensor Fields for Data Extraction from Chart Images: Bar Charts and Scatter Plots")), the trends in a subject are (inter-category, intra-entity), and those in an academic year are (intra-category, inter-entity). Combinations of intra- and inter-category/entity analysis, e.g., “what is the difference between the lowest scores in the two academic years?” require complex interpretation. The inter-category, intra-category, and combination questions are best communicated by
+
+--- Related Work ---
+We discuss the relevant state-in-the-art in characterizing chart interpretation and automated systems for chart analysis.
+
+Chart Interpretation and Analysis: While there have been several studies done in chart interpretation in parts, or whole for few chart types, there is still a gap in standardized and generalized methods for chart interpretation, which will work for more than one type of chart*[[6](#bib.bib6 "")]*. Liu et al. concluded that prior human knowledge is an important element, which makes a case for machine learning algorithms. Our work will be useful in generating effective feature vectors for supervised learning models, which perform chart classification, chart segmentation, and chart segment classification, etc.,*[[3](#bib.bib3 "")]*. Chart interpretation has been researched extensively in cognitive science*[[12](#bib.bib12 "")]* and document engineering*[[13](#bib.bib13 "")]*. The findings in the latter continue to be extensively used in separating text and graphics in charts using Optical Character Recognition (OCR) techniques*[[3](#bib.bib3 ""), [4](#bib.bib4 "")]*.
+
+Our proposed method has been developed based on the information gathered from the vast literature in cognitive science in the context of chart analysis. The use of proximity of displayed variables validates our use of spatial locality-based approaches for an integral display, specifically the scatter plot*[[14](#bib.bib14 "")]*. Wickens and colleagues have extensively studied separable and inte
+
+--- Background on Local Geometric Descriptors ---
+Local geometric descriptors, which encode the local geometry of each entity in a dataset, can be represented in the form of positive semidefinite second-order tensor fields.
+Descriptors such as structure tensor*[[21](#bib.bib21 "")]* have been used for corner detection, shape analysis, and feature tracking, and tensor voting*[[22](#bib.bib22 "")]* has been used in images widely for segmentation*[[23](#bib.bib23 "")]*.
+
+Structure Tensor: Structure tensor $T_{s}$ encodes the directionality of the gradient of the local neighborhood. $T_{s}$ is computed from the gradient tensor, $T_{g}\=G^{T}G$, using the gradient vector, $G\=\begin{bmatrix}\frac{\partial I}{\partial x}\&\frac{\partial I}{\partial y}\end{bmatrix}$, at a pixel with intensity $I$.
+
+Difference kernels, such as Sobel operator, are used for determining discretized differences required for computing $G$ in images. Applying Gaussian convolution to $T_{g}$ gives $T_{s}$. For a Gaussian function with zero mean and standard deviation $\rho$, $T_{s}\=G_{\rho}*T_{g}$, where $*$ is a 2D convolution operator, in the case of 2D images.
+
+Tensor Voting: Tensor voting is a technique of determining global perceptual information organization by garnering votes at each entity based on the normal tensors of its local neighbors*[[22](#bib.bib22 "")]*. It is especially effective for applications requiring a global context, such as image segmentation. Here, the votes are aggregated component-wise, namely, stick-, plate-, and ball-tensors
+
+--- Our Proposed Method ---
+The aim of our work is twofold – firstly, we propose the use of local structure estimation to generate a computational model for chart interpretation, and secondly, we show the effectiveness of this model for data extraction from simple bar charts and scatter plots. We run experiments on a variety of charts to study the effectiveness of our model. For this work, we focus exclusively on data extraction purely using geometry, without extracting contextual information from text, axes, and legend. Hence, we work with only with the relevant region in the chart image, which warrants defining chart image components. The local geometric descriptors of the pixels in this region are the tensor field, and it is used as a computational model for chart images. We explain the observed behavior of the proposed tensor model for geometric entities, namely bars and scatter points, and its degenerate points. The understanding of the field is important for deciding the data extraction workflow (Figure[2](#S1.F2 "Figure 2 ‣ 1 Introduction ‣ Tensor Fields for Data Extraction from Chart Images: Bar Charts and Scatter Plots")) and performing the error analysis of the model. This section has three main parts on chart image components, our proposed computational model, and the data extraction workflow.
+
+A. Chart Image Components:  
+Here, we connect the characteristics of chart images with tensor field topology. Hence, we first define the terminology pertaining to the charts and descriptions of relevan
+
+--- Experiments \& Results ---
+<img src='x3.png' alt='Refer to caption' title='' width='462' height='326' />
+
+*Figure 3:  Our proposed data extraction method from programmatically generated raster images of bar charts from readily available table data (DSTbl), using saliency map of structure tensor $T_{s}$ and tensor voting $T_{\text{v-ad}}$, to determine degenerate points.*
+
+<img src='x4.png' alt='Refer to caption' title='' width='462' height='326' />
+
+*Figure 4:  Our proposed data extraction method from programmatically generated raster images of scatter plots from readily available table data (DSTbl), using saliency map of structure tensor $T_{s}$ and tensor voting $T_{\text{v-ad}}$, to determine degenerate points. The reconstruction errors are marked in red in row F.*
+
+<img src='x5.png' alt='Refer to caption' title='' width='461' height='328' />
+
+*Figure 5:  Our proposed data extraction method from raster images of bar charts and scatter plots from readily available image data (DSImg), using saliency map of structure tensor $T_{s}$ and tensor voting $T_{\text{v-ad}}$, to determine degenerate points. The reconstruction errors are marked in red in row F.*
+
+<img src='x6.png' alt='Refer to caption' title='' width='460' height='327' />
+
+*Figure 6:  Our proposed data extraction method from raster images of histograms, using saliency map of structure tensor $T_{s}$ and tensor voting $T_{\text{v-ad}}$, to determine degenerate points, of (a) readily available table data (DSTbl) {hg-1, hg-2, hg-3}, and (b) chart
+
+--- Conclusions ---
+Automating chart interpretation has been a long-standing challenge owing to the vast design space of charts and their raster images. We have demonstrated automating data extraction from chart images using a computational model that exploits the local structure in the raster images. The novelty of our work lies in identifying tensor voting after anisotropic diffusion, $T_{\text{v-ad}}$, as an effective local geometric descriptor for data extraction. We have used the positive semidefinite second-order tensor fields of the local geometric descriptors in the chart canvas and extracted the tensor topological features, namely degenerate points, for data extraction. We have shown how patterns of clustering of degenerate points correspond to the chart data, enabling data extraction. We focus on bar charts and scatter plots where the proximity of local features defines the charts’ geometric objects. There are limitations to our work as the tensor field is dependent on the user-defined image characteristics. These include image resolution and styling features of the plots, e.g., glyph shapes and sizes, bar width, and borders.
+
+Our current model achieves Levels-A1 and A2 in Kimura’s six-level scheme of statistical ability*[[2](#bib.bib2 "")]* by performing data extraction with considerable accuracy. The future scope of our work is in automated clustering and cluster-classification of degenerate points and extending the usefulness of the tensor voting for Gestalt theory of perceptual org
+
+--- Acknowledgment ---
+The authors acknowledge the financial support from the MINRO (Machine Intelligence and Robotics) grant from the Government of Karnataka, for this work. The authors are grateful to all members of GVCL and IIIT Bangalore for supporting this work. Several people have helped shape this work through feedback and discussions: anonymous reviewers, T. K. Srikanth, IIITB; Sindhu Mathai of Azim Premji University; Vidhya Y. and Supriya Dey of Vision Empower; Neha Trivedi, XRCVC; Vani, Pushpaja, Kalyani, and Anjana of Braille Resource Center, Matruchayya, that has shaped this work.
+
+The datasets used in DSTblare from CSV data repository [https://people.sc.fsu.edu/~jburkardt/data/csv/csv.html](https://people.sc.fsu.edu/~jburkardt/data/csv/csv.html "") for bar charts, and from R datasets archive*[[40](#bib.bib40 "")]* for histograms and scatter plots. The datasets used in DSImgare from online documentation of package BoutrousLab.plotting.general*[[41](#bib.bib41 "")]*, except for one histogram from a course project in “Computer Vision” course by Roberts*[[42](#bib.bib42 "")]*. The bar chart available at [http://www.datasciencemadesimple.com/r-bar-chart/](http://www.datasciencemadesimple.com/r-bar-chart/ "") has been printed and scanned to get the chart image bc-2 in DSImg.
+
+--- References ---
+* [1]Richard Burns, Sandra Carberry, and Stephanie Elzer.Modeling Relative Task Effort for Grouped Bar Charts.In Proceedings of the Annual Meeting of the Cognitive Science
+Society, volume 31, 2009.
+* [2]Kazuhiro Aoyama and Max Stephens.Graph Interpretation Aspects of Statistical Literacy: A Japanese
+Perspective.Mathematics Education Research Journal, 15(3):207–225, 2003.
+* [3]Jinho Choi, Sanghun Jung, Deok Gun Park, Jaegul Choo, and Niklas Elmqvist.Visualizing for the non-visual: Enabling the visually impaired to use
+visualization.In Computer Graphics Forum, volume 38, pages 249–260. Wiley
+Online Library, 2019.
+* [4]Jorge Poco and Jeffrey Heer.Reverse-Engineering Visualizations: Recovering Visual Encodings from
+Chart Images.In Computer Graphics Forum, volume 36, pages 353–363. Wiley
+Online Library, 2017.
+* [5]Mathieu Cliche, David Rosenberg, Dhruv Madeka, and Connie Yee.Scatteract: Automated extraction of data from scatter plots.In Joint European Conference on Machine Learning and Knowledge
+Discovery in Databases, pages 135–150. Springer, 2017.
+* [6]Yan Liu, Xiaoqing Lu, Yeyang Qin, Zhi Tang, and Jianbo Xu.Review of Chart Recognition in Document Images.In Visualization and Data Analysis 2013, volume 8654, page
+865410. International Society for Optics and Photonics, 2013.
+* [7]Johan Wagemans, Jacob Feldman, Sergei Gepshtein, Ruth Kimchi, James R
+Pomerantz, Peter A Van der Helm, and Cees Van Leeuwen.A Century of Gestalt Psychology in Visual Perception: II. Conceptual
+and Theore

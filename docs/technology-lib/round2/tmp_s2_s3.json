@@ -1,0 +1,930 @@
+{
+  "status": "success",
+  "total_count": 71,
+  "result": [
+    {
+      "arxiv_id": "1906.11906",
+      "score": 14.130345,
+      "title": "Data Extraction from Charts via Single Deep Neural Network",
+      "tldr": "This paper presents a deep learning model for automatic data extraction from bar and pie charts, addressing the challenge of handling complex object relations and varying chart types, by combining object detection, text recognition, and component matching; it introduces a single model for bar charts and a specialized model for pie charts with RNN-based angle detection, achieving 79.4% and 88.0% accuracy on simulated charts, but degrading to 57.5% and 62.3% on out-of-domain data, offering improved automation for business data management.",
+      "abstract": "Automatic data extraction from charts is challenging for two reasons: there exist many relations among objects in a chart, which is not a common consideration in general computer vision problems; and different types of charts may not be processed by the same model. To address these problems, we propose a framework of a single deep neural network, which consists of object detection, text recognition and object matching modules. The framework handles both bar and pie charts, and it may also be extended to other types of charts by slight revisions and by augmenting the training data. Our model performs successfully on 79.4% of test simulated bar charts and 88.0% of test simulated pie charts, while for charts outside of the training domain it degrades for 57.5% and 62.3%, respectively.",
+      "authors": [
+        {
+          "name": "Xiaoyi Liu",
+          "orgs": []
+        },
+        {
+          "name": "Diego Klabjan",
+          "orgs": []
+        },
+        {
+          "name": "Patrick N Bless",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1906.11906v1",
+      "date": "2019-06-06T21:54:50Z",
+      "citation_count": 60,
+      "categories": [
+        "cs.CL",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2511.01129",
+      "score": 13.84436,
+      "title": "Boosting performance of computer vision applications through embedded GPUs on the edge",
+      "tldr": "This paper addresses the challenge of improving performance in computer vision applications on mobile devices by exploring the use of embedded GPUs in edge computing, aiming to enhance user experience through better resource utilization; it employs experimental evaluations comparing GPU and CPU performance, showing significant performance gains with GPUs; findings demonstrate that GPUs provide substantial computational advantages, leading to improved efficiency and user satisfaction in resource-constrained environments.",
+      "abstract": "Computer vision applications, especially those using augmented reality technology, are becoming quite popular in mobile devices. However, this type of application is known as presenting significant demands regarding resources. In order to enable its utilization in devices with more modest resources, edge computing can be used to offload certain high intensive tasks. Still, edge computing is usually composed of devices with limited capacity, which may impact in users quality of experience when using computer vision applications. This work proposes the use of embedded devices with graphics processing units (GPUs) to overcome such limitation. Experiments performed shown that GPUs can attain a performance gain when compared to using only CPUs, which guarantee a better experience to users using such kind of application.",
+      "authors": [
+        {
+          "name": "Fabio Diniz Rossi",
+          "orgs": [
+            "Federal Institute of Education, Science, and Technology Farroupilha (IFFar) - Alegrete - Brazil"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2511.01129v1",
+      "date": "2025-11-03",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV",
+        "cs.DC"
+      ]
+    },
+    {
+      "arxiv_id": "1412.6079",
+      "score": 13.777941,
+      "title": "Decoding the Text Encoding",
+      "tldr": "This paper addresses the gap in text visualization by proposing an automatic algorithm to decode word clouds and extract raw (word, value) data, contributing a novel method for improving data analysis and visualization design, and demonstrating effective extraction with low error rates.",
+      "abstract": "Word clouds and text visualization is one of the recent most popular and widely used types of visualizations. Despite the attractiveness and simplicity of producing word clouds, they do not provide a thorough visualization for the distribution of the underlying data. Therefore, it is important to redesign word clouds for improving their design choices and to be able to do further statistical analysis on data. In this paper we have proposed a fully automatic redesigning algorithm for word cloud visualization. Our proposed method is able to decode an input word cloud visualization and provides the raw data in the form of a list of (word, value) pairs. To the best of our knowledge our work is the first attempt to extract raw data from word cloud visualization. We have tested our proposed method both qualitatively and quantitatively. The results of our experiments show that our algorithm is able to extract the words and their weights effectively with considerable low error rate.",
+      "authors": [
+        {
+          "name": "Fereshteh Sadeghi",
+          "orgs": [
+            "Computer Science and Engineering, University of Washington"
+          ]
+        },
+        {
+          "name": "Hamid Izadinia",
+          "orgs": [
+            "Computer Science and Engineering, University of Washington"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1412.6079v1",
+      "date": "2014-12-16T04:34:16Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "1612.04748",
+      "score": 13.764423,
+      "title": "Linear feature detection algorithm for astronomical surveys - I. Algorithm description",
+      "tldr": "This paper introduces a new linear feature detection algorithm for astronomical surveys, addressing the gap in detecting linear features like asteroid and meteor trails, which are scientifically significant but often overlooked; the algorithm combines image preprocessing, object removal, and enhanced Hough transform with rectangle comparison to reduce false positives and improve detection efficiency; empirical results show improved performance in identifying both bright and dim linear features in SDSS data.",
+      "abstract": "Computer vision algorithms are powerful tools in astronomical image analyses, especially when automation of object detection and extraction is required. Modern object detection algorithms in astronomy are oriented towards detection of stars and galaxies, ignoring completely detection of existing linear features. With the emergence of wide-field sky surveys, linear features attract scientific interest as possible trails of fast flybys of near-Earth asteroids and meteors. In this work we describe a new linear feature detection algorithm designed specifically for implementation in Big Data astronomy. The algorithm combines a series of algorithmic steps that first remove other objects (stars, galaxies) from the image and then enhance the line to enable more efficient line detection with the Hough algorithm. The rate of false positives is greatly reduced thanks to a step that replaces possible line segments with rectangles and then compares lines fitted to the rectangles with the lines obtained directly from the image. The speed of the algorithm and its applicability in astronomical surveys are also discussed.",
+      "authors": [
+        {
+          "name": "Dino Bektesević",
+          "orgs": [
+            "Faculty of Science, University of Split, Rudjera Boškovića 33, HR-21000 Split, Croatia",
+            "Science and Society Synergy Institute, Bana Josipa Jelacica 22, HR-40000 Čakovec, Croatia"
+          ]
+        },
+        {
+          "name": "Dejan Vinković",
+          "orgs": [
+            "Faculty of Science, University of Split, Rudjera Boškovića 33, HR-21000 Split, Croatia",
+            "Science and Society Synergy Institute, Bana Josipa Jelacica 22, HR-40000 Čakovec, Croatia",
+            "HiperSfera d.o.o., Ilica 36, HR-10000 Zagreb, Croatia"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1612.04748v3",
+      "date": "2016-12-14T17:51:26Z",
+      "citation_count": 15,
+      "categories": [
+        "astro-ph.IM"
+      ]
+    },
+    {
+      "arxiv_id": "2510.08449",
+      "score": 13.499016,
+      "title": "Hierarchical Spatial Algorithms for High-Resolution Image Quantization and Feature Extraction",
+      "tldr": "This paper presents a hierarchical spatial image processing framework for high-resolution image quantization and feature extraction, addressing the need for deterministic and efficient preprocessing in computer vision by introducing grayscale quantization, color enhancement, sharpening, and geometric feature extraction techniques; it employs stepwise intensity transformation, histogram equalization in RGB and YCrCb color spaces, 3×3 convolution kernels, and bidirectional pipelines achieving 76.10% and 74.80% accuracy; the framework demonstrates robust performance with 81.87% similarity in cue isolation tasks.",
+      "abstract": "This study introduces a modular framework for spatial image processing, integrating grayscale quantization, color and brightness enhancement, image sharpening, bidirectional transformation pipelines, and geometric feature extraction. A stepwise intensity transformation quantizes grayscale images into eight discrete levels, producing a posterization effect that simplifies representation while preserving structural detail. Color enhancement is achieved via histogram equalization in both RGB and YCrCb color spaces, with the latter improving contrast while maintaining chrominance fidelity. Brightness adjustment is implemented through HSV value-channel manipulation, and image sharpening is performed using a 3 * 3 convolution kernel to enhance high-frequency details. A bidirectional transformation pipeline that integrates unsharp masking, gamma correction, and noise amplification achieved accuracy levels of 76.10% and 74.80% for the forward and reverse processes, respectively. Geometric feature extraction employed Canny edge detection, Hough-based line estimation (e.g., 51.50{\\\\deg} for billiard cue alignment), Harris corner detection, and morphological window localization. Cue isolation further yielded 81.87\\\\% similarity against ground truth images. Experimental evaluation across diverse datasets demonstrates robust and deterministic performance, highlighting its potential for real-time image analysis and computer vision.",
+      "authors": [
+        {
+          "name": "Noor Islam S. Mohammad",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2510.08449v1",
+      "date": "2025-10-09",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2111.14103",
+      "score": 13.408877,
+      "title": "CHARTER: heatmap-based multi-type chart data extraction",
+      "tldr": "This paper addresses the challenge of extracting tabular data from diverse chart types in documents, proposing a heatmap-based detection system that improves precision for non-rectangular charts like pie and line plots, and introduces novel algorithms for label matching and data extraction, achieving state-of-the-art results on benchmark datasets.",
+      "abstract": "The digital conversion of information stored in documents is a great source of knowledge. In contrast to the documents text, the conversion of the embedded documents graphics, such as charts and plots, has been much less explored. We present a method and a system for end-to-end conversion of document charts into machine readable tabular data format, which can be easily stored and analyzed in the digital domain. Our approach extracts and analyses charts along with their graphical elements and supporting structures such as legends, axes, titles, and captions. Our detection system is based on neural networks, trained solely on synthetic data, eliminating the limiting factor of data collection. As opposed to previous methods, which detect graphical elements using bounding-boxes, our networks feature auxiliary domain specific heatmaps prediction enabling the precise detection of pie charts, line and scatter plots which do not fit the rectangular bounding-box presumption. Qualitative and quantitative results show high robustness and precision, improving upon previous works on popular benchmarks",
+      "authors": [
+        {
+          "name": "Joseph Shtok",
+          "orgs": [
+            "IBM Research AI",
+            "Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Sivan Harary",
+          "orgs": [
+            "IBM Research AI",
+            "Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Ophir Azulai",
+          "orgs": [
+            "IBM Research AI",
+            "Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Adi Raz Goldfarb",
+          "orgs": [
+            "IBM Research AI",
+            "Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Assaf Arbelle",
+          "orgs": [
+            "IBM Research AI, Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Leonid Karlinsky",
+          "orgs": [
+            "IBM Research AI, Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2111.14103v1",
+      "date": "2021-11-28T11:01:21Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2505.20365",
+      "score": 13.317944,
+      "title": "A Comparison of Bacterial Colonies Count from Petri Dishes Utilizing Hough Transform and Traditional Manual Counting",
+      "tldr": "This paper compares automated Hough Transform colony counting with manual methods for E. coli, S. aureus, and P. aeruginosa on petri dishes, addressing the need for accurate and efficient bacterial enumeration; it employs Hough Circle Transform for automated detection, achieving 95%, 90%, and 84% accuracy for the respective bacteria; findings show a 59.7% mean difference from manual counts, with automated methods offering faster processing while maintaining high accuracy.",
+      "abstract": "Bacterial colony enumeration is an essential stage in microbiological research, allowing susceptibility to antibiotics assessment, monitoring of the environment, and clinical diagnostics. Traditional manual counting methods are costly and susceptible to human mistakes, prompting the creation of automated detection systems. This research compares the efficacy of the Hough Circle Transform method for automated colony detection to hand counting of E. coli, S. aureus, and P. aeruginosa colonies on 200 petri plates. These bacteria are among the most clinically relevant pathogens, with E. coli frequently causing urinary tract infections, S. aureus connected with skin and bloodstream infections, and P. aeruginosa a significant issue in hospital-acquired infections. When colonies were counted automatically without visual correction, the mean difference from manual counts was 59.7%, with overestimation and underestimation occurring in 29% and 45% of cases, whereas S. aureus and P. aeruginosa had higher error rates. The proposed methodology achieved an overall accuracy of 95% for E. coli, 90% for S. aureus, and 84% for P. aeruginosa, with associated recall values of 95%, 91%, and 86%. The F-measure remained continuously high, ranging between 0.85 and 0.95. Regarding efficiency, manual counting required an average of 70 seconds per plate, while automated counting without and with visual correction took 30 seconds. Despite issues with segmentation in high-density plates, automated approaches offer a potential approach to high-throughput bacterial enumeration by decreasing labor-intensive operations while retaining adequate accuracy. Future research should enhance colony algorithmic segmentation and picture preprocessing approaches to improve detection performance, especially on crowded petri plates.",
+      "authors": [
+        {
+          "name": "Areesha Rehman",
+          "orgs": [
+            "Department of Pharmacy Practice, Bahauddin Zakariya University, Multan, 60000, Punjab, Pakistan"
+          ]
+        },
+        {
+          "name": "Zikria Saleem",
+          "orgs": [
+            "Department of Pharmacy Practice, Bahauddin Zakariya University, Multan, 60000, Punjab, Pakistan"
+          ]
+        },
+        {
+          "name": "Jarrar Amjad",
+          "orgs": [
+            "Department of Computer Science, Kansas State University, Manhattan, KS 66506, USA"
+          ]
+        },
+        {
+          "name": "Syed Rehan Shah",
+          "orgs": [
+            "Department of Computer Science, National University of Modern Languages, Islamabad 44000, Pakistan"
+          ]
+        },
+        {
+          "name": "Kamran Siddique",
+          "orgs": [
+            "Department of Computer Science and Engineering, University of Alaska Anchorage, Anchorage, United States"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2505.20365v1",
+      "date": "2025-05-26T10:13:11Z",
+      "citation_count": 0,
+      "categories": [
+        "q-bio.QM"
+      ]
+    },
+    {
+      "arxiv_id": "1908.09009",
+      "score": 13.251093,
+      "title": "Development of a Robotic System for Automatic Wheel Removal and Fitting",
+      "tldr": "This paper presents a robotic system for automatic wheel removal and fitting to address the safety risks and inefficiencies of manual tyre changing, proposing image processing algorithms like Circular Hough Transform and Camshift for real-time detection, contributing to safer and more efficient tyre changing processes with successful implementation of object detection software, demonstrating practical significance in industrial automation.",
+      "abstract": "This paper discusses the image processing and computer vision algorithms for real time detection and tracking of a sample wheel of a vehicle. During the manual tyre changing process, spinal and other muscular injuries are common and even more serious injuries have been recorded when occasionally, tyres fail (burst) during this process. It, therefore, follows that the introduction of a robotic system to take over this process would be a welcome development. This work discusses various useful applicable algorithms, Circular Hough Transform (CHT) as well as Continuously adaptive mean shift (Camshift) and provides some of the software solutions which can be deployed with a robotic mechanical arm to make the task of tyre changing faster, safer and more efficient. Image acquisition and software to accurately detect and classify specific objects of interest were implemented successfully, outcomes were discussed and areas for further studies suggested.",
+      "authors": [
+        {
+          "name": "Gideon Gbenga Oladipurpo",
+          "orgs": [
+            "Engineering and Physical Sciences School",
+            "Heriot Watt University",
+            "Edinburgh, United Kingdom"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1908.09009v1",
+      "date": "2019-08-19T09:24:59Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV",
+        "cs.RO",
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "2408.01576",
+      "score": 13.152576,
+      "title": "Autonomous Integration of Bench-Top Wet Lab Equipment",
+      "tldr": "This paper presents a system for automating bench-top centrifuge operations using computer vision and a gantry robot, addressing the high cost and limited flexibility of lab automation by enabling integration of existing equipment, with experimental results showing successful test tube detection in 20 trials and 40 insertion/removal operations.",
+      "abstract": "Laboratory automation is an expensive and complicated endeavor with limited inflexible options for small-scale labs. We develop a prototype system for tending to a bench-top centrifuge using computer vision methods for color detection and circular Hough Transforms to detect and localize centrifuge buckets. Initial results show that the prototype is capable of automating the usage of regular bench-top lab equipment.",
+      "authors": [
+        {
+          "name": "Zachary Logan",
+          "orgs": []
+        },
+        {
+          "name": "Kam Undieh",
+          "orgs": []
+        },
+        {
+          "name": "Mohammad Goli",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2408.01576v1",
+      "date": "2024-08-02T21:15:02Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2601.02965",
+      "score": 12.872499,
+      "title": "Low-Resource Heuristics for Bahnaric Optical Character Recognition Improvement",
+      "tldr": "This paper addresses the challenge of Bahnar language digitization through OCR improvement, aiming to enhance recognition accuracy in low-resource settings due to limited data and degraded text quality; it employs table and non-table detection combined with probability-based post-processing, contributing a method that increases accuracy from 72.86% to 79.26%; the findings support language preservation efforts and offer a framework applicable to other minority languages.",
+      "abstract": "Bahnar, a minority language spoken across Vietnam, Cambodia, and Laos, faces significant preservation challenges due to limited research and data availability. This study addresses the critical need for accurate digitization of Bahnar language documents through optical character recognition (OCR) technology. Digitizing scanned paper documents poses significant challenges, as degraded image quality from broken or blurred areas introduces considerable OCR errors that compromise information retrieval systems. We propose a comprehensive approach combining advanced table and non-table detection techniques with probability-based post-processing heuristics to enhance recognition accuracy. Our method first applies detection algorithms to improve input data quality, then employs probabilistic error correction on OCR output. Experimental results indicate a substantial improvement, with recognition accuracy increasing from 72.86% to 79.26%. This work contributes valuable resources for Bahnar language preservation and provides a framework applicable to other minority language digitization efforts.",
+      "authors": [
+        {
+          "name": "Tho Quan",
+          "orgs": [
+            "Ho Chi Minh City University of Technology"
+          ]
+        },
+        {
+          "name": "Phuoc Pham",
+          "orgs": [
+            "Ho Chi Minh City University of Technology"
+          ]
+        },
+        {
+          "name": "Phat Tran",
+          "orgs": [
+            "Ho Chi Minh City University of Technology"
+          ]
+        },
+        {
+          "name": "Hung Trinh",
+          "orgs": [
+            "Ho Chi Minh City University of Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2601.02965v1",
+      "date": "2026-01-06",
+      "citation_count": 0,
+      "categories": [
+        "cs.CL",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2603.19830",
+      "score": 12.773064,
+      "title": "Real-Time Structural Detection for Indoor Navigation from 3D LiDAR Using Bird's-Eye-View Images",
+      "tldr": "This paper addresses the challenge of real-time structural detection for indoor navigation using 3D LiDAR on resource-constrained robots, proposing a lightweight BEV-based framework that balances computational efficiency and robustness by comparing classical geometric methods and YOLO-OBB, achieving 10 Hz performance on low-power SBC without GPU acceleration.",
+      "abstract": "Efficient structural perception is essential for mapping and autonomous navigation on resource-constrained robots. Existing 3D methods are computationally prohibitive, while traditional 2D geometric approaches lack robustness. This paper presents a lightweight, real-time framework that projects 3D LiDAR data into 2D Bird's-Eye-View (BEV) images to enable efficient detection of structural elements relevant to mapping and navigation. Within this representation, we systematically evaluate several feature extraction strategies, including classical geometric techniques (Hough Transform, RANSAC, and LSD) and a deep learning detector based on YOLO-OBB. The resulting detections are integrated through a spatiotemporal fusion module that improves stability and robustness across consecutive frames. Experiments conducted on a standard mobile robotic platform highlight clear performance trade-offs. Classical methods such as Hough and LSD provide fast responses but exhibit strong sensitivity to noise, with LSD producing excessive segment fragmentation that leads to system congestion. RANSAC offers improved robustness but fails to meet real-time constraints. In contrast, the YOLO-OBB-based approach achieves the best balance between robustness and computational efficiency, maintaining an end-to-end latency (satisfying 10 Hz operation) while effectively filtering cluttered observations in a low-power single-board computer (SBC) without using GPU acceleration. The main contribution of this work is a computationally efficient BEV-based perception pipeline enabling reliable real-time structural detection from 3D LiDAR on resource-constrained robotic platforms that cannot rely on GPU-intensive processing. The source code and pre-trained models are publicly available.",
+      "authors": [
+        {
+          "name": "Guanliang Li",
+          "orgs": [
+            "Universidad Politécnica de Madrid"
+          ]
+        },
+        {
+          "name": "Pedro Espinosa-Angulo",
+          "orgs": [
+            "Universidad Politécnica de Madrid"
+          ]
+        },
+        {
+          "name": "David Perez-Saura",
+          "orgs": [
+            "Universidad Politécnica de Madrid"
+          ]
+        },
+        {
+          "name": "Santiago Tapia-Fernández",
+          "orgs": [
+            "Universidad Politécnica de Madrid"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2603.19830v2",
+      "date": "2026-03-20",
+      "citation_count": 0,
+      "categories": [
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2602.10138",
+      "score": 12.756746,
+      "title": "Multimodal Information Fusion for Chart Understanding: A Survey of MLLMs -- Evolution, Limitations, and Cognitive Enhancement",
+      "tldr": "This paper reviews MLLMs in chart understanding, addressing the challenge of integrating visual and textual data in charts and the limitations of existing models, contributing a structured taxonomy of datasets and methodologies, and highlighting advancements in alignment techniques and cognitive enhancement strategies.",
+      "abstract": "Chart understanding is a quintessential information fusion task, requiring the seamless integration of graphical and textual data to extract meaning. The advent of Multimodal Large Language Models (MLLMs) has revolutionized this domain, yet the landscape of MLLM-based chart analysis remains fragmented and lacks systematic organization. This survey provides a comprehensive roadmap of this nascent frontier by structuring the domain's core components. We begin by analyzing the fundamental challenges of fusing visual and linguistic information in charts. We then categorize downstream tasks and datasets, introducing a novel taxonomy of canonical and non-canonical benchmarks to highlight the field's expanding scope. Subsequently, we present a comprehensive evolution of methodologies, tracing the progression from classic deep learning techniques to state-of-the-art MLLM paradigms that leverage sophisticated fusion strategies. By critically examining the limitations of current models, particularly their perceptual and reasoning deficits, we identify promising future directions, including advanced alignment techniques and reinforcement learning for cognitive enhancement. This survey aims to equip researchers and practitioners with a structured understanding of how MLLMs are transforming chart information fusion and to catalyze progress toward more robust and reliable systems.",
+      "authors": [
+        {
+          "name": "Tao Wang",
+          "orgs": []
+        },
+        {
+          "name": "Jian Zhao",
+          "orgs": []
+        },
+        {
+          "name": "Jiancheng Lv",
+          "orgs": []
+        },
+        {
+          "name": "Zhihang Yi",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.10138v1",
+      "date": "2026-02-08",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2106.07627",
+      "score": 12.655989,
+      "title": "Toward Automatic Interpretation of 3D Plots",
+      "tldr": "This paper addresses the challenge of teaching machines to reverse-engineer 3D grid-marked surfaces for data recovery, aiming to automate interpretation of scientific plots where existing tools are lacking; it introduces a deep neural net trained on a 98.6k-image SurfaceGrid dataset to estimate shape from synthetic 3D plots with varied grids and viewpoints, achieving successful recovery of quantitative data and enabling automated processing of technical publications.",
+      "abstract": "This paper explores the challenge of teaching a machine how to reverse-engineer the grid-marked surfaces used to represent data in 3D surface plots of two-variable functions. These are common in scientific and economic publications; and humans can often interpret them with ease, quickly gleaning general shape and curvature information from the simple collection of curves. While machines have no such visual intuition, they do have the potential to accurately extract the more detailed quantitative data that guided the surface's construction. We approach this problem by synthesizing a new dataset of 3D grid-marked surfaces (SurfaceGrid) and training a deep neural net to estimate their shape. Our algorithm successfully recovers shape information from synthetic 3D surface plots that have had axes and shading information removed, been rendered with a variety of grid types, and viewed from a range of viewpoints.",
+      "authors": [
+        {
+          "name": "Laura E. Brandt",
+          "orgs": []
+        },
+        {
+          "name": "William T. Freeman",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2106.07627v1",
+      "date": "2021-06-14T17:32:53Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2105.03804",
+      "score": 12.547257,
+      "title": "Slash or burn: Power line and vegetation classification for wildfire prevention",
+      "tldr": "This paper addresses wildfire prevention by classifying power lines and vegetation using CNNs with Google Street View images, aiming to prioritize vegetation management and map utility assets; it employs HOG and Hough transforms, transfer learning on VGG11, and feature engineering to achieve 88.88% accuracy in detecting risky vegetation overgrowth; the results provide a scalable, cost-effective solution for utility companies to enhance safety and reduce fire risks.",
+      "abstract": "Electric utilities are struggling to manage increasing wildfire risk in a hotter and drier climate. Utility transmission and distribution lines regularly ignite destructive fires when they make contact with surrounding vegetation. Trimming vegetation to maintain the separation from utility assets is as critical to safety as it is difficult. Each utility has tens of thousands of linear miles to manage, poor knowledge of where those assets are located, and no way to prioritize trimming. Feature-enhanced convolutional neural networks (CNNs) have proven effective in this problem space. Histograms of oriented gradients (HOG) and Hough transforms are used to increase the salience of the linear structures like power lines and poles. Data is frequently taken from drone or satellite footage, but Google Street View offers an even more scalable and lower cost solution. This paper uses $1,320$ images scraped from Street View, transfer learning on popular CNNs, and feature engineering to place images in one of three classes: (1) no utility systems, (2) utility systems with no overgrown vegetation, or (3) utility systems with overgrown vegetation. The CNN output thus yields a prioritized vegetation management system and creates a geotagged map of utility assets as a byproduct. Test set accuracy with reached $80.15\\%$ using VGG11 with a trained first layer and classifier, and a model ensemble correctly classified $88.88\\%$ of images with risky vegetation overgrowth.",
+      "authors": [
+        {
+          "name": "Austin Park",
+          "orgs": [
+            "Stanford University",
+            "Department of Energy Resources Engineering"
+          ]
+        },
+        {
+          "name": "Farzaneh Rajabi",
+          "orgs": [
+            "Stanford University",
+            "Department of Energy Resources Engineering"
+          ]
+        },
+        {
+          "name": "Ross Weber",
+          "orgs": [
+            "Stanford University",
+            "Department of Energy Resources Engineering"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2105.03804v1",
+      "date": "2021-05-09T00:34:37Z",
+      "citation_count": 5,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2408.16123",
+      "score": 12.479499,
+      "title": "ChartEye: A Deep Learning Framework for Chart Information Extraction",
+      "tldr": "This paper presents a deep learning framework for chart information extraction, addressing the challenge of automated chart understanding by improving chart-type classification, text detection, and text-role classification through hierarchical vision transformers, YOLOv7, and Super Resolution GANs, achieving F1-scores of 0.97, 0.91, and a mean Average Precision of 0.95, offering a generic solution for diverse chart types with enhanced text recognition.",
+      "abstract": "The widespread use of charts and infographics as a means of data visualization in various domains has inspired recent research in automated chart understanding. However, information extraction from chart images is a complex multitasked process due to style variations and, as a consequence, it is challenging to design an end-to-end system. In this study, we propose a deep learning-based framework that provides a solution for key steps in the chart information extraction pipeline. The proposed framework utilizes hierarchal vision transformers for the tasks of chart-type and text-role classification, while YOLOv7 for text detection. The detected text is then enhanced using Super Resolution Generative Adversarial Networks to improve the recognition output of the OCR. Experimental results on a benchmark dataset show that our proposed framework achieves excellent performance at every stage with F1-scores of 0.97 for chart-type classification, 0.91 for text-role classification, and a mean Average Precision of 0.95 for text detection.",
+      "authors": [
+        {
+          "name": "Osama Mustafa",
+          "orgs": [
+            "Center of Excellence in AI",
+            "Bahria University",
+            "Islamabad, Pakistan"
+          ]
+        },
+        {
+          "name": "Muhammad Khizer Ali",
+          "orgs": [
+            "Center of Excellence in AI",
+            "Bahria University",
+            "Islamabad, Pakistan"
+          ]
+        },
+        {
+          "name": "Momina Moetesum",
+          "orgs": [
+            "School of Electrical Engineering and Computer Science",
+            "National University of Sciences and Technology (NUST)",
+            "Islamabad, Pakistan"
+          ]
+        },
+        {
+          "name": "Imran Siddiqi",
+          "orgs": [
+            "Xynoptik Pty Limited",
+            "Melborne, VIC, Australia"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2408.16123v1",
+      "date": "2024-08-28T20:22:39Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2603.15030",
+      "score": 12.389303,
+      "title": "VTC-Bench: Evaluating Agentic Multimodal Models via Compositional Visual Tool Chaining",
+      "tldr": "This paper introduces VTC-Bench, a benchmark for evaluating agentic multimodal models' tool-use proficiency in complex visual tasks, addressing the gap in assessing multi-tool composition and real-world adaptability; it uses 32 OpenCV-based operations and 680 cognitive-hierarchy problems to rigorously test MLLMs, revealing that even top models like Gemini-3.0-Pro score only 51.2%, highlighting critical limitations in tool adaptation and multi-step planning.",
+      "abstract": "Recent advancements extend Multimodal Large Language Models (MLLMs) beyond standard visual question answering to utilizing external tools for advanced visual tasks. Despite this progress, precisely executing and effectively composing diverse tools for complex tasks remain persistent bottleneck. Constrained by sparse tool-sets and simple tool-use trajectories, existing benchmarks fail to capture complex and diverse tool interactions, falling short in evaluating model performance under practical, real-world conditions. To bridge this gap, we introduce VisualToolChain-Bench(VTC-Bench), a comprehensive benchmark designed to evaluate tool-use proficiency in MLLMs. To align with realistic computer vision pipelines, our framework features 32 diverse OpenCV-based visual operations. This rich tool-set enables extensive combinations, allowing VTC-Bench to rigorously assess multi-tool composition and long-horizon, multi-step plan execution. For precise evaluation, we provide 680 curated problems structured across a nine-category cognitive hierarchy, each with ground-truth execution trajectories. Extensive experiments on 19 leading MLLMs reveal critical limitations in current models' visual agentic capabilities. Specifically, models struggle to adapt to diverse tool-sets and generalize to unseen operations, with the leading model Gemini-3.0-Pro only achieving 51% on our benchmark. Furthermore, multi-tool composition remains a persistent challenge. When facing complex tasks, models struggle to formulate efficient execution plans, relying heavily on a narrow, suboptimal subset of familiar functions rather than selecting the optimal tools. By identifying these fundamental challenges, VTC-Bench establishes a rigorous baseline to guide the development of more generalized visual agentic models.",
+      "authors": [
+        {
+          "name": "Xuanyu Zhu",
+          "orgs": [
+            "PKU"
+          ]
+        },
+        {
+          "name": "Yuhao Dong",
+          "orgs": [
+            "NTU"
+          ]
+        },
+        {
+          "name": "Rundong Wang",
+          "orgs": [
+            "USTC"
+          ]
+        },
+        {
+          "name": "Yang Shi",
+          "orgs": [
+            "PKU"
+          ]
+        },
+        {
+          "name": "Zhipeng Wu",
+          "orgs": [
+            "CQU"
+          ]
+        },
+        {
+          "name": "Yinlun Peng",
+          "orgs": [
+            "NUDT"
+          ]
+        },
+        {
+          "name": "YiFan Zhang",
+          "orgs": [
+            "CASIA"
+          ]
+        },
+        {
+          "name": "Yihang Lou",
+          "orgs": [
+            "PKU"
+          ]
+        },
+        {
+          "name": "Yuanxing Zhang",
+          "orgs": [
+            "PKU"
+          ]
+        },
+        {
+          "name": "Ziwei Liu",
+          "orgs": [
+            "NTU"
+          ]
+        },
+        {
+          "name": "Yan Bai",
+          "orgs": [
+            "Meituan",
+            "NUDT"
+          ]
+        },
+        {
+          "name": "Yuan Zhou",
+          "orgs": [
+            "CASIA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2603.15030v2",
+      "date": "2026-03-16",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI"
+      ]
+    },
+    {
+      "arxiv_id": "2511.00110",
+      "score": 12.356778,
+      "title": "Chain of Time: In-Context Physical Simulation with Image Generation Models",
+      "tldr": "This paper introduces Chain of Time, a cognitively-inspired method for enhancing physical simulation in image generation models by generating intermediate images, addressing the gap in understanding how these models simulate physical properties over time, and finds that it improves performance across motion, gravity, fluid dynamics, and collisions.",
+      "abstract": "We propose a novel cognitively-inspired method to improve and interpret physical simulation in vision-language models. Our ``Chain of Time\" method involves generating a series of intermediate images during a simulation, and it is motivated by in-context reasoning in machine learning, as well as mental simulation in humans. Chain of Time is used at inference time, and requires no additional fine-tuning. We apply the Chain-of-Time method to synthetic and real-world domains, including 2-D graphics simulations and natural 3-D videos. These domains test a variety of particular physical properties, including velocity, acceleration, fluid dynamics, and conservation of momentum. We found that using Chain-of-Time simulation substantially improves the performance of a state-of-the-art image generation model. Beyond examining performance, we also analyzed the specific states of the world simulated by an image model at each time step, which sheds light on the dynamics underlying these simulations. This analysis reveals insights that are hidden from traditional evaluations of physical reasoning, including cases where an image generation model is able to simulate physical properties that unfold over time, such as velocity, gravity, and collisions. Our analysis also highlights particular cases where the image generation model struggles to infer particular physical parameters from input images, despite being capable of simulating relevant physical processes.",
+      "authors": [
+        {
+          "name": "YingQiao Wang",
+          "orgs": [
+            "Department of Psychology, Harvard University",
+            "Sakana AI"
+          ]
+        },
+        {
+          "name": "Eric Bigelow",
+          "orgs": [
+            "Department of Psychology, Harvard University",
+            "NTT Research"
+          ]
+        },
+        {
+          "name": "Boyi Li",
+          "orgs": [
+            "Department of Computer Science, UC Berkeley",
+            "Nvidia Research"
+          ]
+        },
+        {
+          "name": "Tomer Ullman",
+          "orgs": [
+            "Department of Psychology, Harvard University",
+            "Center for Brain Science, Harvard University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2511.00110v1",
+      "date": "2025-10-30",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1906.01299",
+      "score": 12.199124,
+      "title": "Grid-based Localization Stack for Inspection Drones towards Automation of Large Scale Warehouse Systems",
+      "tldr": "This paper addresses the challenge of drone localization in GPS-denied warehouse environments by developing a grid-based navigation system using low-cost monocular cameras, contributing a robust line detection framework with skeletonization and centroid strategies that works under varying conditions, and demonstrating its effectiveness through simulation and real-world experiments.",
+      "abstract": "SLAM based techniques are often adopted for solving the navigation problem for the drones in GPS denied environment. Despite the widespread success of these approaches, they have not yet been fully exploited for automation in a warehouse system due to expensive sensors and setup requirements. This paper focuses on the use of low-cost monocular camera-equipped drones for performing warehouse management tasks like inventory scanning and position update. The methods introduced are at par with the existing state of warehouse environment present today, that is, the existence of a grid network for the ground vehicles, hence eliminating any additional infrastructure requirement for drone deployment. As we lack scale information, that in itself forbids us to use any 3D techniques, we focus more towards optimizing standard image processing algorithms like the thick line detection and further developing it into a fast and robust grid localization framework. In this paper, we show different line detection algorithms, their significance in grid localization and their limitations. We further extend our proposed implementation towards a real-time navigation stack for an actual warehouse inspection case scenario. Our line detection method using skeletonization and centroid strategy works considerably even with varying light conditions, line thicknesses, colors, orientations, and partial occlusions. A simple yet effective Kalman Filter has been used for smoothening the {\\rho} and {\\theta} outputs of the two different line detection methods for better drone control while grid following. A generic strategy that handles the navigation of the drone on a grid for completion of the allotted task is also developed. Based on the simulation and real-life experiments, the final developments on the drone localization and navigation in a structured environment are discussed.",
+      "authors": [
+        {
+          "name": "Ashwary Anand",
+          "orgs": [
+            "Indian Institute of Technology (IIT) Kharagpur, West Bengal, India - 721302"
+          ]
+        },
+        {
+          "name": "Shubh Agrawal",
+          "orgs": [
+            "Indian Institute of Technology (IIT) Kharagpur, West Bengal, India - 721302"
+          ]
+        },
+        {
+          "name": "Shivang Agrawal",
+          "orgs": [
+            "Indian Institute of Technology (IIT) Kharagpur, West Bengal, India - 721302"
+          ]
+        },
+        {
+          "name": "Aman Chandra",
+          "orgs": [
+            "Indian Institute of Technology (IIT) Kharagpur, West Bengal, India - 721302"
+          ]
+        },
+        {
+          "name": "Krishnakant Deshmukh",
+          "orgs": [
+            "Indian Institute of Technology (IIT) Kharagpur, West Bengal, India - 721302"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1906.01299v1",
+      "date": "2019-06-04T09:42:43Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.RO",
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "1906.06281",
+      "score": 12.1747,
+      "title": "Universal Barcode Detector via Semantic Segmentation",
+      "tldr": "This paper presents a semantic segmentation-based barcode detector for simultaneous identification of all barcode types in images, addressing the need for fast and robust barcode reading in diverse scenarios; it uses a deep learning model to achieve state-of-the-art detection rate of 0.995 on the ArTe-Lab dataset and supports real-time processing on CPU; the detector improves efficiency by eliminating user guidance and enabling automatic barcode type identification.",
+      "abstract": "Barcodes are used in many commercial applications, thus fast and robust reading is important. There are many different types of barcodes, some of them look similar while others are completely different. In this paper we introduce new fast and robust deep learning detector based on semantic segmentation approach. It is capable of detecting barcodes of any type simultaneously both in the document scans and in the wild by means of a single model. The detector achieves state-of-the-art results on the ArTe-Lab 1D Medium Barcode Dataset with detection rate 0.995. Moreover, developed detector can deal with more complicated object shapes like very long but narrow or very small barcodes. The proposed approach can also identify types of detected barcodes and performs at real-time speed on CPU environment being much faster than previous state-of-the-art approaches.",
+      "authors": [
+        {
+          "name": "Andrey Zharkov",
+          "orgs": [
+            "R&D Department",
+            "ABBYY Production LLC",
+            "Phystech School of Applied Mathematics and Informatics",
+            "Moscow Institute of Physics and Technology (National Research University)"
+          ]
+        },
+        {
+          "name": "Ivan Zagaynov",
+          "orgs": [
+            "R&D Department",
+            "ABBYY Production LLC",
+            "Phystech School of Applied Mathematics and Informatics",
+            "Moscow Institute of Physics and Technology (National Research University)"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1906.06281v2",
+      "date": "2019-06-14T16:44:10Z",
+      "citation_count": 27,
+      "categories": [
+        "cs.CV",
+        "cs.LG",
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "2511.19040",
+      "score": 12.138297,
+      "title": "Machine Learning Based Identification of Solar Disk and Plages in Kodaikanal Solar Observatory Historical Suncharts",
+      "tldr": "This paper presents a CNN-based method for identifying solar disks and plages in KoSO suncharts (1909-2007), addressing the gap in historical solar magnetic data by enabling automated detection of plages across 9 solar cycles; the model achieves accurate segmentation and shows good agreement with Ca II K observations, demonstrating potential for enhancing long-term solar variability studies.",
+      "abstract": "Kodaikanal Solar Observatory (KoSO) is one of the oldest solar observatories, possessing an archive of multi-wavelength solar observations, including white light, Ca II K, and H-alpha images spanning over a century. In addition to these observations, KoSO has preserved hand-drawn suncharts (1904-2022), on which various solar features such as sunspots, plages, filaments, and prominences are marked on the Stonyhurst grid with distinct colour coding. In this study, we present the first comprehensive result that includes the entire data set from these suncharts using a supervised Machine Learning model called \"Convolutional Neural Networks (CNNs)\", firstly to identify the solar disks from the charts (1909-2007), secondly to identify the plages, spanning 9 solar cycles (1916-2007). We train the CNN with the manually identified solar disk and plage. We first detect the solar limb and the North-South line in the suncharts, which enables the extraction of disk centre coordinates, radius, and P-angle. Following that, we use a CNN similar architecture to achieve accurate image segmentation for the identification of plages. We compare plage areas derived from the suncharts with those obtained from Ca II K full-disk observations, and find good agreement that demonstrates the potential application of such an ML technique for historical data. The results of this study further demonstrate the potential application of sunchart data to fill the existing data gaps in the KoSO multi-wavelength observations and contribute toward constructing a composite series over the last century.",
+      "authors": [
+        {
+          "name": "Subhamoy Chatterjee",
+          "orgs": [
+            "Southwest Research Institute, Boulder, CO 80302, USA"
+          ]
+        },
+        {
+          "name": "Srinjana Routh",
+          "orgs": [
+            "Aryabhatta Research Institute of Observational Sciences, Nainital-263002, Uttarakhand, India",
+            "Department of Applied Physics, Mahatma Jyotiba Phule Rohilkhand University, Bareilly-243006, Uttar Pradesh, India"
+          ]
+        },
+        {
+          "name": "Hemapriya Raju",
+          "orgs": [
+            "Tata Institute of Fundamental Research, Colaba, Mumbai 400005, Maharashtra"
+          ]
+        },
+        {
+          "name": "Manjunath Hegde",
+          "orgs": [
+            "Indian Institute of Astrophysics, Koramangala, Bangalore 560034, India"
+          ]
+        },
+        {
+          "name": "Aditya Priyadarshi",
+          "orgs": [
+            "Curtin University, Karawara, Western Australia, Australia"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2511.19040v1",
+      "date": "2025-11-24",
+      "citation_count": 0,
+      "categories": [
+        "astro-ph.SR"
+      ]
+    },
+    {
+      "arxiv_id": "2101.01362",
+      "score": 12.103738,
+      "title": "High Precision Medicine Bottles Vision Online Inspection System and Classification Based on Multi-Features and Ensemble Learning via Independence Test",
+      "tldr": "This paper addresses the problem of high-precision online inspection of medicine bottles in production lines, where defects are diverse, data is imbalanced, and glass material properties pose challenges; it proposes an implantable visual system with a tunnel structure and an ensemble learning method based on multi-features and independence test, achieving high precision detection on large-scale datasets; results show the system effectively handles noise and improves detection accuracy for various defect sub-classes.",
+      "abstract": "To address the problem of online automatic inspection of drug liquid bottles in production line, an implantable visual inspection system is designed and the ensemble learning algorithm for detection is proposed based on multi-features fusion. A tunnel structure is designed for visual inspection system, which allows bottles inspection to be automated without changing original",
+      "authors": [
+        {
+          "name": "MA Le",
+          "orgs": []
+        },
+        {
+          "name": "Wu Xiaoyue",
+          "orgs": []
+        },
+        {
+          "name": "LI Zhiwei",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2101.01362v2",
+      "date": "2021-01-05T06:19:27Z",
+      "citation_count": 9,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1708.04879",
+      "score": 12.088124,
+      "title": "Interstitial Content Detection",
+      "tldr": "This paper addresses the detection of interstitial content, a significant issue in web user experience, by employing computer vision techniques and machine learning to develop a labelled dataset and model, contributing to the field of web content analysis and offering potential integration into the Servo browser engine for improved ad detection.",
+      "abstract": "Interstitial content is online content which grays out, or otherwise obscures the main page content. In this technical report, we discuss exploratory research into detecting the presence of interstitial content in web pages. We discuss the use of computer vision techniques to detect interstitials, and the potential use of these techniques to provide a labelled dataset for machine learning.",
+      "authors": [
+        {
+          "name": "Elizabeth Lucas",
+          "orgs": [
+            "Mozilla Research"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1708.04879v1",
+      "date": "2017-08-13T19:09:02Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV",
+        "cs.CY"
+      ]
+    },
+    {
+      "arxiv_id": "2506.21762",
+      "score": 12.084305,
+      "title": "ViStruct: Simulating Expert-Like Reasoning Through Task Decomposition and Visual Attention Cues",
+      "tldr": "This paper introduces ViStruct, an automated pipeline that simulates expert-like reasoning in data visualization by decomposing tasks into structured steps and highlighting relevant chart regions, addressing the gap in modeling implicit expert strategies; it leverages large language and vision-language models to achieve this, offering a replicable model validated on 45 tasks across 12 chart types with expert validation; results show ViStruct produces interpretable and expert-aligned reasoning sequences, aiding in the development of more transparent visualization tools.",
+      "abstract": "Data visualization tasks often require multi-step reasoning, and the interpretive strategies experts use, such as decomposing complex goals into smaller subtasks and selectively attending to key chart regions are rarely made explicit. ViStruct is an automated pipeline that simulates these expert behaviours by breaking high-level visual questions into structured analytic steps and highlighting semantically relevant chart areas. Leveraging large language and vision-language models, ViStruct identifies chart components, maps subtasks to spatial regions, and presents visual attention cues to externalize expert-like reasoning flows. While not designed for direct novice instruction, ViStruct provides a replicable model of expert interpretation that can inform the development of future visual literacy tools. We evaluate the system on 45 tasks across 12 chart types and validate its outputs with trained visualization users, confirming its ability to produce interpretable and expert-aligned reasoning sequences.",
+      "authors": [
+        {
+          "name": "Oliver Huang",
+          "orgs": []
+        },
+        {
+          "name": "Carolina Nobre",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2506.21762v1",
+      "date": "2025-06-26T20:40:20Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2304.13425",
+      "score": 9.14698,
+      "title": "Learnable Ophthalmology SAM",
+      "tldr": "This paper addresses the challenge of multi-modal ophthalmology image segmentation by proposing a learnable prompt layer for Segment Anything (SAM), improving segmentation accuracy across four tasks on nine datasets with one-shot fine-tuning, and demonstrating its generalization ability across different modalities and datasets.",
+      "abstract": "Segmentation is vital for ophthalmology image analysis. But its various modal images hinder most of the existing segmentation algorithms applications, as they rely on training based on a large number of labels or hold weak generalization ability. Based on Segment Anything (SAM), we propose a simple but effective learnable prompt layer suitable for multiple target segmentation in ophthalmology multi-modal images, named Learnable Ophthalmology Segment Anything (SAM). The learnable prompt layer learns medical prior knowledge from each transformer layer. During training, we only train the prompt layer and task head based on a one-shot mechanism. We demonstrate the effectiveness of our thought based on four medical segmentation tasks based on nine publicly available datasets. Moreover, we only provide a new improvement thought for applying the existing fundamental CV models in the medical field. Our codes are available at \\href{https://github.com/Qsingle/LearnablePromptSAM}{website}.",
+      "authors": [
+        {
+          "name": "Zhongxi Qiu",
+          "orgs": [
+            "Research Institute of Trustworthy Autonomous Systems",
+            "Department of Computer Science and Engineering, Southern University of Science and Technology, Shenzhen 518055, China"
+          ]
+        },
+        {
+          "name": "Yan Hu",
+          "orgs": [
+            "Research Institute of Trustworthy Autonomous Systems",
+            "Department of Computer Science and Engineering, Southern University of Science and Technology, Shenzhen 518055, China"
+          ]
+        },
+        {
+          "name": "Heng Li",
+          "orgs": [
+            "Research Institute of Trustworthy Autonomous Systems",
+            "Department of Computer Science and Engineering, Southern University of Science and Technology, Shenzhen 518055, China"
+          ]
+        },
+        {
+          "name": "Jiang Liu",
+          "orgs": [
+            "Research Institute of Trustworthy Autonomous Systems",
+            "Department of Computer Science and Engineering, Southern University of Science and Technology, Shenzhen 518055, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2304.13425v1",
+      "date": "2023-04-26T10:14:03Z",
+      "citation_count": 35,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2010.02319",
+      "score": 7.553693,
+      "title": "Tensor Fields for Data Extraction from Chart Images: Bar Charts and Scatter Plots",
+      "tldr": "This paper addresses the challenge of data extraction from bar charts and scatter plots by proposing a computational model using positive semidefinite second-order tensor fields, contributing a method for degenerate point extraction to automate levels A1 and A2 of Kimura's statistical ability scheme, showing tensor voting effectively extracts data with high accuracy for these chart types.",
+      "abstract": "Charts are an essential part of both graphicacy (graphical literacy), and statistical literacy. As chart understanding has become increasingly relevant in data science, automating chart analysis by processing raster images of the charts has become a significant problem. Automated chart reading involves data extraction and contextual understanding of the data from chart images. In this paper, we perform the first step of determining the computational model of chart images for data extraction for selected chart types, namely, bar charts, and scatter plots. We demonstrate the use of positive semidefinite second-order tensor fields as an effective model. We identify an appropriate tensor field as the model and propose a methodology for the use of its degenerate point extraction for data extraction from chart images. Our results show that tensor voting is effective for data extraction from bar charts and scatter plots, and histograms, as a special case of bar charts.",
+      "authors": [
+        {
+          "name": "Jaya Sreevalsan-Nair",
+          "orgs": [
+            "Graphics-Visualization-Computing Lab",
+            "International Institute of Information Technology Bangalore",
+            "Karnataka 560100, India"
+          ]
+        },
+        {
+          "name": "Komal Dadhich",
+          "orgs": [
+            "Graphics-Visualization-Computing Lab",
+            "International Institute of Information Technology Bangalore",
+            "Karnataka 560100, India"
+          ]
+        },
+        {
+          "name": "Siri Chandana Daggubati",
+          "orgs": [
+            "Graphics-Visualization-Computing Lab",
+            "International Institute of Information Technology Bangalore",
+            "Karnataka 560100, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2010.02319v1",
+      "date": "2020-10-05T20:19:40Z",
+      "citation_count": 12,
+      "categories": [
+        "cs.CV",
+        "cs.GR",
+        "cs.NA",
+        "math.NA"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,814 @@
+{
+  "status": "success",
+  "total_count": 59,
+  "result": [
+    {
+      "arxiv_id": "2307.15247",
+      "score": 11.229938,
+      "title": "Is this model reliable for everyone? Testing for strong calibration",
+      "tldr": "This paper addresses the challenge of testing strong calibration in machine learning models, aiming to determine if a model is reliable for all subgroups, which is crucial for fairness and robustness; it introduces a changepoint detection-based testing procedure using sample-splitting and cross-validation, offering higher power and better Type I error control compared to existing methods; simulations and real-world applications show the procedure outperforms current approaches in detecting poorly calibrated subgroups.",
+      "abstract": "In a well-calibrated risk prediction model, the average predicted probability is close to the true event rate for any given subgroup. Such models are reliable across heterogeneous populations and satisfy strong notions of algorithmic fairness. However, the task of auditing a model for strong calibration is well-known to be difficult -- particularly for machine learning (ML) algorithms -- due to the sheer number of potential subgroups. As such, common practice is to only assess calibration with respect to a few predefined subgroups. Recent developments in goodness-of-fit testing offer potential solutions but are not designed for settings with weak signal or where the poorly calibrated subgroup is small, as they either overly subdivide the data or fail to divide the data at all. We introduce a new testing procedure based on the following insight: if we can reorder observations by their expected residuals, there should be a change in the association between the predicted and observed residuals along this sequence if a poorly calibrated subgroup exists. This lets us reframe the problem of calibration testing into one of changepoint detection, for which powerful methods already exist. We begin with introducing a sample-splitting procedure where a portion of the data is used to train a suite of candidate models for predicting the residual, and the remaining data are used to perform a score-based cumulative sum (CUSUM) test. To further improve power, we then extend this adaptive CUSUM test to incorporate cross-validation, while maintaining Type I error control under minimal assumptions. Compared to existing methods, the proposed procedure consistently achieved higher power in simulation studies and more than doubled the power when auditing a mortality risk prediction model.",
+      "authors": [
+        {
+          "name": "Jean Feng",
+          "orgs": []
+        },
+        {
+          "name": "Alexej Gossmann",
+          "orgs": []
+        },
+        {
+          "name": "Romain Pirracchio",
+          "orgs": []
+        },
+        {
+          "name": "Nicholas Petrick",
+          "orgs": [
+            "Department of Epidemiology and Biostatistics, University of California, San Francisco",
+            "Center for Devices and Radiological Health, U.S. Food and Drug Administration",
+            "Department of Anesthesiology, University of California, San Francisco"
+          ]
+        },
+        {
+          "name": "Gene Pennello",
+          "orgs": [
+            "Department of Epidemiology and Biostatistics, University of California, San Francisco",
+            "Center for Devices and Radiological Health, U.S. Food and Drug Administration"
+          ]
+        },
+        {
+          "name": "Berkman Sahiner",
+          "orgs": [
+            "Department of Epidemiology and Biostatistics, University of California, San Francisco",
+            "Center for Devices and Radiological Health, U.S. Food and Drug Administration",
+            "Department of Anesthesiology, University of California, San Francisco"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2307.15247v1",
+      "date": "2023-07-28T00:59:14Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.LG",
+        "stat.ME",
+        "stat.ML"
+      ]
+    },
+    {
+      "arxiv_id": "2602.03319",
+      "score": 10.370577,
+      "title": "Information-Theoretic Multi-Model Fusion for Target-Oriented Adaptive Sampling in Materials Design",
+      "tldr": "This paper presents an information-theoretic framework for target-oriented adaptive sampling in materials design, addressing the challenge of efficient exploration in high-dimensional, data-scarce spaces by integrating data, model beliefs, and physics priors through dimension-aware capacity control and multi-model fusion; it improves sample efficiency, reaching top-performing regions within 100 evaluations across 14 tasks and achieving 50% global-optimum convergence on Schwefel.",
+      "abstract": "Target-oriented discovery under limited evaluation budgets requires making reliable progress in high-dimensional, heterogeneous design spaces where each new measurement is costly, whether experimental or high-fidelity simulation. We present an information-theoretic framework for target-oriented adaptive sampling that reframes optimization as trajectory discovery: instead of approximating the full response surface, the method maintains and refines a low-entropy information state that concentrates search on target-relevant directions. The approach couples data, model beliefs, and physics/structure priors through dimension-aware information budgeting, adaptive bootstrapped distillation over a heterogeneous surrogate reservoir, and structure-aware candidate manifold analysis with Kalman-inspired multi-model fusion to balance consensus-driven exploitation and disagreement-driven exploration. Evaluated under a single unified protocol without dataset-specific tuning, the framework improves sample efficiency and reliability across 14 single- and multi-objective materials design tasks spanning candidate pools from $600$ to $4 \\times 10^6$ and feature dimensions from $10$ to $10^3$, typically reaching top-performing regions within 100 evaluations. Complementary 20-dimensional synthetic benchmarks (Ackley, Rastrigin, Schwefel) further demonstrate robustness to rugged and multimodal landscapes.",
+      "authors": [
+        {
+          "name": "Zhiyuan Li",
+          "orgs": [
+            "TMM, TU Darmstadt"
+          ]
+        },
+        {
+          "name": "Chen Shen",
+          "orgs": [
+            "TMM, TU Darmstadt"
+          ]
+        },
+        {
+          "name": "Hongbin Zhang",
+          "orgs": []
+        },
+        {
+          "name": "Yixuan Zhang",
+          "orgs": [
+            "TMM, TU Darmstadt"
+          ]
+        },
+        {
+          "name": "Teng Long",
+          "orgs": [
+            "TMM, TU Darmstadt"
+          ]
+        },
+        {
+          "name": "Mian Dai",
+          "orgs": [
+            "TMM, TU Darmstadt"
+          ]
+        },
+        {
+          "name": "Weijia He",
+          "orgs": [
+            "TMM, TU Darmstadt"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.03319v1",
+      "date": "2026-02-03",
+      "citation_count": 0,
+      "categories": [
+        "cond-mat.mtrl-sci",
+        "cs.IT",
+        "cs.LG",
+        "math.IT"
+      ]
+    },
+    {
+      "arxiv_id": "2511.20453",
+      "score": 10.005953,
+      "title": "Digital Twin-Assisted High-Precision Massive MIMO Localization in Urban Canyons",
+      "tldr": "This paper addresses the challenge of high-precision wireless localization in urban canyons by proposing a three-stage DT-RANSAC framework to reject multi-bounce NLOS paths, improving accuracy and reducing system costs, with simulations showing significant performance enhancement.",
+      "abstract": "High-precision wireless localization in urban canyons is challenged by noisy measurements and severe non-line-of-sight (NLOS) propagation. This paper proposes a robust three-stage algorithm synergizing a digital twin (DT) model with the random sample consensus (RANSAC) algorithm to overcome these limitations. The method leverages the DT for geometric path association and employs RANSAC to identify reliable line-of-sight (LOS) and single-bounce NLOS paths while rejecting multi-bounce outliers. A final optimization on the resulting inlier set estimates the user's position and clock bias. Simulations validate that by effectively turning NLOS paths into valuable geometric information via the DT, the approach enables accurate localization, reduces reliance on direct LOS, and significantly lowers system deployment costs, making it suitable for practical deployment.",
+      "authors": [
+        {
+          "name": "Hui Chen",
+          "orgs": [
+            "Chalmers University of Technology",
+            "Ziqin Zhou1"
+          ]
+        },
+        {
+          "name": "Henk Wymeersch",
+          "orgs": [
+            "Chalmers University of Technology",
+            "Ziqin Zhou1"
+          ]
+        },
+        {
+          "name": "Ziqin Zhou",
+          "orgs": [
+            "Chalmers University of Technology",
+            "Ziqin Zhou1"
+          ]
+        },
+        {
+          "name": "Gerhard Steinböck",
+          "orgs": [
+            "Chalmers University of Technology",
+            "Ziqin Zhou1"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2511.20453v1",
+      "date": "2025-11-25",
+      "citation_count": 1,
+      "categories": [
+        "cs.SY",
+        "eess.SP",
+        "eess.SY"
+      ]
+    },
+    {
+      "arxiv_id": "2511.19032",
+      "score": 9.792973,
+      "title": "Benchmarking Corruption Robustness of LVLMs: A Discriminative Benchmark and Robustness Alignment Metric",
+      "tldr": "This paper addresses the gap in assessing corruption robustness of LVLMs by introducing Bench-C, a discriminative benchmark and RAS metric, revealing that model prediction structures degrade despite accuracy gains and highlighting distinct failure-recovery patterns across 13 LVLMs.",
+      "abstract": "Despite the remarkable reasoning abilities of large vision-language models (LVLMs), their robustness under visual corruptions remains insufficiently studied. Existing evaluation paradigms exhibit two major limitations: 1) the dominance of low-discriminative samples in current datasets masks the real robustness gap between models; and 2) conventional accuracy-based metric fail to capture the degradation of the underlying prediction structure. To bridge these gaps, we introduce Bench-C, a comprehensive benchmark emphasizing discriminative samples for assessing corruption robustness, where a selection strategy is proposed to jointly consider the prediction inconsistency under corruption and the semantic diversity. Furthermore, we propose the Robustness Alignment Score (RAS), a unified metric that measures degradation in logit-level prediction structure by considering the shifts in prediction uncertainty and calibration alignment. Comprehensive experiments and analysis reveal several interesting findings: 1) model behaviors exhibit distinguish patterns under corruptions, such as erroneous confidence and hesitation; 2) despite subtle corruption may lead to a slight accuracy gain, the overall prediction structure still degrades; 3) by decomposing corruption robustness into destructive and corrective components, the distinct failure and recovery patterns across models can be revealed.",
+      "authors": [
+        {
+          "name": "Yuming Fang",
+          "orgs": [
+            "Jiangxi University of Finance and Economics"
+          ]
+        },
+        {
+          "name": "Xin Sun",
+          "orgs": [
+            "City University of Macau"
+          ]
+        },
+        {
+          "name": "Songyang Li",
+          "orgs": [
+            "City University of Macau"
+          ]
+        },
+        {
+          "name": "Baoliang Chen",
+          "orgs": [
+            "South China Normal University"
+          ]
+        },
+        {
+          "name": "Hanwei Zhu",
+          "orgs": [
+            "Nanyang Technological University"
+          ]
+        },
+        {
+          "name": "Xiangjie Sui",
+          "orgs": [
+            "City University of Macau"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2511.19032v1",
+      "date": "2025-11-24",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2601.08256",
+      "score": 9.612832,
+      "title": "Data-Induced Groupings and How To Find Them",
+      "tldr": "This paper investigates data-induced groupings in dot plots, exploring how spatial arrangements can create perceived patterns that mislead users, and presents predictive models achieving 97-99% F1 scores to detect and mitigate such groupings, offering tools for visualization designers to improve data interpretation.",
+      "abstract": "Making sense of a visualization requires the reader to consider both the visualization design and the underlying data values. Existing work in the visualization community has largely considered affordances driven by visualization design elements, such as color or chart type, but how visual design interacts with data values to impact interpretation and reasoning has remained under-explored. Dot plots and bar graphs are commonly used to help users identify groups of points that form trends and clusters, but are liable to manifest groupings that are artifacts of spatial arrangement rather than inherent patterns in the data itself. These ``Data-induced Groups'' can drive suboptimal data comparisons and potentially lead the user to incorrect conclusions. We conduct two user studies using dot plots as a case study to understand the prevalence of data-induced groupings. We find that users rely on data-induced groupings in both conditions despite the fact that trend-based groupings are irrelevant in nominal data. Based on the study results, we build a model to predict whether users are likely to perceive a given set of dot plot points as a group. We discuss two use cases illustrating how the model can assist visualization designers by both diagnosing potential user-perceived groupings in dot plots and offering redesigns that better accentuate desired groupings through data rearrangement.",
+      "authors": [
+        {
+          "name": "Cindy Xiong Bearfield",
+          "orgs": []
+        },
+        {
+          "name": "Steven Franconeri",
+          "orgs": []
+        },
+        {
+          "name": "Eugene Wu",
+          "orgs": []
+        },
+        {
+          "name": "Yilan Jiang",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2601.08256v1",
+      "date": "2026-01-13",
+      "citation_count": 0,
+      "categories": [
+        "cs.GR",
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2508.00428",
+      "score": 9.604923,
+      "title": "Sel3DCraft: Interactive Visual Prompts for User-Friendly Text-to-3D Generation",
+      "tldr": "This paper presents Sel3DCraft, an interactive visual prompt engineering system for text-to-3D generation that addresses the inefficiencies of current black-box tools by enabling structured exploration and refinement; it introduces a dual-branch structure, multi-view hybrid scoring, and a prompt-driven visual analytics suite; extensive testing shows Sel3DCraft reduces model creation time by 70.5% and prompt iterations by 66.2%, with higher quality ratings.",
+      "abstract": "Text-to-3D (T23D) generation has transformed digital content creation, yet remains bottlenecked by blind trial-and-error prompting processes that yield unpredictable results. While visual prompt engineering has advanced in text-to-image domains, its application to 3D generation presents unique challenges requiring multi-view consistency evaluation and spatial understanding. We present Sel3DCraft, a visual prompt engineering system for T23D that transforms unstructured exploration into a guided visual process. Our approach introduces three key innovations: a dual-branch structure combining retrieval and generation for diverse candidate exploration; a multi-view hybrid scoring approach that leverages MLLMs with innovative high-level metrics to assess 3D models with human-expert consistency; and a prompt-driven visual analytics suite that enables intuitive defect identification and refinement. Extensive testing and user studies demonstrate that Sel3DCraft surpasses other T23D systems in supporting creativity for designers.",
+      "authors": [
+        {
+          "name": "Nan Xiang",
+          "orgs": []
+        },
+        {
+          "name": "Tianyi Liang",
+          "orgs": []
+        },
+        {
+          "name": "Haiwen Huang",
+          "orgs": []
+        },
+        {
+          "name": "Shiqi Jiang",
+          "orgs": []
+        },
+        {
+          "name": "Hao Huang",
+          "orgs": []
+        },
+        {
+          "name": "Yifei Huang",
+          "orgs": []
+        },
+        {
+          "name": "Liangyu Chen",
+          "orgs": []
+        },
+        {
+          "name": "Changbo Wang",
+          "orgs": []
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Chenhui Li",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2508.00428v1",
+      "date": "2025-08-01T08:36:15Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.GR",
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2209.08266",
+      "score": 9.582589,
+      "title": "6DOF Pose Estimation of a 3D Rigid Object based on Edge-enhanced Point Pair Features",
+      "tldr": "This paper addresses 6D pose estimation for geometrically complex and occluded objects, proposing an edge-enhanced PPF method with a down-sampling strategy and edge-matching validation to resolve symmetry ambiguity, achieving superior performance on challenging datasets and real-world applications.",
+      "abstract": "The point pair feature (PPF) is widely used for 6D pose estimation. In this paper, we propose an efficient 6D pose estimation method based on the PPF framework. We introduce a well-targeted down-sampling strategy that focuses more on edge area for efficient feature extraction of complex geometry. A pose hypothesis validation approach is proposed to resolve the symmetric ambiguity by calculating edge matching degree. We perform evaluations on two challenging datasets and one real-world collected dataset, demonstrating the superiority of our method on pose estimation of geometrically complex, occluded, symmetrical objects. We further validate our method by applying it to simulated punctures.",
+      "authors": [
+        {
+          "name": "Chenyi Liu",
+          "orgs": []
+        },
+        {
+          "name": "Fei Chen",
+          "orgs": []
+        },
+        {
+          "name": "Lu Deng",
+          "orgs": []
+        },
+        {
+          "name": "Lintao Zheng",
+          "orgs": []
+        },
+        {
+          "name": "Chenyang Zhu",
+          "orgs": []
+        },
+        {
+          "name": "Jia Wang",
+          "orgs": []
+        },
+        {
+          "name": "Kai Xu",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2209.08266v1",
+      "date": "2022-09-17T07:05:50Z",
+      "citation_count": 8,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2403.06693",
+      "score": 9.504699,
+      "title": "Chart4Blind: An Intelligent Interface for Chart Accessibility Conversion",
+      "tldr": "This paper presents Chart4Blind, an intelligent interface addressing the challenge of making line charts accessible to blind and visually impaired individuals by converting bitmap images into SVG, CSV, and text formats; it introduces a user-friendly system with deep learning models for efficient conversion and achieves a 90% System Usability Scale rating; results show sighted users can make charts accessible in 4 minutes on average.",
+      "abstract": "In a world driven by data visualization, ensuring the inclusive accessibility of charts for Blind and Visually Impaired (BVI) individuals remains a significant challenge. Charts are usually presented as raster graphics without textual and visual metadata needed for an equivalent exploration experience for BVI people. Additionally, converting these charts into accessible formats requires considerable effort from sighted individuals. Digitizing charts with metadata extraction is just one aspect of the issue; transforming it into accessible modalities, such as tactile graphics, presents another difficulty. To address these disparities, we propose Chart4Blind, an intelligent user interface that converts bitmap image representations of line charts into universally accessible formats. Chart4Blind achieves this transformation by generating Scalable Vector Graphics (SVG), Comma-Separated Values (CSV), and alternative text exports, all comply with established accessibility standards. Through interviews and a formal user study, we demonstrate that even inexperienced sighted users can make charts accessible in an average of 4 minutes using Chart4Blind, achieving a System Usability Scale rating of 90%. In comparison to existing approaches, Chart4Blind provides a comprehensive solution, generating end-to-end accessible SVGs suitable for assistive technologies such as embossed prints (papers and laser cut), 2D tactile displays, and screen readers. For additional information, including open-source codes and demos, please visit our project page https://moured.github.io/chart4blind/.",
+      "authors": [
+        {
+          "name": "Omar Moured",
+          "orgs": [
+            "CVHCI",
+            "ACCESS@KIT",
+            "Karlsruhe Institute of Technology",
+            "Germany"
+          ]
+        },
+        {
+          "name": "Morris Baumgarten-Egemole",
+          "orgs": [
+            "ACCESS@KIT",
+            "Karlsruhe Institute of Technology",
+            "Germany"
+          ]
+        },
+        {
+          "name": "Alina Roitberg",
+          "orgs": [
+            "Institut für Künstliche Intelligenz",
+            "Universität Stuttgart",
+            "Germany"
+          ]
+        },
+        {
+          "name": "Thorsten Schwarz",
+          "orgs": [
+            "ACCESS@KIT",
+            "Karlsruhe Institute of Technology",
+            "Germany"
+          ]
+        },
+        {
+          "name": "Rainer Stiefelhagen",
+          "orgs": [
+            "CVHCI",
+            "ACCESS@KIT",
+            "Karlsruhe Institute of Technology",
+            "Germany"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2403.06693v2",
+      "date": "2024-03-11T13:07:46Z",
+      "citation_count": 20,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2602.10880",
+      "score": 9.456624,
+      "title": "Chart Specification: Structural Representations for Incentivizing VLM Reasoning in Chart-to-Code Generation",
+      "tldr": "This paper addresses the challenge of chart-to-code generation by identifying the limitations of direct supervision and proposes Chart Specification as a structured intermediate representation to improve structural fidelity, contributing a balanced dataset (ChartStruct) and a reward mechanism (Spec-Align Reward), achieving state-of-the-art results with 3K samples and surpassing baselines by up to 61.7% on complex benchmarks.",
+      "abstract": "Vision-Language Models (VLMs) have shown promise in generating plotting code from chart images, yet achieving structural fidelity remains challenging. Existing approaches largely rely on supervised fine-tuning, encouraging surface-level token imitation rather than faithful modeling of underlying chart structure, which often leads to hallucinated or semantically inconsistent outputs. We propose Chart Specification, a structured intermediate representation that shifts training from text imitation to semantically grounded supervision. Chart Specification filters syntactic noise to construct a structurally balanced training set and supports a Spec-Align Reward that provides fine-grained, verifiable feedback on structural correctness, enabling reinforcement learning to enforce consistent plotting logic. Experiments on three public benchmarks show that our method consistently outperforms prior approaches. With only 3K training samples, we achieve strong data efficiency, surpassing leading baselines by up to 61.7% on complex benchmarks, and scaling to 4K samples establishes new state-of-the-art results across all evaluated metrics. Overall, our results demonstrate that precise structural supervision offers an efficient pathway to high-fidelity chart-to-code generation. Code and dataset are available at: https://github.com/Mighten/chart-specification-paper",
+      "authors": [
+        {
+          "name": "Jian Zhang",
+          "orgs": []
+        },
+        {
+          "name": "Osamu Yoshie",
+          "orgs": [
+            "Waseda University"
+          ]
+        },
+        {
+          "name": "Shimin Tao",
+          "orgs": []
+        },
+        {
+          "name": "Yilun Liu",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.10880v1",
+      "date": "2026-02-11",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2511.13384",
+      "score": 9.418683,
+      "title": "CBDC Stress Test in a Dual-Currency Setting",
+      "tldr": "This paper investigates the impact of CBDC introduction on financial stability in dual-currency economies like Romania, addressing the gap in understanding macro-financial effects of CBDCs through econometrics, machine learning, and behavioural models; it contributes a framework estimating moderate CBDC uptake (EUR 1 billion) and highlights the need for differentiated holding limits to preserve monetary sovereignty; findings suggest a non-remunerated, capped CBDC can enhance resilience without destabilising the financial system.",
+      "abstract": "This study explores the potential impact of introducing a Central Bank Digital Currency (CBDC) on financial stability in an emerging dual-currency economy (Romania), where the domestic currency (RON) coexists with the euro. It develops an integrated analytical framework combining econometrics, machine learning, and behavioural modelling. CBDC adoption probabilities are estimated using XGBoost and logistic regression models trained on behavioural and macro-financial indicators rather than survey data. Liquidity stress simulations assess how banks would respond to deposit withdrawals resulting from CBDC adoption, while VAR, MSVAR, and SVAR models capture the macro-financial transmission of liquidity shocks into credit contraction and changes in monetary conditions. The findings indicate that CBDC uptake (co-circulating Digital RON and Digital EUR) would be moderate at issuance, amounting to around EUR 1 billion, primarily driven by digital readiness and trust in the central bank. The study concludes that a non-remunerated, capped CBDC, designed primarily as a means of payment rather than a store of value, can be introduced without compromising financial stability. In dual currency economies, differentiated holding limits for domestic and foreign digital currencies (e.g., Digital RON versus Digital Euro) are crucial to prevent uncontrolled euroisation and preserve monetary sovereignty. A prudent design with moderate caps, non remuneration, and macroprudential coordination can transform CBDC into a digital liquidity buffer and a complementary monetary policy instrument that enhances resilience and inclusion rather than destabilising the financial system.",
+      "authors": [
+        {
+          "name": "Catalin Dumitrescu",
+          "orgs": [
+            "National Bank of Romania",
+            "Bucharest University of Economic Studies"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2511.13384v4",
+      "date": "2025-11-17",
+      "citation_count": 0,
+      "categories": [
+        "q-fin.CP",
+        "q-fin.GN",
+        "q-fin.ST",
+        "stat.OT"
+      ]
+    },
+    {
+      "arxiv_id": "2511.07863",
+      "score": 9.26845,
+      "title": "WaterMod: Modular Token-Rank Partitioning for Probability-Balanced LLM Watermarking",
+      "tldr": "This paper proposes WaterMod, a probability-balanced watermarking framework addressing the challenge of embedding imperceptible, machine-verifiable marks in LLM outputs while maintaining fluency, by using modular token-rank partitioning to enable both binary and multi-bit provenance tracing; it introduces a modular arithmetic approach that distributes high-probability tokens across classes and applies bias to selected classes for watermark embedding; experimental results show reliable detection performance without compromising generation quality across multiple tasks.",
+      "abstract": "Large language models now draft news, legal analyses, and software code with human-level fluency. At the same time, regulations such as the EU AI Act mandate that each synthetic passage carry an imperceptible, machine-verifiable mark for provenance. Conventional logit-based watermarks satisfy this requirement by selecting a pseudorandom green vocabulary at every decoding step and boosting its logits, yet the random split can exclude the highest-probability token and thus erode fluency. WaterMod mitigates this limitation through a probability-aware modular rule. The vocabulary is first sorted in descending model probability; the resulting ranks are then partitioned by the residue rank mod k, which distributes adjacent-and therefore semantically similar-tokens across different classes. A fixed bias of small magnitude is applied to one selected class. In the zero-bit setting (k=2), an entropy-adaptive gate selects either the even or the odd parity as the green list. Because the top two ranks fall into different parities, this choice embeds a detectable signal while guaranteeing that at least one high-probability token remains available for sampling. In the multi-bit regime (k>2), the current payload digit d selects the color class whose ranks satisfy rank mod k = d. Biasing the logits of that class embeds exactly one base-k digit per decoding step, thereby enabling fine-grained provenance tracing. The same modular arithmetic therefore supports both binary attribution and rich payloads. Experimental results demonstrate that WaterMod consistently attains strong watermark detection performance while maintaining generation quality in both zero-bit and multi-bit settings. This robustness holds across a range of tasks, including natural language generation, mathematical reasoning, and code synthesis. Our code and data are available at https://github.com/Shinwoo-Park/WaterMod.",
+      "authors": [
+        {
+          "name": "Hyejin Park",
+          "orgs": [
+            "2"
+          ]
+        },
+        {
+          "name": "Hyeseon Ahn",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Yo-Sub Han",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Shinwoo Park",
+          "orgs": [
+            "1"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2511.07863v1",
+      "date": "2025-11-11",
+      "citation_count": 4,
+      "categories": [
+        "cs.AI"
+      ]
+    },
+    {
+      "arxiv_id": "2304.06991",
+      "score": 9.240524,
+      "title": "WYTIWYR: A User Intent-Aware Framework with Multi-modal Inputs for Visualization Retrieval",
+      "tldr": "This paper proposes WYTIWYR, an intent-aware framework for visualization retrieval that addresses the limitations of existing methods by integrating user intent and disentangled visual attributes; it introduces a two-stage approach with Annotation and Retrieval stages, leveraging CLIP for zero-shot classification and enabling flexible attribute combinations; empirical results demonstrate its effectiveness in retrieving targeted charts with improved usability.",
+      "abstract": "Retrieving charts from a large corpus is a fundamental task that can benefit numerous applications such as visualization recommendations.The retrieved results are expected to conform to both explicit visual attributes (e.g., chart type, colormap) and implicit user intents (e.g., design style, context information) that vary upon application scenarios. However, existing example-based chart retrieval methods are built upon non-decoupled and low-level visual features that are hard to interpret, while definition-based ones are constrained to pre-defined attributes that are hard to extend. In this work, we propose a new framework, namely WYTIWYR (What-You-Think-Is-What-You-Retrieve), that integrates user intents into the chart retrieval process. The framework consists of two stages: first, the Annotation stage disentangles the visual attributes within the bitmap query chart; and second, the Retrieval stage embeds the user's intent with customized text prompt as well as query chart, to recall targeted retrieval result. We develop a prototype WYTIWYR system leveraging a contrastive language-image pre-training (CLIP) model to achieve zero-shot classification, and test the prototype on a large corpus with charts crawled from the Internet. Quantitative experiments, case studies, and qualitative interviews are conducted. The results demonstrate the usability and effectiveness of our proposed framework.",
+      "authors": [
+        {
+          "name": "Shishi Xiao",
+          "orgs": [
+            "The Hong Kong University of Science and Technology (Guangzhou), Guangzhou, China"
+          ]
+        },
+        {
+          "name": "Yihan Hou",
+          "orgs": [
+            "The Hong Kong University of Science and Technology (Guangzhou), Guangzhou, China"
+          ]
+        },
+        {
+          "name": "Cheng Jin",
+          "orgs": [
+            "The Hong Kong University of Science and Technology, Hong Kong SAR, China"
+          ]
+        },
+        {
+          "name": "Wei Zeng",
+          "orgs": [
+            "The Hong Kong University of Science and Technology (Guangzhou), Guangzhou, China",
+            "The Hong Kong University of Science and Technology, Hong Kong SAR, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2304.06991v1",
+      "date": "2023-04-14T08:25:53Z",
+      "citation_count": 12,
+      "categories": [
+        "cs.IR"
+      ]
+    },
+    {
+      "arxiv_id": "2012.11135",
+      "score": 9.227633,
+      "title": "Nonstationarity Analysis of Materials Microstructures via Fisher Score Vectors",
+      "tldr": "This paper introduces a score-based framework using Fisher score vectors to analyze nonstationarity in stochastic materials microstructures, addressing the challenge of detecting and diagnosing changes in microstructure properties across samples and within images, by leveraging supervised learning models to provide a general and complete statistical representation, and demonstrating its effectiveness through real and simulated micrographs of polymer composites and multiphase alloys.",
+      "abstract": "Microstructures are critical to the physical properties of materials. Stochastic microstructures are commonly observed in many kinds of materials and traditional descriptor-based image analysis of them can be challenging. In this paper, we introduce a powerful and versatile score-based framework for analyzing nonstationarity in stochastic materials microstructures. The framework involves training a parametric supervised learning model to predict a pixel value using neighboring pixels in images of microstructures~(as known as micrographs), and this predictive model provides an implicit characterization of the stochastic nature of the microstructure. The basis for our approach is the Fisher score vector, defined as the gradient of the log-likelihood with respect to the parameters of the predictive model, at each micrograph pixel. A fundamental property of the score vector is that it is zero-mean if the predictive relationship in the vicinity of that pixel remains unchanged, which we equate with the local stochastic nature of the microstructure remaining unchanged. Conversely, if the local stochastic nature changes, then the mean of the score vector generally differs from zero. Our framework analyzes how the local mean of the score vector varies across one or more image samples to: (1) monitor for nonstationarity by indicating whether new samples are statistically different than reference samples and where they may differ and (2) diagnose nonstationarity by identifying the distinct types of stochastic microstructures and labeling accordingly the corresponding regions of the samples. Unlike feature-based methods, our approach is almost completely general and requires no prior knowledge of the nature of the nonstationarities. Using a number of real and simulated micrographs, including polymer composites and multiphase alloys, we demonstrate the power and versatility of the approach.",
+      "authors": [
+        {
+          "name": "Kungang Zhang",
+          "orgs": [
+            "Department of Industrial Engineering and Management Sciences, Northwestern University"
+          ]
+        },
+        {
+          "name": "Daniel W. Apley",
+          "orgs": [
+            "Department of Industrial Engineering and Management Sciences, Northwestern University"
+          ]
+        },
+        {
+          "name": "Wei Chen",
+          "orgs": [
+            "Department of Mechanical Engineering, Northwestern University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2012.11135v1",
+      "date": "2020-12-21T06:24:54Z",
+      "citation_count": 5,
+      "categories": [
+        "stat.AP"
+      ]
+    },
+    {
+      "arxiv_id": "2601.11601",
+      "score": 9.2095995,
+      "title": "Latent Variable Phillips Curve",
+      "tldr": "This paper examines the latent variable Phillips curve hypothesis to improve medium-term inflation forecasting, finding that latent variable models outperform traditional ones by six to eight quarters ahead, with an MA(1) residual process enhancing accuracy, and suggests a novel approach for future empirical work.",
+      "abstract": "This paper re-examines the empirical Phillips curve (PC) model and its usefulness in the context of medium-term inflation forecasting. A latent variable Phillips curve hypothesis is formulated and tested using 3,968 randomly generated factor combinations. Evidence from US core PCE inflation between Q1 1983 and Q1 2025 suggests that latent variable PC models reliably outperform traditional PC models six to eight quarters ahead and stand a greater chance of outperforming a univariate benchmark. Incorporating an MA(1) residual process improves the accuracy of empirical PC models across the board, although the gains relative to univariate models remain small. The findings presented in this paper have two important implications: First, they corroborate a new conceptual view on the Phillips curve theory; second, they offer a novel path towards improving the competitiveness of Phillips curve forecasts in future empirical work.",
+      "authors": [
+        {
+          "name": "Francesca Medda",
+          "orgs": [
+            "University College London"
+          ]
+        },
+        {
+          "name": "Daniil Bargman",
+          "orgs": [
+            "University College London"
+          ]
+        },
+        {
+          "name": "Akash Sedai Sharma",
+          "orgs": [
+            "University College London"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2601.11601v1",
+      "date": "2026-01-08",
+      "citation_count": 0,
+      "categories": [
+        "econ.GN",
+        "q-fin.EC",
+        "q-fin.ST"
+      ]
+    },
+    {
+      "arxiv_id": "2408.09506",
+      "score": 9.193536,
+      "title": "Dataset Discovery via Line Charts",
+      "tldr": "This paper introduces a benchmark for dataset discovery via line charts, addressing the gap of unavailable underlying datasets behind visualizations; it proposes FCM, a cross-modal model with segment-level encoders and aggregation handling, achieving 30.1% and 41.0% improvements in prec@50 and ndcg@50 over baselines.",
+      "abstract": "Line charts are a valuable tool for data analysis and exploration, distilling essential insights from a dataset. However, access to the underlying dataset behind a line chart is rarely readily available. In this paper, we explore a novel dataset discovery problem, dataset discovery via line charts, focusing on the use of line charts as queries to discover datasets within a large data repository that are capable of generating similar line charts. To solve this problem, we propose a novel approach called Fine-grained Cross-modal Relevance Learning Model (FCM), which aims to estimate the relevance between a line chart and a candidate dataset. To achieve this goal, FCM first employs a visual element extractor to extract informative visual elements, i.e., lines and y-ticks, from a line chart. Then, two novel segment-level encoders are adopted to learn representations for a line chart and a dataset, preserving fine-grained information, followed by a cross-modal matcher to match the learned representations in a fine-grained way. Furthermore, we extend FCM to support line chart queries generated based on data aggregation. Last, we propose a benchmark tailored for this problem since no such dataset exists. Extensive evaluation on the new benchmark verifies the effectiveness of our proposed method. Specifically, our proposed approach surpasses the best baseline by 30.1% and 41.0% in terms of prec@50 and ndcg@50, respectively.",
+      "authors": [
+        {
+          "name": "Daomin Ji",
+          "orgs": [
+            "RMIT University"
+          ]
+        },
+        {
+          "name": "Hui Luo",
+          "orgs": [
+            "University of Wollongong"
+          ]
+        },
+        {
+          "name": "Zhifeng Bao",
+          "orgs": [
+            "RMIT University"
+          ]
+        },
+        {
+          "name": "J. Shane Culpepper",
+          "orgs": [
+            "The University of Queensland"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2408.09506v2",
+      "date": "2024-08-18T14:59:32Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.DB"
+      ]
+    },
+    {
+      "arxiv_id": "2601.13079",
+      "score": 9.185423,
+      "title": "Polychronous Wave Computing: Timing-Native Address Selection in Spiking Networks",
+      "tldr": "This paper introduces Polychronous Wave Computing (PWC), a timing-native address-selection method for spiking networks that maps spike latencies to discrete outputs via phase-encoded interference and winner-take-all selection, addressing the gap in hardware throughput for combinatorial timing codes; it uses programmable interferometers and driven-dissipative competition to achieve 97.2% accuracy under static mismatch, offering a fast routing coprocessor for sparse top-1 gates across photonic and polaritonic platforms.",
+      "abstract": "Spike timing offers a combinatorial address space, suggesting that timing-based spiking inference can be executed as lookup and routing rather than as dense multiply--accumulate. Yet most neuromorphic and photonic systems still digitize events into timestamps, bins, or rates and then perform selection in clocked logic. We introduce Polychronous Wave Computing (PWC), a timing-native address-selection primitive that maps relative spike latencies directly to a discrete output route in the wave domain. Spike times are phase-encoded in a rotating frame and processed by a programmable multiport interferometer that evaluates K template correlations in parallel; a driven--dissipative winner-take-all stage then performs a physical argmax, emitting a one-hot output port. We derive the operating envelope imposed by phase wrapping and mutual coherence, and collapse timing jitter, static phase mismatch, and dephasing into a single effective phase-noise budget whose induced winner--runner-up margin predicts boundary-first failures and provides an intensity-only calibration target. Simulations show that nonlinear competition improves routing fidelity compared with noisy linear intensity readout, and that hardware-in-the-loop phase tuning rescues a temporal-order gate from 55.9% to 97.2% accuracy under strong static mismatch. PWC provides a fast routing coprocessor for LUT-style spiking networks and sparse top-1 gates (e.g., mixture-of-experts routing) across polaritonic, photonic, and oscillator platforms.",
+      "authors": [
+        {
+          "name": "Natalia G. Berloff",
+          "orgs": [
+            "Department of Applied Mathematics and Theoretical Physics, University of Cambridge, Cambridge CB3 0WA, United Kingdom"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2601.13079v1",
+      "date": "2026-01-19",
+      "citation_count": 0,
+      "categories": [
+        "cond-mat.dis-nn",
+        "cs.LG",
+        "cs.NE",
+        "physics.optics"
+      ]
+    },
+    {
+      "arxiv_id": "2504.18278",
+      "score": 9.142227,
+      "title": "A comprehensive review of classifier probability calibration metrics",
+      "tldr": "This survey reviews probability calibration metrics for classifiers and object detection models, identifying 82 metrics across four classifier families and one object detection family, offering a systematic taxonomy and equations for implementation and comparison.",
+      "abstract": "Probabilities or confidence values produced by artificial intelligence (AI) and machine learning (ML) models often do not reflect their true accuracy, with some models being under or over confident in their predictions. For example, if a model is 80% sure of an outcome, is it correct 80% of the time? Probability calibration metrics measure the discrepancy between confidence and accuracy, providing an independent assessment of model calibration performance that complements traditional accuracy metrics. Understanding calibration is important when the outputs of multiple systems are combined, for assurance in safety or business-critical contexts, and for building user trust in models. This paper provides a comprehensive review of probability calibration metrics for classifier and object detection models, organising them according to a number of different categorisations to highlight their relationships. We identify 82 major metrics, which can be grouped into four classifier families (point-based, bin-based, kernel or curve-based, and cumulative) and an object detection family. For each metric, we provide equations where available, facilitating implementation and comparison by future researchers.",
+      "authors": [
+        {
+          "name": "Richard Oliver Lane",
+          "orgs": [
+            "QinetiQ, St. Andrews Road, Great Malvern, Worcestershire, UK"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2504.18278v1",
+      "date": "2025-04-25T11:44:44Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.LG",
+        "stat.ML"
+      ]
+    },
+    {
+      "arxiv_id": "2508.15690",
+      "score": 9.121797,
+      "title": "GRAFT: GRaPH and Table Reasoning for Textual Alignment -- A Benchmark for Structured Instruction Following and Visual Reasoning",
+      "tldr": "This paper introduces GRAFT, a structured multimodal benchmark assessing LLMs' ability to perform visual textual alignment and structured reasoning over charts and tables, addressing gaps in evaluating fine-grained analytical capabilities and structured output generation; it employs programmatically generated synthetic datasets with a taxonomy of reasoning operations, contributing a unified framework for rigorous evaluation; findings reveal current models struggle with complex instructions and structured outputs, highlighting limitations in visual grounding and semantic alignment.",
+      "abstract": "GRAFT is a structured multimodal benchmark designed to probe how well LLMs handle instruction following, visual reasoning, and tasks requiring tight visual textual alignment. The dataset is built around programmatically generated charts and synthetically rendered tables, each paired with a carefully constructed, multi step analytical question that depends solely on what can be inferred from the image itself. Responses are formatted in structured outputs such as JSON or YAML, enabling consistent and fine grained evaluation of both reasoning processes and adherence to output specifications. The benchmark further introduces a taxonomy of reasoning operations ranging from comparison and trend identification to ranking, aggregation, proportional estimation, and anomaly detection to support a comprehensive assessment of model capabilities. Taken together, GRAFT provides a unified and scalable framework for evaluating multimodal LLMs on visually grounded, structured reasoning tasks, offering a more rigorous standard for future benchmarking efforts.",
+      "authors": [
+        {
+          "name": "Abhigya Verma",
+          "orgs": [
+            "ServiceNow"
+          ]
+        },
+        {
+          "name": "Sriram Puttagunta",
+          "orgs": [
+            "ServiceNow"
+          ]
+        },
+        {
+          "name": "Seganrasan Subramanian",
+          "orgs": [
+            "ServiceNow"
+          ]
+        },
+        {
+          "name": "Sravan Ramachandran",
+          "orgs": [
+            "ServiceNow"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2508.15690v4",
+      "date": "2025-08-21",
+      "citation_count": 1,
+      "categories": [
+        "cs.AI",
+        "cs.LG",
+        "cs.MM"
+      ]
+    },
+    {
+      "arxiv_id": "2411.10983",
+      "score": 9.104399,
+      "title": "Framework for developing and evaluating ethical collaboration between expert and machine",
+      "tldr": "This paper presents a framework for developing and ethically evaluating expert-guided multi-modal AI in precision medicine to address challenges in AI integration, such as poor generalizability, limited explainability, and ethical concerns; it uses a co-design approach with deep learning and expert knowledge to create explainable, ethical AI systems that improve personalized treatment planning and clinical decision-making; the framework is illustrated with a case study on T1D insulin management, showing improved glycemic control through AI-assisted treatment plans.",
+      "abstract": "Precision medicine is a promising approach for accessible disease diagnosis and personalized intervention planning in high-mortality diseases such as coronary artery disease (CAD), drug-resistant epilepsy (DRE), and chronic illnesses like Type 1 diabetes (T1D). By leveraging artificial intelligence (AI), precision medicine tailors diagnosis and treatment solutions to individual patients by explicitly modeling variance in pathophysiology. However, the adoption of AI in medical applications faces significant challenges, including poor generalizability across centers, demographics, and comorbidities, limited explainability in clinical terms, and a lack of trust in ethical decision-making. This paper proposes a framework to develop and ethically evaluate expert-guided multi-modal AI, addressing these challenges in AI integration within precision medicine. We illustrate this framework with case study on insulin management for T1D. To ensure ethical considerations and clinician engagement, we adopt a co-design approach where AI serves an assistive role, with final diagnoses or treatment plans emerging from collaboration between clinicians and AI.",
+      "authors": [
+        {
+          "name": "Ayan Banerjee",
+          "orgs": [
+            "School of Computing and Augmented Intelligence, Arizona State University, Tempe, 85281, USA"
+          ]
+        },
+        {
+          "name": "Payal Kamboj",
+          "orgs": [
+            "School of Computing and Augmented Intelligence, Arizona State University, Tempe, 85281, USA"
+          ]
+        },
+        {
+          "name": "Sandeep Gupta",
+          "orgs": [
+            "School of Computing and Augmented Intelligence, Arizona State University, Tempe, 85281, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2411.10983v1",
+      "date": "2024-11-17T06:49:38Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2407.17236",
+      "score": 9.086963,
+      "title": "Statistical Batch-Based Bearing Fault Detection",
+      "tldr": "This paper introduces a multivariate statistical process control-based fault detection method for rotating machinery bearings, addressing the challenge of early fault detection in complex working conditions by utilizing Fourier transform features from fixed-time batches, contributing an optimized framework that surpasses existing signal-based methods and enables efficient batch monitoring without requiring faulty data, demonstrating effectiveness through experiments with varying vibration locations, fault types, and motor loads.",
+      "abstract": "In the domain of rotating machinery, bearings are vulnerable to different mechanical faults, including ball, inner, and outer race faults. Various techniques can be used in condition-based monitoring, from classical signal analysis to deep learning methods. Based on the complex working conditions of rotary machines, multivariate statistical process control charts such as Hotelling's $T^2$ and Squared Prediction Error are useful for providing early warnings. However, these methods are rarely applied to condition monitoring of rotating machinery due to the univariate nature of the datasets. In the present paper, we propose a multivariate statistical process control-based fault detection method that utilizes multivariate data composed of Fourier transform features extracted for fixed-time batches. Our approach makes use of the multidimensional nature of Fourier transform characteristics, which record more detailed information about the machine's status, in an effort to enhance early defect detection and diagnosis. Experiments with varying vibration measurement locations (Fan End, Drive End), fault types (ball, inner, and outer race faults), and motor loads (0-3 horsepower) are used to validate the suggested approach. The outcomes illustrate our method's effectiveness in fault detection and point to possible broader uses in industrial maintenance.",
+      "authors": [
+        {
+          "name": "Victoria Jorry",
+          "orgs": [
+            "LUT University, Yliopistonkatu 34, Lappeenranta 53850, Finland"
+          ]
+        },
+        {
+          "name": "Zina-Sabrina Duma",
+          "orgs": [
+            "LUT University, Yliopistonkatu 34, Lappeenranta 53850, Finland"
+          ]
+        },
+        {
+          "name": "Tuomas Sihvonen",
+          "orgs": [
+            "LUT University, Yliopistonkatu 34, Lappeenranta 53850, Finland"
+          ]
+        },
+        {
+          "name": "Satu-Pia Reinikainen",
+          "orgs": [
+            "LUT University, Yliopistonkatu 34, Lappeenranta 53850, Finland"
+          ]
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Lassi Roininen",
+          "orgs": [
+            "LUT University, Yliopistonkatu 34, Lappeenranta 53850, Finland"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2407.17236v2",
+      "date": "2024-07-24T12:45:02Z",
+      "citation_count": 7,
+      "categories": [
+        "cs.LG",
+        "stat.ML"
+      ]
+    }
+  ]
+}

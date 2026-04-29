@@ -1,0 +1,88 @@
+=== CHARTER (2111.14103) ===
+
+--- heading ---
+# CHARTER: heatmap-based multi-type chart data extraction
+
+Joseph Shtok*, Sivan Harary*, Ophir Azulai, Adi Raz Goldfarb, Assaf Arbelle, Leonid Karlinsky** IBM Research AI, Haifa Research Lab Haifa, Israel
+
+--- Abstract ---
+The digital conversion of information stored in documents is a great source of knowledge. In contrast to the documents text, the conversion of the embedded documents graphics, such as charts and plots, has been much less explored. We present a method and a system for end-to-end conversion of document charts into machine readable tabular data format, which can be easily stored and analyzed in the digital domain. Our approach extracts and analyses charts along with their graphical elements and supporting structures such as legends, axes, titles, and captions. Our detection system is based on neural networks, trained solely on synthetic data, eliminating the limiting factor of data collection. As opposed to previous methods, which detect graphical elements using bounding-boxes, our networks feature auxiliary domain specific heatmaps prediction enabling the precise detection of pie charts, line and scatter plots which do not fit the rectangular bounding-box presumption. Qualitative and quantitative results show high robustness and precision, improving upon previous works on popular benchmarks.
+
+# KEYWORDS
+
+charts detection, analysis and conversion
+
+--- Introduction ---
+Charts carry important part of the information content in many kinds of documents - financial reports, scholarly articles, presentations, to name a few. Recent interest in automatic document processing and conversion, such as in summarization and question answering tasks, has increased the importance of the extraction of underlying tabular data from chart images embedded in the converted documents. Chart analysis methods have evolved substantially in recent years from human-in-the-loop platforms relying on manual annotations [8, 15], through early data extraction algorithms [2], hybrid neural-algorithmic pipelines [7, 13], to end-to-end processing by a neural network [9, 12, 16].
+
+Commonly a two-stage approach is used, first detecting the chart regions in the documents, and then applying some data extraction process to the detected charts. While the scope of the detection stage can be quite wide, including many types of charts [7], current tabular data extraction systems are mostly limited to the bar charts [2, 7, 9, 16], with few exceptions. One of the possible reasons is that standard object detectors, employed in recent works, better cope with (and enable easy inference from) objects like rectangular bars and text elements, less so with pie segments, while elements like line or area plots defy handling by box proposals. Additionally, matching of the chart legend to the corresponding chart elements, non-trivial due to small size of the color/texture chart component samples 
+
+--- Related Work ---
+Early works addressing automatic charts classification and data extraction [2, 14], used classical computer vision techniques, such as clustering image patches, Hough transform and OCR. More recently, [6, 7, 13] have presented hybrid neural-algorithmic pipelines, performing detection of the graphical objects with following extraction of numerical and textual information using OCR, Computer Vision techniques and rules; our approach belongs to this group of methods in terms of its general design. Other line of works [9, 12, 16] proposes an end-to-end analysis of the charts by a neural network. [16] develops an encoder-decoder architecture an attention mechanism for direct data extraction from bar charts by an RNN. [9] introduced a neural model for Question Answering about charts, and in particular they allow to extract tabular data by appropriate sets of questions. In [12] a standard object detector is equipped with a relation network to address the connections between the different chart elements, this model is able to produce bar heights and angles of pie segments (for single pie chart), and to match them against the legend entries. However, this approach requires an individual network design for each type of charts, and
+
+![](images/2111.14103/1cf0ab79b397cafc6dbe1caa1658c2ef4344cfb1c9c348b52e404dfdd80d1fcc.jpg)  
+Figure 2: Our charts conversion pipeline.
+
+the inference process involves affine transformations of the input image for spatial alignment of features.
+
+We offer a l
+
+--- Method ---
+In Stage 1 of our system an object detector is applied to complete document pages to retrieve regions of charts, title, legend, and caption<sup>1</sup>. In stage 2, another object detector operates on the detected chart regions, producing both bounding box proposals and heatmaps for various chart components. It is trained to predict the important encapsulating regions (e.g. the outer and inner boxes around the chart) and some graphical elements (e.g. bars) using bounding boxes, while heatmaps are used to locate fiducials (e.g. axes ticks, pie junctions) and non-rectangular elements (e.g. circumference and radial lines in pie chart, line-plot graphs, etc.). In Stage 3, the chart image and text regions are processed by an OCR system for text extraction. Finally, in Stage 4, the Analysis module aggregates the data produced so far, applying computer vision algorithms and domain knowledge of different types of charts, to reproduce the original source tabular data represented by the chart. The system flowchart is presented in Figure 2, while its details are provided in following subsections.
+
+# 3.1 Stage 1: Detection of chart regions
+
+Our full-page chart regions detector is a Faster-RCNN model employing the FPN detection meta architecture and RN50 backbone implemented using the Detectron2 framework and trained on a real data. The object categories of the model are: bar chart, pie chart, line chart, scatter plot, legend, title, caption, and x- and y-labels.
+
+# 3.2 Stage 2: Detection
+
+--- Results ---
+In this section we provide the quantitative analysis of different modules and an ablation study for the heatmap-based data extraction.
+
+# 4.1 Datasets for training and evaluation
+
+For stage 1 detector, we have collected and manually annotated 743 document pages, of which 122 were crawled from the web, and 521 taken from PubMed COVID-19 related medical articles. They contain 1260 bar charts, 336 pie charts, 256 line charts, and 213
+
+Table 1: Detection of charts and related elements in documents  
+
+<table><tr><td>Category
+AP@0.5</td><td>Bar
+98.0%</td><td>Pie
+97.8%</td><td>Line
+84.4%</td><td>Scatter
+91.35%</td><td></td></tr><tr><td>Category
+AP@0.5</td><td>Legend
+77.8%</td><td>Caption
+91.4%</td><td>Title
+71.8%</td><td>X label
+84.7%</td><td>Y label
+94.9%</td></tr></table>
+
+Stage 1 detector performance, measured as Average Precision (AP) with IoU = 0.5, averaged over 5 random train/test splits.
+
+Table 2: Detection of graphical elements in chart image  
+
+<table><tr><td>Category</td><td>Horizontal bar</td><td>Vertical bar</td><td>Pie sector</td></tr><tr><td>[12]</td><td>-</td><td>80.2%</td><td>-</td></tr><tr><td>Ours</td><td>76.5%</td><td>90.5%</td><td>90.9%</td></tr></table>
+
+Performance (in Average Precision (AP) with IoU= 0.5
+
+of the graphical elements detector (box categories) on the real data.
+
+scatter plots. Stage 2 detector was trained on a synthetic dataset, generated with FigureQA code, as detailed in Section 3.2. It consists of 30k chart images for each type (pie, vertical 
+
+--- Conclusion ---
+We have presented the CHARTER - a practical system for document charts conversion to tabular data, which can extend the scope of real-world document conversion tools to include the content of the
+
+embedded document charts. The proposed use of heatmaps allows more accurate analysis of line, scatter, bar and pie charts within the same model. Moreover, our model can be easily extended to include additional chart types, which is in the scope of our future work.
+
+--- References ---
+[1] 2020. No Title. Technical Report. https://chartinfo.github.io/index.html#task1  
+[2] Rabah A. Al-Zaidy and C. Lee Giles. 2015. Automatic extraction of data from bar charts. Proceedings of the 8th International Conference on Knowledge Capture, K-CAP 2015 (2015). https://doi.org/10.1145/2815833.2816956  
+[3] Jeonghun Baek, Geewook Kim, Junyeop Lee, Sungrae Park, Dongyoon Han, Sangdoo Yun, Seong Joon Oh, and Hwalsuk Lee. 2019. What is wrong with scene text recognition model comparisons? dataset and model analysis. Proceedings of the IEEE International Conference on Computer Vision 2019-Octob (2019), 4714-4722. https://doi.org/10.1109/ICCV.2019.00481  
+[4] Youngmin Baek, Bado Lee, Dongyoon Han, Sangdoo Yun, and Hwalsuk Lee. 2019. Character region awareness for text detection. Proceedings of the IEEE Computer Society Conference on Computer Vision and Pattern Recognition 2019-June (2019), 9357-9366. https://doi.org/10.1109/CVPR.2019.00959  
+[5] Mircea Cimpoi, Subhansu Maji, Iasonas Kokkinos, Sammy Mohamed, and Andrea Vedaldi. 2014. Describing textures in the wild. Proceedings of the IEEE Computer Society Conference on Computer Vision and Pattern Recognition (2014), 3606-3613. https://doi.org/10.1109/CVPR.2014.461  
+[6] Mathieu Cliche, David Rosenberg, Dhruv Madeka, and Connie Yee. 2017. Scatter-act: Automated Extraction of Data from Scatter Plots. Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)
+
+--- Footnotes ---
+Page 0: * authors contributed equally to this research. 
+Page 1: <sup>1</sup>We have observed cases where these elements are shared by a group of charts in a figure, and are therefor not necessarily adjacent to any one of them; in this case, page-level logic is beneficial

@@ -1,0 +1,549 @@
+{
+  "status": "success",
+  "total_count": 40,
+  "result": [
+    {
+      "arxiv_id": "1704.06687",
+      "score": 19.02576,
+      "title": "Scatteract: Automated extraction of data from scatter plots",
+      "tldr": "This paper addresses the challenge of automatically extracting numerical data from scatter plots, aiming to facilitate further analysis by converting pixel coordinates to chart coordinates; it uses deep learning for object detection and OCR combined with robust regression for coordinate mapping, introducing a fully automated system that achieves 89% success in data extraction; the findings demonstrate effective data retrieval with robustness to OCR errors, advancing automated chart analysis and enabling broader applications in data processing and visualization.",
+      "abstract": "Charts are an excellent way to convey patterns and trends in data, but they do not facilitate further modeling of the data or close inspection of individual data points. We present a fully automated system for extracting the numerical values of data points from images of scatter plots. We use deep learning techniques to identify the key components of the chart, and optical character recognition together with robust regression to map from pixels to the coordinate system of the chart. We focus on scatter plots with linear scales, which already have several interesting challenges. Previous work has done fully automatic extraction for other types of charts, but to our knowledge this is the first approach that is fully automatic for scatter plots. Our method performs well, achieving successful data extraction on 89% of the plots in our test set.",
+      "authors": [
+        {
+          "name": "Mathieu Cliche",
+          "orgs": []
+        },
+        {
+          "name": "David Rosenberg",
+          "orgs": []
+        },
+        {
+          "name": "Dhruv Madeka",
+          "orgs": []
+        },
+        {
+          "name": "Connie Yee",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1704.06687v1",
+      "date": "2017-04-21T19:25:32Z",
+      "citation_count": 75,
+      "categories": [
+        "cs.CV",
+        "cs.IR",
+        "stat.ML"
+      ]
+    },
+    {
+      "arxiv_id": "1903.11683",
+      "score": 14.968923,
+      "title": "Outlier-Robust Spatial Perception: Hardness, General-Purpose Algorithms, and Guarantees",
+      "tldr": "This paper addresses the challenge of robust spatial perception in robotics and computer vision, aiming to develop efficient and provably robust outlier rejection methods; it introduces a general-purpose algorithm, Adaptive Trimming (ADAPT), which outperforms existing methods by iteratively removing large residual measurements; the algorithm tolerates up to 90% outliers in 3D registration and 50% in two-view geometry and most SLAM datasets.",
+      "abstract": "Spatial perception is the backbone of many robotics applications, and spans a broad range of research problems, including localization and mapping, point cloud alignment, and relative pose estimation from camera images. Robust spatial perception is jeopardized by the presence of incorrect data association, and in general, outliers. Although techniques to handle outliers do exist, they can fail in unpredictable manners (e.g., RANSAC, robust estimators), or can have exponential runtime (e.g., branch-and-bound). In this paper, we advance the state of the art in outlier rejection by making three contributions. First, we show that even a simple linear instance of outlier rejection is inapproximable: in the worst-case one cannot design a quasi-polynomial time algorithm that computes an approximate solution efficiently. Our second contribution is to provide the first per-instance sub-optimality bounds to assess the approximation quality of a given outlier rejection outcome. Our third contribution is to propose a simple general-purpose algorithm, named adaptive trimming, to remove outliers. Our algorithm leverages recently-proposed global solvers that are able to solve outlier-free problems, and iteratively removes measurements with large errors. We demonstrate the proposed algorithm on three spatial perception problems: 3D registration, two-view geometry, and SLAM. The results show that our algorithm outperforms several state-of-the-art methods across applications while being a general-purpose method.",
+      "authors": [
+        {
+          "name": "Vasileios Tzoumas",
+          "orgs": []
+        },
+        {
+          "name": "Pasquale Antonante",
+          "orgs": []
+        },
+        {
+          "name": "Luca Carlone",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1903.11683v2",
+      "date": "2019-03-27T20:12:37Z",
+      "citation_count": 38,
+      "categories": [
+        "cs.CV",
+        "cs.LG",
+        "cs.RO",
+        "cs.SY",
+        "stat.AP",
+        "stat.ML"
+      ]
+    },
+    {
+      "arxiv_id": "2106.10240",
+      "score": 14.817796,
+      "title": "VSAC: Efficient and Accurate Estimator for H and F",
+      "tldr": "This paper introduces VSAC, a RANSAC-type estimator that addresses the problem of efficient and accurate homography and epipolar geometry estimation, which is crucial for computer vision tasks; it proposes a novel concept of independent inliers, adaptive sequential hypothesis verification, and efficient local optimization, leading to a method that is two orders of magnitude faster than MAGSAC++ while maintaining its precision; experiments show VSAC runs in 1-2 ms on average with zero failure rates on standard datasets and zero false positives in rejecting non-matching image pairs.",
+      "abstract": "We present VSAC, a RANSAC-type robust estimator with a number of novelties. It benefits from the introduction of the concept of independent inliers that improves significantly the efficacy of the dominant plane handling and, also, allows near error-free rejection of incorrect models, without false positives. The local optimization process and its application is improved so that it is run on average only once. Further technical improvements include adaptive sequential hypothesis verification and efficient model estimation via Gaussian elimination. Experiments on four standard datasets show that VSAC is significantly faster than all its predecessors and runs on average in 1-2 ms, on a CPU. It is two orders of magnitude faster and yet as precise as MAGSAC++, the currently most accurate estimator of two-view geometry. In the repeated runs on EVD, HPatches, PhotoTourism, and Kusvod2 datasets, it never failed.",
+      "authors": [
+        {
+          "name": "Maksym Ivashechkin",
+          "orgs": [
+            "Centre for Machine Perception, Czech Technical University in Prague, Czech Republic"
+          ]
+        },
+        {
+          "name": "Daniel Barath",
+          "orgs": [
+            "Computer Vision and Geometry Group, Department of Computer Science, ETH Zürich"
+          ]
+        },
+        {
+          "name": "Jiri Matas",
+          "orgs": [
+            "Centre for Machine Perception, Czech Technical University in Prague, Czech Republic"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2106.10240v2",
+      "date": "2021-06-18T17:04:57Z",
+      "citation_count": 36,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1803.07469",
+      "score": 14.790619,
+      "title": "MAGSAC: marginalizing sample consensus",
+      "tldr": "This paper proposes MAGSAC, a method that eliminates the need for a user-defined noise scale parameter in RANSAC by marginalizing over noise scales, contributing a new quality function, termination criterion, and post-processing step that improves geometric accuracy by 13.7% on real-world datasets without significant time cost.",
+      "abstract": "A method called, sigma-consensus, is proposed to eliminate the need for a user-defined inlier-outlier threshold in RANSAC. Instead of estimating the noise sigma, it is marginalized over a range of noise scales. The optimized model is obtained by weighted least-squares fitting where the weights come from the marginalization over sigma of the point likelihoods of being inliers. A new quality function is proposed not requiring sigma and, thus, a set of inliers to determine the model quality. Also, a new termination criterion for RANSAC is built on the proposed marginalization approach. Applying sigma-consensus, MAGSAC is proposed with no need for a user-defined sigma and improving the accuracy of robust estimation significantly. It is superior to the state-of-the-art in terms of geometric accuracy on publicly available real-world datasets for epipolar geometry (F and E) and homography estimation. In addition, applying sigma-consensus only once as a post-processing step to the RANSAC output always improved the model quality on a wide range of vision problems without noticeable deterioration in processing time, adding a few milliseconds. The source code is at https://github.com/danini/magsac.",
+      "authors": [
+        {
+          "name": "Daniel Barath",
+          "orgs": [
+            "Machine Perception Research Laboratory, MTA SZTAKI, Budapest, Hungary",
+            "Centre for Machine Perception, Department of Cybernetics, Czech Technical University, Prague, Czech Republic"
+          ]
+        },
+        {
+          "name": "Jana Noskova",
+          "orgs": [
+            "Centre for Machine Perception, Department of Cybernetics, Czech Technical University, Prague, Czech Republic"
+          ]
+        },
+        {
+          "name": "Jiri Matas",
+          "orgs": [
+            "Centre for Machine Perception, Department of Cybernetics, Czech Technical University, Prague, Czech Republic"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1803.07469v2",
+      "date": "2018-03-20T15:01:11Z",
+      "citation_count": 325,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2304.00517",
+      "score": 14.737315,
+      "title": "Robust Ellipsoid Fitting Using Axial Distance and Combination",
+      "tldr": "This paper addresses the challenge of robust ellipsoid fitting in pattern recognition, aiming to improve accuracy and robustness against outliers by introducing a novel axial distance metric and its combination with Sampson distance, resulting in a method that outperforms existing approaches in robustness and accuracy without sacrificing speed.",
+      "abstract": "In random sample consensus (RANSAC), the problem of ellipsoid fitting can be formulated as a problem of minimization of point-to-model distance, which is realized by maximizing model score. Hence, the performance of ellipsoid fitting is affected by distance metric. In this paper, we proposed a novel distance metric called the axial distance, which is converted from the algebraic distance by introducing a scaling factor to solve nongeometric problems of the algebraic distance. There is complementarity between the axial distance and Sampson distance because their combination is a stricter metric when calculating the model score of sample consensus and the weight of the weighted least squares (WLS) fitting. Subsequently, a novel sample-consensus-based ellipsoid fitting method is proposed by using the combination between the axial distance and Sampson distance (CAS). We compare the proposed method with several representative fitting methods through experiments on synthetic and real datasets. The results show that the proposed method has a higher robustness against outliers, consistently high accuracy, and a speed close to that of the method based on sample consensus.",
+      "authors": [
+        {
+          "name": "Min Han",
+          "orgs": [
+            "Tsinghua Shenzhen International Graduate School, Tsinghua University, Shenzhen, China"
+          ]
+        },
+        {
+          "name": "Jiangming Kan",
+          "orgs": [
+            "School of Technology, Beijing Forestry University, Beijing, China"
+          ]
+        },
+        {
+          "name": "Gongping Yang",
+          "orgs": [
+            "School of Software, Shandong University, Jinan, China"
+          ]
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Xinghui Li",
+          "orgs": [
+            "Tsinghua Shenzhen International Graduate School, Tsinghua University, Shenzhen, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2304.00517v2",
+      "date": "2023-04-02T11:52:33Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1609.06371",
+      "score": 14.676952,
+      "title": "Robust Estimation of Multiple Inlier Structures",
+      "tldr": "This paper proposes a robust estimator for multiple inlier structures that adaptively estimates scales without thresholds, innovatively classifying data into structures based on strength and using mean shift, achieving successful results across different tasks without parameter tuning.",
+      "abstract": "The robust estimator presented in this paper processes each structure independently. The scales of the structures are estimated adaptively and no threshold is involved in spite of different objective functions. The user has to specify only the number of elemental subsets for random sampling. After classifying all the input data, the segmented structures are sorted by their strengths and the strongest inlier structures come out at the top. Like any robust estimators, this algorithm also has limitations which are described in detail. Several synthetic and real examples are presented to illustrate every aspect of the algorithm.",
+      "authors": [
+        {
+          "name": "Xiang Yang",
+          "orgs": []
+        },
+        {
+          "name": "Peter Meer",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1609.06371v3",
+      "date": "2016-09-20T22:06:58Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1709.09550",
+      "score": 14.596665,
+      "title": "Scale Adaptive Clustering of Multiple Structures",
+      "tldr": "This paper proposes MISRE, a scale adaptive clustering method for multiple inlier structures without parameter tuning, innovating with adaptive scale estimation, no threshold requirements, and strength-based classification; it achieves robust and efficient segmentation across synthetic and real datasets, outperforming existing methods in handling varying noise levels and multiple structures.",
+      "abstract": "We propose the segmentation of noisy datasets into Multiple Inlier Structures with a new Robust Estimator (MISRE). The scale of each individual structure is estimated adaptively from the input data and refined by mean shift, without tuning any parameter in the process, or manually specifying thresholds for different estimation problems. Once all the data points were classified into separate structures, these structures are sorted by their densities with the strongest inlier structures coming out first. Several 2D and 3D synthetic and real examples are presented to illustrate the efficiency, robustness and the limitations of the MISRE algorithm.",
+      "authors": [
+        {
+          "name": "Xiang Yang",
+          "orgs": []
+        },
+        {
+          "name": "Peter Meer",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1709.09550v1",
+      "date": "2017-09-26T15:15:52Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2204.01324",
+      "score": 14.488653,
+      "title": "Outlier-Robust Geometric Perception: A Novel Thresholding-Based Estimator with Intra-Class Variance Maximization",
+      "tldr": "This paper proposes TIVM, a novel thresholding-based estimator for geometric perception problems that addresses the challenge of outlier rejection by maximizing intra-class variance, achieving 70-90% robustness against outliers and converging in 3-15 iterations, significantly faster than RANSAC, GNC, and ADAPT.",
+      "abstract": "Geometric perception problems are fundamental tasks in robotics and computer vision. In real-world applications, they often encounter the inevitable issue of outliers, preventing traditional algorithms from making correct estimates. In this paper, we present a novel general-purpose robust estimator TIVM (Thresholding with Intra-class Variance Maximization) that can collaborate with standard non-minimal solvers to efficiently reject outliers for geometric perception problems. First, we introduce the technique of intra-class variance maximization to design a dynamic 2-group thresholding method on the measurement residuals, aiming to distinctively separate inliers from outliers. Then, we develop an iterative framework that robustly optimizes the model by approaching the pure-inlier group using a multi-layered dynamic thresholding strategy as subroutine, in which a self-adaptive mechanism for layer-number tuning is further employed to minimize the user-defined parameters. We validate the proposed estimator on 3 classic geometric perception problems: rotation averaging, point cloud registration and category-level perception, and experiments show that it is robust against 70--90\\% of outliers and can converge typically in only 3--15 iterations, much faster than state-of-the-art robust solvers such as RANSAC, GNC and ADAPT. Furthermore, another highlight is that: our estimator can retain approximately the same level of robustness even when the inlier-noise statistics of the problem are fully unknown.",
+      "authors": [
+        {
+          "name": "Lei Sun",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2204.01324v2",
+      "date": "2022-04-04T08:57:34Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2505.18925",
+      "score": 14.310044,
+      "title": "Words as Geometric Features: Estimating Homography using Optical Character Recognition as Compressed Image Representation",
+      "tldr": "This paper addresses the challenge of document alignment without original images by using OCR outputs as features to estimate homography, contributing a robust method that outperforms traditional image-based approaches, enabling efficient and scalable document processing.",
+      "abstract": "Document alignment and registration play a crucial role in numerous real-world applications, such as automated form processing, anomaly detection, and workflow automation. Traditional methods for document alignment rely on image-based features like keypoints, edges, and textures to estimate geometric transformations, such as homographies. However, these approaches often require access to the original document images, which may not always be available due to privacy, storage, or transmission constraints. This paper introduces a novel approach that leverages Optical Character Recognition (OCR) outputs as features for homography estimation. By utilizing the spatial positions and textual content of OCR-detected words, our method enables document alignment without relying on pixel-level image data. This technique is particularly valuable in scenarios where only OCR outputs are accessible. Furthermore, the method is robust to OCR noise, incorporating RANSAC to handle outliers and inaccuracies in the OCR data. On a set of test documents, we demonstrate that our OCR-based approach even performs more accurately than traditional image-based methods, offering a more efficient and scalable solution for document registration tasks. The proposed method facilitates applications in document processing, all while reducing reliance on high-dimensional image data.",
+      "authors": [
+        {
+          "name": "Ross Greer",
+          "orgs": [
+            "University of California, San Diego",
+            "University of California, Merced"
+          ]
+        },
+        {
+          "name": "Alisha Ukani",
+          "orgs": [
+            "University of California, San Diego"
+          ]
+        },
+        {
+          "name": "Katherine Izhikevich",
+          "orgs": [
+            "University of California, San Diego"
+          ]
+        },
+        {
+          "name": "Earlence Fernandes",
+          "orgs": [
+            "University of California, San Diego"
+          ]
+        },
+        {
+          "name": "Stefan Savage",
+          "orgs": [
+            "University of California, San Diego"
+          ]
+        },
+        {
+          "name": "Alex C. Snoeren",
+          "orgs": [
+            "University of California, San Diego"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2505.18925v1",
+      "date": "2025-05-25T01:20:32Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1701.05268",
+      "score": 14.131664,
+      "title": "Accurate Motion Estimation through Random Sample Aggregated Consensus",
+      "tldr": "This paper addresses the problem of accurate 2D transformation estimation from point matches with outliers in computer vision, aiming to improve RANSAC's accuracy by aggregating hypotheses; it introduces RANSAAC, a method that systematically enhances RANSAC's performance with negligible computational cost, achieving on average a two to threefold accuracy improvement; empirical results show significant performance gains in projective transforms and homography+distortion models.",
+      "abstract": "We reconsider the classic problem of estimating accurately a 2D transformation from point matches between images containing outliers. RANSAC discriminates outliers by randomly generating minimalistic sampled hypotheses and verifying their consensus over the input data. Its response is based on the single hypothesis that obtained the largest inlier support. In this article we show that the resulting accuracy can be improved by aggregating all generated hypotheses. This yields RANSAAC, a framework that improves systematically over RANSAC and its state-of-the-art variants by statistically aggregating hypotheses. To this end, we introduce a simple strategy that allows to rapidly average 2D transformations, leading to an almost negligible extra computational cost. We give practical applications on projective transforms and homography+distortion models and demonstrate a significant performance gain in both cases.",
+      "authors": [
+        {
+          "name": "Martin Rais",
+          "orgs": [
+            "Departament de Matemàtiques i Informàtica, Universitat de les Illes Balears, Balearic Islands, Spain"
+          ]
+        },
+        {
+          "name": "Gabriele Facciolo",
+          "orgs": [
+            "CMLA, Ecole Normale Supérieure Paris-Saclay, 94230, France"
+          ]
+        },
+        {
+          "name": "Enric Meinhardt-Llopis",
+          "orgs": [
+            "CMLA, Ecole Normale Supérieure Paris-Saclay, 94230, France"
+          ]
+        },
+        {
+          "name": "Jean-Michel Morel",
+          "orgs": [
+            "CMLA, Ecole Normale Supérieure Paris-Saclay, 94230, France"
+          ]
+        },
+        {
+          "name": "Antoni Buades",
+          "orgs": [
+            "Departament de Matemàtiques i Informàtica, Universitat de les Illes Balears, Balearic Islands, Spain"
+          ]
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Bartomeu Coll",
+          "orgs": [
+            "Departament de Matemàtiques i Informàtica, Universitat de les Illes Balears, Balearic Islands, Spain"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1701.05268v1",
+      "date": "2017-01-19T01:13:41Z",
+      "citation_count": 12,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1912.05909",
+      "score": 14.037554,
+      "title": "MAGSAC++, a fast, reliable and accurate robust estimator",
+      "tldr": "This paper proposes MAGSAC++, a robust estimator that introduces a new model quality function and a novel marginalization procedure, along with the Progressive NAPSAC sampler, which improves sampling by transitioning from local to global structures; on six datasets, MAGSAC++ achieves faster, more accurate results with lower failure rates than existing methods.",
+      "abstract": "A new method for robust estimation, MAGSAC++, is proposed. It introduces a new model quality (scoring) function that does not require the inlier-outlier decision, and a novel marginalization procedure formulated as an iteratively re-weighted least-squares approach. We also propose a new sampler, Progressive NAPSAC, for RANSAC-like robust estimators. Exploiting the fact that nearby points often originate from the same model in real-world data, it finds local structures earlier than global samplers. The progressive transition from local to global sampling does not suffer from the weaknesses of purely localized samplers. On six publicly available real-world datasets for homography and fundamental matrix fitting, MAGSAC++ produces results superior to state-of-the-art robust methods. It is faster, more geometrically accurate and fails less often.",
+      "authors": [
+        {
+          "name": "Daniel Barath",
+          "orgs": [
+            "Centre for Machine Perception, Department of Cybernetics, Czech Technical University, Prague, Czech Republic",
+            "Machine Perception Research Laboratory, MTA SZTAKI, Budapest, Hungary"
+          ]
+        },
+        {
+          "name": "Jana Noskova",
+          "orgs": [
+            "Centre for Machine Perception, Department of Cybernetics, Czech Technical University, Prague, Czech Republic"
+          ]
+        },
+        {
+          "name": "Maksym Ivashechkin",
+          "orgs": [
+            "Centre for Machine Perception, Department of Cybernetics, Czech Technical University, Prague, Czech Republic"
+          ]
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Jiri Matas",
+          "orgs": [
+            "Centre for Machine Perception, Department of Cybernetics, Czech Technical University, Prague, Czech Republic",
+            "Machine Perception Research Laboratory, MTA SZTAKI, Budapest, Hungary"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1912.05909v1",
+      "date": "2019-12-11T14:39:33Z",
+      "citation_count": 318,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2103.03501",
+      "score": 13.973418,
+      "title": "Unsupervised Learning for Robust Fitting:A Reinforcement Learning Approach",
+      "tldr": "This paper addresses the challenge of robust model fitting in computer vision, aiming to develop an efficient unsupervised method for outlier removal in datasets with high contamination; it introduces a reinforcement learning framework that leverages the tree structure of consensus maximization and a graph convolutional network for state encoding, achieving competitive performance compared to traditional and supervised methods.",
+      "abstract": "Robust model fitting is a core algorithm in a large number of computer vision applications. Solving this problem efficiently for datasets highly contaminated with outliers is, however, still challenging due to the underlying computational complexity. Recent literature has focused on learning-based algorithms. However, most approaches are supervised which require a large amount of labelled training data. In this paper, we introduce a novel unsupervised learning framework that learns to directly solve robust model fitting. Unlike other methods, our work is agnostic to the underlying input features, and can be easily generalized to a wide variety of LP-type problems with quasi-convex residuals. We empirically show that our method outperforms existing unsupervised learning approaches, and achieves competitive results compared to traditional methods on several important computer vision problems.",
+      "authors": [
+        {
+          "name": "Giang Truong",
+          "orgs": [
+            "School of Science Edith Cowan University Australia"
+          ]
+        },
+        {
+          "name": "Huu Le",
+          "orgs": [
+            "Department of Electrical Engineering Chalmers University of Technology"
+          ]
+        },
+        {
+          "name": "David Suter",
+          "orgs": [
+            "School of Science Edith Cowan University Australia"
+          ]
+        },
+        {
+          "name": "Erchuan Zhang",
+          "orgs": [
+            "School of Science Edith Cowan University Australia"
+          ]
+        },
+        {
+          "name": "Syed Zulqarnain Gilani",
+          "orgs": [
+            "School of Science Edith Cowan University Australia"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2103.03501v1",
+      "date": "2021-03-05T07:14:00Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2502.10933",
+      "score": 13.865914,
+      "title": "Robust Earthquake Location using Random Sample Consensus (RANSAC)",
+      "tldr": "This paper addresses the challenge of robust earthquake location in the context of seismic monitoring, aiming to improve accuracy against false or inaccurate phase picks, which is critical for reliable earthquake catalogs and hazard assessment; it proposes integrating the RANSAC algorithm into traditional location workflows to enhance robustness through iterative sampling and outlier rejection, contributing a novel method that achieves comparable accuracy to existing techniques while showing improved performance on synthetic and Ridgecrest real data; the results demonstrate enhanced robustness to outliers without compromising accuracy.",
+      "abstract": "Accurate earthquake location, which determines the origin time and location of seismic events using phase arrival times or waveforms, is fundamental to earthquake monitoring. While recent deep learning advances have significantly improved earthquake detection and phase picking, particularly for smaller-magnitude events, the increased detection rate introduces new challenges for robust location determination. These smaller events often contain fewer P- and S-phase picks, making location accuracy more vulnerable to false or inaccurate picks. To enhance location robustness against outlier picks, we propose a machine learning method that incorporates the Random Sample Consensus (RANSAC) algorithm. RANSAC employs iterative sampling to achieve robust parameter optimization in the presence of substantial outliers. By integrating RANSAC's iterative sampling into traditional earthquake location workflows, we effectively mitigate biases from false picks and improve the robustness of the location process. We evaluated our approach using both synthetic data and real data from the Ridgecrest earthquake sequence. The results demonstrate comparable accuracy to traditional location algorithms while showing enhanced robustness to outlier picks.",
+      "authors": [
+        {
+          "name": "Weiqiang Zhu",
+          "orgs": [
+            "Department of Earth and Planetary Science, University of California, Berkeley, Berkeley, CA, USA"
+          ]
+        },
+        {
+          "name": "Bo Rong",
+          "orgs": [
+            "Department of Earth and Planetary Science, University of California, Berkeley, Berkeley, CA, USA"
+          ]
+        },
+        {
+          "name": "Yaqi Jie",
+          "orgs": [
+            "Department of Earth and Environmental Sciences, Michigan State University, MI, USA"
+          ]
+        },
+        {
+          "name": "S. Shawn Wei",
+          "orgs": [
+            "Department of Earth and Environmental Sciences, Michigan State University, MI, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2502.10933v1",
+      "date": "2025-02-15T23:46:58Z",
+      "citation_count": 3,
+      "categories": [
+        "physics.geo-ph"
+      ]
+    },
+    {
+      "arxiv_id": "2008.01574",
+      "score": 13.792858,
+      "title": "Revisiting Robust Model Fitting Using Truncated Loss",
+      "tldr": "This paper addresses robust model fitting in low-level vision, aiming to improve inlier identification and model estimation by using truncated loss based SIME formulation, which adapts to linear and nonlinear models and achieves lower residual than MC; it introduces alternating minimization and SDR embedded algorithms, and shows significant performance improvements over RANSAC and state-of-the-art methods in 2D/3D registration at high outlier ratios.",
+      "abstract": "Robust fitting is a fundamental problem in low-level vision, which is typically achieved by maximum consensus (MC) estimators to identify inliers first or by M-estimators directly. While these two methods are discriminately preferred in different applications, truncated loss based M-estimators are similar to MC as they can also identify inliers. This work revisits a formulation that achieves simultaneous inlier identification and model estimation (SIME) using truncated loss. It has a generalized form adapts to both linear and nonlinear residual models. We show that as SIME takes fitting residual into account in finding inliers, its lowest achievable residual in model fitting is lower than that of MC robust fitting. Then, an alternating minimization (AM) algorithm is employed to solve the SIME formulation. Meanwhile, a semidefinite relaxation (SDR) embedded AM algorithm is developed in order to ease the high nonconvexity of the SIME formulation. Furthermore, the new algorithms are applied to various 2D/3D registration problems. Experimental results show that the new algorithms significantly outperform RANSAC and deterministic approximate MC methods at high outlier ratios. Besides, in rotation and Euclidean registration problems, the new algorithms also compare favorably with state-of-the-art registration methods, especially in high noise and outliers. Code is available at \\textit{https://github.com/FWen/mcme.git}.",
+      "authors": [
+        {
+          "name": "Fei Wen",
+          "orgs": [
+            "Department of Electronic Engineering, Shanghai Jiao Tong University, Shanghai, China, 200240"
+          ]
+        },
+        {
+          "name": "Hewen Wei",
+          "orgs": [
+            "Shanghai branch of the Southwest Institute of Electronics and Telecommunication Technology of China, Shanghai, China, 200434"
+          ]
+        },
+        {
+          "name": "Yipeng Liu",
+          "orgs": [
+            "School of Electronic Engineering, University of Electronic Science and Technology of China, Chengdu, China, 611731"
+          ]
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Peilin Liu",
+          "orgs": [
+            "Department of Electronic Engineering, Shanghai Jiao Tong University, Shanghai, China, 200240"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2008.01574v2",
+      "date": "2020-08-04T14:10:41Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2512.19850",
+      "score": 7.6323233,
+      "title": "RANSAC Scoring Functions: Analysis and Reality Check",
+      "tldr": "This paper examines scoring functions in RANSAC for robust geometric fitting, addressing the gap in understanding their effectiveness and validity; it analyzes MAGSAC++ and finds its score function equivalent to a Gaussian-uniform likelihood, showing no significant performance advantage over simpler methods; empirical results reveal all scoring functions perform similarly, challenging prior assumptions about their superiority.",
+      "abstract": "We revisit the problem of assigning a score (a quality of fit) to candidate geometric models -- one of the key components of RANSAC for robust geometric fitting. In a non-robust setting, the ``gold standard'' scoring function, known as the geometric error, follows from a probabilistic model with Gaussian noises. We extend it to spherical noises. In a robust setting, we consider a mixture with uniformly distributed outliers and show that a threshold-based parameterization leads to a unified view of likelihood-based and robust M-estimators and associated local optimization schemes.\n  Next we analyze MAGSAC++ which stands out for two reasons. First, it achieves the best results according to existing benchmarks. Second, it makes quite different modeling assumptions and derivation steps. We discovered, however that the derivation does not correspond to sound principles and the resulting score function is in fact numerically equivalent to a simple Gaussian-uniform likelihood, a basic model within the proposed framework.\n  Finally, we propose an experimental methodology for evaluating scoring functions: assuming either a large validation set, or a small random validation set in expectation. We find that all scoring functions, including using a learned inlier distribution, perform identically. In particular, MAGSAC++ score is found to be neither better performing than simple contenders nor less sensitive to the choice of the threshold hyperparameter.\n  Our theoretical and experimental analysis thus comprehensively revisit the state-of-the-art, which is critical for any future research seeking to improve the methods or apply them to other robust fitting problems.",
+      "authors": [
+        {
+          "name": "Alexander Shekhotsov",
+          "orgs": [
+            "Visual Recognition Group, Department of Cybernetics, Czech Technical University in Prague, Karlovo náměstí 13, Prague, 121 35, Czech Republic."
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.19850v1",
+      "date": "2025-12-22",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV",
+        "stat.AP"
+      ]
+    }
+  ]
+}

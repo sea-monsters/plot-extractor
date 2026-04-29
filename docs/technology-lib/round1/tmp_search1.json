@@ -1,0 +1,1537 @@
+{
+  "status": "success",
+  "total_count": 71,
+  "result": [
+    {
+      "arxiv_id": "1502.05906",
+      "score": 8.110468,
+      "title": "Converting ECG and other paper legated biomedical maps into digital signals",
+      "tldr": "This paper presents a Matlab-based digital signal processing tool for converting legated paper biomedical maps, such as ECG and EEG, into digital signals at low cost, addressing the gap in affordable analog-to-digital conversion for legacy medical data; the proposed method enables efficient digitization of analog biomedical signals without dedicated hardware, contributing a software-based solution for modernizing medical facilities; empirical results show fast and effective digitalization of ECG and EEG charts, enhancing patient data management and accessibility.",
+      "abstract": "This paper presents a digital signal processing tool developed using MatlabTM, which provides a very low-cost and effective strategy for analog-to-digital conversion of legated paper biomedical maps without requiring dedicated hardware. This software-based approach is particularly helpful for digitalizing biomedical signals acquired from analogical devices equipped with a plottingter. Albeit signals used in biomedical diagnosis are the primary concern, this imaging processing tool is suitable to modernize facilities in a non-expensive way. Legated paper ECG and EEG charts can be fast and efficiently digitalized in order to be added in existing up-to-date medical data banks, improving the follow-up of patients.",
+      "authors": [
+        {
+          "name": "A.R. Gomes e Silva",
+          "orgs": [
+            "Federal University of Pernambuco - UFPE",
+            "Signal Processing Group"
+          ]
+        },
+        {
+          "name": "H.M. de Oliveira",
+          "orgs": [
+            "Federal University of Pernambuco - UFPE",
+            "Signal Processing Group"
+          ]
+        },
+        {
+          "name": "R.D. Lins",
+          "orgs": [
+            "Federal University of Pernambuco - UFPE",
+            "Signal Processing Group"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1502.05906v2",
+      "date": "2015-02-20T15:35:27Z",
+      "citation_count": 14,
+      "categories": [
+        "cs.OH"
+      ]
+    },
+    {
+      "arxiv_id": "2106.07627",
+      "score": 7.974112,
+      "title": "Toward Automatic Interpretation of 3D Plots",
+      "tldr": "This paper addresses the challenge of teaching machines to reverse-engineer 3D grid-marked surfaces for data recovery, aiming to automate interpretation of scientific plots where existing tools are lacking; it introduces a deep neural net trained on a 98.6k-image SurfaceGrid dataset to estimate shape from synthetic 3D plots with varied grids and viewpoints, achieving successful recovery of quantitative data and enabling automated processing of technical publications.",
+      "abstract": "This paper explores the challenge of teaching a machine how to reverse-engineer the grid-marked surfaces used to represent data in 3D surface plots of two-variable functions. These are common in scientific and economic publications; and humans can often interpret them with ease, quickly gleaning general shape and curvature information from the simple collection of curves. While machines have no such visual intuition, they do have the potential to accurately extract the more detailed quantitative data that guided the surface's construction. We approach this problem by synthesizing a new dataset of 3D grid-marked surfaces (SurfaceGrid) and training a deep neural net to estimate their shape. Our algorithm successfully recovers shape information from synthetic 3D surface plots that have had axes and shading information removed, been rendered with a variety of grid types, and viewed from a range of viewpoints.",
+      "authors": [
+        {
+          "name": "Laura E. Brandt",
+          "orgs": []
+        },
+        {
+          "name": "William T. Freeman",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2106.07627v1",
+      "date": "2021-06-14T17:32:53Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2510.26824",
+      "score": 7.8472977,
+      "title": "LeMat-Synth: a multi-modal toolbox to curate broad synthesis procedure databases from scientific literature",
+      "tldr": "This paper addresses the challenge of systematically extracting and organizing synthesis procedures from materials science literature, aiming to bridge the gap in structured data for predictive modeling; it introduces LeMat-Synth, a dataset derived from 81k papers using LLMs and VLMs, containing 35 synthesis methods and 16 material classes, with extraction validated on 2.5k procedures; the work provides an extensible framework for structured knowledge representation, supporting future research and machine learning applications in materials discovery.",
+      "abstract": "The development of synthesis procedures remains a fundamental challenge in materials discovery, with procedural knowledge scattered across decades of scientific literature in unstructured formats that are challenging for systematic analysis. In this paper, we propose a multi-modal toolbox that employs large language models (LLMs) and vision language models (VLMs) to automatically extract and organize synthesis procedures and performance data from materials science publications, covering text and figures. We curated 81k open-access papers, yielding LeMat-Synth (v 1.0): a dataset containing synthesis procedures spanning 35 synthesis methods and 16 material classes, structured according to an ontology specific to materials science. The extraction quality is rigorously evaluated on a subset of 2.5k synthesis procedures through a combination of expert annotations and a scalable LLM-as-a-judge framework. Beyond the dataset, we release a modular, open-source software library designed to support community-driven extension to new corpora and synthesis domains. Altogether, this work provides an extensible infrastructure to transform unstructured literature into machine-readable information. This lays the groundwork for predictive modeling of synthesis procedures as well as modeling synthesis--structure--property relationships.",
+      "authors": [
+        {
+          "name": "Mohd Zaki",
+          "orgs": [
+            "Johns Hopkins University"
+          ]
+        },
+        {
+          "name": "N. M. Anoop Krishnan",
+          "orgs": [
+            "Indian Institute of Technology Delhi"
+          ]
+        },
+        {
+          "name": "Ayush Jain",
+          "orgs": [
+            "Independent Researcher"
+          ]
+        },
+        {
+          "name": "Alexandre Duval",
+          "orgs": [
+            "Massachusetts Institute of Technology",
+            "Entalpic"
+          ]
+        },
+        {
+          "name": "Xiyao Li",
+          "orgs": [
+            "1Entalpic"
+          ]
+        },
+        {
+          "name": "Elton Pan",
+          "orgs": [
+            "11Massachusetts Institute of Technology"
+          ]
+        },
+        {
+          "name": "Alfonso Amayuelas",
+          "orgs": [
+            "6University of California, Santa Barbara"
+          ]
+        },
+        {
+          "name": "Georgia Channing",
+          "orgs": []
+        },
+        {
+          "name": "Samuel P. Gleason",
+          "orgs": [
+            "1Entalpic",
+            "Paul Scherrer Institute"
+          ]
+        },
+        {
+          "name": "Siddharth Betala",
+          "orgs": [
+            "1Entalpic"
+          ]
+        },
+        {
+          "name": "Sudheesh Kumar Ethirajan",
+          "orgs": [
+            "10University of California, Davis"
+          ]
+        },
+        {
+          "name": "Amine Sehaba",
+          "orgs": [
+            "3ENSA Lyon UMR-MAP Aria"
+          ]
+        },
+        {
+          "name": "Mathilde Franckel",
+          "orgs": [
+            "1Entalpic"
+          ]
+        },
+        {
+          "name": "Faris Flaifil",
+          "orgs": [
+            "5Independent Researcher"
+          ]
+        },
+        {
+          "name": "Grégoire Germain",
+          "orgs": [
+            "1Entalpic"
+          ]
+        },
+        {
+          "name": "Alexandre Nozadze",
+          "orgs": [
+            "7Swiss Federal Institute of Technology Zurich",
+            "8Paul Scherrer Institute"
+          ]
+        },
+        {
+          "name": "Stefan P. Schmid",
+          "orgs": [
+            "Swiss Federal Institute of Technology Zurich",
+            "Paul Scherrer Institute"
+          ]
+        },
+        {
+          "name": "Anamaria Leonescu",
+          "orgs": [
+            "Entalpic"
+          ]
+        },
+        {
+          "name": "Magdalena Lederbauer",
+          "orgs": [
+            "Entalpic"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2510.26824v1",
+      "date": "2025-10-28",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.DL",
+        "cs.IR"
+      ]
+    },
+    {
+      "arxiv_id": "2307.02065",
+      "score": 7.7449074,
+      "title": "Line Graphics Digitization: A Step Towards Full Automation",
+      "tldr": "This paper addresses the under-explored task of fine-grained visual understanding of mathematical graphics, introducing the Line Graphics (LG) dataset with 520 images from 450 documents, annotated for 10 categories, and benchmarks 7 models achieving 67.56% mIoU, highlighting challenges in spine and title recognition, with implications for automated document digitization and accessibility.",
+      "abstract": "The digitization of documents allows for wider accessibility and reproducibility. While automatic digitization of document layout and text content has been a long-standing focus of research, this problem in regard to graphical elements, such as statistical plots, has been under-explored. In this paper, we introduce the task of fine-grained visual understanding of mathematical graphics and present the Line Graphics (LG) dataset, which includes pixel-wise annotations of 5 coarse and 10 fine-grained categories. Our dataset covers 520 images of mathematical graphics collected from 450 documents from different disciplines. Our proposed dataset can support two different computer vision tasks, i.e., semantic segmentation and object detection. To benchmark our LG dataset, we explore 7 state-of-the-art models. To foster further research on the digitization of statistical graphs, we will make the dataset, code, and models publicly available to the community.",
+      "authors": [
+        {
+          "name": "Omar Moured",
+          "orgs": []
+        },
+        {
+          "name": "Jiaming Zhang",
+          "orgs": []
+        },
+        {
+          "name": "Alina Roitberg",
+          "orgs": []
+        },
+        {
+          "name": "Thorsten Schwarz",
+          "orgs": []
+        },
+        {
+          "name": "Rainer Stiefelhagen",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2307.02065v1",
+      "date": "2023-07-05T07:08:58Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "1704.06687",
+      "score": 7.67748,
+      "title": "Scatteract: Automated extraction of data from scatter plots",
+      "tldr": "This paper addresses the challenge of automatically extracting numerical data from scatter plots, aiming to facilitate further analysis by converting pixel coordinates to chart coordinates; it uses deep learning for object detection and OCR combined with robust regression for coordinate mapping, introducing a fully automated system that achieves 89% success in data extraction; the findings demonstrate effective data retrieval with robustness to OCR errors, advancing automated chart analysis and enabling broader applications in data processing and visualization.",
+      "abstract": "Charts are an excellent way to convey patterns and trends in data, but they do not facilitate further modeling of the data or close inspection of individual data points. We present a fully automated system for extracting the numerical values of data points from images of scatter plots. We use deep learning techniques to identify the key components of the chart, and optical character recognition together with robust regression to map from pixels to the coordinate system of the chart. We focus on scatter plots with linear scales, which already have several interesting challenges. Previous work has done fully automatic extraction for other types of charts, but to our knowledge this is the first approach that is fully automatic for scatter plots. Our method performs well, achieving successful data extraction on 89% of the plots in our test set.",
+      "authors": [
+        {
+          "name": "Mathieu Cliche",
+          "orgs": []
+        },
+        {
+          "name": "David Rosenberg",
+          "orgs": []
+        },
+        {
+          "name": "Dhruv Madeka",
+          "orgs": []
+        },
+        {
+          "name": "Connie Yee",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1704.06687v1",
+      "date": "2017-04-21T19:25:32Z",
+      "citation_count": 75,
+      "categories": [
+        "cs.CV",
+        "cs.IR",
+        "stat.ML"
+      ]
+    },
+    {
+      "arxiv_id": "2410.22492",
+      "score": 7.606187,
+      "title": "RealCQA-V2 : Visual Premise Proving A Manual COT Dataset for Charts",
+      "tldr": "This paper introduces Visual Premise Proving (VPP) as a task to evaluate sequential reasoning in chart question answering, addressing the gap in assessing model reasoning over accuracy; it proposes VPP and Manual-COT dataset with 10 million pairs, and finds models excel in reasoning (27%) over structure (19%) and data retrieval (14%), highlighting the need for balanced evaluation of visual and logical comprehension.",
+      "abstract": "We introduce Visual Premise Proving (VPP), a novel task tailored to refine the process of chart question answering by deconstructing it into a series of logical premises. Each of these premises represents an essential step in comprehending a chart's content and deriving logical conclusions, thereby providing a granular look at a model's reasoning abilities. This approach represents a departure from conventional accuracy-based evaluation methods, emphasizing the model's ability to sequentially validate each premise and ideally mimic human analytical processes. A model adept at reasoning is expected to demonstrate proficiency in both data retrieval and the structural understanding of charts, suggesting a synergy between these competencies. However, in our zero-shot study using the sophisticated MATCHA model on a scientific chart question answering dataset, an intriguing pattern emerged. The model showcased superior performance in chart reasoning (27\\%) over chart structure (19\\%) and data retrieval (14\\%). This performance gap suggests that models might more readily generalize reasoning capabilities across datasets, benefiting from consistent mathematical and linguistic semantics, even when challenged by changes in the visual domain that complicate structure comprehension and data retrieval. Furthermore, the efficacy of using accuracy of binary QA for evaluating chart reasoning comes into question if models can deduce correct answers without parsing chart data or structure. VPP highlights the importance of integrating reasoning with visual comprehension to enhance model performance in chart analysis, pushing for a balanced approach in evaluating visual data interpretation capabilities.",
+      "authors": [
+        {
+          "name": "Saleem Ahmed",
+          "orgs": [
+            "CSE @ UB"
+          ]
+        },
+        {
+          "name": "Srirangaraj Setlur",
+          "orgs": [
+            "CSE @ UB"
+          ]
+        },
+        {
+          "name": "Venu Govindaraju",
+          "orgs": [
+            "CSE @ UB"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2410.22492v2",
+      "date": "2024-10-29T19:32:53Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI"
+      ]
+    },
+    {
+      "arxiv_id": "2501.11233",
+      "score": 7.570533,
+      "title": "PlotEdit: Natural Language-Driven Accessible Chart Editing in PDFs via Multimodal LLM Agents",
+      "tldr": "This paper addresses the challenge of editing inaccessible chart images in PDFs by proposing PlotEdit, a multi-agent framework using five LLM agents for data extraction, style identification, code retrieval, instruction parsing, and precise editing, achieving 9-14% performance improvement over baselines on the ChartCraft dataset and enhancing accessibility and productivity.",
+      "abstract": "Chart visualizations, while essential for data interpretation and communication, are predominantly accessible only as images in PDFs, lacking source data tables and stylistic information. To enable effective editing of charts in PDFs or digital scans, we present PlotEdit, a novel multi-agent framework for natural language-driven end-to-end chart image editing via self-reflective LLM agents. PlotEdit orchestrates five LLM agents: (1) Chart2Table for data table extraction, (2) Chart2Vision for style attribute identification, (3) Chart2Code for retrieving rendering code, (4) Instruction Decomposition Agent for parsing user requests into executable steps, and (5) Multimodal Editing Agent for implementing nuanced chart component modifications - all coordinated through multimodal feedback to maintain visual fidelity. PlotEdit outperforms existing baselines on the ChartCraft dataset across style, layout, format, and data-centric edits, enhancing accessibility for visually challenged users and improving novice productivity.",
+      "authors": [
+        {
+          "name": "Kanika Goswami",
+          "orgs": []
+        },
+        {
+          "name": "Puneet Mathur",
+          "orgs": []
+        },
+        {
+          "name": "Ryan Rossi",
+          "orgs": []
+        },
+        {
+          "name": "Franck Dernoncourt",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2501.11233v1",
+      "date": "2025-01-20T02:31:52Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.CL",
+        "cs.IR",
+        "cs.MA"
+      ]
+    },
+    {
+      "arxiv_id": "2403.06693",
+      "score": 7.485652,
+      "title": "Chart4Blind: An Intelligent Interface for Chart Accessibility Conversion",
+      "tldr": "This paper presents Chart4Blind, an intelligent interface addressing the challenge of making line charts accessible to blind and visually impaired individuals by converting bitmap images into SVG, CSV, and text formats; it introduces a user-friendly system with deep learning models for efficient conversion and achieves a 90% System Usability Scale rating; results show sighted users can make charts accessible in 4 minutes on average.",
+      "abstract": "In a world driven by data visualization, ensuring the inclusive accessibility of charts for Blind and Visually Impaired (BVI) individuals remains a significant challenge. Charts are usually presented as raster graphics without textual and visual metadata needed for an equivalent exploration experience for BVI people. Additionally, converting these charts into accessible formats requires considerable effort from sighted individuals. Digitizing charts with metadata extraction is just one aspect of the issue; transforming it into accessible modalities, such as tactile graphics, presents another difficulty. To address these disparities, we propose Chart4Blind, an intelligent user interface that converts bitmap image representations of line charts into universally accessible formats. Chart4Blind achieves this transformation by generating Scalable Vector Graphics (SVG), Comma-Separated Values (CSV), and alternative text exports, all comply with established accessibility standards. Through interviews and a formal user study, we demonstrate that even inexperienced sighted users can make charts accessible in an average of 4 minutes using Chart4Blind, achieving a System Usability Scale rating of 90%. In comparison to existing approaches, Chart4Blind provides a comprehensive solution, generating end-to-end accessible SVGs suitable for assistive technologies such as embossed prints (papers and laser cut), 2D tactile displays, and screen readers. For additional information, including open-source codes and demos, please visit our project page https://moured.github.io/chart4blind/.",
+      "authors": [
+        {
+          "name": "Omar Moured",
+          "orgs": [
+            "CVHCI",
+            "ACCESS@KIT",
+            "Karlsruhe Institute of Technology",
+            "Germany"
+          ]
+        },
+        {
+          "name": "Morris Baumgarten-Egemole",
+          "orgs": [
+            "ACCESS@KIT",
+            "Karlsruhe Institute of Technology",
+            "Germany"
+          ]
+        },
+        {
+          "name": "Alina Roitberg",
+          "orgs": [
+            "Institut für Künstliche Intelligenz",
+            "Universität Stuttgart",
+            "Germany"
+          ]
+        },
+        {
+          "name": "Thorsten Schwarz",
+          "orgs": [
+            "ACCESS@KIT",
+            "Karlsruhe Institute of Technology",
+            "Germany"
+          ]
+        },
+        {
+          "name": "Rainer Stiefelhagen",
+          "orgs": [
+            "CVHCI",
+            "ACCESS@KIT",
+            "Karlsruhe Institute of Technology",
+            "Germany"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2403.06693v2",
+      "date": "2024-03-11T13:07:46Z",
+      "citation_count": 20,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2111.14103",
+      "score": 7.467065,
+      "title": "CHARTER: heatmap-based multi-type chart data extraction",
+      "tldr": "This paper addresses the challenge of extracting tabular data from diverse chart types in documents, proposing a heatmap-based detection system that improves precision for non-rectangular charts like pie and line plots, and introduces novel algorithms for label matching and data extraction, achieving state-of-the-art results on benchmark datasets.",
+      "abstract": "The digital conversion of information stored in documents is a great source of knowledge. In contrast to the documents text, the conversion of the embedded documents graphics, such as charts and plots, has been much less explored. We present a method and a system for end-to-end conversion of document charts into machine readable tabular data format, which can be easily stored and analyzed in the digital domain. Our approach extracts and analyses charts along with their graphical elements and supporting structures such as legends, axes, titles, and captions. Our detection system is based on neural networks, trained solely on synthetic data, eliminating the limiting factor of data collection. As opposed to previous methods, which detect graphical elements using bounding-boxes, our networks feature auxiliary domain specific heatmaps prediction enabling the precise detection of pie charts, line and scatter plots which do not fit the rectangular bounding-box presumption. Qualitative and quantitative results show high robustness and precision, improving upon previous works on popular benchmarks",
+      "authors": [
+        {
+          "name": "Joseph Shtok",
+          "orgs": [
+            "IBM Research AI",
+            "Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Sivan Harary",
+          "orgs": [
+            "IBM Research AI",
+            "Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Ophir Azulai",
+          "orgs": [
+            "IBM Research AI",
+            "Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Adi Raz Goldfarb",
+          "orgs": [
+            "IBM Research AI",
+            "Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Assaf Arbelle",
+          "orgs": [
+            "IBM Research AI, Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        },
+        {
+          "name": "Leonid Karlinsky",
+          "orgs": [
+            "IBM Research AI, Haifa Research Lab",
+            "Haifa, Israel"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2111.14103v1",
+      "date": "2021-11-28T11:01:21Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2408.16123",
+      "score": 7.4610114,
+      "title": "ChartEye: A Deep Learning Framework for Chart Information Extraction",
+      "tldr": "This paper presents a deep learning framework for chart information extraction, addressing the challenge of automated chart understanding by improving chart-type classification, text detection, and text-role classification through hierarchical vision transformers, YOLOv7, and Super Resolution GANs, achieving F1-scores of 0.97, 0.91, and a mean Average Precision of 0.95, offering a generic solution for diverse chart types with enhanced text recognition.",
+      "abstract": "The widespread use of charts and infographics as a means of data visualization in various domains has inspired recent research in automated chart understanding. However, information extraction from chart images is a complex multitasked process due to style variations and, as a consequence, it is challenging to design an end-to-end system. In this study, we propose a deep learning-based framework that provides a solution for key steps in the chart information extraction pipeline. The proposed framework utilizes hierarchal vision transformers for the tasks of chart-type and text-role classification, while YOLOv7 for text detection. The detected text is then enhanced using Super Resolution Generative Adversarial Networks to improve the recognition output of the OCR. Experimental results on a benchmark dataset show that our proposed framework achieves excellent performance at every stage with F1-scores of 0.97 for chart-type classification, 0.91 for text-role classification, and a mean Average Precision of 0.95 for text detection.",
+      "authors": [
+        {
+          "name": "Osama Mustafa",
+          "orgs": [
+            "Center of Excellence in AI",
+            "Bahria University",
+            "Islamabad, Pakistan"
+          ]
+        },
+        {
+          "name": "Muhammad Khizer Ali",
+          "orgs": [
+            "Center of Excellence in AI",
+            "Bahria University",
+            "Islamabad, Pakistan"
+          ]
+        },
+        {
+          "name": "Momina Moetesum",
+          "orgs": [
+            "School of Electrical Engineering and Computer Science",
+            "National University of Sciences and Technology (NUST)",
+            "Islamabad, Pakistan"
+          ]
+        },
+        {
+          "name": "Imran Siddiqi",
+          "orgs": [
+            "Xynoptik Pty Limited",
+            "Melborne, VIC, Australia"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2408.16123v1",
+      "date": "2024-08-28T20:22:39Z",
+      "citation_count": 4,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2407.17291",
+      "score": 7.4003634,
+      "title": "How Good (Or Bad) Are LLMs at Detecting Misleading Visualizations?",
+      "tldr": "This paper investigates the ability of multimodal LLMs to detect misleading visualizations, addressing the gap in tools for assisting data consumers by evaluating four LLMs with nine prompts across 21 chart issues, revealing their strong capability in chart comprehension and critical thinking; the study contributes a scalable prompting strategy and highlights LLMs' potential in enhancing visualization literacy and detecting fabricated data.",
+      "abstract": "In this study, we address the growing issue of misleading charts, a prevalent problem that undermines the integrity of information dissemination. Misleading charts can distort the viewer's perception of data, leading to misinterpretations and decisions based on false information. The development of effective automatic detection methods for misleading charts is an urgent field of research. The recent advancement of multimodal Large Language Models (LLMs) has introduced a promising direction for addressing this challenge. We explored the capabilities of these models in analyzing complex charts and assessing the impact of different prompting strategies on the models' analyses. We utilized a dataset of misleading charts collected from the internet by prior research and crafted nine distinct prompts, ranging from simple to complex, to test the ability of four different multimodal LLMs in detecting over 21 different chart issues. Through three experiments--from initial exploration to detailed analysis--we progressively gained insights into how to effectively prompt LLMs to identify misleading charts and developed strategies to address the scalability challenges encountered as we expanded our detection range from the initial five issues to 21 issues in the final experiment. Our findings reveal that multimodal LLMs possess a strong capability for chart comprehension and critical thinking in data interpretation. There is significant potential in employing multimodal LLMs to counter misleading information by supporting critical thinking and enhancing visualization literacy. This study demonstrates the applicability of LLMs in addressing the pressing concern of misleading charts.",
+      "authors": [
+        {
+          "name": "Leo Yu-Ho Lo",
+          "orgs": []
+        },
+        {
+          "name": "Huamin Qu",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2407.17291v1",
+      "date": "2024-07-24T14:02:20Z",
+      "citation_count": 30,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2307.13567",
+      "score": 7.3853006,
+      "title": "Mystique: Deconstructing SVG Charts for Layout Reuse",
+      "tldr": "This paper addresses the challenge of reusing SVG charts by deconstructing their layouts, focusing on rectangle-based charts which cover 17 types and advanced layouts; it proposes Mystique, an interactive tool using mixed-initiative approach to extract axes, legend, and deconstruct layout into four components with 96% accuracy on 150 charts; results show users can easily reuse charts on new datasets.",
+      "abstract": "To facilitate the reuse of existing charts, previous research has examined how to obtain a semantic understanding of a chart by deconstructing its visual representation into reusable components, such as encodings. However, existing deconstruction approaches primarily focus on chart styles, handling only basic layouts. In this paper, we investigate how to deconstruct chart layouts, focusing on rectangle-based ones, as they cover not only 17 chart types but also advanced layouts (e.g., small multiples, nested layouts). We develop an interactive tool, called Mystique, adopting a mixed-initiative approach to extract the axes and legend, and deconstruct a chart's layout into four semantic components: mark groups, spatial relationships, data encodings, and graphical constraints. Mystique employs a wizard interface that guides chart authors through a series of steps to specify how the deconstructed components map to their own data. On 150 rectangle-based SVG charts, Mystique achieves above 85% accuracy for axis and legend extraction and 96% accuracy for layout deconstruction. In a chart reproduction study, participants could easily reuse existing charts on new datasets. We discuss the current limitations of Mystique and future research directions.",
+      "authors": [
+        {
+          "name": "Chen Chen",
+          "orgs": [
+            "Microsoft Research"
+          ]
+        },
+        {
+          "name": "Bongshin Lee",
+          "orgs": [
+            "Microsoft Research"
+          ]
+        },
+        {
+          "name": "Yunhai Wang",
+          "orgs": [
+            "Microsoft Research"
+          ]
+        },
+        {
+          "name": "Yunjeong Chang",
+          "orgs": []
+        },
+        {
+          "name": "Zhicheng Liu",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2307.13567v2",
+      "date": "2023-07-25T15:20:19Z",
+      "citation_count": 15,
+      "categories": [
+        "cs.CV",
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2206.08458",
+      "score": 7.3829327,
+      "title": "Development of an interactive code for quick data analyses between STOR-M tokamak experimental plasma discharges",
+      "tldr": "This paper presents a Python code developed for quick analysis of experimental data from STOR-M tokamak discharges to address the challenge of real-time visualization and comparison of magnetic surface reconstructions and GAM mode detection, contributing a tool to enhance data analysis efficiency and mode structure derivation; the code enables rapid processing of Langmuir probe data to identify GAM features across different discharges, offering improved insights into zonal flows and turbulent transport in tokamak plasmas.",
+      "abstract": "Saskatchewan Torus-Modified (STOR-M) is a small tokamak, well known for various fusion related basic experimental studies such as edge turbulent heating, different instabilities, AC (alternating current) tokamak operation, Ohmic H-mode triggering by the electrode biasing, fueling and momentum injection by Compact Torus (CT) injection, and effects of Resonance Magnetic Perturbations (RMP), among others. Some of those experiments require real time visualization of magnetic surface reconstructions either through EFIT or quick analyses and visualization of experimental data during experiments. Recently experimental studies of Geodesic Acoustic Mode (GAM) and zonal flows had been performed in STOR-M tokamak. The GAM experiments strongly require collection of fluctuations data from different Langmuir probes installed at different poloidal locations, but on the same magnetic surfaces. This is need of the adjustment of radial locations between discharges. It is therefore important to analyze and visualize the features of all probe data quickly during discharges. For this purpose, a Python code has been developed and used for quick analyze of data. This article will describe the development of the code using Python and its use in detail.",
+      "authors": [
+        {
+          "name": "Masaru Nakajima",
+          "orgs": [
+            "Plasma Physics Laboratory, University of Saskatchewan, Saskatoon, Canada",
+            "University of Maryland, Baltimore County, MD-21250, USA"
+          ]
+        },
+        {
+          "name": "Debjyoti Basu",
+          "orgs": [
+            "University of Maryland, Baltimore County, MD-21250, USA"
+          ]
+        },
+        {
+          "name": "A.V. Melnikov",
+          "orgs": [
+            "NRC ‘Kurchatov Institute’, 123182, Moscow, Russia",
+            "National Research Nuclear University MEPhI, 115409, Moscow, Russia"
+          ]
+        },
+        {
+          "name": "David McColl",
+          "orgs": []
+        },
+        {
+          "name": "Chijin Xiao",
+          "orgs": [
+            "Plasma Physics Laboratory, University of Saskatchewan, Saskatoon, Canada"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2206.08458v1",
+      "date": "2022-06-16T21:49:46Z",
+      "citation_count": 0,
+      "categories": [
+        "physics.plasm-ph"
+      ]
+    },
+    {
+      "arxiv_id": "2010.02319",
+      "score": 7.368923,
+      "title": "Tensor Fields for Data Extraction from Chart Images: Bar Charts and Scatter Plots",
+      "tldr": "This paper addresses the challenge of data extraction from bar charts and scatter plots by proposing a computational model using positive semidefinite second-order tensor fields, contributing a method for degenerate point extraction to automate levels A1 and A2 of Kimura's statistical ability scheme, showing tensor voting effectively extracts data with high accuracy for these chart types.",
+      "abstract": "Charts are an essential part of both graphicacy (graphical literacy), and statistical literacy. As chart understanding has become increasingly relevant in data science, automating chart analysis by processing raster images of the charts has become a significant problem. Automated chart reading involves data extraction and contextual understanding of the data from chart images. In this paper, we perform the first step of determining the computational model of chart images for data extraction for selected chart types, namely, bar charts, and scatter plots. We demonstrate the use of positive semidefinite second-order tensor fields as an effective model. We identify an appropriate tensor field as the model and propose a methodology for the use of its degenerate point extraction for data extraction from chart images. Our results show that tensor voting is effective for data extraction from bar charts and scatter plots, and histograms, as a special case of bar charts.",
+      "authors": [
+        {
+          "name": "Jaya Sreevalsan-Nair",
+          "orgs": [
+            "Graphics-Visualization-Computing Lab",
+            "International Institute of Information Technology Bangalore",
+            "Karnataka 560100, India"
+          ]
+        },
+        {
+          "name": "Komal Dadhich",
+          "orgs": [
+            "Graphics-Visualization-Computing Lab",
+            "International Institute of Information Technology Bangalore",
+            "Karnataka 560100, India"
+          ]
+        },
+        {
+          "name": "Siri Chandana Daggubati",
+          "orgs": [
+            "Graphics-Visualization-Computing Lab",
+            "International Institute of Information Technology Bangalore",
+            "Karnataka 560100, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2010.02319v1",
+      "date": "2020-10-05T20:19:40Z",
+      "citation_count": 12,
+      "categories": [
+        "cs.CV",
+        "cs.GR",
+        "cs.NA",
+        "math.NA"
+      ]
+    },
+    {
+      "arxiv_id": "2209.13718",
+      "score": 7.324161,
+      "title": "A Dataset of Alt Texts from HCI Publications: Analyses and Uses Towards Producing More Descriptive Alt Texts of Data Visualizations in Scientific Papers",
+      "tldr": "This paper presents a dataset of 3386 author-written alt texts from HCI publications, highlighting the lack of semantic content such as extrema and trends in 50% and 31% of cases respectively, and enabling evaluation of tools to improve alt text for blind and low vision readers.",
+      "abstract": "Figures in scientific publications contain important information and results, and alt text is needed for blind and low vision readers to engage with their content. We conduct a study to characterize the semantic content of alt text in HCI publications based on a framework introduced by Lundgard and Satyanarayan. Our study focuses on alt text for graphs, charts, and plots extracted from HCI and accessibility publications; we focus on these communities due to the lack of alt text in papers published outside of these disciplines. We find that the capacity of author-written alt text to fulfill blind and low vision user needs is mixed; for example, only 50% of alt texts in our sample contain information about extrema or outliers, and only 31% contain information about major trends or comparisons conveyed by the graph. We release our collected dataset of author-written alt text, and outline possible ways that it can be used to develop tools and models to assist future authors in writing better alt text. Based on our findings, we also discuss recommendations that can be acted upon by publishers and authors to encourage inclusion of more types of semantic content in alt text.",
+      "authors": [
+        {
+          "name": "Sanjana Chintalapati",
+          "orgs": [
+            "University of Washington"
+          ]
+        },
+        {
+          "name": "Jonathan Bragg",
+          "orgs": [
+            "Allen Institute for AI"
+          ]
+        },
+        {
+          "name": "Lucy Lu Wang",
+          "orgs": [
+            "University of Washington",
+            "Allen Institute for AI"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2209.13718v1",
+      "date": "2022-09-27T22:06:04Z",
+      "citation_count": 33,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2410.20545",
+      "score": 7.274969,
+      "title": "ChartA11y: Designing Accessible Touch Experiences of Visualizations with Blind Smartphone Users",
+      "tldr": "This paper presents ChartA11y, a system enabling blind smartphone users to access 2-D visualizations through multimodal interactions, addressing the gap in accessibility for complex charts like scatter plots; it introduces a participatory design process and novel interaction techniques for semantic navigation and direct touch mapping; empirical results show blind users can independently navigate complex charts and extract insights comparable to sighted users.",
+      "abstract": "We introduce ChartA11y, an app developed to enable accessible 2-D visualizations on smartphones for blind users through a participatory and iterative design process involving 13 sessions with two blind partners. We also present a design journey for making accessible touch experiences that go beyond simple auditory feedback, incorporating multimodal interactions and multisensory data representations. Together, ChartA11y aimed at providing direct chart accessing and comprehensive chart understanding by applying a two-mode setting: a semantic navigation framework mode and a direct touch mapping mode. By re-designing traditional touch-to-audio interactions, ChartA11y also extends to accessible scatter plots, addressing the under-explored challenges posed by their non-linear data distribution. Our main contributions encompass the detailed participatory design process and the resulting system, ChartA11y, offering a novel approach for blind users to access visualizations on their smartphones.",
+      "authors": [
+        {
+          "name": "Zhuohao (Jerry) Zhang",
+          "orgs": [
+            "University of Washington",
+            "Seattle, Washington, USA"
+          ]
+        },
+        {
+          "name": "John R. Thompson",
+          "orgs": [
+            "Autodesk Research",
+            "Atlanta, Georgia, USA"
+          ]
+        },
+        {
+          "name": "Aditi Shah",
+          "orgs": [
+            "Microsoft Corporation",
+            "Redmond, Washington, USA"
+          ]
+        },
+        {
+          "name": "Alper Sarikaya",
+          "orgs": [
+            "Microsoft Corporation",
+            "Redmond, Washington, USA"
+          ]
+        },
+        {
+          "name": "Jacob O. Wobbrock",
+          "orgs": [
+            "University of Washington",
+            "Seattle, Washington, USA"
+          ]
+        },
+        {
+          "name": "Edward Cutrell",
+          "orgs": [
+            "Microsoft Research",
+            "Redmond, Washington, USA"
+          ]
+        },
+        {
+          "name": "Bongshin Lee",
+          "orgs": [
+            "Yonsei University",
+            "Seoul, Republic of Korea"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2410.20545v1",
+      "date": "2024-10-27T18:24:05Z",
+      "citation_count": 17,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "astro-ph/9807167",
+      "score": 7.265122,
+      "title": "Internet Services for Professional Astronomy",
+      "tldr": "This paper provides an overview of Internet resources for professional astronomers, addressing the challenge of distinguishing useful information from noise in the rapidly growing field; it uses a compilation of URLs and search tools to highlight databases, catalogs, and archives, contributing a curated list of about 200 links and emphasizing the importance of up-to-date and reliable resources for effective astronomical research.",
+      "abstract": "A (subjective) overview of Internet resources relevant to professional astronomers is given. Special emphasis is put on databases of astronomical objects and servers providing general information, e.g. on astronomical catalogues, finding charts from sky surveys, bibliographies, directories, browsers through multi-wavelength observational archives, etc. Archives of specific observational data will be discussed in more detail in other chapters of this book, dealing with the corresponding part of the electromagnetic spectrum. About 200 different links are mentioned, and every attempt was made to make this report as up-to-date as possible. As the field is rapidly growing with improved network technology, it will be just a snapshot of the present situation.",
+      "authors": [
+        {
+          "name": "Heinz Andernach",
+          "orgs": [
+            "Depto. Astronomia",
+            "Univ. Guanajuato"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/astro-ph/9807167v2",
+      "date": "1998-07-16",
+      "citation_count": 2,
+      "categories": [
+        "astro-ph"
+      ]
+    },
+    {
+      "arxiv_id": "2409.10797",
+      "score": 7.232733,
+      "title": "ArticulatePro: A Comparative Study on a Proactive and Non-Proactive Assistant in a Climate Data Exploration Task",
+      "tldr": "This paper investigates the impact of proactive versus non-proactive digital assistants in data exploration tasks, proposing ArticulatePro, a system that proactively generates visualizations during user interactions, and finds that proactive assistants enhance user engagement and speed up insight generation, offering practical benefits for natural language interfaces.",
+      "abstract": "Recent advances in Natural Language Interfaces (NLIs) and Large Language Models (LLMs) have transformed our approach to NLP tasks, shifting the focus towards a more Pragmatics-based approach. This shift enables more natural interactions between humans and voice assistants, which have been historically difficult to achieve. Pragmatics involves understanding how users often talk out of turn, interrupt one another, or provide relevant information without being explicitly asked (maxim of quantity). To explore this, we developed a digital assistant that continuously listens to conversations and proactively generates relevant visualizations during data exploration tasks. In a within-subject study, participants interacted with both proactive and non-proactive versions of a voice assistant while exploring the Hawaii Climate Data Portal (HCDP). Results suggest that the proactive assistant enhanced user engagement and facilitated quicker insights. Our study highlights the potential of Pragmatic, proactive AI in NLIs and identifies key challenges in its implementation, offering insights for future research.",
+      "authors": [
+        {
+          "name": "Roderick Tabalba",
+          "orgs": [
+            "University of Hawaii at Manoa"
+          ]
+        },
+        {
+          "name": "Christopher J. Lee",
+          "orgs": [
+            "University of Hawaii at Manoa"
+          ]
+        },
+        {
+          "name": "Giorgio Tran",
+          "orgs": [
+            "University of Hawaii at Manoa"
+          ]
+        },
+        {
+          "name": "Jason Leigh",
+          "orgs": [
+            "University of Hawaii at Manoa"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2409.10797v2",
+      "date": "2024-09-17T00:27:19Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2405.19117",
+      "score": 7.1671567,
+      "title": "ChartFormer: A Large Vision Language Model for Converting Chart Images into Tactile Accessible SVGs",
+      "tldr": "This paper addresses the challenge of converting raster chart images into tactile-accessible SVGs for visually impaired users, introducing the ChartFormer model trained on the Chart2Tactile dataset and validated through a pilot study with four blind participants, demonstrating effective tactile chart generation with preserved data integrity.",
+      "abstract": "Visualizations, such as charts, are crucial for interpreting complex data. However, they are often provided as raster images, which are not compatible with assistive technologies for people with blindness and visual impairments, such as embossed papers or tactile displays. At the same time, creating accessible vector graphics requires a skilled sighted person and is time-intensive. In this work, we leverage advancements in the field of chart analysis to generate tactile charts in an end-to-end manner. Our three key contributions are as follows: (1) introducing the ChartFormer model trained to convert raster chart images into tactile-accessible SVGs, (2) training this model on the Chart2Tactile dataset, a synthetic chart dataset we created following accessibility standards, and (3) evaluating the effectiveness of our SVGs through a pilot user study with an refreshable two-dimensional tactile display. Our work is publicly available at https://github.com/nsothman/ChartFormer .",
+      "authors": [
+        {
+          "name": "Omar Moured",
+          "orgs": [
+            "1",
+            "2",
+            "2"
+          ]
+        },
+        {
+          "name": "Sara Alzalabny",
+          "orgs": [
+            "3",
+            "3"
+          ]
+        },
+        {
+          "name": "Anas Osman",
+          "orgs": [
+            "4",
+            "4"
+          ]
+        },
+        {
+          "name": "Thorsten Schwarz",
+          "orgs": [
+            "2",
+            "2"
+          ]
+        },
+        {
+          "name": "Karin Müller",
+          "orgs": [
+            "1122",
+            "22"
+          ]
+        },
+        {
+          "name": "Rainer Stiefelhagen",
+          "orgs": [
+            "1122",
+            "22"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2405.19117v1",
+      "date": "2024-05-29T14:24:42Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2106.12614",
+      "score": 7.1646667,
+      "title": "Handwritten Digit Recognition using Machine and Deep Learning Algorithms",
+      "tldr": "This paper compares SVM, MLP, and CNN models for handwritten digit recognition using MNIST dataset, aiming to identify the most accurate and efficient algorithm for digit classification, with findings showing CNN achieving highest accuracy of 99.2% and lowest execution time, contributing to improved real-world applications like cheque processing.",
+      "abstract": "The reliance of humans over machines has never been so high such that from object classification in photographs to adding sound to silent movies everything can be performed with the help of deep learning and machine learning algorithms. Likewise, Handwritten text recognition is one of the significant areas of research and development with a streaming number of possibilities that could be attained. Handwriting recognition (HWR), also known as Handwritten Text Recognition (HTR), is the ability of a computer to receive and interpret intelligible handwritten input from sources such as paper documents, photographs, touch-screens and other devices [1]. Apparently, in this paper, we have performed handwritten digit recognition with the help of MNIST datasets using Support Vector Machines (SVM), Multi-Layer Perceptron (MLP) and Convolution Neural Network (CNN) models. Our main objective is to compare the accuracy of the models stated above along with their execution time to get the best possible model for digit recognition.",
+      "authors": [
+        {
+          "name": "Samay Pashine",
+          "orgs": [
+            "Acropolis Institute of Technology & Research"
+          ]
+        },
+        {
+          "name": "Ritik Dixit",
+          "orgs": [
+            "Acropolis Institute of Technology & Research"
+          ]
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Rishika Kushwah",
+          "orgs": [
+            "Acropolis Institute of Technology & Research"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2106.12614v1",
+      "date": "2021-06-23T18:23:01Z",
+      "citation_count": 64,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2403.12027",
+      "score": 7.137198,
+      "title": "From Pixels to Insights: A Survey on Automatic Chart Understanding in the Era of Large Foundation Models",
+      "tldr": "This paper reviews automatic chart understanding within the context of large foundation models, addressing the gap in comprehensive surveys by covering modern datasets, modeling strategies, and evaluation metrics, contributing insights on domain-specific charts, evaluation metrics, and future research directions, and reporting state-of-the-art performance improvements through vision-language models and tool augmentation.",
+      "abstract": "Data visualization in the form of charts plays a pivotal role in data analysis, offering critical insights and aiding in informed decision-making. Automatic chart understanding has witnessed significant advancements with the rise of large foundation models in recent years. Foundation models, such as large language models, have revolutionized various natural language processing tasks and are increasingly being applied to chart understanding tasks. This survey paper provides a comprehensive overview of the recent developments, challenges, and future directions in chart understanding within the context of these foundation models. We review fundamental building blocks crucial for studying chart understanding tasks. Additionally, we explore various tasks and their evaluation metrics and sources of both charts and textual inputs. Various modeling strategies are then examined, encompassing both classification-based and generation-based approaches, along with tool augmentation techniques that enhance chart understanding performance. Furthermore, we discuss the state-of-the-art performance of each task and discuss how we can improve the performance. Challenges and future directions are addressed, highlighting the importance of several topics, such as domain-specific charts, lack of efforts in developing evaluation metrics, and agent-oriented settings. This survey paper serves as a comprehensive resource for researchers and practitioners in the fields of natural language processing, computer vision, and data analysis, providing valuable insights and directions for future research in chart understanding leveraging large foundation models. The studies mentioned in this paper, along with emerging new research, will be continually updated at: https://github.com/khuangaf/Awesome-Chart-Understanding.",
+      "authors": [
+        {
+          "name": "Kung-Hsiang Huang",
+          "orgs": [
+            "Salesforce AI Research"
+          ]
+        },
+        {
+          "name": "Hou Pong Chan",
+          "orgs": [
+            "University of Illinois Urbana-Champaign"
+          ]
+        },
+        {
+          "name": "May Fung",
+          "orgs": [
+            "University of Illinois Urbana-Champaign"
+          ]
+        },
+        {
+          "name": "Haoyi Qiu",
+          "orgs": [
+            "University of California, Los Angeles"
+          ]
+        },
+        {
+          "name": "Mingyang Zhou",
+          "orgs": [
+            "Capital One"
+          ]
+        },
+        {
+          "name": "Shafiq Joty",
+          "orgs": [
+            "Salesforce AI Research",
+            "NTU"
+          ]
+        },
+        {
+          "name": "Shih-Fu Chang",
+          "orgs": [
+            "Columbia University"
+          ]
+        },
+        {
+          "name": "Heng Ji",
+          "orgs": [
+            "University of Illinois Urbana-Champaign"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2403.12027v4",
+      "date": "2024-03-18T17:57:09Z",
+      "citation_count": 64,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2308.01979",
+      "score": 7.1232147,
+      "title": "RealCQA: Scientific Chart Question Answering as a Test-bed for First-Order Logic",
+      "tldr": "This paper addresses the challenge of chart visual question-answering in scientific literature, aiming to evaluate models' first-order logic capabilities through a real-world dataset and novel answer types, introducing RealCQA with structured and unstructured list answers and showing improved accuracy in reasoning tasks; it contributes a benchmark for assessing logical reasoning in chart QA and advances formal logic verification for neural networks.",
+      "abstract": "We present a comprehensive study of chart visual question-answering(QA) task, to address the challenges faced in comprehending and extracting data from chart visualizations within documents. Despite efforts to tackle this problem using synthetic charts, solutions are limited by the shortage of annotated real-world data. To fill this gap, we introduce a benchmark and dataset for chart visual QA on real-world charts, offering a systematic analysis of the task and a novel taxonomy for template-based chart question creation. Our contribution includes the introduction of a new answer type, 'list', with both ranked and unranked variations. Our study is conducted on a real-world chart dataset from scientific literature, showcasing higher visual complexity compared to other works. Our focus is on template-based QA and how it can serve as a standard for evaluating the first-order logic capabilities of models. The results of our experiments, conducted on a real-world out-of-distribution dataset, provide a robust evaluation of large-scale pre-trained models and advance the field of chart visual QA and formal logic verification for neural networks in general.",
+      "authors": [
+        {
+          "name": "Saleem Ahmed",
+          "orgs": []
+        },
+        {
+          "name": "Bhavin Jawade",
+          "orgs": []
+        },
+        {
+          "name": "Shubham Pandey",
+          "orgs": []
+        },
+        {
+          "name": "Srirangaraj Setlur",
+          "orgs": []
+        },
+        {
+          "name": "Venu Govindaraju",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2308.01979v1",
+      "date": "2023-08-03T18:21:38Z",
+      "citation_count": 8,
+      "categories": [
+        "cs.CV",
+        "cs.LO"
+      ]
+    },
+    {
+      "arxiv_id": "2008.10740",
+      "score": 7.0745096,
+      "title": "Data-Driven Aerospace Engineering: Reframing the Industry with Machine Learning",
+      "tldr": "This survey reviews machine learning applications in aerospace engineering, focusing on interpretable and certifiable methods for safety-critical systems, and provides a taxonomy, case studies, and roadmap for data-driven optimization in design, manufacturing, and verification.",
+      "abstract": "Data science, and machine learning in particular, is rapidly transforming the scientific and industrial landscapes. The aerospace industry is poised to capitalize on big data and machine learning, which excels at solving the types of multi-objective, constrained optimization problems that arise in aircraft design and manufacturing. Indeed, emerging methods in machine learning may be thought of as data-driven optimization techniques that are ideal for high-dimensional, non-convex, and constrained, multi-objective optimization problems, and that improve with increasing volumes of data. In this review, we will explore the opportunities and challenges of integrating data-driven science and engineering into the aerospace industry. Importantly, we will focus on the critical need for interpretable, generalizeable, explainable, and certifiable machine learning techniques for safety-critical applications. This review will include a retrospective, an assessment of the current state-of-the-art, and a roadmap looking forward. Recent algorithmic and technological trends will be explored in the context of critical challenges in aerospace design, manufacturing, verification, validation, and services. In addition, we will explore this landscape through several case studies in the aerospace industry. This document is the result of close collaboration between UW and Boeing to summarize past efforts and outline future opportunities.",
+      "authors": [
+        {
+          "name": "Steven L. Brunton",
+          "orgs": [
+            "Mechanical Engineering, University of Washington, Seattle, WA 98195",
+            "Applied Mathematics, University of Washington, Seattle, WA 98195"
+          ]
+        },
+        {
+          "name": "J. Nathan Kutz",
+          "orgs": [
+            "University of Washington, Seattle, WA 98195"
+          ]
+        },
+        {
+          "name": "Krithika Manohar",
+          "orgs": [
+            "Mechanical Engineering, University of Washington, Seattle, WA 98195",
+            "Applied Mathematics, University of Washington, Seattle, WA 98195"
+          ]
+        },
+        {
+          "name": "Aleksandr Y. Aravkin",
+          "orgs": [
+            "University of Washington, Seattle, WA 98195"
+          ]
+        },
+        {
+          "name": "Kristi Morgansen",
+          "orgs": [
+            "Aeronautics and Astronautics, University of Washington, Seattle, WA 98195"
+          ]
+        },
+        {
+          "name": "Jennifer Klemisch",
+          "orgs": [
+            "Boeing Test & Evaluation, The Boeing Company, Seattle, WA 98108"
+          ]
+        },
+        {
+          "name": "Nicholas Goebel",
+          "orgs": [
+            "Boeing Test & Evaluation, The Boeing Company, Seattle, WA 98108"
+          ]
+        },
+        {
+          "name": "James Buttrick",
+          "orgs": [
+            "BCA Engineering, The Boeing Company, Seattle, WA 98108"
+          ]
+        },
+        {
+          "name": "Jeffrey Poskin",
+          "orgs": [
+            "Boeing Research & Technology, The Boeing Company, Seattle, WA 98108"
+          ]
+        },
+        {
+          "name": "Agnes Blom-Schieber",
+          "orgs": [
+            "BCA Engineering, The Boeing Company, Seattle, WA 98108"
+          ]
+        },
+        {
+          "name": "Thomas Hogan",
+          "orgs": [
+            "Boeing Research & Technology, The Boeing Company, Seattle, WA 98108"
+          ]
+        },
+        {
+          "name": "Darren McDonald",
+          "orgs": [
+            "Boeing Test & Evaluation, The Boeing Company, Seattle, WA 98108"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2008.10740v1",
+      "date": "2020-08-24T22:40:26Z",
+      "citation_count": 188,
+      "categories": [
+        "cs.LG",
+        "eess.SP",
+        "math.OC"
+      ]
+    },
+    {
+      "arxiv_id": "2005.02815",
+      "score": 7.0660763,
+      "title": "Industrial applications of digital rock technology",
+      "tldr": "This paper addresses the application of digital rock technology in industrial settings, focusing on how imaging and modeling bridge geology, petrophysics, and reservoir simulations to enhance transport property analysis; it employs high-resolution imaging and computational modeling to derive pore structure and fluid flow properties, contributing to reduced uncertainty in formation evaluation; findings show digital rock modeling aligns with traditional experiments, offering faster and more comprehensive property calculations.",
+      "abstract": "This article provides an overview of the current state of digital rock technology, with emphasis on industrial applications. We show how imaging and image analysis can be applied for rock typing and modeling of end-point saturations. Different methods to obtain a digital model of the pore space from pore scale images are presented, and the strengths and weaknesses of the different methods are discussed. We also show how imaging bridges the different subjects of geology, petrophysics and reservoir simulations, by being a common denominator for results in all these subjects. Network modeling is compared to direct simulations on grid models, and their respective strengths are discussed. Finally we present an example of digital rock technology applied to a sandstone oil reservoir. Results from digital rock modeling are compared to results from traditional laboratory experiments. We highlight the mutual benefits from conducting both traditional experiments and digital rock modeling.",
+      "authors": [
+        {
+          "name": "Carl Fredrik Berg",
+          "orgs": [
+            "Statoil R&D Center, Arkitekt Ebbels veg 10, Rotvoll, 7053 Trondheim, Norway",
+            "Department of Geoscience and Petroleum, NTNU, Trondheim, Norway"
+          ]
+        },
+        {
+          "name": "Olivier Lopez",
+          "orgs": [
+            "Statoil R&D Center, Arkitekt Ebbels veg 10, Rotvoll, 7053 Trondheim, Norway"
+          ]
+        },
+        {
+          "name": "Håvard Berland",
+          "orgs": [
+            "Statoil R&D Center, Arkitekt Ebbels veg 10, Rotvoll, 7053 Trondheim, Norway"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2005.02815v1",
+      "date": "2020-05-02T15:07:23Z",
+      "citation_count": 122,
+      "categories": [
+        "physics.geo-ph"
+      ]
+    },
+    {
+      "arxiv_id": "2407.07818",
+      "score": 7.0481215,
+      "title": "The Misclassification Likelihood Matrix: Some Classes Are More Likely To Be Misclassified Than Others",
+      "tldr": "This paper introduces the Misclassification Likelihood Matrix (MLM) to address the variability in misclassification risks across classes in neural networks, aiming to improve reliability and risk mitigation under distribution shifts; it uses softmax outputs and clustering to measure prediction distances from class centroids, offering a novel method for identifying critical error sources and prioritizing model improvements; evaluations on MNIST show the MLM effectively quantifies misclassification likelihoods, with implications for enhancing safety in high-stakes domains like autonomous systems.",
+      "abstract": "This study introduces the Misclassification Likelihood Matrix (MLM) as a novel tool for quantifying the reliability of neural network predictions under distribution shifts. The MLM is obtained by leveraging softmax outputs and clustering techniques to measure the distances between the predictions of a trained neural network and class centroids. By analyzing these distances, the MLM provides a comprehensive view of the model's misclassification tendencies, enabling decision-makers to identify the most common and critical sources of errors. The MLM allows for the prioritization of model improvements and the establishment of decision thresholds based on acceptable risk levels. The approach is evaluated on the MNIST dataset using a Convolutional Neural Network (CNN) and a perturbed version of the dataset to simulate distribution shifts. The results demonstrate the effectiveness of the MLM in assessing the reliability of predictions and highlight its potential in enhancing the interpretability and risk mitigation capabilities of neural networks. The implications of this work extend beyond image classification, with ongoing applications in autonomous systems, such as self-driving cars, to improve the safety and reliability of decision-making in complex, real-world environments.",
+      "authors": [
+        {
+          "name": "D. Sikar",
+          "orgs": [
+            "Department of Computer Science, City St George’s, University of London"
+          ]
+        },
+        {
+          "name": "A. d’Avila Garcez",
+          "orgs": [
+            "Department of Computer Science, City St George’s, University of London"
+          ]
+        },
+        {
+          "name": "R. Bloomfield",
+          "orgs": [
+            "Department of Computer Science, City St George’s, University of London"
+          ]
+        },
+        {
+          "name": "T. Weyde",
+          "orgs": [
+            "Department of Computer Science, City St George’s, University of London"
+          ]
+        },
+        {
+          "name": "Kaleem Peeroo",
+          "orgs": [
+            "Department of Computer Science, City St George’s, University of London"
+          ]
+        },
+        {
+          "name": "Naman Singh",
+          "orgs": [
+            "Department of Computer Science, City St George’s, University of London"
+          ]
+        },
+        {
+          "name": "Maeve Hutchinson",
+          "orgs": [
+            "Department of Computer Science, City St George’s, University of London"
+          ]
+        },
+        {
+          "name": "Dany Laksono",
+          "orgs": [
+            "Department of Computer Science, City St George’s, University of London"
+          ]
+        },
+        {
+          "name": "Mirela Reljan-Delaney",
+          "orgs": [
+            "Department of Computer Science, City St George’s, University of London"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2407.07818v3",
+      "date": "2024-07-10T16:43:14Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2203.10244",
+      "score": 6.722183,
+      "title": "ChartQA: A Benchmark for Question Answering about Charts with Visual and Logical Reasoning",
+      "tldr": "This paper introduces ChartQA, a benchmark with 9.6K human-written and 23.1K generated questions on real-world charts, addressing complex visual and logical reasoning tasks through a dataset with diverse styles and topics, enabling evaluation of models that combine visual features and data tables for accurate answers.",
+      "abstract": "Charts are very popular for analyzing data. When exploring charts, people often ask a variety of complex reasoning questions that involve several logical and arithmetic operations. They also commonly refer to visual features of a chart in their questions. However, most existing datasets do not focus on such complex reasoning questions as their questions are template-based and answers come from a fixed-vocabulary. In this work, we present a large-scale benchmark covering 9.6K human-written questions as well as 23.1K questions generated from human-written chart summaries. To address the unique challenges in our benchmark involving visual and logical reasoning over charts, we present two transformer-based models that combine visual features and the data table of the chart in a unified way to answer questions. While our models achieve the state-of-the-art results on the previous datasets as well as on our benchmark, the evaluation also reveals several challenges in answering complex reasoning questions.",
+      "authors": [
+        {
+          "name": "Ahmed Masry",
+          "orgs": [
+            "York University, Canada"
+          ]
+        },
+        {
+          "name": "Do Xuan Long",
+          "orgs": [
+            "Nanyang Technological University, Singapore",
+            "Salesforce Research"
+          ]
+        },
+        {
+          "name": "Jia Qing Tan",
+          "orgs": [
+            "Nanyang Technological University, Singapore",
+            "Salesforce Research"
+          ]
+        },
+        {
+          "name": "Shafiq Joty",
+          "orgs": [
+            "Nanyang Technological University, Singapore",
+            "Salesforce Research"
+          ]
+        },
+        {
+          "name": "Enamul Hoque",
+          "orgs": [
+            "York University, Canada",
+            "Nanyang Technological University, Singapore",
+            "Salesforce Research"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2203.10244v1",
+      "date": "2022-03-19T05:00:30Z",
+      "citation_count": 1256,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2105.00121",
+      "score": 6.722183,
+      "title": "Lux: Always-on Visualization Recommendations for Exploratory Dataframe Workflows",
+      "tldr": "This paper presents Lux, an always-on visualization framework for dataframe workflows that addresses the tediousness of manual visualization and the challenge of determining next steps in exploratory data science, by providing automatic visual recommendations and reducing overhead to under two seconds for 98% of datasets; it introduces a novel intent language, a recommendation system based on dataframe structure and history, and optimizations for interactive feedback; evaluations show Lux improves usability and supports efficient visual experimentation.",
+      "abstract": "Exploratory data science largely happens in computational notebooks with dataframe APIs, such as pandas, that support flexible means to transform, clean, and analyze data. Yet, visually exploring data in dataframes remains tedious, requiring substantial programming effort for visualization and mental effort to determine what analysis to perform next. We propose Lux, an always-on framework for accelerating visual insight discovery in dataframe workflows. When users print a dataframe in their notebooks, Lux recommends visualizations to provide a quick overview of the patterns and trends and suggests promising analysis directions. Lux features a high level language for generating visualizations on demand to encourage rapid visual experimentation with data. We demonstrate that through the use of a careful design and three system optimizations, Lux adds no more than two seconds of overhead on top of pandas for over 98% of datasets in the UCI repository. We evaluate Lux in terms of usability via a controlled first-use study and interviews with early adopters, finding that Lux helps fulfill the needs of data scientists for visualization support within their dataframe workflows. Lux has already been embraced by data science practitioners, with over 3.1k stars on Github.",
+      "authors": [
+        {
+          "name": "Doris Jung-Lin Lee",
+          "orgs": [
+            "UC Berkeley"
+          ]
+        },
+        {
+          "name": "Dixin Tang",
+          "orgs": [
+            "UC Berkeley"
+          ]
+        },
+        {
+          "name": "Kunal Agarwal",
+          "orgs": [
+            "UC Berkeley"
+          ]
+        },
+        {
+          "name": "Thyne Boonmark",
+          "orgs": [
+            "UC Berkeley"
+          ]
+        },
+        {
+          "name": "Caitlyn Chen",
+          "orgs": [
+            "UC Berkeley"
+          ]
+        },
+        {
+          "name": "Jake Kang",
+          "orgs": [
+            "UC Berkeley"
+          ]
+        },
+        {
+          "name": "Ujjaini Mukhopadhyay",
+          "orgs": [
+            "UC Berkeley"
+          ]
+        },
+        {
+          "name": "Jerry Song",
+          "orgs": [
+            "UC Berkeley"
+          ]
+        },
+        {
+          "name": "Micah Yong",
+          "orgs": [
+            "UC Berkeley"
+          ]
+        },
+        {
+          "name": "Marti A. Hearst",
+          "orgs": [
+            "UC Berkeley"
+          ]
+        },
+        {
+          "name": "Aditya G. Parameswaran",
+          "orgs": [
+            "UC Berkeley"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2105.00121v2",
+      "date": "2021-04-30T23:28:03Z",
+      "citation_count": 60,
+      "categories": [
+        "cs.DB",
+        "cs.HC"
+      ]
+    },
+    {
+      "arxiv_id": "2406.18521",
+      "score": 6.5540147,
+      "title": "CharXiv: Charting Gaps in Realistic Chart Understanding in Multimodal LLMs",
+      "tldr": "This paper introduces CharXiv, a benchmark with 2,323 diverse charts from arXiv papers and two question types, addressing the gap in realistic chart understanding by revealing a 17.9% performance gap between top models and human-level accuracy of 80.5%.",
+      "abstract": "Chart understanding plays a pivotal role when applying Multimodal Large Language Models (MLLMs) to real-world tasks such as analyzing scientific papers or financial reports. However, existing datasets often focus on oversimplified and homogeneous charts with template-based questions, leading to an over-optimistic measure of progress. We demonstrate that although open-source models can appear to outperform strong proprietary models on these benchmarks, a simple stress test with slightly different charts or questions can deteriorate performance by up to 34.5%. In this work, we propose CharXiv, a comprehensive evaluation suite involving 2,323 natural, challenging, and diverse charts from arXiv papers. CharXiv includes two types of questions: 1) descriptive questions about examining basic chart elements and 2) reasoning questions that require synthesizing information across complex visual elements in the chart. To ensure quality, all charts and questions are handpicked, curated, and verified by human experts. Our results reveal a substantial, previously underestimated gap between the reasoning skills of the strongest proprietary model (i.e., GPT-4o), which achieves 47.1% accuracy, and the strongest open-source model (i.e., InternVL Chat V1.5), which achieves 29.2%. All models lag far behind human performance of 80.5%, underscoring weaknesses in the chart understanding capabilities of existing MLLMs. We hope CharXiv facilitates future research on MLLM chart understanding by providing a more realistic and faithful measure of progress. Project page and leaderboard: https://charxiv.github.io/",
+      "authors": [
+        {
+          "name": "Zirui Wang",
+          "orgs": [
+            "Princeton University"
+          ]
+        },
+        {
+          "name": "Mengzhou Xia",
+          "orgs": [
+            "University of Wisconsin, Madison"
+          ]
+        },
+        {
+          "name": "Luxi He",
+          "orgs": [
+            "The University of Hong Kong"
+          ]
+        },
+        {
+          "name": "Howard Chen",
+          "orgs": [
+            "Princeton University"
+          ]
+        },
+        {
+          "name": "Yitao Liu",
+          "orgs": [
+            "Princeton University"
+          ]
+        },
+        {
+          "name": "Richard Zhu",
+          "orgs": [
+            "Princeton University"
+          ]
+        },
+        {
+          "name": "Kaiqu Liang",
+          "orgs": [
+            "Princeton University"
+          ]
+        },
+        {
+          "name": "Xindi Wu",
+          "orgs": [
+            "Princeton University"
+          ]
+        },
+        {
+          "name": "Haotian Liu",
+          "orgs": [
+            "Princeton University"
+          ]
+        },
+        {
+          "name": "Sadhika Malladi",
+          "orgs": [
+            "Princeton University"
+          ]
+        },
+        {
+          "name": "Alexis Chevalier",
+          "orgs": [
+            "Princeton University"
+          ]
+        },
+        {
+          "name": "Sanjeev Arora",
+          "orgs": [
+            "Princeton University"
+          ]
+        },
+        {
+          "name": "Danqi Chen",
+          "orgs": [
+            "Princeton Language and Intelligence (PLI)",
+            "Princeton University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2406.18521v1",
+      "date": "2024-06-26T17:50:11Z",
+      "citation_count": 175,
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2210.03347",
+      "score": 6.429616,
+      "title": "Pix2Struct: Screenshot Parsing as Pretraining for Visual Language Understanding",
+      "tldr": "This paper addresses the challenge of visually-situated language understanding by introducing a pretraining approach that leverages screenshot parsing to enable a unified model for diverse tasks, as it aims to overcome the limitations of domain-specific methods; it proposes a screenshot parsing pretraining objective using HTML-based structure prediction and variable-resolution input representations, contributing a general-purpose model that achieves state-of-the-art results in six out of nine tasks across four domains; the model outperforms existing baselines by 9-53 points in some tasks and shows significant improvements in low-resource domains.",
+      "abstract": "Visually-situated language is ubiquitous -- sources range from textbooks with diagrams to web pages with images and tables, to mobile apps with buttons and forms. Perhaps due to this diversity, previous work has typically relied on domain-specific recipes with limited sharing of the underlying data, model architectures, and objectives. We present Pix2Struct, a pretrained image-to-text model for purely visual language understanding, which can be finetuned on tasks containing visually-situated language. Pix2Struct is pretrained by learning to parse masked screenshots of web pages into simplified HTML. The web, with its richness of visual elements cleanly reflected in the HTML structure, provides a large source of pretraining data well suited to the diversity of downstream tasks. Intuitively, this objective subsumes common pretraining signals such as OCR, language modeling, image captioning. In addition to the novel pretraining strategy, we introduce a variable-resolution input representation and a more flexible integration of language and vision inputs, where language prompts such as questions are rendered directly on top of the input image. For the first time, we show that a single pretrained model can achieve state-of-the-art results in six out of nine tasks across four domains: documents, illustrations, user interfaces, and natural images.",
+      "authors": [
+        {
+          "name": "Kenton Lee",
+          "orgs": []
+        },
+        {
+          "name": "Mandar Joshi",
+          "orgs": []
+        },
+        {
+          "name": "Iulia Turc",
+          "orgs": []
+        },
+        {
+          "name": "Hexiang Hu",
+          "orgs": []
+        },
+        {
+          "name": "Fangyu Liu",
+          "orgs": []
+        },
+        {
+          "name": "Julian Eisenschlos",
+          "orgs": []
+        },
+        {
+          "name": "Urvashi Khandelwal",
+          "orgs": []
+        },
+        {
+          "name": "Peter Shaw",
+          "orgs": []
+        },
+        {
+          "name": "Ming-Wei Chang",
+          "orgs": []
+        },
+        {
+          "name": "Kristina Toutanova",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2210.03347v2",
+      "date": "2022-10-07T06:42:06Z",
+      "citation_count": 396,
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2403.09028",
+      "score": 6.3472414,
+      "title": "ChartInstruct: Instruction Tuning for Chart Comprehension and Reasoning",
+      "tldr": "This paper addresses the challenge of chart comprehension and reasoning by introducing ChartInstruct, a novel dataset with 191K instructions generated from 71K charts, and presents two systems for instruction tuning to enhance VLMs' performance on chart-related tasks, achieving state-of-the-art results across four benchmarks and expanding their applicability to new tasks.",
+      "abstract": "Charts provide visual representations of data and are widely used for analyzing information, addressing queries, and conveying insights to others. Various chart-related downstream tasks have emerged recently, such as question-answering and summarization. A common strategy to solve these tasks is to fine-tune various models originally trained on vision tasks language. However, such task-specific models are not capable of solving a wide range of chart-related tasks, constraining their real-world applicability. To overcome these challenges, we introduce ChartInstruct: a novel chart-specific vision-language Instruction-following dataset comprising 191K instructions generated with 71K charts. We then present two distinct systems for instruction tuning on such datasets: (1) an end-to-end model that connects a vision encoder for chart understanding with a LLM; and (2) a pipeline model that employs a two-step approach to extract chart data tables and input them into the LLM. In experiments on four downstream tasks, we first show the effectiveness of our model--achieving a new set of state-of-the-art results. Further evaluation shows that our instruction-tuning approach supports a wide array of real-world chart comprehension and reasoning scenarios, thereby expanding the scope and applicability of our models to new kinds of tasks.",
+      "authors": [
+        {
+          "name": "Ahmed Masry",
+          "orgs": [
+            "York University, Canada",
+            "Nanyang Technological University, Singapore"
+          ]
+        },
+        {
+          "name": "Mehrad Shahmohammadi",
+          "orgs": [
+            "York University, Canada"
+          ]
+        },
+        {
+          "name": "Md Rizwan Parvez",
+          "orgs": [
+            "Qatar Computing Research Institute (QCRI)"
+          ]
+        },
+        {
+          "name": "Enamul Hoque",
+          "orgs": [
+            "York University, Canada"
+          ]
+        },
+        {
+          "name": "Shafiq Joty",
+          "orgs": [
+            "Salesforce Research",
+            "Nanyang Technological University, Singapore"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2403.09028v1",
+      "date": "2024-03-14T01:40:23Z",
+      "citation_count": 66,
+      "categories": [
+        "cs.CL"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+=== DePlot (2212.10505) ===
+Heading: Fangyu Liu♠♣Julian Martin Eisenschlos♣∗  
+Francesco Piccinno♣ Syrine Krichene♣ Chenxi Pang♣ Kenton Lee♣  
+Mandar Joshi♣ Wenhu Chen♣ Nigel Collier♠ Yasemin Altun♣  
+♣Google DeepMind♠University of Cambr
+
+Abstract:
+
+
+Introduction:
+Multimodal reasoning on visual language such as plots and charts is an extremely complex task. For downstream tasks such as question answering (QA)
+on plots/charts, a model needs to first extract relevant information from the image, organize them in a sensible manner, then perform reasoning over the entries extracted. Previous studies have proposed end-to-end solutions to such methods *(Lee et al., [2023](#bib.bib19 ""); Liu et al., [2023a](#bib.bib21 ""))*. Whilst being an effective solution, end-to-end methods need to be finetuned on large amounts of task data and they still lag behind on queries that require complex reasoning even after finetuning. As an example, the current SOTA model MatCha *(Liu et al., [2023a](#bib.bib21 ""))* achieves only 38.2% accuracy on ChartQA *(Masry et al., [2022](#bib.bib24 ""))* (human written queries).
+
+In the meantime, large language models (LLMs) such as GPT-3 *(Brown et al., [2020](#bib.bib4 ""))* and PaLM *(Chowdhery et al., [2022](#bib.bib11 ""))

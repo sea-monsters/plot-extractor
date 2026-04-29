@@ -1,0 +1,1566 @@
+{
+  "status": "success",
+  "total_count": 70,
+  "result": [
+    {
+      "arxiv_id": "2110.00061",
+      "score": 7.700824,
+      "title": "PubTables-1M: Towards comprehensive table extraction from unstructured documents",
+      "tldr": "This paper introduces PubTables-1M, a comprehensive dataset for table extraction from scientific articles, addressing the challenge of oversegmentation and improving model performance through canonicalization and rich annotations, leading to significant gains in table structure recognition and reliable evaluation metrics.",
+      "abstract": "Recently, significant progress has been made applying machine learning to the problem of table structure inference and extraction from unstructured documents. However, one of the greatest challenges remains the creation of datasets with complete, unambiguous ground truth at scale. To address this, we develop a new, more comprehensive dataset for table extraction, called PubTables-1M. PubTables-1M contains nearly one million tables from scientific articles, supports multiple input modalities, and contains detailed header and location information for table structures, making it useful for a wide variety of modeling approaches. It also addresses a significant source of ground truth inconsistency observed in prior datasets called oversegmentation, using a novel canonicalization procedure. We demonstrate that these improvements lead to a significant increase in training performance and a more reliable estimate of model performance at evaluation for table structure recognition. Further, we show that transformer-based object detection models trained on PubTables-1M produce excellent results for all three tasks of detection, structure recognition, and functional analysis without the need for any special customization for these tasks. Data and code will be released at https://github.com/microsoft/table-transformer.",
+      "authors": [
+        {
+          "name": "Brandon Smock",
+          "orgs": [
+            "Microsoft"
+          ]
+        },
+        {
+          "name": "Rohith Pesala",
+          "orgs": [
+            "Microsoft"
+          ]
+        },
+        {
+          "name": "Robin Abraham",
+          "orgs": [
+            "Microsoft"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2110.00061v3",
+      "date": "2021-09-30T19:42:07Z",
+      "citation_count": 167,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "1605.06409",
+      "score": 7.4243755,
+      "title": "R-FCN: Object Detection via Region-based Fully Convolutional Networks",
+      "tldr": "This paper addresses the challenge of object detection by developing R-FCN, a region-based fully convolutional network that resolves the dilemma between translation-invariance in classification and translation-variance in detection; it introduces position-sensitive score maps and a shared convolutional architecture, achieving 83.6% mAP on PASCAL VOC 2007 with 170ms per image, 2.5-20x faster than Faster R-CNN.",
+      "abstract": "We present region-based, fully convolutional networks for accurate and efficient object detection. In contrast to previous region-based detectors such as Fast/Faster R-CNN that apply a costly per-region subnetwork hundreds of times, our region-based detector is fully convolutional with almost all computation shared on the entire image. To achieve this goal, we propose position-sensitive score maps to address a dilemma between translation-invariance in image classification and translation-variance in object detection. Our method can thus naturally adopt fully convolutional image classifier backbones, such as the latest Residual Networks (ResNets), for object detection. We show competitive results on the PASCAL VOC datasets (e.g., 83.6% mAP on the 2007 set) with the 101-layer ResNet. Meanwhile, our result is achieved at a test-time speed of 170ms per image, 2.5-20x faster than the Faster R-CNN counterpart. Code is made publicly available at: https://github.com/daijifeng001/r-fcn",
+      "authors": [
+        {
+          "name": "Jifeng Dai",
+          "orgs": [
+            "Microsoft Research Asia"
+          ]
+        },
+        {
+          "name": "Yi Li",
+          "orgs": [
+            "Tsinghua University"
+          ]
+        },
+        {
+          "name": "Kaiming He",
+          "orgs": [
+            "Microsoft Research"
+          ]
+        },
+        {
+          "name": "Jian Sun",
+          "orgs": [
+            "Microsoft Research"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1605.06409v3",
+      "date": "2016-05-20T15:50:11Z",
+      "citation_count": 5974,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2106.00676",
+      "score": 7.1392097,
+      "title": "VILA: Improving Structured Content Extraction from Scientific PDFs Using Visual Layout Groups",
+      "tldr": "This paper addresses the challenge of structured content extraction from scientific PDFs by introducing VILA groups to improve accuracy and efficiency, proposing I-VILA (1.9% Macro F1 improvement) and H-VILA (47% inference time reduction with <0.8% Macro F1 loss), and presenting S2-VLUE, a benchmark suite with human-annotated data across 19 disciplines.",
+      "abstract": "Accurately extracting structured content from PDFs is a critical first step for NLP over scientific papers. Recent work has improved extraction accuracy by incorporating elementary layout information, e.g., each token's 2D position on the page, into language model pretraining. We introduce new methods that explicitly model VIsual LAyout (VILA) groups, i.e., text lines or text blocks, to further improve performance. In our I-VILA approach, we show that simply inserting special tokens denoting layout group boundaries into model inputs can lead to a 1.9% Macro F1 improvement in token classification. In the H-VILA approach, we show that hierarchical encoding of layout-groups can result in up-to 47% inference time reduction with less than 0.8% Macro F1 loss. Unlike prior layout-aware approaches, our methods do not require expensive additional pretraining, only fine-tuning, which we show can reduce training cost by up to 95%. Experiments are conducted on a newly curated evaluation suite, S2-VLUE, that unifies existing automatically-labeled datasets and includes a new dataset of manual annotations covering diverse papers from 19 scientific disciplines. Pre-trained weights, benchmark datasets, and source code are available at https://github.com/allenai/VILA.",
+      "authors": [
+        {
+          "name": "Zejiang Shen",
+          "orgs": [
+            "Allen Institute for AI"
+          ]
+        },
+        {
+          "name": "Kyle Lo",
+          "orgs": [
+            "Allen Institute for AI"
+          ]
+        },
+        {
+          "name": "Lucy Lu Wang",
+          "orgs": [
+            "Allen Institute for AI"
+          ]
+        },
+        {
+          "name": "Bailey Kuehl",
+          "orgs": [
+            "Allen Institute for AI"
+          ]
+        },
+        {
+          "name": "Daniel S. Weld",
+          "orgs": [
+            "Allen Institute for AI",
+            "University of Washington"
+          ]
+        },
+        {
+          "name": "Doug Downey",
+          "orgs": [
+            "Allen Institute for AI",
+            "Northwestern University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2106.00676v3",
+      "date": "2021-06-01T17:59:00Z",
+      "citation_count": 43,
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2301.12293",
+      "score": 6.965254,
+      "title": "ACL-Fig: A Dataset for Scientific Figure Classification",
+      "tldr": "This paper introduces ACL-Fig, a large-scale dataset of 112,052 scientific figures from 56K papers, addressing the lack of annotated figures for semantic understanding, with a manually labeled subset of 1,671 figures across 19 categories for classification benchmarking.",
+      "abstract": "Most existing large-scale academic search engines are built to retrieve text-based information. However, there are no large-scale retrieval services for scientific figures and tables. One challenge for such services is understanding scientific figures' semantics, such as their types and purposes. A key obstacle is the need for datasets containing annotated scientific figures and tables, which can then be used for classification, question-answering, and auto-captioning. Here, we develop a pipeline that extracts figures and tables from the scientific literature and a deep-learning-based framework that classifies scientific figures using visual features. Using this pipeline, we built the first large-scale automatically annotated corpus, ACL-Fig, consisting of 112,052 scientific figures extracted from ~56K research papers in the ACL Anthology. The ACL-Fig-Pilot dataset contains 1,671 manually labeled scientific figures belonging to 19 categories. The dataset is accessible at https://huggingface.co/datasets/citeseerx/ACL-fig under a CC BY-NC license.",
+      "authors": [
+        {
+          "name": "Zeba Karishma",
+          "orgs": [
+            "The Pennsylvania State University"
+          ]
+        },
+        {
+          "name": "Shaurya Rohatgi",
+          "orgs": [
+            "The Pennsylvania State University"
+          ]
+        },
+        {
+          "name": "Kavya Shrinivas Puranik",
+          "orgs": [
+            "The Pennsylvania State University"
+          ]
+        },
+        {
+          "name": "Jian Wu",
+          "orgs": [
+            "Old Dominion University"
+          ]
+        },
+        {
+          "name": "C. Lee Giles",
+          "orgs": [
+            "The Pennsylvania State University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2301.12293v1",
+      "date": "2023-01-28T20:27:35Z",
+      "citation_count": 13,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.DL"
+      ]
+    },
+    {
+      "arxiv_id": "2403.00231",
+      "score": 6.907638,
+      "title": "Multimodal ArXiv: A Dataset for Improving Scientific Comprehension of Large Vision-Language Models",
+      "tldr": "This paper introduces Multimodal ArXiv to address the gap in scientific comprehension of LVLMs by providing a dataset with 6.4M images and 3.9M captions, enhancing mathematical reasoning by 10.4% on MathVista, and revealing performance gains from domain-specific training while highlighting challenges in visual context interpretation and caption accuracy.",
+      "abstract": "Large vision-language models (LVLMs) excel across diverse tasks involving concrete images from natural scenes. However, their ability to interpret abstract figures, such as geometry shapes and scientific plots, remains limited due to a scarcity of training datasets in scientific domains. To fill this gap, we introduce Multimodal ArXiv, consisting of ArXivCap and ArXivQA, for enhancing LVLMs scientific comprehension. ArXivCap is a figure-caption dataset comprising 6.4M images and 3.9M captions, sourced from 572K ArXiv papers spanning various scientific domains. Drawing from ArXivCap, we introduce ArXivQA, a question-answering dataset generated by prompting GPT-4V based on scientific figures. ArXivQA greatly enhances open-sourced LVLMs' mathematical reasoning capabilities, achieving a 10.4\\% absolute accuracy gain on a multimodal mathematical reasoning benchmark. Furthermore, employing ArXivCap, we devise four vision-to-text tasks for benchmarking LVLMs. Evaluation results with state-of-the-art LVLMs underscore their struggle with the nuanced semantics of academic figures, while domain-specific training yields substantial performance gains. Our error analysis uncovers misinterpretations of visual context, recognition errors, and the production of overly simplified captions by current LVLMs, shedding light on future improvements.",
+      "authors": [
+        {
+          "name": "Lei Li",
+          "orgs": [
+            "The University of Hong Kong"
+          ]
+        },
+        {
+          "name": "Yuqi Wang",
+          "orgs": [
+            "The University of Hong Kong"
+          ]
+        },
+        {
+          "name": "Runxin Xu",
+          "orgs": [
+            "Peking University"
+          ]
+        },
+        {
+          "name": "Peiyi Wang",
+          "orgs": [
+            "Peking University"
+          ]
+        },
+        {
+          "name": "Xiachong Feng",
+          "orgs": [
+            "The University of Hong Kong"
+          ]
+        },
+        {
+          "name": "Lingpeng Kong",
+          "orgs": [
+            "The University of Hong Kong"
+          ]
+        },
+        {
+          "name": "Qi Liu",
+          "orgs": [
+            "The University of Hong Kong"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2403.00231v3",
+      "date": "2024-03-01T02:21:30Z",
+      "citation_count": 107,
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1804.02445",
+      "score": 6.8960805,
+      "title": "Extracting Scientific Figures with Distantly Supervised Neural Networks",
+      "tldr": "This paper addresses the challenge of figure extraction in scientific documents by proposing a method to induce high-quality labels without human intervention, using auxiliary data from arXiv and PubMed to create a dataset of 5.5 million labels with 96.8% average precision; it introduces a deep neural network model, DeepFigures, which outperforms previous rule-based methods and is deployed in Semantic Scholar to extract figures from 13 million documents.",
+      "abstract": "Non-textual components such as charts, diagrams and tables provide key information in many scientific documents, but the lack of large labeled datasets has impeded the development of data-driven methods for scientific figure extraction. In this paper, we induce high-quality training labels for the task of figure extraction in a large number of scientific documents, with no human intervention. To accomplish this we leverage the auxiliary data provided in two large web collections of scientific documents (arXiv and PubMed) to locate figures and their associated captions in the rasterized PDF. We share the resulting dataset of over 5.5 million induced labels---4,000 times larger than the previous largest figure extraction dataset---with an average precision of 96.8%, to enable the development of modern data-driven methods for this task. We use this dataset to train a deep neural network for end-to-end figure detection, yielding a model that can be more easily extended to new domains compared to previous work. The model was successfully deployed in Semantic Scholar, a large-scale academic search engine, and used to extract figures in 13 million scientific documents.",
+      "authors": [
+        {
+          "name": "Noah Siegel",
+          "orgs": [
+            "Allen Institute for Artificial Intelligence",
+            "Seattle",
+            "Washington"
+          ]
+        },
+        {
+          "name": "Nicholas Lourie",
+          "orgs": [
+            "Allen Institute for Artificial Intelligence",
+            "Seattle",
+            "Washington"
+          ]
+        },
+        {
+          "name": "Russell Power",
+          "orgs": [
+            "Allen Institute for Artificial Intelligence",
+            "Seattle",
+            "Washington"
+          ]
+        },
+        {
+          "name": "Waleed Ammar",
+          "orgs": [
+            "Allen Institute for Artificial Intelligence",
+            "Seattle",
+            "Washington"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1804.02445v2",
+      "date": "2018-04-06T20:22:47Z",
+      "citation_count": 120,
+      "categories": [
+        "cs.CV",
+        "cs.DL"
+      ]
+    },
+    {
+      "arxiv_id": "2604.14941",
+      "score": 6.818809,
+      "title": "Text2Arch: A Dataset for Generating Scientific Architecture Diagrams from Natural Language Descriptions",
+      "tldr": "This paper introduces the TEXT2ARCH dataset for generating scientific architecture diagrams from natural language descriptions, addressing the lack of high-quality datasets and effective models for this task by proposing a novel approach using DOT code as an intermediate representation, contributing a large-scale dataset with 75,127 samples and demonstrating significant improvements over existing baselines like DiagramAgent.",
+      "abstract": "Communicating complex system designs or scientific processes through text alone is inefficient and prone to ambiguity. A system that automatically generates scientific architecture diagrams from text with high semantic fidelity can be useful in multiple applications like enterprise architecture visualization, AI-driven software design, and educational content creation. Hence, in this paper, we focus on leveraging language models to perform semantic understanding of the input text description to generate intermediate code that can be processed to generate high-fidelity architecture diagrams. Unfortunately, no clean large-scale open-access dataset exists, implying lack of any effective open models for this task. Hence, we contribute a comprehensive dataset, \\system, comprising scientific architecture images, their corresponding textual descriptions, and associated DOT code representations. Leveraging this resource, we fine-tune a suite of small language models, and also perform in-context learning using GPT-4o. Through extensive experimentation, we show that \\system{} models significantly outperform existing baseline models like DiagramAgent and perform at par with in-context learning-based generations from GPT-4o. We make the code, data and models publicly available.",
+      "authors": [
+        {
+          "name": "Shivank Garg",
+          "orgs": [
+            "IIT Roorkee, India"
+          ]
+        },
+        {
+          "name": "Sankalp Mittal",
+          "orgs": [
+            "Google, India"
+          ]
+        },
+        {
+          "name": "Manish Gupta",
+          "orgs": [
+            "Microsoft, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2604.14941v1",
+      "date": "2026-04-16",
+      "citation_count": 0,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2308.12981",
+      "score": 6.7419214,
+      "title": "An approach based on Open Research Knowledge Graph for Knowledge Acquisition from scientific papers",
+      "tldr": "This paper addresses the challenge of knowledge acquisition from scientific papers by proposing an approach using Open Research Knowledge Graph (ORKG) to automate metadata retrieval and manual annotation of key-insights, contributing a scalable method for organizing research contributions; it was applied to document five research problems and one domain, enhancing knowledge comparison and reuse.",
+      "abstract": "A scientific paper can be divided into two major constructs which are Metadata and Full-body text. Metadata provides a brief overview of the paper while the Full-body text contains key-insights that can be valuable to fellow researchers. To retrieve metadata and key-insights from scientific papers, knowledge acquisition is a central activity. It consists of gathering, analyzing and organizing knowledge embedded in scientific papers in such a way that it can be used and reused whenever needed. Given the wealth of scientific literature, manual knowledge acquisition is a cumbersome task. Thus, computer-assisted and (semi-)automatic strategies are generally adopted. Our purpose in this research was two fold: curate Open Research Knowledge Graph (ORKG) with papers related to ontology learning and define an approach using ORKG as a computer-assisted tool to organize key-insights extracted from research papers. This approach was used to document the \"epidemiological surveillance systems design and implementation\" research problem and to prepare the related work of this paper. It is currently used to document \"food information engineering\", \"Tabular data to Knowledge Graph Matching\" and \"Question Answering\" research problems and \"Neuro-symbolic AI\" domain.",
+      "authors": [
+        {
+          "name": "Azanzi Jiomekong",
+          "orgs": [
+            "University of Yaounde I, Faculty of Sciences, Cameroon"
+          ]
+        },
+        {
+          "name": "Sanju Tiwari",
+          "orgs": [
+            "Universidad Autonoma de Tamaulipas, Mexico",
+            "India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2308.12981v1",
+      "date": "2023-08-23T20:05:42Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.AI",
+        "cs.DL"
+      ]
+    },
+    {
+      "arxiv_id": "2004.14356",
+      "score": 6.695927,
+      "title": "AxCell: Automatic Extraction of Results from Machine Learning Papers",
+      "tldr": "This paper presents AxCell, an automatic machine learning pipeline for extracting results from papers, addressing the challenge of tracking progress in a rapidly growing field by improving state-of-the-art results extraction with a micro F1 score of 25.8 on NLP-TDMS, contributing a structured dataset and enabling semi-automated extraction in production.",
+      "abstract": "Tracking progress in machine learning has become increasingly difficult with the recent explosion in the number of papers. In this paper, we present AxCell, an automatic machine learning pipeline for extracting results from papers. AxCell uses several novel components, including a table segmentation subtask, to learn relevant structural knowledge that aids extraction. When compared with existing methods, our approach significantly improves the state of the art for results extraction. We also release a structured, annotated dataset for training models for results extraction, and a dataset for evaluating the performance of models on this task. Lastly, we show the viability of our approach enables it to be used for semi-automated results extraction in production, suggesting our improvements make this task practically viable for the first time. Code is available on GitHub.",
+      "authors": [
+        {
+          "name": "Marcin Kardas",
+          "orgs": [
+            "Facebook AI Research (FAIR), London, UK"
+          ]
+        },
+        {
+          "name": "Piotr Czapla",
+          "orgs": [
+            "n-waves, Wroclaw, Poland"
+          ]
+        },
+        {
+          "name": "Pontus Stenetorp",
+          "orgs": [
+            "Department of Computer Science, University College London (UCL), UK"
+          ]
+        },
+        {
+          "name": "Sebastian Ruder",
+          "orgs": [
+            "DeepMind, London, UK"
+          ]
+        },
+        {
+          "name": "Sebastian Riedel",
+          "orgs": [
+            "Facebook AI Research (FAIR), London, UK",
+            "Department of Computer Science, University College London (UCL), UK"
+          ]
+        },
+        {
+          "name": "Ross Taylor",
+          "orgs": []
+        },
+        {
+          "name": "Robert Stojnic",
+          "orgs": [
+            "Facebook AI Research (FAIR), London, UK"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2004.14356v1",
+      "date": "2020-04-29T17:33:41Z",
+      "citation_count": 87,
+      "categories": [
+        "cs.CL",
+        "stat.ML"
+      ]
+    },
+    {
+      "arxiv_id": "2412.09628",
+      "score": 6.6654,
+      "title": "Bridging AI and Science: Implications from a Large-Scale Literature Analysis of AI4Science",
+      "tldr": "This paper examines the AI4Science landscape, addressing the gap between AI and scientific communities by analyzing a large dataset of publications to reveal disparities in AI method-scientific problem connections and proposing strategies for interdisciplinary collaboration through link prediction. It employs large language models to extract and categorize scientific problems and AI methods, contributing a novel dataset and insights into AI integration opportunities across disciplines, highlighting that only 23% of scientific problems are addressed by AI methods. The findings suggest potential for enhancing collaboration and accelerating scientific discovery through more comprehensive AI integration.",
+      "abstract": "Artificial Intelligence has proven to be a transformative tool for advancing scientific research across a wide range of disciplines. However, a significant gap still exists between AI and scientific communities, limiting the full potential of AI methods in driving broad scientific discovery. Existing efforts in identifying and bridging this gap have often relied on qualitative examination of small samples of literature, offering a limited perspective on the broader AI4Science landscape. In this work, we present a large-scale analysis of the AI4Science literature, starting by using large language models to identify scientific problems and AI methods in publications from top science and AI venues. Leveraging this new dataset, we quantitatively highlight key disparities between AI methods and scientific problems, revealing substantial opportunities for deeper AI integration across scientific disciplines. Furthermore, we explore the potential and challenges of facilitating collaboration between AI and scientific communities through the lens of link prediction. Our findings and tools aim to promote more impactful interdisciplinary collaborations and accelerate scientific discovery through deeper and broader AI integration. Our code and dataset are available at: https://github.com/charles-pyj/Bridging-AI-and-Science.",
+      "authors": [
+        {
+          "name": "Yutong Xie",
+          "orgs": [
+            "University of Michigan",
+            "Ann Arbor",
+            "Michigan",
+            "USA"
+          ]
+        },
+        {
+          "name": "Yijun Pan",
+          "orgs": [
+            "University of Michigan",
+            "Ann Arbor",
+            "Michigan",
+            "USA"
+          ]
+        },
+        {
+          "name": "Hua Xu",
+          "orgs": [
+            "Yale University",
+            "New Haven",
+            "Connecticut",
+            "USA"
+          ]
+        },
+        {
+          "name": "Qiaozhu Mei",
+          "orgs": [
+            "University of Michigan",
+            "Ann Arbor",
+            "Michigan",
+            "USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2412.09628v2",
+      "date": "2024-11-27T00:40:51Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.AI",
+        "cs.DL",
+        "cs.IR"
+      ]
+    },
+    {
+      "arxiv_id": "2204.05807",
+      "score": 6.6623907,
+      "title": "Research on accurate stereo portrait generation algorithm of scientific research team",
+      "tldr": "This paper proposes an accurate stereo portrait generation algorithm for scientific research teams, addressing the challenge of identifying and describing teams from big data to support management decisions; it introduces a three-module approach including team identification, topic extraction, and portrait generation with unsupervised topic extraction as a core novelty; experiments on real datasets demonstrate effective team identification and topic extraction, enabling comprehensive and intuitive team visualization.",
+      "abstract": "In order to smoothly promote the establishment of scientific research projects, accurately identify the excellent scientific research team, and intuitively and comprehensively describe the scientific research team, it is of great significance for the scientific research management department to comprehensively understand and objectively evaluate the scientific research team. At present, the research work on the construction of accurate three-dimensional portrait of scientific research team is relatively less. In view of the practical demand of scientific research management department, this paper proposes an accurate stereo portrait generation algorithm of scientific research team. The algorithm includes three modules: research team identification, research topic extraction and research team portrait generation. Firstly, the leader of the scientific research team is identified based on the iterative middle centrality ranking method, and the members of the scientific research team are identified through the 2-faction and snowball methods, so as to realize the identification of the scientific research team. Then, considering the statistical information of words and the co-occurrence features of words in the research team, the research topics of the research team are extracted to improve the accuracy of research topic extraction. Finally, the research team portrait generation module generates the accurate three-dimensional portrait of the research team through the generation of the research team profile, the construction of the research cooperation relationship, and the construction of the research team topic cloud. The research team is identified on the data set of scientific research achievements, and the accurate three-dimensional portraits of the research team are generated and visualized. Experiments verify the effectiveness of the proposed algorithm.",
+      "authors": [
+        {
+          "name": "Mingying Xu",
+          "orgs": [
+            "Beijing University of Posts and Telecommunications",
+            "Beijing Key Laboratory of Intelligent Telecommunication Software and Multimedia"
+          ]
+        },
+        {
+          "name": "Junping Du",
+          "orgs": [
+            "Beijing University of Posts and Telecommunications",
+            "Beijing Key Laboratory of Intelligent Telecommunication Software and Multimedia"
+          ]
+        },
+        {
+          "name": "Meiyu Liang",
+          "orgs": [
+            "Beijing University of Posts and Telecommunications",
+            "Beijing Key Laboratory of Intelligent Telecommunication Software and Multimedia"
+          ]
+        },
+        {
+          "name": "Zhe Xue",
+          "orgs": [
+            "Beijing University of Posts and Telecommunications",
+            "Beijing Key Laboratory of Intelligent Telecommunication Software and Multimedia"
+          ]
+        },
+        {
+          "name": "Ang Li",
+          "orgs": [
+            "Beijing University of Posts and Telecommunications",
+            "Beijing Key Laboratory of Intelligent Telecommunication Software and Multimedia"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2204.05807v2",
+      "date": "2022-04-11T09:32:57Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.DL"
+      ]
+    },
+    {
+      "arxiv_id": "2101.11796",
+      "score": 6.6577992,
+      "title": "DOC2PPT: Automatic Presentation Slides Generation from Scientific Documents",
+      "tldr": "This paper addresses the challenge of generating presentation slides from scientific documents, aiming to automate a complex multimodal task that requires summarization, layout prediction, and visual-semantic alignment; it proposes a hierarchical sequence-to-sequence approach with paraphrasing and layout modules, contributing a dataset of 5,873 paired documents and slides; experiments show the method outperforms baselines, producing slides with aligned imagery and structured content.",
+      "abstract": "Creating presentation materials requires complex multimodal reasoning skills to summarize key concepts and arrange them in a logical and visually pleasing manner. Can machines learn to emulate this laborious process? We present a novel task and approach for document-to-slide generation. Solving this involves document summarization, image and text retrieval, slide structure and layout prediction to arrange key elements in a form suitable for presentation. We propose a hierarchical sequence-to-sequence approach to tackle our task in an end-to-end manner. Our approach exploits the inherent structures within documents and slides and incorporates paraphrasing and layout prediction modules to generate slides. To help accelerate research in this domain, we release a dataset about 6K paired documents and slide decks used in our experiments. We show that our approach outperforms strong baselines and produces slides with rich content and aligned imagery.",
+      "authors": [
+        {
+          "name": "Tsu-Jui Fu",
+          "orgs": []
+        },
+        {
+          "name": "William Yang Wang",
+          "orgs": []
+        },
+        {
+          "name": "Daniel McDuff",
+          "orgs": []
+        },
+        {
+          "name": "Yale Song",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2101.11796v4",
+      "date": "2021-01-28T03:21:17Z",
+      "citation_count": 76,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2508.18661",
+      "score": 6.6502776,
+      "title": "Extracting Information from Scientific Literature via Visual Table Question Answering Models",
+      "tldr": "This paper addresses the challenge of extractive question answering in scientific documents with tables, aiming to improve systematic review efficiency by evaluating OCR, vision-language models, and table structure recognition methods, finding that preserving table structure enhances accuracy, with results showing better performance in handling structured data and notations.",
+      "abstract": "This study explores three approaches to processing table data in scientific papers to enhance extractive question answering and develop a software tool for the systematic review process. The methods evaluated include: (1) Optical Character Recognition (OCR) for extracting information from documents, (2) Pre-trained models for document visual question answering, and (3) Table detection and structure recognition to extract and merge key information from tables with textual content to answer extractive questions. In exploratory experiments, we augmented ten sample test documents containing tables and relevant content against RF- EMF-related scientific papers with seven predefined extractive question-answer pairs. The results indicate that approaches preserving table structure outperform the others, particularly in representing and organizing table content. Accurately recognizing specific notations and symbols within the documents emerged as a critical factor for improved results. Our study concludes that preserving the structural integrity of tables is essential for enhancing the accuracy and reliability of extractive question answering in scientific documents.",
+      "authors": [
+        {
+          "name": "Dongyoun Kim",
+          "orgs": [
+            "South Dakota State University, Brookings, SD, USA"
+          ]
+        },
+        {
+          "name": "Hyung-do Choi",
+          "orgs": [
+            "Electronics and Telecom. Research Institute, Daejeon, South Korea"
+          ]
+        },
+        {
+          "name": "Youngsun Jang",
+          "orgs": [
+            "Muhlenberg College, Allentown, PA, USA"
+          ]
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "John Kim",
+          "orgs": [
+            "Utica University, Utica, NY, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2508.18661v1",
+      "date": "2025-08-26T04:08:16Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.IR"
+      ]
+    },
+    {
+      "arxiv_id": "2507.00152",
+      "score": 6.639616,
+      "title": "Table Understanding and (Multimodal) LLMs: A Cross-Domain Case Study on Scientific vs. Non-Scientific Data",
+      "tldr": "This paper investigates table understanding in LLMs and MLLMs across scientific and non-scientific domains, introducing TableEval with 3017 tables, finding that performance drops significantly on scientific tables, and showing that gradient-based explanations can reveal context relevance in TU tasks.",
+      "abstract": "Tables are among the most widely used tools for representing structured data in research, business, medicine, and education. Although LLMs demonstrate strong performance in downstream tasks, their efficiency in processing tabular data remains underexplored. In this paper, we investigate the effectiveness of both text-based and multimodal LLMs on table understanding tasks through a cross-domain and cross-modality evaluation. Specifically, we compare their performance on tables from scientific vs. non-scientific contexts and examine their robustness on tables represented as images vs. text. Additionally, we conduct an interpretability analysis to measure context usage and input relevance. We also introduce the TableEval benchmark, comprising 3017 tables from scholarly publications, Wikipedia, and financial reports, where each table is provided in five different formats: Image, Dictionary, HTML, XML, and LaTeX. Our findings indicate that while LLMs maintain robustness across table modalities, they face significant challenges when processing scientific tables.",
+      "authors": [],
+      "url": "https://arxiv.org/pdf/2507.00152v1",
+      "date": "2025-06-30T18:04:36Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2602.10081",
+      "score": 6.6262918,
+      "title": "Anagent For Enhancing Scientific Table & Figure Analysis",
+      "tldr": "This paper addresses the challenge of scientific table & figure analysis, where current AI systems struggle with multimodal reasoning and long-context understanding, by introducing Anagent, a multi-agent framework achieving up to 42.12% improvement with finetuning, and presenting AnaBench, a benchmark with 63,178 instances across nine domains and seven complexity dimensions.",
+      "abstract": "In scientific research, analysis requires accurately interpreting complex multimodal knowledge, integrating evidence from different sources, and drawing inferences grounded in domain-specific knowledge. However, current artificial intelligence (AI) systems struggle to consistently demonstrate such capabilities. The complexity and variability of scientific tables and figures, combined with heterogeneous structures and long-context requirements, pose fundamental obstacles to scientific table \\& figure analysis. To quantify these challenges, we introduce AnaBench, a large-scale benchmark featuring $63,178$ instances from nine scientific domains, systematically categorized along seven complexity dimensions. To tackle these challenges, we propose Anagent, a multi-agent framework for enhanced scientific table \\& figure analysis through four specialized agents: Planner decomposes tasks into actionable subtasks, Expert retrieves task-specific information through targeted tool execution, Solver synthesizes information to generate coherent analysis, and Critic performs iterative refinement through five-dimensional quality assessment. We further develop modular training strategies that leverage supervised finetuning and specialized reinforcement learning to optimize individual capabilities while maintaining effective collaboration. Comprehensive evaluation across 9 broad domains with 170 subdomains demonstrates that Anagent achieves substantial improvements, up to $\\uparrow 13.43\\%$ in training-free settings and $\\uparrow 42.12\\%$ with finetuning, while revealing that task-oriented reasoning and context-aware problem-solving are essential for high-quality scientific table \\& figure analysis. Our project page: https://xhguo7.github.io/Anagent/.",
+      "authors": [
+        {
+          "name": "Tom Hope",
+          "orgs": [
+            "3"
+          ]
+        },
+        {
+          "name": "Zhiyong Lu",
+          "orgs": [
+            "2"
+          ]
+        },
+        {
+          "name": "Qingyun Wang",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Xuehang Guo",
+          "orgs": [
+            "1"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.10081v2",
+      "date": "2026-02-10",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2403.02576",
+      "score": 6.61372,
+      "title": "AceMap: Knowledge Discovery through Academic Graph",
+      "tldr": "This paper presents AceMap, a system for knowledge discovery through academic graphs, addressing the challenge of managing and analyzing large-scale heterogeneous scholarly networks to extract insights from exponential scientific literature growth; it introduces a comprehensive database construction, visualization techniques based on nebular graphs, a unified metric using structural entropy for knowledge quantification, and advanced analysis methods including citation-based idea evolution tracking and cross-disciplinary text generation; empirical results show annual publication trends exceeding ten million papers since 2020, demonstrating AceMap's capability to provide deep insights into academic networks.",
+      "abstract": "The exponential growth of scientific literature requires effective management and extraction of valuable insights. While existing scientific search engines excel at delivering search results based on relational databases, they often neglect the analysis of collaborations between scientific entities and the evolution of ideas, as well as the in-depth analysis of content within scientific publications. The representation of heterogeneous graphs and the effective measurement, analysis, and mining of such graphs pose significant challenges. To address these challenges, we present AceMap, an academic system designed for knowledge discovery through academic graph. We present advanced database construction techniques to build the comprehensive AceMap database with large-scale academic entities that contain rich visual, textual, and numerical information. AceMap also employs innovative visualization, quantification, and analysis methods to explore associations and logical relationships among academic entities. AceMap introduces large-scale academic network visualization techniques centered on nebular graphs, providing a comprehensive view of academic networks from multiple perspectives. In addition, AceMap proposes a unified metric based on structural entropy to quantitatively measure the knowledge content of different academic entities. Moreover, AceMap provides advanced analysis capabilities, including tracing the evolution of academic ideas through citation relationships and concept co-occurrence, and generating concise summaries informed by this evolutionary process. In addition, AceMap uses machine reading methods to generate potential new ideas at the intersection of different fields. Exploring the integration of large language models and knowledge graphs is a promising direction for future research in idea evolution. Please visit \\url{https://www.acemap.info} for further exploration.",
+      "authors": [
+        {
+          "name": "Xinbing Wang",
+          "orgs": [
+            "Department of Electronic Engineering, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Luoyi Fu",
+          "orgs": [
+            "Department of Computer Science, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Xiaoying Gan",
+          "orgs": [
+            "Department of Electronic Engineering, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Ying Wen",
+          "orgs": [
+            "John Hopcroft Center for Computer Science, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Guanjie Zheng",
+          "orgs": [
+            "John Hopcroft Center for Computer Science, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Jiaxin Ding",
+          "orgs": [
+            "John Hopcroft Center for Computer Science, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Liyao Xiang",
+          "orgs": [
+            "John Hopcroft Center for Computer Science, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Nanyang Ye",
+          "orgs": [
+            "John Hopcroft Center for Computer Science, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Meng Jin",
+          "orgs": [
+            "John Hopcroft Center for Computer Science, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Shiyu Liang",
+          "orgs": [
+            "John Hopcroft Center for Computer Science, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Bin Lu",
+          "orgs": [
+            "Department of Electronic Engineering, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Haiwen Wang",
+          "orgs": [
+            "Department of Computer Science, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Yi Xu",
+          "orgs": [
+            "Department of Computer Science, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Cheng Deng",
+          "orgs": [
+            "Department of Computer Science, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Shao Zhang",
+          "orgs": [
+            "Department of Electronic Engineering, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Huquan Kang",
+          "orgs": [
+            "Department of Computer Science, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Xingli Wang",
+          "orgs": [
+            "Department of Computer Science, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Qi Li",
+          "orgs": [
+            "Department of Electronic Engineering, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Zhixin Guo",
+          "orgs": [
+            "Department of Electronic Engineering, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Jiexing Qi",
+          "orgs": [
+            "Department of Electronic Engineering, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Pan Liu",
+          "orgs": [
+            "Department of Electronic Engineering, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Yuyang Ren",
+          "orgs": [
+            "Department of Computer Science, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Lyuwen Wu",
+          "orgs": [
+            "Department of Computer Science, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Jungang Yang",
+          "orgs": [
+            "Department of Computer Science, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Jianping Zhou",
+          "orgs": [
+            "Department of Electronic Engineering, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Chenghu Zhou",
+          "orgs": [
+            "John Hopcroft Center for Computer Science, Shanghai Jiao Tong University",
+            "Institute of Geographic Sciences and Natural Resources Research, Chinese Academy of Sciences"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2403.02576v2",
+      "date": "2024-03-05T01:17:56Z",
+      "citation_count": 5,
+      "categories": [
+        "cs.DL",
+        "cs.LG",
+        "cs.SI"
+      ]
+    },
+    {
+      "arxiv_id": "2403.15724",
+      "score": 6.588801,
+      "title": "PEaCE: A Chemistry-Oriented Dataset for Optical Character Recognition on Scientific Documents",
+      "tldr": "This paper introduces the PEaCE dataset, addressing the gap in OCR models for scientific texts and printed English by combining synthetic and real-world records, and finds that small patch size, multi-domain training, and proposed transformations improve performance on real-world tests.",
+      "abstract": "Optical Character Recognition (OCR) is an established task with the objective of identifying the text present in an image. While many off-the-shelf OCR models exist, they are often trained for either scientific (e.g., formulae) or generic printed English text. Extracting text from chemistry publications requires an OCR model that is capable in both realms. Nougat, a recent tool, exhibits strong ability to parse academic documents, but is unable to parse tables in PubMed articles, which comprises a significant part of the academic community and is the focus of this work. To mitigate this gap, we present the Printed English and Chemical Equations (PEaCE) dataset, containing both synthetic and real-world records, and evaluate the efficacy of transformer-based OCR models when trained on this resource. Given that real-world records contain artifacts not present in synthetic records, we propose transformations that mimic such qualities. We perform a suite of experiments to explore the impact of patch size, multi-domain training, and our proposed transformations, ultimately finding that models with a small patch size trained on multiple domains using the proposed transformations yield the best performance. Our dataset and code is available at https://github.com/ZN1010/PEaCE.",
+      "authors": [
+        {
+          "name": "Nan Zhang",
+          "orgs": []
+        },
+        {
+          "name": "Connor Heaton",
+          "orgs": []
+        },
+        {
+          "name": "Sean Timothy Okonsky",
+          "orgs": []
+        },
+        {
+          "name": "Prasenjit Mitra",
+          "orgs": []
+        },
+        {
+          "name": "Hilal Ezgi Toraman",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2403.15724v1",
+      "date": "2024-03-23T05:20:36Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2210.17246",
+      "score": 6.561765,
+      "title": "Tables to LaTeX: structure and content extraction from scientific tables",
+      "tldr": "This paper addresses the challenge of structure and content extraction from scientific tables in PDF documents, proposing a transformer-based model that converts tabular images to LaTeX code, achieving 70.35% exact match accuracy on structure and 49.69% on content extraction, with contributions including task decomposition, attention-on-attention mechanism, new dataset, and adversarial testing.",
+      "abstract": "Scientific documents contain tables that list important information in a concise fashion. Structure and content extraction from tables embedded within PDF research documents is a very challenging task due to the existence of visual features like spanning cells and content features like mathematical symbols and equations. Most existing table structure identification methods tend to ignore these academic writing features. In this paper, we adapt the transformer-based language modeling paradigm for scientific table structure and content extraction. Specifically, the proposed model converts a tabular image to its corresponding LaTeX source code. Overall, we outperform the current state-of-the-art baselines and achieve an exact match accuracy of 70.35 and 49.69% on table structure and content extraction, respectively. Further analysis demonstrates that the proposed models efficiently identify the number of rows and columns, the alphanumeric characters, the LaTeX tokens, and symbols.",
+      "authors": [
+        {
+          "name": "Pratik Kayal",
+          "orgs": [
+            "Department of Computer Science and Engineering, Indian Institute of Technology Gandhinagar, Gandhinagar 382355, India"
+          ]
+        },
+        {
+          "name": "Mrinal Anand",
+          "orgs": [
+            "Department of Computer Science and Engineering, Indian Institute of Technology Gandhinagar, Gandhinagar 382355, India"
+          ]
+        },
+        {
+          "name": "Harsh Desai",
+          "orgs": [
+            "Department of Computer Science and Engineering, Indian Institute of Technology Gandhinagar, Gandhinagar 382355, India"
+          ]
+        },
+        {
+          "name": "Mayank Singh",
+          "orgs": [
+            "Department of Computer Science and Engineering, Indian Institute of Technology Gandhinagar, Gandhinagar 382355, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2210.17246v1",
+      "date": "2022-10-31T12:08:39Z",
+      "citation_count": 15,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.IR"
+      ]
+    },
+    {
+      "arxiv_id": "2503.16856",
+      "score": 6.5577784,
+      "title": "MMCR: Benchmarking Cross-Source Reasoning in Scientific Papers",
+      "tldr": "This paper introduces MMCR, a benchmark for evaluating VLMs' cross-source reasoning in scientific papers, addressing the gap in assessing multi-modal understanding across heterogeneous sources; it employs a high-quality, human-annotated dataset with 276 questions across 7 subjects, revealing that even top models like GPT-4o achieve only 48.55% overall accuracy, with CoT benefits mainly for large models; findings highlight the need for improved cross-source reasoning capabilities in VLMs.",
+      "abstract": "Fully comprehending scientific papers by machines reflects a high level of Artificial General Intelligence, requiring the ability to reason across fragmented and heterogeneous sources of information, presenting a complex and practically significant challenge. While Vision-Language Models (VLMs) have made remarkable strides in various tasks, particularly those involving reasoning with evidence source from single image or text page, their ability to use cross-source information for reasoning remains an open problem. This work presents MMCR, a high-difficulty benchmark designed to evaluate VLMs' capacity for reasoning with cross-source information from scientific papers. The benchmark comprises 276 high-quality questions, meticulously annotated by humans across 7 subjects and 10 task types. Experiments with 18 VLMs demonstrate that cross-source reasoning presents a substantial challenge for existing models. Notably, even the top-performing model, GPT-4o, achieved only 48.55% overall accuracy, with only 20% accuracy in multi-table comprehension tasks, while the second-best model, Qwen2.5-VL-72B, reached 39.86% overall accuracy. Furthermore, we investigated the impact of the Chain-of-Thought (CoT) technique on cross-source reasoning and observed a detrimental effect on small models, whereas larger models demonstrated substantially enhanced performance. These results highlight the pressing need to develop VLMs capable of effectively utilizing cross-source information for reasoning.",
+      "authors": [
+        {
+          "name": "Yang Tian",
+          "orgs": [
+            "School of AI, Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Zheng Lu",
+          "orgs": [
+            "School of AI, Shanghai Jiao Tong University",
+            "SCUT"
+          ]
+        },
+        {
+          "name": "Mingqi Gao",
+          "orgs": [
+            "School of AI, Shanghai Jiao Tong University",
+            "SEU"
+          ]
+        },
+        {
+          "name": "Zheng Liu",
+          "orgs": [
+            "BAAI"
+          ]
+        },
+        {
+          "name": "Bo Zhao",
+          "orgs": [
+            "School of AI, Shanghai Jiao Tong University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2503.16856v2",
+      "date": "2025-03-21T05:02:20Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2507.01903",
+      "score": 6.555503,
+      "title": "AI4Research: A Survey of Artificial Intelligence for Scientific Research",
+      "tldr": "This paper presents a comprehensive survey on AI for Research (AI4Research), addressing the gap in systematic understanding of AI applications in scientific research by introducing a taxonomy of five key areas, identifying future research directions on interdisciplinary models and ethical concerns, and compiling multidisciplinary applications and resources.",
+      "abstract": "Recent advancements in artificial intelligence (AI), particularly in large language models (LLMs) such as OpenAI-o1 and DeepSeek-R1, have demonstrated remarkable capabilities in complex domains such as logical reasoning and experimental coding. Motivated by these advancements, numerous studies have explored the application of AI in the innovation process, particularly in the context of scientific research. These AI technologies primarily aim to develop systems that can autonomously conduct research processes across a wide range of scientific disciplines. Despite these significant strides, a comprehensive survey on AI for Research (AI4Research) remains absent, which hampers our understanding and impedes further development in this field. To address this gap, we present a comprehensive survey and offer a unified perspective on AI4Research. Specifically, the main contributions of our work are as follows: (1) Systematic taxonomy: We first introduce a systematic taxonomy to classify five mainstream tasks in AI4Research. (2) New frontiers: Then, we identify key research gaps and highlight promising future directions, focusing on the rigor and scalability of automated experiments, as well as the societal impact. (3) Abundant applications and resources: Finally, we compile a wealth of resources, including relevant multidisciplinary applications, data corpora, and tools. We hope our work will provide the research community with quick access to these resources and stimulate innovative breakthroughs in AI4Research.",
+      "authors": [
+        {
+          "name": "Qiguang Chen",
+          "orgs": [
+            "LARG, Research Center for Social Computing and Interactive Robotics, Harbin Institute of Technology"
+          ]
+        },
+        {
+          "name": "Mingda Yang",
+          "orgs": [
+            "LARG, Research Center for Social Computing and Interactive Robotics, Harbin Institute of Technology"
+          ]
+        },
+        {
+          "name": "Libo Qin",
+          "orgs": [
+            "School of Computer Science and Engineering, Central South University"
+          ]
+        },
+        {
+          "name": "Jinhao Liu",
+          "orgs": [
+            "LARG, Research Center for Social Computing and Interactive Robotics, Harbin Institute of Technology"
+          ]
+        },
+        {
+          "name": "Zheng Yan",
+          "orgs": [
+            "LARG, Research Center for Social Computing and Interactive Robotics, Harbin Institute of Technology"
+          ]
+        },
+        {
+          "name": "Jiannan Guan",
+          "orgs": [
+            "LARG, Research Center for Social Computing and Interactive Robotics, Harbin Institute of Technology"
+          ]
+        },
+        {
+          "name": "Dengyun Peng",
+          "orgs": [
+            "LARG, Research Center for Social Computing and Interactive Robotics, Harbin Institute of Technology"
+          ]
+        },
+        {
+          "name": "Yiyan Ji",
+          "orgs": [
+            "LARG, Research Center for Social Computing and Interactive Robotics, Harbin Institute of Technology"
+          ]
+        },
+        {
+          "name": "Hanjing Li",
+          "orgs": [
+            "LARG, Research Center for Social Computing and Interactive Robotics, Harbin Institute of Technology"
+          ]
+        },
+        {
+          "name": "Mengkang Hu",
+          "orgs": [
+            "The University of Hong Kong"
+          ]
+        },
+        {
+          "name": "Yimeng Zhang",
+          "orgs": [
+            "University of Illinois Urbana-Champaign"
+          ]
+        },
+        {
+          "name": "Yuhang Zhou",
+          "orgs": [
+            "Fudan University"
+          ]
+        },
+        {
+          "name": "Jiaqi Wang",
+          "orgs": [
+            "Chinese University of Hong Kong"
+          ]
+        },
+        {
+          "name": "Zhi Chen",
+          "orgs": [
+            "ByteDance Seed (China)"
+          ]
+        },
+        {
+          "name": "Wanxiang Che",
+          "orgs": [
+            "LARG, Research Center for Social Computing and Interactive Robotics, Harbin Institute of Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2507.01903v2",
+      "date": "2025-07-02T17:19:20Z",
+      "citation_count": 24,
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2401.09150",
+      "score": 6.5531855,
+      "title": "Bridging Research and Readers: A Multi-Modal Automated Academic Papers Interpretation System",
+      "tldr": "This paper presents a multi-modal automated academic paper interpretation system (MMAPIS) addressing the challenges of multimodal data oversight, over-length text summarization, and limited user interfaces in scientific literature processing; it employs a three-step approach with multimodal alignment, hierarchical discourse-aware summarization, and diverse user interfaces, offering improved summarization and interpretation capabilities; evaluations show its superiority in scientific summarization over GPT-4-based solutions.",
+      "abstract": "In the contemporary information era, significantly accelerated by the advent of Large-scale Language Models, the proliferation of scientific literature is reaching unprecedented levels. Researchers urgently require efficient tools for reading and summarizing academic papers, uncovering significant scientific literature, and employing diverse interpretative methodologies. To address this burgeoning demand, the role of automated scientific literature interpretation systems has become paramount. However, prevailing models, both commercial and open-source, confront notable challenges: they often overlook multimodal data, grapple with summarizing over-length texts, and lack diverse user interfaces. In response, we introduce an open-source multi-modal automated academic paper interpretation system (MMAPIS) with three-step process stages, incorporating LLMs to augment its functionality. Our system first employs the hybrid modality preprocessing and alignment module to extract plain text, and tables or figures from documents separately. It then aligns this information based on the section names they belong to, ensuring that data with identical section names are categorized under the same section. Following this, we introduce a hierarchical discourse-aware summarization method. It utilizes the extracted section names to divide the article into shorter text segments, facilitating specific summarizations both within and between sections via LLMs with specific prompts. Finally, we have designed four types of diversified user interfaces, including paper recommendation, multimodal Q\\&A, audio broadcasting, and interpretation blog, which can be widely applied across various scenarios. Our qualitative and quantitative evaluations underscore the system's superiority, especially in scientific summarization, where it outperforms solutions relying solely on GPT-4.",
+      "authors": [
+        {
+          "name": "Feng Jiang",
+          "orgs": [
+            "The Chinese University of Hong Kong, Shenzhen"
+          ]
+        },
+        {
+          "name": "Kuang Wang",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Haizhou Li",
+          "orgs": [
+            "The Chinese University of Hong Kong, Shenzhen"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2401.09150v1",
+      "date": "2024-01-17T11:50:53Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "1605.04951",
+      "score": 6.5274305,
+      "title": "Viziometrics: Analyzing Visual Information in the Scientific Literature",
+      "tldr": "This paper investigates the role of visual information in scientific communication by analyzing 8 million figures from PubMed, finding a significant correlation between higher impact papers and increased use of diagrams, plots, and photographs, and proposes viziometrics as a new research agenda to study visual information organization and its impact on scientific communication.",
+      "abstract": "Scientific results are communicated visually in the literature through diagrams, visualizations, and photographs. These information-dense objects have been largely ignored in bibliometrics and scientometrics studies when compared to citations and text. In this paper, we use techniques from computer vision and machine learning to classify more than 8 million figures from PubMed into 5 figure types and study the resulting patterns of visual information as they relate to impact. We find that the distribution of figures and figure types in the literature has remained relatively constant over time, but can vary widely across field and topic. Remarkably, we find a significant correlation between scientific impact and the use of visual information, where higher impact papers tend to include more diagrams, and to a lesser extent more plots and photographs. To explore these results and other ways of extracting this visual information, we have built a visual browser to illustrate the concept and explore design alternatives for supporting viziometric analysis and organizing visual information. We use these results to articulate a new research agenda -- viziometrics -- to study the organization and presentation of visual information in the scientific literature.",
+      "authors": [
+        {
+          "name": "Po-shen Lee",
+          "orgs": [
+            "University of Washington"
+          ]
+        },
+        {
+          "name": "Jevin D. West",
+          "orgs": [
+            "University of Washington"
+          ]
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Bill Howe",
+          "orgs": [
+            "University of Washington"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1605.04951v2",
+      "date": "2016-05-16T21:03:57Z",
+      "citation_count": 88,
+      "categories": [
+        "cs.CV",
+        "cs.DL",
+        "cs.IR",
+        "cs.SI"
+      ]
+    },
+    {
+      "arxiv_id": "2604.18508",
+      "score": 6.5268474,
+      "title": "Document-as-Image Representations Fall Short for Scientific Retrieval",
+      "tldr": "This paper investigates document representations for scientific retrieval, arguing that image-based models are suboptimal for text-rich documents, and introduces ArXivDoc, a benchmark using LaTeX sources, showing text-based and interleaved text-image representations outperform image-only ones, with text+VLM captions achieving best results.",
+      "abstract": "Many recent document embedding models are trained on document-as-image representations, embedding rendered pages as images rather than the underlying source. Meanwhile, existing benchmarks for scientific document retrieval, such as ArXivQA and ViDoRe, treat documents as images of pages, implicitly favoring such representations. In this work, we argue that this paradigm is not well-suited for text-rich multimodal scientific documents, where critical evidence is distributed across structured sources, including text, tables, and figures. To study this setting, we introduce ArXivDoc, a new benchmark constructed from the underlying LaTeX sources of scientific papers. Unlike PDF or image-based representations, LaTeX provides direct access to structured elements (e.g., sections, tables, figures, equations), enabling controlled query construction grounded in specific evidence types. We systematically compare text-only, image-based, and multimodal representations across both single-vector and multi-vector retrieval models. Our results show that: (1) document-as-image representations are consistently suboptimal, especially as document length increases; (2) text-based representations are most effective, even for figure-based queries, by leveraging captions and surrounding context; and (3) interleaved text+image representations outperform document-as-image approaches without requiring specialized training.",
+      "authors": [
+        {
+          "name": "Ghazal Khalighinejad",
+          "orgs": [
+            "Duke University"
+          ]
+        },
+        {
+          "name": "Raghuveer Thirukovalluru",
+          "orgs": [
+            "Duke University"
+          ]
+        },
+        {
+          "name": "Alexander H. Oh",
+          "orgs": [
+            "Duke University"
+          ]
+        },
+        {
+          "name": "Bhuwan Dhingra",
+          "orgs": [
+            "Duke University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2604.18508v1",
+      "date": "2026-04-20",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.IR"
+      ]
+    },
+    {
+      "arxiv_id": "2604.04172",
+      "score": 6.51473,
+      "title": "GENFIG1: Visual Summaries of Scholarly Work as a Challenge for Vision-Language Models",
+      "tldr": "This paper introduces GENFIG1, a benchmark evaluating Vision-Language Models' ability to generate scientifically accurate and conceptually faithful Figure 1 summaries from paper texts, highlighting the challenge of coupling scientific understanding with visual synthesis and showing that even top models struggle with this task.",
+      "abstract": "In many science papers, \"Figure 1\" serves as the primary visual summary of the core research idea. These figures are visually simple yet conceptually rich, often requiring significant effort and iteration by human authors to get right, highlighting the difficulty of science visual communication. With this intuition, we introduce GENFIG1, a benchmark for generative AI models (e.g., Vision-Language Models). GENFIG1 evaluates models for their ability to produce figures that clearly express and motivate the central idea of a paper (title, abstract, introduction, and figure caption) as input. Solving GENFIG1 requires more than producing visually appealing graphics: the task entails reasoning for text-to-image generation that couples scientific understanding with visual synthesis. Specifically, models must (i) comprehend and grasp the technical concepts of the paper, (ii) identify the most salient ones, and (iii) design a coherent and aesthetically effective graphic that conveys those concepts visually and is faithful to the input. We curate the benchmark from papers published at top deep-learning conferences, apply stringent quality control, and introduce an automatic evaluation metric that correlates well with expert human judgments. We evaluate a suite of representative models on GENFIG1 and demonstrate that the task presents significant challenges, even for the best-performing systems. We hope this benchmark serves as a foundation for future progress in multimodal AI.",
+      "authors": [
+        {
+          "name": "Yaohan Guan",
+          "orgs": [
+            "Johns Hopkins University"
+          ]
+        },
+        {
+          "name": "Pristina Wang",
+          "orgs": [
+            "Johns Hopkins University"
+          ]
+        },
+        {
+          "name": "Najim Dehak",
+          "orgs": [
+            "Johns Hopkins University"
+          ]
+        },
+        {
+          "name": "Alan Yuille",
+          "orgs": [
+            "Johns Hopkins University"
+          ]
+        },
+        {
+          "name": "Jieneng Chen",
+          "orgs": [
+            "Johns Hopkins University"
+          ]
+        },
+        {
+          "name": "Daniel Khashabi",
+          "orgs": [
+            "Johns Hopkins University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2604.04172v1",
+      "date": "2026-04-05",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2511.15370",
+      "score": 6.5141973,
+      "title": "The Empowerment of Science of Science by Large Language Models: New Tools and Methods",
+      "tldr": "This paper explores the application of large language models (LLMs) in the Science of Science (SciSci), addressing the gap in integrating LLMs with scientometric methods, by reviewing key technologies like prompt engineering, retrieval-augmented generation, and fine-tuning, and presenting new methods for research front detection and knowledge graph building, with findings showing LLMs' transformative potential in scientific evaluation and analysis.",
+      "abstract": "Large language models (LLMs) have exhibited exceptional capabilities in natural language understanding and generation, image recognition, and multimodal tasks, charting a course towards AGI and emerging as a central issue in the global technological race. This manuscript conducts a comprehensive review of the core technologies that support LLMs from a user standpoint, including prompt engineering, knowledge-enhanced retrieval augmented generation, fine tuning, pretraining, and tool learning. Additionally, it traces the historical development of Science of Science (SciSci) and presents a forward looking perspective on the potential applications of LLMs within the scientometric domain. Furthermore, it discusses the prospect of an AI agent based model for scientific evaluation, and presents new research fronts detection and knowledge graph building methods with LLMs.",
+      "authors": [
+        {
+          "name": "Shuo Zhang",
+          "orgs": [
+            "College of Economics and Management, Beijing University of Technology"
+          ]
+        },
+        {
+          "name": "Guoqiang Liang",
+          "orgs": [
+            "College of Economics and Management, Beijing University of Technology"
+          ]
+        },
+        {
+          "name": "Gege Lin",
+          "orgs": [
+            "College of Economics and Management, Beijing University of Technology"
+          ]
+        },
+        {
+          "name": "Mengxuan Li",
+          "orgs": [
+            "College of Economics and Management, Langfang Normal University"
+          ]
+        },
+        {
+          "name": "Jingqian Gong",
+          "orgs": [
+            "College of Economics and Management, Beijing University of Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2511.15370v1",
+      "date": "2025-11-19",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2407.19787",
+      "score": 6.506694,
+      "title": "SciPostLayout: A Dataset for Layout Analysis and Layout Generation of Scientific Posters",
+      "tldr": "This paper introduces SciPostLayout, a dataset for scientific poster layout analysis and generation addressing the lack of gold-standard benchmarks, using 7,855 posters and 100 paired papers; it contributes a publicly available dataset with manual annotations and evaluates existing models showing layout analysis and generation on posters are more challenging than on scientific papers; findings indicate LLM-based models can generate aligned layouts with less overlap.",
+      "abstract": "Scientific posters are used to present the contributions of scientific papers effectively in a graphical format. However, creating a well-designed poster that efficiently summarizes the core of a paper is both labor-intensive and time-consuming. A system that can automatically generate well-designed posters from scientific papers would reduce the workload of authors and help readers understand the outline of the paper visually. Despite the demand for poster generation systems, only a limited research has been conduced due to the lack of publicly available datasets. Thus, in this study, we built the SciPostLayout dataset, which consists of 7,855 scientific posters and manual layout annotations for layout analysis and generation. SciPostLayout also contains 100 scientific papers paired with the posters. All of the posters and papers in our dataset are under the CC-BY license and are publicly available. As benchmark tests for the collected dataset, we conducted experiments for layout analysis and generation utilizing existing computer vision models and found that both layout analysis and generation of posters using SciPostLayout are more challenging than with scientific papers. We also conducted experiments on generating layouts from scientific papers to demonstrate the potential of utilizing LLM as a scientific poster generation system. The dataset is publicly available at https://huggingface.co/datasets/omron-sinicx/scipostlayout_v2. The code is also publicly available at https://github.com/omron-sinicx/scipostlayout.",
+      "authors": [
+        {
+          "name": "Shohei Tanaka",
+          "orgs": []
+        },
+        {
+          "name": "Hao Wang",
+          "orgs": []
+        },
+        {
+          "name": "Yoshitaka Ushiku",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2407.19787v1",
+      "date": "2024-07-29T08:32:27Z",
+      "citation_count": 12,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2602.07621",
+      "score": 6.5026937,
+      "title": "SciClaimEval: Cross-modal Claim Verification in Scientific Papers",
+      "tldr": "This paper introduces SciClaimEval, a cross-modal dataset for scientific claim verification addressing the gap in authentic, multimodal evidence with diverse formats, by modifying supporting evidence rather than claims; it contributes a dataset with 1,664 annotated samples from 180 papers across three domains and finds that figure-based verification remains challenging for models, with a significant performance gap compared to human baseline.",
+      "abstract": "We present SciClaimEval, a new scientific dataset for the claim verification task. Unlike existing resources, SciClaimEval features authentic claims, including refuted ones, directly extracted from published papers. To create refuted claims, we introduce a novel approach that modifies the supporting evidence (figures and tables), rather than altering the claims or relying on large language models (LLMs) to fabricate contradictions. The dataset provides cross-modal evidence with diverse representations: figures are available as images, while tables are provided in multiple formats, including images, LaTeX source, HTML, and JSON. SciClaimEval contains 1,664 annotated samples from 180 papers across three domains, machine learning, natural language processing, and medicine, validated through expert annotation. We benchmark 11 multimodal foundation models, both open-source and proprietary, across the dataset. Results show that figure-based verification remains particularly challenging for all models, as a substantial performance gap remains between the best system and human baseline.",
+      "authors": [
+        {
+          "name": "Sunisth Kumar",
+          "orgs": [
+            "Department of Computer Science, University of Tokyo"
+          ]
+        },
+        {
+          "name": "and Akiko Aizawa",
+          "orgs": [
+            "Institute of Information Sciences, Kyoto University"
+          ]
+        },
+        {
+          "name": "Tian Cheng Xia",
+          "orgs": [
+            "School of Software Engineering, Tsinghua University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2602.07621v2",
+      "date": "2026-02-07",
+      "citation_count": 0,
+      "categories": [
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "1906.09317",
+      "score": 6.4939547,
+      "title": "Identification of Tasks, Datasets, Evaluation Metrics, and Numeric Scores for Scientific Leaderboards Construction",
+      "tldr": "This paper introduces TDMS-IE, a framework for automatically extracting task, dataset, metric, and score from NLP papers to construct leaderboards, addressing the need for efficient tracking of research progress; it consists of two datasets and a model that outperforms baselines by a large margin; it enables automatic leaderboard construction and comparison of methods across tasks and datasets.",
+      "abstract": "While the fast-paced inception of novel tasks and new datasets helps foster active research in a community towards interesting directions, keeping track of the abundance of research activity in different areas on different datasets is likely to become increasingly difficult. The community could greatly benefit from an automatic system able to summarize scientific results, e.g., in the form of a leaderboard. In this paper we build two datasets and develop a framework (TDMS-IE) aimed at automatically extracting task, dataset, metric and score from NLP papers, towards the automatic construction of leaderboards. Experiments show that our model outperforms several baselines by a large margin. Our model is a first step towards automatic leaderboard construction, e.g., in the NLP domain.",
+      "authors": [
+        {
+          "name": "Yufang Hou",
+          "orgs": [
+            "IBM Research - Ireland",
+            "Dublin, Ireland"
+          ]
+        },
+        {
+          "name": "Charles Jochim",
+          "orgs": [
+            "IBM Research - Ireland",
+            "Dublin, Ireland"
+          ]
+        },
+        {
+          "name": "Martin Gleize",
+          "orgs": [
+            "IBM Research - Ireland",
+            "Dublin, Ireland"
+          ]
+        },
+        {
+          "name": "Francesca Bonin",
+          "orgs": [
+            "IBM Research - Ireland",
+            "Dublin, Ireland"
+          ]
+        },
+        {
+          "name": "Debasis Ganguly",
+          "orgs": [
+            "IBM Research - Ireland"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1906.09317v1",
+      "date": "2019-06-21T20:55:57Z",
+      "citation_count": 100,
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2512.10004",
+      "score": 6.492691,
+      "title": "Exploring LLMs for Scientific Information Extraction Using The SciEx Framework",
+      "tldr": "This paper explores the use of large language models (LLMs) for scientific information extraction, addressing the challenge of extracting structured knowledge from heterogeneous scientific texts and multi-modal content; it introduces SciEx, a modular framework that decouples key components for flexible LLM integration and domain adaptation, revealing performance degradation in LLMs across new scientific domains with a manually annotated dataset of 143 papers.",
+      "abstract": "Large language models (LLMs) are increasingly touted as powerful tools for automating scientific information extraction. However, existing methods and tools often struggle with the realities of scientific literature: long-context documents, multi-modal content, and reconciling varied and inconsistent fine-grained information across multiple publications into standardized formats. These challenges are further compounded when the desired data schema or extraction ontology changes rapidly, making it difficult to re-architect or fine-tune existing systems. We present SciEx, a modular and composable framework that decouples key components including PDF parsing, multi-modal retrieval, extraction, and aggregation. This design streamlines on-demand data extraction while enabling extensibility and flexible integration of new models, prompting strategies, and reasoning mechanisms. We evaluate SciEx on datasets spanning three scientific topics for its ability to extract fine-grained information accurately and consistently. Our findings provide practical insights into both the strengths and limitations of current LLM-based pipelines.",
+      "authors": [
+        {
+          "name": "Naren Ramakrishnan",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Sha Li",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Nathan Self",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Hyoju Yang",
+          "orgs": [
+            "2"
+          ]
+        },
+        {
+          "name": "T.M. Murali",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Lars Andersland",
+          "orgs": [
+            "2"
+          ]
+        },
+        {
+          "name": "Mira Chaplin",
+          "orgs": [
+            "2"
+          ]
+        },
+        {
+          "name": "Linsey Marr",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "James B Henderson",
+          "orgs": [
+            "2"
+          ]
+        },
+        {
+          "name": "Annabel Zhang",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Krista Wigginton",
+          "orgs": [
+            "2"
+          ]
+        },
+        {
+          "name": "Ayush Sadekar",
+          "orgs": [
+            "1"
+          ]
+        },
+        {
+          "name": "Yiqi Su",
+          "orgs": [
+            "1"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.10004v2",
+      "date": "2025-12-10",
+      "citation_count": 0,
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ]
+    },
+    {
+      "arxiv_id": "2505.00063",
+      "score": 6.4795203,
+      "title": "GDI-Bench: A Benchmark for General Document Intelligence with Vision and Reasoning Decoupling",
+      "tldr": "This paper introduces GDI-Bench, a benchmark for document intelligence that addresses the need for evaluating MLLMs across diverse tasks and complexity levels, by decoupling visual and reasoning complexity to identify model weaknesses; it proposes a training method to mitigate catastrophic forgetting, enhancing model performance and generalization; the GDI-Model achieves state-of-the-art results on multiple benchmarks.",
+      "abstract": "The rapid advancement of multimodal large language models (MLLMs) has profoundly impacted the document domain, creating a wide array of application scenarios. This progress highlights the need for a comprehensive benchmark to evaluate these models' capabilities across various document-specific tasks. However, existing benchmarks often fail to locate specific model weaknesses or guide systematic improvements. To bridge this gap, we introduce a General Document Intelligence Benchmark (GDI-Bench), featuring 2.3k images across 9 key scenarios and 19 document-specific tasks. By decoupling visual complexity and reasoning complexity, the GDI-Bench structures graded tasks that allow performance assessment by difficulty, aiding in model weakness identification and optimization guidance. We evaluate various open-source and closed-source models on GDI-Bench, conducting decoupled analyses in the visual and reasoning domains, revealing their strengths and weaknesses. To address the diverse tasks and domains in the GDI-Bench, we propose a GDI-Model that mitigates catastrophic forgetting during the supervised fine-tuning (SFT) process through an intelligence-preserving training strategy, thereby reinforcing the inherent weaknesses of the base model. Our model achieves state-of-the-art performance on previous benchmarks and the GDI-Bench. Both our benchmark and models are or will be open-sourced on https://huggingface.co/GDIBench.",
+      "authors": [
+        {
+          "name": "Siqi Li",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory",
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Yufan Shen",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory"
+          ]
+        },
+        {
+          "name": "Xiangnan Chen",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory",
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Jiayi Chen",
+          "orgs": [
+            "School of Science and Engineering, The Chinese University of Hong Kong"
+          ]
+        },
+        {
+          "name": "Hengwei Ju",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory",
+            "Fudan University"
+          ]
+        },
+        {
+          "name": "Haodong Duan",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory"
+          ]
+        },
+        {
+          "name": "Song Mao",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory"
+          ]
+        },
+        {
+          "name": "Bo Zhang",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory"
+          ]
+        },
+        {
+          "name": "Bin Fu",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory"
+          ]
+        },
+        {
+          "name": "Pinlong Cai",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory"
+          ]
+        },
+        {
+          "name": "Licheng Wen",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory"
+          ]
+        },
+        {
+          "name": "Botian Shi",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory",
+            "Shanghai Innovation Institute"
+          ]
+        },
+        {
+          "name": "Yong Liu",
+          "orgs": [
+            "Zhejiang University"
+          ]
+        },
+        {
+          "name": "Xinyu Cai",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory"
+          ]
+        },
+        {
+          "name": "Yu Qiao",
+          "orgs": [
+            "Shanghai Artificial Intelligence Laboratory"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2505.00063v2",
+      "date": "2025-04-30T15:46:46Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ]
+    }
+  ]
+}

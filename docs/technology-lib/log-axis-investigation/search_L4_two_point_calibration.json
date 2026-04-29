@@ -1,0 +1,1685 @@
+{
+  "status": "success",
+  "total_count": 44,
+  "result": [
+    {
+      "arxiv_id": "2512.00514",
+      "score": 11.420642,
+      "title": "Terrain Sensing with Smartphone Structured Light: 2D Dynamic Time Warping for Grid Pattern Matching",
+      "tldr": "This paper addresses terrain sensing for low-cost mobile rovers by developing a smartphone-based structured-light system and a topology-constrained 2D dynamic time warping algorithm to match deformed grid patterns, enabling accurate reconstruction of local terrain unevenness with improved efficiency over 1D-DTW and general 2D-DTW methods.",
+      "abstract": "Low-cost mobile rovers often operate on uneven terrain where small bumps or tilts are difficult to perceive visually but can significantly affect locomotion stability. To address this problem, we explore a smartphone-based structured-light system that projects a grid pattern onto the ground and reconstructs local terrain unevenness from a single handheld device. The system is inspired by face-recognition projectors, but adapted for ground sensing. A key technical challenge is robustly matching the projected grid with its deformed observation under perspective distortion and partial occlusion. Conventional one-dimensional dynamic time warping (1D-DTW) is not directly applicable to such two-dimensional grid patterns. We therefore propose a topology-constrained two-dimensional dynamic time warping (2D-DTW) algorithm that performs column-wise alignment under a global grid consistency constraint. The proposed method is designed to be simple enough to run on resource limited platforms while preserving the grid structure required for accurate triangulation. We demonstrate that our 2D-DTW formulation can be used not only for terrain sensing but also as a general tool for matching structured grid patterns in image processing scenarios. This paper describes the overall system design as well as the 2D-DTW extension that emerged from this application.",
+      "authors": [
+        {
+          "name": "Tanaka Nobuaki",
+          "orgs": [
+            "Meiji University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.00514v1",
+      "date": "2025-11-29",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2509.05327",
+      "score": 10.834465,
+      "title": "Layer-Wise Anomaly Detection in Directed Energy Deposition using High-Fidelity Fringe Projection Profilometry",
+      "tldr": "This paper addresses the challenge of detecting process-induced defects in directed energy deposition (DED) by introducing a build-height-synchronized fringe projection system achieving $\\pm$46 $\\mu$m reconstruction accuracy, using local point density and normal-change rate metrics for automated anomaly detection, thereby enabling precise defect localization and advancing closed-loop process control in additive manufacturing.",
+      "abstract": "Directed energy deposition (DED), a metal additive manufacturing process, is highly susceptible to process-induced defects such as geometric deviations, lack of fusion, and poor surface finish. This work presents a build-height-synchronized fringe projection system for in-situ, layer-wise surface reconstruction of laser-DED components, achieving a reconstruction accuracy of ${\\pm}$46 ${\\mu}$m. From the reconstructed 3D morphology, two complementary geometry-based point cloud metrics are introduced: local point density, which highlights poor surface finish, and normal-change rate, which identifies lack-of-fusion features. These methods enable automated, annotation-free identification of common deposition anomalies directly from reconstructed surfaces, without the need for manual labeling. By directly linking geometric deviation to defect formation, the approach enables precise anomaly localization and advances the feasibility of closed-loop process control. This work establishes fringe projection as a practical tool for micrometer-scale monitoring in DED, bridging the gap between process signatures and part geometry for certifiable additive manufacturing.",
+      "authors": [
+        {
+          "name": "Ping Guo",
+          "orgs": [
+            "Northwestern University"
+          ]
+        },
+        {
+          "name": "Guanzhong Hu",
+          "orgs": []
+        },
+        {
+          "name": "Rujing Zha",
+          "orgs": []
+        },
+        {
+          "name": "Wenpan Li",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2509.05327v2",
+      "date": "2025-08-31",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV",
+        "physics.optics"
+      ]
+    },
+    {
+      "arxiv_id": "2512.21903",
+      "score": 10.728029,
+      "title": "TITAN DR1: An Improved, Validated, and Systematically-Controlled Recalibration of ATLAS Photometry toward Type Ia Supernova Cosmology",
+      "tldr": "This paper presents an improved calibration of ATLAS photometry for Type Ia supernova cosmology, addressing systematic uncertainties in low-redshift datasets by reducing pixel-to-pixel and chip-to-chip offsets to ~4 and ~3 mmag RMS, respectively, and identifying a transmission-function color dependence requiring ~30 mmag corrections; the recalibration validates with external standards and improves consistency for future cosmological analyses.",
+      "abstract": "ATLAS (Asteroid Terrestrial Last Alert System) is a time-domain survey using four telescopes, covering the entire sky. It has observed over 10,000 spectroscopically confirmed Type Ia supernovae (SNe~Ia), with thousands of cosmology-grade light curves (to be released as TITAN DR1). To prepare this massive, low-redshift dataset for cosmology, we evaluate and cross-calibrate ATLAS forced photometry using tertiary stars from the DES (Dark Energy Survey) Y6 release. The 5000 deg$^2$ DES footprint overlaps regions both in and out of the PS1 (Pan-STARRS DR1) footprint, allowing tests of the primary calibrator for the ATLAS Refcat2 catalog. Initial offsets are at the $\\sim$40 mmag scale. To improve this we determine $\\Delta$ zeropoint offsets for two cases: (1) pixel-to-pixel offsets within individual CCDs (reduced from $\\sim$8 to $\\sim$4 mmag RMS) and (2) chip-to-chip offsets across the 9 CCDs and filters (reduced from $\\sim$17 to $\\sim$3 mmag RMS). We also identify the largest systematic uncertainty as a transmission-function color dependence, requiring shifts in the assumed ATLAS filters at the $\\sim$30 mmag level if uncorrected. We validate our calibration using (a) CALSPEC standards, (b) an independent tertiary catalog, and (c) distance moduli of cross-matched SNe~Ia, all showing improved consistency. Overall, we estimate combined calibration-related systematics at the $\\sim$5--10 mmag level, supporting competitive cosmological constraints with the TITAN SN~Ia dataset.",
+      "authors": [
+        {
+          "name": "David Jones",
+          "orgs": [
+            "Institute for Astronomy, University of Hawai’i, 640 N. A’ohoku Pl., Hilo, HI 96720, USA"
+          ]
+        },
+        {
+          "name": "Daniel M. Scolnic",
+          "orgs": [
+            "Department of Physics, Duke University, Durham, NC 27708, USA"
+          ]
+        },
+        {
+          "name": "Dillon Brout",
+          "orgs": [
+            "Departments of Astronomy and Physics, Boston University, Boston MA 02215"
+          ]
+        },
+        {
+          "name": "Yukei S. Murakami",
+          "orgs": [
+            "Department of Physics and Astronomy, Johns Hopkins University, Baltimore, MD 21218, USA"
+          ]
+        },
+        {
+          "name": "Maria Acevedo",
+          "orgs": [
+            "Department of Physics, Duke University, Durham, NC 27708, USA"
+          ]
+        },
+        {
+          "name": "Erik R. Peterson",
+          "orgs": [
+            "Department of Physics, University of Michigan, Ann Arbor, MI 48109, USA",
+            "Society of Fellows, University of Michigan, Ann Arbor, MI 48109, USA"
+          ]
+        },
+        {
+          "name": "Maria Vincenzi",
+          "orgs": [
+            "Astrophysics sub-Department, Department of Physics, University of Oxford, Keble Road, Oxford, OX1 3RH, UK"
+          ]
+        },
+        {
+          "name": "Brodie Popovic",
+          "orgs": [
+            "School of Physics and Astronomy, University of Southampton, Southampton, UK, SO17 1BJ"
+          ]
+        },
+        {
+          "name": "Nora F. Sherman",
+          "orgs": [
+            "Institute for Astrophysical Research, Department of Astronomy, Boston University, 725 Commonwealth Avenue, Boston, MA 02215, USA"
+          ]
+        },
+        {
+          "name": "Jack W. Tweddle",
+          "orgs": [
+            "Astrophysics sub-Department, Department of Physics, University of Oxford, Keble Road, Oxford, OX1 3RH, UK"
+          ]
+        },
+        {
+          "name": "Mitchell Dixon",
+          "orgs": [
+            "Institute for Astronomy, University of Hawai’i, 640 N. A’ohoku Pl., Hilo, HI 96720, USA"
+          ]
+        },
+        {
+          "name": "Jasper Milstein",
+          "orgs": [
+            "Departments of Astronomy and Physics, Boston University, Boston MA 02215"
+          ]
+        },
+        {
+          "name": "Elijah G. Marlin",
+          "orgs": [
+            "Departments of Astronomy and Physics, Boston University, Boston MA 02215"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2512.21903v1",
+      "date": "2025-12-26",
+      "citation_count": 0,
+      "categories": [
+        "astro-ph.CO",
+        "astro-ph.IM"
+      ]
+    },
+    {
+      "arxiv_id": "2401.00458",
+      "score": 10.722754,
+      "title": "Two sequences of spiral galaxies with different shapes of the metallicity gradients",
+      "tldr": "This paper examines two sequences of spiral galaxies with different metallicity gradients (S and LS) and finds that the shape of radial abundance distributions is not related to macroscopic characteristics, with the Milky Way showing steep gradients compared to flat ones, and nitrogen abundance breaks occurring at smaller radii than oxygen breaks, explained by delayed nitrogen enrichment and varied star formation histories.",
+      "abstract": "We considered two sequences of spiral galaxies with different shapes of the radial gas-phase oxygen abundance distributions from the galaxies in the MaNGA survey: (1) Galaxies in which the gradient is well approximated by a single linear relation across the whole disc, that is, galaxies with an S (slope) gradients, (2) galaxies in which the metallicity in the inner region of the disc is at a nearly constant level and the gradient is negative at larger radii, that is, galaxies with level-slope (LS) gradients. We also selected galaxies with a nearly uniform oxygen abundance across the whole galaxy, that is, galaxies with level (L) gradients that can be the final evolutionary stage of the two galaxy sequences described above. The radial nitrogen abundance distributions in galaxies with LS oxygen abundance distributions also show breaks at radii smaller than the O/H distribution breaks. The observed behaviour of the oxygen and nitrogen abundances with radius in these galaxies can be explained by the time delay between the nitrogen and oxygen enrichment together with the variation in the star formation history along the radius. These galaxies clearly show the effect of the inside-out disc evolution model. We find that the shape of the radial abundance distribution in a galaxy is not related to its macroscopic characteristics (rotation velocity, stellar mass, isophotal radius, and star formation rate). The correlations between the gradient slopes and macroscopic characteristics of galaxies are weak in the sense that the scatter of the points in each diagram is large. We also examined the properties of the Milky Way in the context of the considered galaxy samples.",
+      "authors": [
+        {
+          "name": "L. S. Pilyugin",
+          "orgs": [
+            "Institute of Theoretical Physics and Astronomy, Vilnius University, Sauletekio av. 3, 10257, Vilnius, Lithuania"
+          ]
+        },
+        {
+          "name": "G. Tautvaišienė",
+          "orgs": [
+            "Main Astronomical Observatory, National Academy of Sciences of Ukraine, 27 Akademika Zabolotnoho St, 03680, Kiev, Ukraine"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2401.00458v1",
+      "date": "2023-12-31T11:20:27Z",
+      "citation_count": 2,
+      "categories": [
+        "astro-ph.GA"
+      ]
+    },
+    {
+      "arxiv_id": "2508.17146",
+      "score": 10.611983,
+      "title": "Auto-Cal: Automated and Continuous Geo-Referencing of All-Sky Imagers Using Fisheye Lens Modeling and Star Tracks",
+      "tldr": "This paper presents an automated and continuous calibration system for All-Sky Imagers (ASIs) to improve spatial accuracy and reliability, addressing the need for real-time space weather monitoring by eliminating manual intervention and providing nightly recalibration with error estimates, contributing to scalable long-term atmospheric monitoring.",
+      "abstract": "A fully automated and continuous calibration framework for All-Sky Imagers (ASIs) that significantly enhances the spatial accuracy and reliability of geo-referenced ASI data is presented. The technique addresses a critical bottleneck in ASI image data reliability and usability for real time space weather via automated geo-referencing under real-world field conditions. The system corrects the lens distortion in ASIs using a well-established fisheye lens model and automatically estimates camera orientation in terms of roll, pitch, and yaw angles relative to True North and the horizontal plane perpendicular to the zenith using star tracking. Unlike traditional methods that require manual intervention and periodic recalibration, Auto-Cal performs nightly unattended recalibrations using observed stellar motion, adapting to mechanical shifts or environmental changes. Each calibration step includes formal error estimates, allowing end users to assess the confidence of geo-located data in real-time. This capability enables dependable ASI operations in remote or unmanned settings and supports higher-fidelity integration with other geophysical instruments. Auto-Cal provides a scalable foundation for maintaining a large array of ASIs, thus enabling long-term atmospheric monitoring and real-time space weather alerts.",
+      "authors": [
+        {
+          "name": "Sudha Kapali",
+          "orgs": [
+            "Computational Physics, Inc"
+          ]
+        },
+        {
+          "name": "Michael P. Henderson",
+          "orgs": [
+            "Computational Physics, Inc"
+          ]
+        },
+        {
+          "name": "Juanita Riccobono",
+          "orgs": [
+            "Computational Physics, Inc"
+          ]
+        },
+        {
+          "name": "Michael A. Migliozzi",
+          "orgs": [
+            "Computational Physics, Inc"
+          ]
+        },
+        {
+          "name": "Robert B. Kerr",
+          "orgs": [
+            "Computational Physics, Inc"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2508.17146v1",
+      "date": "2025-08-23T21:16:19Z",
+      "citation_count": 0,
+      "categories": [
+        "astro-ph.IM",
+        "physics.space-ph"
+      ]
+    },
+    {
+      "arxiv_id": "1006.5243",
+      "score": 10.58972,
+      "title": "Wavelength calibration of the JWST-MIRI medium resolution spectrometer",
+      "tldr": "This paper addresses the wavelength calibration of the JWST-MIRI medium resolution spectrometer, aiming to ensure accurate spectral data in the mid-infrared range; it employs empirical methods and optical models to calibrate wavelength and resolving power, contributing a reliable calibration method for the MRS; it finds that the MRS can achieve resolving power above R=2800 in 6.46-7.70 microns with Gaussian-fitted spectral lines.",
+      "abstract": "We present the wavelength and spectral resolution characterisation of the Integral Field Unit (IFU) Medium Resolution Spectrometer for the Mid-InfraRed Instrument (MIRI), to fly onboard the James Webb Space Telescope in 2014. We use data collected using the Verification Model of the instrument and develop an empirical method to calibrate properties such as wavelength range and resolving power in a portion of the spectrometer's full spectral range (5-28 microns). We test our results against optical models to verify the system requirements and combine them with a study of the fringing pattern in the instrument's detector to provide a more accurate calibration. We show that MIRI's IFU spectrometer will be able to produce spectra with a resolving power above R=2800 in the wavelength range 6.46-7.70 microns, and that the unresolved spectral lines are well fitted by a Gaussian profile.",
+      "authors": [
+        {
+          "name": "J. R. Martínez-Galarza",
+          "orgs": [
+            "Leiden Observatory, Leiden University, P. O. Box 9513, 2300 CA Leiden, The Netherlands"
+          ]
+        },
+        {
+          "name": "A. M. Glauser",
+          "orgs": [
+            "Institute of Astronomy, ETH Zurich, 8093 Zurich, Switzerland",
+            "UK Astronomy Technology Centre, Blackford Hill, Edinburgh EH9 3HJ, United Kingdom"
+          ]
+        },
+        {
+          "name": "A. Hernán-Caballero",
+          "orgs": [
+            "Consejo Superior de Investigaciones Científicas, Serrano, 121 28006 Madrid, Spain"
+          ]
+        },
+        {
+          "name": "R. Azzollini",
+          "orgs": [
+            "Consejo Superior de Investigaciones Científicas, Serrano, 121 28006 Madrid, Spain"
+          ]
+        },
+        {
+          "name": "A. Glasse",
+          "orgs": [
+            "UK Astronomy Technology Centre, Blackford Hill, Edinburgh EH9 3HJ, United Kingdom"
+          ]
+        },
+        {
+          "name": "S. Kendrew",
+          "orgs": [
+            "Leiden Observatory, Leiden University, P. O. Box 9513, 2300 CA Leiden, The Netherlands"
+          ]
+        },
+        {
+          "name": "B. Brandl",
+          "orgs": [
+            "Leiden Observatory, Leiden University, P. O. Box 9513, 2300 CA Leiden, The Netherlands"
+          ]
+        },
+        {
+          "name": "F. Lahuis",
+          "orgs": [
+            "SRON Netherlands Institute for Space Research, P. O. Box 800 9700 AV Groningen, The Netherlands"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1006.5243v1",
+      "date": "2010-06-27T22:27:09Z",
+      "citation_count": 1,
+      "categories": [
+        "astro-ph.IM"
+      ]
+    },
+    {
+      "arxiv_id": "0811.2005",
+      "score": 10.547284,
+      "title": "Digital Access to a Sky Century at Harvard. II: Initial Photometry and Astrometry",
+      "tldr": "This paper addresses the gap in understanding astronomical variability on 1-100y timescales by developing a data-reduction pipeline for digitized Harvard plates, achieving 0.1mag photometric accuracy and demonstrating century-long light-curves of variable stars in M44, with implications for long-term astrophysical studies.",
+      "abstract": "Digital Access to a Sky Century @ Harvard (DASCH) is a project to digitize the collection of ~500,000 glass photographic plates held at Harvard College Observatory. The collection spans the time period from 1880 to 1985, during which time every point on the sky has been observed approximately 500 to 1000 times.\n  In this paper we describe the results of the DASCH commissioning run, during which we developed the data-reduction pipeline and fine-tuned the digitzer's performance and operation. This initial run consisted of 500 plates taken from a variety of different plate-series, all containing the open cluster Praeseppe (M44). We report that accurate photometry at the 0.1mag level is possible on the majority of plates, and demonstrate century-long light-curves of various types of variable stars in and around M44.",
+      "authors": [
+        {
+          "name": "S. Laycock",
+          "orgs": [
+            "Harvard-Smithsonian Center for Astrophysics",
+            "Gemini"
+          ]
+        },
+        {
+          "name": "S. Tang",
+          "orgs": [
+            "Harvard-Smithsonian Center for Astrophysics"
+          ]
+        },
+        {
+          "name": "J. Grindlay",
+          "orgs": [
+            "Harvard-Smithsonian Center for Astrophysics"
+          ]
+        },
+        {
+          "name": "E. Los",
+          "orgs": [
+            "Harvard-Smithsonian Center for Astrophysics"
+          ]
+        },
+        {
+          "name": "R. Simcoe",
+          "orgs": [
+            "Harvard-Smithsonian Center for Astrophysics"
+          ]
+        },
+        {
+          "name": "D. Mink",
+          "orgs": [
+            "Harvard-Smithsonian Center for Astrophysics"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/0811.2005v1",
+      "date": "2008-11-13T05:26:36Z",
+      "citation_count": 45,
+      "categories": [
+        "astro-ph"
+      ]
+    },
+    {
+      "arxiv_id": "0809.4407",
+      "score": 10.517512,
+      "title": "PHotometry Assisted Spectral Extraction (PHASE) and identification of SNLS supernovae",
+      "tldr": "This paper presents PHASE, a spectral extraction method using photometric data to separate supernova from host galaxy signals in SNLS spectra, improving extraction accuracy to 70% and secure type/redshift determination in 80% of cases, with implications for cosmological studies and SN Ia diversity analysis.",
+      "abstract": "Aim: We present new extraction and identification techniques for supernova (SN) spectra developed within the Supernova Legacy Survey (SNLS) collaboration.\n  Method: The new spectral extraction method takes full advantage of photometric information from the Canada-France-Hawai telescope (CFHT) discovery and reference images by tracing the exact position of the supernova and the host signals on the spectrogram. When present, the host spatial profile is measured on deep multi-band reference images and is used to model the host contribution to the full (supernova + host) signal. The supernova is modelled as a Gaussian function of width equal to the seeing. A chi-square minimisation provides the flux of each component in each pixel of the 2D spectrogram. For a host-supernova separation greater than <~ 1 pixel, the two components are recovered separately and we do not use a spectral template in contrast to more standard analyses. This new procedure permits a clean extraction of the supernova separately from the host in about 70% of the 3rd year ESO/VLT spectra of the SNLS. A new supernova identification method is also proposed. It uses the SALT2 spectrophotometric template to combine the photometric and spectral data. A galaxy template is allowed for spectra for which a separate extraction of the supernova and the host was not possible.\n  Result: These new techniques have been tested against more standard extraction and identification procedures. They permit a secure type and redshift determination in about 80% of cases. The present paper illustrates their performances on a few sample spectra.",
+      "authors": [
+        {
+          "name": "S. Baumont",
+          "orgs": [
+            "LPNHE, CNRS-IN2P3 and Universities of Paris 6 & 7, F-75252 Paris Cedex 05, France"
+          ]
+        },
+        {
+          "name": "C. Ballard",
+          "orgs": [
+            "LPNHE, CNRS-IN2P3 and Universities of Paris 6 & 7, F-75252 Paris Cedex 05, France",
+            "University Paris 11, Orsay, F-91405, France"
+          ]
+        },
+        {
+          "name": "P. Astier",
+          "orgs": [
+            "LPNHE, CNRS-IN2P3 and Universities of Paris 6 & 7, F-75252 Paris Cedex 05, France"
+          ]
+        },
+        {
+          "name": "J. Guy",
+          "orgs": [
+            "LPNHE, CNRS-IN2P3 and Universities of Paris 6 & 7, F-75252 Paris Cedex 05, France"
+          ]
+        },
+        {
+          "name": "D. Hardin",
+          "orgs": [
+            "LPNHE, CNRS-IN2P3 and Universities of Paris 6 & 7, F-75252 Paris Cedex 05, France"
+          ]
+        },
+        {
+          "name": "D. A. Howell",
+          "orgs": [
+            "Department of Physics and Astronomy, University of Toronto, 50 St. George Street, Toronto, ON M5S 3H4, Canada"
+          ]
+        },
+        {
+          "name": "C. Lidman",
+          "orgs": [
+            "European Southern Observatory, Alonso de Cordova 3107, Vitacura, Casilla 19001, Santiago 19, Chile"
+          ]
+        },
+        {
+          "name": "M. Mouchet",
+          "orgs": [
+            "APC, UMR 7164 CNRS, 10 rue Alice Domon et Léonie Duquet, F-75205, Paris Cedex 13, France",
+            "LUTH, UMR 8102 CNRS, Observatoire de Paris, Section de Meudon, F-92195 Meudon Cedex, France"
+          ]
+        },
+        {
+          "name": "R. Pain",
+          "orgs": [
+            "LPNHE, CNRS-IN2P3 and Universities of Paris 6 & 7, F-75252 Paris Cedex 05, France"
+          ]
+        },
+        {
+          "name": "N. Regnault",
+          "orgs": [
+            "LPNHE, CNRS-IN2P3 and Universities of Paris 6 & 7, F-75252 Paris Cedex 05, France"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/0809.4407v1",
+      "date": "2008-09-25T14:17:09Z",
+      "citation_count": 15,
+      "categories": [
+        "astro-ph"
+      ]
+    },
+    {
+      "arxiv_id": "2201.10541",
+      "score": 10.494415,
+      "title": "The 1.28 GHz MeerKAT Galactic Center Mosaic",
+      "tldr": "This paper presents a radio survey of the Galactic center using MeerKAT, addressing the need for high-resolution observations of extreme astrophysical phenomena in the region, contributing new insights through high sensitivity and angular resolution, revealing new supernova remnant candidates, non-thermal filaments, and enhanced views of key regions.",
+      "abstract": "The inner $\\sim$200 pc region of the Galaxy contains a 4 million M$_{\\odot}$ supermassive black hole (SMBH), significant quantities of molecular gas, and star formation and cosmic ray energy densities that are roughly two orders of magnitude higher than the corresponding levels in the Galactic disk. At a distance of only 8.2 kpc, the region presents astronomers with a unique opportunity to study a diverse range of energetic astrophysical phenomena, from stellar objects in extreme environments, to the SMBH and star-formation driven feedback processes that are known to influence the evolution of galaxies as a whole. We present a new survey of the Galactic center conducted with the South African MeerKAT radio telescope. Radio imaging offers a view that is unaffected by the large quantities of dust that obscure the region at other wavelengths, and a scene of striking complexity is revealed. We produce total intensity and spectral index mosaics of the region from 20 pointings (144 hours on-target in total), covering 6.5 square degrees with an angular resolution of 4$\"$,at a central frequency of 1.28 GHz. Many new features are revealed for the first time due to a combination of MeerKAT's high sensitivity, exceptional $u,v$-plane coverage, and geographical vantage point. We highlight some initial survey results, including new supernova remnant candidates, many new non-thermal filament complexes, and enhanced views of the Radio Arc Bubble, Sgr A and Sgr B regions. This project is a SARAO public legacy survey, and the image products are made available with this article.",
+      "authors": [
+        {
+          "name": "I. Heywood",
+          "orgs": []
+        },
+        {
+          "name": "I. Rammala",
+          "orgs": []
+        },
+        {
+          "name": "F. Camilo",
+          "orgs": []
+        },
+        {
+          "name": "W. D. Cotton",
+          "orgs": []
+        },
+        {
+          "name": "F. Yusef-Zadeh",
+          "orgs": []
+        },
+        {
+          "name": "T. D. Abbott",
+          "orgs": []
+        },
+        {
+          "name": "R. M. Adam",
+          "orgs": []
+        },
+        {
+          "name": "G. Adams",
+          "orgs": []
+        },
+        {
+          "name": "M. A. Aldera",
+          "orgs": []
+        },
+        {
+          "name": "K. M. B. Asad",
+          "orgs": []
+        },
+        {
+          "name": "E. F. Bauermeister",
+          "orgs": []
+        },
+        {
+          "name": "T. G. H. Bennett",
+          "orgs": []
+        },
+        {
+          "name": "H. L. Bester",
+          "orgs": []
+        },
+        {
+          "name": "W. A. Bode",
+          "orgs": []
+        },
+        {
+          "name": "D. H. Botha",
+          "orgs": []
+        },
+        {
+          "name": "A. G. Botha",
+          "orgs": []
+        },
+        {
+          "name": "L. R. S. Brederode",
+          "orgs": []
+        },
+        {
+          "name": "S. Buchner",
+          "orgs": []
+        },
+        {
+          "name": "J. P. Burger",
+          "orgs": []
+        },
+        {
+          "name": "T. Cheetham",
+          "orgs": []
+        },
+        {
+          "name": "D. I. L. de Villiers",
+          "orgs": []
+        },
+        {
+          "name": "M. A. Dikgale-Mahlakoana",
+          "orgs": []
+        },
+        {
+          "name": "L. J. du Toit",
+          "orgs": []
+        },
+        {
+          "name": "S. W. P. Esterhuyse",
+          "orgs": []
+        },
+        {
+          "name": "B. L. Fanaroff",
+          "orgs": []
+        },
+        {
+          "name": "S. February",
+          "orgs": []
+        },
+        {
+          "name": "D. J. Fourie",
+          "orgs": []
+        },
+        {
+          "name": "B. S. Frank",
+          "orgs": []
+        },
+        {
+          "name": "R. R. G. Gamatham",
+          "orgs": []
+        },
+        {
+          "name": "M. Geyer",
+          "orgs": []
+        },
+        {
+          "name": "S. Goedhart",
+          "orgs": []
+        },
+        {
+          "name": "M. Gouws",
+          "orgs": []
+        },
+        {
+          "name": "S. C. Gumede",
+          "orgs": []
+        },
+        {
+          "name": "M. J. Hlakola",
+          "orgs": []
+        },
+        {
+          "name": "A. Hokwana",
+          "orgs": []
+        },
+        {
+          "name": "S. W. Hoosen",
+          "orgs": []
+        },
+        {
+          "name": "J. M. G. Horrell",
+          "orgs": []
+        },
+        {
+          "name": "B. Hugo",
+          "orgs": []
+        },
+        {
+          "name": "A. I. Isaacson",
+          "orgs": []
+        },
+        {
+          "name": "G. I. G. J\\\\'ozsa",
+          "orgs": []
+        },
+        {
+          "name": "J. L. Jonas",
+          "orgs": []
+        },
+        {
+          "name": "A. F. Joubert",
+          "orgs": []
+        },
+        {
+          "name": "R. P. M. Julie",
+          "orgs": []
+        },
+        {
+          "name": "F. B. Kapp",
+          "orgs": []
+        },
+        {
+          "name": "J. S. Kenyon",
+          "orgs": []
+        },
+        {
+          "name": "P. P. A. Kotz\\\\'e",
+          "orgs": []
+        },
+        {
+          "name": "N. Kriek",
+          "orgs": []
+        },
+        {
+          "name": "H. Kriel",
+          "orgs": []
+        },
+        {
+          "name": "V. K. Krishnan",
+          "orgs": []
+        },
+        {
+          "name": "R. Lehmensiek",
+          "orgs": []
+        },
+        {
+          "name": "D. Liebenberg",
+          "orgs": []
+        },
+        {
+          "name": "R. T. Lord",
+          "orgs": []
+        },
+        {
+          "name": "B. M. Lunsky",
+          "orgs": []
+        },
+        {
+          "name": "K. Madisa",
+          "orgs": []
+        },
+        {
+          "name": "L. G. Magnus",
+          "orgs": []
+        },
+        {
+          "name": "O. Mahgoub",
+          "orgs": []
+        },
+        {
+          "name": "A. Makhaba",
+          "orgs": []
+        },
+        {
+          "name": "S. Makhathini",
+          "orgs": []
+        },
+        {
+          "name": "J. A. Malan",
+          "orgs": []
+        },
+        {
+          "name": "J. R. Manley",
+          "orgs": []
+        },
+        {
+          "name": "S. J. Marais",
+          "orgs": []
+        },
+        {
+          "name": "A. Martens",
+          "orgs": []
+        },
+        {
+          "name": "T. Mauch",
+          "orgs": []
+        },
+        {
+          "name": "B. C. Merry",
+          "orgs": []
+        },
+        {
+          "name": "R. P. Millenaar",
+          "orgs": []
+        },
+        {
+          "name": "N. Mnyandu",
+          "orgs": []
+        },
+        {
+          "name": "O. J. Mokone",
+          "orgs": []
+        },
+        {
+          "name": "T. E. Monama",
+          "orgs": []
+        },
+        {
+          "name": "M. C. Mphego",
+          "orgs": []
+        },
+        {
+          "name": "W. S. New",
+          "orgs": []
+        },
+        {
+          "name": "B. Ngcebetsha",
+          "orgs": []
+        },
+        {
+          "name": "K. J. Ngoasheng",
+          "orgs": []
+        },
+        {
+          "name": "M. T. Ockards",
+          "orgs": []
+        },
+        {
+          "name": "N. Oozeer",
+          "orgs": []
+        },
+        {
+          "name": "A. J. Otto",
+          "orgs": []
+        },
+        {
+          "name": "S. S. Passmoor",
+          "orgs": []
+        },
+        {
+          "name": "A. A. Patel",
+          "orgs": []
+        },
+        {
+          "name": "A. Peens-Hough",
+          "orgs": []
+        },
+        {
+          "name": "S. J. Perkins",
+          "orgs": []
+        },
+        {
+          "name": "A. J. T. Ramaila",
+          "orgs": []
+        },
+        {
+          "name": "N. M. R. Ramanujam",
+          "orgs": []
+        },
+        {
+          "name": "Z. R. Ramudzuli",
+          "orgs": []
+        },
+        {
+          "name": "S. M. Ratcliffe",
+          "orgs": []
+        },
+        {
+          "name": "A. Robyntjies",
+          "orgs": []
+        },
+        {
+          "name": "S. Salie",
+          "orgs": []
+        },
+        {
+          "name": "N. Sambu",
+          "orgs": []
+        },
+        {
+          "name": "C. T. G. Schollar",
+          "orgs": []
+        },
+        {
+          "name": "L. C. Schwardt",
+          "orgs": []
+        },
+        {
+          "name": "R. L. Schwartz",
+          "orgs": []
+        },
+        {
+          "name": "M. Serylak",
+          "orgs": []
+        },
+        {
+          "name": "R. Siebrits",
+          "orgs": []
+        },
+        {
+          "name": "S. K. Sirothia",
+          "orgs": []
+        },
+        {
+          "name": "M. Slabber",
+          "orgs": []
+        },
+        {
+          "name": "O. M. Smirnov",
+          "orgs": []
+        },
+        {
+          "name": "L. Sofeya",
+          "orgs": []
+        },
+        {
+          "name": "B. Taljaard",
+          "orgs": []
+        },
+        {
+          "name": "C. Tasse",
+          "orgs": []
+        },
+        {
+          "name": "A. J. Tiplady",
+          "orgs": []
+        },
+        {
+          "name": "O. Toruvanda",
+          "orgs": []
+        },
+        {
+          "name": "S. N. Twum",
+          "orgs": []
+        },
+        {
+          "name": "T. J. van Balla",
+          "orgs": []
+        },
+        {
+          "name": "A. van der Byl",
+          "orgs": []
+        },
+        {
+          "name": "C. van der Merwe",
+          "orgs": []
+        },
+        {
+          "name": "V. Van Tonder",
+          "orgs": []
+        },
+        {
+          "name": "R. Van Wyk",
+          "orgs": []
+        },
+        {
+          "name": "A. J. Venter",
+          "orgs": []
+        },
+        {
+          "name": "M. Venter",
+          "orgs": []
+        },
+        {
+          "name": "B. H. Wallace",
+          "orgs": []
+        },
+        {
+          "name": "M. G. Welz",
+          "orgs": []
+        },
+        {
+          "name": "L. P. Williams",
+          "orgs": []
+        },
+        {
+          "name": "B. Xaia",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2201.10541v3",
+      "date": "2022-01-25T18:50:29Z",
+      "citation_count": 67,
+      "categories": [
+        "astro-ph.GA"
+      ]
+    },
+    {
+      "arxiv_id": "2012.12887",
+      "score": 10.482981,
+      "title": "SDSS-IV/MaNGA: Can impulsive gaseous inflows explain steep oxygen abundance profiles \\& anomalously-low-metallicity regions?",
+      "tldr": "This paper investigates gaseous inflows in star-forming galaxies using MaNGA data and HI measurements, finding that low-mass galaxies (<10^10.1 M☉) show oxygen abundance profiles consistent with inflows, with 10-25% exhibiting recent accretion signatures and gas mass enhancements of 10-90%, while higher-mass galaxies show limited evidence, suggesting inflows are more prevalent in low-mass systems and could be targeted for high-resolution follow-up.",
+      "abstract": "Gaseous inflows are necessary suppliers of galaxies' star-forming fuel, but are difficult to characterize at the survey scale. We use integral-field spectroscopic measurements of gas-phase metallicity and single-dish radio measurements of total atomic gas mass to estimate the magnitude and frequency of gaseous inflows incident on star-forming galaxies. We reveal a mutual correlation between steep oxygen abundance profiles between $0.25-1.5 R_e$, increased variability of metallicity between $1.25-1.75 R_e$, and elevated HI content at fixed total galaxy stellar mass. Employing a simple but intuitive inflow model, we find that galaxies with total stellar mass less than $10^{10.1} {\\rm M_{\\odot}}$ have local oxygen abundance profiles consistent with reinvigoration by inflows. Approximately 10-25\\% of low-mass galaxies possess signatures of recent accretion, with estimated typical enhancements of approximately 10-90\\% in local gas mass surface density. Higher-mass galaxies have limited evidence for such inflows. The large diversity of HI mass implies that inflow-associated gas ought to reside far from the star-forming disk. We therefore propose that a combination of high HI mass, steep metallicity profile between $0.25-1.5 R_e$, and wide metallicity distribution function between $1.25 - 1.75 R_e$ be employed to target possible hosts of inflowing gas for high-resolution radio follow-up.",
+      "authors": [
+        {
+          "name": "ZACHARY J. PACE",
+          "orgs": [
+            "Department of Astronomy, University of Wisconsin-Madison, 475 N Charter St., Madison, WI 53706"
+          ]
+        },
+        {
+          "name": "CHRISTY TREMONTI",
+          "orgs": [
+            "Department of Astronomy, University of Wisconsin-Madison, 475 N Charter St., Madison, WI 53706"
+          ]
+        },
+        {
+          "name": "ADAM L. SCHAEFER",
+          "orgs": [
+            "Department of Astronomy, University of Wisconsin-Madison, 475 N Charter St., Madison, WI 53706"
+          ]
+        },
+        {
+          "name": "DAVID V. STARK",
+          "orgs": [
+            "Department of Physics & Astronomy, Haverford College, Marian E. Koshland Integrated Natural Science Center, 370 Lancaster Ave., Haverford, PA 19041"
+          ]
+        },
+        {
+          "name": "Catherine A. Witherspoon",
+          "orgs": [
+            "Department of Astronomy, University of Wisconsin-Madison, 475 N Charter St., Madison, WI 53706"
+          ]
+        },
+        {
+          "name": "Karen L. Masters",
+          "orgs": [
+            "Department of Physics & Astronomy, Haverford College, Marian E. Koshland Integrated Natural Science Center, 370 Lancaster Ave., Haverford, PA 19041"
+          ]
+        },
+        {
+          "name": "Niv Drory",
+          "orgs": [
+            "McDonald Observatory, The University of Texas at Austin, 1 University Station, Austin, TX 78712, USA"
+          ]
+        },
+        {
+          "name": "Kai Zhang",
+          "orgs": [
+            "Lawrence Berkeley National Laboratory, 1 Cyclotron Road, Berkeley, CA 94720, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2012.12887v1",
+      "date": "2020-12-23T18:51:36Z",
+      "citation_count": 5,
+      "categories": [
+        "astro-ph.GA"
+      ]
+    },
+    {
+      "arxiv_id": "1604.05911",
+      "score": 10.479558,
+      "title": "Hi-GAL, the Herschel infrared Galactic Plane Survey: photometric maps and compact source catalogues. First data release for Inner Milky Way: +68{\\deg}> l > -70{\\deg}",
+      "tldr": "This paper presents Hi-GAL DR1 data, addressing the need for comprehensive infrared surveys of the Milky Way's star-forming regions by providing calibrated photometric maps and compact source catalogues across five infrared bands, contributing high-quality images and catalogues with 123,210 to 85,460 sources respectively, revealing detailed structures and enabling studies of cold dust and star formation.",
+      "abstract": "(Abridged) We present the first public release of high-quality data products (DR1) from Hi-GAL, the {\\em Herschel} infrared Galactic Plane Survey. Hi-GAL is the keystone of a suite of continuum Galactic Plane surveys from the near-IR to the radio, and covers five wavebands at 70, 160, 250, 350 and 500 micron, encompassing the peak of the spectral energy distribution of cold dust for 8 < T < 50K. This first Hi-GAL data release covers the inner Milky Way in the longitude range 68{\\deg} > l > -70{\\deg} in a |b|<1{\\deg} latitude strip. Photometric maps have been produced with the ROMAGAL pipeline, that optimally capitalizes on the excellent sensitivity and stability of the bolometer arrays of the {\\em Herschel} PACS and SPIRE photometric cameras, to deliver images of exquisite quality and dynamical range, absolutely calibrated with {\\em Planck} and {\\em IRAS}, and recovering extended emission at all wavelengths and all spatial scales. The compact source catalogues have been generated with the CuTEx algorithm, specifically developed to optimize source detection and extraction in the extreme conditions of intense and spatially varying background that are found in the Galactic Plane in the thermal infrared. Hi-GAL DR1 images will be accessible via a dedicated web-based image cutout service. The DR1 Compact Source Catalogues are delivered as single-band photometric lists containing, in addition to source position, peak and integrated flux and source sizes, a variety of parameters useful to assess the quality and reliability of the extracted sources, caveats and hints to help this assessment are provided. Flux completeness limits in all bands are determined from extensive synthetic source experiments and depend on the specific line of sight along the Galactic Plane. Hi-GAL DR1 catalogues contain 123210, 308509, 280685, 160972 and 85460 compact sources in the five bands, respectively.",
+      "authors": [
+        {
+          "name": "S. Molinari",
+          "orgs": []
+        },
+        {
+          "name": "E. Schisano",
+          "orgs": []
+        },
+        {
+          "name": "D. Elia",
+          "orgs": []
+        },
+        {
+          "name": "M. Pestalozzi",
+          "orgs": []
+        },
+        {
+          "name": "A. Traficante",
+          "orgs": []
+        },
+        {
+          "name": "S. Pezzuto",
+          "orgs": []
+        },
+        {
+          "name": "B. M. Swinyard",
+          "orgs": []
+        },
+        {
+          "name": "A. Noriega-Crespo",
+          "orgs": []
+        },
+        {
+          "name": "J. Bally",
+          "orgs": []
+        },
+        {
+          "name": "T. J. T. Moore",
+          "orgs": []
+        },
+        {
+          "name": "R. Plume",
+          "orgs": []
+        },
+        {
+          "name": "A. Zavagno",
+          "orgs": []
+        },
+        {
+          "name": "A. M. di Giorgio",
+          "orgs": []
+        },
+        {
+          "name": "S. J. Liu",
+          "orgs": []
+        },
+        {
+          "name": "G. L. Pilbratt",
+          "orgs": []
+        },
+        {
+          "name": "J. C. Mottram",
+          "orgs": []
+        },
+        {
+          "name": "D. Russeil",
+          "orgs": []
+        },
+        {
+          "name": "L. Piazzo",
+          "orgs": []
+        },
+        {
+          "name": "M. Veneziani",
+          "orgs": []
+        },
+        {
+          "name": "M. Benedettini",
+          "orgs": []
+        },
+        {
+          "name": "L. Calzoletti",
+          "orgs": []
+        },
+        {
+          "name": "F. Faustini",
+          "orgs": []
+        },
+        {
+          "name": "P. Natoli",
+          "orgs": []
+        },
+        {
+          "name": "F. Piacentini",
+          "orgs": []
+        },
+        {
+          "name": "M. Merello",
+          "orgs": []
+        },
+        {
+          "name": "A. Palmese",
+          "orgs": []
+        },
+        {
+          "name": "R. Del Grande",
+          "orgs": []
+        },
+        {
+          "name": "D. Polychroni",
+          "orgs": []
+        },
+        {
+          "name": "K. L. J. Rygl",
+          "orgs": []
+        },
+        {
+          "name": "G. Polenta",
+          "orgs": []
+        },
+        {
+          "name": "M. J. Barlow",
+          "orgs": []
+        },
+        {
+          "name": "J.-P. Bernard",
+          "orgs": []
+        },
+        {
+          "name": "P. G. Martin",
+          "orgs": []
+        },
+        {
+          "name": "L. Testi",
+          "orgs": []
+        },
+        {
+          "name": "B. Ali",
+          "orgs": []
+        },
+        {
+          "name": "P. Andr\\\\`e",
+          "orgs": []
+        },
+        {
+          "name": "M.T. Beltr\\\\'an",
+          "orgs": []
+        },
+        {
+          "name": "N. Billot",
+          "orgs": []
+        },
+        {
+          "name": "C. Brunt",
+          "orgs": []
+        },
+        {
+          "name": "S. Carey",
+          "orgs": []
+        },
+        {
+          "name": "R. Cesaroni",
+          "orgs": []
+        },
+        {
+          "name": "M. Compi\\\\`egne",
+          "orgs": []
+        },
+        {
+          "name": "D. Eden",
+          "orgs": []
+        },
+        {
+          "name": "Y. Fukui",
+          "orgs": []
+        },
+        {
+          "name": "P. Garcia-Lario",
+          "orgs": []
+        },
+        {
+          "name": "M. G. Hoare",
+          "orgs": []
+        },
+        {
+          "name": "M. Huang",
+          "orgs": []
+        },
+        {
+          "name": "G. Joncas",
+          "orgs": []
+        },
+        {
+          "name": "T. L. Lim",
+          "orgs": []
+        },
+        {
+          "name": "S. D. Lord",
+          "orgs": []
+        },
+        {
+          "name": "S. Martinavarro-Armengol",
+          "orgs": []
+        },
+        {
+          "name": "F. Motte",
+          "orgs": []
+        },
+        {
+          "name": "R. Paladini",
+          "orgs": []
+        },
+        {
+          "name": "D. Paradis",
+          "orgs": []
+        },
+        {
+          "name": "N. Peretto",
+          "orgs": []
+        },
+        {
+          "name": "T. Robitaille",
+          "orgs": []
+        },
+        {
+          "name": "P. Schilke",
+          "orgs": []
+        },
+        {
+          "name": "N. Schneider",
+          "orgs": []
+        },
+        {
+          "name": "B. Schulz",
+          "orgs": []
+        },
+        {
+          "name": "B. Sibthorpe",
+          "orgs": []
+        },
+        {
+          "name": "F. Strafella",
+          "orgs": []
+        },
+        {
+          "name": "M. A. Thompson",
+          "orgs": []
+        },
+        {
+          "name": "G. Umana",
+          "orgs": []
+        },
+        {
+          "name": "D. Ward-Thompson",
+          "orgs": []
+        },
+        {
+          "name": "F. Wyrowski",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1604.05911v1",
+      "date": "2016-04-20T12:12:48Z",
+      "citation_count": 0,
+      "categories": [
+        "astro-ph.GA"
+      ]
+    },
+    {
+      "arxiv_id": "1211.4257",
+      "score": 10.446232,
+      "title": "The effect of the high-pass filter data reduction technique on the Herschel PACS Photometer PSF and noise",
+      "tldr": "This paper investigates the effect of the high-pass filter data reduction technique on the Herschel PACS Photometer PSF and noise at 70, 100, and 160 µm bands, addressing the flux loss and PSF distortion caused by the method; it uses simulations with fake sources and real timelines to analyze the impact of data reduction parameters, showing significant flux loss and suggesting a circular mask to reduce it; findings reveal the high-pass filter width is the dominant noise factor, with provided fitting functions for error maps and cross-correlation correction.",
+      "abstract": "We investigate the effect of the \"high-pass filter\" data reduction technique on the Herschel PACS PSF and noise of the PACS maps at the 70, 100 and 160 um bands and in medium and fast scan speeds. This branch of the PACS Photometer pipeline is the most used for cosmological observations and for point-source observations.The calibration of the flux loss due to the median removal applied by the PACS pipeline (high-pass filter) is done via dedicated simulations obtained by \"polluting\" real PACS timelines with fake sources at different flux levels. The effect of the data reduction parameter settings on the final map noise is done by using selected observations of blank fields with high data redundancy. We show that the running median removal can cause significant flux losses at any flux level. We analyse the advantages and disadvantages of several masking strategies and suggest that a mask based on putting circular patches on prior positions is the best solution to reduce the amount of flux loss. We provide a calibration of the point-source flux loss for several masking strategies in a large range of data reduction parameters, and as a function of the source flux. We also show that, for stacking analysis, the impact of the high-pass filtering effect is to reduce significantly the clustering effect. The analysis of the global noise and noise components of the PACS maps shows that the dominant parameter in determining the final noise is the high-pass filter width. We also provide simple fitting functions to build the error map from the coverage map and to estimate the cross-correlation correction factor in a representative portion of the data reduction parameter space.",
+      "authors": [
+        {
+          "name": "A. Poglitsch",
+          "orgs": [
+            "Max-Planck-Institut für Extraterrestrische Physik (MPE), Postfach 1312, 85741 Garching, Germany"
+          ]
+        },
+        {
+          "name": "S. Berta",
+          "orgs": [
+            "Dipartimento di Fisica e Astronomia ”G. Galilei”, vicolo dell’Osservatorio 3, 35122 Padova, Italy"
+          ]
+        },
+        {
+          "name": "R. Nordon",
+          "orgs": [
+            "Herschel Science Centre, European Space Astronomy Centre, ESA, Villanueva de la Cañada, 28691 Madrid, Spain"
+          ]
+        },
+        {
+          "name": "B. Altieri",
+          "orgs": [
+            "Laboratoire AIM, CEA/DSM-CNRS-Université Paris Diderot, IRFU/Service d’Astrophysique, Bât.709, CEA-Saclay, 91191 Gif-sur-Yvette Cedex, France"
+          ]
+        },
+        {
+          "name": "H. Aussel",
+          "orgs": []
+        },
+        {
+          "name": "N. Billot",
+          "orgs": []
+        },
+        {
+          "name": "R. Gastaud",
+          "orgs": []
+        },
+        {
+          "name": "B. Ali",
+          "orgs": []
+        },
+        {
+          "name": "Z. Balog",
+          "orgs": [
+            "Max-Planck-Institut für Extraterrestrische Physik (MPE), Postfach 1312, 85741 Garching, Germany"
+          ]
+        },
+        {
+          "name": "A. Cava",
+          "orgs": [
+            "Dipartimento di Fisica e Astronomia ”G. Galilei”, vicolo dell’Osservatorio 3, 35122 Padova, Italy"
+          ]
+        },
+        {
+          "name": "H. Feuchtgruber",
+          "orgs": [
+            "Herschel Science Centre, European Space Astronomy Centre, ESA, Villanueva de la Cañada, 28691 Madrid, Spain"
+          ]
+        },
+        {
+          "name": "B. Gonzalez Garcia",
+          "orgs": [
+            "Departamento de Astrofísica, Universidad Complutense de Madrid, E28040-Madrid, Spain"
+          ]
+        },
+        {
+          "name": "N. Geis",
+          "orgs": [
+            "Max-Planck-Institut für Extraterrestrische Physik (MPE), Postfach 1312, 85741 Garching, Germany"
+          ]
+        },
+        {
+          "name": "C. Kiss",
+          "orgs": [
+            "Konkoly Observatory of the Hungarian Academy of Sciences, PO Box 67, 1525 Budapest, Hungary"
+          ]
+        },
+        {
+          "name": "U. Klaas",
+          "orgs": [
+            "Max-Planck-Institut für Astronomie, Königstuhl 17, D-69117 Heidelberg, Germany"
+          ]
+        },
+        {
+          "name": "H. Linz",
+          "orgs": [
+            "Max-Planck-Institut für Astronomie, Königstuhl 17, D-69117 Heidelberg, Germany"
+          ]
+        },
+        {
+          "name": "X. C. Liu",
+          "orgs": []
+        },
+        {
+          "name": "A. Moor",
+          "orgs": []
+        },
+        {
+          "name": "B. Morin",
+          "orgs": []
+        },
+        {
+          "name": "T. Muller",
+          "orgs": []
+        },
+        {
+          "name": "M. Nielbock",
+          "orgs": []
+        },
+        {
+          "name": "K. Okumura",
+          "orgs": []
+        },
+        {
+          "name": "S. Osterhage",
+          "orgs": []
+        },
+        {
+          "name": "R. Ottensamer",
+          "orgs": []
+        },
+        {
+          "name": "R. Paladini",
+          "orgs": [
+            "Max-Planck-Institut für Extraterrestrische Physik (MPE), Postfach 1312, 85741 Garching, Germany"
+          ]
+        },
+        {
+          "name": "S. Pezzuto",
+          "orgs": [
+            "Dipartimento di Fisica e Astronomia ”G. Galilei”, vicolo dell’Osservatorio 3, 35122 Padova, Italy"
+          ]
+        },
+        {
+          "name": "V. Dublier Pritchard",
+          "orgs": [
+            "Max-Planck-Institut für Astronomie, Königstuhl 17, D-69117 Heidelberg, Germany"
+          ]
+        },
+        {
+          "name": "S. Regibo",
+          "orgs": [
+            "Herschel Science Centre, European Space Astronomy Centre, ESA, Villanueva de la Cañada, 28691 Madrid, Spain"
+          ]
+        },
+        {
+          "name": "G. Rodighiero",
+          "orgs": [
+            "Max-Planck-Institut für Extraterrestrische Physik (MPE), Postfach 1312, 85741 Garching, Germany"
+          ]
+        },
+        {
+          "name": "P. Royer",
+          "orgs": [
+            "Dipartimento di Fisica e Astronomia ”G. Galilei”, vicolo dell’Osservatorio 3, 35122 Padova, Italy"
+          ]
+        },
+        {
+          "name": "M. Sauvage",
+          "orgs": [
+            "Laboratoire AIM, CEA/DSM-CNRS-Université Paris Diderot, IRFU/Service d’Astrophysique, Bât.709, CEA-Saclay, 91191 Gif-sur-Yvette Cedex, France."
+          ]
+        },
+        {
+          "name": "E. Sturm",
+          "orgs": [
+            "Max-Planck-Institut für Astronomie, Königstuhl 17, D-69117 Heidelberg, Germany"
+          ]
+        },
+        {
+          "name": "M. Wetzstein",
+          "orgs": [
+            "Max-Planck-Institut für Extraterrestrische Physik (MPE), Postfach 1312, 85741 Garching, Germany",
+            "Max-Planck-Institut für Astronomie, Königstuhl 17, D-69117 Heidelberg, Germany"
+          ]
+        },
+        {
+          "name": "E. Wieprecht",
+          "orgs": [
+            "Max-Planck-Institut für Extraterrestrische Physik (MPE), Postfach 1312, 85741 Garching, Germany",
+            "Max-Planck-Institut für Astronomie, Königstuhl 17, D-69117 Heidelberg, Germany"
+          ]
+        },
+        {
+          "name": "E. Wiezorrek",
+          "orgs": [
+            "Max-Planck-Institut für Extraterrestrische Physik (MPE), Postfach 1312, 85741 Garching, Germany",
+            "Max-Planck-Institut für Astronomie, Königstuhl 17, D-69117 Heidelberg, Germany"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1211.4257v1",
+      "date": "2012-11-18T20:57:14Z",
+      "citation_count": 0,
+      "categories": [
+        "astro-ph.IM"
+      ]
+    },
+    {
+      "arxiv_id": "2211.09939",
+      "score": 10.422327,
+      "title": "Astrometric Calibration and Source Characterisation of the Latest Generation Neuromorphic Event-based Cameras for Space Imaging",
+      "tldr": "This paper addresses the calibration and source characterization of the latest generation neuromorphic event-based cameras for space imaging, aiming to improve event-based tracking systems and space situational awareness by developing precise measurement models; it employs traditional astronomical techniques to calibrate event-based cameras, introducing a framework to project events from pixel coordinates to target reference frames; findings show that the Gen 4 HD EBC can detect stars down to magnitude 9.8 under sidereal tracking, with limiting magnitudes dropping by 1.5 magnitudes at higher scan rates.",
+      "abstract": "As an emerging approach to space situational awareness and space imaging, the practical use of an event-based camera in space imaging for precise source analysis is still in its infancy. The nature of event-based space imaging and data collection needs to be further explored to develop more effective event-based space image systems and advance the capabilities of event-based tracking systems with improved target measurement models. Moreover, for event measurements to be meaningful, a framework must be investigated for event-based camera calibration to project events from pixel array coordinates in the image plane to coordinates in a target resident space object's reference frame. In this paper, the traditional techniques of conventional astronomy are reconsidered to properly utilise the event-based camera for space imaging and space situational awareness. This paper presents the techniques and systems used for calibrating an event-based camera for reliable and accurate measurement acquisition. These techniques are vital in building event-based space imaging systems capable of real-world space situational awareness tasks. By calibrating sources detected using the event-based camera, the spatio-temporal characteristics of detected sources or `event sources' can be related to the photometric characteristics of the underlying astrophysical objects. Finally, these characteristics are analysed to establish a foundation for principled processing and observing techniques which appropriately exploit the capabilities of the event-based camera.",
+      "authors": [
+        {
+          "name": "Nicholas Owen Ralph",
+          "orgs": [
+            "International Centre for Neuromorphic Systems",
+            "MARCS Institute for Brain Behaviour and Development",
+            "Western Sydney University"
+          ]
+        },
+        {
+          "name": "Alexandre Marcireau",
+          "orgs": [
+            "International Centre for Neuromorphic Systems",
+            "MARCS Institute for Brain Behaviour and Development",
+            "Western Sydney University"
+          ]
+        },
+        {
+          "name": "Saeed Afshar",
+          "orgs": [
+            "International Centre for Neuromorphic Systems",
+            "MARCS Institute for Brain Behaviour and Development",
+            "Western Sydney University"
+          ]
+        },
+        {
+          "name": "Nicholas Tothill",
+          "orgs": [
+            "International Centre for Neuromorphic Systems",
+            "MARCS Institute for Brain Behaviour and Development",
+            "Western Sydney University"
+          ]
+        },
+        {
+          "name": "André van Schaik",
+          "orgs": [
+            "International Centre for Neuromorphic Systems",
+            "MARCS Institute for Brain Behaviour and Development",
+            "Western Sydney University"
+          ]
+        },
+        {
+          "name": "Gregory Cohen",
+          "orgs": [
+            "International Centre for Neuromorphic Systems",
+            "MARCS Institute for Brain Behaviour and Development",
+            "Western Sydney University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2211.09939v1",
+      "date": "2022-11-17T23:23:14Z",
+      "citation_count": 19,
+      "categories": [
+        "astro-ph.IM",
+        "eess.IV",
+        "eess.SP"
+      ]
+    },
+    {
+      "arxiv_id": "2506.21765",
+      "score": 10.405124,
+      "title": "TUS-REC2024: A Challenge to Reconstruct 3D Freehand Ultrasound Without External Tracker",
+      "tldr": "This paper addresses the challenge of trackerless freehand ultrasound reconstruction, aiming to generate 3D volumes from 2D ultrasound sequences without external trackers, which is critical for low-cost and portable volumetric imaging; it presents the TUS-REC2024 Challenge, providing a large-scale dataset from 85 volunteers and evaluating 21 methods including recurrent models and physics-informed approaches; the results highlight current limitations and inform future research directions in this field.",
+      "abstract": "Trackerless freehand ultrasound reconstruction aims to reconstruct 3D volumes from sequences of 2D ultrasound images without relying on external tracking systems, offering a low-cost, portable, and widely deployable alternative for volumetric imaging. However, it presents significant challenges, including accurate inter-frame motion estimation, minimisation of drift accumulation over long sequences, and generalisability across scanning protocols. The TUS-REC2024 Challenge was established to benchmark and accelerate progress in trackerless 3D ultrasound reconstruction by providing a publicly available dataset for the first time, along with a baseline model and evaluation framework. The Challenge attracted over 43 registered teams, of which 6 teams submitted 21 valid dockerized solutions. Submitted methods spanned a wide range of algorithmic approaches, including recurrent models, registration-driven volume refinement, attention, and physics-informed models. This paper presents an overview of the Challenge design, summarises the key characteristics of the dataset, provides a concise literature review, introduces the technical details of the underlying methodology working with tracked freehand ultrasound data, and offers a comparative analysis of submitted methods across multiple evaluation metrics. The results highlight both the progress and current limitations of state-of-the-art approaches in this domain, and inform directions for future research. The data, evaluation code, and baseline are publicly available to facilitate ongoing development and reproducibility. As a live and evolving benchmark, this Challenge is designed to be continuously developed and improved. The Challenge was held at MICCAI 2024 and will be organised again at MICCAI 2025, reflecting its growing impact and the sustained commitment to advancing this field.",
+      "authors": [
+        {
+          "name": "Qi Li",
+          "orgs": [
+            "UCL Hawkes Institute, Department of Medical Physics and Biomedical Engineering, University College London, London, WC1E 6BT, U.K."
+          ]
+        },
+        {
+          "name": "Shaheer U. Saeed",
+          "orgs": []
+        },
+        {
+          "name": "Yuliang Huang",
+          "orgs": [
+            "UCL Hawkes Institute, Department of Medical Physics and Biomedical Engineering, University College London, London, WC1E 6BT, U.K."
+          ]
+        },
+        {
+          "name": "Mingyuan Luo",
+          "orgs": [
+            "National-Regional Key Technology Engineering Laboratory for Medical Ultrasound, School of Biomedical Engineering, Health Science Center, Shenzhen University, Shenzhen, 518000, China",
+            "Medical UltraSound Image Computing (MUSIC) Lab, Shenzhen University, Shenzhen, 518000, China",
+            "Marshall Laboratory of Biomedical Engineering, Shenzhen University, Shenzhen, 518000, China"
+          ]
+        },
+        {
+          "name": "Zhongnuo Yan",
+          "orgs": [
+            "National-Regional Key Technology Engineering Laboratory for Medical Ultrasound, School of Biomedical Engineering, Health Science Center, Shenzhen University, Shenzhen, 518000, China",
+            "Medical UltraSound Image Computing (MUSIC) Lab, Shenzhen University, Shenzhen, 518000, China",
+            "Marshall Laboratory of Biomedical Engineering, Shenzhen University, Shenzhen, 518000, China"
+          ]
+        },
+        {
+          "name": "Jiongquan Chen",
+          "orgs": [
+            "National-Regional Key Technology Engineering Laboratory for Medical Ultrasound, School of Biomedical Engineering, Health Science Center, Shenzhen University, Shenzhen, 518000, China",
+            "Medical UltraSound Image Computing (MUSIC) Lab, Shenzhen University, Shenzhen, 518000, China",
+            "Marshall Laboratory of Biomedical Engineering, Shenzhen University, Shenzhen, 518000, China",
+            "Shenzhen RayShape Medical Technology Inc., Shenzhen, 518000, China"
+          ]
+        },
+        {
+          "name": "Xin Yang",
+          "orgs": [
+            "National-Regional Key Technology Engineering Laboratory for Medical Ultrasound, School of Biomedical Engineering, Health Science Center, Shenzhen University, Shenzhen, 518000, China",
+            "Medical UltraSound Image Computing (MUSIC) Lab, Shenzhen University, Shenzhen, 518000, China",
+            "Marshall Laboratory of Biomedical Engineering, Shenzhen University, Shenzhen, 518000, China"
+          ]
+        },
+        {
+          "name": "Nektarios Winter",
+          "orgs": [
+            "DKFZ (German Cancer Research Center) Heidelberg, Germany"
+          ]
+        },
+        {
+          "name": "Phuc Nguyen",
+          "orgs": [
+            "University of Cincinnati, Cincinnati, OH, 45219, USA"
+          ]
+        },
+        {
+          "name": "Lucas Steinberger",
+          "orgs": [
+            "Tufts University, USA"
+          ]
+        },
+        {
+          "name": "Yuan Zhao",
+          "orgs": [
+            "Hong Kong Centre for Cerebro-cardiovascular Health Engineering, Rm 1115-1119, Building 19W, Hong Kong Science Park, Hong Kong SAR, China"
+          ]
+        },
+        {
+          "name": "Mingjie Jiang",
+          "orgs": [
+            "Hong Kong Centre for Cerebro-cardiovascular Health Engineering, Rm 1115-1119, Building 19W, Hong Kong Science Park, Hong Kong SAR, China"
+          ]
+        },
+        {
+          "name": "Bowen Ren",
+          "orgs": [
+            "City University of Hong Kong, Kowloon, Hong Kong SAR, China"
+          ]
+        },
+        {
+          "name": "Seonho Kim",
+          "orgs": [
+            "Department of Information Convergence Engineering, Pusan National University, Yangsan, Korea"
+          ]
+        },
+        {
+          "name": "MinKyung Seo",
+          "orgs": [
+            "Department of Information Convergence Engineering, Pusan National University, Yangsan, Korea"
+          ]
+        },
+        {
+          "name": "MinWoo Kim",
+          "orgs": [
+            "School of Biomedical Convergence Engineering, Pusan National University, Yangsan, Korea",
+            "Center for Artificial Intelligence Research, Pusan National University, Busan, Korea"
+          ]
+        },
+        {
+          "name": "Zhiwei Zhang",
+          "orgs": [
+            "Department of Medical Physics, University of Wisconsin (UW) School of Medicine and Public Health, Madison, WI 53705, USA",
+            "Department of Electrical and Computer Engineering, UW-Madison, Madison, WI 53706, USA"
+          ]
+        },
+        {
+          "name": "Yin Li",
+          "orgs": [
+            "Department of Biostatistics and Medical Informatics, UW School of Medicine and Public Health, Madison, WI 53726, USA",
+            "Department of Computer Sciences, UW-Madison, Madison, WI 53706, USA"
+          ]
+        },
+        {
+          "name": "Tomy Varghese",
+          "orgs": [
+            "Department of Medical Physics, University of Wisconsin (UW) School of Medicine and Public Health, Madison, WI 53705, USA",
+            "Department of Electrical and Computer Engineering, UW-Madison, Madison, WI 53706, USA"
+          ]
+        },
+        {
+          "name": "Dean C. Barratt",
+          "orgs": [
+            "UCL Hawkes Institute, Department of Medical Physics and Biomedical Engineering, University College London, London, WC1E 6BT, U.K."
+          ]
+        },
+        {
+          "name": "Matthew J. Clarkson",
+          "orgs": [
+            "UCL Hawkes Institute, Department of Medical Physics and Biomedical Engineering, University College London, London, WC1E 6BT, U.K."
+          ]
+        },
+        {
+          "name": "Tom Vercauteren",
+          "orgs": [
+            "School of Biomedical Engineering & Imaging Sciences, King's College London, London, WC2R 2LS, U.K."
+          ]
+        },
+        {
+          "name": "Yipeng Hu",
+          "orgs": [
+            "UCL Hawkes Institute, Department of Medical Physics and Biomedical Engineering, University College London, London, WC1E 6BT, U.K."
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2506.21765v1",
+      "date": "2025-06-26T20:52:18Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.CV",
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "2203.05640",
+      "score": 10.394075,
+      "title": "High Definition, Inexpensive, Underwater Mapping",
+      "tldr": "This paper presents a Visual Inertial SLAM framework using a GoPro 9 camera for underwater mapping, addressing the challenge of low visibility and poor image quality in underwater environments, which limits exploration and navigation; the proposed approach integrates IMU data with visual features and updates the map after loop closure, offering a cost-effective and accurate solution; experiments on artificial reefs and caves show high accuracy with five fiducial markers used for trajectory estimation.",
+      "abstract": "In this paper we present a complete framework for Underwater SLAM utilizing a single inexpensive sensor. Over the recent years, imaging technology of action cameras is producing stunning results even under the challenging conditions of the underwater domain. The GoPro 9 camera provides high definition video in synchronization with an Inertial Measurement Unit (IMU) data stream encoded in a single mp4 file. The visual inertial SLAM framework is augmented to adjust the map after each loop closure. Data collected at an artificial wreck of the coast of South Carolina and in caverns and caves in Florida demonstrate the robustness of the proposed approach in a variety of conditions.",
+      "authors": [
+        {
+          "name": "Bharat Joshi",
+          "orgs": []
+        },
+        {
+          "name": "Marios Xanthidis",
+          "orgs": []
+        },
+        {
+          "name": "Sharmin Rahman",
+          "orgs": []
+        },
+        {
+          "name": "Ioannis Rekleitis",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2203.05640v2",
+      "date": "2022-03-10T21:08:44Z",
+      "citation_count": 26,
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1007 @@
+{
+  "status": "success",
+  "total_count": 69,
+  "result": [
+    {
+      "arxiv_id": "1704.06687",
+      "score": 16.732435,
+      "title": "Scatteract: Automated extraction of data from scatter plots",
+      "tldr": "This paper addresses the challenge of automatically extracting numerical data from scatter plots, aiming to facilitate further analysis by converting pixel coordinates to chart coordinates; it uses deep learning for object detection and OCR combined with robust regression for coordinate mapping, introducing a fully automated system that achieves 89% success in data extraction; the findings demonstrate effective data retrieval with robustness to OCR errors, advancing automated chart analysis and enabling broader applications in data processing and visualization.",
+      "abstract": "Charts are an excellent way to convey patterns and trends in data, but they do not facilitate further modeling of the data or close inspection of individual data points. We present a fully automated system for extracting the numerical values of data points from images of scatter plots. We use deep learning techniques to identify the key components of the chart, and optical character recognition together with robust regression to map from pixels to the coordinate system of the chart. We focus on scatter plots with linear scales, which already have several interesting challenges. Previous work has done fully automatic extraction for other types of charts, but to our knowledge this is the first approach that is fully automatic for scatter plots. Our method performs well, achieving successful data extraction on 89% of the plots in our test set.",
+      "authors": [
+        {
+          "name": "Mathieu Cliche",
+          "orgs": []
+        },
+        {
+          "name": "David Rosenberg",
+          "orgs": []
+        },
+        {
+          "name": "Dhruv Madeka",
+          "orgs": []
+        },
+        {
+          "name": "Connie Yee",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1704.06687v1",
+      "date": "2017-04-21T19:25:32Z",
+      "citation_count": 75,
+      "categories": [
+        "cs.CV",
+        "cs.IR",
+        "stat.ML"
+      ]
+    },
+    {
+      "arxiv_id": "2202.00158",
+      "score": 14.639683,
+      "title": "Learning-Based Framework for Camera Calibration with Distortion Correction and High Precision Feature Detection",
+      "tldr": "This paper proposes a hybrid camera calibration framework combining learning-based approaches with traditional methods to address radial distortion, sub-pixel corner detection, and unstable parameter estimation, improving robustness and precision over existing toolboxes by 12.5% on synthetic data and 8.7% on real data.",
+      "abstract": "Camera calibration is a crucial technique which significantly influences the performance of many robotic systems. Robustness and high precision have always been the pursuit of diverse calibration methods. State-of-the-art calibration techniques based on classical Zhang's method, however, still suffer from environmental noise, radial lens distortion and sub-optimal parameter estimation. Therefore, in this paper, we propose a hybrid camera calibration framework which combines learning-based approaches with traditional methods to handle these bottlenecks. In particular, this framework leverages learning-based approaches to perform efficient distortion correction and robust chessboard corner coordinate encoding. For sub-pixel accuracy of corner detection, a specially-designed coordinate decoding algorithm with embed outlier rejection mechanism is proposed. To avoid sub-optimal estimation results, we improve the traditional parameter estimation by RANSAC algorithm and achieve stable results. Compared with two widely-used camera calibration toolboxes, experiment results on both real and synthetic datasets manifest the better robustness and higher precision of the proposed framework. The massive synthetic dataset is the basis of our framework's decent performance and will be publicly available along with the code at https://github.com/Easonyesheng/CCS.",
+      "authors": [
+        {
+          "name": "Yesheng Zhang",
+          "orgs": [
+            "Institute of Medical Robotics, Shanghai Jiao Tong University, Shanghai 200240, China",
+            "School of Biomedical Engineering, Shanghai Jiao Tong University, Shanghai 200240, China"
+          ]
+        },
+        {
+          "name": "Xu Zhao",
+          "orgs": [
+            "Institute of Medical Robotics, Shanghai Jiao Tong University, Shanghai 200240, China",
+            "The Department of Automation, Shanghai Jiao Tong University, Shanghai 200240, China"
+          ]
+        },
+        {
+          "name": "Dahong Qian",
+          "orgs": [
+            "Institute of Medical Robotics, Shanghai Jiao Tong University, Shanghai 200240, China",
+            "School of Biomedical Engineering, Shanghai Jiao Tong University, Shanghai 200240, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2202.00158v3",
+      "date": "2022-02-01T00:19:18Z",
+      "citation_count": 17,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2409.06520",
+      "score": 14.4941845,
+      "title": "In Flight Boresight Rectification for Lightweight Airborne Pushbroom Imaging Spectrometry",
+      "tldr": "This paper addresses the challenge of geo-referencing push-broom hyperspectral imagery from lightweight airborne platforms, aiming to improve calibration accuracy in the absence of precise GPS/INS data and terrain models; it introduces a probabilistic model and y-scale invariant matching scheme for distortion correction, achieving orientation accuracy of around 0.2°; the findings offer a more efficient and accurate calibration method with implications for enhancing data integration and analysis in environmental monitoring.",
+      "abstract": "Hyperspectral cameras have recently been miniaturized for operation on lightweight airborne platforms such as UAV or small aircraft. Unlike frame cameras (RGB or Multispectral), many hyperspectral sensors use a linear array or 'push-broom' scanning design. This design presents significant challenges for image rectification and the calibration of the intrinsic and extrinsic camera parameters. Typically, methods employed to address such tasks rely on a precise GPS/INS estimate of the airborne platform trajectory and a detailed terrain model. However, inaccuracies in the trajectory or surface model information can introduce systematic errors and complicate geometric modeling which ultimately degrade the quality of the rectification. To overcome these challenges, we propose a method for tie point extraction and camera calibration for 'push-broom' hyperspectral sensors using only the raw spectral imagery and raw, possibly low quality, GPS/INS trajectory. We demonstrate that our approach allows for the automatic calibration of airborne systems with hyperspectral cameras, outperforms other state-of-the-art automatic rectification methods and reaches an accuracy on par with manual calibration methods.",
+      "authors": [
+        {
+          "name": "Julien Yuuki Burkhard",
+          "orgs": [
+            "École Polytechnique Fédérale de Lausanne"
+          ]
+        },
+        {
+          "name": "Jesse Ray Murray Lahaye",
+          "orgs": [
+            "École Polytechnique Fédérale de Lausanne"
+          ]
+        },
+        {
+          "name": "Laurent Valentin Jospin",
+          "orgs": [
+            "École Polytechnique Fédérale de Lausanne"
+          ]
+        },
+        {
+          "name": "Jan Skaloud",
+          "orgs": [
+            "École Polytechnique Fédérale de Lausanne"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2409.06520v1",
+      "date": "2024-09-10T13:55:47Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1906.09460",
+      "score": 14.40497,
+      "title": "Effective Estimation of Contact Force and Torque for Vision-based Tactile Sensor with Helmholtz-Hodge Decomposition",
+      "tldr": "This paper addresses the challenge of estimating contact force and torque from vision-based tactile sensors, proposing a method using Helmholtz-Hodge Decomposition to decompose displacement fields into components for accurate estimation; it introduces displacement field patterns under single-axial loads and presents a data-efficient, low-complexity approach; experiments show reduced prediction error and variance, enhancing grasp stability visualization and control.",
+      "abstract": "Retrieving rich contact information from robotic tactile sensing has been a challenging, yet significant task for the effective perception of object properties that the robot interacts with. This work is dedicated to developing an algorithm to estimate contact force and torque for vision-based tactile sensors. We first introduce the observation of the contact deformation patterns of hyperelastic materials under ideal single-axial loads in simulation. Then based on the observation, we propose a method of estimating surface forces and torque from the contact deformation vector field with the Helmholtz-Hodge Decomposition (HHD) algorithm. Extensive experiments of calibration and baseline comparison are followed to verify the effectiveness of the proposed method in terms of prediction error and variance. The proposed algorithm is further integrated into a contact force visualization module as well as a closed-loop adaptive grasp force control framework and is shown to be useful in both visualization of contact stability and minimum force grasping task.",
+      "authors": [
+        {
+          "name": "Yazhan Zhang",
+          "orgs": []
+        },
+        {
+          "name": "Zicheng Kan",
+          "orgs": []
+        },
+        {
+          "name": "Yang Yang",
+          "orgs": []
+        },
+        {
+          "name": "Yu Alexander Tse",
+          "orgs": []
+        },
+        {
+          "name": "Michael Yu Wang",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1906.09460v1",
+      "date": "2019-06-22T15:19:26Z",
+      "citation_count": 63,
+      "categories": [
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "1604.08789",
+      "score": 14.022823,
+      "title": "Effective Backscatter Approximation for Photometry in Murky Water",
+      "tldr": "This paper addresses the challenge of scene normal estimation in murky water by approximating backscatter directly from images, improving Photometric Stereo accuracy through a regression-based method that leverages light-pixel relationships and depth independence, showing effective backscatter compensation and comparable shape recovery to clean water conditions.",
+      "abstract": "Shading-based approaches like Photometric Stereo assume that the image formation model can be effectively optimized for the scene normals. However, in murky water this is a very challenging problem. The light from artificial sources is not only reflected by the scene but it is also scattered by the medium particles, yielding the backscatter component. Backscatter corresponds to a complex term with several unknown variables, and makes the problem of normal estimation hard. In this work, we show that instead of trying to optimize the complex backscatter model or use previous unrealistic simplifications, we can approximate the per-pixel backscatter signal directly from the captured images. Our method is based on the observation that backscatter is saturated beyond a certain distance, i.e. it becomes scene-depth independent, and finally corresponds to a smoothly varying signal which depends strongly on the light position with respect to each pixel. Our backscatter approximation method facilitates imaging and scene reconstruction in murky water when the illumination is artificial as in Photometric Stereo. Specifically, we show that it allows accurate scene normal estimation and offers potentials like single image restoration. We evaluate our approach using numerical simulations and real experiments within both the controlled environment of a big water-tank and real murky port-waters.",
+      "authors": [
+        {
+          "name": "Chourmouzios Tsiotsios",
+          "orgs": [
+            "Department of Computing, Imperial College London, SW72AZ, UK"
+          ]
+        },
+        {
+          "name": "Maria E. Angelopoulou",
+          "orgs": [
+            "Department of Electrical and Electronic Engineering, Imperial College London, SW72AZ, UK"
+          ]
+        },
+        {
+          "name": "Andrew J. Davison",
+          "orgs": [
+            "Department of Computing, Imperial College London, SW72AZ, UK"
+          ]
+        },
+        {
+          "name": "Tae-Kyun Kim",
+          "orgs": [
+            "Department of Electrical and Electronic Engineering, Imperial College London, SW72AZ, UK"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1604.08789v1",
+      "date": "2016-04-29T12:14:10Z",
+      "citation_count": 5,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1812.08351",
+      "score": 13.959261,
+      "title": "Robustness Meets Deep Learning: An End-to-End Hybrid Pipeline for Unsupervised Learning of Egomotion",
+      "tldr": "This paper proposes an end-to-end hybrid pipeline for unsupervised egomotion learning, addressing the challenge of robust camera pose estimation in dynamic scenes by combining deep learning predictions with RANSAC outlier rejection, contributing a novel method achieving state-of-the-art results on KITTI with robustness to independently moving objects.",
+      "abstract": "In this work, we propose a method that combines unsupervised deep learning predictions for optical flow and monocular disparity with a model based optimization procedure for instantaneous camera pose. Given the flow and disparity predictions from the network, we apply a RANSAC outlier rejection scheme to find an inlier set of flows and disparities, which we use to solve for the relative camera pose in a least squares fashion. We show that this pipeline is fully differentiable, allowing us to combine the pose with the network outputs as an additional unsupervised training loss to further refine the predicted flows and disparities. This method not only allows us to directly regress relative pose from the network outputs, but also automatically segments away pixels that do not fit the rigid scene assumptions that many unsupervised structure from motion methods apply, such as on independently moving objects. We evaluate our method on the KITTI dataset, and demonstrate state of the art results, even in the presence of challenging independently moving objects.",
+      "authors": [
+        {
+          "name": "Alex Zihao Zhu",
+          "orgs": [
+            "University of Pennsylvania"
+          ]
+        },
+        {
+          "name": "Wenxin Liu",
+          "orgs": [
+            "University of Pennsylvania"
+          ]
+        },
+        {
+          "name": "Ziyun Wang",
+          "orgs": [
+            "University of Pennsylvania"
+          ]
+        },
+        {
+          "name": "Vijay Kumar",
+          "orgs": [
+            "University of Pennsylvania"
+          ]
+        },
+        {
+          "name": "Kostas Daniilidis",
+          "orgs": [
+            "University of Pennsylvania"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1812.08351v3",
+      "date": "2018-12-20T03:51:47Z",
+      "citation_count": 17,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2011.07138",
+      "score": 13.706427,
+      "title": "Tracking Algorithms for TPCs using Consensus-Based Robust Estimators",
+      "tldr": "This paper presents a tracking algorithm using consensus-robust estimators for Time Projection Chambers, addressing the challenge of accurate inlier-outlier detection in particle tracking; it improves upon RANSAC with modified random sampling and clustering, offering better performance in fitting short tracks; experimental results show successful application across AT-TPC, ACTAR, and TexAT detectors.",
+      "abstract": "A tracking algorithm based on consensus-robust estimators was implemented for the analysis of experiments with time-projection chambers. In this work, few algorithms beyond RANSAC were successfully tested using experimental data taken with the AT-TPC, ACTAR and TexAT detectors. The present tracking algorithm has a better inlier-outlier detection than the simple sequential RANSAC routine. Modifications in the random sampling and clustering were included to improve the tracking efficiency. Very good results were obtained in all the test cases, in particular for fitting short tracks in the detection limit.",
+      "authors": [
+        {
+          "name": "J. C. Zamora",
+          "orgs": [
+            "Instituto de Fisica, Universidade de Sao Paulo, Sao Paulo 05508-090, Brazil"
+          ]
+        },
+        {
+          "name": "G. F. Fortino",
+          "orgs": [
+            "Instituto de Fisica, Universidade de Sao Paulo, Sao Paulo 05508-090, Brazil"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2011.07138v1",
+      "date": "2020-11-13T21:43:33Z",
+      "citation_count": 12,
+      "categories": [
+        "nucl-ex",
+        "physics.comp-ph",
+        "physics.data-an",
+        "physics.ins-det"
+      ]
+    },
+    {
+      "arxiv_id": "2009.02491",
+      "score": 13.475125,
+      "title": "Reverse-engineering Bar Charts Using Neural Networks",
+      "tldr": "This paper addresses the problem of reverse-engineering bar charts to extract textual and numeric information, which is crucial for applications requiring underlying data; it proposes a neural network-based method combining Faster-RCNN for textual extraction and an encoder-decoder framework with attention mechanism for numeric extraction, achieving F1 scores of 0.89 and 0.80, and accuracies of 0.91 and 0.78 on synthetic and real-world datasets respectively.",
+      "abstract": "Reverse-engineering bar charts extracts textual and numeric information from the visual representations of bar charts to support application scenarios that require the underlying information. In this paper, we propose a neural network-based method for reverse-engineering bar charts. We adopt a neural network-based object detection model to simultaneously localize and classify textual information. This approach improves the efficiency of textual information extraction. We design an encoder-decoder framework that integrates convolutional and recurrent neural networks to extract numeric information. We further introduce an attention mechanism into the framework to achieve high accuracy and robustness. Synthetic and real-world datasets are used to evaluate the effectiveness of the method. To the best of our knowledge, this work takes the lead in constructing a complete neural network-based method of reverse-engineering bar charts.",
+      "authors": [
+        {
+          "name": "Fangfang Zhou",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yong Zhao",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Wenjiang Chen",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yijing Tan",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yaqi Xu",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yi Chen",
+          "orgs": [
+            "Beijing Key Laboratory of Big Data Technology for Food Safety, Beijing Technology and Business University, Beijing, China"
+          ]
+        },
+        {
+          "name": "Chao Liu",
+          "orgs": [
+            "Institute of Systems Engineering, Academy of Military Sciences, Beijing, China"
+          ]
+        },
+        {
+          "name": "Ying Zhao",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China",
+            "Rail Data Research and Application Key Laboratory of Hunan Province, Changsha, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2009.02491v1",
+      "date": "2020-09-05T08:14:35Z",
+      "citation_count": 34,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "2307.15264",
+      "score": 13.4138,
+      "title": "3D Radar and Camera Co-Calibration: A Flexible and Accurate Method for Target-based Extrinsic Calibration",
+      "tldr": "This paper addresses the challenge of 3D radar and camera extrinsic calibration in autonomous systems, proposing a flexible and accurate method that uses a single corner reflector to achieve high association accuracy (AED error 15.31 pixels, Acc up to 89%) through ROS data collection, timestamp-based point correspondences, and RANSAC with LM optimization.",
+      "abstract": "Advances in autonomous driving are inseparable from sensor fusion. Heterogeneous sensors are widely used for sensor fusion due to their complementary properties, with radar and camera being the most equipped sensors. Intrinsic and extrinsic calibration are essential steps in sensor fusion. The extrinsic calibration, independent of the sensor's own parameters, and performed after the sensors are installed, greatly determines the accuracy of sensor fusion. Many target-based methods require cumbersome operating procedures and well-designed experimental conditions, making them extremely challenging. To this end, we propose a flexible, easy-to-reproduce and accurate method for extrinsic calibration of 3D radar and camera. The proposed method does not require a specially designed calibration environment, and instead places a single corner reflector (CR) on the ground to iteratively collect radar and camera data simultaneously using Robot Operating System (ROS), and obtain radar-camera point correspondences based on their timestamps, and then use these point correspondences as input to solve the perspective-n-point (PnP) problem, and finally get the extrinsic calibration matrix. Also, RANSAC is used for robustness and the Levenberg-Marquardt (LM) nonlinear optimization algorithm is used for accuracy. Multiple controlled environment experiments as well as real-world experiments demonstrate the efficiency and accuracy (AED error is 15.31 pixels and Acc up to 89\\%) of the proposed method.",
+      "authors": [
+        {
+          "name": "Lei Cheng",
+          "orgs": [
+            "Department of Electrical and Computer Engineering, University of Arizona, Tucson, AZ, USA"
+          ]
+        },
+        {
+          "name": "Arindam Sengupta",
+          "orgs": [
+            "Department of Electrical and Computer Engineering, University of Arizona, Tucson, AZ, USA"
+          ]
+        },
+        {
+          "name": "Siyang Cao",
+          "orgs": [
+            "Department of Electrical and Computer Engineering, University of Arizona, Tucson, AZ, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2307.15264v1",
+      "date": "2023-07-28T02:17:48Z",
+      "citation_count": 21,
+      "categories": [
+        "cs.RO",
+        "cs.SY",
+        "eess.SP",
+        "eess.SY"
+      ]
+    },
+    {
+      "arxiv_id": "1907.02545",
+      "score": 13.352274,
+      "title": "ACNe: Attentive Context Normalization for Robust Permutation-Equivariant Learning",
+      "tldr": "This paper addresses the challenge of robust permutation-equivariant learning in computer vision, specifically improving upon Context Normalization by introducing Attentive Context Normalization (ACN) to handle outliers effectively; it uses a network that learns attention weights to normalize feature maps, combining local and global attention mechanisms; experiments show significant performance improvements in robust line fitting, point cloud classification, and wide-baseline stereo with up to 50-100% accuracy gains.",
+      "abstract": "Many problems in computer vision require dealing with sparse, unordered data in the form of point clouds. Permutation-equivariant networks have become a popular solution-they operate on individual data points with simple perceptrons and extract contextual information with global pooling. This can be achieved with a simple normalization of the feature maps, a global operation that is unaffected by the order. In this paper, we propose Attentive Context Normalization (ACN), a simple yet effective technique to build permutation-equivariant networks robust to outliers. Specifically, we show how to normalize the feature maps with weights that are estimated within the network, excluding outliers from this normalization. We use this mechanism to leverage two types of attention: local and global-by combining them, our method is able to find the essential data points in high-dimensional space to solve a given task. We demonstrate through extensive experiments that our approach, which we call Attentive Context Networks (ACNe), provides a significant leap in performance compared to the state-of-the-art on camera pose estimation, robust fitting, and point cloud classification under noise and outliers. Source code: https://github.com/vcg-uvic/acne.",
+      "authors": [
+        {
+          "name": "Weiwei Sun",
+          "orgs": [
+            "University of Victoria"
+          ]
+        },
+        {
+          "name": "Wei Jiang",
+          "orgs": [
+            "University of Victoria"
+          ]
+        },
+        {
+          "name": "Eduard Trulls",
+          "orgs": [
+            "Google Research, Zurich"
+          ]
+        },
+        {
+          "name": "Andrea Tagliasacchi",
+          "orgs": [
+            "Google Research, Toronto"
+          ]
+        },
+        {
+          "name": "Kwang Moo Yi",
+          "orgs": [
+            "University of Victoria"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1907.02545v5",
+      "date": "2019-07-04T18:01:24Z",
+      "citation_count": 20,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2002.12339",
+      "score": 13.060017,
+      "title": "Self-Supervised Deep Pose Corrections for Robust Visual Odometry",
+      "tldr": "This paper introduces a self-supervised deep pose correction network for improving visual odometry accuracy in dynamic environments by addressing systematic errors in classical estimators, contributing a novel method that outperforms state-of-the-art learning-only approaches and achieves state-of-the-art accuracy on the KITTI dataset.",
+      "abstract": "We present a self-supervised deep pose correction (DPC) network that applies pose corrections to a visual odometry estimator to improve its accuracy. Instead of regressing inter-frame pose changes directly, we build on prior work that uses data-driven learning to regress pose corrections that account for systematic errors due to violations of modelling assumptions. Our self-supervised formulation removes any requirement for six-degrees-of-freedom ground truth and, in contrast to expectations, often improves overall navigation accuracy compared to a supervised approach. Through extensive experiments, we show that our self-supervised DPC network can significantly enhance the performance of classical monocular and stereo odometry estimators and substantially out-performs state-of-the-art learning-only approaches.",
+      "authors": [
+        {
+          "name": "Brandon Wagstaff",
+          "orgs": [
+            "Space & Terrestrial Autonomous Robotic Systems (STARS) Laboratory",
+            "University of Toronto Institute for Aerospace Studies (UTIAS)"
+          ]
+        },
+        {
+          "name": "Valentin Peretroukhin",
+          "orgs": [
+            "Space & Terrestrial Autonomous Robotic Systems (STARS) Laboratory",
+            "University of Toronto Institute for Aerospace Studies (UTIAS)"
+          ]
+        },
+        {
+          "name": "Jonathan Kelly",
+          "orgs": [
+            "Space & Terrestrial Autonomous Robotic Systems (STARS) Laboratory",
+            "University of Toronto Institute for Aerospace Studies (UTIAS)"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2002.12339v2",
+      "date": "2020-02-27T18:56:43Z",
+      "citation_count": 27,
+      "categories": [
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "1412.5126",
+      "score": 12.991339,
+      "title": "A Robust Regression Approach for Background/Foreground Segmentation",
+      "tldr": "This paper proposes a robust regression approach for background/foreground segmentation, addressing the challenge of accurately separating smoothly varying backgrounds from sharp foreground elements in screen content and mixed documents, which is crucial for efficient compression; the method uses a smooth function modeling with RANSAC to identify inlier background pixels and outliers as foreground, offering superior performance over k-means clustering; extensive testing on HEVC standard test sequences shows its effectiveness in text extraction and compression tasks.",
+      "abstract": "Background/foreground segmentation has a lot of applications in image and video processing. In this paper, a segmentation algorithm is proposed which is mainly designed for text and line extraction in screen content. The proposed method makes use of the fact that the background in each block is usually smoothly varying and can be modeled well by a linear combination of a few smoothly varying basis functions, while the foreground text and graphics create sharp discontinuity. The algorithm separates the background and foreground pixels by trying to fit pixel values in the block into a smooth function using a robust regression method. The inlier pixels that can fit well will be considered as background, while remaining outlier pixels will be considered foreground. This algorithm has been extensively tested on several images from HEVC standard test sequences for screen content coding, and is shown to have superior performance over other methods, such as the k-means clustering based segmentation algorithm in DjVu. This background/foreground segmentation can be used in different applications such as: text extraction, separate coding of background and foreground for compression of screen content and mixed content documents, principle line extraction from palmprint and crease detection in fingerprint images.",
+      "authors": [
+        {
+          "name": "Shervin Minaee",
+          "orgs": [
+            "ECE Department",
+            "New York University"
+          ]
+        },
+        {
+          "name": "Haoping Yu",
+          "orgs": [
+            "Media Lab",
+            "Huawei Technologies"
+          ]
+        },
+        {
+          "name": "Yao Wang",
+          "orgs": [
+            "ECE Department",
+            "New York University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1412.5126v2",
+      "date": "2014-12-16T19:02:46Z",
+      "citation_count": 5,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2012.06777",
+      "score": 12.845095,
+      "title": "Uncalibrated Neural Inverse Rendering for Photometric Stereo of General Surfaces",
+      "tldr": "This paper presents an uncalibrated deep neural network framework for photometric stereo, addressing the challenge of estimating surface normals without ground-truth data or light directions, which is crucial for practical vision applications; it proposes an uncalibrated neural inverse rendering approach that models both light sources and interreflections, offering a more general solution; extensive evaluation shows comparable or better results than classical and supervised methods on challenging datasets.",
+      "abstract": "This paper presents an uncalibrated deep neural network framework for the photometric stereo problem. For training models to solve the problem, existing neural network-based methods either require exact light directions or ground-truth surface normals of the object or both. However, in practice, it is challenging to procure both of this information precisely, which restricts the broader adoption of photometric stereo algorithms for vision application. To bypass this difficulty, we propose an uncalibrated neural inverse rendering approach to this problem. Our method first estimates the light directions from the input images and then optimizes an image reconstruction loss to calculate the surface normals, bidirectional reflectance distribution function value, and depth. Additionally, our formulation explicitly models the concave and convex parts of a complex surface to consider the effects of interreflections in the image formation process. Extensive evaluation of the proposed method on the challenging subjects generally shows comparable or better results than the supervised and classical approaches.",
+      "authors": [
+        {
+          "name": "Berk Kaya",
+          "orgs": [
+            "Computer Vision Lab, ETH Zürich"
+          ]
+        },
+        {
+          "name": "Suryansh Kumar",
+          "orgs": [
+            "Computer Vision Lab, ETH Zürich"
+          ]
+        },
+        {
+          "name": "Carlos Oliveira",
+          "orgs": [
+            "Computer Vision Lab, ETH Zürich"
+          ]
+        },
+        {
+          "name": "Vittorio Ferrari",
+          "orgs": [
+            "KU Leuven"
+          ]
+        },
+        {
+          "name": "Luc Van Gool",
+          "orgs": [
+            "Computer Vision Lab, ETH Zürich",
+            "Google Research",
+            "KU Leuven"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2012.06777v3",
+      "date": "2020-12-12T10:33:08Z",
+      "citation_count": 57,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2008.01574",
+      "score": 12.823541,
+      "title": "Revisiting Robust Model Fitting Using Truncated Loss",
+      "tldr": "This paper addresses robust model fitting in low-level vision, aiming to improve inlier identification and model estimation by using truncated loss based SIME formulation, which adapts to linear and nonlinear models and achieves lower residual than MC; it introduces alternating minimization and SDR embedded algorithms, and shows significant performance improvements over RANSAC and state-of-the-art methods in 2D/3D registration at high outlier ratios.",
+      "abstract": "Robust fitting is a fundamental problem in low-level vision, which is typically achieved by maximum consensus (MC) estimators to identify inliers first or by M-estimators directly. While these two methods are discriminately preferred in different applications, truncated loss based M-estimators are similar to MC as they can also identify inliers. This work revisits a formulation that achieves simultaneous inlier identification and model estimation (SIME) using truncated loss. It has a generalized form adapts to both linear and nonlinear residual models. We show that as SIME takes fitting residual into account in finding inliers, its lowest achievable residual in model fitting is lower than that of MC robust fitting. Then, an alternating minimization (AM) algorithm is employed to solve the SIME formulation. Meanwhile, a semidefinite relaxation (SDR) embedded AM algorithm is developed in order to ease the high nonconvexity of the SIME formulation. Furthermore, the new algorithms are applied to various 2D/3D registration problems. Experimental results show that the new algorithms significantly outperform RANSAC and deterministic approximate MC methods at high outlier ratios. Besides, in rotation and Euclidean registration problems, the new algorithms also compare favorably with state-of-the-art registration methods, especially in high noise and outliers. Code is available at \\textit{https://github.com/FWen/mcme.git}.",
+      "authors": [
+        {
+          "name": "Fei Wen",
+          "orgs": [
+            "Department of Electronic Engineering, Shanghai Jiao Tong University, Shanghai, China, 200240"
+          ]
+        },
+        {
+          "name": "Hewen Wei",
+          "orgs": [
+            "Shanghai branch of the Southwest Institute of Electronics and Telecommunication Technology of China, Shanghai, China, 200434"
+          ]
+        },
+        {
+          "name": "Yipeng Liu",
+          "orgs": [
+            "School of Electronic Engineering, University of Electronic Science and Technology of China, Chengdu, China, 611731"
+          ]
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Peilin Liu",
+          "orgs": [
+            "Department of Electronic Engineering, Shanghai Jiao Tong University, Shanghai, China, 200240"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2008.01574v2",
+      "date": "2020-08-04T14:10:41Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1807.08696",
+      "score": 12.753339,
+      "title": "PS-FCN: A Flexible Learning Framework for Photometric Stereo",
+      "tldr": "This paper addresses the challenge of photometric stereo for non-Lambertian surfaces, aiming to develop a flexible method that handles diverse BRDFs without pre-defined light directions; it introduces PS-FCN, a deep fully convolutional network that outperforms existing approaches on real datasets and shows promising results in uncalibrated scenarios.",
+      "abstract": "This paper addresses the problem of photometric stereo for non-Lambertian surfaces. Existing approaches often adopt simplified reflectance models to make the problem more tractable, but this greatly hinders their applications on real-world objects. In this paper, we propose a deep fully convolutional network, called PS-FCN, that takes an arbitrary number of images of a static object captured under different light directions with a fixed camera as input, and predicts a normal map of the object in a fast feed-forward pass. Unlike the recently proposed learning based method, PS-FCN does not require a pre-defined set of light directions during training and testing, and can handle multiple images and light directions in an order-agnostic manner. Although we train PS-FCN on synthetic data, it can generalize well on real datasets. We further show that PS-FCN can be easily extended to handle the problem of uncalibrated photometric stereo.Extensive experiments on public real datasets show that PS-FCN outperforms existing approaches in calibrated photometric stereo, and promising results are achieved in uncalibrated scenario, clearly demonstrating its effectiveness.",
+      "authors": [
+        {
+          "name": "Guanying Chen",
+          "orgs": []
+        },
+        {
+          "name": "Kai Han",
+          "orgs": []
+        },
+        {
+          "name": "Kwan-Yee K. Wong",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1807.08696v1",
+      "date": "2018-07-23T16:13:27Z",
+      "citation_count": 152,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2407.02172",
+      "score": 12.69124,
+      "title": "RETINA: a hardware-in-the-loop optical facility with reduced optical aberrations",
+      "tldr": "This paper presents RETINA, an optical facility designed to test vision-based navigation algorithms by reducing optical aberrations and accommodating different cameras, addressing the need for accurate ground testing of spacecraft autonomy; it uses a two-lens-assembly system with COTS components and a calibration algorithm achieving subpixel precision; findings show improved optical performance and versatility in simulating mission scenarios with high accuracy.",
+      "abstract": "The increasing interest in spacecraft autonomy and the complex tasks to be accomplished by the spacecraft raise the need for a trustworthy approach to perform Verification & Validation of Guidance, Navigation, and Control algorithms. In the context of autonomous operations, vision-based navigation algorithms have established themselves as effective solutions to determine the spacecraft state in orbit with low-cost and versatile sensors. Nevertheless, detailed testing must be performed on ground to understand the algorithm's robustness and performance on flight hardware. Given the impossibility of testing directly on orbit these algorithms, a dedicated simulation framework must be developed to emulate the orbital environment in a laboratory setup. This paper presents the design of a low-aberration optical facility called RETINA to perform this task. RETINA is designed to accommodate cameras with different characteristics (e.g., sensor size and focal length) while ensuring the correct stimulation of the camera detector. A preliminary design is performed to identify the range of possible components to be used in the facility according to the facility requirements. Then, a detailed optical design is performed in Zemax OpticStudio to optimize the number and characteristics of the lenses composing the facility's optical systems. The final design is compared against the preliminary design to show the superiority of the optical performance achieved with this approach. This work presents also a calibration procedure to estimate the misalignment and the centering errors in the facility. These estimated parameters are used in a dedicated compensation algorithm, enabling the stimulation of the camera at tens of arcseconds of precision. Finally, two different applications are presented to show the versatility of RETINA in accommodating different cameras and in simulating different mission scenarios.",
+      "authors": [
+        {
+          "name": "Paolo Panicucci",
+          "orgs": [
+            "Dipartimento di Scienze e Tecnologie Aerospaziali, Politecnico di Milano"
+          ]
+        },
+        {
+          "name": "Fabio Ornati",
+          "orgs": [
+            "Dipartimento di Scienze e Tecnologie Aerospaziali, Politecnico di Milano"
+          ]
+        },
+        {
+          "name": "Francesco Topputo",
+          "orgs": [
+            "Dipartimento di Scienze e Tecnologie Aerospaziali, Politecnico di Milano"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2407.02172v1",
+      "date": "2024-07-02T11:26:37Z",
+      "citation_count": 0,
+      "categories": [
+        "astro-ph.IM",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1802.03237",
+      "score": 12.689518,
+      "title": "Full-Frame Scene Coordinate Regression for Image-Based Localization",
+      "tldr": "This paper addresses image-based localization in computer vision and robotics, aiming to improve robustness in challenging scenarios by using a full-frame scene coordinate regression approach with a fully convolutional encoder-decoder network and 2D/3D data augmentation, achieving state-of-the-art results with improved robustness on the hardest frames.",
+      "abstract": "Image-based localization, or camera relocalization, is a fundamental problem in computer vision and robotics, and it refers to estimating camera pose from an image. Recent state-of-the-art approaches use learning based methods, such as Random Forests (RFs) and Convolutional Neural Networks (CNNs), to regress for each pixel in the image its corresponding position in the scene's world coordinate frame, and solve the final pose via a RANSAC-based optimization scheme using the predicted correspondences. In this paper, instead of in a patch-based manner, we propose to perform the scene coordinate regression in a full-frame manner to make the computation efficient at test time and, more importantly, to add more global context to the regression process to improve the robustness. To do so, we adopt a fully convolutional encoder-decoder neural network architecture which accepts a whole image as input and produces scene coordinate predictions for all pixels in the image. However, using more global context is prone to overfitting. To alleviate this issue, we propose to use data augmentation to generate more data for training. In addition to the data augmentation in 2D image space, we also augment the data in 3D space. We evaluate our approach on the publicly available 7-Scenes dataset, and experiments show that it has better scene coordinate predictions and achieves state-of-the-art results in localization with improved robustness on the hardest frames (e.g., frames with repeated structures).",
+      "authors": [
+        {
+          "name": "Xiaotian Li",
+          "orgs": [
+            "Aalto University"
+          ]
+        },
+        {
+          "name": "Juha Ylioinas",
+          "orgs": [
+            "Aalto University"
+          ]
+        },
+        {
+          "name": "Juho Kannala",
+          "orgs": [
+            "Aalto University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1802.03237v2",
+      "date": "2018-02-09T12:55:30Z",
+      "citation_count": 38,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2105.10886",
+      "score": 12.688438,
+      "title": "VS-Net: Voting with Segmentation for Visual Localization",
+      "tldr": "This paper addresses the problem of visual localization in dynamic environments where scene coordinate regression methods fail due to high outlier ratios and inaccurate poses, proposing VS-Net which uses a voting-by-segmentation framework to estimate scene-specific landmarks with a prototype-based triplet loss, achieving higher accuracy and robustness compared to existing methods on 7Scenes and Cambridge Landmarks datasets.",
+      "abstract": "Visual localization is of great importance in robotics and computer vision. Recently, scene coordinate regression based methods have shown good performance in visual localization in small static scenes. However, it still estimates camera poses from many inferior scene coordinates. To address this problem, we propose a novel visual localization framework that establishes 2D-to-3D correspondences between the query image and the 3D map with a series of learnable scene-specific landmarks. In the landmark generation stage, the 3D surfaces of the target scene are over-segmented into mosaic patches whose centers are regarded as the scene-specific landmarks. To robustly and accurately recover the scene-specific landmarks, we propose the Voting with Segmentation Network (VS-Net) to segment the pixels into different landmark patches with a segmentation branch and estimate the landmark locations within each patch with a landmark location voting branch. Since the number of landmarks in a scene may reach up to 5000, training a segmentation network with such a large number of classes is both computation and memory costly for the commonly used cross-entropy loss. We propose a novel prototype-based triplet loss with hard negative mining, which is able to train semantic segmentation networks with a large number of labels efficiently. Our proposed VS-Net is extensively tested on multiple public benchmarks and can outperform state-of-the-art visual localization methods. Code and models are available at \\href{https://github.com/zju3dv/VS-Net}{https://github.com/zju3dv/VS-Net}.",
+      "authors": [
+        {
+          "name": "Zhaoyang Huang",
+          "orgs": [
+            "State Key Lab of CAD&CG, Zhejiang University",
+            "CUHK-SenseTime Joint Laboratory, The Chinese University of Hong Kong"
+          ]
+        },
+        {
+          "name": "Han Zhou",
+          "orgs": [
+            "State Key Lab of CAD&CG, Zhejiang University"
+          ]
+        },
+        {
+          "name": "Yijin Li",
+          "orgs": [
+            "State Key Lab of CAD&CG, Zhejiang University"
+          ]
+        },
+        {
+          "name": "Bangbang Yang",
+          "orgs": [
+            "State Key Lab of CAD&CG, Zhejiang University"
+          ]
+        },
+        {
+          "name": "Yan Xu",
+          "orgs": [
+            "CUHK-SenseTime Joint Laboratory, The Chinese University of Hong Kong",
+            "School of CST, Xidian University"
+          ]
+        },
+        {
+          "name": "Xiaowei Zhou",
+          "orgs": []
+        },
+        {
+          "name": "Hujun Bao",
+          "orgs": [
+            "State Key Lab of CAD&CG, Zhejiang University"
+          ]
+        },
+        {
+          "name": "Guofeng Zhang",
+          "orgs": [
+            "State Key Lab of CAD&CG, Zhejiang University"
+          ]
+        },
+        {
+          "name": "Hongsheng Li",
+          "orgs": [
+            "CUHK-SenseTime Joint Laboratory, The Chinese University of Hong Kong",
+            "School of CST, Xidian University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2105.10886v1",
+      "date": "2021-05-23T08:44:11Z",
+      "citation_count": 53,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2604.19420",
+      "score": 12.688427,
+      "title": "TESO: Online Tracking of Essential Matrix by Stochastic Optimization",
+      "tldr": "This paper addresses the challenge of maintaining stereo camera calibration accuracy in autonomous systems by proposing TESO, an online stochastic optimization method that tracks essential matrix parameters with a robust kernel correlation loss, contributing to precise drift correction and improved depth accuracy; on the MAN TruckScenes dataset, TESO achieved 0.12 deg Y-axis precision and 0.025 deg rotation precision after calibration correction, demonstrating its effectiveness in real-world scenarios.",
+      "abstract": "Maintaining long-term accuracy of stereo camera calibration parameters is important for autonomous systems' perception. This work proposes Online Tracking of Essential Matrix by Stochastic Optimization (TESO). The core mechanisms of TESO are: 1) a robust loss function based on kernel correlation over tentative correspondences, 2) an adaptive online stochastic optimization on the essential manifold. TESO has low CPU and memory requirements, relies on a few hyperparameters, and eliminates the need for data-driven training, enabling the usage in resource-constrained online perception systems. We evaluated the influence of TESO on geometric precision, rectification quality, and stereo depth consistency. On the large-scale MAN TruckScenes dataset, TESO tracks rotational calibration drift with 0.12 deg precision in the Y-axis (critical for stereo accuracy) while the X- and Z-axes are five times more precise. Tracking applied to sequences with simulated drift shows similar precision with respect to the reference as tracking applied to no-drift sequences, indicating the tracker is unbiased. On the KITTI dataset, TESO revealed systematic inconsistencies in extrinsic parameters across stereo pairs, confirming previous published findings. We verified that intrinsic decalibration affected these errors, as evidenced by the conflicting behavior of the rectification and depth metrics. After correcting the reference calibration, TESO improved its rotation precision around the Y-axis 20 times to 0.025 deg and its depth accuracy 50 times. Despite its lightweight design, direct optimization of the proposed TESO loss function alone achieves accuracy comparable to that of neural network-based single-frame methods.",
+      "authors": [
+        {
+          "name": "Jaroslav Moravec",
+          "orgs": [
+            "Czech Technical University",
+            "in Prague, Czech Republic"
+          ]
+        },
+        {
+          "name": "Radim Šára",
+          "orgs": [
+            "Czech Technical University",
+            "in Prague, Czech Republic"
+          ]
+        },
+        {
+          "name": "Akihiro Sugimoto",
+          "orgs": [
+            "National Institute of Informatics",
+            "Tokyo, Japan"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2604.19420v1",
+      "date": "2026-04-21",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2102.04060",
+      "score": 12.621973,
+      "title": "OV$^{2}$SLAM : A Fully Online and Versatile Visual SLAM for Real-Time Applications",
+      "tldr": "This paper presents OV$^{2}$SLAM, a fully online Visual SLAM solution addressing the gap between real-time performance, accuracy, and robustness in VSLAM; it uses a multi-threaded architecture with a novel loop closing method, contributing to state-of-the-art accuracy and real-time capability; experiments show OV$^{2}$SLAM outperforms ORB-SLAM at 20Hz and maintains high accuracy at 200Hz.",
+      "abstract": "Many applications of Visual SLAM, such as augmented reality, virtual reality, robotics or autonomous driving, require versatile, robust and precise solutions, most often with real-time capability. In this work, we describe  OV$^{2}$SLAM, a fully online algorithm, handling both monocular and stereo camera setups, various map scales and frame-rates ranging from a few Hertz up to several hundreds. It combines numerous recent contributions in visual localization within an efficient multi-threaded architecture. Extensive comparisons with competing algorithms shows the state-of-the-art accuracy and real-time performance of the resulting algorithm.  For the benefit of the community, we release the source code: \\url{https://github.com/ov2slam/ov2slam}.",
+      "authors": [
+        {
+          "name": "Maxime Ferrera",
+          "orgs": [
+            "DTIS, ONERA, Université Paris-Saclay, F-91123, Palaiseau, France",
+            "IFREMER, Ctr. Méditerranée, Underwater System Unit, CS20330, F-83507, La-Seyne-Sur-Mer, France"
+          ]
+        },
+        {
+          "name": "Alexandre Eudes",
+          "orgs": [
+            "DTIS, ONERA, Université Paris-Saclay, F-91123, Palaiseau, France"
+          ]
+        },
+        {
+          "name": "Julien Moras",
+          "orgs": [
+            "DTIS, ONERA, Université Paris-Saclay, F-91123, Palaiseau, France"
+          ]
+        },
+        {
+          "name": "Martial Sanfourche",
+          "orgs": [
+            "DTIS, ONERA, Université Paris-Saclay, F-91123, Palaiseau, France"
+          ]
+        },
+        {
+          "name": "Guy Le Besnerais",
+          "orgs": [
+            "DTIS, ONERA, Université Paris-Saclay, F-91123, Palaiseau, France",
+            "ONERA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2102.04060v1",
+      "date": "2021-02-08T08:39:23Z",
+      "citation_count": 63,
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2306.01188",
+      "score": 12.55694,
+      "title": "Event-based Stereo Visual Odometry with Native Temporal Resolution via Continuous-time Gaussian Process Regression",
+      "tldr": "This paper addresses the challenge of visual odometry using event-based cameras by developing a stereo VO pipeline that directly utilizes asynchronous event times through continuous-time Gaussian process regression, improving RMS relative error by two and four times compared to existing methods on the MVSEC dataset.",
+      "abstract": "Event-based cameras asynchronously capture individual visual changes in a scene. This makes them more robust than traditional frame-based cameras to highly dynamic motions and poor illumination. It also means that every measurement in a scene can occur at a unique time.\n  Handling these different measurement times is a major challenge of using event-based cameras. It is often addressed in visual odometry (VO) pipelines by approximating temporally close measurements as occurring at one common time. This grouping simplifies the estimation problem but, absent additional sensors, sacrifices the inherent temporal resolution of event-based cameras.\n  This paper instead presents a complete stereo VO pipeline that estimates directly with individual event-measurement times without requiring any grouping or approximation in the estimation state. It uses continuous-time trajectory estimation to maintain the temporal fidelity and asynchronous nature of event-based cameras through Gaussian process regression with a physically motivated prior. Its performance is evaluated on the MVSEC dataset, where it achieves 7.9e-3 and 5.9e-3 RMS relative error on two independent sequences, outperforming the existing publicly available event-based stereo VO pipeline by two and four times, respectively.",
+      "authors": [
+        {
+          "name": "Jianeng Wang",
+          "orgs": [
+            "Estimation, Search, and Planning (ESP) Group, Oxford Robotics Institute (ORI), University of Oxford, UK"
+          ]
+        },
+        {
+          "name": "Jonathan D. Gammell",
+          "orgs": [
+            "Estimation, Search, and Planning (ESP) Group, Oxford Robotics Institute (ORI), University of Oxford, UK"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2306.01188v5",
+      "date": "2023-06-01T22:57:32Z",
+      "citation_count": 15,
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "1804.06504",
+      "score": 12.514707,
+      "title": "Learning how to be robust: Deep polynomial regression",
+      "tldr": "This paper addresses the problem of robust polynomial regression in computer vision, where standard methods fail under outlier contamination, and proposes deep convolutional neural networks with a differentiable polynomial decoder to enable unsupervised training and robustness, achieving better performance than traditional methods in video stabilization tasks.",
+      "abstract": "Polynomial regression is a recurrent problem with a large number of applications. In computer vision it often appears in motion analysis. Whatever the application, standard methods for regression of polynomial models tend to deliver biased results when the input data is heavily contaminated by outliers. Moreover, the problem is even harder when outliers have strong structure. Departing from problem-tailored heuristics for robust estimation of parametric models, we explore deep convolutional neural networks. Our work aims to find a generic approach for training deep regression models without the explicit need of supervised annotation. We bypass the need for a tailored loss function on the regression parameters by attaching to our model a differentiable hard-wired decoder corresponding to the polynomial operation at hand. We demonstrate the value of our findings by comparing with standard robust regression methods. Furthermore, we demonstrate how to use such models for a real computer vision problem, i.e., video stabilization. The qualitative and quantitative experiments show that neural networks are able to learn robustness for general polynomial regression, with results that well overpass scores of traditional robust estimation methods.",
+      "authors": [
+        {
+          "name": "Juan-Manuel Pérez-Rúa",
+          "orgs": [
+            "Technicolor, Cesson Sévigné, France"
+          ]
+        },
+        {
+          "name": "Tomas Crivelli",
+          "orgs": [
+            "Technicolor, Cesson Sévigné, France"
+          ]
+        },
+        {
+          "name": "Patrick Bouthemy",
+          "orgs": [
+            "Inria, Centre Rennes - Bretagne Atlantique, France"
+          ]
+        },
+        {
+          "name": "Patrick Pérez",
+          "orgs": [
+            "Technicolor, Cesson Sévigné, France"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1804.06504v2",
+      "date": "2018-04-17T23:36:12Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2004.00605",
+      "score": 12.507198,
+      "title": "EPOS: Estimating 6D Pose of Objects with Symmetries",
+      "tldr": "This paper presents a method for estimating 6D pose of objects with symmetries from a single RGB image, addressing the challenge of handling global or partial symmetries and texture-less objects; it proposes surface fragments for object representation and predicts multiple 3D locations per pixel using an encoder-decoder network; it outperforms existing methods on T-LESS, LM-O, and YCB-V datasets, achieving a 27% improvement over the second-best RGB method on YCB-V.",
+      "abstract": "We present a new method for estimating the 6D pose of rigid objects with available 3D models from a single RGB input image. The method is applicable to a broad range of objects, including challenging ones with global or partial symmetries. An object is represented by compact surface fragments which allow handling symmetries in a systematic manner. Correspondences between densely sampled pixels and the fragments are predicted using an encoder-decoder network. At each pixel, the network predicts: (i) the probability of each object's presence, (ii) the probability of the fragments given the object's presence, and (iii) the precise 3D location on each fragment. A data-dependent number of corresponding 3D locations is selected per pixel, and poses of possibly multiple object instances are estimated using a robust and efficient variant of the PnP-RANSAC algorithm. In the BOP Challenge 2019, the method outperforms all RGB and most RGB-D and D methods on the T-LESS and LM-O datasets. On the YCB-V dataset, it is superior to all competitors, with a large margin over the second-best RGB method. Source code is at: cmp.felk.cvut.cz/epos.",
+      "authors": [
+        {
+          "name": "Tomáš Hodač",
+          "orgs": [
+            "Visual Recognition Group, Czech Technical University in Prague"
+          ]
+        },
+        {
+          "name": "Dániel Baráth",
+          "orgs": [
+            "Visual Recognition Group, Czech Technical University in Prague",
+            "Machine Perception Research Laboratory, MTA SZTAKI, Budapest"
+          ]
+        },
+        {
+          "name": "Jiří Matas",
+          "orgs": [
+            "Visual Recognition Group, Czech Technical University in Prague"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2004.00605v1",
+      "date": "2020-04-01T17:41:08Z",
+      "citation_count": 268,
+      "categories": [
+        "cs.CV",
+        "cs.LG",
+        "cs.RO",
+        "eess.IV"
+      ]
+    },
+    {
+      "arxiv_id": "2303.13962",
+      "score": 8.303989,
+      "title": "4D iRIOM: 4D Imaging Radar Inertial Odometry and Mapping",
+      "tldr": "This paper presents a 4D imaging radar inertial odometry and mapping method (iRIOM) to address the challenge of precise 3D localization and mapping in harsh environments, leveraging 4D radar data and inertial measurements for improved accuracy and robustness; it uses a submap concept, graduated non-convexity for ego-velocity estimation, and scan-to-submap matching with an iterative EKF to achieve real-time SLAM, outperforming existing methods in odometry accuracy and mapping consistency; experiments on indoor and outdoor datasets show iRIOM's superior localization accuracy and mapping consistency.",
+      "abstract": "Millimeter wave radar can measure distances, directions, and Doppler velocity for objects in harsh conditions such as fog. The 4D imaging radar with both vertical and horizontal data resembling an image can also measure objects' height. Previous studies have used 3D radars for ego-motion estimation. But few methods leveraged the rich data of imaging radars, and they usually omitted the mapping aspect, thus leading to inferior odometry accuracy. This paper presents a real-time imaging radar inertial odometry and mapping method, iRIOM, based on the submap concept. To deal with moving objects and multipath reflections, we use the graduated non-convexity method to robustly and efficiently estimate ego-velocity from a single scan. To measure the agreement between sparse non-repetitive radar scan points and submap points, the distribution-to-multi-distribution distance for matches is adopted. The ego-velocity, scan-to-submap matches are fused with the 6D inertial data by an iterative extended Kalman filter to get the platform's 3D position and orientation. A loop closure module is also developed to curb the odometry module's drift. To our knowledge, iRIOM based on the two modules is the first 4D radar inertial SLAM system. On our and third-party data, we show iRIOM's favorable odometry accuracy and mapping consistency against the FastLIO-SLAM and the EKFRIO. Also, the ablation study reveal the benefit of inertial data versus the constant velocity model, and scan-to-submap matching versus scan-to-scan matching.",
+      "authors": [
+        {
+          "name": "Yuan Zhuang",
+          "orgs": [
+            "State Key Lab of Info Engineering in Surveying, Mapping, and Remote Sensing, Wuhan University, China"
+          ]
+        },
+        {
+          "name": "Binliang Wang",
+          "orgs": [
+            "State Key Lab of Info Engineering in Surveying, Mapping, and Remote Sensing, Wuhan University, China"
+          ]
+        },
+        {
+          "name": "Jianzhu Huai",
+          "orgs": [
+            "State Key Lab of Info Engineering in Surveying, Mapping, and Remote Sensing, Wuhan University, China"
+          ]
+        },
+        {
+          "name": "Miao Li",
+          "orgs": [
+            "State Key Lab of Info Engineering in Surveying, Mapping, and Remote Sensing, Wuhan University, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2303.13962v2",
+      "date": "2023-03-24T12:36:26Z",
+      "citation_count": 93,
+      "categories": [
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2511.20453",
+      "score": 6.9275455,
+      "title": "Digital Twin-Assisted High-Precision Massive MIMO Localization in Urban Canyons",
+      "tldr": "This paper addresses the challenge of high-precision wireless localization in urban canyons by proposing a three-stage DT-RANSAC framework to reject multi-bounce NLOS paths, improving accuracy and reducing system costs, with simulations showing significant performance enhancement.",
+      "abstract": "High-precision wireless localization in urban canyons is challenged by noisy measurements and severe non-line-of-sight (NLOS) propagation. This paper proposes a robust three-stage algorithm synergizing a digital twin (DT) model with the random sample consensus (RANSAC) algorithm to overcome these limitations. The method leverages the DT for geometric path association and employs RANSAC to identify reliable line-of-sight (LOS) and single-bounce NLOS paths while rejecting multi-bounce outliers. A final optimization on the resulting inlier set estimates the user's position and clock bias. Simulations validate that by effectively turning NLOS paths into valuable geometric information via the DT, the approach enables accurate localization, reduces reliance on direct LOS, and significantly lowers system deployment costs, making it suitable for practical deployment.",
+      "authors": [
+        {
+          "name": "Hui Chen",
+          "orgs": [
+            "Chalmers University of Technology",
+            "Ziqin Zhou1"
+          ]
+        },
+        {
+          "name": "Henk Wymeersch",
+          "orgs": [
+            "Chalmers University of Technology",
+            "Ziqin Zhou1"
+          ]
+        },
+        {
+          "name": "Ziqin Zhou",
+          "orgs": [
+            "Chalmers University of Technology",
+            "Ziqin Zhou1"
+          ]
+        },
+        {
+          "name": "Gerhard Steinböck",
+          "orgs": [
+            "Chalmers University of Technology",
+            "Ziqin Zhou1"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/abs/2511.20453v1",
+      "date": "2025-11-25",
+      "citation_count": 1,
+      "categories": [
+        "cs.SY",
+        "eess.SP",
+        "eess.SY"
+      ]
+    }
+  ]
+}

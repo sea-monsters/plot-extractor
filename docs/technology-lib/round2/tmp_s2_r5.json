@@ -1,0 +1,800 @@
+{
+  "status": "success",
+  "total_count": 43,
+  "result": [
+    {
+      "arxiv_id": "2010.02319",
+      "score": 11.226781,
+      "title": "Tensor Fields for Data Extraction from Chart Images: Bar Charts and Scatter Plots",
+      "tldr": "This paper addresses the challenge of data extraction from bar charts and scatter plots by proposing a computational model using positive semidefinite second-order tensor fields, contributing a method for degenerate point extraction to automate levels A1 and A2 of Kimura's statistical ability scheme, showing tensor voting effectively extracts data with high accuracy for these chart types.",
+      "abstract": "Charts are an essential part of both graphicacy (graphical literacy), and statistical literacy. As chart understanding has become increasingly relevant in data science, automating chart analysis by processing raster images of the charts has become a significant problem. Automated chart reading involves data extraction and contextual understanding of the data from chart images. In this paper, we perform the first step of determining the computational model of chart images for data extraction for selected chart types, namely, bar charts, and scatter plots. We demonstrate the use of positive semidefinite second-order tensor fields as an effective model. We identify an appropriate tensor field as the model and propose a methodology for the use of its degenerate point extraction for data extraction from chart images. Our results show that tensor voting is effective for data extraction from bar charts and scatter plots, and histograms, as a special case of bar charts.",
+      "authors": [
+        {
+          "name": "Jaya Sreevalsan-Nair",
+          "orgs": [
+            "Graphics-Visualization-Computing Lab",
+            "International Institute of Information Technology Bangalore",
+            "Karnataka 560100, India"
+          ]
+        },
+        {
+          "name": "Komal Dadhich",
+          "orgs": [
+            "Graphics-Visualization-Computing Lab",
+            "International Institute of Information Technology Bangalore",
+            "Karnataka 560100, India"
+          ]
+        },
+        {
+          "name": "Siri Chandana Daggubati",
+          "orgs": [
+            "Graphics-Visualization-Computing Lab",
+            "International Institute of Information Technology Bangalore",
+            "Karnataka 560100, India"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2010.02319v1",
+      "date": "2020-10-05T20:19:40Z",
+      "citation_count": 12,
+      "categories": [
+        "cs.CV",
+        "cs.GR",
+        "cs.NA",
+        "math.NA"
+      ]
+    },
+    {
+      "arxiv_id": "astro-ph/0212215",
+      "score": 9.513516,
+      "title": "Spectrophotometry with a transmission grating for detecting faint occultations",
+      "tldr": "This paper investigates low-resolution spectrophotometry using a transmission grating to detect faint occultations, aiming to characterize extrasolar planets by measuring reflected light; it employs a simple data reduction method on HD 209458 with a transmission grating, achieving 0.1% detection levels but limited by atmospheric seeing; findings suggest potential for determining spectra of binary systems but not ESPs, with implications for future low-dispersion photometric studies.",
+      "abstract": "High-precision spectrophotometry is highly desirable in detecting and characterizing close-in extrasolar planets to learn about their makeup and temperature. For such a goal, a modest-size telescope with a simple low-resolution spectroscopic instrument is potentially as good or better than a complex general purpose spectrograph since calibration and removal of systematic errors is expected to dominate. We use a transmission grating placed in front of an imaging CCD camera on Steward Observatory's Kuiper 1.5 m telescope to provide a high signal-to-noise, low dispersion visible spectrum of the star HD 209458. We attempt to detect the reflected light signal from the extra-solar planet HD 209458b by differencing the signal just before and after secondary occultation. We present a simple data reduction method and explore the limits of ground based low-dispersion spectrophotometry with a diffraction grating. Reflected light detection levels of 0.1% are achievable for 5000-7000A, too coarse for useful limits on ESPs but potentially useful for determining spectra of short-period binary systems with large (Delta m_vis=6) brightness ratios. Limits on the precison are set by variations in atmospheric seeing in the low-resolution spectrum. Calibration of this effect can be carried out by measurement of atmospheric parameters from the observations themselves, which may allow the precision to be limited by the noise due to photon statistics and atmospheric scintillation effects.",
+      "authors": [
+        {
+          "name": "M.A. Kenworthy",
+          "orgs": [
+            "Physics Department, University of Cincinnati",
+            "University of Cincinnati"
+          ]
+        },
+        {
+          "name": "Univ. of Cincinnati",
+          "orgs": [
+            "University of Cincinnati"
+          ]
+        },
+        {
+          "name": "P.M. Hinz",
+          "orgs": [
+            "Steward Observatory, University of Arizona",
+            "University of Arizona"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/astro-ph/0212215v1",
+      "date": "2002-12-09",
+      "citation_count": 6,
+      "categories": [
+        "astro-ph"
+      ]
+    },
+    {
+      "arxiv_id": "0704.1051",
+      "score": 9.388621,
+      "title": "The Angular Separation of the Components of the Cepheid AW Per",
+      "tldr": "This paper addresses the challenge of determining Cepheid masses and distances by analyzing the angular separation of the binary components of AW Per, a 6.4-day Cepheid in a 40-year orbit with a hot secondary star, using HST/STIS cross-dispersion imaging to resolve the system and provide insights into the Cepheid mass problem; the study demonstrates the feasibility of this method for future multi-epoch measurements to determine inclination and derive masses and distances; the angular separation was determined from a single epoch, highlighting the potential for future accurate measurements.",
+      "abstract": "The 6.4 day classical Cepheid AW Per is a spectroscopic binary with a period of 40 years. Analyzing the centroids of HST/STIS spectra obtained in November 2001, we have determined the angular separation of the binary system. Although we currently have spatially resolved data for a single epoch in the orbit, the success of our approach opens the possibility of determining the inclination, sini, for the system if the measurements are repeated at additional epochs. Since the system is potentially a double lined spectroscopic binary, the combination of spectroscopic orbits for both components and the visual orbit would give the distance to the system and the masses of its components, thereby providing a direct measurement of a Cepheid mass.",
+      "authors": [
+        {
+          "name": "D. Massa",
+          "orgs": [
+            "SGT, Inc. NASA’s GSFC, Code 665, Greenbelt, MD 20771, USA"
+          ]
+        },
+        {
+          "name": "N. R. Evans",
+          "orgs": [
+            "Center for Astrophysics, 60 Garden St., MS 4, Cambridge, MA 02138"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/0704.1051v2",
+      "date": "2007-04-08T23:42:44Z",
+      "citation_count": 9,
+      "categories": [
+        "astro-ph"
+      ]
+    },
+    {
+      "arxiv_id": "2203.04316",
+      "score": 9.260053,
+      "title": "Time-domain feature extraction for target-specificity in Photoacoustic Remote Sensing Microscopy",
+      "tldr": "This paper addresses the challenge of extracting time-domain features for target-specificity in Photoacoustic Remote Sensing Microscopy, aiming to enhance biomolecule characterization by leveraging TD signals rather than amplitude alone; it introduces a novel clustering method to learn TD features, enabling single-acquisition virtual tissue labelling and distinguishing myelinated and unmyelinated neurons in murine brain tissue.",
+      "abstract": "Photoacoustic Remote Sensing (PARS) microscopy is an emerging label-free optical absorption imaging modality. PARS operates by capturing nanosecond-scale optical perturbations generated by photoacoustic pressures. These time-domain (TD) modulations are usually projected by amplitude to determine absorption magnitude. However, significant information on the target's material properties is contained within the TD signals. This work proposes a novel clustering method to learn TD features which relate to underlying biomolecule characteristics. This technique identifies features related to constituent biomolecules, enabling single-acquisition virtual tissue labelling. Colorized visualizations of tissue are produced, highlighting specific tissue components. This is demonstrated on freshly resected murine brain tissue, clearly discerning structures including myelinated and unmyelinated neurons (white and gray matter) and nuclear structures.",
+      "authors": [
+        {
+          "name": "Nicholas Pellegrino",
+          "orgs": []
+        },
+        {
+          "name": "Benjamin R. Ecclestone",
+          "orgs": []
+        },
+        {
+          "name": "Paul Fieguth",
+          "orgs": []
+        },
+        {
+          "name": "Parsin Haji Reza",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/abs/2203.04316v2",
+      "date": "2022-03-08",
+      "citation_count": 4,
+      "categories": [
+        "physics.med-ph",
+        "q-bio.QM"
+      ]
+    },
+    {
+      "arxiv_id": "0809.1802",
+      "score": 9.163148,
+      "title": "Automatic Identification and Data Extraction from 2-Dimensional Plots in Digital Documents",
+      "tldr": "This paper addresses the problem of automatically identifying and extracting data from 2-D plots in digital documents, which is crucial for enabling efficient querying and comparison of visual data; it proposes a framework combining image analysis and machine learning to identify 2-D plots, extract axis labels, legend, and data points, and segregate overlapping shapes using simulated annealing; experimental results show accurate segmentation and identification of overlapping data points.",
+      "abstract": "Most search engines index the textual content of documents in digital libraries. However, scholarly articles frequently report important findings in figures for visual impact and the contents of these figures are not indexed. These contents are often invaluable to the researcher in various fields, for the purposes of direct comparison with their own work. Therefore, searching for figures and extracting figure data are important problems. To the best of our knowledge, there exists no tool to automatically extract data from figures in digital documents. If we can extract data from these images automatically and store them in a database, an end-user can query and combine data from multiple digital documents simultaneously and efficiently. We propose a framework based on image analysis and machine learning to extract information from 2-D plot images and store them in a database. The proposed algorithm identifies a 2-D plot and extracts the axis labels, legend and the data points from the 2-D plot. We also segregate overlapping shapes that correspond to different data points. We demonstrate performance of individual algorithms, using a combination of generated and real-life images.",
+      "authors": [
+        {
+          "name": "William Brouwer",
+          "orgs": [
+            "Pennsylvania State University"
+          ]
+        },
+        {
+          "name": "Saurabh Kataria",
+          "orgs": [
+            "Pennsylvania State University"
+          ]
+        },
+        {
+          "name": "Sujatha Das",
+          "orgs": [
+            "Pennsylvania State University"
+          ]
+        },
+        {
+          "name": "Prasenjit Mitra",
+          "orgs": [
+            "Pennsylvania State University"
+          ]
+        },
+        {
+          "name": "C. L. Giles",
+          "orgs": [
+            "Pennsylvania State University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/0809.1802v1",
+      "date": "2008-09-10T14:43:37Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "0907.2235",
+      "score": 9.02207,
+      "title": "Sizes of Lyman-Alpha-Emitting Galaxies and Their Rest-Frame Ultraviolet Components at z=3.1",
+      "tldr": "This paper investigates the rest-frame ultraviolet sizes and component distributions of z=3.1 Lyman-alpha-emitting galaxies, addressing the challenge of classifying high-redshift galaxies with clumpy morphologies; it uses HST images from GEMS, GOODS, and HUDF surveys to analyze galaxy sizes and components, introducing a new pipeline for morphological studies; findings show most LAEs have half-light radii <~2 kpc, with components <~1.5 kpc, and suggest that deeper surveys are needed to resolve these systems fully.",
+      "abstract": "We present a rest-frame ultraviolet analysis of ~120 z~3.1 Lyman Alpha Emitters (LAEs) in the Extended Chandra Deep Field South (ECDF-S). Using Hubble Space Telescope (HST) images taken as part of the Galaxy Evolution From Morphology and SEDS (GEMS) survey, Great Observatories Origins Deep Survey (GOODS), and Hubble Ultradeep Field (HUDF) surveys, we analyze the sizes of LAEs, as well as the spatial distribution of their components, which are defined as distinct clumps of UV-continuum emission. We set an upper limit of ~1 kpc (~0.1\") on the rms offset between the centroids of the continuum and Lyman-alpha emission. The star formation rates of LAE components inferred from the rest-frame ultraviolet continuum range from ~0.1 M_{sun}/yr to ~5$ M_{sun}/yr. A subsample of LAEs with coverage in multiple surveys (at different imaging depths) suggests that one needs a signal-to-noise ratio, S/N>~30, in order to make a robust estimate of the half-light radius of an LAE system. The majority of LAEs have observed half-light radii <~2 kpc, and LAE components typically have observed half-light radii <~1.5 kpc (<~ 0.2\"). Although only ~50% of the detected LAE components are resolved at GOODS depth, the brightest (V<~26.3) are all resolved in both GOODS and GEMS. Since we find little evidence for a correlation between the rest-UV sizes and magnitudes of LAEs, the majority should be resolved in a deeper survey at the ~0.05\" angular resolution of HST. Most of the multi-component LAEs identified in shallow frames become connected in deeper images, suggesting that the majority of the rest-UV \"clumps\" are individual star-forming regions within a single system.",
+      "authors": [
+        {
+          "name": "Nicholas A. Bond",
+          "orgs": []
+        },
+        {
+          "name": "Eric Gawiser",
+          "orgs": [
+            "Rutgers University"
+          ]
+        },
+        {
+          "name": "Caryl Gronwall",
+          "orgs": []
+        },
+        {
+          "name": "Robin Ciardullo",
+          "orgs": [
+            "Pennsylvania State University"
+          ]
+        },
+        {
+          "name": "Martin Altmann",
+          "orgs": [
+            "Rutgers University"
+          ]
+        },
+        {
+          "name": "Kevin Schawinski",
+          "orgs": [
+            "ETH Zurich",
+            "University of Oxford"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/0907.2235v2",
+      "date": "2009-07-13T20:04:12Z",
+      "citation_count": 48,
+      "categories": [
+        "astro-ph.CO",
+        "astro-ph.GA"
+      ]
+    },
+    {
+      "arxiv_id": "1212.0564",
+      "score": 8.982749,
+      "title": "Inside catalogs: a comparison of source extraction software",
+      "tldr": "This paper compares SExtractor with PSFEx and DAOPHOT with ALLSTAR in catalog extraction, addressing the need for reliable and complete source detection in astronomical data; it uses simulated images to evaluate performance, showing SExtractor generates deeper catalogs and better star/galaxy separation with PSF fitting, while DAOPHOT excels in stellar photometry but lacks galaxy characterization; findings indicate SExtractor with PSFEx offers competitive performance for both stars and galaxies, with implications for improving data analysis in large-scale surveys.",
+      "abstract": "The scope of this paper is to compare the catalog extraction performances obtained using the new combination of SExtractor with PSFEx, against the more traditional and diffuse application of DAOPHOT with ALLSTAR; therefore, the paper may provide a guide for the selection of the most suitable catalog extraction software. Both software packages were tested on two kinds of simulated images having, respectively, a uniform spatial distribution of sources and an overdensity in the center. In both cases, SExtractor is able to generate a deeper catalog than DAOPHOT. Moreover, the use of neural networks for object classification plus the novel SPREAD\\_MODEL parameter push down to the limiting magnitude the possibility of star/galaxy separation. DAOPHOT and ALLSTAR provide an optimal solution for point-source photometry in stellar fields and very accurate and reliable PSF photometry, with robust star-galaxy separation. However, they are not useful for galaxy characterization, and do not generate catalogs that are very complete for faint sources. On the other hand, SExtractor, along with the new capability to derive PSF photometry, turns to be competitive and returns accurate photometry also for galaxies. We can assess that the new version of SExtractor, used in conjunction with PSFEx, represents a very powerful software package for source extraction with performances comparable to those of DAOPHOT. Finally, by comparing the results obtained in the case of a uniform and of an overdense spatial distribution of stars, we notice, for both software packages, a decline for the latter case in the quality of the results produced in terms of magnitudes and centroids.",
+      "authors": [
+        {
+          "name": "M. Annunziatella",
+          "orgs": [
+            "Physics Department, Federico II University, via Cinthia 6, I-80126, Napoli, Italy"
+          ]
+        },
+        {
+          "name": "A. Mercurio",
+          "orgs": [
+            "INAF, Astronomical Observatory of Capodimonte, via Moiariello 16, I-80131 Napoli, Italy"
+          ]
+        },
+        {
+          "name": "M. Brescia",
+          "orgs": [
+            "INAF, Astronomical Observatory of Capodimonte, via Moiariello 16, I-80131 Napoli, Italy",
+            "Department of Physics, Federico II University, via Cinthia 6, I-80126, Napoli, Italy"
+          ]
+        },
+        {
+          "name": "S. Cavuoti",
+          "orgs": [
+            "Department of Physics, Federico II University, via Cinthia 6, I-80126, Napoli, Italy"
+          ]
+        },
+        {
+          "name": "G. Longo",
+          "orgs": [
+            "Department of Physics, Federico II University, via Cinthia 6, I-80126, Napoli, Italy",
+            "Visiting associate- Department of Astronomy, California Institute of Technology, CA 90125, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1212.0564v1",
+      "date": "2012-12-03T21:28:22Z",
+      "citation_count": 34,
+      "categories": [
+        "astro-ph.IM"
+      ]
+    },
+    {
+      "arxiv_id": "1807.01987",
+      "score": 8.834972,
+      "title": "Model-based Clustering",
+      "tldr": "This paper addresses the field of cluster analysis, specifically exploring model-based clustering as a probabilistic framework to define cluster shapes and structures, aiming to improve clarity and explicitness in clustering aims compared to heuristic methods; it uses mixture models, particularly Gaussian mixtures, and discusses post-processing techniques for validation and interpretation; findings highlight the flexibility of model-based approaches in handling different cluster characteristics and applications, with examples from hydrology, ocean engineering, and environmental science.",
+      "abstract": "Mixture models extend the toolbox of clustering methods available to the data analyst. They allow for an explicit definition of the cluster shapes and structure within a probabilistic framework and exploit estimation and inference techniques available for statistical models in general. In this chapter an introduction to cluster analysis is provided, model-based clustering is related to standard heuristic clustering methods and an overview on different ways to specify the cluster model is given. Post-processing methods to determine a suitable clustering, infer cluster distribution characteristics and validate the cluster solution are discussed. The versatility of the model-based clustering approach is illustrated by giving an overview on the different areas of applications.",
+      "authors": [],
+      "url": "https://arxiv.org/pdf/1807.01987v1",
+      "date": "2018-07-05T13:26:28Z",
+      "citation_count": 67,
+      "categories": [
+        "stat.ME"
+      ]
+    },
+    {
+      "arxiv_id": "2103.07559",
+      "score": 8.7926445,
+      "title": "Imaging three phases of Iodine on Ag (111) using low-temperature scanning tunneling microscopy",
+      "tldr": "This paper investigates iodine adsorption on Ag (111) surfaces, addressing the complexity of surface structures and their role in on-surface synthesis, by identifying three phases through LT-STM and Fourier analysis, revealing the triangular phase's unique adatom stabilization and reconstruction of the Ag (111) lattice, with implications for templating radical reactions on halogen-passivated substrates.",
+      "abstract": "We investigated the adsorption of iodine on silver (111) in ultra-high vacuum. Using low-temperature scanning tunneling microscopy (LT-STM) measurements we catalog the complex surface structures on the local scale. We identified three distinct phases with increasing iodine coverage which we tentatively associate with three phases previously reported in LEED experiments (sqrt(3)x sqrt(3)R30, \"triangular\", \"hexagonal\"). We used Fourier space and real space analysis to fully characterize each phase. While Fourier analysis most easily connects our measurements to previous LEED studies, the real space inspection reveals local variations in the superstructures of the \"hexagonal\" and \"triangular\" phase. The latter, observed here for the first time by LT-STM, stabilized by one or two adatoms sitting at the center of a rosette-like iodine reconstruction. The most stunning discovery is that variation in the adatom separation of the \"triangular\" phase reconstruct the Ag (111) surface lattice.",
+      "authors": [
+        {
+          "name": "Michael Dreyer",
+          "orgs": [
+            "Department of Physics, University of Maryland, College Park, MD 20742, USA",
+            "Laboratory for Physical Sciences, 8050 Greenmead Drive, College Park, MD 20740, USA"
+          ]
+        },
+        {
+          "name": "Joseph Murray",
+          "orgs": [
+            "Department of Physics, University of Maryland, College Park, MD 20742, USA",
+            "Laboratory for Physical Sciences, 8050 Greenmead Drive, College Park, MD 20740, USA"
+          ]
+        },
+        {
+          "name": "Robert E. Butera",
+          "orgs": [
+            "Department of Physics, University of Maryland, College Park, MD 20742, USA",
+            "Laboratory for Physical Sciences, 8050 Greenmead Drive, College Park, MD 20740, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2103.07559v2",
+      "date": "2021-03-12T22:48:43Z",
+      "citation_count": 3,
+      "categories": [
+        "cond-mat.mtrl-sci"
+      ]
+    },
+    {
+      "arxiv_id": "astro-ph/0310714",
+      "score": 8.788736,
+      "title": "Application of Model Derived Charge Transfer Inefficiency Corrections to STIS Photometric CCD Data",
+      "tldr": "This paper addresses the challenge of Charge Transfer Efficiency (CTE) in STIS CCD data by developing a physical model to correct for charge loss, showing that the model effectively removes CTE trails and agrees with empirical corrections, with discrepancies indicating improved charge distribution prediction over empirical methods.",
+      "abstract": "The STECF Calibration Enhancement effort for the Space Telescope Imaging Spectrograph (STIS) aims to improve data calibration via the application of physical modelling techniques. As part of this effort we have developed a model of the STIS CCD readout process. The model itself is described in some detail in earlier ISRs. Here we consider the application to STIS photometric data. We demonstrate that this approach can successfully remove the trails typically seen in CTE affected data and go on to ask whether this charge is being restored to the cores of detected objects in the correct quantities. We find good agreement between the simulation derived corrections and empirical corrections for a range of background and source levels. Moreover we find that, where the two differ, it is because only the simulation properly accounts for the charge distribution in the array.",
+      "authors": [
+        {
+          "name": "Paul Bristow",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/astro-ph/0310714v1",
+      "date": "2003-10-24",
+      "citation_count": 4,
+      "categories": [
+        "astro-ph"
+      ]
+    },
+    {
+      "arxiv_id": "1104.2880",
+      "score": 8.715319,
+      "title": "Evolution in the Continuum Morphological Properties of Lyman-Alpha-Emitting Galaxies from z=3.1 to z=2.1",
+      "tldr": "This paper investigates the morphological evolution of Lyman-alpha-emitting galaxies from z=3.1 to z=2.1, addressing the question of how their size and structure change with redshift, which is important for understanding galaxy formation and evolution; it uses HST images to measure sizes and component distributions, finding that median half-light radius increases from 1.0 kpc to 1.4 kpc and that LAE size correlates with stellar mass, star formation rate, and dust obscuration; these findings suggest LAEs at z~2 include a diverse population with underlying old stellar components.",
+      "abstract": "We present a rest-frame ultraviolet morphological analysis of 108 z=2.1 Lyman Alpha Emitters (LAEs) in the Extended Chandra Deep Field South (ECDF-S) and compare it to a similar sample of 171 LAEs at z=3.1. Using Hubble Space Telescope (HST) images from the Galaxy Evolution from Morphology and SEDs survey, Great Observatories Origins Deep Survey, and Hubble Ultradeep Field, we measure size and photometric component distributions, where photometric components are defined as distinct clumps of UV-continuum emission. At both redshifts, the majority of LAEs have observed half-light radii <~ 2 kpc, but the median half-light radius rises from 1.0 kpc at z=3.1 to 1.4 kpc at z=2.1. A similar evolution is seen in the sizes of individual rest-UV components, but there is no evidence for evolution in the number of multi-component systems. In the z=2.1 sample, we see clear correlations between the size of an LAE and other physical properties derived from its SED. LAEs are found to be larger for galaxies with higher stellar mass, star formation rate, and dust obscuration, but there is no evidence for a trend between equivalent width and half-light radius at either redshift. The presence of these correlations suggests that a wide range of objects are being selected by LAE surveys at z~2, including a significant fraction of objects for which a massive and moderately extended population of old stars underlies the young starburst giving rise to the Lyman alpha emission.",
+      "authors": [
+        {
+          "name": "Nicholas A. Bond",
+          "orgs": [
+            "Physics and Astronomy Department, Rutgers University, Piscataway, NJ 08854-8019, U.S.A."
+          ]
+        },
+        {
+          "name": "Eric Gawiser",
+          "orgs": [
+            "Physics and Astronomy Department, Rutgers University, Piscataway, NJ 08854-8019, U.S.A."
+          ]
+        },
+        {
+          "name": "Lucia Guaita",
+          "orgs": [
+            "Department of Astronomy, Stockholm University, AlbaNova Science Center, SE-106 91 Stockholm, Sweden"
+          ]
+        },
+        {
+          "name": "Nelson Padilla",
+          "orgs": [
+            "Departamento de Astronomía y Astrofísica, Pontificia Universidad Catolica de Chile, Santiago, Chile"
+          ]
+        },
+        {
+          "name": "Caryl Gronwall",
+          "orgs": [
+            "Department of Astronomy and Astrophysics, Pennsylvania State University, University Park, PA 16802, U.S.A."
+          ]
+        },
+        {
+          "name": "Robin Ciardullo",
+          "orgs": [
+            "Department of Astronomy and Astrophysics, Pennsylvania State University, University Park, PA 16802, U.S.A."
+          ]
+        },
+        {
+          "name": "",
+          "orgs": []
+        },
+        {
+          "name": "Kamson Lai",
+          "orgs": [
+            "University of California Observatoires/Lick Observatory, University of California, Santa Cruz, CA 95064, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1104.2880v1",
+      "date": "2011-04-14T19:27:15Z",
+      "citation_count": 29,
+      "categories": [
+        "astro-ph.CO",
+        "astro-ph.GA"
+      ]
+    },
+    {
+      "arxiv_id": "2311.14419",
+      "score": 8.699141,
+      "title": "Narratives from GPT-derived Networks of News, and a link to Financial Markets Dislocations",
+      "tldr": "This paper introduces a novel framework using GPT3.5 and network analysis to identify topics and narratives in economic news, addressing the gap in systematic and interpretable news analysis; it leverages entity co-occurrence graphs and sentiment proxies to detect financial market dislocations, finding high entropy in news networks correlates with high volatility across asset classes.",
+      "abstract": "Starting from a corpus of economic articles from The Wall Street Journal, we present a novel systematic way to analyse news content that evolves over time. We leverage on state-of-the-art natural language processing techniques (i.e. GPT3.5) to extract the most important entities of each article available, and aggregate co-occurrence of entities in a related graph at the weekly level. Network analysis techniques and fuzzy community detection are tested on the proposed set of graphs, and a framework is introduced that allows systematic but interpretable detection of topics and narratives. In parallel, we propose to consider the sentiment around main entities of an article as a more accurate proxy for the overall sentiment of such piece of text, and describe a case-study to motivate this choice. Finally, we design features that characterise the type and structure of news within each week, and map them to moments of financial markets dislocations. The latter are identified as dates with unusually high volatility across asset classes, and we find quantitative evidence that they relate to instances of high entropy in the high-dimensional space of interconnected news. This result further motivates the pursued efforts to provide a novel framework for the systematic analysis of narratives within news.",
+      "authors": [
+        {
+          "name": "Deborah Miori",
+          "orgs": [
+            "Mathematical Institute, University of Oxford, Oxford, UK",
+            "Oxford-Man Institute of Quantitative Finance, Oxford, UK"
+          ]
+        },
+        {
+          "name": "Constantin Petrov",
+          "orgs": [
+            "Fidelity Investments, London, UK"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2311.14419v1",
+      "date": "2023-11-24T11:35:56Z",
+      "citation_count": 4,
+      "categories": [
+        "econ.GN",
+        "q-fin.CP",
+        "q-fin.EC"
+      ]
+    },
+    {
+      "arxiv_id": "2412.01590",
+      "score": 8.628705,
+      "title": "NCDD: Nearest Centroid Distance Deficit for Out-Of-Distribution Detection in Gastrointestinal Vision",
+      "tldr": "This paper addresses the challenge of out-of-distribution detection in gastrointestinal vision by proposing NCDD, a novel distance-based method that leverages centroid proximity to distinguish in-distribution normal anatomical landmarks from OOD abnormalities, outperforming existing methods across multiple architectures and datasets.",
+      "abstract": "The integration of deep learning tools in gastrointestinal vision holds the potential for significant advancements in diagnosis, treatment, and overall patient care. A major challenge, however, is these tools' tendency to make overconfident predictions, even when encountering unseen or newly emerging disease patterns, undermining their reliability.\n  We address this critical issue of reliability by framing it as an out-of-distribution (OOD) detection problem, where previously unseen and emerging diseases are identified as OOD examples. However, gastrointestinal images pose a unique challenge due to the overlapping feature representations between in- Distribution (ID) and OOD examples. Existing approaches often overlook this characteristic, as they are primarily developed for natural image datasets, where feature distinctions are more apparent. Despite the overlap, we hypothesize that the features of an in-distribution example will cluster closer to the centroids of their ground truth class, resulting in a shorter distance to the nearest centroid. In contrast, OOD examples maintain an equal distance from all class centroids. Based on this observation, we propose a novel nearest-centroid distance deficit (NCCD) score in the feature space for gastrointestinal OOD detection.\n  Evaluations across multiple deep learning architectures and two publicly available benchmarks, Kvasir2 and Gastrovision, demonstrate the effectiveness of our approach compared to several state-of-the-art methods. The code and implementation details are publicly available at: https://github.com/bhattarailab/NCDD",
+      "authors": [
+        {
+          "name": "Sandesh Pokhrel",
+          "orgs": [
+            "Nepal Applied Informatics and Mathematics Institute for Research, Nepal"
+          ]
+        },
+        {
+          "name": "Sanjay Bhandari",
+          "orgs": [
+            "Nepal Applied Informatics and Mathematics Institute for Research, Nepal"
+          ]
+        },
+        {
+          "name": "Sharib Ali",
+          "orgs": [
+            "University of Leeds, UK"
+          ]
+        },
+        {
+          "name": "Tryphon Lambrou",
+          "orgs": [
+            "University of Aberdeen, UK"
+          ]
+        },
+        {
+          "name": "Anh Nguyen",
+          "orgs": [
+            "University of Liverpool, UK"
+          ]
+        },
+        {
+          "name": "Yash Raj Shrestha",
+          "orgs": [
+            "University of Lausanne, Switzerland"
+          ]
+        },
+        {
+          "name": "Angus Watson",
+          "orgs": [
+            "University of Aberdeen, UK"
+          ]
+        },
+        {
+          "name": "Danail Stoyanov",
+          "orgs": [
+            "University College London (UCL), London"
+          ]
+        },
+        {
+          "name": "Prashnna Gyawali",
+          "orgs": [
+            "West Virginia University, USA"
+          ]
+        },
+        {
+          "name": "Binod Bhattarai",
+          "orgs": [
+            "University of Aberdeen, UK"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2412.01590v1",
+      "date": "2024-12-02T15:07:55Z",
+      "citation_count": 3,
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2504.16916",
+      "score": 8.597291,
+      "title": "Zero-shot Sim-to-Real Transfer for Reinforcement Learning-based Visual Servoing of Soft Continuum Arms",
+      "tldr": "This paper presents a reinforcement learning framework for zero-shot sim-to-real transfer in visual servoing of soft continuum arms, decoupling kinematics from mechanical properties with an RL kinematic controller and local controller, achieving 99.8% success in simulation and 67% in real-world deployment, demonstrating robustness and scalability for 3D tasks.",
+      "abstract": "Soft continuum arms (SCAs) soft and deformable nature presents challenges in modeling and control due to their infinite degrees of freedom and non-linear behavior. This work introduces a reinforcement learning (RL)-based framework for visual servoing tasks on SCAs with zero-shot sim-to-real transfer capabilities, demonstrated on a single section pneumatic manipulator capable of bending and twisting. The framework decouples kinematics from mechanical properties using an RL kinematic controller for motion planning and a local controller for actuation refinement, leveraging minimal sensing with visual feedback. Trained entirely in simulation, the RL controller achieved a 99.8% success rate. When deployed on hardware, it achieved a 67% success rate in zero-shot sim-to-real transfer, demonstrating robustness and adaptability. This approach offers a scalable solution for SCAs in 3D visual servoing, with potential for further refinement and expanded applications.",
+      "authors": [
+        {
+          "name": "Hsin-Jung Yang",
+          "orgs": [
+            "Iowa State University"
+          ]
+        },
+        {
+          "name": "Mahsa Khosravi",
+          "orgs": [
+            "Iowa State University"
+          ]
+        },
+        {
+          "name": "Benjamin Walt",
+          "orgs": [
+            "University of Illinois Urbana-Champaign"
+          ]
+        },
+        {
+          "name": "Girish Krishnan",
+          "orgs": [
+            "University of Illinois Urbana-Champaign"
+          ]
+        },
+        {
+          "name": "Soumik Sarkar",
+          "orgs": [
+            "Iowa State University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2504.16916v1",
+      "date": "2025-04-23T17:41:55Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.RO",
+        "cs.SY",
+        "eess.SY"
+      ]
+    },
+    {
+      "arxiv_id": "2304.13124",
+      "score": 8.594011,
+      "title": "Azimuthal backflow in light carrying orbital angular momentum",
+      "tldr": "This paper investigates azimuthal backflow in light carrying orbital angular momentum, addressing the gap in observing quantum backflow in two dimensions by demonstrating positive local OAM in dark fringes of interference patterns of negative OAM beams, contributing to understanding light-matter interactions and advancing quantum backflow experiments.",
+      "abstract": "M.V. Berry's work [J. Phys. A: Math. Theor. 43, 415302 (2010)] highlighted the correspondence between backflow in quantum mechanics and superoscillations in waves. Superoscillations refer to situations where the local oscillation of a superposition is faster than its fastest Fourier component. This concept has been used to demonstrate backflow in transverse linear momentum for optical waves. In this work, we examine the interference of classical light carrying only negative orbital angular momentum and observe in the dark fringes of such an interference, positive local orbital angular momentum. This finding may have implications for the studies of light-matter interaction and represents a step towards observing quantum backflow in two dimensions.",
+      "authors": [
+        {
+          "name": "Bohnishikha Ghosh",
+          "orgs": [
+            "Institute of Experimental Physics, Faculty of Physics, University of Warsaw, Ludwika Pasteura 5, 02-093 Warsaw, Poland"
+          ]
+        },
+        {
+          "name": "Anat Daniel",
+          "orgs": [
+            "Institute of Experimental Physics, Faculty of Physics, University of Warsaw, Ludwika Pasteura 5, 02-093 Warsaw, Poland"
+          ]
+        },
+        {
+          "name": "Bernard Gorzkowski",
+          "orgs": [
+            "Institute of Experimental Physics, Faculty of Physics, University of Warsaw, Ludwika Pasteura 5, 02-093 Warsaw, Poland"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2304.13124v1",
+      "date": "2023-04-25T19:59:08Z",
+      "citation_count": 12,
+      "categories": [
+        "physics.app-ph",
+        "physics.optics",
+        "quant-ph"
+      ]
+    },
+    {
+      "arxiv_id": "1704.06687",
+      "score": 8.566404,
+      "title": "Scatteract: Automated extraction of data from scatter plots",
+      "tldr": "This paper addresses the challenge of automatically extracting numerical data from scatter plots, aiming to facilitate further analysis by converting pixel coordinates to chart coordinates; it uses deep learning for object detection and OCR combined with robust regression for coordinate mapping, introducing a fully automated system that achieves 89% success in data extraction; the findings demonstrate effective data retrieval with robustness to OCR errors, advancing automated chart analysis and enabling broader applications in data processing and visualization.",
+      "abstract": "Charts are an excellent way to convey patterns and trends in data, but they do not facilitate further modeling of the data or close inspection of individual data points. We present a fully automated system for extracting the numerical values of data points from images of scatter plots. We use deep learning techniques to identify the key components of the chart, and optical character recognition together with robust regression to map from pixels to the coordinate system of the chart. We focus on scatter plots with linear scales, which already have several interesting challenges. Previous work has done fully automatic extraction for other types of charts, but to our knowledge this is the first approach that is fully automatic for scatter plots. Our method performs well, achieving successful data extraction on 89% of the plots in our test set.",
+      "authors": [
+        {
+          "name": "Mathieu Cliche",
+          "orgs": []
+        },
+        {
+          "name": "David Rosenberg",
+          "orgs": []
+        },
+        {
+          "name": "Dhruv Madeka",
+          "orgs": []
+        },
+        {
+          "name": "Connie Yee",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1704.06687v1",
+      "date": "2017-04-21T19:25:32Z",
+      "citation_count": 75,
+      "categories": [
+        "cs.CV",
+        "cs.IR",
+        "stat.ML"
+      ]
+    },
+    {
+      "arxiv_id": "2206.05365",
+      "score": 8.549659,
+      "title": "Object Detection, Recognition, Deep Learning, and the Universal Law of Generalization",
+      "tldr": "This paper investigates how deep neural networks replicate biological generalization principles in object detection and recognition, proposing that internal representations reflect environmental invariances rather than system-specific properties; it introduces a method using camouflaged and clear animal images to test the Universal Law of Generalization, finding monotonic-decreasing generalization functions similar to biological systems; results support the hypothesis that such internal representations are shaped by natural constraints rather than specific neural mechanisms.",
+      "abstract": "Object detection and recognition are fundamental functions underlying the success of species. Because the appearance of an object exhibits a large variability, the brain has to group these different stimuli under the same object identity, a process of generalization. Does the process of generalization follow some general principles or is it an ad-hoc \"bag-of-tricks\"? The Universal Law of Generalization provided evidence that generalization follows similar properties across a variety of species and tasks. Here we test the hypothesis that the internal representations underlying generalization reflect the natural properties of object detection and recognition in our environment rather than the specifics of the system solving these problems. By training a deep-neural-network with images of \"clear\" and \"camouflaged\" animals, we found that with a proper choice of category prototypes, the generalization functions are monotone decreasing, similar to the generalization functions of biological systems. Our findings support the hypothesis of the study.",
+      "authors": [],
+      "url": "https://arxiv.org/pdf/2206.05365v1",
+      "date": "2022-06-10T22:26:29Z",
+      "citation_count": 2,
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG",
+        "cs.NE"
+      ]
+    },
+    {
+      "arxiv_id": "2208.10524",
+      "score": 8.530025,
+      "title": "Locations and Morphologies of Jellyfish Galaxies in A2744 and A370",
+      "tldr": "This paper investigates ram-pressure stripped galaxies in A2744 and A370, exploring their phase space locations and morphologies to understand their environmental interactions and evolution, as these galaxies provide insights into the mechanisms of galaxy quenching and cluster dynamics. It uses MUSE integral-field spectroscopy and HST imaging to analyze 13 stripped galaxies, finding that those in A2744 are within a high-velocity substructure, while those in A370 are isolated infallers, with stripped galaxies showing distinct morphologies compared to cluster populations.",
+      "abstract": "We present a study of the orbits, environments and morphologies of 13 ram-pressure stripped galaxies in the massive, intermediate redshift (z$\\sim0.3-0.4$) galaxy clusters A2744 and A370, using MUSE integral-field spectroscopy and HST imaging from the Frontier Fields Program. We compare different measures of the locations and morphologies of the stripped sample with a sample of 6 poststarburst galaxies identified within the same clusters, as well as the general cluster population. We calculate the phase space locations of all cluster galaxies and carry out a substructure analysis, finding that the ram-pressure stripped galaxies in A370 are not associated with any substructures, but are likely isolated infalling galaxies. In contrast, the ram-pressure stripped galaxies in A2744 are strictly located within a high-velocity substructure, moving through a region of dense X-ray emitting gas. We conclude that their ram-pressure interactions are likely to be the direct result of the merger between two components of the cluster. Finally, we study the morphologies of the stripped and poststarburst galaxies, using numerical measures to quantify the level of visual disturbances. We explore any morphological deviations of these galaxies from the cluster population, particularly the weaker cases which have been confirmed via the presence of ionised gas tails to be undergoing ram-pressure stripping, but are not strongly visually disturbed in the broad-band data. We find that the stripped sample galaxies are generally divergent from the general cluster sample, with poststarburst galaxies being intermediary in morphology between stripped galaxies and red passive cluster members.",
+      "authors": [
+        {
+          "name": "Callum Bellhouse",
+          "orgs": [
+            "INAF-Padova Astronomical Observatory, Vicolo dell’Osservatorio 5, I-35122 Padova, Italy"
+          ]
+        },
+        {
+          "name": "Bianca Poggianti",
+          "orgs": [
+            "INAF-Padova Astronomical Observatory, Vicolo dell’Osservatorio 5, I-35122 Padova, Italy"
+          ]
+        },
+        {
+          "name": "Alessia Moretti",
+          "orgs": [
+            "INAF-Padova Astronomical Observatory, Vicolo dell’Osservatorio 5, I-35122 Padova, Italy"
+          ]
+        },
+        {
+          "name": "Ariel Werle",
+          "orgs": [
+            "INAF-Padova Astronomical Observatory",
+            "Vicolo dell’Osservatorio 5, I-35122 Padova, Italy"
+          ]
+        },
+        {
+          "name": "Marco Gullieuszik",
+          "orgs": [
+            "INAF-Padova Astronomical Observatory",
+            "Vicolo dell’Osservatorio 5, I-35122 Padova, Italy"
+          ]
+        },
+        {
+          "name": "Mario Radovich",
+          "orgs": [
+            "INAF-Padova Astronomical Observatory",
+            "Vicolo dell’Osservatorio 5, I-35122 Padova, Italy"
+          ]
+        },
+        {
+          "name": "Yara Jaffé",
+          "orgs": [
+            "Instituto de Física y Astronomía, Universidad de Valparaíso, Avda. Gran Bretaña 1111 Valparaíso, Chile"
+          ]
+        },
+        {
+          "name": "Jacopo Fritz",
+          "orgs": [
+            "Instituto de Radioastronomia y Astrofisica, UNAM, Campus Morelia, AP 3-72, CP 58089, Mexico"
+          ]
+        },
+        {
+          "name": "Alessandro Ignesti",
+          "orgs": [
+            "INAF-Padova Astronomical Observatory, Vicolo dell’Osservatorio 5, I-35122 Padova, Italy"
+          ]
+        },
+        {
+          "name": "Cecilia Bacchini",
+          "orgs": [
+            "INAF-Padova Astronomical Observatory, Vicolo dell’Osservatorio 5, I-35122 Padova, Italy"
+          ]
+        },
+        {
+          "name": "Johan Richard",
+          "orgs": [
+            "Univ Lyon, Univ Lyon1, Ens de Lyon, CNRS, Centre de Recherche Astrophysique de Lyon UMR5574, F-69230, Saint-Genis-Laval, France"
+          ]
+        },
+        {
+          "name": "Geneviève Soucail",
+          "orgs": [
+            "Institut de Recherche en Astrophysique et Planétologie (IRAP), Université de Toulouse, CNRS, UPS, CNES,14 Av. Edouard Belin, 31400 Toulouse, France"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2208.10524v1",
+      "date": "2022-08-22T18:07:13Z",
+      "citation_count": 2,
+      "categories": [
+        "astro-ph.GA"
+      ]
+    },
+    {
+      "arxiv_id": "0906.3486",
+      "score": 8.485287,
+      "title": "Tools for discovering and characterizing extrasolar planets",
+      "tldr": "This paper addresses the challenge of detecting and characterizing extrasolar planets through photometric surveys, focusing on developing high-precision software for data reduction in large field-of-view astronomical images, contributing to the discovery of 10+ confirmed planets via the HATNet project, and highlighting the importance of accurate photometry for identifying transiting planets with precise orbital and physical properties.",
+      "abstract": "Among the group of extrasolar planets, transiting planets provide a great opportunity to obtain direct measurements for the basic physical properties, such as mass and radius of these objects. These planets are therefore highly important in the understanding of the evolution and formation of planetary systems: from the observations of photometric transits, the interior structure of the planet and atmospheric properties can also be constrained. The most efficient way to search for transiting extrasolar planets is based on wide-field surveys by hunting for short and shallow periodic dips in light curves covering quite long time intervals. These surveys monitor fields with several degrees in diameter and tens or hundreds of thousands of objects simultaneously. In the practice of astronomical observations, surveys of large field-of-view are rather new and therefore require special methods for photometric data reduction that have not been used before. In this PhD thesis, I summarize my efforts related to the development of a complete software solution for high precision photometric reduction of astronomical images. I also demonstrate the role of this newly developed package and the related algorithms in the case of particular discoveries of the HATNet project. [abridged]",
+      "authors": [],
+      "url": "https://arxiv.org/pdf/0906.3486v1",
+      "date": "2009-06-18T17:52:41Z",
+      "citation_count": 28,
+      "categories": [
+        "astro-ph.EP",
+        "astro-ph.IM"
+      ]
+    },
+    {
+      "arxiv_id": "2304.13425",
+      "score": 6.9862194,
+      "title": "Learnable Ophthalmology SAM",
+      "tldr": "This paper addresses the challenge of multi-modal ophthalmology image segmentation by proposing a learnable prompt layer for Segment Anything (SAM), improving segmentation accuracy across four tasks on nine datasets with one-shot fine-tuning, and demonstrating its generalization ability across different modalities and datasets.",
+      "abstract": "Segmentation is vital for ophthalmology image analysis. But its various modal images hinder most of the existing segmentation algorithms applications, as they rely on training based on a large number of labels or hold weak generalization ability. Based on Segment Anything (SAM), we propose a simple but effective learnable prompt layer suitable for multiple target segmentation in ophthalmology multi-modal images, named Learnable Ophthalmology Segment Anything (SAM). The learnable prompt layer learns medical prior knowledge from each transformer layer. During training, we only train the prompt layer and task head based on a one-shot mechanism. We demonstrate the effectiveness of our thought based on four medical segmentation tasks based on nine publicly available datasets. Moreover, we only provide a new improvement thought for applying the existing fundamental CV models in the medical field. Our codes are available at \\href{https://github.com/Qsingle/LearnablePromptSAM}{website}.",
+      "authors": [
+        {
+          "name": "Zhongxi Qiu",
+          "orgs": [
+            "Research Institute of Trustworthy Autonomous Systems",
+            "Department of Computer Science and Engineering, Southern University of Science and Technology, Shenzhen 518055, China"
+          ]
+        },
+        {
+          "name": "Yan Hu",
+          "orgs": [
+            "Research Institute of Trustworthy Autonomous Systems",
+            "Department of Computer Science and Engineering, Southern University of Science and Technology, Shenzhen 518055, China"
+          ]
+        },
+        {
+          "name": "Heng Li",
+          "orgs": [
+            "Research Institute of Trustworthy Autonomous Systems",
+            "Department of Computer Science and Engineering, Southern University of Science and Technology, Shenzhen 518055, China"
+          ]
+        },
+        {
+          "name": "Jiang Liu",
+          "orgs": [
+            "Research Institute of Trustworthy Autonomous Systems",
+            "Department of Computer Science and Engineering, Southern University of Science and Technology, Shenzhen 518055, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2304.13425v1",
+      "date": "2023-04-26T10:14:03Z",
+      "citation_count": 35,
+      "categories": [
+        "cs.CV"
+      ]
+    }
+  ]
+}

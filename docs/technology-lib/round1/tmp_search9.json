@@ -1,0 +1,729 @@
+{
+  "status": "success",
+  "total_count": 50,
+  "result": [
+    {
+      "arxiv_id": "1704.06687",
+      "score": 11.827475,
+      "title": "Scatteract: Automated extraction of data from scatter plots",
+      "tldr": "This paper addresses the challenge of automatically extracting numerical data from scatter plots, aiming to facilitate further analysis by converting pixel coordinates to chart coordinates; it uses deep learning for object detection and OCR combined with robust regression for coordinate mapping, introducing a fully automated system that achieves 89% success in data extraction; the findings demonstrate effective data retrieval with robustness to OCR errors, advancing automated chart analysis and enabling broader applications in data processing and visualization.",
+      "abstract": "Charts are an excellent way to convey patterns and trends in data, but they do not facilitate further modeling of the data or close inspection of individual data points. We present a fully automated system for extracting the numerical values of data points from images of scatter plots. We use deep learning techniques to identify the key components of the chart, and optical character recognition together with robust regression to map from pixels to the coordinate system of the chart. We focus on scatter plots with linear scales, which already have several interesting challenges. Previous work has done fully automatic extraction for other types of charts, but to our knowledge this is the first approach that is fully automatic for scatter plots. Our method performs well, achieving successful data extraction on 89% of the plots in our test set.",
+      "authors": [
+        {
+          "name": "Mathieu Cliche",
+          "orgs": []
+        },
+        {
+          "name": "David Rosenberg",
+          "orgs": []
+        },
+        {
+          "name": "Dhruv Madeka",
+          "orgs": []
+        },
+        {
+          "name": "Connie Yee",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1704.06687v1",
+      "date": "2017-04-21T19:25:32Z",
+      "citation_count": 75,
+      "categories": [
+        "cs.CV",
+        "cs.IR",
+        "stat.ML"
+      ]
+    },
+    {
+      "arxiv_id": "1906.09460",
+      "score": 11.042837,
+      "title": "Effective Estimation of Contact Force and Torque for Vision-based Tactile Sensor with Helmholtz-Hodge Decomposition",
+      "tldr": "This paper addresses the challenge of estimating contact force and torque from vision-based tactile sensors, proposing a method using Helmholtz-Hodge Decomposition to decompose displacement fields into components for accurate estimation; it introduces displacement field patterns under single-axial loads and presents a data-efficient, low-complexity approach; experiments show reduced prediction error and variance, enhancing grasp stability visualization and control.",
+      "abstract": "Retrieving rich contact information from robotic tactile sensing has been a challenging, yet significant task for the effective perception of object properties that the robot interacts with. This work is dedicated to developing an algorithm to estimate contact force and torque for vision-based tactile sensors. We first introduce the observation of the contact deformation patterns of hyperelastic materials under ideal single-axial loads in simulation. Then based on the observation, we propose a method of estimating surface forces and torque from the contact deformation vector field with the Helmholtz-Hodge Decomposition (HHD) algorithm. Extensive experiments of calibration and baseline comparison are followed to verify the effectiveness of the proposed method in terms of prediction error and variance. The proposed algorithm is further integrated into a contact force visualization module as well as a closed-loop adaptive grasp force control framework and is shown to be useful in both visualization of contact stability and minimum force grasping task.",
+      "authors": [
+        {
+          "name": "Yazhan Zhang",
+          "orgs": []
+        },
+        {
+          "name": "Zicheng Kan",
+          "orgs": []
+        },
+        {
+          "name": "Yang Yang",
+          "orgs": []
+        },
+        {
+          "name": "Yu Alexander Tse",
+          "orgs": []
+        },
+        {
+          "name": "Michael Yu Wang",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1906.09460v1",
+      "date": "2019-06-22T15:19:26Z",
+      "citation_count": 63,
+      "categories": [
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2112.09357",
+      "score": 10.868518,
+      "title": "Interpreting Audiograms with Multi-stage Neural Networks",
+      "tldr": "This paper addresses the challenge of accurately interpreting audiograms to extract precise hearing level data, which is crucial for tuning hearing aids; it proposes a Multi-stage Audiogram Interpretation Network (MAIN) with three stages for detection, rectification, and coordinate projection, achieving 84% test accuracy and 94% of tuples within ±5 dB HL error; this method enables reliable automated audiogram interpretation, improving accessibility and efficiency in hearing aid fitting.",
+      "abstract": "Audiograms are a particular type of line charts representing individuals' hearing level at various frequencies. They are used by audiologists to diagnose hearing loss, and further select and tune appropriate hearing aids for customers. There have been several projects such as Autoaudio that aim to accelerate this process through means of machine learning. But all existing models at their best can only detect audiograms in images and classify them into general categories. They are unable to extract hearing level information from detected audiograms by interpreting the marks, axis, and lines. To address this issue, we propose a Multi-stage Audiogram Interpretation Network (MAIN) that directly reads hearing level data from photos of audiograms. We also established Open Audiogram, an open dataset of audiogram images with annotations of marks and axes on which we trained and evaluated our proposed model. Experiments show that our model is feasible and reliable.",
+      "authors": [
+        {
+          "name": "Shufan Li",
+          "orgs": [
+            "Orka Labs Inc."
+          ]
+        },
+        {
+          "name": "Congxi Lu",
+          "orgs": [
+            "Orka Labs Inc."
+          ]
+        },
+        {
+          "name": "Linkai Li",
+          "orgs": [
+            "Orka Labs Inc."
+          ]
+        },
+        {
+          "name": "Jirong Duan",
+          "orgs": [
+            "ENT&Audiology Center",
+            "Xinhua Hospital*",
+            "&Punan Hospital"
+          ]
+        },
+        {
+          "name": "Xinping Fu",
+          "orgs": [
+            "Ear Institute",
+            "University College London"
+          ]
+        },
+        {
+          "name": "Haoshuai Zhou",
+          "orgs": [
+            "Orka Labs Inc."
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2112.09357v1",
+      "date": "2021-12-17T07:27:39Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.CV",
+        "cs.SD",
+        "eess.AS"
+      ]
+    },
+    {
+      "arxiv_id": "2109.09704",
+      "score": 10.321672,
+      "title": "BabelCalib: A Universal Approach to Calibrating Central Cameras",
+      "tldr": "This paper addresses the challenge of calibrating central cameras with wide fields of view, where existing methods fail due to non-linearity and poor initial guesses; it introduces a back-projection model solver followed by regression for target forward models, providing accurate calibration parameters and improving corner detection; extensive experiments show reliable and accurate results on absolute pose estimation tasks.",
+      "abstract": "Existing calibration methods occasionally fail for large field-of-view cameras due to the non-linearity of the underlying problem and the lack of good initial values for all parameters of the used camera model. This might occur because a simpler projection model is assumed in an initial step, or a poor initial guess for the internal parameters is pre-defined. A lot of the difficulties of general camera calibration lie in the use of a forward projection model. We side-step these challenges by first proposing a solver to calibrate the parameters in terms of a back-projection model and then regress the parameters for a target forward model. These steps are incorporated in a robust estimation framework to cope with outlying detections. Extensive experiments demonstrate that our approach is very reliable and returns the most accurate calibration parameters as measured on the downstream task of absolute pose estimation on test sets. The code is released at https://github.com/ylochman/babelcalib.",
+      "authors": [
+        {
+          "name": "Yaroslava Lochman",
+          "orgs": [
+            "Chalmers University of Technology",
+            "Facebook Reality Labs"
+          ]
+        },
+        {
+          "name": "Kostiantyn Liepieshov",
+          "orgs": [
+            "Ukrainian Catholic University"
+          ]
+        },
+        {
+          "name": "Jianhui Chen",
+          "orgs": [
+            "Facebook Reality Labs"
+          ]
+        },
+        {
+          "name": "Michal Perdoch",
+          "orgs": [
+            "Facebook Reality Labs"
+          ]
+        },
+        {
+          "name": "Christopher Zach",
+          "orgs": [
+            "Chalmers University of Technology"
+          ]
+        },
+        {
+          "name": "James Pritts",
+          "orgs": [
+            "Chalmers University of Technology"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2109.09704v3",
+      "date": "2021-09-20T17:21:57Z",
+      "citation_count": 20,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2007.06059",
+      "score": 9.959937,
+      "title": "It Is Likely That Your Loss Should be a Likelihood",
+      "tldr": "This paper addresses the limitations of fixed-loss functions in probabilistic modeling by proposing adaptive likelihood parameters that allow flexible optimization of loss scales and shapes, contributing new self-tuning losses, robust models, and adaptive regularizers, finding that joint optimization improves generalization and outlier robustness.",
+      "abstract": "Many common loss functions such as mean-squared-error, cross-entropy, and reconstruction loss are unnecessarily rigid. Under a probabilistic interpretation, these common losses correspond to distributions with fixed shapes and scales. We instead argue for optimizing full likelihoods that include parameters like the normal variance and softmax temperature. Joint optimization of these \"likelihood parameters\" with model parameters can adaptively tune the scales and shapes of losses in addition to the strength of regularization. We explore and systematically evaluate how to parameterize and apply likelihood parameters for robust modeling, outlier-detection, and re-calibration. Additionally, we propose adaptively tuning $L_2$ and $L_1$ weights by fitting the scale parameters of normal and Laplace priors and introduce more flexible element-wise regularizers.",
+      "authors": [
+        {
+          "name": "Mark Hamilton",
+          "orgs": [
+            "MIT",
+            "Microsoft"
+          ]
+        },
+        {
+          "name": "Evan Shelhamer",
+          "orgs": [
+            "MIT",
+            "Adobe Research"
+          ]
+        },
+        {
+          "name": "William T. Freeman",
+          "orgs": [
+            "MIT",
+            "Google"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2007.06059v2",
+      "date": "2020-07-12T18:25:17Z",
+      "citation_count": 8,
+      "categories": [
+        "cs.CV",
+        "cs.LG",
+        "stat.ML"
+      ]
+    },
+    {
+      "arxiv_id": "2009.02491",
+      "score": 9.818268,
+      "title": "Reverse-engineering Bar Charts Using Neural Networks",
+      "tldr": "This paper addresses the problem of reverse-engineering bar charts to extract textual and numeric information, which is crucial for applications requiring underlying data; it proposes a neural network-based method combining Faster-RCNN for textual extraction and an encoder-decoder framework with attention mechanism for numeric extraction, achieving F1 scores of 0.89 and 0.80, and accuracies of 0.91 and 0.78 on synthetic and real-world datasets respectively.",
+      "abstract": "Reverse-engineering bar charts extracts textual and numeric information from the visual representations of bar charts to support application scenarios that require the underlying information. In this paper, we propose a neural network-based method for reverse-engineering bar charts. We adopt a neural network-based object detection model to simultaneously localize and classify textual information. This approach improves the efficiency of textual information extraction. We design an encoder-decoder framework that integrates convolutional and recurrent neural networks to extract numeric information. We further introduce an attention mechanism into the framework to achieve high accuracy and robustness. Synthetic and real-world datasets are used to evaluate the effectiveness of the method. To the best of our knowledge, this work takes the lead in constructing a complete neural network-based method of reverse-engineering bar charts.",
+      "authors": [
+        {
+          "name": "Fangfang Zhou",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yong Zhao",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Wenjiang Chen",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yijing Tan",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yaqi Xu",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China"
+          ]
+        },
+        {
+          "name": "Yi Chen",
+          "orgs": [
+            "Beijing Key Laboratory of Big Data Technology for Food Safety, Beijing Technology and Business University, Beijing, China"
+          ]
+        },
+        {
+          "name": "Chao Liu",
+          "orgs": [
+            "Institute of Systems Engineering, Academy of Military Sciences, Beijing, China"
+          ]
+        },
+        {
+          "name": "Ying Zhao",
+          "orgs": [
+            "School of Computer Science and Engineer, Central South University, Changsha, China",
+            "Rail Data Research and Application Key Laboratory of Hunan Province, Changsha, China"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2009.02491v1",
+      "date": "2020-09-05T08:14:35Z",
+      "citation_count": 34,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "1912.06464",
+      "score": 9.654978,
+      "title": "Least-squares Optimal Relative Planar Motion for Vehicle-mounted Cameras",
+      "tldr": "This paper addresses the problem of estimating relative planar motion between two calibrated cameras, specifically for vehicle-mounted systems, by proposing a closed-form least-squares solver that optimally handles over-determined cases with at least three point correspondences, offering superior geometric accuracy without compromising processing time; the method formulates the problem as minimizing a quadratic cost function, resulting in a 6th-degree polynomial whose roots provide potential solutions; the approach outperforms existing methods in synthetic and real-world datasets, demonstrating its effectiveness in improving motion estimation for autonomous vehicle applications.",
+      "abstract": "A new closed-form solver is proposed minimizing the algebraic error optimally, in the least-squares sense, to estimate the relative planar motion of two calibrated cameras. The main objective is to solve the over-determined case, i.e., when a larger-than-minimal sample of point correspondences is given - thus, estimating the motion from at least three correspondences. The algorithm requires the camera movement to be constrained to a plane, e.g. mounted to a vehicle, and the image plane to be orthogonal to the ground. The solver obtains the motion parameters as the roots of a 6-th degree polynomial. It is validated both in synthetic experiments and on publicly available real-world datasets that using the proposed solver leads to results superior to the state-of-the-art in terms of geometric accuracy with no noticeable deterioration in the processing time.",
+      "authors": [
+        {
+          "name": "Levente Hajder",
+          "orgs": [
+            "Department of Algorithms and their Applications, Eotvos Lorand University, Budapest, Hungary",
+            "Thematic Excellence Programme, Industry and Digitization Subprogramme, NRDI Office, 2019",
+            "EFOP-3.6.3-VEKOP-16-2017-00001: Talent Management in Autonomous Vehicle Control Technologies, Hungarian Government and co-financed by the European Social Fund"
+          ]
+        },
+        {
+          "name": "Daniel Barath",
+          "orgs": [
+            "Visual Recognition Group, Department of Cybernetics, Czech Technical University in Prague, Czech Republic",
+            "Machine Perception Research Laboratory, MTA SZTAKI, Budapest, Hungary",
+            "OP VVV project CZ.02.1.01/0.0/0.0/16019/000076 Research Center for Informatics",
+            "Hungarian Scientific Research Fund (No. NKFIH OTKA KH-126513 and K-120499)"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1912.06464v1",
+      "date": "2019-12-13T13:26:27Z",
+      "citation_count": 5,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2011.07138",
+      "score": 9.651673,
+      "title": "Tracking Algorithms for TPCs using Consensus-Based Robust Estimators",
+      "tldr": "This paper presents a tracking algorithm using consensus-robust estimators for Time Projection Chambers, addressing the challenge of accurate inlier-outlier detection in particle tracking; it improves upon RANSAC with modified random sampling and clustering, offering better performance in fitting short tracks; experimental results show successful application across AT-TPC, ACTAR, and TexAT detectors.",
+      "abstract": "A tracking algorithm based on consensus-robust estimators was implemented for the analysis of experiments with time-projection chambers. In this work, few algorithms beyond RANSAC were successfully tested using experimental data taken with the AT-TPC, ACTAR and TexAT detectors. The present tracking algorithm has a better inlier-outlier detection than the simple sequential RANSAC routine. Modifications in the random sampling and clustering were included to improve the tracking efficiency. Very good results were obtained in all the test cases, in particular for fitting short tracks in the detection limit.",
+      "authors": [
+        {
+          "name": "J. C. Zamora",
+          "orgs": [
+            "Instituto de Fisica, Universidade de Sao Paulo, Sao Paulo 05508-090, Brazil"
+          ]
+        },
+        {
+          "name": "G. F. Fortino",
+          "orgs": [
+            "Instituto de Fisica, Universidade de Sao Paulo, Sao Paulo 05508-090, Brazil"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2011.07138v1",
+      "date": "2020-11-13T21:43:33Z",
+      "citation_count": 12,
+      "categories": [
+        "nucl-ex",
+        "physics.comp-ph",
+        "physics.data-an",
+        "physics.ins-det"
+      ]
+    },
+    {
+      "arxiv_id": "2409.06704",
+      "score": 9.535934,
+      "title": "GeoCalib: Learning Single-image Calibration with Geometric Optimization",
+      "tldr": "This paper introduces GeoCalib, a deep neural network that combines geometric optimization with deep learning to estimate camera parameters from single images, addressing the limitations of classical methods in unstructured environments and the generalization issues of learned approaches; it leverages 3D geometry through an end-to-end optimization process, achieving higher robustness and accuracy than existing methods; experiments show GeoCalib outperforms classical and learned approaches, with improved interpretability and failure detection capabilities.",
+      "abstract": "From a single image, visual cues can help deduce intrinsic and extrinsic camera parameters like the focal length and the gravity direction. This single-image calibration can benefit various downstream applications like image editing and 3D mapping. Current approaches to this problem are based on either classical geometry with lines and vanishing points or on deep neural networks trained end-to-end. The learned approaches are more robust but struggle to generalize to new environments and are less accurate than their classical counterparts. We hypothesize that they lack the constraints that 3D geometry provides. In this work, we introduce GeoCalib, a deep neural network that leverages universal rules of 3D geometry through an optimization process. GeoCalib is trained end-to-end to estimate camera parameters and learns to find useful visual cues from the data. Experiments on various benchmarks show that GeoCalib is more robust and more accurate than existing classical and learned approaches. Its internal optimization estimates uncertainties, which help flag failure cases and benefit downstream applications like visual localization. The code and trained models are publicly available at https://github.com/cvg/GeoCalib.",
+      "authors": [
+        {
+          "name": "Alexander Veicht",
+          "orgs": []
+        },
+        {
+          "name": "Paul-Edouard Sarlin",
+          "orgs": []
+        },
+        {
+          "name": "Philipp Lindenberger",
+          "orgs": []
+        },
+        {
+          "name": "Marc Pollefeys",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2409.06704v2",
+      "date": "2024-09-10T17:59:55Z",
+      "citation_count": 29,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2501.11088",
+      "score": 9.526269,
+      "title": "Multi-LiCa: A Motion and Targetless Multi LiDAR-to-LiDAR Calibration Framework",
+      "tldr": "This paper presents a motion- and targetless multi-LiDAR-to-LiDAR calibration framework (Multi-LiCa) addressing the challenge of calibrating LiDARs with no common FOV overlap, which is critical for accurate perception in autonomous vehicles; it proposes a two-step approach combining feature-based matching and GICP for coarse alignment and fine registration, along with a cost-based matching strategy and a LiDAR-to-Ground calibration method; experimental results show Multi-LiCa achieves comparable or better calibration accuracy than existing methods across various sensor setups.",
+      "abstract": "Today's autonomous vehicles rely on a multitude of sensors to perceive their environment. To improve the perception or create redundancy, the sensor's alignment relative to each other must be known. With Multi-LiCa, we present a novel approach for the alignment, e.g. calibration. We present an automatic motion- and targetless approach for the extrinsic multi LiDAR-to-LiDAR calibration without the need for additional sensor modalities or an initial transformation input. We propose a two-step process with feature-based matching for the coarse alignment and a GICP-based fine registration in combination with a cost-based matching strategy. Our approach can be applied to any number of sensors and positions if there is a partial overlap between the field of view of single sensors. We show that our pipeline is better generalized to different sensor setups and scenarios and is on par or better in calibration accuracy than existing approaches. The presented framework is integrated in ROS 2 but can also be used as a standalone application. To build upon our work, our source code is available at: https://github.com/TUMFTM/Multi_LiCa.",
+      "authors": [
+        {
+          "name": "Dominik Kulmer",
+          "orgs": []
+        },
+        {
+          "name": "Ilir Tahiraj",
+          "orgs": []
+        },
+        {
+          "name": "Andrii Chumak",
+          "orgs": []
+        },
+        {
+          "name": "Markus Lienkamp",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2501.11088v1",
+      "date": "2025-01-19T15:56:04Z",
+      "citation_count": 8,
+      "categories": [
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2404.06337",
+      "score": 9.457714,
+      "title": "Matching 2D Images in 3D: Metric Relative Pose from Metric Correspondences",
+      "tldr": "This paper introduces MicKey, a method for estimating metric relative pose between images using 3D metric keypoint correspondences, addressing the challenge of scale-ambiguous pose estimation in augmented reality applications; it proposes a neural network that predicts 3D keypoints and descriptors from 2D images and uses end-to-end training with relative pose supervision, achieving state-of-the-art performance on the Map-Free Relocalisation benchmark.",
+      "abstract": "Given two images, we can estimate the relative camera pose between them by establishing image-to-image correspondences. Usually, correspondences are 2D-to-2D and the pose we estimate is defined only up to scale. Some applications, aiming at instant augmented reality anywhere, require scale-metric pose estimates, and hence, they rely on external depth estimators to recover the scale. We present MicKey, a keypoint matching pipeline that is able to predict metric correspondences in 3D camera space. By learning to match 3D coordinates across images, we are able to infer the metric relative pose without depth measurements. Depth measurements are also not required for training, nor are scene reconstructions or image overlap information. MicKey is supervised only by pairs of images and their relative poses. MicKey achieves state-of-the-art performance on the Map-Free Relocalisation benchmark while requiring less supervision than competing approaches.",
+      "authors": [
+        {
+          "name": "Axel Barroso-Laguna",
+          "orgs": [
+            "Niantic"
+          ]
+        },
+        {
+          "name": "Sowmya Munukutla",
+          "orgs": [
+            "Niantic"
+          ]
+        },
+        {
+          "name": "Victor Adrian Prisacariu",
+          "orgs": [
+            "Niantic",
+            "University of Oxford"
+          ]
+        },
+        {
+          "name": "Eric Brachmann",
+          "orgs": [
+            "Niantic"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2404.06337v1",
+      "date": "2024-04-09T14:22:50Z",
+      "citation_count": 36,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2001.03075",
+      "score": 9.411772,
+      "title": "Pivot calibration concept for sensor attached mobile c-arms",
+      "tldr": "This paper presents a radiation-free calibration method for sensors attached to mobile C-arms by exploiting the geometric properties of the C-arm motion, introducing an extended pivot calibration concept to compute the fixed translation between the sensor and rotation center, and demonstrating its robustness against noise and varying trajectory densities through simulations.",
+      "abstract": "Medical augmented reality has been actively studied for decades and many methods have been proposed torevolutionize clinical procedures. One example is the camera augmented mobile C-arm (CAMC), which providesa real-time video augmentation onto medical images by rigidly mounting and calibrating a camera to the imagingdevice. Since then, several CAMC variations have been suggested by calibrating 2D/3D cameras, trackers, andmore recently a Microsoft HoloLens to the C-arm. Different calibration methods have been applied to establishthe correspondence between the rigidly attached sensor and the imaging device. A crucial step for these methodsis the acquisition of X-Ray images or 3D reconstruction volumes; therefore, requiring the emission of ionizingradiation. In this work, we analyze the mechanical motion of the device and propose an alternatative methodto calibrate sensors to the C-arm without emitting any radiation. Given a sensor is rigidly attached to thedevice, we introduce an extended pivot calibration concept to compute the fixed translation from the sensor tothe C-arm rotation center. The fixed relationship between the sensor and rotation center can be formulated as apivot calibration problem with the pivot point moving on a locus. Our method exploits the rigid C-arm motiondescribing a Torus surface to solve this calibration problem. We explain the geometry of the C-arm motion andits relation to the attached sensor, propose a calibration algorithm and show its robustness against noise, as wellas trajectory and observed pose density by computer simulations. We discuss this geometric-based formulationand its potential extensions to different C-arm applications.",
+      "authors": [],
+      "url": "https://arxiv.org/pdf/2001.03075v1",
+      "date": "2020-01-09T15:57:14Z",
+      "citation_count": 1,
+      "categories": [
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "2503.12701",
+      "score": 9.378982,
+      "title": "AnyCalib: On-Manifold Learning for Model-Agnostic Single-View Camera Calibration",
+      "tldr": "This paper presents AnyCalib, a model-agnostic single-view camera calibration method that addresses the limitation of existing methods being tied to specific camera models or requiring extrinsic cues; it frames calibration as ray regression, enabling closed-form recovery of intrinsics for various models and edited images, and achieves state-of-the-art performance across perspective, edited, and distorted images.",
+      "abstract": "We present AnyCalib, a method for calibrating the intrinsic parameters of a camera from a single in-the-wild image, that is agnostic to the camera model. Current methods are predominantly tailored to specific camera models and/or require extrinsic cues, such as the direction of gravity, to be visible in the image. In contrast, we argue that the perspective and distortion cues inherent in images are sufficient for model-agnostic camera calibration. To demonstrate this, we frame the calibration process as the regression of the rays corresponding to each pixel. We show, for the first time, that this intermediate representation allows for a closed-form recovery of the intrinsics for a wide range of camera models, including but not limited to: pinhole, Brown-Conrady and Kannala-Brandt. Our approach also applies to edited -- cropped and stretched -- images. Experimentally, we demonstrate that AnyCalib consistently outperforms alternative methods, including 3D foundation models, despite being trained on orders of magnitude less data. Code is available at https://github.com/javrtg/AnyCalib.",
+      "authors": [
+        {
+          "name": "Javier Tirado-Garín",
+          "orgs": [
+            "I3A, University of Zaragoza"
+          ]
+        },
+        {
+          "name": "Javier Civera",
+          "orgs": [
+            "I3A, University of Zaragoza"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2503.12701v2",
+      "date": "2025-03-16T23:59:21Z",
+      "citation_count": 6,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1912.07753",
+      "score": 9.351908,
+      "title": "A Deep Probabilistic Model for Customer Lifetime Value Prediction",
+      "tldr": "This paper addresses the challenge of predicting customer lifetime value (LTV) for new customers, where traditional methods like BTYD are ineffective due to identical purchase frequency and recency, and proposes a zero-inflated lognormal (ZILN) distribution model with deep neural networks to handle zero and heavy-tailed LTV data, achieving improved predictive performance and uncertainty quantification; empirical results show the model's effectiveness on real-world datasets.",
+      "abstract": "Accurate predictions of customers' future lifetime value (LTV) given their attributes and past purchase behavior enables a more customer-centric marketing strategy. Marketers can segment customers into various buckets based on the predicted LTV and, in turn, customize marketing messages or advertising copies to serve customers in different segments better. Furthermore, LTV predictions can directly inform marketing budget allocations and improve real-time targeting and bidding of ad impressions.\n  One challenge of LTV modeling is that some customers never come back, and the distribution of LTV can be heavy-tailed. The commonly used mean squared error (MSE) loss does not accommodate the significant fraction of zero value LTV from one-time purchasers and can be sensitive to extremely large LTV's from top spenders. In this article, we model the distribution of LTV given associated features as a mixture of zero point mass and lognormal distribution, which we refer to as the zero-inflated lognormal (ZILN) distribution. This modeling approach allows us to capture the churn probability and account for the heavy-tailedness nature of LTV at the same time. It also yields straightforward uncertainty quantification of the point prediction. The ZILN loss can be used in both linear models and deep neural networks (DNN). For model evaluation, we recommend the normalized Gini coefficient to quantify model discrimination and decile charts to assess model calibration. Empirically, we demonstrate the predictive performance of our proposed model on two real-world public datasets.",
+      "authors": [
+        {
+          "name": "Xiaojing Wang",
+          "orgs": [
+            "Google",
+            "Mountain View, USA"
+          ]
+        },
+        {
+          "name": "Tianqi Liu",
+          "orgs": [
+            "Google Research",
+            "New York, USA"
+          ]
+        },
+        {
+          "name": "Jingang Miao",
+          "orgs": [
+            "Google",
+            "New York, USA"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1912.07753v1",
+      "date": "2019-12-16T23:23:48Z",
+      "citation_count": 50,
+      "categories": [
+        "stat.AP"
+      ]
+    },
+    {
+      "arxiv_id": "2111.09162",
+      "score": 9.161745,
+      "title": "It's About Time: Analog Clock Reading in the Wild",
+      "tldr": "This paper addresses the challenge of reading analog clocks in natural images, where existing solutions are limited and benchmarks are lacking; it proposes a synthetic dataset generator, a two-stage framework with spatial transformer networks for alignment and recognition, and pseudo-labeling via time uniformity; the model achieves 80.4%, 77.3%, and 79.0% top-1 accuracy on three benchmark datasets, demonstrating effective Sim2Real generalization.",
+      "abstract": "In this paper, we present a framework for reading analog clocks in natural images or videos. Specifically, we make the following contributions: First, we create a scalable pipeline for generating synthetic clocks, significantly reducing the requirements for the labour-intensive annotations; Second, we introduce a clock recognition architecture based on spatial transformer networks (STN), which is trained end-to-end for clock alignment and recognition. We show that the model trained on the proposed synthetic dataset generalises towards real clocks with good accuracy, advocating a Sim2Real training regime; Third, to further reduce the gap between simulation and real data, we leverage the special property of \"time\", i.e.uniformity, to generate reliable pseudo-labels on real unlabelled clock videos, and show that training on these videos offers further improvements while still requiring zero manual annotations. Lastly, we introduce three benchmark datasets based on COCO, Open Images, and The Clock movie, with full annotations for time, accurate to the minute.",
+      "authors": [
+        {
+          "name": "Charig Yang",
+          "orgs": [
+            "VGG, Department of Engineering Science, University of Oxford",
+            "Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Weidi Xie",
+          "orgs": [
+            "VGG, Department of Engineering Science, University of Oxford",
+            "Shanghai Jiao Tong University"
+          ]
+        },
+        {
+          "name": "Andrew Zisserman",
+          "orgs": [
+            "VGG, Department of Engineering Science, University of Oxford",
+            "Shanghai Jiao Tong University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2111.09162v4",
+      "date": "2021-11-17T14:52:02Z",
+      "citation_count": 19,
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ]
+    },
+    {
+      "arxiv_id": "1812.10636",
+      "score": 9.100286,
+      "title": "Chart-Text: A Fully Automated Chart Image Descriptor",
+      "tldr": "This paper presents Chart-Text, a fully automated system for generating textual descriptions of chart images, addressing the challenge of creating standardized Alt-Text for visually impaired users; it proposes a method combining chart classification and data extraction with accuracies of 99.72% and 78.9%, respectively, significantly improving accessibility and productivity for content creators.",
+      "abstract": "Images greatly help in understanding, interpreting and visualizing data. Adding textual description to images is the first and foremost principle of web accessibility. Visually impaired users using screen readers will use these textual descriptions to get better understanding of images present in digital contents. In this paper, we propose Chart-Text a novel fully automated system that creates textual description of chart images. Given a PNG image of a chart, our Chart-Text system creates a complete textual description of it. First, the system classifies the type of chart and then it detects and classifies the labels and texts in the charts. Finally, it uses specific image processing algorithms to extract relevant information from the chart images. Our proposed system achieves an accuracy of 99.72% in classifying the charts and an accuracy of 78.9% in extracting the data and creating the corresponding textual description.",
+      "authors": [
+        {
+          "name": "Abhijit Balaji",
+          "orgs": [
+            "SPi Technologies India Private Limited"
+          ]
+        },
+        {
+          "name": "Thuvaarakkesh Ramanathan",
+          "orgs": [
+            "SPi Technologies India Private Limited"
+          ]
+        },
+        {
+          "name": "Venkateshwarlu Sonathi",
+          "orgs": [
+            "SPi Technologies India Private Limited"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1812.10636v1",
+      "date": "2018-12-27T05:52:06Z",
+      "citation_count": 61,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1607.05947",
+      "score": 8.934458,
+      "title": "Color Homography Color Correction",
+      "tldr": "This paper addresses color correction in computer vision by proposing a homography-based method to map colors across different lighting conditions, showing it outperforms linear methods by 40% in accuracy.",
+      "abstract": "Homographies -- a mathematical formalism for relating image points across different camera viewpoints -- are at the foundations of geometric methods in computer vision and are used in geometric camera calibration, image registration, and stereo vision and other tasks. In this paper, we show the surprising result that colors across a change in viewing condition (changing light color, shading and camera) are also related by a homography. We propose a new color correction method based on color homography. Experiments demonstrate that solving the color homography problem leads to more accurate calibration.",
+      "authors": [
+        {
+          "name": "Graham D. Finlayson",
+          "orgs": [
+            "University of East Anglia, UK"
+          ]
+        },
+        {
+          "name": "Han Gong",
+          "orgs": [
+            "University of East Anglia, UK"
+          ]
+        },
+        {
+          "name": "Robert B. Fisher",
+          "orgs": [
+            "University of Edinburgh, UK"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1607.05947v3",
+      "date": "2016-07-20T13:39:16Z",
+      "citation_count": 15,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "2502.06337",
+      "score": 8.930703,
+      "title": "Accelerating Outlier-robust Rotation Estimation by Stereographic Projection",
+      "tldr": "This paper addresses the challenge of efficiently and robustly estimating rotations in computer vision and robotics, particularly in the presence of noise and outliers, by proposing a method that decouples rotation into axis and angle, uses stereographic projection and spatial voting to identify rotation parameters, and achieves high accuracy with an angular error of 0.01 degrees on large-scale and severely corrupted data.",
+      "abstract": "Rotation estimation plays a fundamental role in many computer vision and robot tasks. However, efficiently estimating rotation in large inputs containing numerous outliers (i.e., mismatches) and noise is a recognized challenge. Many robust rotation estimation methods have been designed to address this challenge. Unfortunately, existing methods are often inapplicable due to their long computation time and the risk of local optima. In this paper, we propose an efficient and robust rotation estimation method. Specifically, our method first investigates geometric constraints involving only the rotation axis. Then, it uses stereographic projection and spatial voting techniques to identify the rotation axis and angle. Furthermore, our method efficiently obtains the optimal rotation estimation and can estimate multiple rotations simultaneously. To verify the feasibility of our method, we conduct comparative experiments using both synthetic and real-world data. The results show that, with GPU assistance, our method can solve large-scale ($10^6$ points) and severely corrupted (90\\% outlier rate) rotation estimation problems within 0.07 seconds, with an angular error of only 0.01 degrees, which is superior to existing methods in terms of accuracy and efficiency.",
+      "authors": [
+        {
+          "name": "Taosi Xu",
+          "orgs": []
+        },
+        {
+          "name": "Yinlong Liu",
+          "orgs": []
+        },
+        {
+          "name": "Xianbo Wang",
+          "orgs": []
+        },
+        {
+          "name": "Zhi-Xin Yang",
+          "orgs": []
+        }
+      ],
+      "url": "https://arxiv.org/pdf/2502.06337v1",
+      "date": "2025-02-10T10:37:36Z",
+      "citation_count": 0,
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ]
+    },
+    {
+      "arxiv_id": "1706.00984",
+      "score": 7.9218736,
+      "title": "Graph-Cut RANSAC",
+      "tldr": "This paper introduces Graph-Cut RANSAC (GC-RANSAC), a locally optimized RANSAC variant that uses a graph-cut algorithm in the local optimization step to improve geometric accuracy and efficiency, outperforming existing methods in accuracy and iteration count on various tasks; it exploits spatial coherence of inliers and outliers, and achieves real-time performance with fewer iterations than theoretically expected.",
+      "abstract": "A novel method for robust estimation, called Graph-Cut RANSAC, GC-RANSAC in short, is introduced. To separate inliers and outliers, it runs the graph-cut algorithm in the local optimization (LO) step which is applied when a so-far-the-best model is found. The proposed LO step is conceptually simple, easy to implement, globally optimal and efficient. GC-RANSAC is shown experimentally, both on synthesized tests and real image pairs, to be more geometrically accurate than state-of-the-art methods on a range of problems, e.g. line fitting, homography, affine transformation, fundamental and essential matrix estimation. It runs in real-time for many problems at a speed approximately equal to that of the less accurate alternatives (in milliseconds on standard CPU).",
+      "authors": [
+        {
+          "name": "Daniel Barath",
+          "orgs": [
+            "Machine Perception Research Laboratory",
+            "MTA SZTAKI, Budapest, Hungary"
+          ]
+        },
+        {
+          "name": "Jiri Matas",
+          "orgs": [
+            "Centre for Machine Perception, Department of Cybernetics",
+            "Czech Technical University, Prague, Czech Republic"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1706.00984v2",
+      "date": "2017-06-03T17:52:53Z",
+      "citation_count": 376,
+      "categories": [
+        "cs.CV"
+      ]
+    },
+    {
+      "arxiv_id": "1907.10326",
+      "score": 7.3274317,
+      "title": "From Big to Small: Multi-Scale Local Planar Guidance for Monocular Depth Estimation",
+      "tldr": "This paper addresses the challenge of monocular depth estimation, a critical task in computer vision with applications in robotics and autonomous systems, by proposing a novel network architecture with local planar guidance layers at multiple decoding stages, achieving state-of-the-art results on NYU Depth V2 and KITTI datasets, and demonstrating significant improvements over existing methods through ablation studies.",
+      "abstract": "Estimating accurate depth from a single image is challenging because it is an ill-posed problem as infinitely many 3D scenes can be projected to the same 2D scene. However, recent works based on deep convolutional neural networks show great progress with plausible results. The convolutional neural networks are generally composed of two parts: an encoder for dense feature extraction and a decoder for predicting the desired depth. In the encoder-decoder schemes, repeated strided convolution and spatial pooling layers lower the spatial resolution of transitional outputs, and several techniques such as skip connections or multi-layer deconvolutional networks are adopted to recover the original resolution for effective dense prediction. In this paper, for more effective guidance of densely encoded features to the desired depth prediction, we propose a network architecture that utilizes novel local planar guidance layers located at multiple stages in the decoding phase. We show that the proposed method outperforms the state-of-the-art works with significant margin evaluating on challenging benchmarks. We also provide results from an ablation study to validate the effectiveness of the proposed method.",
+      "authors": [
+        {
+          "name": "Jin Han Lee",
+          "orgs": [
+            "Department of Electronics and Computer Engineering, Hanyang University"
+          ]
+        },
+        {
+          "name": "Myung-Kyu Han",
+          "orgs": [
+            "Department of Electronics and Computer Engineering, Hanyang University"
+          ]
+        },
+        {
+          "name": "Dong Wook Ko",
+          "orgs": [
+            "Department of Electronics and Computer Engineering, Hanyang University"
+          ]
+        },
+        {
+          "name": "Il Hong Suh",
+          "orgs": [
+            "Department of Electronics and Computer Engineering, Hanyang University"
+          ]
+        }
+      ],
+      "url": "https://arxiv.org/pdf/1907.10326v6",
+      "date": "2019-07-24T09:31:24Z",
+      "citation_count": 778,
+      "categories": [
+        "cs.CV"
+      ]
+    }
+  ]
+}
