@@ -1,6 +1,6 @@
 # Plot Extractor — User Guide
 
-> Version: Beta 1.5.0
+> Version: Beta 1.6.0
 
 ## Overview
 
@@ -125,26 +125,49 @@ The Python API returns a dict:
 }
 ```
 
+## Architecture
+
+The extraction pipeline uses a three-layer strategy ensemble:
+
+1. **Layer 1 — Rule-based routing** (default): lightweight image features → softmax type probabilities → `ExtractionPolicy` via decision tree (`adaptive_strategy.py`).
+2. **Layer 2 — LLM vision enhancement** (opt-in via `--use-llm`): vision-capable LLM classifies ambiguous charts when rule-based confidence is low.
+3. **Layer 3 — OCR tick reading** (opt-in via `--use-ocr`): Tesseract reads tick labels for axis calibration. Falls back to heuristic synthetic ticks when unavailable.
+
+**New in Beta 1.6.0:**
+- **Chart structural decomposition** (`layout/chart_structure.py`): decomposes chart into plot_area, x_axis_area, y_axis_area, and legend_area using detected axis positions. Replaces hardcoded thresholds (`h*0.8`, `w*0.2`) with structural context.
+- **Junction-aware skeleton path tracing** (`core/skeleton_path.py`): for dense charts, traces continuous curves through thinned skeletons by detecting endpoints and branch points, resolving branches by direction continuity.
+- **Adaptive strategy selector** (`core/adaptive_strategy.py`): replaces fixed `POLICY_WEIGHTS` matrix with a decision tree using measurable image features (foreground density, saturation, connected-component statistics) for routing.
+- **Overlapping scatter separation** (`core/scatter_overlap.py`): detects abnormally large connected components (indicating overlapping markers) and splits them using greedy shape matching.
+
 ## Known Limitations
 
-- **OCR-dependent accuracy**: without `--use-ocr`, extracted values are in arbitrary units.
-- **Multi-series charts**: crossings, nearby colors, and anti-aliasing can cause series confusion.
-- **Degraded images**: scan/photo noise, blur, rotation, and JPEG artifacts reduce axis detection and OCR quality.
-- **Dense curves**: can be over-fragmented or confused with grid/text artifacts.
+- **OCR-dependent accuracy**: without `--use-ocr`, extracted values are in arbitrary units. With OCR, accuracy is still sensitive to tick label quality (superscripts, small fonts, blur).
+- **Multi-series charts**: HSV color clustering can fail when series have similar colors or heavy anti-aliasing. Junction-aware separation is planned but not yet integrated.
+- **Degraded images**: scan/photo noise, blur, rotation, and JPEG artifacts reduce axis detection, thinning quality, and OCR accuracy.
+- **Dense curves on noisy images**: Zhang-Suen thinning fragments on anti-aliased or thick curves; performance drops significantly on degraded data.
+- **Log axes**: OCR superscript misread (e.g., 10² → "102") remains a critical bottleneck for log_x and loglog charts.
 - **Unsupported chart types**: bar charts, pie charts, histograms, area charts, and step charts are not yet supported.
 - **Multi-panel/subplot charts**: only single-panel charts are supported.
-- **Extraction quality varies by chart type**: simple linear and log_y charts extract more reliably than multi-series or dual-y charts.
+- **Extraction quality varies by chart type**: scatter and simple_linear charts extract most reliably; multi-series and log_x remain challenging.
 
 ## Validation
 
 To evaluate extraction accuracy against ground truth:
 
 ```bash
-# Standard evaluation (OCR required)
+# Standard evaluation (OCR required for meaningful metrics)
 python tests/validate_by_type.py --use-ocr --workers 4
 
-# Specific dataset
+# V2/V3/V4 datasets
 python tests/validate_by_type.py --data-dir test_data_v2 --use-ocr --workers 4
+python tests/validate_by_type.py --data-dir test_data_v3 --use-ocr --workers 4
+python tests/validate_by_type.py --data-dir test_data_v4 --v4-special --use-ocr --workers 4
+
+# Unit tests for new modules (Beta 1.6.0)
+pytest tests/test_chart_structure.py       # 20 tests — structural decomposition
+pytest tests/test_skeleton_path.py         # 18 tests — path tracing
+pytest tests/test_scatter_overlap.py       # 7 tests — overlap separation
+pytest tests/test_adaptive_strategy.py     # 10 tests — decision tree routing
 ```
 
 See `docs/CHANGELOG.md` for version history and baseline metrics.

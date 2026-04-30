@@ -1,5 +1,32 @@
 # Changelog
 
+## Beta 1.6.0 — Structural Decomposition & Adaptive Routing (2026-04-30)
+
+### Added
+
+- **Chart structural decomposition** (`layout/chart_structure.py`): CACHED-inspired (2305.04151) 4-area decomposition — plot_area, x_axis_area, y_axis_area, legend_area. Replaces hardcoded position thresholds (`h*0.8`, `w*0.2`) with structural context-based element role resolution.
+- **Junction-aware skeleton path tracing** (`core/skeleton_path.py`): based on 1802.05902 sketch vectorization. Detects endpoints and branch points in thinned skeletons, traces continuous paths, and resolves branches by direction continuity. Replaces column-median extraction for dense charts.
+- **Adaptive strategy selector** (`core/adaptive_strategy.py`): decision-tree policy routing from measurable image features (foreground density, saturation, CC statistics) replacing fixed `POLICY_WEIGHTS` matrix.
+- **Overlapping scatter separation** (`core/scatter_overlap.py`): based on 0809.1802 pure-CV extraction. Detects abnormally large connected components and splits them using greedy shape matching.
+- **85 unit tests** across 4 new test modules: `test_chart_structure.py`, `test_skeleton_path.py`, `test_scatter_overlap.py`, `test_adaptive_strategy.py`.
+
+### Validation Baselines (Beta 1.6.0)
+
+| Dataset | Images | Pass Rate | Notes |
+|---------|--------|-----------|-------|
+| V1 (clean synthetic) | 310 | **51.9%** (+5.8pp vs 1.5.0) | dual_y +19.4pp, log_y +22.6pp |
+| V2 (degraded) | 500 | **29.2%** | New OCR baseline, no meta leakage |
+| V3 (noisy) | 500 | **15.4%** | New OCR baseline, no meta leakage |
+| V4 (real-world, in-scope) | 204 | **16.2%** | 59.2% out-of-scope (multi-panel, combo, bar/pie) |
+
+### Known Issues
+
+- OCR superscript misread (10² → "102") remains critical bottleneck for log_x (0–13%) and loglog.
+- HSV clustering fails on multi_series across all datasets (0–2%).
+- Dense curve extraction degrades severely on noise (93.5% → 0–16%).
+
+---
+
 ## Beta 1.5.0 — Scale Detector (2026-04-28)
 
 ### Added
