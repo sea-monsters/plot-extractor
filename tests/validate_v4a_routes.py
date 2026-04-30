@@ -14,7 +14,7 @@ from __future__ import annotations
 import csv
 import json
 import sys
-from collections import Counter, defaultdict
+from collections import defaultdict
 from pathlib import Path
 
 import numpy as np
@@ -103,8 +103,16 @@ def evaluate_image(img_path: Path) -> dict:
     strategy_order = _top_items(strategy_scores, len(strategy_scores))
     strategy_top = strategy_order[:5]
 
-    best_target = max(((name, strategy_scores.get(name, 0.0)) for name in targets), key=lambda item: item[1], default=(None, 0.0))
-    best_confuser = max(((name, strategy_scores.get(name, 0.0)) for name in confusers), key=lambda item: item[1], default=(None, 0.0))
+    best_target = max(
+        ((name, strategy_scores.get(name, 0.0)) for name in targets),
+        key=lambda item: item[1],
+        default=(None, 0.0),
+    )
+    best_confuser = max(
+        ((name, strategy_scores.get(name, 0.0)) for name in confusers),
+        key=lambda item: item[1],
+        default=(None, 0.0),
+    )
     top1_strategy = strategy_top[0][0] if strategy_top else ""
     top3_strategy_names = [name for name, _ in strategy_order[:3]]
 
@@ -146,13 +154,29 @@ def _summarize_by_profile(rows: list[dict]) -> list[dict]:
         summaries.append({
             "profile": profile,
             "total": total,
-            "chart_type_hit_rate": round(sum(1 for r in items if r["chart_type_hit"]) / max(total, 1), 3),
-            "top1_target_hit_rate": round(sum(1 for r in items if r["top1_target_hit"]) / max(total, 1), 3),
-            "top3_target_hit_rate": round(sum(1 for r in items if r["top3_target_hit"]) / max(total, 1), 3),
-            "avg_target_score": round(float(np.mean([r["best_target_score"] for r in items])), 4),
-            "avg_confuser_score": round(float(np.mean([r["best_confuser_score"] for r in items])), 4),
-            "avg_gap": round(float(np.mean([r["target_confuser_gap"] for r in items])), 4),
-            "best_target_rate": round(sum(1 for r in items if r["best_target_score"] >= r["best_confuser_score"]) / max(total, 1), 3),
+            "chart_type_hit_rate": round(
+                sum(1 for r in items if r["chart_type_hit"]) / max(total, 1), 3
+            ),
+            "top1_target_hit_rate": round(
+                sum(1 for r in items if r["top1_target_hit"]) / max(total, 1), 3
+            ),
+            "top3_target_hit_rate": round(
+                sum(1 for r in items if r["top3_target_hit"]) / max(total, 1), 3
+            ),
+            "avg_target_score": round(
+                float(np.mean([r["best_target_score"] for r in items])), 4
+            ),
+            "avg_confuser_score": round(
+                float(np.mean([r["best_confuser_score"] for r in items])), 4
+            ),
+            "avg_gap": round(
+                float(np.mean([r["target_confuser_gap"] for r in items])), 4
+            ),
+            "best_target_rate": round(
+                sum(1 for r in items if r["best_target_score"] >= r["best_confuser_score"])
+                / max(total, 1),
+                3,
+            ),
         })
     return summaries
 
@@ -195,7 +219,9 @@ def _summarize_by_strategy(rows: list[dict]) -> list[dict]:
     for name in strategy_names:
         item = summary[name]
         target_mean = _safe_mean(item["target_activation_sum"], item["target_count"])
-        non_target_mean = _safe_mean(item["non_target_activation_sum"], item["total"] - item["target_count"])
+        non_target_mean = _safe_mean(
+            item["non_target_activation_sum"], item["total"] - item["target_count"]
+        )
         confuser_mean = _safe_mean(item["confuser_activation_sum"], item["confuser_count"])
         rows_out.append({
             "strategy": name,
@@ -293,6 +319,8 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data-dir", default=None, help="v4a data directory (default: test_data_v4a)")
+    parser.add_argument(
+        "--data-dir", default=None, help="v4a data directory (default: test_data_v4a)"
+    )
     args = parser.parse_args()
     run(Path(args.data_dir) if args.data_dir else TEST_DATA_DIR)

@@ -1,7 +1,6 @@
 """CLI entry point for plot extraction."""
 import argparse
 import csv
-import json
 import time
 from dataclasses import dataclass
 from typing import Any

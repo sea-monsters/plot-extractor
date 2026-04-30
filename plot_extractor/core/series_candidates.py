@@ -2,7 +2,7 @@
 
 Extracts data series using multiple strategies and ranks by confidence.
 """
-from typing import List, Dict, Tuple, Optional
+from typing import List, Tuple
 from dataclasses import dataclass
 import numpy as np
 import cv2

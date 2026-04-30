@@ -144,5 +144,4 @@ def _get_cc_stats(mask):
 
 
 def cv2_connected_components(mask):
-    import cv2
     return cv2.connectedComponentsWithStats(mask, connectivity=8)

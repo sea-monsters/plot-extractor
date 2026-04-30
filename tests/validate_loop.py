@@ -45,7 +45,10 @@ def run_validation():
             ssim = max(ssim_full, ssim_crop)
             passed = ssim >= threshold
             n_points = sum(len(s["x"]) for s in result["data"].values())
-            axis_info = ", ".join(f"{ca.axis.direction}({ca.axis_type})" for ca in result["calibrated_axes"])
+            axis_info = ", ".join(
+                f"{ca.axis.direction}({ca.axis_type})"
+                for ca in result["calibrated_axes"]
+            )
         else:
             ssim = 0.0
             passed = False
@@ -63,7 +66,9 @@ def run_validation():
         print(f"  Result: SSIM={ssim:.4f}, threshold={threshold}, passed={passed}\n")
 
     with open(REPORT_PATH, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["file", "ssim", "threshold", "passed", "points", "axes"])
+        writer = csv.DictWriter(
+            f, fieldnames=["file", "ssim", "threshold", "passed", "points", "axes"]
+        )
         writer.writeheader()
         writer.writerows(rows)
 

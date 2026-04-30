@@ -138,7 +138,7 @@ class TestTraceSkeletonPaths:
     def test_empty_returns_empty(self):
         skel = np.zeros((50, 50), dtype=np.uint8)
         paths = trace_skeleton_paths(skel)
-        assert paths == []
+        assert not paths
 
     def test_min_path_len_filters_short(self):
         skel = _horizontal_line(50, 20, 25)  # 6 pixels
@@ -192,8 +192,8 @@ class TestExtractPathData:
 
     def test_empty_paths(self):
         xs, ys = extract_path_data([])
-        assert xs == []
-        assert ys == []
+        assert not xs
+        assert not ys
 
     def test_multiple_paths_merged(self):
         paths = [

@@ -6,7 +6,6 @@ based on plot area location.
 from dataclasses import dataclass
 from typing import List, Optional
 import numpy as np
-import cv2
 
 from plot_extractor.layout.panel_split import Panel
 from plot_extractor.layout.plot_area import PlotArea

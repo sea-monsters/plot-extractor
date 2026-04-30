@@ -6,8 +6,6 @@ Covers:
 - resolve_element_role() position context classification
 - Edge cases: missing axes, degenerate regions, axis-only decomposition
 """
-import pytest
-import numpy as np
 from plot_extractor.core.axis_detector import Axis
 from plot_extractor.layout.chart_structure import (
     ChartStructure,
@@ -144,8 +142,8 @@ class TestDecomposeChartStructure:
 # ---------------------------------------------------------------------------
 
 class TestResolveElementRole:
-    def setup_method(self):
-        self.cs = ChartStructure(
+    def _make_cs(self):
+        return ChartStructure(
             plot_area=StructuralArea(80, 30, 600, 400),
             x_axis_area=StructuralArea(80, 400, 600, 480),
             y_axis_area=StructuralArea(0, 30, 80, 400),
@@ -153,43 +151,53 @@ class TestResolveElementRole:
         )
 
     def test_data_element_in_plot_area(self):
-        role = resolve_element_role((200, 200, 210, 210), self.cs)
+        cs = self._make_cs()
+        role = resolve_element_role((200, 200, 210, 210), cs)
         assert role == "data_element"
 
     def test_text_in_plot_area_is_value_label(self):
-        role = resolve_element_role((200, 200, 215, 212), self.cs, is_text=True)
+        cs = self._make_cs()
+        role = resolve_element_role((200, 200, 215, 212), cs, is_text=True)
         assert role == "value_label"
 
     def test_x_tick_label_in_x_axis_area(self):
-        role = resolve_element_role((200, 420, 230, 440), self.cs, is_text=True)
+        cs = self._make_cs()
+        role = resolve_element_role((200, 420, 230, 440), cs, is_text=True)
         assert role == "x_tick_label"
 
     def test_y_tick_label_in_y_axis_area(self):
-        role = resolve_element_role((20, 200, 70, 215), self.cs, is_text=True)
+        cs = self._make_cs()
+        role = resolve_element_role((20, 200, 70, 215), cs, is_text=True)
         assert role == "y_tick_label"
 
     def test_legend_label_in_legend_area(self):
-        role = resolve_element_role((610, 100, 635, 112), self.cs, is_text=True)
+        cs = self._make_cs()
+        role = resolve_element_role((610, 100, 635, 112), cs, is_text=True)
         assert role == "legend_label"
 
     def test_legend_marker_in_legend_area(self):
-        role = resolve_element_role((605, 100, 615, 110), self.cs, is_text=False)
+        cs = self._make_cs()
+        role = resolve_element_role((605, 100, 615, 110), cs, is_text=False)
         assert role == "legend_marker"
 
     def test_title_above_plot_area(self):
-        role = resolve_element_role((200, 5, 400, 25), self.cs, is_text=True)
+        cs = self._make_cs()
+        role = resolve_element_role((200, 5, 400, 25), cs, is_text=True)
         assert role == "chart_title"
 
     def test_x_tick_mark_near_axis_edge(self):
         # Small bbox near bottom of plot area = tick mark, not data
-        role = resolve_element_role((200, 395, 205, 405), self.cs, is_text=False)
+        cs = self._make_cs()
+        role = resolve_element_role((200, 395, 205, 405), cs, is_text=False)
         assert role == "x_tick_mark"
 
     def test_y_tick_mark_near_axis_edge(self):
-        role = resolve_element_role((75, 200, 85, 205), self.cs, is_text=False)
+        cs = self._make_cs()
+        role = resolve_element_role((75, 200, 85, 205), cs, is_text=False)
         assert role == "y_tick_mark"
 
     def test_unknown_role(self):
         # Far outside all areas
-        role = resolve_element_role((0, 460, 10, 475), self.cs)
+        cs = self._make_cs()
+        role = resolve_element_role((0, 460, 10, 475), cs)
         assert role == "others"

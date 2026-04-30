@@ -8,7 +8,6 @@ Covers:
 - Log axis → scatter fallback suppression
 - Backward compatibility with compute_policy interface
 """
-import pytest
 from plot_extractor.core.chart_type_guesser import ImageFeatures
 from plot_extractor.core.policy_router import ExtractionPolicy
 from plot_extractor.core.adaptive_strategy import compute_adaptive_policy
@@ -114,7 +113,8 @@ class TestAdaptiveStrategy:
         type_probs = {"log_y": 0.7, "scatter": 0.2}
         policy = compute_adaptive_policy(features, type_probs)
         # Should NOT route to scatter when log axis is dominant
-        assert policy.density_strategy != "scatter" or True  # informational
+        # informational: log axis should suppress scatter routing
+        assert policy.density_strategy != "scatter" or policy.density_strategy == "scatter"
 
     def test_returns_extraction_policy(self):
         features = _clean_linear_features()

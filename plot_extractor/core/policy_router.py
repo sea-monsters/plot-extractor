@@ -1,8 +1,6 @@
 """Policy router: convert chart-type probabilities into extraction config."""
-from dataclasses import dataclass, field
-from typing import Dict, Optional
-
-import numpy as np
+from dataclasses import dataclass
+from typing import Dict
 
 from plot_extractor.core.chart_type_guesser import ImageFeatures
 from plot_extractor.utils.math_utils import sigmoid as _sigmoid

@@ -7,7 +7,7 @@ y_axis_area, legend_area) and resolves element roles by position context.
 Pure geometric implementation — no deep learning required.
 """
 from dataclasses import dataclass
-from typing import List, Optional, NamedTuple
+from typing import List, NamedTuple
 
 from plot_extractor.core.axis_detector import Axis
 

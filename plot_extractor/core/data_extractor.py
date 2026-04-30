@@ -1,6 +1,5 @@
 """Extract data points from the plot area."""
-from typing import List, Dict, Optional
-import itertools
+from typing import List, Dict
 import numpy as np
 import cv2
 

@@ -6,7 +6,7 @@ from typing import Any, Optional, List, Tuple
 import numpy as np
 
 from plot_extractor.core.axis_detector import Axis
-from plot_extractor.core.scale_detector import should_treat_as_log, detect_log_notation_ocr
+from plot_extractor.core.scale_detector import should_treat_as_log
 from plot_extractor.utils.math_utils import pixel_to_data, fit_linear
 
 
@@ -1242,7 +1242,6 @@ def calibrate_all_axes(
     If False, calibration falls back to heuristic synthetic ticks.
     """
     from plot_extractor.core.formula_ocr import (  # pylint: disable=import-outside-toplevel
-        parse_latex_value,
         score_latex_log_notation,
     )
 
