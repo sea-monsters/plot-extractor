@@ -1,5 +1,5 @@
 """Extract data points from the plot area."""
-from typing import List, Dict
+from typing import List, Dict, Optional
 import itertools
 import numpy as np
 import cv2
@@ -11,6 +11,12 @@ from plot_extractor.utils.image_utils import (
     make_foreground_mask,
 )
 from plot_extractor.config import MIN_DATA_POINTS, MIN_SERIES_POINTS, FOREGROUND_MIN_AREA
+from plot_extractor.core.skeleton_path import trace_skeleton_paths, extract_path_data
+from plot_extractor.core.scatter_overlap import (
+    detect_overlap_candidates,
+    extract_template_from_ccs,
+    separate_overlap_greedy,
+)
 
 
 def _get_plot_bounds(calibrated_axes: List[CalibratedAxis], image_shape):
@@ -174,6 +180,32 @@ def _extract_from_mask(mask, x_cal, y_cal):
     return list(x_out), list(y_out)
 
 
+def _extract_from_skeleton_paths(mask, x_cal, y_cal):
+    """Extract data points using skeleton path tracing.
+
+    Replaces column-median strategy for dense charts. Traces continuous
+    paths through the thinned skeleton, preserving curve identity at
+    crossing points via direction-based branch resolution.
+
+    Based on 1802.05902 (hand-drawn sketch vectorization).
+    """
+    paths = trace_skeleton_paths(mask, min_path_len=5)
+    if not paths:
+        return _extract_from_mask(mask, x_cal, y_cal)
+
+    xs_raw, ys_raw = extract_path_data(paths)
+    if len(xs_raw) < MIN_DATA_POINTS:
+        return _extract_from_mask(mask, x_cal, y_cal)
+
+    x_data = [x_cal.to_data(x) for x in xs_raw]
+    y_data = [y_cal.to_data(y) for y in ys_raw]
+    valid = [(xd, yd) for xd, yd in zip(x_data, y_data) if xd is not None and yd is not None]
+    if not valid:
+        return [], []
+    x_out, y_out = zip(*valid)
+    return list(x_out), list(y_out)
+
+
 def _extract_layered_series_from_mask(mask, x_cal, y_cal, series_count):
     """Extract same-color multiple curves by per-column vertical layers.
 
@@ -265,18 +297,47 @@ def _extract_layered_series_from_mask(mask, x_cal, y_cal, series_count):
 
 
 def _extract_scatter_from_mask(mask, x_cal, y_cal):
-    """Extract scatter points by connected components."""
+    """Extract scatter points by connected components with overlap separation."""
     num_labels, labels, stats, centroids = \
         cv2.connectedComponentsWithStats(mask, connectivity=8)
+
+    # Build CC stats list for overlap detection
+    cc_list = []
+    for i in range(1, num_labels):
+        cc_list.append({
+            "label": i,
+            "area": int(stats[i, cv2.CC_STAT_AREA]),
+            "x": int(stats[i, cv2.CC_STAT_LEFT]),
+            "y": int(stats[i, cv2.CC_STAT_TOP]),
+            "w": int(stats[i, cv2.CC_STAT_WIDTH]),
+            "h": int(stats[i, cv2.CC_STAT_HEIGHT]),
+            "cx": float(centroids[i][0]),
+            "cy": float(centroids[i][1]),
+        })
+
+    # Detect and separate overlapping scatter points
+    overlaps = detect_overlap_candidates(cc_list)
+    template = extract_template_from_ccs(mask, cc_list) if overlaps else None
+
     xs = []
     ys = []
-    for i in range(1, num_labels):
-        area = stats[i, cv2.CC_STAT_AREA]
+
+    overlap_labels = set(oc["label"] for oc in overlaps)
+
+    for cc in cc_list:
+        area = cc["area"]
         if area < FOREGROUND_MIN_AREA:
             continue
-        cx, cy = centroids[i]
-        xs.append(int(cx))
-        ys.append(int(cy))
+
+        if cc["label"] in overlap_labels and template is not None:
+            # Separate overlapping points
+            split_centroids = separate_overlap_greedy(mask, cc, template)
+            for sx, sy in split_centroids:
+                xs.append(sx)
+                ys.append(sy)
+        else:
+            xs.append(int(cc["cx"]))
+            ys.append(int(cc["cy"]))
 
     if len(xs) < MIN_DATA_POINTS:
         return [], []
@@ -615,17 +676,26 @@ def _relative_series_error(x_ref, y_ref, x_ext, y_ext):
     return float(np.mean(np.abs(y_ref - np.asarray(pred))) / y_range)
 
 
-def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=None, raw_image=None, policy=None) -> Dict[str, Dict]:
+def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=None, raw_image=None, policy=None, chart_struct=None) -> Dict[str, Dict]:
     """Main extraction pipeline.
 
     raw_image: un-preprocessed image used for grid detection (preprocessing
     blurs faint grid lines, so detection is more reliable on the original).
+    chart_struct: optional ChartStructure for constraining extraction to plot_area.
     """
     if not calibrated_axes:
         return {}, False, False
 
     h, w = image.shape[:2]
     left, top, right, bottom = _get_plot_bounds(calibrated_axes, image.shape)
+
+    # Refine with chart structure when available
+    if chart_struct is not None:
+        pa = chart_struct.plot_area
+        left = max(left, pa.x1)
+        top = max(top, pa.y1)
+        right = min(right, pa.x2)
+        bottom = min(bottom, pa.y2)
     plot_img = image[top:bottom, left:right]
 
     # Grid detection on raw image (preprocessing blurs grid lines)
@@ -672,7 +742,7 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
         thinned_cols = np.sum(np.any(thinned > 0, axis=0))
         if thinned_cols < w * gate:
             thinned = mask
-        x_data, y_data = _extract_from_mask(thinned, shifted_x, shifted_y_default)
+        x_data, y_data = _extract_from_skeleton_paths(thinned, shifted_x, shifted_y_default)
         if len(x_data) >= MIN_DATA_POINTS:
             results = {"series1": {"x": x_data, "y": y_data}}
             return results, False, has_grid
@@ -761,9 +831,9 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
             force_thinning = density_strategy == "thinning"
 
             if force_thinning or (fg_cols > w * 0.7 and not force_scatter):
-                # Dense: thin to 1px skeleton then extract
+                # Dense: thin to 1px skeleton then extract via path tracing
                 thinned = _apply_thinning(dilated)
-                x_data, y_data = _extract_from_mask(thinned, shifted_x, shifted_y_default)
+                x_data, y_data = _extract_from_skeleton_paths(thinned, shifted_x, shifted_y_default)
                 if len(x_data) >= MIN_DATA_POINTS:
                     all_series = [(x_data, y_data)]
             elif force_scatter or fg_cols <= w * 0.7:

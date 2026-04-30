@@ -25,7 +25,8 @@ except ImportError:
     HAS_REQUESTS = False
 
 from plot_extractor.core.chart_type_guesser import ImageFeatures
-from plot_extractor.core.policy_router import compute_policy, ExtractionPolicy
+from plot_extractor.core.policy_router import ExtractionPolicy
+from plot_extractor.core.adaptive_strategy import compute_adaptive_policy
 
 
 CHART_TYPES = [
@@ -410,7 +411,7 @@ def compute_llm_enhanced_policy(
     Returns (policy, final_type_probs).
     """
     if not use_llm or not llm_available() or not should_use_llm(type_probs):
-        policy = compute_policy(features, type_probs)
+        policy = compute_adaptive_policy(features, type_probs)
         return policy, type_probs
 
     provider, base_url, model = _detect_provider()
@@ -428,8 +429,8 @@ def compute_llm_enhanced_policy(
     llm_probs = _llm_probabilities(parsed, type_probs)
     if any(v > 0 for v in llm_probs.values()):
         blended = _blend_probs(type_probs, llm_probs, alpha=0.6)
-        policy = compute_policy(features, blended)
+        policy = compute_adaptive_policy(features, blended)
         return policy, blended
 
-    policy = compute_policy(features, type_probs)
+    policy = compute_adaptive_policy(features, type_probs)
     return policy, type_probs

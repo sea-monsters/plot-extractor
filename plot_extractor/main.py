@@ -22,6 +22,7 @@ from plot_extractor.core.formula_batch_queue import FormulaBatchQueue, FormulaQu
 from plot_extractor.core.label_crop_planner import StageTiming
 from plot_extractor.utils.ssim_compare import compare_images
 from plot_extractor.layout.panel_split import detect_panel_boundaries, Panel
+from plot_extractor.layout.chart_structure import decompose_chart_structure
 
 
 @dataclass
@@ -137,6 +138,9 @@ def _extract_from_panel(
         print(f"[{image_path.name} Panel {panel.panel_id}] No axes detected.")
         return None
 
+    # Structural decomposition (CACHED-inspired area breakdown)
+    chart_struct = decompose_chart_structure(gray.shape, axes)
+
     formula_context = None
     formula_request_results = None
     formula_batch_stats = None
@@ -198,6 +202,7 @@ def _extract_from_panel(
     # Extract data
     data, is_scatter, has_grid = extract_all_data(
         image, calibrated, image_path=image_path, raw_image=raw_image, policy=policy,
+        chart_struct=chart_struct,
     )
     if not data:
         print(f"[{image_path.name} Panel {panel.panel_id}] No data extracted.")
