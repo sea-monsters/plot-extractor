@@ -7,7 +7,199 @@ import numpy as np
 
 from plot_extractor.core.axis_detector import Axis
 from plot_extractor.core.scale_detector import should_treat_as_log
-from plot_extractor.utils.math_utils import pixel_to_data, fit_linear
+from plot_extractor.utils.math_utils import (
+    pixel_to_data,
+    fit_linear,
+    fit_linear_ransac,
+    fit_log_ransac,
+)
+
+
+@dataclass
+class CalibrationResult:
+    """Result of multi-hypothesis axis calibration."""
+
+    model_type: str  # "linear", "log", "polynomial"
+    params: tuple  # fit coefficients (a, b) or (c, a, b)
+    inlier_count: int
+    residual: float
+    is_plausible: bool
+
+
+def is_calibration_plausible(
+    model_type: str, params: tuple, inlier_count: int
+) -> bool:
+    """Gate calibration results on physical plausibility."""
+    if inlier_count < 3:
+        return False
+
+    if model_type == "linear":
+        if len(params) < 2:
+            return False
+        a = params[0]
+        if abs(a) > 1e6:
+            return False
+        if abs(a) < 1e-6:
+            return False
+        if a < 0:
+            return False
+        return True
+
+    if model_type == "log":
+        if len(params) < 2:
+            return False
+        a = params[0]
+        if abs(a) < 1e-6:
+            return False
+        return True
+
+    if model_type == "polynomial":
+        if len(params) < 3:
+            return False
+        curvature = abs(params[0])
+        if curvature > 1.0:
+            return False
+        effective_slope = abs(params[1])
+        if effective_slope < 1e-6:
+            return False
+        return True
+
+    return False
+
+
+def grade_tick_quality(
+    ocr_confidence: float = 70.0,
+    crop_height: int = 20,
+    median_crop_height: float = 20.0,
+    position_deviation: float = 0.0,
+) -> float:
+    """Score a tick label's reliability on [0, 1]."""
+    conf_score = min(ocr_confidence / 100.0, 1.0)
+    height_ratio = min(crop_height / max(median_crop_height, 1.0), 1.5)
+    height_score = max(0.0, min(1.0 - abs(1.0 - height_ratio) * 0.5, 1.0))
+    pos_score = max(0.0, 1.0 - position_deviation / 20.0)
+    return conf_score * (0.5 + 0.15 * height_score + 0.25 * pos_score)
+
+
+def infer_log_values_from_spacing(
+    pixels: list[float],
+) -> list[tuple[float, float]] | None:
+    """Infer log tick values from pixel spacing ratios.
+
+    When OCR fails entirely, evenly-spaced pixel positions on a log axis
+    can be detected by their constant spacing (each decade has the same
+    pixel width).  Requires minimum median spacing to distinguish from
+    dense linear ticks.  Infers values 10^0, 10^1, 10^2, ...
+    """
+    if len(pixels) < 3:
+        return None
+
+    pixels_sorted = sorted(pixels)
+    spacings = [pixels_sorted[i + 1] - pixels_sorted[i]
+                for i in range(len(pixels_sorted) - 1)]
+
+    if not spacings:
+        return None
+
+    median_spacing = np.median(spacings)
+    if median_spacing < 80:
+        return None
+
+    spacing_ratios = [s / median_spacing for s in spacings]
+    log_like = all(0.7 < r < 1.3 for r in spacing_ratios)
+    if not log_like:
+        return None
+
+    origin_pixel = pixels_sorted[0]
+    decade_width = median_spacing
+    result = []
+    for p in pixels_sorted:
+        decades = (p - origin_pixel) / decade_width
+        value = 10.0 ** decades
+        result.append((p, value))
+    return result
+
+
+def fit_axis_multi_hypothesis(
+    tick_map: list[tuple[float, float]],
+) -> CalibrationResult | None:
+    """Fit multiple axis models and return the best plausible one.
+
+    Tries linear, log, and polynomial fits simultaneously. Selects
+    the model with the most inliers and lowest residual, subject to
+    the physical plausibility gate.
+    """
+    if len(tick_map) < 3:
+        return None
+
+    pixels = np.array([p for p, _ in tick_map], dtype=float)
+    values = np.array([v for _, v in tick_map], dtype=float)
+
+    candidates: list[CalibrationResult] = []
+
+    # Linear RANSAC
+    a_lin, b_lin, res_lin, inliers_lin = fit_linear_ransac(pixels, values)
+    if a_lin is not None and len(inliers_lin) >= 2:
+        plausible = is_calibration_plausible("linear", (a_lin, b_lin), len(inliers_lin))
+        candidates.append(CalibrationResult(
+            model_type="linear",
+            params=(float(a_lin), float(b_lin)),
+            inlier_count=len(inliers_lin),
+            residual=float(res_lin),
+            is_plausible=plausible,
+        ))
+
+    # Log RANSAC
+    a_log, b_log, res_log, inliers_log = fit_log_ransac(pixels, values)
+    if a_log is not None and len(inliers_log) >= 2:
+        positive_values = values[values > 0]
+        if len(positive_values) >= 2:
+            decade_span = np.log10(positive_values.max()) - np.log10(positive_values.min())
+            log_span_ok = decade_span >= 1.0
+        else:
+            log_span_ok = False
+        plausible = bool(
+            is_calibration_plausible("log", (a_log, b_log), len(inliers_log))
+            and log_span_ok
+        )
+        candidates.append(CalibrationResult(
+            model_type="log",
+            params=(float(a_log), float(b_log)),
+            inlier_count=len(inliers_log),
+            residual=float(res_log),
+            is_plausible=plausible,
+        ))
+
+    # Polynomial (degree 2) — only when enough ticks
+    if len(tick_map) >= 5:
+        try:
+            coeffs = np.polyfit(values, pixels, 2)
+            c2, a2, b2 = coeffs
+            pred = c2 * values ** 2 + a2 * values + b2
+            rmse = float(np.sqrt(np.mean((pixels - pred) ** 2)))
+            poly_params = (float(c2), float(a2), float(b2))
+            plausible = is_calibration_plausible(
+                "polynomial", poly_params, len(tick_map)
+            )
+            candidates.append(CalibrationResult(
+                model_type="polynomial",
+                params=(float(c2), float(a2), float(b2)),
+                inlier_count=len(tick_map),
+                residual=rmse,
+                is_plausible=plausible,
+            ))
+        except (np.linalg.LinAlgError, ValueError, FloatingPointError):
+            pass
+
+    if not candidates:
+        return None
+
+    # Select best: prefer plausible, then highest inlier count, then lowest residual
+    plausible = [c for c in candidates if c.is_plausible]
+    pool = plausible if plausible else candidates
+
+    pool.sort(key=lambda c: (-c.inlier_count, c.residual))
+    return pool[0]
 
 
 def _is_plausible_ocr_tick_sequence(

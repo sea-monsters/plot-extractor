@@ -147,3 +147,29 @@ def rotate_image(image: np.ndarray, angle_degrees: float) -> np.ndarray:
         borderMode=cv2.BORDER_CONSTANT,
         borderValue=border_value,
     )
+
+
+def apply_noise_aware_preprocessing(image: np.ndarray, policy) -> np.ndarray:
+    """Conditionally apply NLM denoising based on noise detection.
+
+    Detects noise level via Laplacian variance and applies fastNlMeansDenoising
+    when noise exceeds the policy's noise_threshold.
+
+    Args:
+        image: Input image (RGB or grayscale).
+        policy: ExtractionPolicy with noise_threshold attribute.
+
+    Returns:
+        Grayscale image with optional NLM denoising applied.
+    """
+    gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY) if len(image.shape) == 3 else image
+
+    noise_score = float(cv2.Laplacian(gray, cv2.CV_64F).var())
+
+    threshold = getattr(policy, "noise_threshold", 100.0)
+
+    if noise_score > threshold:
+        denoised = cv2.fastNlMeansDenoising(gray, None, 10, 7, 21)
+        return denoised
+
+    return gray
