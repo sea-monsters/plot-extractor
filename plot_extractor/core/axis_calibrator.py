@@ -24,6 +24,7 @@ class CalibrationResult:
     inlier_count: int
     residual: float
     is_plausible: bool
+    inlier_indices: list[int] = None  # indices into original tick_map
 
 
 def is_calibration_plausible(
@@ -41,6 +42,9 @@ def is_calibration_plausible(
             return False
         if abs(a) < 1e-6:
             return False
+        # After pixel inversion in calibrate_axis, a should always be > 0
+        # for both standard and inverted axes. a < 0 means the correlation
+        # is backwards even after inversion, which is implausible.
         if a < 0:
             return False
         return True
@@ -81,47 +85,157 @@ def grade_tick_quality(
     return conf_score * (0.5 + 0.15 * height_score + 0.25 * pos_score)
 
 
-def infer_log_values_from_spacing(
+def _detect_decade_width_and_boundaries(
     pixels: list[float],
-) -> list[tuple[float, float]] | None:
-    """Infer log tick values from pixel spacing ratios.
+) -> tuple[float | None, list[int]]:
+    """Detect decade width and boundary positions from tick spacing.
 
-    When OCR fails entirely, evenly-spaced pixel positions on a log axis
-    can be detected by their constant spacing (each decade has the same
-    pixel width).  Requires minimum median spacing to distinguish from
-    dense linear ticks.  Infers values 10^0, 10^1, 10^2, ...
+    In TMLOG-style log axes, decade boundaries show as large spacing gaps
+    (e.g. 9→10 is much wider than 1→2).  Returns (decade_width, boundary_indices).
     """
     if len(pixels) < 3:
+        return None, []
+    spacings = np.diff(pixels)
+    median_s = float(np.median(spacings))
+    if median_s <= 0:
+        return None, []
+    total_span = float(pixels[-1] - pixels[0])
+
+    def _try_threshold(threshold_mult: float) -> tuple[float | None, list[int]]:
+        boundaries = [i for i, s in enumerate(spacings) if s > median_s * threshold_mult]
+        if len(boundaries) >= 2:
+            decade_widths = [spacings[b] for b in boundaries]
+            decade_width = float(np.median(decade_widths))
+            if total_span / decade_width <= 8.0:
+                return decade_width, boundaries
+            # Implied decades > 8: try periodicity
+            intervals = np.diff(boundaries)
+            if len(intervals) > 0:
+                from collections import Counter
+                interval_counts = Counter([int(i) for i in intervals if i >= 3])
+                mode_interval = interval_counts.most_common(1)
+                if mode_interval and mode_interval[0][1] >= 2:
+                    ticks_per_decade = mode_interval[0][0]
+                    n_decades = max(1, round(len(spacings) / ticks_per_decade))
+                    return total_span / n_decades, boundaries
+            return total_span / 4.0, boundaries
+        if len(boundaries) == 1:
+            decade_width = float(spacings[boundaries[0]])
+            if total_span / decade_width <= 8.0:
+                return decade_width, boundaries
+            return total_span / 4.0, boundaries
+        return None, []
+
+    # Primary: strict threshold
+    result = _try_threshold(1.5)
+    if result[0] is not None:
+        return result
+    # Secondary: relaxed threshold for minor-tick axes
+    result = _try_threshold(1.2)
+    if result[0] is not None:
+        return result
+    # No boundaries found — check for uniform/near-uniform spacing.
+    mean_s = float(np.mean(spacings))
+    if mean_s > 0 and float(np.std(spacings)) / mean_s < 0.15:
+        decade_width = mean_s
+        if total_span / decade_width <= 6.0:
+            return decade_width, []
+    # Ambiguous — estimate decades from tick count (typical log axis has
+    # 2–9 ticks per decade depending on minor ticks and grid lines).
+    estimated_decades = max(2, round(len(spacings) / 5.0))
+    return total_span / estimated_decades, []
+
+
+def _estimate_decade_width_from_anchors(
+    anchors: list[tuple[float, float]],
+) -> float | None:
+    """Compute decade width from anchor pairs with the most consistent spacing.
+
+    Returns the median decade width across all anchor pairs, or None if
+    fewer than 2 positive anchors are available.
+    """
+    positive = [(float(p), float(v)) for p, v in anchors if v is not None and v > 0]
+    if len(positive) < 2:
+        return None
+    estimates = []
+    for i in range(len(positive)):
+        for j in range(i + 1, len(positive)):
+            p1, v1 = positive[i]
+            p2, v2 = positive[j]
+            pix_diff = abs(p2 - p1)
+            log_diff = abs(np.log10(v2) - np.log10(v1))
+            if log_diff > 1e-3 and pix_diff > 1e-3:
+                estimates.append(pix_diff / log_diff)
+    if not estimates:
+        return None
+    return float(np.median(estimates))
+
+
+def infer_log_values_from_spacing(
+    pixels: list[float],
+    anchor_pixel: float | None = None,
+    anchor_value: float | None = None,
+    anchors: list[tuple[float, float]] | None = None,
+) -> list[tuple[float, float]] | None:
+    """Infer log tick values from pixel spacing using TMLOG decade fingerprint.
+
+    Two-phase approach:
+    1. Detect decade width from spacing pattern (large gaps = boundaries).
+    2. If an anchor (pixel, value) is provided, calibrate absolute scale;
+       otherwise assign synthetic 10^n values starting at the first tick.
+
+    This is robust to missing or extra intra-decade ticks because it uses
+    decade boundaries (large gaps) as structural anchors rather than
+    requiring a perfect 1-2-3-...-9-10 tick sequence.
+    """
+    if len(pixels) < 2:
+        return None
+    pixels_sorted = np.array(sorted(pixels), dtype=float)
+    total_span = float(pixels_sorted[-1] - pixels_sorted[0])
+    decade_width, boundaries = _detect_decade_width_and_boundaries(pixels_sorted)
+    if decade_width is None or decade_width <= 0:
         return None
 
-    pixels_sorted = sorted(pixels)
-    spacings = [pixels_sorted[i + 1] - pixels_sorted[i]
-                for i in range(len(pixels_sorted) - 1)]
+    # Cross-check with anchor-based decade width when multiple anchors available
+    if anchors and len(anchors) >= 2:
+        anchor_dw = _estimate_decade_width_from_anchors(anchors)
+        if anchor_dw is not None and anchor_dw > 0:
+            detected_decades = total_span / decade_width
+            anchor_decades = total_span / anchor_dw
+            if anchor_decades < detected_decades:
+                decade_width = anchor_dw
 
-    if not spacings:
-        return None
+    # Guard: without boundaries or anchor, uniform spacing with many ticks is
+    # almost certainly linear spacing misidentified as log decades.  High CV
+    # suggests log minor ticks (decreasing spacings within each decade).
+    if not boundaries and anchor_pixel is None and len(pixels_sorted) > 6:
+        spacings = np.diff(pixels_sorted)
+        cv = float(np.std(spacings) / (np.mean(spacings) + 1e-6))
+        if cv < 0.15:
+            return None
 
-    median_spacing = np.median(spacings)
-    if median_spacing < 80:
-        return None
+    # Decade offset: what power-of-10 does the first tick correspond to?
+    if anchor_pixel is not None and anchor_value is not None and anchor_value > 0:
+        anchor_idx = int(np.argmin(np.abs(pixels_sorted - anchor_pixel)))
+        anchor_px = float(pixels_sorted[anchor_idx])
+        n_decades_before = sum(1 for b in boundaries if pixels_sorted[b + 1] <= anchor_px)
+        intra = (anchor_px - pixels_sorted[0] - n_decades_before * decade_width) / decade_width
+        decade_offset = np.log10(anchor_value) - (n_decades_before + intra)
+    else:
+        decade_offset = 0.0
 
-    spacing_ratios = [s / median_spacing for s in spacings]
-    log_like = all(0.7 < r < 1.3 for r in spacing_ratios)
-    if not log_like:
-        return None
-
-    origin_pixel = pixels_sorted[0]
-    decade_width = median_spacing
     result = []
     for p in pixels_sorted:
-        decades = (p - origin_pixel) / decade_width
-        value = 10.0 ** decades
-        result.append((p, value))
+        n_decades = sum(1 for b in boundaries if pixels_sorted[b + 1] <= p)
+        fraction = (p - pixels_sorted[0] - n_decades * decade_width) / decade_width
+        log10_value = decade_offset + n_decades + fraction
+        result.append((int(p), float(10.0 ** log10_value)))
     return result
 
 
 def fit_axis_multi_hypothesis(
     tick_map: list[tuple[float, float]],
+    preferred_type: str | None = None,
 ) -> CalibrationResult | None:
     """Fit multiple axis models and return the best plausible one.
 
@@ -147,6 +261,7 @@ def fit_axis_multi_hypothesis(
             inlier_count=len(inliers_lin),
             residual=float(res_lin),
             is_plausible=plausible,
+            inlier_indices=list(inliers_lin),
         ))
 
     # Log RANSAC
@@ -155,7 +270,9 @@ def fit_axis_multi_hypothesis(
         positive_values = values[values > 0]
         if len(positive_values) >= 2:
             decade_span = np.log10(positive_values.max()) - np.log10(positive_values.min())
-            log_span_ok = decade_span >= 1.0
+            # Real log axes can span < 1 decade (e.g. 1–5 ≈ 0.7 decades).
+            # Require at least 0.3 decades to have any discriminative power.
+            log_span_ok = decade_span >= 0.3
         else:
             log_span_ok = False
         plausible = bool(
@@ -168,37 +285,28 @@ def fit_axis_multi_hypothesis(
             inlier_count=len(inliers_log),
             residual=float(res_log),
             is_plausible=plausible,
+            inlier_indices=list(inliers_log),
         ))
-
-    # Polynomial (degree 2) — only when enough ticks
-    if len(tick_map) >= 5:
-        try:
-            coeffs = np.polyfit(values, pixels, 2)
-            c2, a2, b2 = coeffs
-            pred = c2 * values ** 2 + a2 * values + b2
-            rmse = float(np.sqrt(np.mean((pixels - pred) ** 2)))
-            poly_params = (float(c2), float(a2), float(b2))
-            plausible = is_calibration_plausible(
-                "polynomial", poly_params, len(tick_map)
-            )
-            candidates.append(CalibrationResult(
-                model_type="polynomial",
-                params=(float(c2), float(a2), float(b2)),
-                inlier_count=len(tick_map),
-                residual=rmse,
-                is_plausible=plausible,
-            ))
-        except (np.linalg.LinAlgError, ValueError, FloatingPointError):
-            pass
 
     if not candidates:
         return None
 
-    # Select best: prefer plausible, then highest inlier count, then lowest residual
+    # Select best: prefer plausible, then highest inlier count, then lowest residual.
+    # When preferred_type is given, boost that model's priority so it wins ties.
     plausible = [c for c in candidates if c.is_plausible]
     pool = plausible if plausible else candidates
 
-    pool.sort(key=lambda c: (-c.inlier_count, c.residual))
+    def _sort_key(c: CalibrationResult):
+        inlier_penalty = -c.inlier_count
+        # If this is the preferred type and it's plausible, give it a
+        # small residual bonus (lower effective residual) so it wins
+        # ties against the non-preferred type.
+        effective_residual = c.residual
+        if preferred_type and c.model_type == preferred_type and c.is_plausible:
+            effective_residual = c.residual * 0.5
+        return (inlier_penalty, effective_residual)
+
+    pool.sort(key=_sort_key)
     return pool[0]
 
 
@@ -402,9 +510,31 @@ def calibrate_axis(
     if len(valid) >= 3 and not _is_plausible_ocr_tick_sequence(valid, preferred_type):
         valid = []
 
+    # For log-preferred axes with only 2 OCR ticks, the scale is under-
+    # determined.  Reject clearly implausible pairings (identical values,
+    # or a decade width that is far outside the 15–400 px/decade range
+    # seen in real charts).  A decade width < 15 px/decade means the two
+    # ticks are extremely close in log-space relative to pixel distance,
+    # making the fit hypersensitive to OCR error.
+    if preferred_type == "log" and len(valid) == 2:
+        p1, v1 = valid[0]
+        p2, v2 = valid[1]
+        if v1 > 0 and v2 > 0:
+            log_diff = abs(np.log10(v2) - np.log10(v1))
+            pix_diff = abs(p2 - p1)
+            if log_diff < 1e-3:
+                valid = []
+            else:
+                decade_width = pix_diff / log_diff
+                if decade_width < 15.0 or decade_width > 400.0:
+                    valid = []
+
     if len(valid) < 2:
-        # Heuristic fallback: generate synthetic values from tick spacing pattern
-        synthetic_valid = _build_heuristic_ticks(axis)
+        # Heuristic fallback: generate synthetic values from tick spacing pattern.
+        # Pass any available OCR anchors to TMLOG decade fingerprint inference
+        # so that a single reliable FormulaOCR read can calibrate the entire axis.
+        anchors = [(p, v) for p, v in labeled_ticks if v is not None]
+        synthetic_valid = _build_heuristic_ticks(axis, anchors=anchors)
         if len(synthetic_valid) >= 2:
             valid = synthetic_valid
             used_heuristic_fallback = True
@@ -483,11 +613,14 @@ def calibrate_axis(
     )
 
 
-def _build_heuristic_ticks(axis):
+def _build_heuristic_ticks(axis, anchors=None):
     """Generate synthetic (pixel, value) ticks from spacing pattern when OCR fails.
 
     Uses tick spacing uniformity to guess linear vs log, then assigns
-    synthetic values.  Absolute scale is arbitrary, but preserves shape.
+    synthetic values.  When ``anchors`` (list of (pixel, value)) are
+    provided, they are fed to the TMLOG decade-fingerprint inference as
+    absolute calibration points instead of falling back to arbitrary
+    synthetic values.
     """
     ticks = sorted([t[0] for t in (axis.ticks or [])])
     if len(ticks) < 2:
@@ -513,8 +646,77 @@ def _build_heuristic_ticks(axis):
 
     n = len(ticks)
     if is_log:
-        # Synthetic log values: 1, 10, 100, ... or 1, 2, 5, 10, ...
-        # Use uniform log spacing as simplest fallback
+        # P0: Try TMLOG decade fingerprint inference with OCR anchors first
+        if anchors:
+            # Prefer FormulaOCR anchors (typically more reliable)
+            sorted_anchors = sorted(
+                anchors, key=lambda a: (
+                    0 if a[1] is not None and a[1] > 0 and
+                    (100 <= a[1] <= 110 or 10 <= a[1] <= 19 or
+                     (a[1] > 0 and abs(np.log10(a[1]) - round(np.log10(a[1]))) < 0.02))
+                    else 1,
+                    a[0]
+                )
+            )
+            for anchor_pixel, anchor_value in sorted_anchors:
+                if anchor_value is not None and anchor_value > 0:
+                    inferred = infer_log_values_from_spacing(
+                        ticks, anchor_pixel=float(anchor_pixel), anchor_value=float(anchor_value),
+                        anchors=[(float(p), float(v)) for p, v in anchors if v is not None and v > 0],
+                    )
+                    if inferred is not None and len(inferred) >= 2:
+                        if axis.direction == "y":
+                            inferred = inferred[::-1]
+                        min_val = max(min(v for _, v in inferred), 1e-9)
+                        max_val = max(v for _, v in inferred)
+                        decades = float(np.log10(max_val / min_val))
+                        if decades <= 4.0:
+                            return inferred
+                        if decades <= 10.0:
+                            scale = 4.0 / decades
+                            rescaled = []
+                            log_min = float(np.log10(min_val))
+                            for p, v in inferred:
+                                log_v = float(np.log10(max(v, 1e-9)))
+                                new_log_v = (log_v - log_min) * scale + log_min
+                                rescaled.append((p, float(10.0 ** new_log_v)))
+                            inferred = rescaled
+                            return inferred
+                        # Span > 10 decades: treat as garbage, fall through to P1/P2
+
+        # P1: TMLOG without anchors
+        inferred = infer_log_values_from_spacing(ticks)
+        if inferred is not None and len(inferred) >= 2:
+            min_val = max(min(v for _, v in inferred), 1e-9)
+            max_val = max(v for _, v in inferred)
+            decades = float(np.log10(max_val / min_val))
+            # If span is reasonable, use TMLOG inference.  Garbage tick
+            # detection (high CV, no clear periodicity) produces inflated
+            # decade counts; fall back to safe single-decade logspace.
+            if decades <= 4.0:
+                if axis.direction == "y":
+                    inferred = inferred[::-1]
+                return inferred
+            # Span > 4 decades but ≤ 10: rescale to 4 decades to keep
+            # some shape while avoiding catastrophic calibration.
+            if decades <= 10.0:
+                scale = 4.0 / decades
+                rescaled = []
+                log_min = float(np.log10(min_val))
+                for p, v in inferred:
+                    log_v = float(np.log10(max(v, 1e-9)))
+                    new_log_v = (log_v - log_min) * scale + log_min
+                    rescaled.append((p, float(10.0 ** new_log_v)))
+                inferred = rescaled
+                if axis.direction == "y":
+                    inferred = inferred[::-1]
+                return inferred
+            # Span > 10 decades: treat as garbage, fall through to P2.
+
+        # P2: Safe synthetic log values — np.logspace(0, 1, n) always
+        # spans exactly one decade.  This is robust to garbage tick
+        # detection because the scale factor is determined by the linear
+        # fit to pixel span, not by tick-count heuristics.
         values = np.logspace(0, 1, n)
     else:
         # Synthetic linear values: 0, 1, 2, ..., n-1
@@ -1506,13 +1708,27 @@ def calibrate_all_axes(
         meta["formula_log_score"] = max(formula_scores) if formula_scores else 0.0
         meta["formula_value_count"] = len(formula_values)
 
+    # Infer guessed chart type from probabilities; use it as a stronger
+    # signal than raw probability thresholds for axis_preferred.
+    guessed_type = None
+    if type_probs:
+        guessed_type = max(type_probs, key=type_probs.get)
+
     calibrated = []
     for axis in axes:
         is_log = axis_is_log.get(id(axis), False)
 
         # Set per-axis preferred type
+        # Visual log detection (should_treat_as_log) is more reliable than
+        # chart-type softmax probabilities for sparse-tick axes.
         axis_preferred = None
-        if axis.direction == "y" and log_y_prob > 0.25:
+        if is_log:
+            axis_preferred = "log"
+        elif guessed_type in ("log_y", "loglog") and axis.direction == "y":
+            axis_preferred = "log"
+        elif guessed_type in ("log_x", "loglog") and axis.direction == "x":
+            axis_preferred = "log"
+        elif axis.direction == "y" and log_y_prob > 0.25:
             axis_preferred = "log"
         elif axis.direction == "x" and log_x_prob > 0.25:
             axis_preferred = "log"

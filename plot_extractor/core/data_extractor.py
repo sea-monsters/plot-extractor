@@ -11,6 +11,12 @@ from plot_extractor.utils.image_utils import (
 )
 from plot_extractor.config import MIN_DATA_POINTS, MIN_SERIES_POINTS, FOREGROUND_MIN_AREA
 from plot_extractor.core.skeleton_path import trace_skeleton_paths, extract_path_data
+from plot_extractor.core.skeleton_graph import (
+    build_skeleton_graph,
+    extract_branches,
+    assign_branches_to_series,
+    branches_to_mask,
+)
 from plot_extractor.core.scatter_overlap import (
     detect_overlap_candidates,
     extract_template_from_ccs,
@@ -626,6 +632,26 @@ def _separate_series_by_color(image, mask, n_clusters=3, min_clusters=1):
     if len(series_hsv) >= 2:
         return [(img, cmask) for _, img, cmask in series_hsv]
 
+    # P1: Skeleton graph fallback when color separation fails entirely
+    if n_clusters >= 2 and np.sum(mask > 0) >= FOREGROUND_MIN_AREA * 2:
+        skel_graph = build_skeleton_graph(mask > 0)
+        branches = extract_branches(skel_graph)
+        if len(branches) >= 2:
+            series_branches = assign_branches_to_series(branches, n_series=n_clusters)
+            skeleton_results = []
+            for s_branches in series_branches:
+                if not s_branches:
+                    continue
+                smask = branches_to_mask(s_branches, mask.shape)
+                # Dilate slightly to recover original curve thickness
+                kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
+                smask = cv2.dilate(smask, kernel, iterations=1)
+                x_spread = int(np.ptp(np.where(smask > 0)[1])) if np.any(smask > 0) else 0
+                if np.sum(smask > 0) >= FOREGROUND_MIN_AREA and x_spread > w * 0.05:
+                    skeleton_results.append((image, smask))
+            if len(skeleton_results) >= 2:
+                return skeleton_results
+
     if not series_hue:
         return [(image, mask)]
     series_hue.sort(key=lambda item: item[0], reverse=True)
@@ -710,6 +736,24 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
     bg_color = detect_background_color(image)
     mask = make_foreground_mask(plot_img, bg_color)
     mask, _ = _remove_grid_lines(mask)
+
+    # P3: FFT grid removal enhancement for periodic grids
+    if has_grid and plot_img.size > 0:
+        from plot_extractor.geometry.grid_suppress import suppress_grid_lines_fft  # pylint: disable=import-outside-toplevel
+        fft_cleaned = suppress_grid_lines_fft(plot_img)
+        # Convert back to RGB for make_foreground_mask compatibility
+        if len(fft_cleaned.shape) == 2:
+            fft_rgb = cv2.cvtColor(fft_cleaned, cv2.COLOR_GRAY2RGB)
+        else:
+            fft_rgb = fft_cleaned
+        fft_mask = make_foreground_mask(fft_rgb, bg_color)
+        fft_mask, _ = _remove_grid_lines(fft_mask)
+        # Use FFT mask only if it preserves significant foreground
+        # and does not blow up the mask (FFT artifacts can invert contrast)
+        fft_fg = np.sum(fft_mask > 0)
+        orig_fg = np.sum(mask > 0)
+        if orig_fg > 0 and fft_fg >= orig_fg * 0.5 and fft_fg <= orig_fg * 3:
+            mask = fft_mask
 
     x_cals = [ca for ca in calibrated_axes if ca.axis.direction == "x"]
     y_cals = [ca for ca in calibrated_axes if ca.axis.direction == "y"]

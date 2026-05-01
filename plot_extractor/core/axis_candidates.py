@@ -16,6 +16,7 @@ from plot_extractor.utils.math_utils import (
     _is_arithmetic_sequence,
     _is_geometric_sequence,
 )
+from plot_extractor.core.axis_calibrator import fit_axis_multi_hypothesis
 
 
 @dataclass
@@ -60,7 +61,8 @@ def solve_axis_multi_candidate(
             warnings.append("OCR-derived candidate failed (insufficient ticks)")
 
     # Candidate 2: Heuristic synthetic (always available as fallback)
-    heur_cand = _solve_heuristic(axis, preferred_type)
+    # Pass any available OCR anchors so TMLOG can use them for calibration.
+    heur_cand = _solve_heuristic(axis, preferred_type, anchors=valid_ocr)
     if heur_cand:
         candidates.append(heur_cand)
 
@@ -93,6 +95,31 @@ def _solve_from_ocr(
     preferred_type: str | None = None,
 ) -> Optional[AxisMappingCandidate]:
     """Solve axis mapping from OCR-derived ticks using RANSAC robust regression."""
+    # P0: Try multi-hypothesis calibration first (linear/log competition)
+    multi_result = fit_axis_multi_hypothesis(ticks, preferred_type=preferred_type)
+    if multi_result is not None and multi_result.is_plausible:
+        inlier_ticks = (
+            [ticks[i] for i in multi_result.inlier_indices]
+            if multi_result.inlier_indices
+            else ticks
+        )
+        conf = _score_axis_fit(
+            inlier_ticks,
+            multi_result.params[0],
+            multi_result.params[1],
+            multi_result.residual,
+            multi_result.model_type,
+        )
+        return AxisMappingCandidate(
+            scale=multi_result.model_type,
+            a=multi_result.params[0],
+            b=multi_result.params[1],
+            residual=multi_result.residual,
+            confidence=conf,
+            source="ocr",
+            tick_map=inlier_ticks,
+        )
+
     pixels = np.array([p for p, _ in ticks], dtype=float)
     values = np.array([v for _, v in ticks], dtype=float)
     n = len(pixels)
@@ -120,8 +147,12 @@ def _solve_from_ocr(
     else:
         log_score = 0.0
 
-    # Prefer log if preferred_type is "log" and score is reasonable
-    if preferred_type == "log" and log_a is not None and log_score > 0:
+    # Prefer log if preferred_type is "log" and a log fit exists.
+    # When the caller explicitly asks for log (from chart-type routing or
+    # visual detection), we should trust that signal even if the linear score
+    # is equal or marginally higher — sparse OCR often makes linear look
+    # artificially good with 2-3 ticks.
+    if preferred_type == "log" and log_a is not None and log_score >= 0:
         best_scale = "log"
         best_a, best_b, best_res = log_a, log_b, log_res
         best_score = log_score
@@ -156,11 +187,12 @@ def _solve_from_ocr(
 def _solve_heuristic(
     axis: Axis,
     preferred_type: str | None = None,
+    anchors: list | None = None,
 ) -> Optional[AxisMappingCandidate]:
     """Solve axis mapping from heuristic synthetic ticks."""
     from plot_extractor.core.axis_calibrator import _build_heuristic_ticks  # pylint: disable=import-outside-toplevel
 
-    ticks = _build_heuristic_ticks(axis)
+    ticks = _build_heuristic_ticks(axis, anchors=anchors)
     if len(ticks) < 2:
         return None
 
