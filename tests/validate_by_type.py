@@ -131,8 +131,13 @@ def evaluate_data_accuracy(data, meta, chart_type: str | None = None):
 
     # Match extracted series to ground truth. Color cluster order may not match
     # generation order, especially for multi-series charts with similar ranges.
+    # Filter out non-XY ground-truth series (e.g., bar/pie subplots with only
+    # 'values' or 'labels') so they don't crash the XY accuracy comparison.
     extracted_items = list(data.items())
-    gt_items = list(gt.items())
+    gt_items = [
+        (name, s) for name, s in gt.items()
+        if "x" in s and "y" in s
+    ]
     match_mode = "xy" if chart_type == "scatter" else "x"
 
     if len(extracted_items) <= 5 and len(gt_items) <= 5:

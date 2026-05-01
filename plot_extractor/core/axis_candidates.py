@@ -173,6 +173,24 @@ def _solve_from_ocr(
     if best_a is None:
         return None
 
+    # Physical plausibility gate: penalize (don't reject) models that fail
+    # the same checks used in fit_axis_multi_hypothesis.  Complete rejection
+    # causes fallback to default (a=1.0) which is often worse.  Instead,
+    # demote the confidence so heuristic or other candidates can win.
+    from plot_extractor.core.axis_calibrator import is_calibration_plausible  # pylint: disable=import-outside-toplevel
+    if not is_calibration_plausible(best_scale, (best_a, best_b), len(best_ticks)):
+        # Try the other model if it exists and is plausible
+        alt_scale = "log" if best_scale == "linear" else "linear"
+        alt_a = log_a if best_scale == "linear" else lin_a
+        alt_b = log_b if best_scale == "linear" else lin_b
+        alt_ticks = log_ticks if best_scale == "linear" else lin_ticks
+        if alt_a is not None and is_calibration_plausible(alt_scale, (alt_a, alt_b), len(alt_ticks)):
+            best_scale, best_a, best_b, best_ticks = alt_scale, alt_a, alt_b, alt_ticks
+        else:
+            # Neither model is plausible; keep the scored choice but with
+            # near-zero confidence so heuristic can outrank it.
+            best_score = 0.1
+
     return AxisMappingCandidate(
         scale=best_scale,
         a=best_a,
@@ -222,6 +240,13 @@ def _solve_heuristic(
 
     # Heuristic has low confidence (arbitrary scale)
     score = 20.0
+
+    # Physical plausibility gate: demote confidence if the fit is
+    # implausible (e.g., a < 0 for linear), but still return the
+    # candidate so it can outrank a penalized OCR fallback.
+    from plot_extractor.core.axis_calibrator import is_calibration_plausible  # pylint: disable=import-outside-toplevel
+    if not is_calibration_plausible(scale, (a, b), len(ticks)):
+        score = 0.5
 
     return AxisMappingCandidate(
         scale=scale,
