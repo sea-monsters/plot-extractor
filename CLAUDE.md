@@ -287,6 +287,23 @@ SSIM is computed for reference only. Series matching uses permutation search whe
 | `docs/BASELINE_EVALUATION.md` | Validation baselines and true pass rates (meta-isolated) |
 | `docs/ARCHITECTURAL_CHANGES_IMPL.md` | Implementation details for algorithm-level changes |
 | `docs/SCATTERACT_COMPARISON.md` | Workflow and design comparison with Scatteract (Bloomberg) |
+| `docs/development/` | Development progress records, validation rounds, milestone tracking |
+| `docs/development/PROGRESS_INDEX.md` | Index of all progress documents |
+
+### Documentation Organization
+
+```
+docs/
+├── development/     # Progress docs, validation rounds, milestone records
+├── architecture/    # Design docs, tech specs, ADRs
+├── design/          # UI/UX critiques, design reviews
+├── memory/          # Session logs, active context, project memory
+├── plans/           # Roadmaps, sprint plans, task breakdowns
+├── quality/         # Benchmarks, coverage reports, quality gates
+└── technology-lib/  # Reference materials, research notes
+```
+
+**Rule**: Progress documents belong in `docs/development/`. Name them `VALIDATION_PROGRESS_YYYY_MM_DD[_FEATURE].md`.
 
 ## Release Workflow
 
