@@ -42,11 +42,6 @@ def is_calibration_plausible(
             return False
         if abs(a) < 1e-6:
             return False
-        # After pixel inversion in calibrate_axis, a should always be > 0
-        # for both standard and inverted axes. a < 0 means the correlation
-        # is backwards even after inversion, which is implausible.
-        if a < 0:
-            return False
         return True
 
     if model_type == "log":
@@ -54,6 +49,10 @@ def is_calibration_plausible(
             return False
         a = params[0]
         if abs(a) < 1e-6:
+            return False
+        # ``a`` is pixels per decade for the log fit.  Values below this
+        # range usually mean a huge linear numeric ramp was force-fit as log.
+        if abs(a) < 15.0 or abs(a) > 1000.0:
             return False
         return True
 
@@ -222,7 +221,45 @@ def infer_log_values_from_spacing(
         intra = (anchor_px - pixels_sorted[0] - n_decades_before * decade_width) / decade_width
         decade_offset = np.log10(anchor_value) - (n_decades_before + intra)
     else:
+        # P1 mode: no single anchor passed, but if we have any anchors at all,
+        # solve for decade_offset via consensus (median + inlier filter).
+        # This fixes the "always starts at 1.0" problem when OCR gives even
+        # 1-2 noisy reads.
         decade_offset = 0.0
+        if anchors:
+            offsets = []
+            for ap, av in anchors:
+                if av is None or av <= 0:
+                    continue
+                anchor_idx = int(np.argmin(np.abs(pixels_sorted - ap)))
+                anchor_px = float(pixels_sorted[anchor_idx])
+                n_decades_before = sum(1 for b in boundaries if pixels_sorted[b + 1] <= anchor_px)
+                intra = (anchor_px - pixels_sorted[0] - n_decades_before * decade_width) / decade_width
+                expected_log10 = n_decades_before + intra
+                offsets.append(float(np.log10(av) - expected_log10))
+            if offsets:
+                offsets_arr = np.array(offsets)
+                median_off = float(np.median(offsets_arr))
+                inliers = np.abs(offsets_arr - median_off) < 0.5
+                n_inliers = int(np.sum(inliers))
+                if n_inliers >= 2:
+                    decade_offset = float(np.median(offsets_arr[inliers]))
+                elif n_inliers == 1 and len(offsets) == 1:
+                    # Single anchor: only trust it if it is a clean power of ten
+                    # (OCR errors on non-power-of-ten labels are common)
+                    single_val = [
+                        av for ap, av in anchors
+                        if av is not None and av > 0
+                        and abs(np.log10(av) - round(np.log10(av))) < 0.05
+                    ]
+                    if single_val:
+                        decade_offset = median_off
+                    else:
+                        decade_offset = 0.0
+                elif n_inliers >= 1:
+                    decade_offset = float(np.median(offsets_arr[inliers]))
+                else:
+                    decade_offset = 0.0
 
     result = []
     for p in pixels_sorted:
@@ -272,7 +309,7 @@ def fit_axis_multi_hypothesis(
             decade_span = np.log10(positive_values.max()) - np.log10(positive_values.min())
             # Real log axes can span < 1 decade (e.g. 1–5 ≈ 0.7 decades).
             # Require at least 0.3 decades to have any discriminative power.
-            log_span_ok = decade_span >= 0.3
+            log_span_ok = 0.3 <= decade_span <= 6.0
         else:
             log_span_ok = False
         plausible = bool(
@@ -362,6 +399,25 @@ def _is_plausible_ocr_tick_sequence(
         return False
 
     return True
+
+
+def _snap_to_power_of_ten(v: float) -> float:
+    """Snap OCR-noisy values to nearest power of ten when close enough.
+
+    Tesseract often misreads '100' as '95', '102', '430', etc.
+    If log10(v) is within 0.15 of an integer, snap to that power of 10.
+    Skip the [10,19] and [100,110] ranges where superscript decoding
+    (10^n) is the more likely interpretation.
+    """
+    if v <= 0:
+        return v
+    if (10 <= v <= 19) or (100 <= v <= 110):
+        return v
+    logv = np.log10(v)
+    rounded = round(logv)
+    if abs(logv - rounded) < 0.15:
+        return float(10.0 ** rounded)
+    return v
 
 
 def _fix_log_superscript_ocr(
@@ -458,6 +514,7 @@ class CalibratedAxis:
     formula_batch_requested: int = 0
     formula_batch_returned: int = 0
     formula_batch_ms: float = 0.0
+    debug_trace: dict | None = None
 
     def to_data(self, pixel: int) -> Optional[float]:
         return pixel_to_data(pixel, self.a, self.b, self.axis_type, inverted=self.inverted)
@@ -534,7 +591,7 @@ def calibrate_axis(
         # Pass any available OCR anchors to TMLOG decade fingerprint inference
         # so that a single reliable FormulaOCR read can calibrate the entire axis.
         anchors = [(p, v) for p, v in labeled_ticks if v is not None]
-        synthetic_valid = _build_heuristic_ticks(axis, anchors=anchors)
+        synthetic_valid = _build_heuristic_ticks(axis, anchors=anchors, preferred_type=preferred_type)
         if len(synthetic_valid) >= 2:
             valid = synthetic_valid
             used_heuristic_fallback = True
@@ -577,6 +634,43 @@ def calibrate_axis(
     )
 
     best_candidate = candidate_result.best
+    promoted_primary_log = False
+    promoted_primary_log_reason = None
+    if (
+        preferred_type == "log"
+        and axis.side in ("bottom", "left")
+        and getattr(candidate_result, "all", None)
+    ):
+        log_candidates = [
+            cand
+            for cand in candidate_result.all
+            if getattr(cand, "scale", None) == "log" and getattr(cand, "a", None) is not None
+        ]
+        if log_candidates:
+            best_log = min(
+                log_candidates,
+                key=lambda cand: float(getattr(cand, "residual", 1e9) or 1e9),
+            )
+            best_residual = float(getattr(best_candidate, "residual", 1e9) or 1e9)
+            best_log_residual = float(getattr(best_log, "residual", 1e9) or 1e9)
+            current_is_unstable = (
+                getattr(best_candidate, "scale", None) != "log"
+                or best_residual > 1000.0
+                or (
+                    getattr(best_candidate, "source", None) == "ocr"
+                    and len(valid) <= 3
+                    and best_residual > 100.0
+                )
+            )
+            # Main-axis robustness guard:
+            # only promote when the log candidate is materially better,
+            # so we don't override stable linear fits by soft routing noise.
+            has_clear_log_advantage = best_log_residual <= max(5.0, best_residual * 0.35)
+            if current_is_unstable and has_clear_log_advantage:
+                best_candidate = best_log
+                promoted_primary_log = True
+                promoted_primary_log_reason = "preferred_log_primary_axis_guard"
+
     axis_type = best_candidate.scale
     a = best_candidate.a
     b = best_candidate.b
@@ -588,6 +682,19 @@ def calibrate_axis(
         a, b, _ = fit_linear(pixels_fit, values)
         if a is None:
             return None
+
+    debug_trace = {
+        "preferred_type": preferred_type,
+        "is_log_input": bool(is_log) if is_log is not None else None,
+        "valid_tick_count": int(len(valid)),
+        "used_heuristic_fallback": bool(used_heuristic_fallback),
+        "input_labeled_count": int(sum(1 for _p, v in labeled_ticks if v is not None)),
+        "candidate_best_scale": getattr(best_candidate, "scale", None),
+        "candidate_best_source": getattr(best_candidate, "source", None),
+        "candidate_best_confidence": float(getattr(best_candidate, "confidence", 0.0)),
+        "candidate_primary_log_promoted": promoted_primary_log,
+        "candidate_primary_log_reason": promoted_primary_log_reason,
+    }
 
     return CalibratedAxis(
         axis=axis,
@@ -610,10 +717,45 @@ def calibrate_axis(
         formula_batch_requested=formula_batch_requested,
         formula_batch_returned=formula_batch_returned,
         formula_batch_ms=formula_batch_ms,
+        debug_trace=debug_trace,
     )
 
 
-def _build_heuristic_ticks(axis, anchors=None):
+def _anchor_aligns_with_spacing(
+    anchor_pixel: float,
+    anchor_value: float,
+    pixels: np.ndarray,
+    spacings: np.ndarray,
+) -> bool:
+    """Check if a power-of-ten anchor aligns with detected decade boundaries.
+
+    Log decade boundaries appear as large spacing gaps.  If the anchor
+    value is a clean power of ten, its pixel position should be close to
+    one of those boundaries.  Misaligned anchors are usually OCR errors
+    (e.g. 40 read as 430) and should be rejected.
+    """
+    # TEMPORARILY DISABLED: causes regression on log_y Y-axis calibration
+    # where decade boundaries are detected differently than X-axis.
+    # TODO: re-enable with axis-direction-aware boundary logic.
+    return True
+    # if anchor_value <= 0:
+    #     return False
+    # logv = np.log10(anchor_value)
+    # if abs(logv - round(logv)) >= 0.05:
+    #     return True  # non-power-of-ten: cannot validate geometrically
+    # median_s = float(np.median(spacings))
+    # if median_s <= 0:
+    #     return True
+    # boundaries = [i for i, s in enumerate(spacings) if s > median_s * 1.5]
+    # if not boundaries:
+    #     return True
+    # boundary_pixels = [float(pixels[b + 1]) for b in boundaries]
+    # nearest_dist = min(abs(bp - anchor_pixel) for bp in boundary_pixels)
+    # decade_width = float(np.median([spacings[b] for b in boundaries]))
+    # return nearest_dist < decade_width * 0.25
+
+
+def _build_heuristic_ticks(axis, anchors=None, preferred_type=None):
     """Generate synthetic (pixel, value) ticks from spacing pattern when OCR fails.
 
     Uses tick spacing uniformity to guess linear vs log, then assigns
@@ -643,6 +785,8 @@ def _build_heuristic_ticks(axis, anchors=None):
 
     # Classify axis type from spacing pattern
     is_log = cv > 0.3 and 0.5 < mean_ratio < 2.0 and not 0.9 < mean_ratio < 1.1
+    if preferred_type == "log":
+        is_log = True
 
     n = len(ticks)
     if is_log:
@@ -660,6 +804,10 @@ def _build_heuristic_ticks(axis, anchors=None):
             )
             for anchor_pixel, anchor_value in sorted_anchors:
                 if anchor_value is not None and anchor_value > 0:
+                    if not _anchor_aligns_with_spacing(
+                        float(anchor_pixel), float(anchor_value), pixels, spacings
+                    ):
+                        continue
                     inferred = infer_log_values_from_spacing(
                         ticks, anchor_pixel=float(anchor_pixel), anchor_value=float(anchor_value),
                         anchors=[(float(p), float(v)) for p, v in anchors if v is not None and v > 0],
@@ -1259,6 +1407,7 @@ def _select_best_ocr_calibration(
     best_cal = None
     best_score = -1e9
     tesseract_residual = None
+    source_scores = []
 
     for source, labeled in candidate_maps:
         valid_count = sum(1 for _, value in labeled if value is not None)
@@ -1322,16 +1471,38 @@ def _select_best_ocr_calibration(
                 if changed_values:
                     candidate_score = _candidate_calibration_score(cal, valid_count, formula_log_score)
                     candidate_score += changed_values * 25.0
+                    source_scores.append({
+                        "source": source,
+                        "valid_count": int(valid_count),
+                        "score": float(candidate_score),
+                        "axis_type": cal.axis_type,
+                        "residual": float(cal.residual),
+                        "changed_values": int(changed_values),
+                    })
                     if candidate_score > best_score:
                         best_score = candidate_score
                         best_cal = cal
                     continue
 
         candidate_score = _candidate_calibration_score(cal, valid_count, formula_log_score)
+        source_scores.append({
+            "source": source,
+            "valid_count": int(valid_count),
+            "score": float(candidate_score),
+            "axis_type": cal.axis_type,
+            "residual": float(cal.residual),
+        })
         if candidate_score > best_score:
             best_score = candidate_score
             best_cal = cal
 
+    if best_cal is not None:
+        trace = dict(best_cal.debug_trace or {})
+        trace["candidate_sources"] = source_scores
+        trace["selected_candidate_score"] = float(best_score)
+        trace["axis_preferred"] = axis_preferred
+        trace["axis_is_log"] = bool(is_log)
+        best_cal.debug_trace = trace
     return best_cal
 
 
@@ -1417,7 +1588,17 @@ def prepare_formula_label_context(
         if not (axis.ticks and len(axis.ticks) >= 3):
             tesseract_log_scores[id(axis)] = 0.0
             continue
-        if use_ocr and detect_log_notation_ocr is not None:
+        type_prior_log = (
+            (axis.direction == "x" and log_x_prob > 0.25)
+            or (axis.direction == "y" and log_y_prob > 0.25)
+        )
+        dense_tick_axis = len(axis.ticks or []) > 24
+        if (
+            use_ocr
+            and detect_log_notation_ocr is not None
+            and not type_prior_log
+            and not dense_tick_axis
+        ):
             tesseract_log_scores[id(axis)] = detect_log_notation_ocr(
                 image, axis, policy=policy,
             )
@@ -1445,8 +1626,15 @@ def prepare_formula_label_context(
     for axis in y_axes:
         if axis.ticks and len(axis.ticks) >= 3:
             prior_y_log = any(v for k, v in y_log.items())
+            # For log_x charts, X-axis log status should not leak into Y-axis
+            # detection via cross_axis_log — that causes false-log classification
+            # on linear Y axes.  loglog charts are handled by log_y_prob > 0.25.
+            if log_x_prob > 0.25:
+                cross_axis = prior_y_log
+            else:
+                cross_axis = any_x_log or prior_y_log
             y_log[id(axis)] = should_treat_as_log(
-                image, axis, cross_axis_log=any_x_log or prior_y_log,
+                image, axis, cross_axis_log=cross_axis,
                 log_notation_score=log_notation_scores.get(id(axis), 0.0),
             )
             if log_y_prob > 0.25:
@@ -1457,6 +1645,10 @@ def prepare_formula_label_context(
     axis_is_log = {**x_log, **y_log}
     axis_anchor_map: dict[int, list] = {}
     axis_anchor_meta: dict[int, dict[str, Any]] = {}
+    primary_directions = {
+        axis.direction for axis in axes
+        if axis.side in ("bottom", "left")
+    }
     formula_plan = FormulaBatchPlan(
         requests=[],
         requested_count=0,
@@ -1467,7 +1659,33 @@ def prepare_formula_label_context(
     if use_ocr:
         for axis in axes:
             tick_pixels = [t[0] for t in (axis.ticks or [])]
-            anchors = detect_tick_label_anchors(image, axis, tick_pixels, policy=policy)
+            skip_secondary_axis_ocr = (
+                axis.side in ("top", "right")
+                and axis.direction in primary_directions
+            )
+            if skip_secondary_axis_ocr:
+                # Throughput guard: top/right duplicate axes usually mirror
+                # bottom/left scales. Skip expensive OCR probing and allow
+                # heuristic calibration on the secondary axis.
+                axis_anchor_map[id(axis)] = []
+                axis_anchor_meta[id(axis)] = {
+                    "anchor_count": 0,
+                    "tesseract_count": 0,
+                    "label_count": 0,
+                    "geometry_label_count": 0,
+                    "selected_count": 0,
+                    "formula_log_score": 0.0,
+                    "selected_indices": [],
+                }
+                continue
+
+            anchors = detect_tick_label_anchors(
+                image,
+                axis,
+                tick_pixels,
+                policy=policy,
+                force_geometry_fallback=axis_is_log.get(id(axis), False),
+            )
             axis_anchor_map[id(axis)] = anchors
 
             tesseract_count = sum(1 for anchor in anchors if anchor.tesseract_value is not None)
@@ -1681,8 +1899,15 @@ def calibrate_all_axes(
     for axis in y_axes:
         if axis.ticks and len(axis.ticks) >= 3:
             prior_y_log = any(v for k, v in y_log.items())
+            # For log_x charts, X-axis log status should not leak into Y-axis
+            # detection via cross_axis_log — that causes false-log classification
+            # on linear Y axes.  loglog charts are handled by log_y_prob > 0.25.
+            if log_x_prob > 0.25:
+                cross_axis = prior_y_log
+            else:
+                cross_axis = any_x_log or prior_y_log
             y_log[id(axis)] = should_treat_as_log(
-                image, axis, cross_axis_log=any_x_log or prior_y_log,
+                image, axis, cross_axis_log=cross_axis,
                 log_notation_score=log_notation_scores.get(id(axis), 0.0),
             )
             if log_y_prob > 0.25:
@@ -1691,6 +1916,19 @@ def calibrate_all_axes(
             y_log[id(axis)] = False
 
     axis_is_log = {**x_log, **y_log}
+
+    # Infer guessed chart type from probabilities
+    guessed_type = None
+    if type_probs:
+        guessed_type = max(type_probs, key=type_probs.get)
+
+    # For log_x charts, Y axis is linear by definition.  Force it here to
+    # prevent should_treat_as_log false-positives from grid/tick analysis.
+    # loglog charts are handled by log_y_prob > 0.25 (guessed_type=loglog).
+    if guessed_type == "log_x":
+        for axis in y_axes:
+            axis_is_log[id(axis)] = False
+
     for axis in axes:
         axis_id = id(axis)
         meta = axis_anchor_meta.get(axis_id)
@@ -1732,6 +1970,12 @@ def calibrate_all_axes(
             axis_preferred = "log"
         elif axis.direction == "x" and log_x_prob > 0.25:
             axis_preferred = "log"
+
+        # For log_x charts, Y axis is linear.  Force linear preference to
+        # prevent fit_axis_multi_hypothesis from choosing log when OCR values
+        # happen to have lower log-fit residual.
+        if guessed_type == "log_x" and axis.direction == "y":
+            axis_preferred = "linear"
 
         tick_pixels = [t[0] for t in axis.ticks]
         axis_anchor_stats = axis_anchor_meta.get(id(axis), {

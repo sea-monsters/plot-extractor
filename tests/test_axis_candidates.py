@@ -8,6 +8,7 @@ from plot_extractor.core.axis_candidates import (
     solve_axis_multi_candidate,
     AxisCandidatesResult,
 )
+from plot_extractor.core.axis_calibrator import calibrate_axis
 from plot_extractor.core.axis_detector import Axis
 
 
@@ -88,6 +89,46 @@ def test_multi_candidate_sorting():
 
     print(f"[PASS] Candidate sorting test passed (found {len(result.all)} candidates)")
     print(f"  Top candidate: {result.best.source} (confidence={result.best.confidence:.1f})")
+
+
+def test_primary_log_axis_guard_promotes_stable_log_candidate():
+    """Primary (bottom/left) log axis should resist unstable OCR mapping."""
+    axis = Axis(
+        direction="x",
+        side="bottom",
+        position=100,
+        plot_start=50,
+        plot_end=450,
+        ticks=[(80, None), (140, None), (200, None), (260, None),
+               (320, None), (380, None), (440, None), (500, None)],
+    )
+    # Sparse/unstable OCR anchors observed in log_x failures.
+    labeled_ticks = [(80, 1.072), (200, 0.673), (320, 0.712)]
+
+    cal = calibrate_axis(axis, labeled_ticks, preferred_type="log", is_log=True)
+
+    assert cal is not None
+    assert cal.axis_type == "log"
+    assert cal.debug_trace.get("candidate_primary_log_promoted") is True
+
+
+def test_secondary_axis_does_not_force_primary_log_guard():
+    """Secondary (top/right) axes should keep normal selection behavior."""
+    axis = Axis(
+        direction="x",
+        side="top",
+        position=100,
+        plot_start=50,
+        plot_end=450,
+        ticks=[(80, None), (140, None), (200, None), (260, None),
+               (320, None), (380, None), (440, None), (500, None)],
+    )
+    labeled_ticks = [(80, 1.072), (200, 0.673), (320, 0.712)]
+
+    cal = calibrate_axis(axis, labeled_ticks, preferred_type="log", is_log=True)
+
+    assert cal is not None
+    assert cal.debug_trace.get("candidate_primary_log_promoted") is False
 
 
 if __name__ == "__main__":
