@@ -14,6 +14,7 @@ or recognition wrong?".
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from functools import lru_cache
 from typing import List, Optional
 
 import cv2
@@ -112,17 +113,35 @@ def _directional_search_window(
     return int(x1), int(y1), int(x2), int(y2)
 
 
-def _tesseract_geometry_probe(
+def _is_empty_or_uniform_crop(crop: np.ndarray) -> bool:
+    """Cheap pre-filter: skip tesseract for blank/uniform search windows.
+
+    Tesseract subprocess setup costs ~80-120 ms per invocation; eliminating
+    obviously empty crops removes a substantial share of probe calls on
+    the v3 log_x profile (16 probe calls/image, ~100 ms each).
+    """
+    if crop.size == 0:
+        return True
+    if crop.ndim == 3:
+        gray = cv2.cvtColor(crop, cv2.COLOR_RGB2GRAY)
+    else:
+        gray = crop
+    if float(np.std(gray)) < 3.5:
+        return True
+    if int(np.count_nonzero(gray < 128)) < 8:
+        return True
+    return False
+
+
+def _tesseract_geometry_probe_impl(
     crop: np.ndarray,
 ) -> tuple[Optional[tuple[int, int, int, int]], Optional[str]]:
-    """Use Tesseract for geometry only: union word boxes in one label window."""
+    """Run pytesseract geometry probe on a non-empty crop."""
     try:
         import pytesseract  # pylint: disable=import-outside-toplevel
     except ImportError:
         return None, None
 
-    if crop is None or crop.size == 0:
-        return None, None
     try:
         gray = cv2.cvtColor(crop, cv2.COLOR_RGB2GRAY) if len(crop.shape) == 3 else crop.copy()
         gray = cv2.resize(gray, None, fx=2, fy=2, interpolation=cv2.INTER_CUBIC)
@@ -132,7 +151,7 @@ def _tesseract_geometry_probe(
             output_type=pytesseract.Output.DICT,
             config='--psm 7 -c tessedit_char_whitelist=0123456789eE^xX×-+.(){}',
         )
-    except Exception:
+    except Exception:  # pylint: disable=broad-except
         return None, None
 
     boxes = []
@@ -169,6 +188,40 @@ def _tesseract_geometry_probe(
     return (x1, y1, x2, y2), " ".join(texts)
 
 
+@lru_cache(maxsize=2048)
+def _tesseract_geometry_probe_cached(
+    crop_bytes: bytes,
+    shape: tuple,
+    dtype_str: str,
+) -> tuple[Optional[tuple[int, int, int, int]], Optional[str]]:
+    """Bytes-keyed cache around the tesseract geometry probe."""
+    arr = np.frombuffer(crop_bytes, dtype=np.dtype(dtype_str)).reshape(shape)
+    return _tesseract_geometry_probe_impl(arr.copy())
+
+
+def _tesseract_geometry_probe(
+    crop: np.ndarray,
+) -> tuple[Optional[tuple[int, int, int, int]], Optional[str]]:
+    """Use Tesseract for geometry only: union word boxes in one label window.
+
+    Layered fast paths:
+
+    1. Reject crops that are empty or uniform (no measurable text contrast)
+       without paying the subprocess cost.
+    2. Bytes-keyed ``lru_cache`` deduplicates exact repeat crops across
+       the validation batch.
+    """
+    if crop is None or crop.size == 0:
+        return None, None
+    if _is_empty_or_uniform_crop(crop):
+        return None, None
+    return _tesseract_geometry_probe_cached(
+        crop.tobytes(),
+        tuple(crop.shape),
+        str(crop.dtype),
+    )
+
+
 def _expand_bbox_with_padding(
     bbox_local: tuple[int, int, int, int],
     search_crop_shape: tuple[int, ...],
@@ -200,6 +253,7 @@ def plan_tick_label_crop(
     tick_pixels: List[int],
     tick_pixel: int,
     policy=None,
+    force_geometry_fallback: bool = False,
 ) -> Optional[PlannedCrop]:
     """Plan a single tick-label crop with full diagnostic metadata.
 
@@ -216,7 +270,15 @@ def plan_tick_label_crop(
     bbox_local, probe_text = _tesseract_geometry_probe(search_crop)
 
     if bbox_local is None:
-        return None
+        if not force_geometry_fallback:
+            return None
+        # Drop ticks whose search window has no text signal at all. Phantom
+        # anchors on uniform windows feed noise into FormulaOCR / calibration
+        # without rescuing any real label, so they're a net loss for both
+        # throughput (wasted second-pass OCR) and accuracy (RANSAC outliers).
+        if _is_empty_or_uniform_crop(search_crop):
+            return None
+        bbox_local = (0, 0, search_crop.shape[1], search_crop.shape[0])
 
     expanded_local = _expand_bbox_with_padding(
         bbox_local, search_crop.shape, axis.direction,
@@ -247,6 +309,7 @@ def plan_tick_label_crop(
         "is_empty": False,
         "is_far_from_tick": is_far,
         "possible_minor_tick": False,
+        "geometry_fallback": probe_text is None,
     }
 
     return PlannedCrop(
@@ -394,13 +457,15 @@ def build_candidate_maps(
         ):
             candidates.append(("formula", CANDIDATE_PRIORITY["formula"], formula_labeled))
 
+    if formula_log_score >= 0.3 and formula_value_count >= 2 and candidates:
+        # Multiple FormulaOCR exponent reads are authoritative for log axes.
+        # Do not let noisier tesseract/fused maps win only because they have
+        # more labels; missing tick values can be filled by calibration fallback.
+        candidates.sort(key=lambda item: item[1])
+        return [(name, labeled) for name, _priority, labeled in candidates]
+
     # 3. Fused: tesseract corrected by formula
-    if (
-        formula_log_score < 0.3
-        and formula_value_count >= 1
-        and tesseract_count > 0
-        and fused_labeled
-    ):
+    if formula_value_count >= 1 and tesseract_count > 0 and fused_labeled:
         candidates.append(("fused", CANDIDATE_PRIORITY["fused"], fused_labeled))
 
     # 4. Tesseract raw
@@ -422,9 +487,17 @@ def plan_tick_label_crops_batch(
     axis: Axis,
     tick_pixels: List[int],
     policy=None,
+    force_geometry_fallback: bool = False,
 ) -> list[Optional[PlannedCrop]]:
     """Plan crops for all ticks on one axis."""
     return [
-        plan_tick_label_crop(image, axis, tick_pixels, tp, policy=policy)
+        plan_tick_label_crop(
+            image,
+            axis,
+            tick_pixels,
+            tp,
+            policy=policy,
+            force_geometry_fallback=force_geometry_fallback,
+        )
         for tp in tick_pixels
     ]

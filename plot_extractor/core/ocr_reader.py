@@ -522,55 +522,18 @@ def _directional_tick_search_window(
 
 
 def _tesseract_text_bbox(crop: np.ndarray) -> tuple[Optional[tuple[int, int, int, int]], Optional[str]]:
-    """Use Tesseract for geometry only: union word boxes in one label window."""
+    """Use Tesseract for geometry only: union word boxes in one label window.
+
+    Delegates to the unified planner's cached geometry probe. The legacy
+    fallback path in ``_crop_tick_label_from_tesseract_bbox`` would otherwise
+    re-run an identical tesseract subprocess on the same search window — the
+    cached probe deduplicates that work via its bytes-keyed lru_cache and
+    short-circuits on uniform windows before the subprocess is invoked.
+    """
     if crop is None or crop.size == 0 or not TESSERACT_AVAILABLE:
         return None, None
-    try:
-        gray = cv2.cvtColor(crop, cv2.COLOR_RGB2GRAY) if len(crop.shape) == 3 else crop.copy()
-        gray = cv2.resize(gray, None, fx=2, fy=2, interpolation=cv2.INTER_CUBIC)
-        _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-        data = pytesseract.image_to_data(
-            binary,
-            output_type=pytesseract.Output.DICT,
-            config='--psm 7 -c tessedit_char_whitelist=0123456789eE^xX×-+.(){}',
-        )
-    except Exception:
-        return None, None
-
-    boxes = []
-    texts = []
-    n = len(data.get("text", []))
-    for idx in range(n):
-        raw_text = (data["text"][idx] or "").strip()
-        if not raw_text:
-            continue
-        if not any(ch.isdigit() for ch in raw_text):
-            continue
-        if not any(ch.isdigit() or ch in ".-+eE^xX×{}()" for ch in raw_text):
-            continue
-        try:
-            conf = float(data.get("conf", ["-1"] * n)[idx])
-        except (TypeError, ValueError):
-            conf = -1.0
-        if conf < -0.5:
-            continue
-        x = int(data["left"][idx] / 2.0)
-        y = int(data["top"][idx] / 2.0)
-        bw = int(data["width"][idx] / 2.0)
-        bh = int(data["height"][idx] / 2.0)
-        if bw < 1 or bh < 1:
-            continue
-        boxes.append((x, y, x + bw, y + bh))
-        texts.append(raw_text)
-
-    if not boxes:
-        return None, None
-
-    x1 = min(b[0] for b in boxes)
-    y1 = min(b[1] for b in boxes)
-    x2 = max(b[2] for b in boxes)
-    y2 = max(b[3] for b in boxes)
-    return (x1, y1, x2, y2), " ".join(texts)
+    from plot_extractor.core.label_crop_planner import _tesseract_geometry_probe  # pylint: disable=import-outside-toplevel
+    return _tesseract_geometry_probe(crop)
 
 
 def _crop_tick_label_from_tesseract_bbox(
@@ -640,6 +603,7 @@ def detect_tick_label_anchors(
     axis,
     tick_pixels: List[int],
     policy=None,
+    force_geometry_fallback: bool = False,
 ) -> List[AxisLabelAnchor]:
     """Detect tick anchors and preserve the label crop used to read them."""
     init_tesseract()
@@ -647,27 +611,81 @@ def detect_tick_label_anchors(
     if not tick_pixels:
         return []
 
+    def _selected_probe_indices(count: int, max_probes: int) -> set[int]:
+        if count <= max_probes:
+            return set(range(count))
+        if max_probes <= 1:
+            return {count // 2}
+        raw = np.linspace(0, count - 1, max_probes)
+        selected = {int(round(v)) for v in raw}
+        selected.add(0)
+        selected.add(count - 1)
+        return {min(max(i, 0), count - 1) for i in selected}
+
+    def _geometry_probe_budget(count: int, log_axis_hint: bool) -> int:
+        """Scale geometry probes with tick count without reverting to all ticks."""
+        if count <= 10:
+            return count
+        if log_axis_hint:
+            # Dense log axes often label only decade ticks. Keep coverage, but
+            # cap probing aggressively to protect throughput on minor-tick-heavy
+            # axes where per-tick geometry OCR is mostly wasted work.
+            return min(18, max(6, int(round(np.sqrt(count) * 1.8))))
+        return min(14, max(6, int(round(np.sqrt(count) * 1.6))))
+
     # Use unified crop planner for the tick-anchored path
     from plot_extractor.core.label_crop_planner import (  # pylint: disable=import-outside-toplevel
-        plan_tick_label_crops_batch,
+        plan_tick_label_crop,
     )
-    planned_crops = plan_tick_label_crops_batch(image, axis, tick_pixels, policy=policy)
+    # Geometry probing calls Tesseract and is the dominant crop-planning cost.
+    # Dense minor ticks often carry no labels, so probe a representative subset
+    # and let label-instance matching / heuristic fallback handle the rest.
+    max_geometry_probes = _geometry_probe_budget(
+        len(tick_pixels),
+        log_axis_hint=force_geometry_fallback,
+    )
+    planned_indices = _selected_probe_indices(len(tick_pixels), max_geometry_probes)
+    # Second-pass OCR on every planned crop is expensive and rarely useful on
+    # dense minor ticks. Sample those reads while still covering both ends and
+    # mid-axis anchors.
+    if force_geometry_fallback and len(tick_pixels) > max_geometry_probes:
+        max_second_pass = max(4, int(round(max_geometry_probes * 0.5)))
+        ocr_probe_indices = _selected_probe_indices(len(tick_pixels), max_second_pass)
+    else:
+        ocr_probe_indices = planned_indices
 
     tick_anchored_candidates: dict[int, _LabelCandidate] = {}
+    numeric_anchor_count = 0
+    text_anchor_count = 0
     for idx, tick_pixel in enumerate(tick_pixels):
-        pc = planned_crops[idx] if idx < len(planned_crops) else None
+        pc = None
+        if idx in planned_indices:
+            pc = plan_tick_label_crop(
+                image,
+                axis,
+                tick_pixels,
+                tick_pixel,
+                policy=policy,
+                force_geometry_fallback=force_geometry_fallback,
+            )
         if pc is not None and pc.crop is not None and pc.crop.size > 0:
             # Use the planner's crop and probe results
             text = pc.tesseract_probe_text
             value = pc.tesseract_probe_value
-            # Re-OCR the planned crop for a more reliable read
-            ocr_text, ocr_value, contours_len = _ocr_tick_label_text_cached_for_crop(
-                pc.crop, policy=policy,
-            )
-            if ocr_value is not None:
-                value = ocr_value
-            if ocr_text:
-                text = _clean_ocr_text(ocr_text)
+            contours_len = 0
+            # Avoid a second Tesseract call when the geometry probe already
+            # produced a usable numeric read; dense tick axes magnify this cost.
+            if value is None:
+                probe_has_digit_hint = bool(text and any(ch.isdigit() for ch in text))
+                should_second_pass = idx in ocr_probe_indices or probe_has_digit_hint
+                if should_second_pass:
+                    ocr_text, ocr_value, contours_len = _ocr_tick_label_text_cached_for_crop(
+                        pc.crop, policy=policy,
+                    )
+                    if ocr_value is not None:
+                        value = ocr_value
+                    if ocr_text:
+                        text = _clean_ocr_text(ocr_text)
 
             center = int((pc.final_bbox[0] + pc.final_bbox[2]) / 2) if axis.direction == "x" else int((pc.final_bbox[1] + pc.final_bbox[3]) / 2)
             confidence = 0.45
@@ -680,7 +698,7 @@ def detect_tick_label_anchors(
             if pc.quality_flags.get("is_far_from_tick", False):
                 confidence *= 0.6
 
-            tick_anchored_candidates[int(tick_pixel)] = _LabelCandidate(
+            candidate = _LabelCandidate(
                 bbox=pc.final_bbox,
                 center=center,
                 crop=pc.crop,
@@ -688,15 +706,95 @@ def detect_tick_label_anchors(
                 tesseract_value=value,
                 confidence=float(confidence),
             )
+            tick_anchored_candidates[int(tick_pixel)] = candidate
+            if candidate.tesseract_value is not None:
+                numeric_anchor_count += 1
+            elif candidate.tesseract_text:
+                text_anchor_count += 1
         else:
+            if idx not in planned_indices and len(tick_pixels) > max_geometry_probes:
+                continue
             # Fallback to original path if planner returned None
             candidate = _crop_tick_label_from_tesseract_bbox(
                 image, axis, tick_pixels, tick_pixel, policy=policy,
             )
             if candidate is not None:
                 tick_anchored_candidates[int(tick_pixel)] = candidate
+                if candidate.tesseract_value is not None:
+                    numeric_anchor_count += 1
+                elif candidate.tesseract_text:
+                    text_anchor_count += 1
 
-    label_instances = detect_axis_label_instances(image, axis)
+    # Co-optimization: start with throughput-friendly sparse probing, then
+    # rescue only when anchor evidence is too weak for stable calibration.
+    if force_geometry_fallback and len(tick_pixels) > max_geometry_probes and numeric_anchor_count < 2:
+        rescue_target = max(4, max_geometry_probes // 2)
+        rescue_indices = sorted(_selected_probe_indices(len(tick_pixels), rescue_target) - planned_indices)
+        for idx in rescue_indices:
+            tick_pixel = tick_pixels[idx]
+            if int(tick_pixel) in tick_anchored_candidates:
+                continue
+            pc = plan_tick_label_crop(
+                image,
+                axis,
+                tick_pixels,
+                tick_pixel,
+                policy=policy,
+                force_geometry_fallback=force_geometry_fallback,
+            )
+            if pc is None or pc.crop is None or pc.crop.size == 0:
+                continue
+            text = pc.tesseract_probe_text
+            value = pc.tesseract_probe_value
+            contours_len = 0
+            if value is None:
+                ocr_text, ocr_value, contours_len = _ocr_tick_label_text_cached_for_crop(
+                    pc.crop, policy=policy,
+                )
+                if ocr_value is not None:
+                    value = ocr_value
+                if ocr_text:
+                    text = _clean_ocr_text(ocr_text)
+
+            center = int((pc.final_bbox[0] + pc.final_bbox[2]) / 2) if axis.direction == "x" else int((pc.final_bbox[1] + pc.final_bbox[3]) / 2)
+            confidence = 0.35
+            if value is not None:
+                confidence = 0.72
+            elif text:
+                confidence = 0.5
+            if contours_len == 2:
+                confidence = min(1.0, confidence + 0.05)
+            if pc.quality_flags.get("is_far_from_tick", False):
+                confidence *= 0.65
+
+            candidate = _LabelCandidate(
+                bbox=pc.final_bbox,
+                center=center,
+                crop=pc.crop,
+                tesseract_text=text or None,
+                tesseract_value=value,
+                confidence=float(confidence),
+            )
+            tick_anchored_candidates[int(tick_pixel)] = candidate
+            if candidate.tesseract_value is not None:
+                numeric_anchor_count += 1
+            elif candidate.tesseract_text:
+                text_anchor_count += 1
+            if numeric_anchor_count >= 2 or (numeric_anchor_count >= 1 and text_anchor_count >= 2):
+                break
+
+    sufficient_tick_anchors = numeric_anchor_count >= max(3, int(round(len(tick_pixels) * 0.5)))
+
+    if sufficient_tick_anchors:
+        # Co-optimization guard: when tick-anchored path already yields enough
+        # numeric anchors, skip label-instance OCR sweep to save throughput.
+        label_instances = []
+    elif force_geometry_fallback and len(tick_pixels) > max_geometry_probes:
+        label_instances = []
+    elif len(tick_pixels) > max_geometry_probes * 2:
+        label_instances = []
+    else:
+        label_instances = detect_axis_label_instances(image, axis)
     candidates: List[_LabelCandidate] = []
     h, w = image.shape[:2]
     for instance in label_instances:
@@ -750,6 +848,7 @@ def detect_tick_label_anchors(
     matched = _match_tick_label_candidates(tick_pixels, candidates)
     anchors: List[AxisLabelAnchor] = []
     empty_crop = np.empty((0, 0), dtype=image.dtype)
+    tick_index_map = {int(tp): i for i, tp in enumerate(tick_pixels)}
     for tick_pixel, candidate in matched:
         tick_candidate = tick_anchored_candidates.get(int(tick_pixel))
         if tick_candidate is not None and (
@@ -759,6 +858,19 @@ def detect_tick_label_anchors(
         ):
             candidate = tick_candidate
         if candidate is None:
+            tick_idx = tick_index_map.get(int(tick_pixel), -1)
+            if len(tick_pixels) > max_geometry_probes and tick_idx not in planned_indices:
+                anchors.append(AxisLabelAnchor(
+                    tick_pixel=int(tick_pixel),
+                    label_bbox=(0, 0, 0, 0),
+                    label_center=int(tick_pixel),
+                    crop=empty_crop,
+                    tesseract_text=None,
+                    tesseract_value=None,
+                    confidence=0.0,
+                    source="synthetic",
+                ))
+                continue
             crop, bbox = _crop_tick_label_region(image, axis, tick_pixel, padding=15)
             text, value, contours_len = _ocr_tick_label_text_cached_for_crop(crop, policy=policy) if crop.size > 0 else ("", None, 0)
             confidence = 0.0

@@ -10,6 +10,32 @@ import matplotlib.pyplot as plt
 from plot_extractor.core.axis_calibrator import CalibratedAxis
 
 
+def _axis_quality_score(ca: CalibratedAxis) -> float:
+    score = 10.0 if ca.axis.side in ("bottom", "left") else 0.0
+    score += len(ca.tick_map or []) * 2.0
+    score += ca.formula_anchor_count * 6.0
+    score += ca.tesseract_anchor_count * 2.0
+    if ca.tick_source == "formula_generated":
+        score += 35.0
+    elif ca.tick_source == "formula":
+        score += 28.0
+    elif ca.tick_source == "fused":
+        score += 22.0
+    elif ca.tick_source == "tesseract":
+        score += 8.0
+    elif ca.tick_source == "heuristic":
+        score -= 8.0
+    if ca.residual < 1:
+        score += 20.0
+    elif ca.residual < 10:
+        score += 14.0
+    elif ca.residual < 100:
+        score += 6.0
+    elif ca.residual > 1e5:
+        score -= 20.0
+    return score
+
+
 def rebuild_plot(data_dict: Dict[str, Dict], calibrated_axes: List[CalibratedAxis],
                  output_path: Path, figsize=(6, 4), dpi=100,
                  is_scatter: bool = False, has_grid: bool = True):
@@ -17,8 +43,8 @@ def rebuild_plot(data_dict: Dict[str, Dict], calibrated_axes: List[CalibratedAxi
     x_cals = [ca for ca in calibrated_axes if ca.axis.direction == "x"]
     y_cals = [ca for ca in calibrated_axes if ca.axis.direction == "y"]
 
-    x_cal = next((ca for ca in x_cals if ca.axis.side == "bottom"), x_cals[0] if x_cals else None)
-    y_cal_left = next((ca for ca in y_cals if ca.axis.side == "left"), y_cals[0] if y_cals else None)
+    x_cal = max(x_cals, key=_axis_quality_score) if x_cals else None
+    y_cal_left = max(y_cals, key=_axis_quality_score) if y_cals else None
     y_cal_right = next((ca for ca in y_cals if ca.axis.side == "right"), None)
 
     fig, ax = plt.subplots(figsize=figsize, dpi=dpi)

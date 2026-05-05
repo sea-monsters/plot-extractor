@@ -33,6 +33,7 @@ debug_*.png
 
 # Development documentation (local only, not synced)
 /development/
+/docs/development/
 
 # IDE
 .vscode/

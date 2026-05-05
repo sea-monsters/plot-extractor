@@ -70,6 +70,7 @@ def _build_diagnostics(calibrated_axes, data, plot_bounds, is_scatter, has_grid,
             "formula_batch_returned": int(getattr(ca, "formula_batch_returned", 0)),
             "formula_batch_ms": round(float(getattr(ca, "formula_batch_ms", 0.0)), 2),
             "value_range": value_range,
+            "debug_trace": getattr(ca, "debug_trace", None) or {},
         })
 
     series = {}

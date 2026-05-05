@@ -761,7 +761,36 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
     if not x_cals or not y_cals:
         return {}, False, False
 
-    x_cal = next((ca for ca in x_cals if ca.axis.side == "bottom"), x_cals[0])
+    def _axis_quality_score(ca) -> float:
+        """Prefer the axis with the most reliable label/calibration evidence."""
+        score = 0.0
+        score += 10.0 if ca.axis.side in ("bottom", "left") else 0.0
+        score += float(getattr(ca, "labeled_tick_count", 0) or len(getattr(ca, "tick_map", []) or [])) * 2.0
+        score += float(getattr(ca, "formula_anchor_count", 0)) * 6.0
+        score += float(getattr(ca, "tesseract_anchor_count", 0)) * 2.0
+        source = getattr(ca, "tick_source", "heuristic")
+        if source == "formula_generated":
+            score += 35.0
+        elif source == "formula":
+            score += 28.0
+        elif source == "fused":
+            score += 22.0
+        elif source == "tesseract":
+            score += 8.0
+        elif source == "heuristic":
+            score -= 8.0
+        residual = float(getattr(ca, "residual", 1e6) or 1e6)
+        if residual < 1:
+            score += 20.0
+        elif residual < 10:
+            score += 14.0
+        elif residual < 100:
+            score += 6.0
+        elif residual > 1e5:
+            score -= 20.0
+        return score
+
+    x_cal = max(x_cals, key=_axis_quality_score)
     has_log_axis = any(ca.axis_type == "log" for ca in calibrated_axes)
 
     # Detect if there are both left and right Y axes (dual_y scenario)

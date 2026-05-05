@@ -210,7 +210,7 @@ def _solve_heuristic(
     """Solve axis mapping from heuristic synthetic ticks."""
     from plot_extractor.core.axis_calibrator import _build_heuristic_ticks  # pylint: disable=import-outside-toplevel
 
-    ticks = _build_heuristic_ticks(axis, anchors=anchors)
+    ticks = _build_heuristic_ticks(axis, anchors=anchors, preferred_type=preferred_type)
     if len(ticks) < 2:
         return None
 

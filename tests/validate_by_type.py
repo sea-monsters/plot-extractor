@@ -9,7 +9,9 @@ Scoring discipline:
 import csv
 import itertools
 import json
+import subprocess
 import sys
+from datetime import datetime, timezone
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 
@@ -17,7 +19,7 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from plot_extractor.main import extract_from_image
+from plot_extractor.main import extract_from_image, extract_from_images_batched
 from plot_extractor.config import (
     SSIM_THRESHOLD_SIMPLE,
     SSIM_THRESHOLD_LOG,
@@ -31,6 +33,8 @@ from plot_extractor.core.image_loader import load_image, to_grayscale
 TEST_DATA_DIR = Path(__file__).parent.parent / "test_data"
 DEBUG_DIR = Path(__file__).parent.parent / "debug_type"
 REPORT_PATH = Path(__file__).parent.parent / "report_by_type.csv"
+DEFAULT_LINT_REPORT_PATH = Path(__file__).parent.parent / "lint_report.txt"
+DEFAULT_LINT_FAIL_UNDER = 9.0
 
 TYPE_THRESHOLDS = {
     "simple_linear": SSIM_THRESHOLD_SIMPLE,
@@ -61,6 +65,76 @@ DATA_ACCURACY_THRESHOLDS = {
     "no_grid": 0.05,
     "dense": 0.06,
 }
+
+
+def _collect_python_files_for_lint(repo_root: Path) -> list[str]:
+    """Collect Python files using the same source as CI lint command."""
+    try:
+        raw = subprocess.check_output(
+            ["git", "ls-files", "*.py"],
+            cwd=repo_root,
+            text=True,
+            stderr=subprocess.DEVNULL,
+        )
+        files = [line.strip() for line in raw.splitlines() if line.strip()]
+        if files:
+            return files
+    except Exception:
+        pass
+
+    # Fallback for non-git contexts.
+    return [str(p.relative_to(repo_root)) for p in sorted(repo_root.rglob("*.py"))]
+
+
+def run_lint_preflight(
+    repo_root: Path,
+    *,
+    fail_under: float = DEFAULT_LINT_FAIL_UNDER,
+    report_path: Path = DEFAULT_LINT_REPORT_PATH,
+) -> bool:
+    """Run lint gate before validation.
+
+    This mirrors CI policy: pylint must meet the fail-under threshold before
+    running validation rounds.
+    """
+    py_files = _collect_python_files_for_lint(repo_root)
+    if not py_files:
+        print("[LINT] No Python files found; skipping lint preflight.")
+        return True
+
+    report_path = Path(report_path)
+    report_path.parent.mkdir(parents=True, exist_ok=True)
+    cmd = [
+        sys.executable,
+        "-m",
+        "pylint",
+        f"--fail-under={float(fail_under):.2f}",
+        *py_files,
+    ]
+    print(
+        f"[LINT] Running preflight: pylint --fail-under={float(fail_under):.2f} "
+        f"({len(py_files)} files)"
+    )
+    proc = subprocess.run(
+        cmd,
+        cwd=repo_root,
+        capture_output=True,
+        text=True,
+        errors="replace",
+        check=False,
+    )
+    combined = (proc.stdout or "") + ("\n" if proc.stdout and proc.stderr else "") + (proc.stderr or "")
+    report_path.write_text(combined, encoding="utf-8")
+    if proc.returncode == 0:
+        print(f"[LINT] PASS. Report saved to {report_path}")
+        return True
+
+    print(f"[LINT] FAIL (exit={proc.returncode}). Report saved to {report_path}")
+    print(
+        "[LINT] Validation aborted. Please clean lint issues first or use "
+        "--skip-lint-preflight for explicit temporary bypass."
+    )
+    return False
 
 
 def compare_series_accuracy(x_gt, y_gt, x_ext, y_ext, match_mode: str = "x"):
@@ -208,58 +282,47 @@ def _guess_and_route(img_path: Path):
     return type_probs, top1, top2, policy
 
 
-def _evaluate_image(
+def _print_diagnostics_summary(diagnostics: dict) -> None:
+    """Print compact diagnostic line for debug mode."""
+    axis_summary = ", ".join(
+        f"{a['direction']}_{a['side']}:{a['axis_type']}/ticks={a['tick_count']}/"
+        f"src={a.get('tick_source', 'heuristic')}/res={a['residual']:.2f}/"
+        f"sel={a.get('formula_selected_count', 0)}/{a.get('formula_anchor_count', 0)}/"
+        f"batch={a.get('formula_batch_requested', 0)}@{a.get('formula_batch_ms', 0.0)}ms/"
+        f"keep={a.get('formula_batch_kept_count', 0)}/{a.get('formula_batch_candidate_count', 0)}/"
+        f"chunks={a.get('formula_batch_chunks', 0)}"
+        for a in diagnostics["axes"]
+    )
+    series_summary = ", ".join(
+        f"{name}:{info['points']}"
+        for name, info in diagnostics["series"].items()
+    )
+    print(
+        f"      diag grid={diagnostics['has_grid']} "
+        f"scatter={diagnostics['is_scatter']} "
+        f"axes=[{axis_summary}] series=[{series_summary}]"
+    )
+
+
+def _build_row_from_result(
     img_path: Path,
     chart_type: str,
+    type_probs: dict,
+    top1_guess: str,
+    top1_correct: bool,
+    top2_correct: bool,
+    policy,
+    result: dict | None,
     debug: bool = False,
-    debug_subdir: Path | None = None,
-    use_llm: bool = False,
-    use_ocr: bool = False,
-    formula_batch_max_crops: int | None = None,
     quiet: bool = False,
 ) -> dict:
-    # --- Load meta for scoring ONLY; never pass to extraction ---
+    """Build a per-image row from an extraction result.
+
+    Centralizes accuracy scoring and row layout so both the per-image and
+    batched validation paths produce identical rows.
+    """
     meta = _load_meta(img_path)
     data_threshold = DATA_ACCURACY_THRESHOLDS.get(chart_type, 0.05)
-
-    # --- Routing metrics (independent of extraction) ---
-    type_probs, top1_guess, top2_guesses, policy = _guess_and_route(img_path)
-    top1_correct = top1_guess == chart_type
-    top2_correct = chart_type in top2_guesses
-
-    csv_path = None
-    dbg_dir = None
-    if debug:
-        dbg_dir = debug_subdir or (DEBUG_DIR / chart_type)
-        dbg_dir.mkdir(parents=True, exist_ok=True)
-        csv_path = dbg_dir / f"{img_path.stem}.csv"
-
-    # --- Extract WITHOUT meta ---
-    try:
-        result = extract_from_image(
-            img_path, output_csv=csv_path, debug_dir=dbg_dir,
-            use_llm=use_llm, use_ocr=use_ocr,
-            formula_batch_max_crops=formula_batch_max_crops,
-        )
-    except (OSError, ValueError, RuntimeError) as e:
-        if not quiet:
-            print(f"    ERROR {img_path.name}: {e}")
-        return {
-            "file": img_path.name,
-            "rel_err": 1.0,
-            "ssim": 0.0,
-            "threshold": data_threshold,
-            "passed": False,
-            "error": str(e),
-            "guess_top1": top1_guess,
-            "guess_top1_correct": top1_correct,
-            "guess_top2_correct": top2_correct,
-            "guess_probs": type_probs,
-            "policy_density": policy.density_strategy,
-            "policy_color": policy.color_strategy,
-            "policy_noise": policy.noise_strategy,
-        }
-
     diagnostics = result.get("diagnostics") if result else None
     if result and result.get("data"):
         rel_err, _ = evaluate_data_accuracy(result["data"], meta, chart_type=chart_type)
@@ -294,24 +357,151 @@ def _evaluate_image(
     status = "PASS" if passed else "FAIL"
     guess_flag = "+" if top1_correct else ("~" if top2_correct else "-")
     if not quiet:
-        print(f"    {img_path.name}: rel_err={mae_str} SSIM={ssim:.3f} [{status}] guess={top1_guess}{guess_flag}")
+        print(
+            f"    {img_path.name}: rel_err={mae_str} SSIM={ssim:.3f} "
+            f"[{status}] guess={top1_guess}{guess_flag}"
+        )
         if debug and diagnostics:
-            axis_summary = ", ".join(
-                f"{a['direction']}_{a['side']}:{a['axis_type']}/ticks={a['tick_count']}/"
-                f"src={a.get('tick_source', 'heuristic')}/res={a['residual']:.2f}/"
-                f"sel={a.get('formula_selected_count', 0)}/{a.get('formula_anchor_count', 0)}/"
-                f"batch={a.get('formula_batch_requested', 0)}@{a.get('formula_batch_ms', 0.0)}ms/"
-                f"keep={a.get('formula_batch_kept_count', 0)}/{a.get('formula_batch_candidate_count', 0)}/"
-                f"chunks={a.get('formula_batch_chunks', 0)}"
-                for a in diagnostics["axes"]
-            )
-            series_summary = ", ".join(
-                f"{name}:{info['points']}"
-                for name, info in diagnostics["series"].items()
-            )
-            print(f"      diag grid={diagnostics['has_grid']} scatter={diagnostics['is_scatter']} axes=[{axis_summary}] series=[{series_summary}]")
+            _print_diagnostics_summary(diagnostics)
 
     return row
+
+
+def _evaluate_image(
+    img_path: Path,
+    chart_type: str,
+    debug: bool = False,
+    debug_subdir: Path | None = None,
+    use_llm: bool = False,
+    use_ocr: bool = False,
+    formula_batch_max_crops: int | None = None,
+    quiet: bool = False,
+) -> dict:
+    """Evaluate one image via the per-image extraction path."""
+    data_threshold = DATA_ACCURACY_THRESHOLDS.get(chart_type, 0.05)
+    type_probs, top1_guess, top2_guesses, policy = _guess_and_route(img_path)
+    top1_correct = top1_guess == chart_type
+    top2_correct = chart_type in top2_guesses
+
+    csv_path = None
+    dbg_dir = None
+    if debug:
+        dbg_dir = debug_subdir or (DEBUG_DIR / chart_type)
+        dbg_dir.mkdir(parents=True, exist_ok=True)
+        csv_path = dbg_dir / f"{img_path.stem}.csv"
+
+    try:
+        result = extract_from_image(
+            img_path, output_csv=csv_path, debug_dir=dbg_dir,
+            use_llm=use_llm, use_ocr=use_ocr,
+            formula_batch_max_crops=formula_batch_max_crops,
+        )
+    except (OSError, ValueError, RuntimeError) as e:
+        if not quiet:
+            print(f"    ERROR {img_path.name}: {e}")
+        return {
+            "file": img_path.name,
+            "rel_err": 1.0,
+            "ssim": 0.0,
+            "threshold": data_threshold,
+            "passed": False,
+            "error": str(e),
+            "guess_top1": top1_guess,
+            "guess_top1_correct": top1_correct,
+            "guess_top2_correct": top2_correct,
+            "guess_probs": type_probs,
+            "policy_density": policy.density_strategy,
+            "policy_color": policy.color_strategy,
+            "policy_noise": policy.noise_strategy,
+        }
+
+    return _build_row_from_result(
+        img_path, chart_type, type_probs, top1_guess,
+        top1_correct, top2_correct, policy, result,
+        debug=debug, quiet=quiet,
+    )
+
+
+def _evaluate_batch_chunk(
+    image_paths: list[Path],
+    chart_type: str,
+    debug: bool = False,
+    debug_subdir: Path | None = None,
+    use_llm: bool = False,
+    use_ocr: bool = False,
+    formula_batch_max_crops: int | None = None,
+    formula_batch_size: int = 16,
+    quiet: bool = False,
+) -> list[dict]:
+    """Evaluate a chunk of images via the cross-image batched FormulaOCR path.
+
+    Calls extract_from_images_batched once for the entire chunk so paddle
+    inference amortizes across all crops in the chunk. Falls back to per-image
+    extraction for any path missing from the batched result (defensive).
+    """
+    routing = []
+    for img_path in image_paths:
+        type_probs, top1_guess, top2_guesses, policy = _guess_and_route(img_path)
+        routing.append(
+            (img_path, type_probs, top1_guess,
+             top1_guess == chart_type,
+             chart_type in top2_guesses,
+             policy)
+        )
+
+    dbg_dir = None
+    output_dir = None
+    if debug:
+        dbg_dir = debug_subdir or (DEBUG_DIR / chart_type)
+        dbg_dir.mkdir(parents=True, exist_ok=True)
+        output_dir = dbg_dir
+
+    try:
+        batch_results = extract_from_images_batched(
+            image_paths,
+            output_dir=output_dir,
+            debug_dir=dbg_dir,
+            use_llm=use_llm,
+            use_ocr=use_ocr,
+            formula_batch_max_crops=formula_batch_max_crops,
+            formula_batch_size=formula_batch_size,
+        )
+    except (OSError, ValueError, RuntimeError) as e:
+        if not quiet:
+            print(f"    BATCH ERROR ({len(image_paths)} files): {e}")
+        # Build error rows with consistent shape
+        return [
+            {
+                "file": p.name,
+                "rel_err": 1.0,
+                "ssim": 0.0,
+                "threshold": DATA_ACCURACY_THRESHOLDS.get(chart_type, 0.05),
+                "passed": False,
+                "error": str(e),
+                "guess_top1": top1,
+                "guess_top1_correct": t1c,
+                "guess_top2_correct": t2c,
+                "guess_probs": probs,
+                "policy_density": policy.density_strategy,
+                "policy_color": policy.color_strategy,
+                "policy_noise": policy.noise_strategy,
+            }
+            for (p, probs, top1, t1c, t2c, policy) in routing
+        ]
+
+    results_by_path = {Path(r["image_path"]): r for r in batch_results}
+
+    rows = []
+    for img_path, type_probs, top1_guess, top1_correct, top2_correct, policy in routing:
+        result = results_by_path.get(img_path)
+        rows.append(
+            _build_row_from_result(
+                img_path, chart_type, type_probs, top1_guess,
+                top1_correct, top2_correct, policy, result,
+                debug=debug, quiet=quiet,
+            )
+        )
+    return rows
 
 
 def classify_v4_scope(meta: dict | None) -> tuple[bool, str, str | None]:
@@ -383,6 +573,9 @@ def validate_type(
     use_ocr: bool = False,
     workers: int = 1,
     formula_batch_max_crops: int | None = None,
+    max_images: int | None = None,
+    batch_size: int = 1,
+    formula_batch_size: int = 16,
 ) -> dict:
     """Run validation on all images of one type, return aggregate stats."""
     base_dir = data_dir or TEST_DATA_DIR
@@ -392,13 +585,31 @@ def validate_type(
         return {"type": chart_type, "total": 0, "passed": 0, "pass_rate": 0, "avg_rel_err": 0, "max_rel_err": 0, "results": []}
 
     image_files = sorted(type_dir.glob("*.png"))
+    if max_images is not None and max_images > 0:
+        image_files = image_files[:max_images]
     results = []
 
     if debug:
         type_debug = DEBUG_DIR / chart_type
         type_debug.mkdir(parents=True, exist_ok=True)
 
-    if workers > 1:
+    if batch_size > 1:
+        # Batched path: group images into chunks and run cross-image FormulaOCR.
+        for chunk_start in range(0, len(image_files), batch_size):
+            chunk = image_files[chunk_start : chunk_start + batch_size]
+            chunk_rows = _evaluate_batch_chunk(
+                chunk,
+                chart_type,
+                debug=debug,
+                debug_subdir=DEBUG_DIR / chart_type,
+                use_llm=use_llm,
+                use_ocr=use_ocr,
+                formula_batch_max_crops=formula_batch_max_crops,
+                formula_batch_size=formula_batch_size,
+                quiet=False,
+            )
+            results.extend(chunk_rows)
+    elif workers > 1:
         work_items = [
             (str(p), chart_type, debug, str(DEBUG_DIR / chart_type) if debug else None, use_llm, use_ocr, formula_batch_max_crops)
             for p in image_files
@@ -597,6 +808,10 @@ def run_all(
     use_ocr: bool = False,
     workers: int = 1,
     formula_batch_max_crops: int | None = None,
+    max_images: int | None = None,
+    ledger_path: Path | None = None,
+    batch_size: int = 1,
+    formula_batch_size: int = 16,
 ):
     """Run validation across specified types (or all)."""
     if types is None:
@@ -615,6 +830,9 @@ def run_all(
             chart_type, debug=debug, data_dir=data_dir, use_llm=use_llm,
             use_ocr=use_ocr, workers=workers,
             formula_batch_max_crops=formula_batch_max_crops,
+            max_images=max_images,
+            batch_size=batch_size,
+            formula_batch_size=formula_batch_size,
         )
         summaries.append(summary)
         for r in summary["results"]:
@@ -665,7 +883,88 @@ def run_all(
           f"{'':>8} {'':>8} {total_top1_correct / max(total_count, 1):>5.1%} {total_top2_correct / max(total_count, 1):>5.1%}")
     print(f"\nReport saved to {report_path}")
 
+    if ledger_path:
+        _append_validation_ledger(
+            ledger_path,
+            summaries=summaries,
+            report_path=report_path,
+            data_dir=base_dir,
+            types=types,
+            use_llm=use_llm,
+            use_ocr=use_ocr,
+            workers=workers,
+            formula_batch_max_crops=formula_batch_max_crops,
+            max_images=max_images,
+            batch_size=batch_size,
+            formula_batch_size=formula_batch_size,
+        )
+
     return summaries
+
+
+def _git_output(args: list[str]) -> str:
+    try:
+        return subprocess.check_output(
+            ["git", *args],
+            cwd=Path(__file__).parent.parent,
+            text=True,
+            stderr=subprocess.DEVNULL,
+        ).strip()
+    except Exception:
+        return ""
+
+
+def _append_validation_ledger(
+    ledger_path: Path,
+    *,
+    summaries: list[dict],
+    report_path: Path,
+    data_dir: Path,
+    types: list[str],
+    use_llm: bool,
+    use_ocr: bool,
+    workers: int,
+    formula_batch_max_crops: int | None,
+    max_images: int | None,
+    batch_size: int = 1,
+    formula_batch_size: int = 16,
+) -> None:
+    """Append a reproducibility record for validation runs."""
+    ledger_path = Path(ledger_path)
+    ledger_path.parent.mkdir(parents=True, exist_ok=True)
+    diff_stat = _git_output(["diff", "--stat"])
+    record = {
+        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+        "git_commit": _git_output(["rev-parse", "HEAD"]),
+        "git_status_short": _git_output(["status", "--short"]).splitlines(),
+        "git_diff_stat": diff_stat.splitlines() if diff_stat else [],
+        "argv": sys.argv,
+        "data_dir": str(data_dir),
+        "types": types,
+        "use_llm": use_llm,
+        "use_ocr": use_ocr,
+        "workers": workers,
+        "formula_batch_max_crops": formula_batch_max_crops,
+        "max_images": max_images,
+        "batch_size": batch_size,
+        "formula_batch_size": formula_batch_size,
+        "report_path": str(report_path),
+        "summaries": [
+            {
+                "type": s.get("type"),
+                "total": s.get("total"),
+                "passed": s.get("passed"),
+                "pass_rate": s.get("pass_rate"),
+                "avg_rel_err": s.get("avg_rel_err"),
+                "max_rel_err": s.get("max_rel_err"),
+                "routing": s.get("routing"),
+            }
+            for s in summaries
+        ],
+    }
+    with open(ledger_path, "a", encoding="utf-8") as f:
+        f.write(json.dumps(record, ensure_ascii=False, sort_keys=True) + "\n")
+    print(f"Validation ledger appended to {ledger_path}")
 
 
 if __name__ == "__main__":
@@ -679,8 +978,46 @@ if __name__ == "__main__":
     parser.add_argument("--use-ocr", action="store_true", help="Enable tesseract OCR for tick labels (requires tesseract)")
     parser.add_argument("--formula-batch-max-crops", type=int, default=None, help="Override FormulaOCR batch crop cap for staged validation")
     parser.add_argument("--workers", type=int, default=1, help="Number of parallel workers (processes) for image evaluation")
+    parser.add_argument("--max-images", type=int, default=None, help="Limit images per type for targeted smoke validation")
+    parser.add_argument("--batch-size", type=int, default=1, help="Cross-image batch size for FormulaOCR (1=per-image, >1=batched). Overrides --workers when >1.")
+    parser.add_argument(
+        "--formula-batch-size", type=int, default=16,
+        help="Per-batch crop chunk size passed to FormulaBatchQueue (default: 16)",
+    )
+    parser.add_argument("--ledger", type=Path, default=None, help="Append run metadata and summary to a JSONL validation ledger")
+    parser.add_argument(
+        "--skip-lint-preflight",
+        action="store_true",
+        help="Skip mandatory lint preflight (use only for explicit temporary bypass).",
+    )
+    parser.add_argument(
+        "--lint-fail-under",
+        type=float,
+        default=DEFAULT_LINT_FAIL_UNDER,
+        help=f"Pylint fail-under threshold for preflight (default: {DEFAULT_LINT_FAIL_UNDER}).",
+    )
+    parser.add_argument(
+        "--lint-report",
+        type=Path,
+        default=DEFAULT_LINT_REPORT_PATH,
+        help=(
+            "Write preflight lint output to this report file"
+            f" (default: {DEFAULT_LINT_REPORT_PATH})."
+        ),
+    )
     args = parser.parse_args()
     data_dir = Path(args.data_dir) if args.data_dir else None
+
+    repo_root = Path(__file__).parent.parent
+    if not args.skip_lint_preflight:
+        lint_ok = run_lint_preflight(
+            repo_root,
+            fail_under=args.lint_fail_under,
+            report_path=args.lint_report,
+        )
+        if not lint_ok:
+            raise SystemExit(2)
+
     if args.v4_special:
         validate_v4_special(
             data_dir or (Path(__file__).parent.parent / "test_data_v4"),
@@ -699,4 +1036,8 @@ if __name__ == "__main__":
             use_ocr=args.use_ocr,
             workers=args.workers,
             formula_batch_max_crops=args.formula_batch_max_crops,
+            max_images=args.max_images,
+            ledger_path=args.ledger,
+            batch_size=args.batch_size,
+            formula_batch_size=args.formula_batch_size,
         )

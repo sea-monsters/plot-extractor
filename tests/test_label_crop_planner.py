@@ -5,8 +5,7 @@ Tesseract-dependent tests are conditional on availability.
 """
 import sys
 from pathlib import Path
-from types import SimpleNamespace
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 
 import cv2
 import numpy as np
@@ -81,6 +80,65 @@ def test_plan_tick_label_crop_returns_none_on_blank():
     axis = _make_x_axis(ticks=(50, 100, 150))
     tick_pixels = [50, 100, 150]
     result = plan_tick_label_crop(image, axis, tick_pixels, tick_pixel=100)
+    assert result is None
+
+
+def test_plan_tick_label_crop_geometry_fallback_keeps_tick_window():
+    """Log-axis FormulaOCR can still use a tick-guided crop when geometry OCR is blank.
+
+    The fallback only kicks in when the search window has *some* text signal
+    (mocked here by drawing dark glyphs near the tick). Truly uniform windows
+    are dropped by the planner — see ``test_plan_tick_label_crop_drops_uniform_window``.
+    """
+    from plot_extractor.core.label_crop_planner import plan_tick_label_crop
+
+    image = _make_image()
+    # Draw glyph-like blobs in the bottom search window so the crop carries
+    # measurable contrast even when the geometry probe misses the actual text.
+    cv2.putText(image, "10", (88, 148), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 0), 2)
+    axis = _make_x_axis(ticks=(50, 100, 150))
+    tick_pixels = [50, 100, 150]
+
+    with patch("plot_extractor.core.label_crop_planner._tesseract_geometry_probe") as mock_probe:
+        mock_probe.return_value = (None, None)
+        result = plan_tick_label_crop(
+            image,
+            axis,
+            tick_pixels,
+            tick_pixel=100,
+            force_geometry_fallback=True,
+        )
+
+    assert result is not None
+    assert result.tick_pixel == 100
+    assert result.crop is not None
+    assert result.crop.size > 0
+    assert result.quality_flags["geometry_fallback"]
+
+
+def test_plan_tick_label_crop_drops_uniform_window():
+    """Uniform search windows are dropped even with force_geometry_fallback=True.
+
+    Phantom anchors on uniform crops feed noise into both FormulaOCR
+    second-pass and RANSAC calibration, so they're a net loss to throughput
+    and accuracy. The planner must short-circuit such ticks.
+    """
+    from plot_extractor.core.label_crop_planner import plan_tick_label_crop
+
+    image = _make_image()  # uniform white
+    axis = _make_x_axis(ticks=(50, 100, 150))
+    tick_pixels = [50, 100, 150]
+
+    with patch("plot_extractor.core.label_crop_planner._tesseract_geometry_probe") as mock_probe:
+        mock_probe.return_value = (None, None)
+        result = plan_tick_label_crop(
+            image,
+            axis,
+            tick_pixels,
+            tick_pixel=100,
+            force_geometry_fallback=True,
+        )
+
     assert result is None
 
 
@@ -234,6 +292,10 @@ if __name__ == "__main__":
     print("[PASS] test_planned_crop_dataclass_fields")
     test_plan_tick_label_crop_returns_none_on_blank()
     print("[PASS] test_plan_tick_label_crop_returns_none_on_blank")
+    test_plan_tick_label_crop_geometry_fallback_keeps_tick_window()
+    print("[PASS] test_plan_tick_label_crop_geometry_fallback_keeps_tick_window")
+    test_plan_tick_label_crop_drops_uniform_window()
+    print("[PASS] test_plan_tick_label_crop_drops_uniform_window")
     test_plan_tick_label_crop_finds_label_with_mock()
     print("[PASS] test_plan_tick_label_crop_finds_label_with_mock")
     test_plan_tick_label_crop_flags_far_crop()
