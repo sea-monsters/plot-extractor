@@ -42,6 +42,10 @@ class ImageFeatures:
     has_dual_y: bool = False
     rotation_estimate: float = 0.0
 
+    # Per-axis log spacing likelihood
+    x_log_likelihood: float = 0.0
+    y_log_likelihood: float = 0.0
+
 
 def _extract_geometric_features(image_gray: np.ndarray) -> Dict[str, float]:
     """Extract Hough line counts and edge density."""
@@ -196,11 +200,36 @@ def _extract_axis_features(image_gray: np.ndarray) -> Dict[str, float]:
 
     has_dual_y = False
     tick_reg = 0.0
+    x_log_ll = 0.0
+    y_log_ll = 0.0
     if axes:
         y_axes = [a for a in axes if a.direction == "y"]
         if len(y_axes) >= 2:
             sides = {a.side for a in y_axes}
             has_dual_y = "left" in sides and "right" in sides
+
+        # Per-axis log spacing likelihood
+        # Require ≥4 ticks for a reliable estimate (3 ticks = 2 diffs is too noisy).
+        for ax in axes:
+            ticks = sorted([t[0] for t in (ax.ticks or [])])
+            if len(ticks) >= 4:
+                diffs = np.diff(ticks)
+                mean_diff = float(np.mean(diffs))
+                if mean_diff > 0:
+                    cv = float(np.std(diffs) / mean_diff)
+                    ratios = [diffs[i] / diffs[i - 1] for i in range(1, len(diffs)) if diffs[i - 1] > 1]
+                    mean_ratio = float(np.mean(ratios)) if ratios else 1.0
+                    # Log axes have high CV (compressed right side) and
+                    # ratios that are not near 1.0 (non-uniform spacing).
+                    # Use gradual formula: linear axes (CV<0.3) get ll≈0,
+                    # borderline (CV 0.45-0.55) get ll 0.3-0.5,
+                    # true log (CV>0.6) get ll>0.6.
+                    if cv > 0.45 and 0.5 < mean_ratio < 2.0 and not 0.9 < mean_ratio < 1.1:
+                        ll = min(1.0, max(0.0, (cv - 0.3) * 2.0))
+                        if ax.direction == "x":
+                            x_log_ll = max(x_log_ll, ll)
+                        else:
+                            y_log_ll = max(y_log_ll, ll)
 
         # Tick regularity: std of spacing normalized by mean spacing
         all_spacings = []
@@ -216,6 +245,8 @@ def _extract_axis_features(image_gray: np.ndarray) -> Dict[str, float]:
         "axis_count": axis_count,
         "tick_regularity": tick_reg,
         "has_dual_y": has_dual_y,
+        "x_log_likelihood": x_log_ll,
+        "y_log_likelihood": y_log_ll,
     }
 
 
@@ -260,6 +291,8 @@ def extract_all_features(
         axis_count=axis["axis_count"],
         tick_regularity=axis["tick_regularity"],
         has_dual_y=axis["has_dual_y"],
+        x_log_likelihood=axis["x_log_likelihood"],
+        y_log_likelihood=axis["y_log_likelihood"],
         rotation_estimate=rot,
     )
 
@@ -329,7 +362,17 @@ def guess_chart_type(features: ImageFeatures) -> Dict[str, float]:
     )
     scores["log_y"] = log_signal + 0.1 * (1 if features.hough_horiz >= features.hough_vert else 0)
     scores["log_x"] = log_signal + 0.1 * (1 if features.hough_vert > features.hough_horiz else 0)
-    scores["loglog"] = log_signal + 0.05
+    # loglog: boost only when BOTH axes have STRONG log-like spacing pattern.
+    # Use product (not min) to require high signal on both axes simultaneously.
+    # Guard: log_signal must be positive (grid-like features present) AND
+    # both axes must exceed 0.5 threshold (well above linear-axis noise).
+    x_ll = features.x_log_likelihood
+    y_ll = features.y_log_likelihood
+    if x_ll > 0.5 and y_ll > 0.5 and log_signal > 0:
+        dual_log_boost = 1.2 * x_ll * y_ll
+    else:
+        dual_log_boost = 0.0
+    scores["loglog"] = log_signal + 0.05 + dual_log_boost
 
     # --- Dual Y ---
     # Requires multiple hue peaks (two series on separate Y axes).

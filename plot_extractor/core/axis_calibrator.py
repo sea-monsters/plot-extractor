@@ -327,6 +327,53 @@ def infer_log_values_from_spacing(
     return result
 
 
+def _is_geometric_progression(values: np.ndarray, tolerance: float = 0.25) -> bool:
+    """Check if values follow a geometric progression (constant ratio between adjacent)."""
+    if len(values) < 2:
+        return False
+    sorted_vals = np.sort(values)
+    positive = sorted_vals[sorted_vals > 0]
+    if len(positive) < 2:
+        return False
+    ratios = positive[1:] / positive[:-1]
+    if len(ratios) == 0:
+        return False
+    # Check for near-10 ratios (classic log axis: 1, 10, 100, 1000)
+    near_10 = sum(1 for r in ratios if abs(np.log10(r) - round(np.log10(r))) < 0.15)
+    if near_10 >= max(1, len(ratios) * 0.5):
+        return True
+    # General geometric check: low coefficient of variation on ratios
+    ratio_cv = float(np.std(ratios) / (np.mean(ratios) + 1e-9))
+    return ratio_cv < tolerance
+
+
+def _filter_non_standard_log_anchors(
+    anchors: list[tuple[float, float]],
+) -> list[tuple[float, float]]:
+    """Remove anchors whose values don't match standard log-axis tick patterns.
+
+    Standard log ticks: 10^n, 2×10^n, 5×10^n (or close variants).
+    Non-standard values are likely OCR misreads and should be discarded
+    to avoid poisoning the calibration.
+    """
+    if len(anchors) < 2:
+        return anchors
+    filtered = []
+    for p, v in anchors:
+        if v <= 0:
+            continue
+        logv = math.log10(v)
+        mantissa = v / (10 ** math.floor(logv))
+        # Standard log-tick patterns: mantissa ≈ 1.0, 2.0, or 5.0
+        is_standard = any(abs(mantissa - m) < 0.08 for m in (1.0, 2.0, 5.0))
+        if is_standard:
+            filtered.append((p, v))
+    # If filtering removed too many, return originals (avoid over-filtering)
+    if len(filtered) < 2:
+        return anchors
+    return filtered
+
+
 def fit_axis_multi_hypothesis(
     tick_map: list[tuple[float, float]],
     preferred_type: str | None = None,
@@ -384,6 +431,24 @@ def fit_axis_multi_hypothesis(
 
     if not candidates:
         return None
+
+    # A.5 Residual competition: log must beat linear on both residual AND
+    # geometric progression to prevent linear axes from being mis-typed as log
+    # (e.g. "100" on a linear axis triggers log confidence).
+    log_cands = [c for c in candidates if c.model_type == "log" and c.is_plausible]
+    lin_cands = [c for c in candidates if c.model_type == "linear" and c.is_plausible]
+    if log_cands and lin_cands:
+        best_log = min(log_cands, key=lambda c: c.residual)
+        best_lin = min(lin_cands, key=lambda c: c.residual)
+        if not preferred_type == "log":
+            values_positive = values[values > 0]
+            geo_ok = _is_geometric_progression(values_positive)
+            # Log must be significantly better (residual < 50% of linear)
+            # AND values must follow geometric progression
+            if not geo_ok or best_log.residual >= best_lin.residual * 0.5:
+                # Demote log candidates: they are likely linear mis-typed
+                for c in log_cands:
+                    c.is_plausible = False
 
     # Select best: prefer plausible, then highest inlier count, then lowest residual.
     # When preferred_type is given, boost that model's priority so it wins ties.
@@ -742,6 +807,14 @@ def calibrate_axis(
     # For log-preferred axes, discard non-positive values (they break log fit)
     if preferred_type == "log":
         valid = [(p, v) for p, v in valid if v > 0]
+
+    # A.6: Preventive anchor filtering for log axes.
+    # On log axes, tick values should be 10^n or 2/5×10^n. Values that
+    # don't match any standard log-tick pattern are likely OCR misreads.
+    if preferred_type == "log" and len(valid) >= 2:
+        filtered = _filter_non_standard_log_anchors(valid)
+        if len(filtered) >= 2:
+            valid = filtered
 
     # Guardrail: if OCR values look internally inconsistent, ignore them
     # and let heuristic fallback take over.
@@ -1184,45 +1257,101 @@ def _build_heuristic_ticks(axis, anchors=None, preferred_type=None):
                     a[0]
                 )
             )
+            # P0a: Multi-interpretation anchor search
+            # On log axes, OCR may read "10" when the real value is 10^1..10^4.
+            # Try multiple power-of-10 interpretations and score by TMLOG consistency.
+            best_inferred = None
+            best_decade_score = -1.0
             for anchor_pixel, anchor_value in sorted_anchors:
-                if anchor_value is not None and anchor_value > 0:
+                if anchor_value is None or anchor_value <= 0:
+                    continue
+                # Generate candidate interpretations of this anchor
+                candidates = [float(anchor_value)]
+                log_v = np.log10(anchor_value)
+                frac = log_v - math.floor(log_v)
+                if frac < 0.1:
+                    # Value is (near) a power of 10 — also try nearby decades
+                    exp = int(round(log_v))
+                    for offset in range(-1, 5):
+                        candidate_exp = exp + offset
+                        candidate_val = 10.0 ** candidate_exp
+                        if candidate_val != anchor_value and candidate_val > 0:
+                            candidates.append(candidate_val)
+                # Deduplicate
+                seen = set()
+                unique_candidates = []
+                for c in candidates:
+                    key = round(math.log10(c), 2)
+                    if key not in seen:
+                        seen.add(key)
+                        unique_candidates.append(c)
+
+                for cand_value in unique_candidates:
                     if not _anchor_aligns_with_spacing(
-                        float(anchor_pixel), float(anchor_value), pixels, spacings
+                        float(anchor_pixel), float(cand_value), pixels, spacings
                     ):
                         continue
                     inferred = infer_log_values_from_spacing(
-                        ticks, anchor_pixel=float(anchor_pixel), anchor_value=float(anchor_value),
+                        ticks, anchor_pixel=float(anchor_pixel), anchor_value=float(cand_value),
                         anchors=[(float(p), float(v)) for p, v in anchors if v is not None and v > 0],
                     )
-                    if inferred is not None and len(inferred) >= 2:
-                        if axis.direction == "y":
-                            inferred = inferred[::-1]
-                        min_val = max(min(v for _, v in inferred), 1e-9)
-                        max_val = max(v for _, v in inferred)
-                        decades = float(np.log10(max_val / min_val))
-                        reliable_anchor_count = sum(
-                            1 for _p, v in anchors if v is not None and v > 0
-                        )
-                        if (
-                            axis.direction == "y"
-                            and preferred_type == "log"
-                            and reliable_anchor_count < 2
-                            and decades > 1.5
-                        ):
-                            continue
+                    if inferred is None or len(inferred) < 2:
+                        continue
+                    if axis.direction == "y":
+                        inferred_for_check = inferred[::-1]
+                    else:
+                        inferred_for_check = inferred
+                    min_val = max(min(v for _, v in inferred_for_check), 1e-9)
+                    max_val = max(v for _, v in inferred_for_check)
+                    decades = float(np.log10(max_val / min_val))
+                    reliable_anchor_count = sum(
+                        1 for _p, v in anchors if v is not None and v > 0
+                    )
+                    if (
+                        axis.direction == "y"
+                        and preferred_type == "log"
+                        and reliable_anchor_count < 2
+                        and decades > 1.5
+                    ):
+                        continue
+                    if decades > 10.0:
+                        continue
+                    # Score: prefer candidates with TMLOG-consistent decade_width.
+                    # TMLOG consistency is the primary signal — span score is secondary.
+                    tmlog_dw, _ = _detect_decade_width_and_boundaries(pixels)
+                    total_px = float(pixels[-1] - pixels[0])
+                    tmlog_consistency = 1.0
+                    if tmlog_dw and tmlog_dw > 0 and decades > 0:
+                        inferred_dw = total_px / decades
+                        tmlog_consistency = 1.0 - min(abs(inferred_dw - tmlog_dw) / tmlog_dw, 1.0)
+                    # Strongly penalize candidates whose inferred decade_width
+                    # disagrees with TMLOG (consistency < 0.5 means >50% deviation).
+                    if tmlog_consistency < 0.5:
+                        continue
+                    # Span plausibility: 1-6 decades is typical for test charts
+                    span_ok = 1.0 <= decades <= 6.0
+                    if not span_ok:
+                        continue
+                    score = tmlog_consistency * 0.7 + (1.0 - abs(decades - 3.0) / 3.0) * 0.3
+                    # Strongly prefer the literal anchor value interpretation.
+                    # Non-literal candidates must prove themselves via TMLOG.
+                    if cand_value != anchor_value:
+                        score *= 0.3  # 70% penalty for non-literal interpretation
+                    if score > best_decade_score:
+                        best_decade_score = score
                         if decades <= 4.0:
-                            return inferred
-                        if decades <= 10.0:
+                            best_inferred = inferred_for_check
+                        else:
                             scale = 4.0 / decades
                             rescaled = []
                             log_min = float(np.log10(min_val))
-                            for p, v in inferred:
-                                log_v = float(np.log10(max(v, 1e-9)))
-                                new_log_v = (log_v - log_min) * scale + log_min
+                            for p, v in inferred_for_check:
+                                log_v2 = float(np.log10(max(v, 1e-9)))
+                                new_log_v = (log_v2 - log_min) * scale + log_min
                                 rescaled.append((p, float(10.0 ** new_log_v)))
-                            inferred = rescaled
-                            return inferred
-                        # Span > 10 decades: treat as garbage, fall through to P1/P2
+                            best_inferred = rescaled
+            if best_inferred is not None and best_decade_score > 0.5:
+                return best_inferred
 
         # P1: TMLOG without anchors
         inferred = infer_log_values_from_spacing(ticks)
