@@ -37,6 +37,56 @@ def _is_vertical(angle):
     return 90 - AXIS_ANGLE_TOLERANCE <= angle <= 90 + AXIS_ANGLE_TOLERANCE
 
 
+def _detect_vertical_axis_from_edges(edges: np.ndarray, side: str = "left") -> int | None:
+    """Fallback Y-axis detection when HoughLinesP fails on dense grid charts.
+
+    Looks for columns with very long continuous edge runs (>>30% of image
+    height).  Loglog charts have dense horizontal grid that breaks vertical
+    axis edges into short segments, preventing HoughLinesP from aggregating
+    them into a line.  This scan finds the actual axis by its bilateral
+    edge columns.
+    """
+    h, w = edges.shape
+    if side == "left":
+        region = edges[:, : int(w * 0.2)]
+        offset = 0
+    else:
+        region = edges[:, int(w * 0.8) :]
+        offset = int(w * 0.8)
+
+    candidates = []
+    for x in range(region.shape[1]):
+        col = region[:, x]
+        max_run = 0
+        current = 0
+        for val in col:
+            if val > 0:
+                current += 1
+                max_run = max(max_run, current)
+            else:
+                current = 0
+        if max_run > h * 0.30:
+            candidates.append((x, max_run))
+
+    if not candidates:
+        return None
+
+    # Group nearby candidates (bilateral edge columns)
+    candidates.sort()
+    groups = []
+    current_group = [candidates[0]]
+    for c in candidates[1:]:
+        if c[0] - current_group[-1][0] <= 5:
+            current_group.append(c)
+        else:
+            groups.append(current_group)
+            current_group = [c]
+    groups.append(current_group)
+
+    best = max(groups, key=lambda g: sum(score for _, score in g))
+    return offset + int(np.median([x for x, _ in best]))
+
+
 def detect_axes(image_gray, edges=None, hough_threshold=None,
                 min_line_length=None, max_line_gap=None):
     """Detect main x and y axes from the image."""
@@ -104,6 +154,7 @@ def detect_axes(image_gray, edges=None, hough_threshold=None,
                 ))
 
     # Detect Y axes (vertical lines near left or right)
+    left_x = None
     if vert_lines:
         xs = []
         for (x1, y1, x2, y2) in vert_lines:
@@ -132,6 +183,20 @@ def detect_axes(image_gray, edges=None, hough_threshold=None,
                     plot_end=h,
                     ticks=[]
                 ))
+
+    # Fallback: dense horizontal grid on loglog charts breaks HoughLinesP
+    # vertical detection.  Use edge-run scan to recover the Y axis.
+    if not any(a.side == "left" for a in axes):
+        fallback_left = _detect_vertical_axis_from_edges(edges, side="left")
+        if fallback_left is not None:
+            axes.append(Axis(
+                direction="y",
+                position=fallback_left,
+                side="left",
+                plot_start=0,
+                plot_end=h,
+                ticks=[]
+            ))
 
     return axes
 

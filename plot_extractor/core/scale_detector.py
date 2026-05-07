@@ -173,6 +173,26 @@ def _classify_spacing(positions: List[int]) -> str:
             if frac >= 0.35:
                 return "log"
 
+    # ---- Level 1.5: Periodic major-interval detection ----
+    # Log axes with dense minor ticks have large spacings at decade
+    # boundaries that repeat with a fixed period.  When the spacing range
+    # is large (≥ 1.5× median) and large spacings repeat periodically,
+    # this is strong evidence for a log scale.
+    if len(spacings) >= 8 and spacing_range > spacing_median * 1.5:
+        large_threshold = spacing_median * 1.3
+        large_indices = [i for i, s in enumerate(spacings) if s >= large_threshold]
+        if len(large_indices) >= 3:
+            large_vals = np.array([spacings[i] for i in large_indices], dtype=float)
+            large_cv = float(np.std(large_vals) / (np.mean(large_vals) + 1e-6))
+            periods = np.diff(large_indices)
+            if len(periods) >= 2:
+                period_mean = float(np.mean(periods))
+                period_cv = float(np.std(periods) / (period_mean + 1e-6))
+            else:
+                period_cv = 0.0
+            if large_cv < 0.35 and period_cv < 0.3:
+                return "log"
+
     # ---- Level 2: Continuous geometric ----
     if is_geom and not is_arith:
         return "log"
@@ -192,7 +212,23 @@ def infer_scale_from_ticks(axis: Axis) -> str:
     if not axis.ticks or len(axis.ticks) < 4:
         return "unknown"
     positions = [int(t[0]) for t in axis.ticks]
-    return _classify_spacing(positions)
+    result = _classify_spacing(positions)
+    if result == "log":
+        return "log"
+    # Fallback for dense minor ticks on log axes: the geometric pattern of
+    # major ticks is masked by uniform minor-tick spacing.  Extract major
+    # intervals (spacings significantly larger than median) and re-classify.
+    if result in ("unknown", "linear") and len(positions) >= 10:
+        spacings = np.diff(sorted(set(positions)))
+        if len(spacings) >= 6:
+            median_s = float(np.median(spacings))
+            major_mask = spacings >= median_s * 1.3
+            if np.sum(major_mask) >= 4:
+                major = spacings[major_mask]
+                major_result = _classify_spacing_from_spacings(major)
+                if major_result == "log":
+                    return "log"
+    return result
 
 
 def _relaxed_scale_check(image: np.ndarray, axis: Axis) -> bool:
@@ -438,10 +474,36 @@ def should_treat_as_log(
     if grid_guess == "log":
         return True
     if grid_guess == "linear":
+        # Dense minor grid on log axes can look like a linear grid to the
+        # grid-based detector.  Give tick-spacing analysis a chance to
+        # override before settling on linear.
+        tick_guess = infer_scale_from_ticks(axis)
+        if tick_guess == "log":
+            return True
         # OCR notation evidence can override false-linear from dense minor grid.
         # High bar (0.7): requires clear superscript/caret/sci-notation signal.
         if log_notation_score > 0.7:
             return True
+        # When another axis is already log (loglog charts), run relaxed check
+        # on ambiguous axes that the grid detector labeled as linear.
+        if cross_axis_log and tick_guess in ("unknown", "linear"):
+            # Fast path: periodic large spacings (decade boundaries) with
+            # consistent values indicate a log scale even when only 2-3
+            # decade boundaries are visible.
+            if axis.ticks and len(axis.ticks) >= 8:
+                positions = sorted(set(int(t[0]) for t in axis.ticks))
+                spacings = np.diff(positions)
+                if len(spacings) >= 5:
+                    median_s = float(np.median(spacings))
+                    large_vals = np.array(
+                        [s for s in spacings if s >= median_s * 1.3],
+                        dtype=float,
+                    )
+                    if len(large_vals) >= 2:
+                        cv = float(np.std(large_vals) / (np.mean(large_vals) + 1e-6))
+                        if cv < 0.2:
+                            return True
+            return _relaxed_scale_check(image, axis)
         return False
     tick_guess = infer_scale_from_ticks(axis)
     if tick_guess == "log":
@@ -450,6 +512,22 @@ def should_treat_as_log(
     if tick_guess == "unknown" and log_notation_score > 0.4:
         return True
     # Cross-axis relaxed check: dense subsampling on ambiguous axes
-    if cross_axis_log and tick_guess == "unknown":
+    if cross_axis_log and tick_guess in ("unknown", "linear"):
+        # Fast path: periodic large spacings (decade boundaries) with
+        # consistent values indicate a log scale even when only 2-3
+        # decade boundaries are visible.
+        if axis.ticks and len(axis.ticks) >= 8:
+            positions = sorted(set(int(t[0]) for t in axis.ticks))
+            spacings = np.diff(positions)
+            if len(spacings) >= 5:
+                median_s = float(np.median(spacings))
+                large_vals = np.array(
+                    [s for s in spacings if s >= median_s * 1.3],
+                    dtype=float,
+                )
+                if len(large_vals) >= 2:
+                    cv = float(np.std(large_vals) / (np.mean(large_vals) + 1e-6))
+                    if cv < 0.2:
+                        return True
         return _relaxed_scale_check(image, axis)
     return False

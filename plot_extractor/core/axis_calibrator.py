@@ -2510,9 +2510,6 @@ def calibrate_all_axes(
     for axis in y_axes:
         if axis.ticks and len(axis.ticks) >= 3:
             prior_y_log = any(v for k, v in y_log.items())
-            # For log_x charts, X-axis log status should not leak into Y-axis
-            # detection via cross_axis_log — that causes false-log classification
-            # on linear Y axes.  loglog charts are handled by strong Y prior.
             if strong_log_x_prior:
                 cross_axis = prior_y_log
             else:
@@ -2528,13 +2525,28 @@ def calibrate_all_axes(
 
     axis_is_log = {**x_log, **y_log}
 
-    # Infer guessed chart type from probabilities
+    # Infer guessed chart type from probabilities (initial)
     guessed_type = None
     if type_probs:
         guessed_type = max(type_probs, key=type_probs.get)
 
-    # For loglog charts with confident guess, force both axes to log so that
-    # FormulaOCR coverage is allocated to the X axis as well as Y.
+    # W3.1: Post-hoc loglog detection.
+    # If both X and Y axes are independently identified as log by
+    # should_treat_as_log (visual/TMLOG detection), the chart is effectively
+    # loglog regardless of what the guesser says.  Upgrade guessed_type so
+    # both axes get explicit log prior and FormulaOCR coverage is allocated
+    # to both axes.
+    x_is_log = any(axis_is_log.get(id(ax), False) for ax in x_axes)
+    y_is_log = any(axis_is_log.get(id(ax), False) for ax in y_axes)
+    if x_is_log and y_is_log:
+        guessed_type = "loglog"
+        for axis in x_axes:
+            axis_is_log[id(axis)] = True
+        for axis in y_axes:
+            axis_is_log[id(axis)] = True
+
+    # For loglog charts, force both axes to log so that FormulaOCR coverage
+    # is allocated to the X axis as well as Y.
     loglog_prob = float(type_probs.get("loglog", 0) or 0.0) if type_probs else 0.0
     if guessed_type == "loglog" and loglog_prob >= 0.25:
         for axis in x_axes:
