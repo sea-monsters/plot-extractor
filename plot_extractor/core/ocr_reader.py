@@ -125,8 +125,8 @@ def _ocr_tick_label_text_impl(
 
         # Try multiple PSM modes; single-character/number modes work best for ticks
         configs = [
-            "--psm 8 -c tessedit_char_whitelist=0123456789.,-eE+kKmMbB%",
-            "--psm 7 -c tessedit_char_whitelist=0123456789.,-eE+kKmMbB%",
+            "--psm 8 -c tessedit_char_whitelist=0123456789.,-eE+kKmMbB%°!¡⁰¹²³⁴⁵⁶⁷⁸⁹",
+            "--psm 7 -c tessedit_char_whitelist=0123456789.,-eE+kKmMbB%°!¡⁰¹²³⁴⁵⁶⁷⁸⁹",
         ]
         fallback_text = None
         for cfg in configs:
@@ -462,6 +462,59 @@ def _crop_tick_label_region(
     return image[y1:y2, x1:x2], (x1, y1, x2, y2)
 
 
+def _select_major_log_tick_indices(tick_pixels: List[int]) -> set[int]:
+    """Identify indices most likely to be labeled major (decade) ticks on a log axis.
+
+    Log decade boundaries show as large spacing gaps (e.g. 9→10 is much
+    wider than 1→2).  Major ticks sit at or just after these boundaries.
+    When no boundaries are found, spacing is uniform and all ticks are
+    treated as potential majors.
+    """
+    if len(tick_pixels) < 4:
+        return set(range(len(tick_pixels)))
+
+    ticks = sorted(int(t) for t in tick_pixels)
+    spacings = np.diff(ticks).astype(float)
+    median_s = float(np.median(spacings))
+    if median_s <= 0:
+        return {0, len(ticks) - 1}
+
+    # Decade boundaries: spacing significantly larger than median
+    boundary_indices = [i for i, s in enumerate(spacings) if s > median_s * 1.35]
+
+    major = {0, len(ticks) - 1}
+    for b in boundary_indices:
+        major.add(b + 1)  # tick after the big gap is likely a new decade
+
+    # If no boundaries found, spacing is uniform (few/no minor ticks).
+    if not boundary_indices:
+        if len(ticks) <= 6:
+            return set(range(len(ticks)))
+        # Dense uniform spacing on a supposed log axis is suspicious.
+        # Fall back to a sparse subset to avoid wasting probes on phantoms.
+        step = max(2, len(ticks) // 4)
+        sparse = {min(i, len(ticks) - 1) for i in range(0, len(ticks), step)}
+        sparse.add(0)
+        sparse.add(len(ticks) - 1)
+        return sparse
+
+    # If too few majors found, try to infer decade period from boundaries
+    if len(major) < 3 and len(boundary_indices) >= 1:
+        if len(boundary_indices) >= 2:
+            intervals = np.diff(boundary_indices)
+            from collections import Counter
+            mode_counts = Counter([int(x) for x in intervals if x >= 2])
+            if mode_counts:
+                tpd = mode_counts.most_common(1)[0][0] + 1
+                first_major = min(major)
+                for i in range(first_major, len(ticks), tpd):
+                    major.add(min(i, len(ticks) - 1))
+                for i in range(first_major, 0, -tpd):
+                    major.add(max(i, 0))
+
+    return major
+
+
 def _local_tick_gap(tick_pixels: List[int], tick_pixel: int) -> int:
     """Estimate spacing around one tick for directional label crop limits."""
     ticks = sorted(int(t) for t in tick_pixels)
@@ -554,7 +607,8 @@ def _crop_tick_label_from_tesseract_bbox(
     lx1, ly1, lx2, ly2 = bbox_local
     if axis.direction == "x":
         pad_x = max(6, int((lx2 - lx1) * 0.30))
-        pad_y = max(6, int((ly2 - ly1) * 0.45))
+        # Generous vertical padding to capture superscripts above baseline
+        pad_y = max(10, int((ly2 - ly1) * 0.85))
     else:
         pad_x = max(5, int((lx2 - lx1) * 0.22))
         pad_y = max(4, int((ly2 - ly1) * 0.30))
@@ -645,6 +699,17 @@ def detect_tick_label_anchors(
         log_axis_hint=force_geometry_fallback,
     )
     planned_indices = _selected_probe_indices(len(tick_pixels), max_geometry_probes)
+    # For dense log axes, restrict probes to ticks most likely to be majors.
+    # Minor ticks on log axes almost never carry labels; probing them wastes
+    # Tesseract calls and produces poison reads from overlapping major labels.
+    if force_geometry_fallback and len(tick_pixels) > 10:
+        major_indices = _select_major_log_tick_indices(tick_pixels)
+        planned_indices = planned_indices & major_indices
+        if len(planned_indices) < 3:
+            fallback = _selected_probe_indices(
+                len(tick_pixels), max(3, max_geometry_probes // 2),
+            )
+            planned_indices = planned_indices | fallback
     # Second-pass OCR on every planned crop is expensive and rarely useful on
     # dense minor ticks. Sample those reads while still covering both ends and
     # mid-axis anchors.

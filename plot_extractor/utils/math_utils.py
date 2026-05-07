@@ -24,11 +24,32 @@ _SUFFIX_MUL = {
 }
 
 
+# Map common Tesseract misreads of superscript digits to ^N notation.
+# Tesseract LSTM often confuses small superscripts with visually similar
+# punctuation (e.g. 10⁰ → "10°", 10¹ → "10!").
+_SUPERSCRIPT_MISREADS = {
+    "°": "^0",
+    "⁰": "^0",
+    "¡": "^1",
+    "!": "^1",
+    "¹": "^1",
+    "²": "^2",
+    "³": "^3",
+    "⁴": "^4",
+    "⁵": "^5",
+    "⁶": "^6",
+    "⁷": "^7",
+    "⁸": "^8",
+    "⁹": "^9",
+}
+
+
 def parse_numeric(text: str) -> float | None:
     """Parse a numeric string like '1,000', '1.5e3', '10k', '50%'."""
     text = text.strip().replace(",", "")
-    # Handle superscripts like 10² → 10^2
-    text = text.replace("²", "^2").replace("³", "^3")
+    # Handle superscripts and Tesseract misreads (10° → 10^0, 10! → 10^1)
+    for ch, repl in _SUPERSCRIPT_MISREADS.items():
+        text = text.replace(ch, repl)
     if "^" in text:
         try:
             base, exp = text.split("^", 1)

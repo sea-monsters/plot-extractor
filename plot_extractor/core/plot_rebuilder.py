@@ -36,6 +36,25 @@ def _axis_quality_score(ca: CalibratedAxis) -> float:
     return score
 
 
+def _choose_axis_with_primary_hysteresis(cals: List[CalibratedAxis], primary_sides: set[str]):
+    """Keep bottom/left axes unless a secondary axis clearly wins."""
+    if not cals:
+        return None
+    best = max(cals, key=_axis_quality_score)
+    primary = [ca for ca in cals if ca.axis.side in primary_sides]
+    if not primary or best.axis.side in primary_sides:
+        return best
+    primary_best = max(primary, key=_axis_quality_score)
+    margin = 30.0
+    if best.axis_type != primary_best.axis_type:
+        margin += 15.0
+    if len(primary_best.tick_map or []) >= 2:
+        margin += 10.0
+    if _axis_quality_score(best) < _axis_quality_score(primary_best) + margin:
+        return primary_best
+    return best
+
+
 def rebuild_plot(data_dict: Dict[str, Dict], calibrated_axes: List[CalibratedAxis],
                  output_path: Path, figsize=(6, 4), dpi=100,
                  is_scatter: bool = False, has_grid: bool = True):
@@ -43,8 +62,8 @@ def rebuild_plot(data_dict: Dict[str, Dict], calibrated_axes: List[CalibratedAxi
     x_cals = [ca for ca in calibrated_axes if ca.axis.direction == "x"]
     y_cals = [ca for ca in calibrated_axes if ca.axis.direction == "y"]
 
-    x_cal = max(x_cals, key=_axis_quality_score) if x_cals else None
-    y_cal_left = max(y_cals, key=_axis_quality_score) if y_cals else None
+    x_cal = _choose_axis_with_primary_hysteresis(x_cals, {"bottom"})
+    y_cal_left = _choose_axis_with_primary_hysteresis(y_cals, {"left"})
     y_cal_right = next((ca for ca in y_cals if ca.axis.side == "right"), None)
 
     fig, ax = plt.subplots(figsize=figsize, dpi=dpi)

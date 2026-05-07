@@ -83,6 +83,18 @@ def _directional_search_window(
     if axis.direction == "x":
         half_width = int(min(max(gap * 0.48, 18), 70))
         vertical_extent = int(min(max(gap * 0.75, 38), 76))
+        # Log-axis labels (e.g. "10³") are ~25-30 px wide and do not shrink
+        # when tick gaps get small on the right side of the axis.  Detect
+        # likely log axes from spacing pattern and use a larger minimum.
+        if len(tick_pixels) >= 3:
+            diffs = np.diff(sorted(tick_pixels))
+            if np.mean(diffs) > 0:
+                cv = float(np.std(diffs) / np.mean(diffs))
+                ratios = [diffs[i] / diffs[i - 1] for i in range(1, len(diffs)) if diffs[i - 1] > 1]
+                mean_ratio = float(np.mean(ratios)) if ratios else 1.0
+                is_likely_log = cv > 0.3 and 0.5 < mean_ratio < 2.0 and not 0.9 < mean_ratio < 1.1
+                if is_likely_log:
+                    half_width = int(min(max(gap * 0.48, 30), 70))
         x1 = max(0, tick - half_width)
         x2 = min(w, tick + half_width)
         if axis.side == "top":
@@ -92,7 +104,14 @@ def _directional_search_window(
             y1 = min(h, axis_pos + 2)
             y2 = min(h, axis_pos + vertical_extent)
     else:
-        half_height = int(min(max(gap * 0.45, 12), 36))
+        # Dense log axes often have many minor ticks with no labels.
+        # Reduce vertical padding so minor-tick search windows do not
+        # overlap adjacent major labels and produce poison OCR reads.
+        dense_y_axis = len(tick_pixels) > 10
+        if dense_y_axis:
+            half_height = int(min(max(gap * 0.30, 8), 24))
+        else:
+            half_height = int(min(max(gap * 0.45, 12), 36))
         horizontal_extent = int(min(max(gap * 0.95, 60), 130))
         y1 = max(0, tick - half_height)
         y2 = min(h, tick + half_height)
@@ -149,7 +168,7 @@ def _tesseract_geometry_probe_impl(
         data = pytesseract.image_to_data(
             binary,
             output_type=pytesseract.Output.DICT,
-            config='--psm 7 -c tessedit_char_whitelist=0123456789eE^xX×-+.(){}',
+            config='--psm 7 -c tessedit_char_whitelist=0123456789eE^xX×-+.(){}°!¡⁰¹²³⁴⁵⁶⁷⁸⁹',
         )
     except Exception:  # pylint: disable=broad-except
         return None, None
@@ -234,7 +253,9 @@ def _expand_bbox_with_padding(
 
     if axis_direction == "x":
         pad_x = max(6, int((lx2 - lx1) * expansion_factor))
-        pad_y = max(6, int((ly2 - ly1) * 0.45))
+        # Generous vertical padding for X-axis labels to capture superscripts
+        # that sit above the baseline (common on log-scale ticks like 10^2).
+        pad_y = max(10, int((ly2 - ly1) * 0.85))
     else:
         pad_x = max(5, int((lx2 - lx1) * 0.22))
         pad_y = max(4, int((ly2 - ly1) * expansion_factor))
@@ -472,10 +493,19 @@ def build_candidate_maps(
     if tesseract_count > 0 and tesseract_labeled:
         candidates.append(("tesseract", CANDIDATE_PRIORITY["tesseract"], tesseract_labeled))
 
+    # Sparse Tesseract cannot be fit directly, but its single reliable label
+    # can still anchor the heuristic log-range estimator.
+    if 0 < tesseract_count < 2 and tesseract_labeled:
+        candidates.append(("heuristic", CANDIDATE_PRIORITY["heuristic"], tesseract_labeled))
+
     # 5. Heuristic: always available as fallback
     if not candidates:
-        heuristic_ticks = tick_pixels or []
-        candidates.append(("heuristic", CANDIDATE_PRIORITY["heuristic"], [(p, None) for p in heuristic_ticks]))
+        heuristic_labeled = (
+            tesseract_labeled
+            if tesseract_count > 0 and tesseract_labeled
+            else [(p, None) for p in (tick_pixels or [])]
+        )
+        candidates.append(("heuristic", CANDIDATE_PRIORITY["heuristic"], heuristic_labeled))
 
     # Sort by priority and return (name, labeled) pairs
     candidates.sort(key=lambda item: item[1])

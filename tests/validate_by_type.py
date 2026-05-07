@@ -881,6 +881,7 @@ def run_all(
     print("-" * 86)
     print(f"{'TOTAL':<18} {total_pass:>3}/{total_count:<3} {total_pass / max(total_count, 1):>6.1%} "
           f"{'':>8} {'':>8} {total_top1_correct / max(total_count, 1):>5.1%} {total_top2_correct / max(total_count, 1):>5.1%}")
+    _print_failure_buckets(all_rows)
     print(f"\nReport saved to {report_path}")
 
     if ledger_path:
@@ -900,6 +901,65 @@ def run_all(
         )
 
     return summaries
+
+
+def _print_failure_buckets(rows: list[dict], limit: int = 5) -> None:
+    """Print compact failure buckets for routing/timing regression triage."""
+    buckets: dict[tuple[str, str, str, str], list[dict]] = {}
+
+    def _err_band(row: dict) -> str:
+        try:
+            rel_err = float(row.get("rel_err") or 0)
+        except (TypeError, ValueError):
+            return "err_na"
+        if rel_err < 0.05:
+            return "err_lt_5pct"
+        if rel_err < 0.2:
+            return "err_5_20pct"
+        if rel_err < 1.0:
+            return "err_20_100pct"
+        return "err_gt_100pct"
+
+    def _time_band(row: dict) -> str:
+        try:
+            total_ms = float(row.get("timing_total_ms") or 0)
+        except (TypeError, ValueError):
+            return "time_na"
+        if total_ms <= 0:
+            return "time_na"
+        if total_ms < 5_000:
+            return "time_lt_5s"
+        if total_ms < 10_000:
+            return "time_5_10s"
+        return "time_gt_10s"
+
+    for row in rows:
+        if str(row.get("passed", "")).lower() == "true":
+            continue
+        key = (
+            str(row.get("type", "")),
+            str(row.get("guess_top1", "")),
+            _err_band(row),
+            _time_band(row),
+        )
+        buckets.setdefault(key, []).append(row)
+
+    if not buckets:
+        return
+
+    print("\nFailure buckets (top routing/timing clusters)")
+    print("-" * 86)
+    ranked = sorted(
+        buckets.items(),
+        key=lambda item: (len(item[1]), item[0][0], item[0][1]),
+        reverse=True,
+    )
+    for (true_type, guess, err_band, time_band), bucket_rows in ranked[:limit]:
+        examples = ", ".join(str(row.get("file", "")) for row in bucket_rows[:5])
+        print(
+            f"{true_type:<15} guess={guess:<15} {err_band:<15} "
+            f"{time_band:<11} n={len(bucket_rows):<3} examples={examples}"
+        )
 
 
 def _git_output(args: list[str]) -> str:
@@ -1017,6 +1077,20 @@ if __name__ == "__main__":
         )
         if not lint_ok:
             raise SystemExit(2)
+
+    # Prominent warning when FormulaOCR is expected but unavailable.
+    # Silent failures invalidate any baseline that relies on FormulaOCR rescue.
+    if args.use_ocr:
+        from plot_extractor.core.formula_ocr import formula_ocr_available
+        if not formula_ocr_available():
+            print("=" * 72)
+            print("WARNING: FormulaOCR is NOT available.")
+            print("  --use-ocr is set, but paddlepaddle/paddlex cannot be loaded.")
+            print("  All FormulaOCR-dependent rescue paths will silently fail.")
+            print("  Ensure the virtual environment is activated:")
+            print("    .venv\\Scripts\\activate   (Windows)")
+            print("    source .venv/bin/activate  (Unix)")
+            print("=" * 72)
 
     if args.v4_special:
         validate_v4_special(

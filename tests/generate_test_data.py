@@ -131,6 +131,17 @@ def generate_log_y(idx: int, seed: int):
     y_floor = max(0.1, float(y.min()) * 0.5)
     y_ceil = float(y.max()) * 2
 
+    # Adaptive strategy: ensure at least 2.5 decades so matplotlib renders
+    # multiple decade labels (e.g. 10^0, 10^1, 10^2).  Sparse decades
+    # (1-2 labels total) make OCR calibration impossible regardless of engine.
+    decades = np.log10(y_ceil / y_floor)
+    min_decades = 2.5
+    if decades < min_decades:
+        needed = min_decades - decades
+        # Expand symmetrically in log space so the curve stays roughly centred
+        y_floor = max(0.001, y_floor / (10 ** (needed * 0.5)))
+        y_ceil = y_ceil * (10 ** (needed * 0.5))
+
     color = _pick(rng, LINE_COLORS)
     fig, ax = plt.subplots(figsize=(6, 4), dpi=100)
     ax.semilogy(x, y, color=color, linewidth=2)

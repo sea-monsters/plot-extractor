@@ -329,3 +329,39 @@ Targeted unit tests:
 2. Joint-gate discipline remains intact (same lint + same validation slice).
 3. No new catastrophic latency/error class was introduced in this gate slice;
    `log_x` / `log_y` absolute accuracy remains the next optimization focus.
+
+### 9.8 Label-Anchored Log Range And Endpoint Recall (2026-05-06)
+
+Detailed review record:
+`docs/development/REVIEW_LOG_ROUTING_SIMPLE_LINEAR_2026_05_05.md`, sections
+9.5 and 9.6.
+
+Summary:
+
+1. Sparse Tesseract labels are now passed into the heuristic candidate path,
+   so a single reliable label is no longer discarded before log fallback
+   calibration.
+2. A one-anchor absolute log-range shift was tested and rejected because it
+   worsened `log_y/001.png` from `0.3333` to `0.6396`.
+3. A targeted endpoint/major-label recall pass was tested and rejected from
+   runtime extraction because the stricter variant regressed `log_y/002.png`
+   from `0.1972` to `3.3569` in the v1 N=4 gate.
+4. Runtime code was rolled back to the safe baseline after the negative
+   endpoint-recall experiment; the retained lesson is that recalled labels
+   need an independent consistency score before they can drive calibration.
+
+Validation checkpoint:
+
+- `python -m pylint plot_extractor tests/validate_by_type.py --fail-under=9`
+  passed at `9.65/10`.
+- `python tests/validate_by_type.py --types log_y --data-dir test_data --use-ocr --workers 1 --max-images 4 --formula-batch-max-crops 4 --skip-lint-preflight`
+  restored the safe `log_y` baseline: `0/4`, `avg_rel_err=0.3450`,
+  `max_rel_err=0.5908`.
+
+Next implementation direction:
+
+1. Add diagnostic-only output for recalled endpoint/major label candidates.
+2. Record OCR text/value, nearest tick, candidate source, monotonic/log-value
+   consistency, and selected-candidate-map impact.
+3. Only promote recalled labels into runtime calibration after the diagnostic
+   shows stable true positives across the same joint gate.

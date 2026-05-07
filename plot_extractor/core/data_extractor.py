@@ -790,7 +790,28 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
             score -= 20.0
         return score
 
-    x_cal = max(x_cals, key=_axis_quality_score)
+    def _choose_axis_with_primary_hysteresis(cals, primary_sides):
+        """Keep visual primary axes unless another candidate clearly wins."""
+        best = max(cals, key=_axis_quality_score)
+        primary = [ca for ca in cals if ca.axis.side in primary_sides]
+        if not primary or best.axis.side in primary_sides:
+            return best
+        primary_best = max(primary, key=_axis_quality_score)
+        best_score = _axis_quality_score(best)
+        primary_score = _axis_quality_score(primary_best)
+        margin = 30.0
+        if best.axis_type != primary_best.axis_type:
+            margin += 15.0
+        if (
+            getattr(primary_best, "labeled_tick_count", 0)
+            or len(getattr(primary_best, "tick_map", []) or [])
+        ) >= 2:
+            margin += 10.0
+        if best_score < primary_score + margin:
+            return primary_best
+        return best
+
+    x_cal = _choose_axis_with_primary_hysteresis(x_cals, {"bottom"})
     has_log_axis = any(ca.axis_type == "log" for ca in calibrated_axes)
 
     # Detect if there are both left and right Y axes (dual_y scenario)
@@ -798,7 +819,7 @@ def extract_all_data(image, calibrated_axes: List[CalibratedAxis], image_path=No
     y_right = next((ca for ca in y_cals if ca.axis.side == "right"), None)
 
     # Default to left axis if only one Y axis
-    y_cal_default = y_left if y_left else (y_right if y_right else y_cals[0])
+    y_cal_default = _choose_axis_with_primary_hysteresis(y_cals, {"left"})
 
     shifted_x = _ShiftedCal(x_cal, dx=left, dy=0)
     shifted_y_default = _ShiftedCal(y_cal_default, dx=0, dy=top)

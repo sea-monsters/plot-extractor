@@ -44,6 +44,10 @@ def get_formula_ocr() -> Optional["FormulaOCR"]:
             _INSTANCE = FormulaOCR()
         except Exception:
             _logger.debug("FormulaOCR: not available", exc_info=True)
+            print("[WARNING] FormulaOCR failed to initialize. "
+                  "All formula-based rescues will silently fall back to tesseract/heuristic.")
+            print("  Common cause: running outside the project virtual environment.")
+            print("  Fix: activate .venv (Python 3.11) before execution.")
             _INSTANCE = None
         return _INSTANCE
 
