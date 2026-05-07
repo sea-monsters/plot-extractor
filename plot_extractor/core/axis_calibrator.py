@@ -2523,6 +2523,28 @@ def calibrate_all_axes(
         else:
             y_log[id(axis)] = False
 
+    any_y_log = any(y_log.values())
+
+    # Phase 2: Bidirectional cross-axis re-check.
+    # If one direction is log but the other isn't, give the ambiguous
+    # axis a second chance with cross_axis_log=True.  This catches
+    # loglog charts where dense minor grid masks the log pattern on
+    # one axis.
+    if any_y_log:
+        for axis in x_axes:
+            if not x_log.get(id(axis), False) and axis.ticks and len(axis.ticks) >= 3:
+                x_log[id(axis)] = should_treat_as_log(
+                    image, axis, cross_axis_log=True,
+                    log_notation_score=log_notation_scores.get(id(axis), 0.0),
+                )
+    if any_x_log:
+        for axis in y_axes:
+            if not y_log.get(id(axis), False) and axis.ticks and len(axis.ticks) >= 3:
+                y_log[id(axis)] = should_treat_as_log(
+                    image, axis, cross_axis_log=True,
+                    log_notation_score=log_notation_scores.get(id(axis), 0.0),
+                )
+
     axis_is_log = {**x_log, **y_log}
 
     # Infer guessed chart type from probabilities (initial)
