@@ -161,6 +161,14 @@ def _detect_decade_width_and_boundaries(
         boundaries = [i for i, s in enumerate(spacings) if s > median_s * threshold_mult]
         if len(boundaries) >= 2:
             decade_widths = [spacings[b] for b in boundaries]
+            max_dw = max(decade_widths)
+            min_dw = min(decade_widths)
+            # Reject boundaries that are too small or inconsistent.
+            # Real decade boundaries should span a meaningful fraction of the axis.
+            if max_dw < total_span / 3.0:
+                return None, []
+            if max_dw / min_dw > 3.0:
+                return None, []
             decade_width = float(np.median(decade_widths))
             if total_span / decade_width <= 8.0:
                 return decade_width, boundaries
@@ -1210,6 +1218,296 @@ def _anchor_aligns_with_spacing(
     # return nearest_dist < decade_width * 0.25
 
 
+def _anchor_alignment_score(
+    anchor_pixel: float,
+    anchor_value: float,
+    pixels: np.ndarray,
+    spacings: np.ndarray,
+) -> float:
+    """Soft score for whether a power-of-ten anchor sits on a decade boundary."""
+    if anchor_value <= 0 or len(spacings) == 0:
+        return 0.5
+    logv = np.log10(anchor_value)
+    if abs(logv - round(logv)) >= 0.05:
+        return 0.5
+    median_s = float(np.median(spacings))
+    if median_s <= 0:
+        return 0.5
+    boundaries = [i for i, s in enumerate(spacings) if s > median_s * 1.5]
+    if not boundaries:
+        boundaries = [i for i, s in enumerate(spacings) if s > median_s * 1.2]
+    if not boundaries:
+        return 0.5
+    boundary_pixels = [float(pixels[min(b + 1, len(pixels) - 1)]) for b in boundaries]
+    nearest_dist = min(abs(bp - anchor_pixel) for bp in boundary_pixels)
+    decade_width = float(np.median([spacings[b] for b in boundaries]))
+    if decade_width <= 0:
+        return 0.5
+    normalized = nearest_dist / decade_width
+    return max(0.0, 1.0 - normalized / 0.5)
+
+
+def _canonical_log_value_score(value: float) -> float:
+    """Score whether a candidate value is a common log-axis tick label."""
+    if value <= 0:
+        return 0.0
+    nearest_int = int(round(value))
+    if 11 <= nearest_int <= 19 or 101 <= nearest_int <= 110:
+        return 0.2
+    logv = math.log10(value)
+    nearest_exp = round(logv)
+    if abs(logv - nearest_exp) < 0.03:
+        return 1.0
+    mantissa = value / (10 ** math.floor(logv))
+    if any(abs(mantissa - m) < 0.08 for m in (2.0, 5.0)):
+        return 0.75
+    return 0.25
+
+
+def _literal_log_anchor_score(anchor_value: float, cand_value: float) -> float:
+    """Prefer literal OCR only when it looks like a reliable log tick."""
+    if anchor_value <= 0 or cand_value <= 0:
+        return 0.0
+    if abs(math.log10(anchor_value) - math.log10(cand_value)) < 0.01:
+        canonical = _canonical_log_value_score(anchor_value)
+        suspicious_superscript_read = (
+            10.0 <= anchor_value <= 19.0 or 100.0 <= anchor_value <= 110.0
+        )
+        if suspicious_superscript_read and canonical < 1.0:
+            return 0.25
+        return 0.55 + 0.45 * canonical
+    return 0.45 if _canonical_log_value_score(cand_value) >= 0.75 else 0.25
+
+
+def _candidate_log_anchor_values(anchor_value: float) -> list[float]:
+    """Generate plausible interpretations for a noisy OCR log-axis anchor."""
+    if anchor_value <= 0:
+        return []
+    candidates = [float(anchor_value)]
+
+    # Tesseract often reads 10^n as 10n or 100+n after superscript loss.
+    nearest_int = int(round(anchor_value))
+    if 10 <= nearest_int <= 19:
+        candidates.append(10.0 ** (nearest_int - 10))
+    if 100 <= nearest_int <= 110:
+        candidates.append(10.0 ** (nearest_int - 100))
+
+    log_v = math.log10(anchor_value)
+    frac = log_v - math.floor(log_v)
+    if frac < 0.12 or frac > 0.88:
+        exp = int(round(log_v))
+        for offset in range(-1, 5):
+            candidate_exp = exp + offset
+            if -6 <= candidate_exp <= 8:
+                candidates.append(10.0 ** candidate_exp)
+
+    # Nearby powers are useful when OCR returns values such as 95, 103, or 430.
+    rounded_exp = int(round(log_v))
+    if abs(log_v - rounded_exp) < 0.20:
+        for offset in range(-1, 2):
+            candidate_exp = rounded_exp + offset
+            if -6 <= candidate_exp <= 8:
+                candidates.append(10.0 ** candidate_exp)
+
+    unique: list[float] = []
+    seen = set()
+    for candidate in candidates:
+        if candidate <= 0:
+            continue
+        key = round(math.log10(candidate), 3)
+        if key not in seen:
+            seen.add(key)
+            unique.append(float(candidate))
+    return unique
+
+
+def _is_superscript_loss_candidate(anchor_value: float, cand_value: float) -> bool:
+    """Return True when a candidate directly decodes 10+n/100+n OCR loss."""
+    nearest_int = int(round(anchor_value))
+    if 10 <= nearest_int <= 19 and abs(cand_value - 10.0 ** (nearest_int - 10)) < 1e-9:
+        return True
+    if 100 <= nearest_int <= 110 and abs(cand_value - 10.0 ** (nearest_int - 100)) < 1e-9:
+        return True
+    return False
+
+
+def _has_suspicious_right_edge_log_anchor(
+    axis: Axis,
+    labeled: list[tuple[int, Optional[float]]],
+) -> bool:
+    """Detect flattened/non-standard OCR at the far right of a log X axis."""
+    valid = [(float(p), float(v)) for p, v in labeled if v is not None and v > 0]
+    if axis.direction != "x" or len(valid) < 3:
+        return False
+    pixels = [p for p, _v in valid]
+    min_p = min(pixels)
+    max_p = max(pixels)
+    span = max(max_p - min_p, 1.0)
+    right_edge = [(p, v) for p, v in valid if p >= min_p + span * 0.75]
+    if not right_edge:
+        return False
+    _p, value = max(right_edge, key=lambda item: item[0])
+    if value < 50:
+        return False
+    return _canonical_log_value_score(value) < 0.5
+
+
+def _solve_absolute_log_ticks(
+    axis: Axis,
+    ticks: list[int],
+    anchors: list[tuple[float, float]],
+    preferred_type: str | None = None,
+) -> tuple[list[tuple[int, float]] | None, dict]:
+    """Resolve absolute log tick values from sparse/noisy OCR anchors.
+
+    This is the formal candidate-scoring solver for the fallback path.  It
+    generates plausible interpretations for each anchor, infers a full tick map
+    from spacing, and scores candidates with soft evidence rather than treating
+    TMLOG or literal OCR as hard truth.
+    """
+    diagnostics = {
+        "candidate_count": 0,
+        "best_score": None,
+        "best_anchor": None,
+        "best_candidate_value": None,
+        "best_decades": None,
+        "tmlog_decade_width": None,
+        "candidates": [],
+    }
+    if not anchors or len(ticks) < 2:
+        return None, diagnostics
+
+    pixels = np.array(sorted(ticks), dtype=float)
+    spacings = np.diff(pixels)
+    if len(spacings) == 0 or np.mean(spacings) <= 0:
+        return None, diagnostics
+
+    sorted_anchors = sorted(
+        anchors, key=lambda a: (
+            0 if a[1] is not None and a[1] > 0 and
+            (100 <= a[1] <= 110 or 10 <= a[1] <= 19 or
+             (a[1] > 0 and abs(np.log10(a[1]) - round(np.log10(a[1]))) < 0.02))
+            else 1,
+            a[0]
+        )
+    )
+
+    best_inferred = None
+    best_decade_score = -1.0
+    tmlog_dw, _ = _detect_decade_width_and_boundaries(pixels)
+    diagnostics["tmlog_decade_width"] = float(tmlog_dw) if tmlog_dw else None
+    total_px = float(pixels[-1] - pixels[0])
+    reliable_anchor_count = sum(
+        1 for _p, v in anchors if v is not None and v > 0
+    )
+
+    for anchor_pixel, anchor_value in sorted_anchors:
+        if anchor_value is None or anchor_value <= 0:
+            continue
+        candidate_values = _candidate_log_anchor_values(float(anchor_value))
+        if axis.direction == "y":
+            candidate_values = [
+                c for c in candidate_values
+                if (
+                    abs(math.log10(c) - math.log10(float(anchor_value))) < 0.01
+                    or _is_superscript_loss_candidate(float(anchor_value), float(c))
+                )
+            ]
+        for cand_value in candidate_values:
+            adjusted_anchors = []
+            for p, v in anchors:
+                if v is None or v <= 0:
+                    continue
+                if abs(float(p) - float(anchor_pixel)) < 1.0:
+                    adjusted_anchors.append((float(p), float(cand_value)))
+                else:
+                    adjusted_anchors.append((float(p), float(v)))
+            inferred = infer_log_values_from_spacing(
+                ticks,
+                anchor_pixel=float(anchor_pixel),
+                anchor_value=float(cand_value),
+                anchors=adjusted_anchors,
+            )
+            if inferred is None or len(inferred) < 2:
+                continue
+            inferred_for_check = inferred[::-1] if axis.direction == "y" else inferred
+            min_val = max(min(v for _, v in inferred_for_check), 1e-9)
+            max_val = max(v for _, v in inferred_for_check)
+            decades = float(np.log10(max_val / min_val))
+            if (
+                axis.direction == "y"
+                and preferred_type == "log"
+                and reliable_anchor_count < 3
+                and decades > 1.5
+            ):
+                continue
+            if (
+                axis.direction == "y"
+                and preferred_type == "log"
+                and reliable_anchor_count < 4
+                and max_val > 1.0e4
+            ):
+                continue
+            if not 0.3 <= decades <= 8.0:
+                continue
+            tmlog_consistency = 1.0
+            if tmlog_dw and tmlog_dw > 0 and decades > 0:
+                inferred_dw = total_px / decades
+                tmlog_consistency = 1.0 - min(abs(inferred_dw - tmlog_dw) / tmlog_dw, 1.0)
+            if 1.0 <= decades <= 6.0:
+                span_score = 1.0
+            else:
+                span_score = max(0.0, 1.0 - min(abs(decades - 3.5) / 4.5, 1.0))
+            canonical_score = _canonical_log_value_score(float(cand_value))
+            alignment_score = _anchor_alignment_score(
+                float(anchor_pixel), float(cand_value), pixels, spacings
+            )
+            literal_score = _literal_log_anchor_score(float(anchor_value), float(cand_value))
+            score = (
+                tmlog_consistency * 0.35
+                + span_score * 0.25
+                + canonical_score * 0.18
+                + alignment_score * 0.12
+                + literal_score * 0.10
+            )
+            diagnostics["candidate_count"] += 1
+            diagnostics["candidates"].append({
+                "anchor_pixel": float(anchor_pixel),
+                "anchor_value": float(anchor_value),
+                "candidate_value": float(cand_value),
+                "score": float(score),
+                "decades": float(decades),
+                "value_min": float(min_val),
+                "value_max": float(max_val),
+                "tmlog_consistency": float(tmlog_consistency),
+                "span_score": float(span_score),
+                "canonical_score": float(canonical_score),
+                "alignment_score": float(alignment_score),
+                "literal_score": float(literal_score),
+            })
+            if score > best_decade_score:
+                best_decade_score = score
+                diagnostics["best_score"] = float(score)
+                diagnostics["best_anchor"] = [float(anchor_pixel), float(anchor_value)]
+                diagnostics["best_candidate_value"] = float(cand_value)
+                diagnostics["best_decades"] = float(decades)
+                if decades <= 4.0:
+                    best_inferred = inferred_for_check
+                else:
+                    scale = 4.0 / decades
+                    rescaled = []
+                    log_min = float(np.log10(min_val))
+                    for p, v in inferred_for_check:
+                        log_v2 = float(np.log10(max(v, 1e-9)))
+                        new_log_v = (log_v2 - log_min) * scale + log_min
+                        rescaled.append((p, float(10.0 ** new_log_v)))
+                    best_inferred = rescaled
+
+    if best_inferred is not None and best_decade_score > 0.45:
+        return [(int(p), float(v)) for p, v in best_inferred], diagnostics
+    return None, diagnostics
+
+
 def _build_heuristic_ticks(axis, anchors=None, preferred_type=None):
     """Generate synthetic (pixel, value) ticks from spacing pattern when OCR fails.
 
@@ -1247,111 +1545,11 @@ def _build_heuristic_ticks(axis, anchors=None, preferred_type=None):
     if is_log:
         # P0: Try TMLOG decade fingerprint inference with OCR anchors first
         if anchors:
-            # Prefer FormulaOCR anchors (typically more reliable)
-            sorted_anchors = sorted(
-                anchors, key=lambda a: (
-                    0 if a[1] is not None and a[1] > 0 and
-                    (100 <= a[1] <= 110 or 10 <= a[1] <= 19 or
-                     (a[1] > 0 and abs(np.log10(a[1]) - round(np.log10(a[1]))) < 0.02))
-                    else 1,
-                    a[0]
-                )
+            solved, _diagnostics = _solve_absolute_log_ticks(
+                axis, ticks, anchors, preferred_type=preferred_type
             )
-            # P0a: Multi-interpretation anchor search
-            # On log axes, OCR may read "10" when the real value is 10^1..10^4.
-            # Try multiple power-of-10 interpretations and score by TMLOG consistency.
-            best_inferred = None
-            best_decade_score = -1.0
-            for anchor_pixel, anchor_value in sorted_anchors:
-                if anchor_value is None or anchor_value <= 0:
-                    continue
-                # Generate candidate interpretations of this anchor
-                candidates = [float(anchor_value)]
-                log_v = np.log10(anchor_value)
-                frac = log_v - math.floor(log_v)
-                if frac < 0.1:
-                    # Value is (near) a power of 10 — also try nearby decades
-                    exp = int(round(log_v))
-                    for offset in range(-1, 5):
-                        candidate_exp = exp + offset
-                        candidate_val = 10.0 ** candidate_exp
-                        if candidate_val != anchor_value and candidate_val > 0:
-                            candidates.append(candidate_val)
-                # Deduplicate
-                seen = set()
-                unique_candidates = []
-                for c in candidates:
-                    key = round(math.log10(c), 2)
-                    if key not in seen:
-                        seen.add(key)
-                        unique_candidates.append(c)
-
-                for cand_value in unique_candidates:
-                    if not _anchor_aligns_with_spacing(
-                        float(anchor_pixel), float(cand_value), pixels, spacings
-                    ):
-                        continue
-                    inferred = infer_log_values_from_spacing(
-                        ticks, anchor_pixel=float(anchor_pixel), anchor_value=float(cand_value),
-                        anchors=[(float(p), float(v)) for p, v in anchors if v is not None and v > 0],
-                    )
-                    if inferred is None or len(inferred) < 2:
-                        continue
-                    if axis.direction == "y":
-                        inferred_for_check = inferred[::-1]
-                    else:
-                        inferred_for_check = inferred
-                    min_val = max(min(v for _, v in inferred_for_check), 1e-9)
-                    max_val = max(v for _, v in inferred_for_check)
-                    decades = float(np.log10(max_val / min_val))
-                    reliable_anchor_count = sum(
-                        1 for _p, v in anchors if v is not None and v > 0
-                    )
-                    if (
-                        axis.direction == "y"
-                        and preferred_type == "log"
-                        and reliable_anchor_count < 2
-                        and decades > 1.5
-                    ):
-                        continue
-                    if decades > 10.0:
-                        continue
-                    # Score: prefer candidates with TMLOG-consistent decade_width.
-                    # TMLOG consistency is the primary signal — span score is secondary.
-                    tmlog_dw, _ = _detect_decade_width_and_boundaries(pixels)
-                    total_px = float(pixels[-1] - pixels[0])
-                    tmlog_consistency = 1.0
-                    if tmlog_dw and tmlog_dw > 0 and decades > 0:
-                        inferred_dw = total_px / decades
-                        tmlog_consistency = 1.0 - min(abs(inferred_dw - tmlog_dw) / tmlog_dw, 1.0)
-                    # Strongly penalize candidates whose inferred decade_width
-                    # disagrees with TMLOG (consistency < 0.5 means >50% deviation).
-                    if tmlog_consistency < 0.5:
-                        continue
-                    # Span plausibility: 1-6 decades is typical for test charts
-                    span_ok = 1.0 <= decades <= 6.0
-                    if not span_ok:
-                        continue
-                    score = tmlog_consistency * 0.7 + (1.0 - abs(decades - 3.0) / 3.0) * 0.3
-                    # Strongly prefer the literal anchor value interpretation.
-                    # Non-literal candidates must prove themselves via TMLOG.
-                    if cand_value != anchor_value:
-                        score *= 0.3  # 70% penalty for non-literal interpretation
-                    if score > best_decade_score:
-                        best_decade_score = score
-                        if decades <= 4.0:
-                            best_inferred = inferred_for_check
-                        else:
-                            scale = 4.0 / decades
-                            rescaled = []
-                            log_min = float(np.log10(min_val))
-                            for p, v in inferred_for_check:
-                                log_v2 = float(np.log10(max(v, 1e-9)))
-                                new_log_v = (log_v2 - log_min) * scale + log_min
-                                rescaled.append((p, float(10.0 ** new_log_v)))
-                            best_inferred = rescaled
-            if best_inferred is not None and best_decade_score > 0.5:
-                return best_inferred
+            if solved is not None:
+                return solved
 
         # P1: TMLOG without anchors
         inferred = infer_log_values_from_spacing(ticks)
@@ -1886,6 +2084,8 @@ def _candidate_calibration_score(
     cal: CalibratedAxis,
     valid_count: int,
     formula_log_score: float,
+    raw_log_diagnostic: dict | None = None,
+    axis_preferred: str | None = None,
 ) -> float:
     """Rank per-source axis candidates without trusting one OCR source blindly."""
     score = valid_count * 8.0
@@ -1913,6 +2113,20 @@ def _candidate_calibration_score(
 
     if cal.axis_type == "log" and formula_log_score >= 0.3:
         score += 15
+
+    if (
+        axis_preferred == "log"
+        and cal.axis_type == "log"
+        and raw_log_diagnostic
+        and valid_count >= 4
+    ):
+        raw_inliers = int(raw_log_diagnostic.get("inlier_count", 0) or 0)
+        raw_median_residual = float(raw_log_diagnostic.get("median_residual", 0.0) or 0.0)
+        raw_threshold = float(raw_log_diagnostic.get("threshold", 1.0) or 1.0)
+        if raw_inliers < 2:
+            score -= 80.0
+        elif raw_median_residual > raw_threshold * 3.0:
+            score -= 35.0
 
     return score
 
@@ -1968,6 +2182,105 @@ def _select_best_ocr_calibration(
             continue
         if source == "tesseract":
             tesseract_residual = cal.residual
+        raw_log_diagnostic = _robust_log_fit_diagnostic(labeled)
+        if (
+            source == "tesseract"
+            and axis_preferred == "log"
+            and axis.direction == "x"
+            and raw_log_diagnostic
+            and (
+                (
+                    float(raw_log_diagnostic.get("decade_span", 0.0) or 0.0) < 2.0
+                    and _has_suspicious_right_edge_log_anchor(axis, labeled)
+                )
+                or (
+                    valid_count <= 2
+                    and float(raw_log_diagnostic.get("decade_span", 0.0) or 0.0) < 1.5
+                )
+            )
+        ):
+            anchor_values = [(p, v) for p, v in labeled if v is not None and v > 0]
+            generated = _build_heuristic_ticks(
+                axis,
+                anchors=anchor_values,
+                preferred_type=axis_preferred,
+            )
+            if generated:
+                heuristic_cal = calibrate_axis(
+                    axis,
+                    generated,
+                    image=image,
+                    policy=policy,
+                    preferred_type=axis_preferred,
+                    is_log=is_log,
+                    tick_source="heuristic",
+                    anchor_count=axis_anchor_stats.get("anchor_count", 0),
+                    formula_anchor_count=formula_anchor_count,
+                    formula_log_score=formula_log_score,
+                    formula_selected_count=formula_selected_count,
+                    tesseract_anchor_count=axis_anchor_stats.get("tesseract_count", 0),
+                    label_anchor_count=axis_anchor_stats.get("label_count", 0),
+                    formula_batch_candidate_count=formula_plan.requested_count if formula_plan else 0,
+                    formula_batch_kept_count=formula_plan.kept_count if formula_plan else 0,
+                    formula_batch_chunks=formula_batch_stats.chunks if formula_batch_stats else 0,
+                    formula_batch_requested=formula_batch_stats.requested if formula_batch_stats else 0,
+                    formula_batch_returned=formula_batch_stats.returned if formula_batch_stats else 0,
+                    formula_batch_ms=formula_batch_stats.elapsed_ms if formula_batch_stats else 0.0,
+                    apply_log_superscript_fix=False,
+                )
+                if heuristic_cal is not None:
+                    trace = dict(heuristic_cal.debug_trace or {})
+                    trace["tesseract_map_replaced_by_anchor_heuristic"] = True
+                    trace["raw_log_diagnostic"] = raw_log_diagnostic
+                    heuristic_cal.debug_trace = trace
+                    cal = heuristic_cal
+                    source = "heuristic"
+                    valid_count = len(generated)
+            else:
+                continue
+        cal_positive_values = [
+            float(v) for _p, v in (cal.tick_map or [])
+            if v is not None and float(v) > 0
+        ]
+        cal_max_value = max(cal_positive_values) if cal_positive_values else 0.0
+        raw_log_bad = (
+            axis_preferred == "log"
+            and source != "heuristic"
+            and cal.axis_type == "log"
+            and raw_log_diagnostic
+            and valid_count >= 4
+            and int(raw_log_diagnostic.get("inlier_count", 0) or 0) < 2
+            and cal_max_value > 1.0e4
+        )
+        if raw_log_bad:
+            linear_cal = calibrate_axis(
+                axis,
+                labeled,
+                image=image,
+                policy=policy,
+                preferred_type="linear",
+                is_log=False,
+                tick_source=source,
+                anchor_count=axis_anchor_stats.get("anchor_count", 0),
+                formula_anchor_count=formula_anchor_count,
+                formula_log_score=formula_log_score,
+                formula_selected_count=formula_selected_count,
+                tesseract_anchor_count=axis_anchor_stats.get("tesseract_count", 0),
+                label_anchor_count=axis_anchor_stats.get("label_count", 0),
+                formula_batch_candidate_count=formula_plan.requested_count if formula_plan else 0,
+                formula_batch_kept_count=formula_plan.kept_count if formula_plan else 0,
+                formula_batch_chunks=formula_batch_stats.chunks if formula_batch_stats else 0,
+                formula_batch_requested=formula_batch_stats.requested if formula_batch_stats else 0,
+                formula_batch_returned=formula_batch_stats.returned if formula_batch_stats else 0,
+                formula_batch_ms=formula_batch_stats.elapsed_ms if formula_batch_stats else 0.0,
+                apply_log_superscript_fix=False,
+            )
+            if linear_cal is not None:
+                trace = dict(linear_cal.debug_trace or {})
+                trace["log_candidate_demoted_by_raw_ocr_diagnostic"] = True
+                trace["raw_log_diagnostic"] = raw_log_diagnostic
+                linear_cal.debug_trace = trace
+                cal = linear_cal
 
         # FormulaOCR returns a parsed value for the specific crop anchor.  For
         # superscript/log labels this is more authoritative than tesseract's
@@ -1997,7 +2310,13 @@ def _select_best_ocr_calibration(
                     if old_value is not None and abs(float(old_value) - float(value)) > 1e-9:
                         changed_values += 1
                 if changed_values:
-                    candidate_score = _candidate_calibration_score(cal, valid_count, formula_log_score)
+                    candidate_score = _candidate_calibration_score(
+                        cal,
+                        valid_count,
+                        formula_log_score,
+                        raw_log_diagnostic=raw_log_diagnostic,
+                        axis_preferred=axis_preferred,
+                    )
                     candidate_score += changed_values * 25.0
                     source_scores.append({
                         "source": source,
@@ -2012,13 +2331,23 @@ def _select_best_ocr_calibration(
                         best_cal = cal
                     continue
 
-        candidate_score = _candidate_calibration_score(cal, valid_count, formula_log_score)
+        candidate_score = _candidate_calibration_score(
+            cal,
+            valid_count,
+            formula_log_score,
+            raw_log_diagnostic=raw_log_diagnostic,
+            axis_preferred=axis_preferred,
+        )
         source_scores.append({
             "source": source,
             "valid_count": int(valid_count),
             "score": float(candidate_score),
             "axis_type": cal.axis_type,
             "residual": float(cal.residual),
+            "raw_log_inliers": (
+                int(raw_log_diagnostic.get("inlier_count", 0))
+                if raw_log_diagnostic else None
+            ),
         })
         if candidate_score > best_score:
             best_score = candidate_score
