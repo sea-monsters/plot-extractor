@@ -30,6 +30,13 @@ report.csv
 report_by_type.csv
 *.csv
 debug_*.png
+debug_*.txt
+results_*.txt
+lint_report.txt
+
+# Archived scratch / debug data and standardized test outputs
+archive/
+artifacts/
 
 # Development documentation (local only, not synced)
 /development/

@@ -57,10 +57,27 @@ python tests/validate_by_type.py --workers 4 --debug
 python tests/validate_v4a_routes.py --data-dir test_data_v4a
 ```
 
-Validation outputs:
+Validation outputs (default layout — all under `artifacts/`):
 - Console: per-file relative error, SSIM, pass/fail status, routing metrics (density/color/noise strategies)
-- `report_by_type.csv` or `report_<data_dir>.csv`: detailed results
-- `debug_type/<type>/`: rebuilt plots and extracted CSVs when `--debug` is used
+- `artifacts/reports/report_by_type.csv` (default run) or `artifacts/reports/report_<data_dir>.csv` (with `--data-dir`): detailed results
+- `artifacts/reports/report_<data_dir>_special.csv` and `report_<data_dir>_scope.csv`: emitted by `--v4-special`
+- `artifacts/debug/by_type/<type>/`: rebuilt plots and extracted CSVs when `--debug` is used
+- `artifacts/lint/lint_report.txt`: pylint preflight report
+- `artifacts/reports/report_smoke.csv`, `artifacts/debug/smoke/`: smoke test (`tests/validate_smoke.py`)
+- `artifacts/reports/report_loop.csv`, `artifacts/debug/loop/`: loop validation (`tests/validate_loop.py`)
+- `artifacts/reports/report_test_data_v4a_routes*.csv`: v4a route evaluation (`tests/validate_v4a_routes.py`)
+- `artifacts/debug/axis_evidence_micro_benchmark/`: axis evidence micro-benchmark default
+
+Override the defaults at the CLI:
+```bash
+# Redirect reports / debug outputs (validate_by_type.py only)
+python tests/validate_by_type.py --use-ocr --reports-dir my_reports --debug-dir my_debug
+
+# Skip the lint preflight (use sparingly — CI still runs it)
+python tests/validate_by_type.py --use-ocr --skip-lint-preflight
+```
+
+`artifacts/` is gitignored — it is the project-wide drop zone for ephemeral test outputs and should never be committed.
 
 ### Generate test data
 ```bash
@@ -280,7 +297,11 @@ SSIM is computed for reference only. Series matching uses permutation search whe
 | `plot_extractor/utils/ssim_compare.py` | Pure NumPy SSIM implementation |
 | `plot_extractor/service/mcp_server.py` | MCP tool interface |
 | `tests/validate_by_type.py` | Per-type accuracy validation with routing metrics |
+| `tests/validate_smoke.py` | 3-images-per-type smoke test for quick regression checks |
+| `tests/validate_loop.py` | Sample-image loop validation against `samples/` |
 | `tests/validate_v4a_routes.py` | v4a route-profile validation |
+| `tests/axis_evidence_micro_benchmark.py` | Fixed-sample axis evidence micro-benchmark |
+| `tests/manual/` | Promoted ad-hoc scratch scripts (`inspect_*`, `quick_*`, `test_tesseract_*`); not run by CI |
 | `tests/test_axis_candidates.py` | Unit tests for axis candidates |
 | `tests/test_series_candidates.py` | Unit tests for series candidates |
 | `tests/generate_test_data.py` | Ground-truth test image generator (30 per type) |
@@ -304,6 +325,38 @@ docs/
 ```
 
 **Rule**: Progress documents belong in `docs/development/`. Name them `VALIDATION_PROGRESS_YYYY_MM_DD[_FEATURE].md`.
+
+### Repo Output Layout
+
+The repo root MUST stay clean. All ephemeral test/debug outputs and archived scratch data live under two top-level directories — both gitignored.
+
+```
+plot_extractor/
+├── artifacts/               # Standardized test/debug output (gitignored)
+│   ├── reports/             # CSV reports from validate_*.py
+│   │   ├── report_by_type.csv
+│   │   ├── report_<data_dir>.csv
+│   │   ├── report_<data_dir>_special.csv / _scope.csv  (--v4-special)
+│   │   ├── report_smoke.csv
+│   │   ├── report_loop.csv
+│   │   └── report_test_data_v4a_routes*.csv
+│   ├── debug/               # Per-image rebuilt plots, extracted CSVs
+│   │   ├── by_type/<chart_type>/
+│   │   ├── smoke/
+│   │   ├── loop/
+│   │   └── axis_evidence_micro_benchmark/
+│   ├── lint/                # Pylint preflight reports
+│   │   └── lint_report.txt
+│   └── logs/                # Long-running validation logs
+└── archive/                 # Date-grouped scratch dumps (gitignored)
+    └── YYYY-MM-DD/          # results_*.txt, debug_*.txt, ad-hoc snapshots
+```
+
+**Rules**:
+- Do NOT write `results_*.txt`, `debug_*.txt`, or per-run CSVs to the repo root. Pipe them into `artifacts/` instead.
+- Validation scripts (`tests/validate_*.py`, `tests/axis_evidence_micro_benchmark.py`) write to `artifacts/` by default. `validate_by_type.py` exposes `--reports-dir` / `--debug-dir` for ad-hoc redirection.
+- One-off debug scripts go in `tests/manual/`; do not litter them at the repo root. Treat them as personal scratchpads — they are NOT executed by CI.
+- When a debug session ends, move stale outputs into `archive/<YYYY-MM-DD>/` rather than deleting; this is the rolling cold-storage area for triage data.
 
 ## Release Workflow
 

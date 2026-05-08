@@ -24,6 +24,10 @@ This directory contains development progress records, validation reports, and ro
 | [NON_LOG_PERF_OPTIMIZATION_ASSESSMENT_2026_05_04.md](NON_LOG_PERF_OPTIMIZATION_ASSESSMENT_2026_05_04.md) | 2026-05-04 / 05-05 | 非 log 类型吞吐+精度协同优化机会评估（§1-§8）+ §9 skeleton_graph numpy 改写 + tesseract probe 快路径轮次（log_y crop -14.8%, dense crop -11.2%, lint 9.73→9.75）+ §10 #2 probe 复用 + #4 空裁片丢弃（log_x crop -23%, log_y -14%, loglog -21%, dual_y -18%, dense -17%, 0 精度回归, lint 9.81）+ §11 cross-image FormulaOCR batching 接线（validate_by_type.py --batch-size, lint 9.77, 0 精度回归, 架构就绪） |
 | [REVIEW_LOG_ROUTING_SIMPLE_LINEAR_2026_05_05.md](REVIEW_LOG_ROUTING_SIMPLE_LINEAR_2026_05_05.md) | 2026-05-05 | log 路由 / `simple_linear` 退化审查建议独立记录：联合门禁、FormulaOCR 预算、主轴 hysteresis、linear rescue 优化方向 |
 | [CODEX_RESCUE_PARTIAL_FINDINGS_2026_05_04.md](CODEX_RESCUE_PARTIAL_FINDINGS_2026_05_04.md) | 2026-05-04 | Codex 子代理 task-moql2912-40mmin 部分产出归档：cProfile 双瓶颈剖面、`timing_total_ms` 测量缺口、`fit_axis_multi_hypothesis` 非热路径证据 |
+| [VALIDATION_PROGRESS_2026_05_07_WAVE4_LOG_X.md](VALIDATION_PROGRESS_2026_05_07_WAVE4_LOG_X.md) | 2026-05-07 | Wave 4 §12.1/§12.5 log-X span-selection + benchmark infra; 7/31→8/31 log_x; pivot to log-Y/loglog |
+| [VALIDATION_PROGRESS_2026_05_08_WAVE4_LOGLOG.md](VALIDATION_PROGRESS_2026_05_08_WAVE4_LOGLOG.md) | 2026-05-08 | Wave 4 §12.4 loglog cross-axis safety scoring; gate safe but narrow; log_x 8/31 preserved |
+| [VALIDATION_PROGRESS_2026_05_08_WAVE4_LOG_Y.md](VALIDATION_PROGRESS_2026_05_08_WAVE4_LOG_Y.md) | 2026-05-08 | Wave 4 §12.3 (log_y max 3.54→2.43) + §12.2 (sequence-level superscript, structural) + §12.1 (attempted, reverted — OCR anchors unreliable) |
+| [WAVE4_CLOSURE_2026_05_08.md](WAVE4_CLOSURE_2026_05_08.md) | 2026-05-08 | **Wave 4 closure** — all §12 tasks done/attempted; convergence rule triggered; axis calibration strategy frozen |
 
 ## Naming Convention
 

@@ -30,10 +30,14 @@ from plot_extractor.core.chart_type_guesser import extract_all_features, guess_c
 from plot_extractor.core.policy_router import compute_policy
 from plot_extractor.core.image_loader import load_image, to_grayscale
 
-TEST_DATA_DIR = Path(__file__).parent.parent / "test_data"
-DEBUG_DIR = Path(__file__).parent.parent / "debug_type"
-REPORT_PATH = Path(__file__).parent.parent / "report_by_type.csv"
-DEFAULT_LINT_REPORT_PATH = Path(__file__).parent.parent / "lint_report.txt"
+REPO_ROOT = Path(__file__).parent.parent
+ARTIFACTS_DIR = REPO_ROOT / "artifacts"
+REPORTS_DIR = ARTIFACTS_DIR / "reports"
+
+TEST_DATA_DIR = REPO_ROOT / "test_data"
+DEBUG_DIR = ARTIFACTS_DIR / "debug" / "by_type"
+REPORT_PATH = REPORTS_DIR / "report_by_type.csv"
+DEFAULT_LINT_REPORT_PATH = ARTIFACTS_DIR / "lint" / "lint_report.txt"
 DEFAULT_LINT_FAIL_UNDER = 9.0
 
 TYPE_THRESHOLDS = {
@@ -699,8 +703,9 @@ def validate_v4_special(
 ):
     """Validate v4/v4a with explicit supported-domain and out-of-scope accounting."""
     image_files = sorted(data_dir.glob("*/*.png"))
-    report_path = data_dir.parent / f"report_{data_dir.name}_special.csv"
-    scope_path = data_dir.parent / f"report_{data_dir.name}_scope.csv"
+    REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+    report_path = REPORTS_DIR / f"report_{data_dir.name}_special.csv"
+    scope_path = REPORTS_DIR / f"report_{data_dir.name}_scope.csv"
     requested_types = set(types or [])
 
     in_scope_rows = []
@@ -818,8 +823,8 @@ def run_all(
         types = sorted(TYPE_THRESHOLDS.keys())
 
     base_dir = data_dir or TEST_DATA_DIR
-    report_dir = base_dir
-    report_path = report_dir.parent / f"report_{base_dir.name}.csv"
+    REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+    report_path = REPORTS_DIR / f"report_{base_dir.name}.csv"
 
     all_rows = []
     summaries = []
@@ -1065,8 +1070,31 @@ if __name__ == "__main__":
             f" (default: {DEFAULT_LINT_REPORT_PATH})."
         ),
     )
+    parser.add_argument(
+        "--reports-dir",
+        type=Path,
+        default=None,
+        help=(
+            "Directory to write CSV reports into"
+            f" (default: {REPORTS_DIR})."
+        ),
+    )
+    parser.add_argument(
+        "--debug-dir",
+        type=Path,
+        default=None,
+        help=(
+            "Directory to write per-image debug outputs into"
+            f" (default: {DEBUG_DIR})."
+        ),
+    )
     args = parser.parse_args()
     data_dir = Path(args.data_dir) if args.data_dir else None
+
+    if args.reports_dir is not None:
+        REPORTS_DIR = Path(args.reports_dir)
+    if args.debug_dir is not None:
+        DEBUG_DIR = Path(args.debug_dir)
 
     repo_root = Path(__file__).parent.parent
     if not args.skip_lint_preflight:

@@ -25,10 +25,12 @@ from plot_extractor.core.chart_type_guesser import extract_all_features, guess_c
 from plot_extractor.core.policy_router import POLICY_WEIGHTS, compute_policy, _strategy_activation
 from plot_extractor.core.image_loader import load_image, to_grayscale
 
-TEST_DATA_DIR = Path(__file__).parent.parent / "test_data_v4a"
-REPORT_PATH = Path(__file__).parent.parent / "report_test_data_v4a_routes.csv"
-PROFILE_REPORT_PATH = Path(__file__).parent.parent / "report_test_data_v4a_routes_by_profile.csv"
-STRATEGY_REPORT_PATH = Path(__file__).parent.parent / "report_test_data_v4a_routes_by_strategy.csv"
+REPO_ROOT = Path(__file__).parent.parent
+TEST_DATA_DIR = REPO_ROOT / "test_data_v4a"
+REPORTS_DIR = REPO_ROOT / "artifacts" / "reports"
+REPORT_PATH = REPORTS_DIR / "report_test_data_v4a_routes.csv"
+PROFILE_REPORT_PATH = REPORTS_DIR / "report_test_data_v4a_routes_by_profile.csv"
+STRATEGY_REPORT_PATH = REPORTS_DIR / "report_test_data_v4a_routes_by_strategy.csv"
 
 
 def _load_meta(img_path: Path) -> dict | None:
@@ -258,6 +260,7 @@ def run(data_dir: Path = TEST_DATA_DIR) -> tuple[list[dict], list[dict], list[di
     profile_rows = _summarize_by_profile(rows)
     strategy_rows = _summarize_by_strategy(rows)
 
+    REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     with open(REPORT_PATH, "w", newline="", encoding="utf-8") as f:
         fieldnames = [
             "file", "profile", "chart_type", "top_type", "top_type_prob", "type_top3",

@@ -1264,8 +1264,17 @@ def _canonical_log_value_score(value: float) -> float:
     return 0.25
 
 
-def _literal_log_anchor_score(anchor_value: float, cand_value: float) -> float:
-    """Prefer literal OCR only when it looks like a reliable log tick."""
+def _literal_log_anchor_score(
+    anchor_value: float,
+    cand_value: float,
+    sequence_superscript_score: float = 0.0,
+) -> float:
+    """Prefer literal OCR only when it looks like a reliable log tick.
+
+    When ``sequence_superscript_score`` is elevated (> 0.5), the axis has
+    multi-anchor superscript-loss evidence and suspicious literal reads
+    should be penalised more heavily.
+    """
     if anchor_value <= 0 or cand_value <= 0:
         return 0.0
     if abs(math.log10(anchor_value) - math.log10(cand_value)) < 0.01:
@@ -1274,6 +1283,10 @@ def _literal_log_anchor_score(anchor_value: float, cand_value: float) -> float:
             10.0 <= anchor_value <= 19.0 or 100.0 <= anchor_value <= 110.0
         )
         if suspicious_superscript_read and canonical < 1.0:
+            # Sequence evidence makes it even less likely that the literal
+            # superscript-loss value is correct.
+            if sequence_superscript_score > 0.5:
+                return 0.10
             return 0.25
         return 0.55 + 0.45 * canonical
     return 0.45 if _canonical_log_value_score(cand_value) >= 0.75 else 0.25
@@ -1401,6 +1414,36 @@ def _solve_absolute_log_ticks(
         1 for _p, v in anchors if v is not None and v > 0
     )
 
+    # Sequence-level superscript-loss evidence: when multiple anchors
+    # fall in [10,19] or [100,110] and their implied exponents form a
+    # monotonic sequence consistent with axis direction, the axis-level
+    # context supports superscript-loss interpretation.
+    _seq_superscript_score = 0.0
+    _suspicious_anchors = [
+        (float(p), float(v)) for p, v in anchors
+        if v is not None and v > 0
+        and (10 <= int(round(float(v))) <= 19 or 100 <= int(round(float(v))) <= 110)
+    ]
+    if len(_suspicious_anchors) >= 2:
+        _exponents = []
+        for _sp, _sv in _suspicious_anchors:
+            _ni = int(round(_sv))
+            if 100 <= _ni <= 110:
+                _exponents.append((_sp, _ni - 100))
+            elif 10 <= _ni <= 19:
+                _exponents.append((_sp, _ni - 10))
+        if len(_exponents) >= 2:
+            _sorted_exp = sorted(_exponents, key=lambda e: e[0])
+            _exp_values = [e for _, e in _sorted_exp]
+            _is_mono = (
+                all(_exp_values[i] <= _exp_values[i + 1] for i in range(len(_exp_values) - 1))
+                or all(_exp_values[i] >= _exp_values[i + 1] for i in range(len(_exp_values) - 1))
+            )
+            if _is_mono:
+                _seq_superscript_score = 0.5 + 0.5 * min(
+                    len(_exponents) / 4.0, 1.0
+                )
+
     for anchor_pixel, anchor_value in sorted_anchors:
         if anchor_value is None or anchor_value <= 0:
             continue
@@ -1434,11 +1477,19 @@ def _solve_absolute_log_ticks(
             min_val = max(min(v for _, v in inferred_for_check), 1e-9)
             max_val = max(v for _, v in inferred_for_check)
             decades = float(np.log10(max_val / min_val))
+            _is_superscript_anchor = (
+                100 <= int(round(float(anchor_value))) <= 110
+                or 10 <= int(round(float(anchor_value))) <= 19
+            )
+            _is_superscript_cand = _is_superscript_loss_candidate(
+                float(anchor_value), float(cand_value)
+            )
             if (
                 axis.direction == "y"
                 and preferred_type == "log"
                 and reliable_anchor_count < 3
                 and decades > 1.5
+                and not (_is_superscript_anchor and _is_superscript_cand)
             ):
                 continue
             if (
@@ -1462,7 +1513,10 @@ def _solve_absolute_log_ticks(
             alignment_score = _anchor_alignment_score(
                 float(anchor_pixel), float(cand_value), pixels, spacings
             )
-            literal_score = _literal_log_anchor_score(float(anchor_value), float(cand_value))
+            literal_score = _literal_log_anchor_score(
+                float(anchor_value), float(cand_value),
+                sequence_superscript_score=_seq_superscript_score,
+            )
             score = (
                 tmlog_consistency * 0.35
                 + span_score * 0.25
@@ -1508,7 +1562,7 @@ def _solve_absolute_log_ticks(
     return None, diagnostics
 
 
-def _build_heuristic_ticks(axis, anchors=None, preferred_type=None):
+def _build_heuristic_ticks(axis, anchors=None, preferred_type=None, cross_axis_log=False):
     """Generate synthetic (pixel, value) ticks from spacing pattern when OCR fails.
 
     Uses tick spacing uniformity to guess linear vs log, then assigns
@@ -2144,6 +2198,7 @@ def _select_best_ocr_calibration(
     axis_anchor_stats: dict,
     formula_plan: Any,
     formula_batch_stats,
+    cross_axis_log: bool = False,
 ) -> Optional[CalibratedAxis]:
     """Calibrate multiple OCR maps and keep the lowest-risk candidate."""
     best_cal = None
@@ -2183,27 +2238,45 @@ def _select_best_ocr_calibration(
         if source == "tesseract":
             tesseract_residual = cal.residual
         raw_log_diagnostic = _robust_log_fit_diagnostic(labeled)
-        if (
+        _decade_span = (
+            float(raw_log_diagnostic.get("decade_span", 0.0) or 0.0)
+            if raw_log_diagnostic else 0.0
+        )
+        _has_sparse_tesseract = (
+            source == "tesseract"
+            and axis.direction == "x"
+            and raw_log_diagnostic
+            and valid_count <= 3
+            and _decade_span < 2.0
+        )
+        _normal_replace_gate = (
             source == "tesseract"
             and axis_preferred == "log"
             and axis.direction == "x"
             and raw_log_diagnostic
             and (
                 (
-                    float(raw_log_diagnostic.get("decade_span", 0.0) or 0.0) < 2.0
+                    _decade_span < 2.0
                     and _has_suspicious_right_edge_log_anchor(axis, labeled)
                 )
                 or (
                     valid_count <= 2
-                    and float(raw_log_diagnostic.get("decade_span", 0.0) or 0.0) < 1.5
+                    and _decade_span < 1.5
                 )
             )
-        ):
+        )
+        _loglog_replace_gate = (
+            cross_axis_log
+            and _has_sparse_tesseract
+            and axis_preferred != "linear"
+        )
+        if _normal_replace_gate or _loglog_replace_gate:
             anchor_values = [(p, v) for p, v in labeled if v is not None and v > 0]
             generated = _build_heuristic_ticks(
                 axis,
                 anchors=anchor_values,
                 preferred_type=axis_preferred,
+                cross_axis_log=cross_axis_log,
             )
             if generated:
                 heuristic_cal = calibrate_axis(
@@ -2229,13 +2302,35 @@ def _select_best_ocr_calibration(
                     apply_log_superscript_fix=False,
                 )
                 if heuristic_cal is not None:
-                    trace = dict(heuristic_cal.debug_trace or {})
-                    trace["tesseract_map_replaced_by_anchor_heuristic"] = True
-                    trace["raw_log_diagnostic"] = raw_log_diagnostic
-                    heuristic_cal.debug_trace = trace
-                    cal = heuristic_cal
-                    source = "heuristic"
-                    valid_count = len(generated)
+                    # Cross-axis span safety: if the replacement changes the
+                    # decade span by > 1.5 decades in a loglog context, require
+                    # formula evidence or strong anchor consistency before
+                    # accepting the replacement.
+                    _accept_heuristic = True
+                    if cross_axis_log:
+                        def _span_decades(tm):
+                            vals = [float(v) for _p, v in tm if v is not None and float(v) > 0]
+                            if len(vals) < 2:
+                                return 0.0
+                            return float(np.log10(max(vals) / min(vals)))
+
+                        orig_span = _span_decades(cal.tick_map or [])
+                        heur_span = _span_decades(heuristic_cal.tick_map or [])
+                        span_change = abs(heur_span - orig_span)
+                        has_formula_evidence = (
+                            formula_anchor_count >= 1 and formula_log_score >= 0.3
+                        )
+                        if span_change > 1.5 and not has_formula_evidence:
+                            _accept_heuristic = False
+                    if _accept_heuristic:
+                        trace = dict(heuristic_cal.debug_trace or {})
+                        trace["tesseract_map_replaced_by_anchor_heuristic"] = True
+                        trace["raw_log_diagnostic"] = raw_log_diagnostic
+                        trace["loglog_gate"] = bool(_loglog_replace_gate)
+                        heuristic_cal.debug_trace = trace
+                        cal = heuristic_cal
+                        source = "heuristic"
+                        valid_count = len(generated)
             else:
                 continue
         cal_positive_values = [
@@ -2912,6 +3007,10 @@ def calibrate_all_axes(
         for axis in y_axes:
             axis_is_log[id(axis)] = False
 
+    # Compute final cross-axis log flags for §12.4 safety scoring.
+    final_any_x_log = any(axis_is_log.get(id(ax), False) for ax in x_axes)
+    final_any_y_log = any(axis_is_log.get(id(ax), False) for ax in y_axes)
+
     for axis in axes:
         axis_id = id(axis)
         meta = axis_anchor_meta.get(axis_id)
@@ -3125,6 +3224,7 @@ def calibrate_all_axes(
             is_log = False
             axis_preferred = "linear"
 
+        cross_axis_log = final_any_y_log if axis.direction == "x" else final_any_x_log
         cal = _select_best_ocr_calibration(
             axis,
             candidate_maps,
@@ -3138,6 +3238,7 @@ def calibrate_all_axes(
             axis_anchor_stats,
             formula_plan,
             formula_batch_stats,
+            cross_axis_log=cross_axis_log,
         )
         if cal is None:
             cal = calibrate_axis(

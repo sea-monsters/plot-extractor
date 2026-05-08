@@ -13,9 +13,11 @@ from plot_extractor.config import (
     SSIM_THRESHOLD_MULTI,
 )
 
-SAMPLES_DIR = Path(__file__).parent.parent / "samples"
-DEBUG_DIR = Path(__file__).parent.parent / "debug"
-REPORT_PATH = Path(__file__).parent.parent / "report.csv"
+REPO_ROOT = Path(__file__).parent.parent
+SAMPLES_DIR = REPO_ROOT / "samples"
+ARTIFACTS_DIR = REPO_ROOT / "artifacts"
+DEBUG_DIR = ARTIFACTS_DIR / "debug" / "loop"
+REPORT_PATH = ARTIFACTS_DIR / "reports" / "report_loop.csv"
 
 
 def get_threshold(name):
@@ -29,7 +31,8 @@ def get_threshold(name):
 
 
 def run_validation():
-    DEBUG_DIR.mkdir(exist_ok=True)
+    DEBUG_DIR.mkdir(parents=True, exist_ok=True)
+    REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
     image_files = sorted(SAMPLES_DIR.glob("*.png"))
 
     rows = []
