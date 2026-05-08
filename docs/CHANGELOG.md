@@ -1,5 +1,37 @@
 # Changelog
 
+## Beta 1.7.0 — Wave 4 Axis Calibration Closure (2026-05-08)
+
+### Added
+
+- **Y-axis decades guard bypass** (`axis_calibrator.py` §12.3): single-anchor superscript-loss candidates (e.g., OCR reads "102" for 10²) can now bypass the decades > 1.5 guard on Y-axis when the candidate is a superscript-loss interpretation. log_y max error 3.54 → 2.43.
+- **Sequence-level superscript-loss scoring** (`axis_calibrator.py` §12.2): detects multi-anchor monotonic exponent sequences (10, 100, 1000 → 10¹, 10², 10³) and down-weights literal anchor scores when sequence evidence is present. Structural improvement for future samples.
+- **Loglog cross-axis safety gate** (`axis_calibrator.py` §12.4): `_loglog_replace_gate` rejects sparse-tesseract loglog promotions when span changes exceed 1.5 decades without formula evidence.
+- **Axis evidence micro-benchmark** (`tests/axis_evidence_micro_benchmark.py` §12.5/§12.6): compact summary table with per-sample dominant failure classification (`x_axis`, `y_axis`, `both_axes`, `series_geometry`), `--samples` subset filtering, and best-vs-runner-up candidate deltas.
+- **Axis-only error metrics** (`tests/axis_evidence_micro_benchmark.py` §12.6): `axis_log_endpoint_err` and `axis_endpoint_err` separate calibration errors from series extraction errors.
+
+### Validation Baselines (Beta 1.7.0)
+
+| Dataset | Images | Pass Rate | Delta vs 1.6.0 | Notes |
+|---------|--------|-----------|----------------|-------|
+| V1 (clean synthetic) | 310 | **43.2%** | −8.7pp | log_x +25.8pp, log_y +19.4pp; multi_series 0% |
+| V2 (degraded) | 500 | **26.6%** | −2.6pp | Style variation degrades log axes |
+| V3 (noisy) | 500 | **14.4%** | −1.0pp | Rotation + noise still challenging |
+| V4 (real-world, in-scope) | 204 | **14.7%** | −1.5pp | Multi-panel, combo charts out-of-scope |
+
+### Convergence Decision
+
+Per §12.7 convergence rule, axis calibration strategy is **frozen** after two consecutive patches (§12.2 no improvement, §12.1 reverted) produced no net gain. Remaining failures are **input-limited** (wrong OCR reads), not scoring-limited.
+
+### Known Issues
+
+- **multi_series**: 0% across all datasets — routing excellent (80–98% top1) but extraction quality near-zero.
+- **OCR anchor unreliability**: log_x/020 and 026 fail because OCR reads mantissas ("1, 2, 10, 75") instead of full scientific notation values (~5, ~200, ~5000, ~200000).
+- **Dense curves**: oscillating-line extraction still fragile on degraded images (0–5.6%).
+- **Dual-Y**: no dedicated secondary-axis handling; routed as multi_series with poor extraction.
+
+---
+
 ## Beta 1.6.0 — Structural Decomposition & Adaptive Routing (2026-04-30)
 
 ### Added
@@ -8,22 +40,22 @@
 - **Junction-aware skeleton path tracing** (`core/skeleton_path.py`): based on 1802.05902 sketch vectorization. Detects endpoints and branch points in thinned skeletons, traces continuous paths, and resolves branches by direction continuity. Replaces column-median extraction for dense charts.
 - **Adaptive strategy selector** (`core/adaptive_strategy.py`): decision-tree policy routing from measurable image features (foreground density, saturation, CC statistics) replacing fixed `POLICY_WEIGHTS` matrix.
 - **Overlapping scatter separation** (`core/scatter_overlap.py`): based on 0809.1802 pure-CV extraction. Detects abnormally large connected components and splits them using greedy shape matching.
-- **85 unit tests** across 4 new test modules: `test_chart_structure.py`, `test_skeleton_path.py`, `test_scatter_overlap.py`, `test_adaptive_strategy.py`.
+- **55 unit tests** across 4 new test modules: `test_chart_structure.py`, `test_skeleton_path.py`, `test_scatter_overlap.py`, `test_adaptive_strategy.py`.
 
 ### Validation Baselines (Beta 1.6.0)
 
 | Dataset | Images | Pass Rate | Notes |
 |---------|--------|-----------|-------|
-| V1 (clean synthetic) | 310 | **51.9%** (+5.8pp vs 1.5.0) | dual_y +19.4pp, log_y +22.6pp |
-| V2 (degraded) | 500 | **29.2%** | New OCR baseline, no meta leakage |
-| V3 (noisy) | 500 | **15.4%** | New OCR baseline, no meta leakage |
-| V4 (real-world, in-scope) | 204 | **16.2%** | 59.2% out-of-scope (multi-panel, combo, bar/pie) |
+| V1 (clean synthetic) | 310 | **43.2%** | Post-Wave 4 re-evaluation |
+| V2 (degraded) | 500 | **26.6%** | OCR baseline, no meta leakage |
+| V3 (noisy) | 500 | **14.4%** | OCR baseline, no meta leakage |
+| V4 (real-world, in-scope) | 204 | **14.7%** | 59.2% out-of-scope (multi-panel, combo, bar/pie) |
 
 ### Known Issues
 
-- OCR superscript misread (10² → "102") remains critical bottleneck for log_x (0–13%) and loglog.
-- HSV clustering fails on multi_series across all datasets (0–2%).
-- Dense curve extraction degrades severely on noise (93.5% → 0–16%).
+- OCR superscript misread (10² → "102") remains critical bottleneck for log_x (25.8%) and loglog.
+- HSV clustering fails on multi_series across all datasets (0%).
+- Dense curve extraction degrades severely on noise (0–5.6%).
 
 ---
 

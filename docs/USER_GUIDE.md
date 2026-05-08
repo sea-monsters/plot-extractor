@@ -1,6 +1,6 @@
 # Plot Extractor — User Guide
 
-> Version: Beta 1.6.0
+> Version: Beta 1.7.0
 
 ## Overview
 
@@ -133,19 +133,28 @@ The extraction pipeline uses a three-layer strategy ensemble:
 2. **Layer 2 — LLM vision enhancement** (opt-in via `--use-llm`): vision-capable LLM classifies ambiguous charts when rule-based confidence is low.
 3. **Layer 3 — OCR tick reading** (opt-in via `--use-ocr`): Tesseract reads tick labels for axis calibration. Falls back to heuristic synthetic ticks when unavailable.
 
+**New in Beta 1.7.0:**
+- **Y-axis decades guard bypass** (`axis_calibrator.py`): single-anchor superscript-loss candidates (e.g., OCR reads "102" for 10²) can bypass the decades > 1.5 guard on Y-axis when the candidate is a superscript-loss interpretation. Improves log_y calibration robustness.
+- **Sequence-level superscript-loss scoring** (`axis_calibrator.py`): detects multi-anchor monotonic exponent sequences (10, 100, 1000 → 10¹, 10², 10³) and down-weights literal anchor scores when sequence evidence is present.
+- **Loglog cross-axis safety gate** (`axis_calibrator.py`): `_loglog_replace_gate` rejects sparse-tesseract loglog promotions when span changes exceed 1.5 decades without formula evidence.
+- **Axis evidence micro-benchmark** (`tests/axis_evidence_micro_benchmark.py`): compact summary table with per-sample dominant failure classification (`x_axis`, `y_axis`, `both_axes`, `series_geometry`), subset filtering, and best-vs-runner-up candidate deltas.
+- **Axis-only error metrics** (`tests/axis_evidence_micro_benchmark.py`): `axis_log_endpoint_err` and `axis_endpoint_err` separate calibration errors from series extraction errors.
+
 **New in Beta 1.6.0:**
-- **Chart structural decomposition** (`layout/chart_structure.py`): decomposes chart into plot_area, x_axis_area, y_axis_area, and legend_area using detected axis positions. Replaces hardcoded thresholds (`h*0.8`, `w*0.2`) with structural context.
-- **Junction-aware skeleton path tracing** (`core/skeleton_path.py`): for dense charts, traces continuous curves through thinned skeletons by detecting endpoints and branch points, resolving branches by direction continuity.
-- **Adaptive strategy selector** (`core/adaptive_strategy.py`): replaces fixed `POLICY_WEIGHTS` matrix with a decision tree using measurable image features (foreground density, saturation, connected-component statistics) for routing.
-- **Overlapping scatter separation** (`core/scatter_overlap.py`): detects abnormally large connected components (indicating overlapping markers) and splits them using greedy shape matching.
+- **Chart structural decomposition** (`layout/chart_structure.py`): decomposes chart into plot_area, x_axis_area, y_axis_area, and legend_area using detected axis positions. Replaces hardcoded thresholds with structural context.
+- **Junction-aware skeleton path tracing** (`core/skeleton_path.py`): for dense charts, traces continuous curves through thinned skeletons by detecting endpoints and branch points.
+- **Adaptive strategy selector** (`core/adaptive_strategy.py`): replaces fixed `POLICY_WEIGHTS` matrix with a decision tree using measurable image features for routing.
+- **Overlapping scatter separation** (`core/scatter_overlap.py`): detects abnormally large connected components and splits them using greedy shape matching.
 
 ## Known Limitations
 
 - **OCR-dependent accuracy**: without `--use-ocr`, extracted values are in arbitrary units. With OCR, accuracy is still sensitive to tick label quality (superscripts, small fonts, blur).
-- **Multi-series charts**: HSV color clustering can fail when series have similar colors or heavy anti-aliasing. Junction-aware separation is planned but not yet integrated.
+- **Multi-series charts**: HSV color clustering can fail when series have similar colors or heavy anti-aliasing. Extraction quality is near-zero (0% pass) despite excellent routing (87–98% top1).
 - **Degraded images**: scan/photo noise, blur, rotation, and JPEG artifacts reduce axis detection, thinning quality, and OCR accuracy.
-- **Dense curves on noisy images**: Zhang-Suen thinning fragments on anti-aliased or thick curves; performance drops significantly on degraded data.
-- **Log axes**: OCR superscript misread (e.g., 10² → "102") remains a critical bottleneck for log_x and loglog charts.
+- **Dense curves on noisy images**: Zhang-Suen thinning fragments on anti-aliased or thick curves; performance drops significantly on degraded data (0–5.6% pass).
+- **Log axes**: OCR superscript misread (e.g., 10² → "102") remains a critical bottleneck for log_x (25.8% on v1, collapsing on v2–v4) and loglog. Some cases improved in Beta 1.7.0 via superscript-loss bypass and sequence scoring.
+- **Dual-Y charts**: no dedicated secondary-axis handling; routed as multi_series with poor extraction (0–14% pass).
+- **OCR anchor unreliability**: some log_x samples fail because OCR reads mantissas ("1, 2, 10, 75") instead of full scientific notation values.
 - **Unsupported chart types**: bar charts, pie charts, histograms, area charts, and step charts are not yet supported.
 - **Multi-panel/subplot charts**: only single-panel charts are supported.
 - **Extraction quality varies by chart type**: scatter and simple_linear charts extract most reliably; multi-series and log_x remain challenging.
