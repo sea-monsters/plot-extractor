@@ -28,6 +28,7 @@ This directory contains development progress records, validation reports, and ro
 | [VALIDATION_PROGRESS_2026_05_08_WAVE4_LOGLOG.md](VALIDATION_PROGRESS_2026_05_08_WAVE4_LOGLOG.md) | 2026-05-08 | Wave 4 §12.4 loglog cross-axis safety scoring; gate safe but narrow; log_x 8/31 preserved |
 | [VALIDATION_PROGRESS_2026_05_08_WAVE4_LOG_Y.md](VALIDATION_PROGRESS_2026_05_08_WAVE4_LOG_Y.md) | 2026-05-08 | Wave 4 §12.3 (log_y max 3.54→2.43) + §12.2 (sequence-level superscript, structural) + §12.1 (attempted, reverted — OCR anchors unreliable) |
 | [WAVE4_CLOSURE_2026_05_08.md](WAVE4_CLOSURE_2026_05_08.md) | 2026-05-08 | **Wave 4 closure** — all §12 tasks done/attempted; convergence rule triggered; axis calibration strategy frozen |
+| [BASELINE_EVALUATION_2026_05_08.md](../BASELINE_EVALUATION.md) | 2026-05-08 | **v1-v4 full baseline refresh** — post-Wave 4 true baselines: v1 43.2%, v2 26.6%, v3 14.4%, v4 14.7% |
 
 ## Naming Convention
 
